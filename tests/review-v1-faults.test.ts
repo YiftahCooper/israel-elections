@@ -35,3 +35,18 @@ describe('Undo and Redo name the step they take', () => {
     expect(stepName(s2, s1, 'en')).toBe('Back to an earlier change');
   });
 });
+
+describe('the line of changes names a withdrawal', () => {
+  it('withdrawing a list is "list withdrawn", not "votes changed" (V1 F19)', async () => {
+    const { applyAction } = await import('../src/model/actions.ts');
+    const { nonSeatChanges } = await import('../src/app/derive.ts');
+    const s0 = scenarioFromDataset(load('k25'));
+    const labor = s0.lists.find((x) => x.shortEn === 'Labor')!;
+    const s1 = applyAction(s0, { type: 'setWithdrawn', listId: labor.id, withdrawn: true });
+    expect(nonSeatChanges(s1, s0, 'en')).toEqual(['list withdrawn']);
+    expect(nonSeatChanges(s1, s0, 'he')).toEqual(['רשימה פרשה']);
+    const s2 = applyAction(s1, { type: 'setVotes', listId: s0.lists[0].id, votes: s0.lists[0].votes + 1000 });
+    expect(nonSeatChanges(s2, s0, 'en')).toEqual(['list withdrawn', 'votes changed']);
+    expect(nonSeatChanges(s0, s1, 'en')).toEqual(['list back in the race']);
+  });
+});

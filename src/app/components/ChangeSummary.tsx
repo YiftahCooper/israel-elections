@@ -15,7 +15,7 @@ import { allocationOf } from '../derive.ts';
 // scrolls sideways; History opens as a popover over the page.
 import { lazy, Suspense, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useFloating } from '../floating.tsx';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { ChevronDown, ChevronRight, ChevronUp } from 'lucide-react';
 import { useCloseOnFocusAway } from '../focusReturn.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -74,10 +74,17 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   useLayoutEffect(() => {
     const el = changes.current; if (!el) return;
     const mark = () => { const rest = el.scrollWidth - el.clientWidth - Math.abs(el.scrollLeft); el.toggleAttribute('data-more', rest > 1); };
-    mark(); el.addEventListener('scroll', mark, { passive: true });
+    // with a mouse the strip has no scroll bar: the wheel scrolls it sideways (V1 review, 19 Nov)
+    const wheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX) || el.scrollWidth <= el.clientWidth) return;
+      e.preventDefault(); el.scrollLeft += (getComputedStyle(el).direction === 'rtl' ? -1 : 1) * e.deltaY;
+    };
+    mark(); el.addEventListener('scroll', mark, { passive: true }); el.addEventListener('wheel', wheel, { passive: false });
     const o = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(mark); o?.observe(el);
-    return () => { el.removeEventListener('scroll', mark); o?.disconnect(); };
+    return () => { el.removeEventListener('scroll', mark); el.removeEventListener('wheel', wheel); o?.disconnect(); };
   });
+  // the rest of a line too long for its row is one press away, at the fade that says it is there
+  const more = () => { const el = changes.current; if (el) el.scrollBy({ left: (getComputedStyle(el).direction === 'rtl' ? -1 : 1) * el.clientWidth * 0.8, behavior: 'smooth' }); };
   const moves = useMemo(() => seatMoves(s, r, base, baseR), [s, r, base, baseR]);
   // blocs are compared under the same sourced grouping; an edited grouping has no official counterpart
   const blocs = useMemo(() => {
@@ -86,15 +93,19 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     let was: Map<string | null, number> | null = null;
     const b = groupingBaseline(s, base);
     if (b) was = blocTotals(b, allocationOf(b));
-    return s.blocs.map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }));
+    // seats in no bloc are named too, so the line's blocs always add up to the chamber (2022, Labor withdrawn: Meretz's
+    // four seats are in no bloc)
+    const none = { id: null as string | null, nameHe: 'ללא גוש', nameEn: 'No bloc' };
+    return [...s.blocs, none].map((b) => ({ b, n: now.get(b.id) ?? 0, d: was ? (now.get(b.id) ?? 0) - (was.get(b.id) ?? 0) : null }))
+      .filter((x) => x.b.id !== null || x.n > 0 || x.d);
   }, [s, r, base, baseR]);
   const edited = resultChanges(s,base).length > 0;
   // a grouping or coalition change is a change, but the result itself is untouched: say so
   const resultUnchanged = groupingOnly(s, base);
   const familyGrouping = isFamilyGrouping(s);
   const majority = Math.floor(s.rules.seats / 2) + 1;
-  const holder = blocs?.find((x) => x.n >= majority);
-  const name = (b: { nameHe: string; nameEn: string; appDefined?: boolean }) => groupingName(b, lang, s.blocSchemes?.find(g => g.id === s.blocSchemeId));
+  const holder = blocs?.find((x) => x.b.id !== null && x.n >= majority);
+  const name = (b: { id: string | null; nameHe: string; nameEn: string; appDefined?: boolean }) => b.id === null ? L('No bloc', 'ללא גוש') : groupingName(b, lang, s.blocSchemes?.find(g => g.id === s.blocSchemeId));
   const shown = moves.slice(0, MAX_MOVES);
   // phones keep Undo and Redo in their pinned bar, and Start over in the scenario panel (this line scrolls away there)
   const phone = usePhone();
@@ -115,12 +126,13 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
           {nonSeatChanges(s, base, lang).length > 0 && <span>{nonSeatChanges(s, base, lang).join(' · ')}</span>}
           {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
             {!familyGrouping && <span>{groupingLabel(s, lang)}</span>}
-            {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id} title={b.appDefined ? appGroupingExplanation(lang) : undefined}><bdi>{name(b)}</bdi> {n}{d ? <span dir="ltr"> (<SeatDelta value={d} />)</span> : null}</span>)}
+            {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id ?? 'none'} title={'appDefined' in b && b.appDefined ? appGroupingExplanation(lang) : undefined}><bdi>{name(b)}</bdi> {n}{d ? <> <span dir="ltr">(<SeatDelta value={d} />)</span></> : null}</span>)}
             {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `${hebrewPrefixName('ל', name(holder.b))} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
           </span>}
           {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
         </>}
       </span>
+      {edited && <button type="button" className="btn small ghost icon-only session-more" onClick={more} aria-label={L('Show the rest of the line', 'הצגת המשך השורה')} title={L('Show the rest of the line', 'הצגת המשך השורה')}><ChevronRight className="icon sm rtl-mirror" aria-hidden /></button>}
       <CompareButton />
       {edited && <button ref={trigger} className="btn small ghost" aria-expanded={open} aria-controls={historyId} popoverTarget={historyId}>
         {L('History', 'היסטוריה')}

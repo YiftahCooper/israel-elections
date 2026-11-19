@@ -145,6 +145,8 @@ input, textarea { caret-color: var(--focus); }
 .session-changes[data-more] { mask-image: linear-gradient(to left, transparent 0, #000 32px); }
 [dir="rtl"] .session-changes[data-more] { mask-image: linear-gradient(to right, transparent 0, #000 32px); }
 .session-changes > * { flex: none; }
+.session > .session-more { flex: none; margin-inline-start: -10px; } .session-changes:not([data-more]) + .session-more { display: none; }
+@media (max-width: 600px) { .session > .session-more { display: none; } }
 .session .moves { display: inline-flex; flex-wrap: nowrap; gap: 12px; }
 .session .history { inline-size: min(520px, calc((100vw - 24px) / var(--text-zoom, 1))); padding: 12px; border: 1px solid var(--rule-2); border-radius: var(--radius); background: var(--surface); color: var(--ink); box-shadow: var(--shadow-pop); white-space: normal; overscroll-behavior: contain; }
 /* pinned wherever the tools strip is (Undo is on it, owner 19 Nov 2026); app-menu.css unpins both on short screens and phones */

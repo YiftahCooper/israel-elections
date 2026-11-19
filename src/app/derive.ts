@@ -333,7 +333,14 @@ export function seeksMajority(blocId: string | null): boolean { return blocId !=
 export function nonSeatChanges(s: Scenario, base: Scenario, lang: Lang): string[] {
   const he = lang === 'he';
   const changes: string[] = [];
-  if (JSON.stringify(s.lists.map(l => [l.id,l.votes,l.withdrawn])) !== JSON.stringify(base.lists.map(l => [l.id,l.votes,l.withdrawn]))) changes.push(he ? 'הקולות השתנו' : 'votes changed');
+  // a withdrawal (or its undoing) is named as such, not as a vote change, though the list's votes go with it
+  const was = new Map(base.lists.map(l => [l.id, l]));
+  const flipped = s.lists.filter(l => was.has(l.id) && !!was.get(l.id)!.withdrawn !== !!l.withdrawn);
+  const out = flipped.filter(l => l.withdrawn).length, back = flipped.length - out;
+  const others = (xs: Scenario['lists']) => JSON.stringify(xs.filter(l => !flipped.some(f => f.id === l.id)).map(l => [l.id, l.votes, l.withdrawn]));
+  if (out) changes.push(he ? (out === 1 ? 'רשימה פרשה' : `${out} רשימות פרשו`) : (out === 1 ? 'list withdrawn' : `${out} lists withdrawn`));
+  if (back) changes.push(he ? (back === 1 ? 'רשימה חזרה למרוץ' : `${back} רשימות חזרו למרוץ`) : (back === 1 ? 'list back in the race' : `${back} lists back in the race`));
+  if (others(s.lists) !== others(base.lists)) changes.push(he ? 'הקולות השתנו' : 'votes changed');
   if (JSON.stringify(s.agreements) !== JSON.stringify(base.agreements)) changes.push(he ? 'הסכמי העודפים השתנו' : 'agreements changed');
   // the line already names the grouping and its blocs; a coalition change has nothing else to show it
   if (inputDiffs(s, base).some(p => inputPart(p) === 'coalitions')) changes.push(he ? 'הקואליציה השתנתה' : 'coalition changed');

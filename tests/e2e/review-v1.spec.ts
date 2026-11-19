@@ -95,3 +95,29 @@ for (const level of ['simple', 'standard', 'expert']) test(`the Turnout tile rea
     await expect(tile.locator('.v')).toHaveText('77.98%');
   }
 });
+
+test('line of changes: the rest of a long line is one press away; Hebrew keeps a space before a bloc\'s change', async ({ page }) => {
+  await start(page, 'k26', { level: 'expert' });
+  await editVotes(page, 'Likud', '1247591');
+  const strip = page.locator('.session .session-changes');
+  const end = strip.getByText('no bloc has a majority');
+  const inView = async () => { const [a, b] = [await strip.boundingBox(), await end.boundingBox()]; return !!a && !!b && b.x >= a.x && b.x + b.width <= a.x + a.width + 1; };
+  expect(await inView()).toBe(false);
+  await page.locator('.session').getByRole('button', { name: 'Show the rest of the line' }).click();
+  await expect.poll(inView).toBe(true);
+  // every change mark sits in its own left-to-right run with the space before it outside that run, so the bidi
+  // algorithm never drops it in Hebrew (V1 F22)
+  const runs = await page.locator('.session .moves span[dir="ltr"]').evaluateAll((els) => els.map((e) => [e.textContent, e.previousSibling?.textContent ?? '']));
+  expect(runs.length).toBeGreaterThan(3);
+  for (const [text, before] of runs) { expect(text).toMatch(/^\(/); expect(before).toMatch(/ $/); }
+});
+
+test('withdrawing a list: the line says so and counts the seats in no bloc (2022, Labor)', async ({ page }) => {
+  await start(page, 'k25', { level: 'expert' });
+  await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Labor', exact: true }).click();
+  await page.locator('.side-panel').getByText('Withdrawn from the race').click();
+  const line = page.locator('.session .session-changes');
+  await expect(line).toContainText('list withdrawn');
+  await expect(line).not.toContainText('votes changed');
+  await expect(line).toContainText('No bloc 4 (▲ +4)');
+});
