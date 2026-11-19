@@ -19,8 +19,8 @@ properties after every step. `spec.js` holds:
   pick another election, change the complexity. They go through the app's own controls (opening the phone menu or
   Settings when the control is not on screen).
 
-`spec-english.js` is the same spec for an English session: its extra first step switches the app to English, and
-switches back to English soon after any random switch to Hebrew.
+`spec-english.js` is the same spec for an English session: while the app is in Hebrew, switching to English is by
+far the likeliest next step (weight 1000 to 1), so about 98% of steps run in English.
 
 The specs are plain JavaScript so the project typecheck skips them; the `@antithesishq/bombadil` modules come bundled
 in the binary. Tested with v0.8.0 (npm `@antithesishq/bombadil@0.8.0`, binary in its `binaries/` folder); v0.7.10

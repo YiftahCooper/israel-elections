@@ -1,8 +1,13 @@
-// The Bombadil spec for an English session: everything in spec.js, plus a first step that switches the app (which
-// opens in Hebrew) to English. Each run starts in a fresh browser, so this fires once at the start of every run, and
-// again soon after the occasional switch back to Hebrew, which keeps the session mostly in English.
-import { actions } from "@antithesishq/bombadil/browser";
+// The Bombadil spec for an English session: everything in spec.js, with one change to the actions: while the app is in
+// Hebrew (it opens in Hebrew, and the random switches go back to it now and then), switching to English is by far the
+// likeliest next step, so the session stays mostly in English.
+import { actions, weighted } from "@antithesishq/bombadil/browser";
+import { actionsMix as mix } from "./spec.js";
 import { choices, setLanguage } from "./switches.js";
 
 export * from "./spec.js";
-export const englishFirst = actions(() => (choices.current.lang === "he" ? [setLanguage("en")] : []));
+const toEnglish = actions(() => (choices.current.lang === "he" ? [setLanguage("en")] : []));
+export const actionsMix = weighted([
+  [1000, toEnglish],
+  [1, mix],
+]);
