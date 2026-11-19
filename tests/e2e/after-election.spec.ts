@@ -167,7 +167,9 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await expect(history.locator('.after-support-total').first()).toHaveText('5');
   await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '67 בעד · 53 נגד' : '67 for · 53 against');
   await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
-  await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
+  // no faction sizes recorded for Peres's 1995 government: a dash and one sentence, not "Unknown" (V2 fault A4)
+  await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText('—');
+  await expect(history.locator('.after-government-change .after-size-note').first()).toBeVisible();
   await choose(election, 'k2');
   // 17 Nov 2026: Mapai's three affiliated Arab lists are members without ministries (two independent books), so the
   // first government's total is published (65, as Galnoor and Blander count). 19 Nov 2026: every later snapshot of the
@@ -452,4 +454,18 @@ for (const lang of ['en', 'he'] as const) test(`a mid-term join or exit shows th
   const out = history.locator('.after-government-change').filter({ has: page.locator('time[datetime="2014-12-04"]') });
   await expect(out.locator('.after-members-total')).toHaveText('43');
   await expect(out.locator('.after-coalition').first()).not.toContainText(lang === 'he' ? 'יש עתיד' : 'Yesh Atid');
+});
+
+// V2 fault A4: "Members Unknown" and a column of "Unknown" seats sat beside seats the page itself shows; party rows
+// matched to an election list by name lost their ballot letters.
+for (const lang of ['en', 'he'] as const) test(`a coalition whose faction sizes are not recorded says so once, with no Unknown column: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k12', lang);
+  const totals = history.locator('.after-support-totals').first();
+  await expect(totals.locator('.after-members-total')).toHaveText(lang === 'he' ? 'לפחות 95' : 'at least 95');
+  await expect(totals).not.toContainText(lang === 'he' ? 'לא ידוע' : 'Unknown');
+  await expect(history.locator('.after-size-note').first()).toBeVisible();
+  await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
+  const change = history.locator('.after-government-change').filter({ has: page.locator('time[datetime="1990-06-11"]') });
+  await expect(change.locator('.after-coalition')).not.toContainText(lang === 'he' ? 'לא ידוע' : 'Unknown');
+  await expect(change.locator('.after-party').filter({ hasText: lang === 'he' ? 'הליכוד' : 'Likud' }).locator('bdi[lang="he"]').first()).toHaveText('מחל');
 });
