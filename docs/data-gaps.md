@@ -1,8 +1,8 @@
 # Data gaps register
 
-12673 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12696 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 1034 (confirmed 513, probable 57, provisional 140, disputed 11, unknown 313).
+- High importance: 1057 (confirmed 526, probable 57, provisional 140, disputed 11, unknown 323).
 - Medium importance: 4483 (confirmed 1035, probable 248, provisional 182, disputed 8, unknown 2422, family placements: follows scholarship 103, the project’s own judgement 386, sources disagree 15, not yet checked 84).
 - Low importance: 7156 (confirmed 572, provisional 808, unknown 5776).
 
@@ -72,6 +72,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k18
 
+- [Later governments](../data/meta/aftermath/k18.json) ×10: unknown 10. coalition-change 2009-04-01, coalition-change 2012-05-09, coalition-withdrawal 2011-01-19, coalition-withdrawal 2012-07-19, faction-split 2011-01-17
 - [Formation conflicts](../data/meta/aftermath/k18.json) ×1: probable 1
 - [Government](../data/meta/aftermath/k18.json) ×1: probable 1
 - [Recommendation rounds](../data/meta/aftermath/k18.json) ×1: probable 1. r1
@@ -303,7 +304,7 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Recommendations | 80 | 68 | 80 | 2 | 76 | 306 |
-| Government roles | 400 | 20 | 3 | 3 | 11 | 437 |
+| Government roles | 432 | 20 | 3 | 3 | 11 | 469 |
 | Formation events | 75 | 14 | 37 | 0 | 0 | 126 |
 | Term events | 36 | 49 | 0 | 0 | 0 | 85 |
 | Candidate identity links | 3245 | 57 | 540 | 0 | 0 | 3842 |
@@ -312,9 +313,9 @@ Party-family placements are the project’s classification, not facts, so they c
 
 ## Counts
 
-By kind: unknown: 7480; missing-field: 285; conflict: 19; single-source: 3051; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 201.
+By kind: unknown: 7490; missing-field: 285; conflict: 19; single-source: 3064; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 201.
 
-By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11314.
+By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11337.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -335,7 +336,7 @@ By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 
 | k15 | 101 | 153 | 160 | 499 |
 | k16 | 53 | 159 | 218 | 510 |
 | k17 | 9 | 137 | 230 | 434 |
-| k18 | 3 | 91 | 345 | 480 |
+| k18 | 13 | 91 | 345 | 503 |
 | k19 | 5 | 97 | 345 | 494 |
 | k20 | 9 | 100 | 309 | 467 |
 | k21 | 2 | 116 | 340 | 520 |

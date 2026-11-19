@@ -156,6 +156,62 @@
       "kind": "academic",
       "accessed": "2026-11-17",
       "evidenceFamily": "author:shamir"
+    },
+    "positions-gov32": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2032",
+      "publisher": "Knesset open data: appointments in government 32",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־32",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "factions-k18": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2018%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset open data: faction membership",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2009-04-01": {
+      "url": "https://fs.knesset.gov.il//18/Plenum/18_ptm_180918.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 1 April 2009",
+      "publisherHe": "הכנסת, דברי הכנסת, 1 באפריל 2009",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2009-04-06": {
+      "url": "https://fs.knesset.gov.il//18/Plenum/18_ptm_185953.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 6 April 2009",
+      "publisherHe": "הכנסת, דברי הכנסת, 6 באפריל 2009",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2011-01-19": {
+      "url": "https://fs.knesset.gov.il//18/Plenum/18_ptm_175808.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 19 January 2011",
+      "publisherHe": "הכנסת, דברי הכנסת, 19 בינואר 2011",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2012-05-09": {
+      "url": "https://fs.knesset.gov.il//18/Plenum/18_ptm_200346.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 9 May 2012",
+      "publisherHe": "הכנסת, דברי הכנסת, 9 במאי 2012",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2012-07-17": {
+      "url": "https://fs.knesset.gov.il//18/Plenum/18_ptm_216889.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 17 July 2012",
+      "publisherHe": "הכנסת, דברי הכנסת, 17 ביולי 2012",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2012-07-23": {
+      "url": "https://fs.knesset.gov.il//18/Plenum/18_ptm_217208.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 23 July 2012",
+      "publisherHe": "הכנסת, דברי הכנסת, 23 ביולי 2012",
+      "kind": "official",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -668,11 +724,356 @@
     "knownMemberSeats": 69,
     "changes": [
       {
-        "date": "2011-01-19",
-        "type": "coalition-change",
-        "textEn": "The terms of Labor ministers Binyamin Ben-Eliezer, Isaac Herzog and Avishay Braverman ended; ministers of the Independence faction, which had split from Labor, stayed in the government.",
-        "textHe": "כהונת שרי העבודה בנימין בן־אליעזר, יצחק הרצוג ואבישי ברוורמן הסתיימה; שרי סיעת העצמאות, שהתפלגה מהעבודה, נשארו בממשלה.",
+        "date": "2009-04-01",
+        "textEn": "United Torah Judaism joined the coalition: its agreement with Likud was tabled in the Knesset.",
+        "textHe": "יהדות התורה הצטרפה לקואליציה: ההסכם שלה עם הליכוד הונח על שולחן הכנסת.",
         "cites": [
+          {
+            "source": "plenum-2009-04-01",
+            "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני בין סיעות הליכוד ויהדות התורה",
+            "note": "The day its signed agreement with Likud was tabled in the Knesset; it had no ministers.",
+            "noteHe": "היום שבו הונח בכנסת ההסכם החתום שלה עם הליכוד; לא היו לה שרים."
+          },
+          {
+            "source": "plenum-2009-04-06",
+            "quote": "חבר הכנסת יעקב ליצמן – לתפקיד סגן שר במשרד הבריאות",
+            "note": "Yaakov Litzman and Meir Porush became deputy ministers on 6 April 2009.",
+            "noteHe": "יעקב ליצמן ומאיר פרוש מונו לסגני שרים ב־6 באפריל 2009."
+          },
+          {
+            "source": "factions-k18",
+            "quote": "Faction 746 (יהדות התורה והשבת אגודת ישראל - דגל התורה): 5 members on 2009-04-01, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 5 members of United Torah Judaism on 1 April 2009.",
+            "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת יהדות התורה ב־1 באפריל 2009."
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 32,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 27,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3371; PersonID 479; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: סילבן שלום; faction: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סילבן שלום; סיעה: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה."
+              }
+            ]
+          },
+          {
+            "letters": "ל",
+            "seats": 15,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3464; PersonID 471; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: עוזי לנדאו; faction: ישראל ביתנו בראשות אביגדור ליברמן.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עוזי לנדאו; סיעה: ישראל ביתנו בראשות אביגדור ליברמן."
+              }
+            ]
+          },
+          {
+            "letters": "אמת",
+            "seats": 13,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3372; PersonID 435; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין בן-אליעזר; faction: העבודה בראשות אהוד ברק.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין בן-אליעזר; סיעה: העבודה בראשות אהוד ברק."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 11,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3543; PersonID 4417; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל אטיאס; faction: התאחדות הספרדים העולמית שומרי תורה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל אטיאס; סיעה: התאחדות הספרדים העולמית שומרי תורה."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 23329; PersonID 12946; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דניאל הרשקוביץ; faction: הבית היהודי - מפד\"ל החדשה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דניאל הרשקוביץ; סיעה: הבית היהודי - מפד\"ל החדשה."
+              },
+              {
+                "source": "diskin-2011",
+                "quote": "Israel Our Home and Labour have five ministers each, Shas has four and Jewish Home has one.",
+                "locator": "p. 66"
+              }
+            ],
+            "note": "The Knesset’s record lists Daniel Hershkowitz as the Jewish Home’s minister; one book also counts one Jewish Home minister."
+          },
+          {
+            "letters": "ג",
+            "seats": 5,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-2009-04-01",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני בין סיעות הליכוד ויהדות התורה",
+                "note": "The day its signed agreement with Likud was tabled in the Knesset; it had no ministers.",
+                "noteHe": "היום שבו הונח בכנסת ההסכם החתום שלה עם הליכוד; לא היו לה שרים."
+              },
+              {
+                "source": "plenum-2009-04-06",
+                "quote": "חבר הכנסת יעקב ליצמן – לתפקיד סגן שר במשרד הבריאות",
+                "note": "Yaakov Litzman and Meir Porush became deputy ministers on 6 April 2009.",
+                "noteHe": "יעקב ליצמן ומאיר פרוש מונו לסגני שרים ב־6 באפריל 2009."
+              },
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3428, PersonID 528, PositionID 40, StartDate 2009-04-06; PersonToPositionID 3597, PersonID 563, PositionID 40, StartDate 2009-04-06",
+                "note": "The Knesset’s appointment records: Yaakov Litzman and Meir Porush, deputy ministers from 6 April 2009.",
+                "noteHe": "רישומי המינויים של הכנסת: יעקב ליצמן ומאיר פרוש, סגני שרים מ־6 באפריל 2009."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 746 (יהדות התורה והשבת אגודת ישראל - דגל התורה): 5 members on 2009-04-01, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of United Torah Judaism on 1 April 2009.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת יהדות התורה ב־1 באפריל 2009."
+              }
+            ],
+            "noteEn": "No ministers; its MKs Yaakov Litzman and Meir Porush were deputy ministers from 6 April 2009.",
+            "noteHe": "בלי שרים; חברי הכנסת מטעמה יעקב ליצמן ומאיר פרוש כיהנו כסגני שרים מ־6 באפריל 2009."
+          }
+        ],
+        "coalitionSeats": 74,
+        "supportSeats": 0,
+        "knownMemberSeats": 74,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2011-01-17",
+        "textEn": "Ehud Barak and four other Labor MKs split from Labor’s faction and formed Independence, whose ministers stayed in the government.",
+        "textHe": "אהוד ברק וארבעה חברי כנסת נוספים מהעבודה התפלגו מסיעתה והקימו את העצמאות, ששריה נשארו בממשלה.",
+        "cites": [
+          {
+            "source": "factions-k18",
+            "quote": "Faction 750 (העבודה): 8 members on 2011-01-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 8 members of Labor on 17 January 2011.",
+            "noteHe": "רישומי הסיעות של הכנסת: 8 חברים בסיעת העבודה ב־17 בינואר 2011."
+          },
+          {
+            "source": "factions-k18",
+            "quote": "Faction 762 (העצמאות): 5 members on 2011-01-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 5 members of Independence on 17 January 2011.",
+            "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת העצמאות ב־17 בינואר 2011."
+          },
+          {
+            "source": "positions-gov32",
+            "quote": "PersonToPositionID 3476, PersonID 2226, PositionID 39, StartDate 2009-03-31",
+            "note": "The Knesset’s appointment record: Ehud Barak stayed Minister of Defence after the split.",
+            "noteHe": "רישום המינוי של הכנסת: אהוד ברק נשאר שר הביטחון אחרי הפילוג."
+          }
+        ],
+        "type": "faction-split",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 32,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 27,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3371; PersonID 479; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: סילבן שלום; faction: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סילבן שלום; סיעה: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה."
+              }
+            ]
+          },
+          {
+            "letters": "ל",
+            "seats": 15,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3464; PersonID 471; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: עוזי לנדאו; faction: ישראל ביתנו בראשות אביגדור ליברמן.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עוזי לנדאו; סיעה: ישראל ביתנו בראשות אביגדור ליברמן."
+              }
+            ]
+          },
+          {
+            "letters": "אמת",
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3372; PersonID 435; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין בן-אליעזר; faction: העבודה בראשות אהוד ברק.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין בן-אליעזר; סיעה: העבודה בראשות אהוד ברק."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 750 (העבודה): 8 members on 2011-01-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 8 members of Labor on 17 January 2011.",
+                "noteHe": "רישומי הסיעות של הכנסת: 8 חברים בסיעת העבודה ב־17 בינואר 2011."
+              }
+            ],
+            "noteEn": "The 8 MKs left in Labor’s faction after Independence split from it.",
+            "noteHe": "8 חברי הכנסת שנשארו בסיעת העבודה אחרי שהעצמאות התפלגה ממנה."
+          },
+          {
+            "letters": "שס",
+            "seats": 11,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3543; PersonID 4417; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל אטיאס; faction: התאחדות הספרדים העולמית שומרי תורה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל אטיאס; סיעה: התאחדות הספרדים העולמית שומרי תורה."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 23329; PersonID 12946; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דניאל הרשקוביץ; faction: הבית היהודי - מפד\"ל החדשה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דניאל הרשקוביץ; סיעה: הבית היהודי - מפד\"ל החדשה."
+              },
+              {
+                "source": "diskin-2011",
+                "quote": "Israel Our Home and Labour have five ministers each, Shas has four and Jewish Home has one.",
+                "locator": "p. 66"
+              }
+            ],
+            "note": "The Knesset’s record lists Daniel Hershkowitz as the Jewish Home’s minister; one book also counts one Jewish Home minister."
+          },
+          {
+            "letters": "ג",
+            "seats": 5,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-2009-04-01",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני בין סיעות הליכוד ויהדות התורה",
+                "note": "The day its signed agreement with Likud was tabled in the Knesset; it had no ministers.",
+                "noteHe": "היום שבו הונח בכנסת ההסכם החתום שלה עם הליכוד; לא היו לה שרים."
+              },
+              {
+                "source": "plenum-2009-04-06",
+                "quote": "חבר הכנסת יעקב ליצמן – לתפקיד סגן שר במשרד הבריאות",
+                "note": "Yaakov Litzman and Meir Porush became deputy ministers on 6 April 2009.",
+                "noteHe": "יעקב ליצמן ומאיר פרוש מונו לסגני שרים ב־6 באפריל 2009."
+              },
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3428, PersonID 528, PositionID 40, StartDate 2009-04-06; PersonToPositionID 3597, PersonID 563, PositionID 40, StartDate 2009-04-06",
+                "note": "The Knesset’s appointment records: Yaakov Litzman and Meir Porush, deputy ministers from 6 April 2009.",
+                "noteHe": "רישומי המינויים של הכנסת: יעקב ליצמן ומאיר פרוש, סגני שרים מ־6 באפריל 2009."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 746 (יהדות התורה והשבת אגודת ישראל - דגל התורה): 5 members on 2009-04-01, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of United Torah Judaism on 1 April 2009.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת יהדות התורה ב־1 באפריל 2009."
+              }
+            ],
+            "noteEn": "No ministers; its MKs Yaakov Litzman and Meir Porush were deputy ministers from 6 April 2009.",
+            "noteHe": "בלי שרים; חברי הכנסת מטעמה יעקב ליצמן ומאיר פרוש כיהנו כסגני שרים מ־6 באפריל 2009."
+          },
+          {
+            "factionNameHe": "העצמאות",
+            "factionNameEn": "Independence",
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3476, PersonID 2226, PositionID 39, StartDate 2009-03-31",
+                "note": "The Knesset’s appointment record: Ehud Barak stayed Minister of Defence after the split.",
+                "noteHe": "רישום המינוי של הכנסת: אהוד ברק נשאר שר הביטחון אחרי הפילוג."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 762 (העצמאות): 5 members on 2011-01-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of Independence on 17 January 2011.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת העצמאות ב־17 בינואר 2011."
+              }
+            ],
+            "noteEn": "Ehud Barak’s faction, split from Labor; its ministers stayed in the government.",
+            "noteHe": "הסיעה של אהוד ברק, שהתפלגה מהעבודה; שריה נשארו בממשלה."
+          }
+        ],
+        "coalitionSeats": 74,
+        "supportSeats": 0,
+        "knownMemberSeats": 74,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Labor and Independence count their members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2011-01-19",
+        "type": "coalition-withdrawal",
+        "textEn": "Labor left the government: the resignations of its ministers Binyamin Ben-Eliezer, Isaac Herzog and Avishay Braverman took effect. Independence’s ministers stayed.",
+        "textHe": "העבודה יצאה מהממשלה: התפטרויות שריה בנימין בן־אליעזר, יצחק הרצוג ואבישי ברוורמן נכנסו לתוקף. שרי העצמאות נשארו.",
+        "cites": [
+          {
+            "source": "plenum-2011-01-19",
+            "quote": "התפטרותם של השרים נכנסה לתוקף היום, 19 בינואר 2011, בשעה 15:00",
+            "note": "Binyamin Ben-Eliezer, Isaac Herzog and Avishay Braverman handed in their resignations on 17 January 2011; they took effect 48 hours later.",
+            "noteHe": "בנימין בן־אליעזר, יצחק הרצוג ואבישי ברוורמן הגישו את התפטרותם ב־17 בינואר 2011; היא נכנסה לתוקף כעבור 48 שעות."
+          },
+          {
+            "source": "factions-k18",
+            "quote": "Faction 750 (העבודה): 8 members on 2011-01-19, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 8 members of Labor on 19 January 2011.",
+            "noteHe": "רישומי הסיעות של הכנסת: 8 חברים בסיעת העבודה ב־19 בינואר 2011."
+          },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3372,\"PersonID\":435,\"PositionID\":39,\"KnessetNum\":18,\"StartDate\":\"2009-03-31T00:00:00\",\"FinishDate\":\"2011-01-19T00:00:00\",\"GovMinistryID\":917,\"GovMinistryName\":\"משרד התעשיה, המסחר והתעסוקה\",\"DutyDesc\":\"שר התעשיה המסחר והתעסוקה \",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
@@ -715,14 +1116,157 @@
         "formalStep": true,
         "notes": [
           "The day the offices ended, two days after the faction split of 17 January 2011 recorded in the membership data. No seat total is derived."
-        ]
+        ],
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 27,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3371; PersonID 479; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: סילבן שלום; faction: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סילבן שלום; סיעה: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה."
+              }
+            ]
+          },
+          {
+            "letters": "ל",
+            "seats": 15,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3464; PersonID 471; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: עוזי לנדאו; faction: ישראל ביתנו בראשות אביגדור ליברמן.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עוזי לנדאו; סיעה: ישראל ביתנו בראשות אביגדור ליברמן."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 11,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3543; PersonID 4417; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל אטיאס; faction: התאחדות הספרדים העולמית שומרי תורה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל אטיאס; סיעה: התאחדות הספרדים העולמית שומרי תורה."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 23329; PersonID 12946; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דניאל הרשקוביץ; faction: הבית היהודי - מפד\"ל החדשה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דניאל הרשקוביץ; סיעה: הבית היהודי - מפד\"ל החדשה."
+              },
+              {
+                "source": "diskin-2011",
+                "quote": "Israel Our Home and Labour have five ministers each, Shas has four and Jewish Home has one.",
+                "locator": "p. 66"
+              }
+            ],
+            "note": "The Knesset’s record lists Daniel Hershkowitz as the Jewish Home’s minister; one book also counts one Jewish Home minister."
+          },
+          {
+            "letters": "ג",
+            "seats": 5,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-2009-04-01",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני בין סיעות הליכוד ויהדות התורה",
+                "note": "The day its signed agreement with Likud was tabled in the Knesset; it had no ministers.",
+                "noteHe": "היום שבו הונח בכנסת ההסכם החתום שלה עם הליכוד; לא היו לה שרים."
+              },
+              {
+                "source": "plenum-2009-04-06",
+                "quote": "חבר הכנסת יעקב ליצמן – לתפקיד סגן שר במשרד הבריאות",
+                "note": "Yaakov Litzman and Meir Porush became deputy ministers on 6 April 2009.",
+                "noteHe": "יעקב ליצמן ומאיר פרוש מונו לסגני שרים ב־6 באפריל 2009."
+              },
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3428, PersonID 528, PositionID 40, StartDate 2009-04-06; PersonToPositionID 3597, PersonID 563, PositionID 40, StartDate 2009-04-06",
+                "note": "The Knesset’s appointment records: Yaakov Litzman and Meir Porush, deputy ministers from 6 April 2009.",
+                "noteHe": "רישומי המינויים של הכנסת: יעקב ליצמן ומאיר פרוש, סגני שרים מ־6 באפריל 2009."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 746 (יהדות התורה והשבת אגודת ישראל - דגל התורה): 5 members on 2009-04-01, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of United Torah Judaism on 1 April 2009.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת יהדות התורה ב־1 באפריל 2009."
+              }
+            ],
+            "noteEn": "No ministers; its MKs Yaakov Litzman and Meir Porush were deputy ministers from 6 April 2009.",
+            "noteHe": "בלי שרים; חברי הכנסת מטעמה יעקב ליצמן ומאיר פרוש כיהנו כסגני שרים מ־6 באפריל 2009."
+          },
+          {
+            "factionNameHe": "העצמאות",
+            "factionNameEn": "Independence",
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3476, PersonID 2226, PositionID 39, StartDate 2009-03-31",
+                "note": "The Knesset’s appointment record: Ehud Barak stayed Minister of Defence after the split.",
+                "noteHe": "רישום המינוי של הכנסת: אהוד ברק נשאר שר הביטחון אחרי הפילוג."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 762 (העצמאות): 5 members on 2011-01-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of Independence on 17 January 2011.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת העצמאות ב־17 בינואר 2011."
+              }
+            ],
+            "noteEn": "Ehud Barak’s faction, split from Labor; its ministers stayed in the government.",
+            "noteHe": "הסיעה של אהוד ברק, שהתפלגה מהעבודה; שריה נשארו בממשלה."
+          }
+        ],
+        "coalitionSeats": 66,
+        "supportSeats": 0,
+        "knownMemberSeats": 66,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
       },
       {
         "date": "2012-05-09",
         "type": "coalition-change",
-        "textEn": "Kadima joined the government; Shaul Mofaz became Vice Prime Minister.",
-        "textHe": "קדימה הצטרפה לממשלה; שאול מופז מונה למשנה לראש הממשלה.",
+        "textEn": "Kadima joined the government: the Knesset approved Shaul Mofaz as Vice Prime Minister.",
+        "textHe": "קדימה הצטרפה לממשלה: הכנסת אישרה את שאול מופז כמשנה לראש הממשלה.",
         "cites": [
+          {
+            "source": "plenum-2012-05-09",
+            "quote": "לצרף את חבר הכנסת שאול מופז כשר נוסף בממשלה, משנה לראש הממשלה",
+            "note": "The Knesset approved Shaul Mofaz as minister on 9 May 2012 and his term began that day; the signed agreement had been lodged with the Knesset the day before at 14:47.",
+            "noteHe": "הכנסת אישרה את שאול מופז כשר ב־9 במאי 2012, ובו ביום החלה כהונתו; ההסכם החתום הונח במזכירות הכנסת יום קודם לכן בשעה 14:47."
+          },
+          {
+            "source": "positions-gov32",
+            "quote": "PersonToPositionID 3430, PersonID 949, PositionID 31, StartDate 2012-05-09; PersonToPositionID 3560, PersonID 949, PositionID 39, StartDate 2012-05-09",
+            "note": "The Knesset’s appointment records: Shaul Mofaz, Vice Prime Minister and minister from 9 May 2012.",
+            "noteHe": "רישומי המינויים של הכנסת: שאול מופז, משנה לראש הממשלה ושר מ־9 במאי 2012."
+          },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3430,\"PersonID\":949,\"PositionID\":31,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"המשנה לראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:42:08.14\"}",
@@ -738,14 +1282,195 @@
         ],
         "scope": "mid-term",
         "governmentNumber": 32,
-        "formalStep": true
+        "formalStep": true,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 27,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3371; PersonID 479; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: סילבן שלום; faction: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סילבן שלום; סיעה: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה."
+              }
+            ]
+          },
+          {
+            "letters": "ל",
+            "seats": 15,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3464; PersonID 471; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: עוזי לנדאו; faction: ישראל ביתנו בראשות אביגדור ליברמן.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עוזי לנדאו; סיעה: ישראל ביתנו בראשות אביגדור ליברמן."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 11,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3543; PersonID 4417; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל אטיאס; faction: התאחדות הספרדים העולמית שומרי תורה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל אטיאס; סיעה: התאחדות הספרדים העולמית שומרי תורה."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 23329; PersonID 12946; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דניאל הרשקוביץ; faction: הבית היהודי - מפד\"ל החדשה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דניאל הרשקוביץ; סיעה: הבית היהודי - מפד\"ל החדשה."
+              },
+              {
+                "source": "diskin-2011",
+                "quote": "Israel Our Home and Labour have five ministers each, Shas has four and Jewish Home has one.",
+                "locator": "p. 66"
+              }
+            ],
+            "note": "The Knesset’s record lists Daniel Hershkowitz as the Jewish Home’s minister; one book also counts one Jewish Home minister."
+          },
+          {
+            "letters": "ג",
+            "seats": 5,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-2009-04-01",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני בין סיעות הליכוד ויהדות התורה",
+                "note": "The day its signed agreement with Likud was tabled in the Knesset; it had no ministers.",
+                "noteHe": "היום שבו הונח בכנסת ההסכם החתום שלה עם הליכוד; לא היו לה שרים."
+              },
+              {
+                "source": "plenum-2009-04-06",
+                "quote": "חבר הכנסת יעקב ליצמן – לתפקיד סגן שר במשרד הבריאות",
+                "note": "Yaakov Litzman and Meir Porush became deputy ministers on 6 April 2009.",
+                "noteHe": "יעקב ליצמן ומאיר פרוש מונו לסגני שרים ב־6 באפריל 2009."
+              },
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3428, PersonID 528, PositionID 40, StartDate 2009-04-06; PersonToPositionID 3597, PersonID 563, PositionID 40, StartDate 2009-04-06",
+                "note": "The Knesset’s appointment records: Yaakov Litzman and Meir Porush, deputy ministers from 6 April 2009.",
+                "noteHe": "רישומי המינויים של הכנסת: יעקב ליצמן ומאיר פרוש, סגני שרים מ־6 באפריל 2009."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 746 (יהדות התורה והשבת אגודת ישראל - דגל התורה): 5 members on 2009-04-01, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of United Torah Judaism on 1 April 2009.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת יהדות התורה ב־1 באפריל 2009."
+              }
+            ],
+            "noteEn": "No ministers; its MKs Yaakov Litzman and Meir Porush were deputy ministers from 6 April 2009.",
+            "noteHe": "בלי שרים; חברי הכנסת מטעמה יעקב ליצמן ומאיר פרוש כיהנו כסגני שרים מ־6 באפריל 2009."
+          },
+          {
+            "factionNameHe": "העצמאות",
+            "factionNameEn": "Independence",
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3476, PersonID 2226, PositionID 39, StartDate 2009-03-31",
+                "note": "The Knesset’s appointment record: Ehud Barak stayed Minister of Defence after the split.",
+                "noteHe": "רישום המינוי של הכנסת: אהוד ברק נשאר שר הביטחון אחרי הפילוג."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 762 (העצמאות): 5 members on 2011-01-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of Independence on 17 January 2011.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת העצמאות ב־17 בינואר 2011."
+              }
+            ],
+            "noteEn": "Ehud Barak’s faction, split from Labor; its ministers stayed in the government.",
+            "noteHe": "הסיעה של אהוד ברק, שהתפלגה מהעבודה; שריה נשארו בממשלה."
+          },
+          {
+            "letters": "כן",
+            "seats": 28,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-2012-05-09",
+                "quote": "לצרף את חבר הכנסת שאול מופז כשר נוסף בממשלה, משנה לראש הממשלה",
+                "note": "The Knesset approved Shaul Mofaz as minister on 9 May 2012 and his term began that day; the signed agreement had been lodged with the Knesset the day before at 14:47.",
+                "noteHe": "הכנסת אישרה את שאול מופז כשר ב־9 במאי 2012, ובו ביום החלה כהונתו; ההסכם החתום הונח במזכירות הכנסת יום קודם לכן בשעה 14:47."
+              },
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3430, PersonID 949, PositionID 31, StartDate 2012-05-09; PersonToPositionID 3560, PersonID 949, PositionID 39, StartDate 2012-05-09",
+                "note": "The Knesset’s appointment records: Shaul Mofaz, Vice Prime Minister and minister from 9 May 2012.",
+                "noteHe": "רישומי המינויים של הכנסת: שאול מופז, משנה לראש הממשלה ושר מ־9 במאי 2012."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 751 (קדימה - עם ציפי לבני לראשות הממשלה): 28 members on 2012-05-09, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 28 members of Kadima on 9 May 2012.",
+                "noteHe": "רישומי הסיעות של הכנסת: 28 חברים בסיעת קדימה ב־9 במאי 2012."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": 94,
+        "supportSeats": 0,
+        "knownMemberSeats": 94,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
       },
       {
         "date": "2012-07-19",
-        "type": "coalition-change",
-        "textEn": "Shaul Mofaz’s term ended, leaving Kadima with no minister in the government.",
-        "textHe": "כהונת שאול מופז הסתיימה, ולקדימה לא נותר שר בממשלה.",
+        "type": "coalition-withdrawal",
+        "textEn": "Kadima left the government: Shaul Mofaz’s resignation took effect, leaving it with no minister.",
+        "textHe": "קדימה יצאה מהממשלה: התפטרותו של שאול מופז נכנסה לתוקף, ולא נותר לה שר.",
         "cites": [
+          {
+            "source": "plenum-2012-07-23",
+            "quote": "חבר הכנסת שאול מופז חדל מלכהן כחבר בממשלה ביום 19 ביולי, בשעה 08:25",
+            "note": "The day Shaul Mofaz’s resignation took effect. He handed it in on 17 July 2012, when Kadima decided to leave the government.",
+            "noteHe": "היום שבו נכנסה התפטרותו של שאול מופז לתוקף. הוא הגיש אותה ב־17 ביולי 2012, כשקדימה החליטה לצאת מהממשלה."
+          },
+          {
+            "source": "plenum-2012-07-17",
+            "quote": "עדיין מופז בממשלה, הוא עדיין לא התפטר",
+            "note": "An MK in the Knesset on 17 July 2012.",
+            "noteHe": "חבר כנסת במליאה ב־17 ביולי 2012."
+          },
+          {
+            "source": "positions-gov32",
+            "quote": "PersonToPositionID 3430, PersonID 949, PositionID 31, FinishDate 2012-07-19; PersonToPositionID 3560, PersonID 949, PositionID 39, FinishDate 2012-07-19",
+            "note": "The Knesset’s appointment records: Shaul Mofaz’s terms ended on 19 July 2012.",
+            "noteHe": "רישומי המינויים של הכנסת: כהונותיו של שאול מופז הסתיימו ב־19 ביולי 2012."
+          },
+          {
+            "source": "factions-k18",
+            "quote": "Faction 751 (קדימה - עם ציפי לבני לראשות הממשלה): 28 members on 2012-07-19, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 28 members of Kadima on 19 July 2012.",
+            "noteHe": "רישומי הסיעות של הכנסת: 28 חברים בסיעת קדימה ב־19 ביולי 2012."
+          },
           {
             "source": "appointments-32",
             "quote": "{\"PersonToPositionID\":3430,\"PersonID\":949,\"PositionID\":31,\"KnessetNum\":18,\"StartDate\":\"2012-05-09T00:00:00\",\"FinishDate\":\"2012-07-19T00:00:00\",\"GovMinistryID\":563,\"GovMinistryName\":\"משרד ראש הממשלה\",\"DutyDesc\":\"המשנה לראש הממשלה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":32,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-19T17:42:08.14\"}",
@@ -764,7 +1489,138 @@
         "formalStep": true,
         "notes": [
           "Checked against all 110 rows of the register: Mofaz held Kadima’s only offices in this government at that date."
-        ]
+        ],
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 27,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3371; PersonID 479; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: סילבן שלום; faction: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סילבן שלום; סיעה: הליכוד - אח\"י בהנהגת בנימין נתניהו לראשות הממשלה."
+              }
+            ]
+          },
+          {
+            "letters": "ל",
+            "seats": 15,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3464; PersonID 471; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: עוזי לנדאו; faction: ישראל ביתנו בראשות אביגדור ליברמן.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: עוזי לנדאו; סיעה: ישראל ביתנו בראשות אביגדור ליברמן."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 11,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 3543; PersonID 4417; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל אטיאס; faction: התאחדות הספרדים העולמית שומרי תורה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל אטיאס; סיעה: התאחדות הספרדים העולמית שומרי תורה."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-32",
+                "quote": "PersonToPositionID 23329; PersonID 12946; PositionID 39; StartDate 2009-03-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דניאל הרשקוביץ; faction: הבית היהודי - מפד\"ל החדשה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דניאל הרשקוביץ; סיעה: הבית היהודי - מפד\"ל החדשה."
+              },
+              {
+                "source": "diskin-2011",
+                "quote": "Israel Our Home and Labour have five ministers each, Shas has four and Jewish Home has one.",
+                "locator": "p. 66"
+              }
+            ],
+            "note": "The Knesset’s record lists Daniel Hershkowitz as the Jewish Home’s minister; one book also counts one Jewish Home minister."
+          },
+          {
+            "letters": "ג",
+            "seats": 5,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-2009-04-01",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני בין סיעות הליכוד ויהדות התורה",
+                "note": "The day its signed agreement with Likud was tabled in the Knesset; it had no ministers.",
+                "noteHe": "היום שבו הונח בכנסת ההסכם החתום שלה עם הליכוד; לא היו לה שרים."
+              },
+              {
+                "source": "plenum-2009-04-06",
+                "quote": "חבר הכנסת יעקב ליצמן – לתפקיד סגן שר במשרד הבריאות",
+                "note": "Yaakov Litzman and Meir Porush became deputy ministers on 6 April 2009.",
+                "noteHe": "יעקב ליצמן ומאיר פרוש מונו לסגני שרים ב־6 באפריל 2009."
+              },
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3428, PersonID 528, PositionID 40, StartDate 2009-04-06; PersonToPositionID 3597, PersonID 563, PositionID 40, StartDate 2009-04-06",
+                "note": "The Knesset’s appointment records: Yaakov Litzman and Meir Porush, deputy ministers from 6 April 2009.",
+                "noteHe": "רישומי המינויים של הכנסת: יעקב ליצמן ומאיר פרוש, סגני שרים מ־6 באפריל 2009."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 746 (יהדות התורה והשבת אגודת ישראל - דגל התורה): 5 members on 2009-04-01, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of United Torah Judaism on 1 April 2009.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת יהדות התורה ב־1 באפריל 2009."
+              }
+            ],
+            "noteEn": "No ministers; its MKs Yaakov Litzman and Meir Porush were deputy ministers from 6 April 2009.",
+            "noteHe": "בלי שרים; חברי הכנסת מטעמה יעקב ליצמן ומאיר פרוש כיהנו כסגני שרים מ־6 באפריל 2009."
+          },
+          {
+            "factionNameHe": "העצמאות",
+            "factionNameEn": "Independence",
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov32",
+                "quote": "PersonToPositionID 3476, PersonID 2226, PositionID 39, StartDate 2009-03-31",
+                "note": "The Knesset’s appointment record: Ehud Barak stayed Minister of Defence after the split.",
+                "noteHe": "רישום המינוי של הכנסת: אהוד ברק נשאר שר הביטחון אחרי הפילוג."
+              },
+              {
+                "source": "factions-k18",
+                "quote": "Faction 762 (העצמאות): 5 members on 2011-01-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of Independence on 17 January 2011.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת העצמאות ב־17 בינואר 2011."
+              }
+            ],
+            "noteEn": "Ehud Barak’s faction, split from Labor; its ministers stayed in the government.",
+            "noteHe": "הסיעה של אהוד ברק, שהתפלגה מהעבודה; שריה נשארו בממשלה."
+          }
+        ],
+        "coalitionSeats": 66,
+        "supportSeats": 0,
+        "knownMemberSeats": 66,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
       }
     ]
   },

@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 12673,
+  "total": 12696,
   "counts": {
-    "unknown": 7480,
+    "unknown": 7490,
     "missing-field": 285,
     "conflict": 19,
-    "single-source": 3051,
+    "single-source": 3064,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1179,
@@ -15,16 +15,16 @@
   "countsByStatus": {
     "inferred-not-verified": 1040,
     "needs-current-status-review": 319,
-    "open": 11314
+    "open": 11337
   },
   "countsByImportance": {
     "high": {
-      "total": 1034,
-      "confirmed": 513,
+      "total": 1057,
+      "confirmed": 526,
       "probable": 57,
       "provisional": 140,
       "disputed": 11,
-      "unknown": 313
+      "unknown": 323
     },
     "medium": {
       "total": 4483,
@@ -58,7 +58,7 @@
       "unknown": 76
     },
     "Government roles": {
-      "confirmed": 400,
+      "confirmed": 432,
       "probable": 20,
       "provisional": 3,
       "disputed": 3,
@@ -401,15 +401,15 @@
     },
     {
       "election": "k18",
-      "total": 480,
-      "highOpen": 3,
+      "total": 503,
+      "highOpen": 13,
       "mediumOpen": 91,
       "low": 345,
       "counts": {
-        "unknown": 310,
+        "unknown": 320,
         "missing-field": 0,
         "conflict": 0,
-        "single-source": 66,
+        "single-source": 79,
         "low-confidence": 5,
         "release-hold": 0,
         "inferred": 88,
@@ -614,6 +614,7 @@
     {"election":"k19","area":"Government","count":1,"certainty":{"probable":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k19.json"},
     {"election":"k19","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k19.json"},
     {"election":"k19","area":"Recommendations","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["ד"],"file":"data/meta/aftermath/k19.json"},
+    {"election":"k18","area":"Later governments","count":10,"certainty":{"unknown":10},"kinds":{"unknown":10},"labels":["coalition-change 2009-04-01","coalition-change 2012-05-09","coalition-withdrawal 2011-01-19","coalition-withdrawal 2012-07-19","faction-split 2011-01-17"],"file":"data/meta/aftermath/k18.json"},
     {"election":"k18","area":"Formation conflicts","count":1,"certainty":{"probable":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k18.json"},
     {"election":"k18","area":"Government","count":1,"certainty":{"probable":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k18.json"},
     {"election":"k18","area":"Recommendation rounds","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["r1"],"file":"data/meta/aftermath/k18.json"},
