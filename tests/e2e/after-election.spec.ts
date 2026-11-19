@@ -345,7 +345,9 @@ for (const lang of ['en', 'he'] as const) test(`the next-election button names t
   await expect(history.locator('footer button.btn')).toHaveText(lang === 'he' ? '← הבחירות הבאות · 2020 · הכנסת ה־23' : '→ Next election · 2020 · 23rd Knesset');
   await expect(history.locator('.after-events time[datetime="2019-12-12"]')).toHaveCount(1); // the dissolution, listed once
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k20');
-  await expect(history.locator('footer .after-events')).toHaveCount(1); // 2018: the dissolution is listed nowhere else
+  // 2018: the dissolution is listed once, among the term's events by date (V2 fault A2), not after them
+  await expect(history.locator('.after-events time[datetime="2018-12-26"]')).toHaveCount(1);
+  await expect(history.locator('footer .after-events')).toHaveCount(0);
   await expect(history.locator('footer button.btn')).toContainText(lang === 'he' ? 'אפריל 2019 · הכנסת ה־21' : 'April 2019 · 21st Knesset');
 });
 

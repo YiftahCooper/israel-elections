@@ -2,7 +2,7 @@
 // Sources page's aftermath list and the Coalitions presets, checked over every record.
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
-import { aftermathRecords, chronological, visibleTermEvents, termEndFact, sourceLabel, pageSources, type DatedFact } from '../src/data/aftermath-runtime.ts';
+import { aftermathRecords, chronological, visibleTermEvents, termEndFact, termWithEnd, sourceLabel, pageSources, type DatedFact } from '../src/data/aftermath-runtime.ts';
 import type { ElectionDataset } from '../src/data/schema.ts';
 
 const records = Object.values(aftermathRecords).sort((a, b) => Number(a!.electionId.slice(1)) - Number(b!.electionId.slice(1)));
@@ -36,6 +36,23 @@ describe('c-famous-early-05: events are listed in the order they happened', () =
       if (e.orderDate !== undefined) expect(e.orderDate.startsWith(e.date), `${r!.electionId} ${e.date}`).toBe(true);
       if (e.orderDate !== undefined || e.orderSeq !== undefined) expect(e.orderBasis, `${r!.electionId} ${e.date}`).toBeTruthy();
     }
+  });
+});
+
+describe('V2 fault A2: the fact that ended the term sits among the term’s events by date', () => {
+  it('the term list with its end fact never goes backwards, in all 26 elections', () => {
+    let ends = 0;
+    for (const r of records) {
+      const end = termEndFact(r!); if (end) ends++;
+      const rows = termWithEnd(visibleTermEvents(r!.term.events), end);
+      rows.slice(1).forEach((e, i) => expect(notBefore(rows[i].date, e.date), `${r!.electionId}: ${rows[i].date} then ${e.date}`).toBe(true));
+    }
+    expect(ends).toBeGreaterThan(10);
+  });
+  it('1961: the dissolution law (28 March) comes before Eichmann’s trial (11 April)', () => {
+    const rows = termWithEnd(visibleTermEvents(aftermathRecords.k4!.term.events), termEndFact(aftermathRecords.k4!)).map(e => e.date);
+    expect(rows.indexOf('1961-03-28')).toBeGreaterThan(-1);
+    expect(rows.indexOf('1961-03-28')).toBeLessThan(rows.findIndex(d => d >= '1961-04'));
   });
 });
 

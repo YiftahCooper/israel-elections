@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { reviewedAftermath, recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, sourceLabel, pageSources, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-runtime.ts';
+import { reviewedAftermath, recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, termWithEnd, sourceLabel, pageSources, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-runtime.ts';
 import type { GovernmentSupport, GovernmentParticipant, GovernmentIndividual } from '../../data/aftermath.ts';
 import { supportRoleGroups, participantName, listsBelowTheirSeats, type SupportGroup } from '../governmentSupport.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
@@ -253,7 +253,10 @@ export function AfterElection({ ds }: { ds: ElectionDataset }) {
   if (!data) return <p>{L('History has not yet been reviewed.', 'ההיסטוריה טרם נבדקה.')}</p>;
   const government = data.government; const termEvents = visibleTermEvents(data.term.events);
   const direct = data.formation.events.find(e => e.type === 'direct-election');
-  const polls = completePolls(data); const next = data.term.endedBy; const endFact = termEndFact(data);
+  const polls = completePolls(data); const next = data.term.endedBy;
+  // the fact that ended the term takes its place among the term's events by date (V2 fault A2, 19 Nov 2026): placed
+  // after them it read as the last event even when, say, Eichmann's trial came after the dissolution law
+  const termRows = termWithEnd(termEvents, termEndFact(data));
   const nextId = (next?.nextElection?.startsWith('k') ? next.nextElection : `k${Number(ds.id.slice(1)) + 1}`) as typeof ds.id;
   const nextData = reviewedAftermath(nextId);
   const nextEntry = elections.find(e => e.id === nextId);
@@ -270,8 +273,8 @@ export function AfterElection({ ds }: { ds: ElectionDataset }) {
     <TermTimeline ds={ds} />
     {!!data.reaction?.items.length && <section><h3>{L('Statements & institutional steps', 'הצהרות וצעדים מוסדיים')}</h3><FactRows data={data} events={data.reaction.items} /></section>}
     {polls.map((p, i) => <section key={i}><h3>{p.timing === 'after-election' ? L('After-election polling', 'סקרים לאחר הבחירות') : L('Issue polling', 'סקרי סדר יום')} · <span className="after-help-anchor"><DateRun date={p.date ?? p.fieldDates!.to} /> <Evidence data={data} cites={[...p.cites ?? [], { source: p.sourceId, quote: lang === 'he' ? p.questionHe! : p.questionEn! }]} /></span></h3><p className="small muted"><HistoryText text={(lang === 'he' ? p.populationHe : p.populationEn)!} /> · <DateRun date={p.fieldDates!.from} end={p.fieldDates!.to} /></p>{p.answers.map((a, j) => <div className="after-poll" key={j}><span><HistoryText text={(lang === 'he' ? a.labelHe : a.labelEn)!} /></span><meter dir="ltr" min="0" max="100" value={a.pct} /><b><bdi dir="ltr">{a.pct}%</bdi></b></div>)}</section>)}
-    {termEvents.length > 0 && <section><h3>{L('During the term', 'במהלך הכהונה')}</h3><FactRows data={data} events={termEvents} /></section>}
-    {nextData && <footer>{endFact ? <FactRows data={data} events={[endFact]} /> : null}<button className="btn" onClick={() => { void openElection(nextId).then(() => setState({ tool: 'after' })); window.scrollTo({ top: 0 }); }}><bdi dir="ltr" className="after-forward">{lang === 'he' ? '←' : '→'}</bdi> {L('Next election', 'הבחירות הבאות')} · {nextEntry ? <bdi>{electionLabel(nextEntry, elections, lang)}</bdi> : <DateRun date={nextData.results.electionDate} />}</button></footer>}
+    {termRows.length > 0 && <section><h3>{L('During the term', 'במהלך הכהונה')}</h3><FactRows data={data} events={termRows} /></section>}
+    {nextData && <footer><button className="btn" onClick={() => { void openElection(nextId).then(() => setState({ tool: 'after' })); window.scrollTo({ top: 0 }); }}><bdi dir="ltr" className="after-forward">{lang === 'he' ? '←' : '→'}</bdi> {L('Next election', 'הבחירות הבאות')} · {nextEntry ? <bdi>{electionLabel(nextEntry, elections, lang)}</bdi> : <DateRun date={nextData.results.electionDate} />}</button></footer>}
     {sourcesShown && <button className="btn small after-sources-btn" onClick={() => setState({ tool: 'sources' })}>{L('Sources & research coverage', 'מקורות וכיסוי המחקר')} <span aria-hidden>{lang === 'he' ? '‹' : '›'}</span></button>}
   </article>;
 }

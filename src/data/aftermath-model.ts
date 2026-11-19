@@ -41,7 +41,7 @@ export function chronological<T extends DatedFact>(events: readonly T[]): T[] {
   const byKey = (a: T, b: T) => key(a) < key(b) ? -1 : key(a) > key(b) ? 1 : 0;
   return events.map((e, i) => [e, i] as const).sort(([a, i], [b, j]) => byKey(a, b) || (a.orderSeq ?? 0) - (b.orderSeq ?? 0) || i - j).map(([e]) => e);
 }
-/** The fact that ended the term, for the footer; null when it is unsourced or the formation or term list already
+/** The fact that ended the term, shown among the term's events (termWithEnd); null when it is unsourced or the formation or term list already
  *  shows it: the same day, and the same kind of event or a dissolution (c-design-principles-15: one place per fact). */
 export function termEndFact(data: Aftermath) {
   const end = data.term.endedBy;
@@ -49,6 +49,8 @@ export function termEndFact(data: Aftermath) {
   const same = (e: DatedFact) => e.date.length === 10 && e.date === end.date && (e.type === end.type || /dissol/.test(e.type ?? e.id ?? ''));
   return [...data.formation.events, ...visibleTermEvents(data.term.events)].some(same) ? null : end;
 }
+/** The term's events with the fact that ended it, in date order: one timeline, the end fact in its place by date. */
+export const termWithEnd = <T extends DatedFact>(events: readonly T[], end: T | null | undefined): T[] => chronological(end ? [...events, end] : events);
 /** A source's name: the publisher's own Hebrew name in Hebrew when recorded, else its name as recorded; the web
  *  address only when the record names no publisher or title (c-rtl-phone-06). */
 export const sourceLabel = (s: HistorySource, lang: 'he' | 'en') => (lang === 'he' ? s.publisherHe : undefined) ?? s.publisher ?? s.title ?? new URL(s.url).hostname;
