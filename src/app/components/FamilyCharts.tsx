@@ -91,6 +91,8 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
  const labelLines:string[]=[];
  for(const word of label.split(' ')) {const last=labelLines.length-1;if(last>=0&&(labelLines[last]+' '+word).length<=(narrow?10:15))labelLines[last]+=' '+word;else labelLines.push(word);}
  const lastAt=est.map((v,i)=>v?i:-1).filter(i=>i>=0).pop();
+ // elections where the family's lists are not yet classified, with the line on both sides: a "?" at the height between
+ const unclassified=data.flatMap((a,i)=>{if(a.status!=='unclassified')return [];const near=[i-1,i+1].filter(j=>j>=0&&j<26&&!!est[j]).map(j=>yv(est[j]!.estimate,historyElections[j]));return [{i,y:near.length?near.reduce((t,v)=>t+v,0)/near.length:bottom-10}];});
  const endY=lastAt===undefined?top+10:Math.max(top+5,Math.min(bottom-10-13*(Math.min(3,labelLines.length)-1),yv(est[lastAt]!.estimate,historyElections[lastAt])+4));
  const mid=(i:number)=>i<0?left-6:i>25?width-right+6:x(historyElections[i]);
  // the selected election's band covers its own stretch of time: halfway to the elections either side (at least 12px)
@@ -107,6 +109,8 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
    {gap.map((pts,k)=><polygon key={k} className="family-gap" points={pts} fill={color}/>)}
    {upper&&<path className="family-upper" d={upper} fill="none" stroke={color} strokeWidth="1.6" strokeDasharray="5 3.5" strokeLinejoin="round"/>}
    <path d={path} fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round"/>
+   {/* an election whose lists are not yet classified breaks the line: the break is marked where it happens (V2 fault F3) */}
+   {unclassified.map(({i,y})=>{const e=historyElections[i];return <g key={e.id} className="family-unclassified" aria-hidden><path d={`M${x(e)} ${top}V${bottom}`}/><circle cx={x(e)} cy={y} r={7}/><text x={x(e)} y={y+4} textAnchor="middle">?</text></g>;})}
    {historyElections.map((e,i)=>{const row=data[i],text=describe(row,e);return <g key={e.id} role="button" tabIndex={cursor===e.id?0:-1} aria-label={text} aria-haspopup="dialog" onFocus={()=>{intent.keep();onCursor(e.id);setHover(true);}} onPointerEnter={ev=>{if(ev.pointerType==='mouse'&&!hoverPopups)return;const show=()=>{onCursor(e.id);setHover(true);};if(ev.pointerType==='touch')show();else intent.enter(show);}} onClick={()=>onInspect(f,e.id)} onKeyDown={event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();onInspect(f,e.id);}const step={ArrowRight:1,ArrowLeft:-1,Home:-99,End:99}[event.key];if(step){event.preventDefault();const next=Math.max(0,Math.min(25,i+step));onCursor(historyElections[next].id);(event.currentTarget.parentElement?.querySelectorAll('[role=button]')[next] as SVGElement )?.focus({preventScroll:true});}}}>
     <rect x={(mid(i-1)+x(e))/2} y={top} width={Math.max(4,(mid(i+1)-mid(i-1))/2)} height={bottom-top} fill="transparent"/>
     {est[i]&&<circle cx={x(e)} cy={yv(est[i]!.estimate,e)} r={e.pending?4.5:3.5} fill={e.pending?'var(--surface)':color} stroke={color} strokeWidth="2"/>}
@@ -125,6 +129,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
    {!path&&<text className="family-empty" x={(left+width-right)/2} y={(top+bottom)/2} textAnchor="middle">{L('No lists counted in any election','לא נספרו רשימות באף מערכת בחירות')}</text>}
    {lastAt!==undefined&&<text className="family-end-label" x={width-right+12} y={endY} textAnchor="start">{labelLines.slice(0,3).map((line,i)=><tspan key={i} x={width-right+12} dy={i?13:0}>{line.length>(narrow?11:17)?line.slice(0,narrow?10:16)+'…':line}{i===2&&labelLines.length>3?'…':''}</tspan>)}</text>}
   </svg>
+  {unclassified.length>0&&<p className="family-unclassified-note small muted"><b aria-hidden>?</b> {L('Lists not yet classified','רשימות שטרם סווגו')}: {unclassified.map(({i})=>electionYear(historyElections[i],lang)).join(', ')}</p>}
   {hover&&at>=0&&<Floating className="family-tooltip" anchor={() => ref.current?.querySelector(`[aria-label="${CSS.escape(describe(data[at],historyElections[at]))}"]`)?.getBoundingClientRect() ?? ref.current?.getBoundingClientRect()}><PointFacts f={f} at={at} metric={metric} text={describeRich(data[at],historyElections[at])}/></Floating>}
  </div>;
 }

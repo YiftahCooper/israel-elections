@@ -1,4 +1,4 @@
-import { expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { itmToWgs84, decodeCBSGrid } from '../src/data/locality-coordinates.ts';
 import { matchesLocality, localityWinner, nearestLocality } from '../src/app/locality-map-model.ts';
 import { scenarioFromDataset } from '../src/model/scenario.ts';
@@ -187,4 +187,15 @@ it('finds a locality by its usual English spelling, not only the CBS romanisatio
   // a spelling that already matches directly keeps only its direct matches (no looser extras)
   expect(find('Haifa')).toEqual([4000]);
   expect(find('Akko')).toEqual([7600]);
+});
+
+// V2 fault L6 (19 Nov 2026): "פתח תקוה" (one vav, as on the city's own signs) found nothing; only "פתח תקווה" did.
+describe('Hebrew search ignores a doubled vav or yod', () => {
+  it('finds a locality whichever spelling is typed', () => {
+    expect(matchesLocality('פתח תקוה', { nameHe: 'פתח תקווה' })).toBe(true);
+    expect(matchesLocality('פתח תקווה', { nameHe: 'פתח תקוה' })).toBe(true);
+    expect(matchesLocality('קרית שמונה', { nameHe: 'קריית שמונה' })).toBe(true);
+    expect(matchesLocality('קריית גת', { nameHe: 'קרית גת' })).toBe(true);
+    expect(matchesLocality('חיפה', { nameHe: 'פתח תקווה' })).toBe(false);
+  });
 });

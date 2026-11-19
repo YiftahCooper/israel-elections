@@ -139,7 +139,10 @@ for(const lang of ['he','en'])test(`family detail sheet keyboard and official se
 
 test('1988 changes name constituents in English and retain the sourced split',async({page})=>{
  await start(page);await page.locator('.family-plots section').first().locator('g[role=button]').nth(11).focus();await page.keyboard.press('Enter');
- const changes=page.locator('.family-point-changes');await expect(changes).toBeVisible({timeout:15000});await expect(changes).toContainText('Split · 1988');await expect(changes).toContainText('Degel HaTorah');expect(await changes.innerText()).not.toMatch(/[א-ת]/);
+ const changes=page.locator('.family-point-changes');await expect(changes).toBeVisible({timeout:15000});await expect(changes).toContainText('Split · 1988');await expect(changes).toContainText('Degel HaTorah');
+ // a party with no recorded English name (Yishai, 1988) shows its Hebrew name inside an isolate, never spelled letter by
+ // letter (F4, 19 Nov 2026); outside the isolates the text is English
+ expect((await changes.innerText()).replace(/\u2067[^\u2069]*\u2069/g,'')).not.toMatch(/[א-ת]/);
 });
 
 test('hover box names hatched lists’ parties, states the change, never grows or takes the pointer',async({page})=>{
@@ -151,12 +154,19 @@ test('hover box names hatched lists’ parties, states the change, never grows o
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(22).hover();await expect(page.getByRole('tooltip')).toContainText('Likud: Likud + Kulanu');
 });
+// Review fault F4: a party with no English name shows in Hebrew, never spelled letter by letter; a relation is in words, never its data code.
+for(const lang of ['en','he'] as const)test(`2026 Haredi breakdown names parties without English in Hebrew and no data code (${lang})`,async({page})=>{
+ await start(page,lang);await page.locator('.family-plots section').first().locator('g[role=button]').last().click();
+ const d=page.getByRole('dialog',{name:lang==='he'?'פירוט הבחירות':'Election breakdown',exact:true}),changes=d.locator('.family-point-changes');
+ await expect(changes).toContainText('הציבור החרדי בראשות מוטי ליטנר');await expect(changes).not.toContainText('htzybvr');await expect(changes).not.toContainText('faction-split');
+ await expect(changes).toContainText(lang==='he'?'פילוג סיעה בכנסת':'Knesset faction split');
+});
 test('breakdown marks the family’s own parties in a mixed list and only they count as represented',async({page})=>{
  await start(page);await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).scrollIntoViewIfNeeded();const y=await page.evaluate(()=>scrollY);
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).click();
  const d=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(d.locator('.family-point-delta')).toContainText('Since 22 Jan 2013: −102,251 votes · −3.88 pp · ▼ −5 seats');
  const mixed=d.locator('article[data-state=mixed]');await expect(mixed).toHaveCount(1);await expect(mixed.locator('[data-own] b')).toHaveText('Yachad');await expect(mixed).toContainText('Estimated by seats');
- await expect(d.locator('.family-point-changes')).toContainText("Now represented: Yachad · U'Bizchutan");await expect(d.locator('.family-point-changes')).not.toContainText('Otzma');
+ await expect(d.locator('.family-point-changes')).toContainText("New on its lists: Yachad · U'Bizchutan");await expect(d.locator('.family-point-changes')).not.toContainText('Otzma');
  await expect(d.locator('article').first()).toHaveAttribute('data-state','counted');
  await d.getByRole('button',{name:'Close',exact:true}).click();expect(await page.evaluate(()=>scrollY)).toBe(y);
 });
@@ -236,4 +246,43 @@ test('family scale: people who stayed home leave eligible voters alone; new citi
 test('family scale vote source in Hebrew: new citizens',async({page})=>{
  await start(page,'he');const scale=page.locator('.family-scale'),pick=scale.getByRole('button',{name:'מקור הקולות',exact:true});
  await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('בעלי זכות הבחירה +62,335');
+});
+
+// V2 fault F1: on a phone the Manage button sat beside the scrolling chips and covered one, so the row read as two or
+// three families. Manage now has its own line; no chip lies under it.
+for (const lang of ['en','he'] as const) test(`phone: Manage covers no family chip (${lang})`, async ({page}) => {
+ await page.setViewportSize({width:390,height:844});
+ await start(page,lang);
+ const manage=page.getByRole('button',{name:lang==='he'?'ניהול':'Manage',exact:true});
+ const m=(await manage.boundingBox())!;
+ const chips=await page.locator('.family-chip').evaluateAll(els=>els.map(e=>{const r=e.getBoundingClientRect();return {t:r.top,b:r.bottom};}));
+ for (const c of chips) expect(c.t>=m.y+m.height-1||c.b<=m.y+1).toBe(true);
+});
+
+// V2 fault F2: in the dark theme the shaded "real figure lies between" gap was barely distinguishable from the panel.
+test('dark theme: the shaded gap stands out from the panel', async ({page}) => {
+ await start(page,'en','dark');
+ for (const chip of await page.locator('.family-chip').all()) if ((await chip.getAttribute('aria-pressed'))!=='true') await chip.click();
+ const gaps=page.locator('.family-gap');
+ await expect(gaps.first()).toBeAttached();
+ const ratios=await gaps.evaluateAll(els=>{
+  const rgb=(s:string)=>s.match(/[\d.]+/g)!.slice(0,3).map(Number);
+  const lum=(c:number[])=>{const [r,g,b]=c.map(v=>{v/=255;return v<=0.03928?v/12.92:((v+0.055)/1.055)**2.4;});return 0.2126*r+0.7152*g+0.0722*b;};
+  const hex=getComputedStyle(document.documentElement).getPropertyValue('--surface').trim();
+  const bg=[1,3,5].map(k=>parseInt(hex.slice(k,k+2),16));
+  return els.map(e=>{const cs=getComputedStyle(e),a=Number(cs.fillOpacity),f=rgb(cs.fill);const m=f.map((v,i)=>bg[i]*(1-a)+v*a);const l1=lum(m),l2=lum(bg);return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);});
+ });
+ expect(ratios.length).toBeGreaterThan(0);
+ for (const r of ratios) expect(r).toBeGreaterThanOrEqual(1.5);
+});
+
+// V2 fault F3: the Centre line stopped after 1988 and restarted in 1996 (1992's lists are not yet classified), with no
+// mark on the chart saying why. The break is now marked where it happens, with a note naming the year.
+for (const lang of ['en','he'] as const) test(`a break where lists are not yet classified is marked on the chart (${lang})`, async ({page}) => {
+ await start(page,lang);
+ const centre=page.locator('.family-chip').filter({hasText:lang==='he'?'מרכז':'Centre'}).first();
+ if ((await centre.getAttribute('aria-pressed'))!=='true') await centre.click();
+ const plot=page.locator('.family-plot:not(.family-seat-plot)').filter({has:page.locator(`svg[aria-label^="${lang==='he'?'מרכז':'Centre'}"]`)}).first();
+ await expect(plot.locator('.family-unclassified')).toHaveCount(1);
+ await expect(plot.locator('.family-unclassified-note')).toContainText(lang==='he'?'רשימות שטרם סווגו: 1992':'Lists not yet classified: 1992');
 });

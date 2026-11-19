@@ -20,7 +20,7 @@ describe("Mapai's affiliated Arab lists", () => {
       expect(r.noteEn).toMatch(/affiliated with Mapai/);
       expect(r.noteHe).toMatch(/הנלוות למפא״י/);
     }
-    expect(n).toBe(47);
+    expect(n).toBe(50); // 50 since 19 Nov 2026: the 1960 member list after Poalei Agudat joined repeats the three
   });
   it('rows settled from the books cite both independent works', () => {
     for (const [k, letters] of Object.entries(AFFILIATED)) {

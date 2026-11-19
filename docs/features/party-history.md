@@ -108,7 +108,7 @@ A comparison is only as sure as the least sure relation it used. Applied to the 
 | Joint List | Hadash–Ta'al + Balad | 5 → 11 ▲6 | Combined; votes 317,352 → 500,755 |
 | The Democrats | Labor + Meretz | 4 → 8 ▲4 | Combined; *Probable* (because of the rename) |
 | Likud | Likud | 32 → 27 ▼5 | Partial: New Hope is not counted (it ran inside National Unity) |
-| Together (Bennett) | Yesh Atid | 24 → 12 ▼12 | Together's own party is new |
+| Beyachad | Yesh Atid | 24 → 12 ▼12 | Beyachad's own party is new |
 | Religious Zionism–Zehut, Otzma Yehudit, Noam | Religious Zionism | 14 → 13 ▼1 | Group only |
 | UTJ, Shas, Ra'am, Yisrael Beiteinu | Same list | 7 → 7, 11 → 6, 5 → 8, 6 → 7 | — |
 | Yashar! | — | New | Hint: shares candidates with National Unity |

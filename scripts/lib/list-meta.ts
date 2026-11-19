@@ -108,7 +108,7 @@ export const META: Record<string, Meta> = {
   '7-ט': { he: "המרכז החופשי", en: "Free Centre", color: '#8a64aa', order: 13 },
   '7-יא': { he: "שיתוף ואחווה", en: "Cooperation and Brotherhood", color: '#008300', order: 10 },
   '7-לע': { he: "ליברלים עצמאיים", en: "Independent Liberals", color: '#17a2b8', order: 5 },
-  '7-עמ': { he: "רשימה ממלכתית", en: "National List", color: '#657589', order: 6 },
+  '7-עמ': { he: "רשימה ממלכתית", en: "State List", color: '#657589', order: 6 },
   '7-ק': { he: "מק״י", en: "Maki", color: '#e34948', order: 12 },
   '7-רא': { he: "קידמה ופיתוח", en: "Progress and Development", color: '#008300', order: 8 },
   '7-ש': { he: "העולם הזה", en: "HaOlam HaZeh", color: '#9b65c2', order: 11 },
@@ -578,7 +578,7 @@ export const META: Record<string, Meta> = {
   // ---- 26th Knesset (2026)
   '26-מחל': { he: 'הליכוד', en: 'Likud', color: '#2a78d6', order: 1, bloc: 'netanyahu' },
   '26-דרך': { he: 'ישר!', en: 'Yashar!', color: '#1baf7a', order: 6, bloc: 'opposition' },
-  '26-רק': { he: 'ביחד', en: 'Together (Bennett)', color: '#9a5bd0', order: 8, bloc: 'opposition' },
+  '26-רק': { he: 'ביחד', en: 'Beyachad', color: '#9a5bd0', order: 8, bloc: 'opposition' },
   '26-ודם': { he: 'הרשימה המשותפת', en: 'Joint List', color: '#e34948', order: 11, bloc: 'arab' },
   '26-אמת': { he: 'הדמוקרטים', en: 'The Democrats', color: '#eb6834', order: 7, bloc: 'opposition' },
   '26-עם': { he: 'רע״ם', en: "Ra'am", color: '#008300', order: 10, bloc: 'arab' },

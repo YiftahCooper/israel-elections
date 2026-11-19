@@ -11,6 +11,7 @@ import {fullDefinition} from '../../families/catalogue.ts';
 import {familyColor,historyElections,shortFamilyName} from '../../families/runtime.ts';
 import {familyEstimate,familySeatSummary} from '../../families/seatBars.ts';
 import {appearances,canonicalParty,partyLabel} from '../../families/registry.ts';
+import {RELATION_WORD,type RelationKind} from '../../history/relations.ts';
 import lineage from '../../../data/meta/party-lineage.json';
 import {loadDataset,useDigits} from '../store.ts';
 import {allocationOf,baselineOf,listLabel} from '../derive.ts';
@@ -34,7 +35,7 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  // family's own parties count as the family being represented; its partners are not.
  const own=(id:ElectionId,listId:string)=>full.elections.find(e=>e.electionId===id)?.members.find(x=>x.listId===listId);
  const partyIds=(id:ElectionId)=>{const m=membership(f,id),ids=new Set([...m.selected,...m.mixed,...m.excluded]);return new Set(appearances.filter(p=>p.electionId===id&&ids.has(p.listId)&&p.role!=='alliance'&&(own(id,p.listId)?.scope!=='mixed'||own(id,p.listId)!.partyIds.some(x=>canonicalParty(x)===canonicalParty(p.partyId)))).map(p=>canonicalParty(p.partyId)));};
- const partyName=(id:string)=>lang==='he'?partyLabel(id,lang):englishLabel(partyLabel(id,lang),'');
+ const partyName=(id:string)=>partyLabel(id,lang);
  const now=partyIds(electionId),old=previous?partyIds(previous.id):new Set<string>();
  const joined=[...now].filter(id=>!old.has(id)),left=[...old].filter(id=>!now.has(id));
  const edges=lineage.edges.filter(e=>e.relation!=='electoral-partner'&&before&&e.date.slice(0,4)>=before.electionDate.slice(0,4)&&e.date.slice(0,4)<=ds.electionDate.slice(0,4)&&[...e.from,...e.to].some(id=>now.has(canonicalParty(id))||old.has(canonicalParty(id))));
@@ -53,7 +54,8 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  const exact=counted&&prevCounted&&!a.mixed&&!prev?.mixed,est=!exact&&before&&previous?[familyEstimate(f,electionId),familyEstimate(f,before.id)] as const:null;
  const voteChange=exact?{approx:false,votes:Number(a.votes!-prev!.votes!),pp:share(a.votes!,ds)-share(prev!.votes!,previous!)}:est?.[0]&&est[1]?{approx:est.some(v=>v!.high>v!.estimate&&v!.estimate>v!.low),votes:Math.round(est[0].estimate-est[1].estimate),pp:est[0].estimate*100/ds.totals.valid-est[1].estimate*100/previous!.totals.valid}:null;
  const signed=(n:number|bigint,digits?:number)=>{const x=Number(n);return <bdi dir="ltr">{digits===undefined?<>{x>0?'+':x<0?'−':'±'}{Math.abs(x).toLocaleString('en-US')}</>:points(x,digits)}</bdi>;};
- const relation=(s:string)=>({'merged-into':L('Merged','מיזוג'),'split-from':L('Split','פיצול'),'renamed-to':L('Renamed','שינוי שם')}[s]??s);
+ // every recorded kind has its words; a data code is never shown (an unknown kind reads as a plain change)
+ const relation=(s:string)=>L(...(RELATION_WORD[s as RelationKind]??['Change','שינוי']));
  // a source is named by who published it; one without a link (the official results the app holds) is plain text, never a file name or id
  const source=(id:string,s:Family['sources'][string])=>{const text=<>{s.kind==='secondary'?L('Secondary source','מקור משני'):L('Source','מקור')}{((lang==='he'&&s.publisherHe)||s.publisher)&&<> · {(lang==='he'&&s.publisherHe)||s.publisher}</>}</>;return <span key={id} className="book-source">{s.url?<a href={s.url} target="_blank" rel="noreferrer">{text}</a>:<span>{text}</span>}<PageAndQuote locator={s.locator} quote={s.quote}/></span>;};
  // Counted lists first, then the mixed lists estimated by seats, then lists named but not counted.
@@ -75,9 +77,9 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
    {!!l.parties?.length&&<div className="family-point-parties">{l.parties.map(p=>{const mine=mixed&&ownParty(p.id),label=lang==='he'?p.nameHe:englishLabel(p.nameEn,p.nameHe);return <span key={p.id} data-own={mine||undefined}><Slip letters="" color={partyDisplayColor(l, p.id)} logo={p.logo} name={label} size="sm"/>{mine?<><i className="family-own-dot" aria-hidden/><b>{label}</b><span className="sr-only"> ({L('in this family','במשפחה זו')})</span></>:label}</span>;})}<JointFacts listId={l.id} compact/></div>}
   </article>;})}</div>
   {!lists.length&&<p>{L('No named lists.','אין רשימות מזוהות.')}</p>}
-  {before&&<section className="family-point-changes"><h3>{L('Parties since','מפלגות מאז')} {familyDate(before,lang)} <Info title={L('Reading the change','פירוש השינוי')}>{L('Compared under the current counting choice. Representation changes describe recorded constituent identities, not voter movement or the cause of a vote change. Names with no recorded English form are unofficial spellings. Unrecorded mergers, splits and renamings stay unknown. Year-only relationship dates may overlap either election year. Whole joint-list votes cannot be divided among parties.','ההשוואה לפי אפשרות הספירה הנוכחית. שינויי ייצוג מתארים זהויות מרכיבים מתועדות, לא תנועת מצביעים או סיבה לשינוי בקולות. מיזוגים, פיצולים ושינויי שם שלא תועדו נשארים לא ידועים. תאריכים ברמת שנה בלבד עשויים לחפוף לשנת אחת הבחירות. אין לפצל קולות של רשימה משותפת בין מפלגותיה.')}</Info></h3>
-   {!!joined.length&&<p>{L('Now represented','מיוצגות כעת')}: {joined.map(id=>partyName(id)).join(' · ')}</p>}
-   {!!left.length&&<p>{L('No longer represented','אינן מיוצגות עוד')}: {left.map(id=>partyName(id)).join(' · ')}</p>}
+  {before&&<section className="family-point-changes"><h3>{L('Parties since','מפלגות מאז')} {familyDate(before,lang)} <Info title={L('Reading the change','פירוש השינוי')}>{L('Compared under the current counting choice. Parties new on, or gone from, the family’s lists are recorded constituent identities, whether or not their list won a seat; they describe, not voter movement or the cause of a vote change. Names with no recorded English form are shown in Hebrew. Unrecorded mergers, splits and renamings stay unknown. Year-only relationship dates may overlap either election year. Whole joint-list votes cannot be divided among parties.','ההשוואה לפי אפשרות הספירה הנוכחית. שינויי ייצוג מתארים זהויות מרכיבים מתועדות, לא תנועת מצביעים או סיבה לשינוי בקולות. מיזוגים, פיצולים ושינויי שם שלא תועדו נשארים לא ידועים. תאריכים ברמת שנה בלבד עשויים לחפוף לשנת אחת הבחירות. אין לפצל קולות של רשימה משותפת בין מפלגותיה.')}</Info></h3>
+   {!!joined.length&&<p>{L('New on its lists','חדשות ברשימות המשפחה')}: {joined.map(id=>partyName(id)).join(' · ')}</p>}
+   {!!left.length&&<p>{L('No longer on its lists','כבר לא ברשימות המשפחה')}: {left.map(id=>partyName(id)).join(' · ')}</p>}
    {!joined.length&&!left.length&&<p>{L('No recorded constituent change','אין שינוי מתועד במרכיבים')}</p>}
    {edges.map(e=><p key={e.id}>{relation(e.relation)} · <bdi dir="ltr">{formatDate(e.date,lang)}</bdi>: <bdi dir="ltr">{e.from.map(id=>partyName(id)).join(' + ')} → {e.to.map(id=>partyName(id)).join(' + ')}</bdi> <Info title={L('Relationship sources','מקורות לקשר')}>{e.sources.map(id=>{const s=lineage.sources[id as keyof typeof lineage.sources];return s?source(id,s):null;})}</Info></p>)}
    {previous&&<details><summary>{L('Previous ballot lists','הרשימות בבחירות הקודמות')}</summary>{previous.lists.filter(l=>{const m=membership(f,previous.id);return m.selected.has(l.id)||m.mixed.has(l.id)||m.excluded.has(l.id);}).map(l=><p key={l.id}>{listLabel(l,lang)} · {l.votes.toLocaleString('en-US')} {L('votes','קולות')}</p>)}</details>}

@@ -691,7 +691,47 @@
         "formalStep": true,
         "notes": [
           "Checked against all 105 rows of the register: Hatnuah’s other minister, Amir Peretz, had left office on 11 November 2014."
-        ]
+        ],
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 31,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-33",
+                "quote": "PersonToPositionID 3421; PersonID 965; PositionID 45; StartDate 2013-03-18T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין נתניהו; faction: הליכוד - ישראל ביתנו.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין נתניהו; סיעה: הליכוד - ישראל ביתנו."
+              }
+            ]
+          },
+          {
+            "letters": "טב",
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-33",
+                "quote": "PersonToPositionID 3477; PersonID 12956; PositionID 39; StartDate 2013-03-18T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אורי אורבך; faction: הבית היהודי מייסודם של האיחוד הלאומי והמפד\"ל החדשה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אורי אורבך; סיעה: הבית היהודי מייסודם של האיחוד הלאומי והמפד\"ל החדשה."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": 43,
+        "supportSeats": 0,
+        "knownMemberSeats": 43,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Each list counts at its election seats, as in the government above; later moves between factions are not added.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated record cited."
+        }
       }
     ]
   },

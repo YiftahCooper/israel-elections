@@ -25,7 +25,8 @@ test('Simple fetches only the code of its own tabs, after the page is shown', as
   await page.getByRole('tab', { name: 'Coalitions' }).click();
   await expect(panel(page).getByText(/Smallest winning coalitions/)).toBeVisible();
   await page.getByRole('tab', { name: 'Sources', exact: true }).click();
-  await expect(panel(page).getByText('Electoral threshold').first()).toBeVisible();
+  // the glossary is closed by default (V2 fault S3): its heading shows that the tab's code arrived
+  await expect(panel(page).getByRole('heading', { name: 'Glossary', exact: true })).toBeVisible();
   expect(errors).toEqual([]);
 });
 

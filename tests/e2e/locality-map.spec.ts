@@ -313,3 +313,50 @@ test('Hebrew corrected names agree in nearest-locality messages and downloaded d
   expect(row.cecNameHe).toBe('קודייראת אצאנעשבט');
   expect(row.nameSource.source).toBe('cbs');
 });
+
+// Review fault L1 (owner, loc-phone): on a phone the locality search goes below the map, and no empty band sits above it.
+for (const lang of ['en', 'he'] as const) test(`phone: the map comes before the locality search, with no empty band above it (${lang})`, async ({ page }) => {
+  await page.addInitScript(l => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: l, level: 'expert', hintDismissed: true })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } })); } }, lang);
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+  await page.getByRole('tab', { name: lang === 'he' ? 'יישובים' : 'Localities', exact: true }).click();
+  const map = page.getByRole('region', { name: lang === 'he' ? /מפת תוצאות ביישובים/ : /Locality results map/ });
+  await expect(map).toBeVisible();
+  const search = page.getByRole('searchbox', { name: lang === 'he' ? 'חיפוש יישוב' : 'Find a locality' });
+  const [m, s, lines] = await Promise.all([map.boundingBox(), search.boundingBox(), page.locator('.locality-boundary-disclosure').boundingBox()]);
+  expect(s!.y).toBeGreaterThan(m!.y + m!.height);
+  expect(m!.y - (lines!.y + lines!.height)).toBeLessThanOrEqual(24);
+  await search.fill(lang === 'he' ? 'חיפה' : 'Haifa');
+  await expect(page.locator('.locality-find .locality-map-matches button').first()).toBeVisible();
+  await page.setViewportSize({ width: 1500, height: 1000 });
+  const wide = await page.getByRole('searchbox', { name: lang === 'he' ? 'חיפוש יישוב' : 'Find a locality' }).boundingBox();
+  expect(wide!.y).toBeLessThan((await page.locator('.locality-map-legend').boundingBox())!.y);
+});
+
+// Review fault L7: the double-envelope count (registered 0: envelope voters are registered in their home localities)
+// read "Registered 0" beside 450,074 valid votes. A zero registered count shows a dash, as Turnout already does.
+test('double envelopes show no registered count, not 0', async ({ page }) => {
+  await page.addInitScript(() => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'he', level: 'expert', hintDismissed: true })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } })); } });
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
+  await page.goto('/');
+  await page.getByRole('tab', { name: 'יישובים', exact: true }).click();
+  await page.getByRole('searchbox', { name: 'חיפוש יישוב', exact: true }).fill('מעטפות');
+  await page.locator('.locality-map-matches button').first().click();
+  const facts = page.locator('.locality-map-facts');
+  await expect(facts).toContainText('בעלי זכות —');
+  await expect(facts).not.toContainText(/בעלי זכות 0\b/);
+});
+
+// V2 fault L2: on a wide screen the map opened at a whole zoom level that showed Israel as a thin strip, with Sinai,
+// Jordan and open sea around it. It now opens fitted in quarter steps, closer than the old whole level.
+test('desktop: the map opens framed on the country, not a whole zoom level out', async ({ page }) => {
+  await page.addInitScript(() => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'expert', hintDismissed: true })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } })); } });
+  await page.route('https://tiles.openfreemap.org/**', route => route.abort());
+  await page.setViewportSize({ width: 1500, height: 1000 });
+  await page.goto('/');
+  await page.getByRole('tab', { name: 'Localities', exact: true }).click();
+  const map = page.locator('.locality-map-canvas');
+  await expect(map).toHaveAttribute('data-fit-zoom', /\d/);
+  expect(Number(await map.getAttribute('data-fit-zoom'))).toBeGreaterThan(7);
+});

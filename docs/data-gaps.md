@@ -1,8 +1,8 @@
 # Data gaps register
 
-12425 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12471 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 786 (confirmed 420, probable 44, provisional 140, disputed 11, unknown 171).
+- High importance: 832 (confirmed 451, probable 45, provisional 140, disputed 11, unknown 185).
 - Medium importance: 4483 (confirmed 1035, probable 248, provisional 182, disputed 8, unknown 2422, family placements: follows scholarship 103, the project’s own judgement 386, sources disagree 15, not yet checked 84).
 - Low importance: 7156 (confirmed 572, provisional 808, unknown 5776).
 
@@ -56,6 +56,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k20
 
+- [Later governments](../data/meta/aftermath/k20.json) ×4: unknown 4. coalition-change 2016-05-30, coalition-change 2018-11-18
 - [Formation conflicts](../data/meta/aftermath/k20.json) ×1: probable 1
 - [Formation events](../data/meta/aftermath/k20.json) ×1: provisional 1. mandate-given 2015-03-25
 - [Government](../data/meta/aftermath/k20.json) ×1: probable 1
@@ -64,6 +65,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k19
 
+- [Later governments](../data/meta/aftermath/k19.json) ×2: unknown 2. coalition-change 2014-12-04
 - [Government](../data/meta/aftermath/k19.json) ×1: probable 1
 - [Investiture vote](../data/meta/aftermath/k19.json) ×1: provisional 1
 - [Recommendations](../data/meta/aftermath/k19.json) ×1: provisional 1. ד
@@ -76,6 +78,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k17
 
+- [Later governments](../data/meta/aftermath/k17.json) ×4: unknown 4. coalition-change 2006-10-30, coalition-change 2008-01-18
 - [data/raw/kN/national.reviewed.json discrepancies.status](../data/raw/k17/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k17/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k17/national.reviewed.json) ×1: unknown 1
@@ -162,6 +165,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 - [Formation conflicts](../data/meta/aftermath/k9.json) ×2: provisional 1, disputed 1. Disputed: Date of the ministers' oath
 - [Recommendations](../data/meta/aftermath/k9.json) ×13: probable 5, provisional 4, unknown 4. מחל, אמת, יש, ב, ו, ג, כנ, ש, פש, ד, לע, רצ, ימ
+- [Later governments](../data/meta/aftermath/k9.json) ×3: probable 1, unknown 2. פש, coalition-change 1977-10-24
 - [Bloc schemes](../data/meta/k9.json) ×1: unknown 1. labour-affiliated-arab-lists
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k9/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k9/national.reviewed.json) ×1: unknown 1
@@ -205,6 +209,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k4
 
 - [Recommendations](../data/meta/aftermath/k4.json) ×12: provisional 12. א, ח, ב, מ, צ, תו, גד, רא, פ, יא, ק, ע
+- [Later governments](../data/meta/aftermath/k4.json) ×2: unknown 2. coalition-change 1960-07-18
 - [Investiture reconciliation](../data/meta/aftermath/k4.json) ×1: unknown 1
 
 ### k3
@@ -296,7 +301,7 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Recommendations | 80 | 68 | 80 | 2 | 76 | 306 |
-| Government roles | 258 | 7 | 3 | 3 | 0 | 271 |
+| Government roles | 295 | 8 | 3 | 3 | 0 | 309 |
 | Formation events | 75 | 14 | 37 | 0 | 0 | 126 |
 | Term events | 36 | 49 | 0 | 0 | 0 | 85 |
 | Candidate identity links | 3245 | 57 | 540 | 0 | 0 | 3842 |
@@ -305,21 +310,21 @@ Party-family placements are the project’s classification, not facts, so they c
 
 ## Counts
 
-By kind: unknown: 7343; missing-field: 285; conflict: 19; single-source: 2946; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 195.
+By kind: unknown: 7357; missing-field: 285; conflict: 19; single-source: 2977; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 196.
 
-By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11066.
+By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11112.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
 | k1 | 18 | 99 | 177 | 330 |
 | k2 | 27 | 77 | 152 | 307 |
 | k3 | 15 | 74 | 161 | 287 |
-| k4 | 13 | 87 | 170 | 294 |
+| k4 | 15 | 87 | 170 | 301 |
 | k5 | 26 | 72 | 152 | 288 |
 | k6 | 19 | 79 | 161 | 301 |
 | k7 | 15 | 66 | 160 | 274 |
 | k8 | 18 | 96 | 174 | 355 |
-| k9 | 21 | 116 | 197 | 409 |
+| k9 | 24 | 116 | 197 | 418 |
 | k10 | 18 | 111 | 171 | 356 |
 | k11 | 36 | 116 | 204 | 430 |
 | k12 | 22 | 122 | 183 | 392 |
@@ -327,10 +332,10 @@ By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 
 | k14 | 10 | 126 | 148 | 338 |
 | k15 | 27 | 153 | 160 | 396 |
 | k16 | 11 | 159 | 218 | 458 |
-| k17 | 5 | 137 | 230 | 421 |
+| k17 | 9 | 137 | 230 | 434 |
 | k18 | 3 | 91 | 345 | 480 |
-| k19 | 3 | 97 | 345 | 490 |
-| k20 | 5 | 100 | 309 | 454 |
+| k19 | 5 | 97 | 345 | 494 |
+| k20 | 9 | 100 | 309 | 467 |
 | k21 | 2 | 116 | 340 | 520 |
 | k22 | 5 | 89 | 352 | 500 |
 | k23 | 4 | 98 | 274 | 455 |

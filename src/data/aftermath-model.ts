@@ -14,7 +14,7 @@ export interface DatedFact { id?: string; date: string; endDate?: string; textEn
 /** A recommendation entry's `status`: recommended (with `nominee`), none, other (named a party or a description, not a
  *  person, or did not take part), disputed (sources disagree; the entry carries `certainty: 'disputed'` and both sides),
  *  split, or unknown. `noteEn`/`noteHe` say any condition the list attached; they show in the row's (i). */
-export interface RecommendationEntry { letters: string; seats: number; status: string; nominee?: string; split?: { nominee?: string; status?: string; seats: number }[]; cites?: Cite[]; noteEn?: string; noteHe?: string; certainty?: string }
+export interface RecommendationEntry { letters: string; seats: number; status: string; nominee?: string; split?: { nominee?: string; status?: string; seats: number; /** the faction of the list that took this part (Balad of the Joint List) */ partEn?: string; partHe?: string }[]; cites?: Cite[]; noteEn?: string; noteHe?: string; certainty?: string }
 /** A newspaper page or article read while looking for the round's recommendations, found or not (never shown; the gaps
  *  register lists them so nobody reads them again). `searchNote` says what could not be read. */
 export interface PageRead { paper: string; date: string; page?: number; url: string }
@@ -41,7 +41,7 @@ export function chronological<T extends DatedFact>(events: readonly T[]): T[] {
   const byKey = (a: T, b: T) => key(a) < key(b) ? -1 : key(a) > key(b) ? 1 : 0;
   return events.map((e, i) => [e, i] as const).sort(([a, i], [b, j]) => byKey(a, b) || (a.orderSeq ?? 0) - (b.orderSeq ?? 0) || i - j).map(([e]) => e);
 }
-/** The fact that ended the term, for the footer; null when it is unsourced or the formation or term list already
+/** The fact that ended the term, shown among the term's events (termWithEnd); null when it is unsourced or the formation or term list already
  *  shows it: the same day, and the same kind of event or a dissolution (c-design-principles-15: one place per fact). */
 export function termEndFact(data: Aftermath) {
   const end = data.term.endedBy;
@@ -49,6 +49,8 @@ export function termEndFact(data: Aftermath) {
   const same = (e: DatedFact) => e.date.length === 10 && e.date === end.date && (e.type === end.type || /dissol/.test(e.type ?? e.id ?? ''));
   return [...data.formation.events, ...visibleTermEvents(data.term.events)].some(same) ? null : end;
 }
+/** The term's events with the fact that ended it, in date order: one timeline, the end fact in its place by date. */
+export const termWithEnd = <T extends DatedFact>(events: readonly T[], end: T | null | undefined): T[] => chronological(end ? [...events, end] : events);
 /** A source's name: the publisher's own Hebrew name in Hebrew when recorded, else its name as recorded; the web
  *  address only when the record names no publisher or title (c-rtl-phone-06). */
 export const sourceLabel = (s: HistorySource, lang: 'he' | 'en') => (lang === 'he' ? s.publisherHe : undefined) ?? s.publisher ?? s.title ?? new URL(s.url).hostname;
@@ -59,6 +61,16 @@ export function pageSources(data: Aftermath) {
   return Object.values(data.sources).map((s, i) => [s, i] as const)
     .sort(([a, i], [b, j]) => rank(a) - rank(b) || i - j)
     .map(([s]) => s).filter(s => !seen.has(s.url) && !!seen.add(s.url));
+}
+/** The Sources page's rows: sources that would read the same (same name, kind and retrieval date: several articles of one
+ *  paper, several queries of one database) share one row, with a numbered link each (V2 fault A9, 19 Nov 2026). */
+export function sourceRows(data: Aftermath, lang: 'he' | 'en') {
+  const rows: { label: string; kind: HistorySource['kind']; accessed: string; sources: HistorySource[] }[] = [];
+  for (const s of pageSources(data)) {
+    const label = sourceLabel(s, lang), row = rows.find(r => r.label === label && r.kind === s.kind && r.accessed === s.accessed);
+    if (row) row.sources.push(s); else rows.push({ label, kind: s.kind, accessed: s.accessed, sources: [s] });
+  }
+  return rows;
 }
 export const completePolls = (data: Aftermath) => data.issuePolling?.status === 'filled' ? (data.issuePolling.items ?? []).filter(p => p.questionEn && p.questionHe && p.populationEn && p.populationHe && p.fieldDates && p.answers.every(a => a.labelHe)) : [];
 export function validateAftermath(data: Aftermath, ds: ElectionDataset): string[] {

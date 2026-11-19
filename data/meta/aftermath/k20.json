@@ -676,7 +676,134 @@
         ],
         "scope": "mid-term",
         "governmentNumber": 34,
-        "formalStep": true
+        "formalStep": true,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 30,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-34",
+                "quote": "PersonToPositionID 17248; PersonID 965; PositionID 45; StartDate 2015-05-14T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין נתניהו; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין נתניהו; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "כ",
+            "seats": 10,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-34",
+                "quote": "PersonToPositionID 17256; PersonID 30077; PositionID 39; StartDate 2015-05-14T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יואב גלנט; faction: כולנו בראשות משה כחלון.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יואב גלנט; סיעה: כולנו בראשות משה כחלון."
+              }
+            ]
+          },
+          {
+            "letters": "טב",
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-34",
+                "quote": "PersonToPositionID 17254; PersonID 713; PositionID 39; StartDate 2015-05-14T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אורי אריאל; faction: הבית היהודי בראשות נפתלי בנט.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אורי אריאל; סיעה: הבית היהודי בראשות נפתלי בנט."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 7,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-34",
+                "quote": "PersonToPositionID 17252; PersonID 483; PositionID 39; StartDate 2015-05-14T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דוד אזולאי; faction: ש\"ס.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דוד אזולאי; סיעה: ש\"ס."
+              }
+            ]
+          },
+          {
+            "letters": "ג",
+            "seats": 6,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "idi-coalition",
+                "quote": "United Torah Judaism (UTJ)*"
+              },
+              {
+                "source": "idi-coalition",
+                "quote": "UTJ does not accept ministerial positions, but one of its members is serving as Deputy-Minister of Health"
+              },
+              {
+                "source": "idi-coalition",
+                "quote": "The first parties to sign a coalition agreement with Likud were Moshe Kachlon's Kulanu and United Torah Judaism (UTJ)."
+              },
+              {
+                "source": "appointments-34",
+                "quote": "{\"PersonToPositionID\":17283,\"PersonID\":528,\"PositionID\":40,\"KnessetNum\":20,\"StartDate\":\"2015-05-19T00:00:00\",\"FinishDate\":\"2015-09-02T00:00:00\",\"GovMinistryID\":1109,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"סגן שר הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-12-01T10:51:57.933\"}",
+                "note": "The Knesset’s official record: יעקב ליצמן, יהדות התורה.",
+                "noteHe": "הרישום הרשמי של הכנסת: יעקב ליצמן, יהדות התורה."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "UTJ joined the coalition formed after the 2015 election with two deputy ministers (health and education)",
+                "locator": "p. 772"
+              },
+              {
+                "source": "rahat-shamir-2023",
+                "quote": "In addition to the Likud, the coalition included the ultra-Orthodox and religious parties (United Torah Judaism, Shas, and the Jewish Home) and Kulanu",
+                "locator": "p. 27"
+              }
+            ],
+            "note": "Two independent studies and the Israel Democracy Institute count United Torah Judaism in the coalition, which it joined under a signed agreement without a cabinet minister. Yakov Litzman’s deputy health post starts on 19 May 2015, not on the investiture day.",
+            "noteEn": "United Torah Judaism does not take ministerial posts; Yakov Litzman became Deputy Health Minister on 19 May 2015.",
+            "noteHe": "יהדות התורה אינה מקבלת תפקידי שרים; יעקב ליצמן מונה לסגן שר הבריאות ב־19 במאי 2015."
+          },
+          {
+            "letters": "ל",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "appointments-34",
+                "quote": "{\"PersonToPositionID\":18442,\"PersonID\":427,\"PositionID\":39,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":1175,\"GovMinistryName\":\"משרד הביטחון\",\"DutyDesc\":\"שר הביטחון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2023-01-18T14:24:03.307\"}",
+                "note": "The Knesset’s official record: אביגדור ליברמן, ישראל ביתנו.",
+                "noteHe": "הרישום הרשמי של הכנסת: אביגדור ליברמן, ישראל ביתנו."
+              },
+              {
+                "source": "appointments-34",
+                "quote": "{\"PersonToPositionID\":18451,\"PersonID\":448,\"PositionID\":57,\"KnessetNum\":20,\"StartDate\":\"2016-05-30T00:00:00\",\"FinishDate\":\"2018-11-18T00:00:00\",\"GovMinistryID\":800,\"GovMinistryName\":\"משרד העלייה והקליטה\",\"DutyDesc\":\"שרת העלייה והקליטה\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2019-01-14T08:16:06.807\"}",
+                "note": "The Knesset’s official record: סופה לנדבר, ישראל ביתנו.",
+                "noteHe": "הרישום הרשמי של הכנסת: סופה לנדבר, ישראל ביתנו."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": 67,
+        "supportSeats": 0,
+        "knownMemberSeats": 67,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Each list counts at its election seats, as in the government above; later moves between factions are not added.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated record cited."
+        }
       },
       {
         "date": "2018-11-18",
@@ -702,7 +829,114 @@
         "formalStep": true,
         "notes": [
           "Checked against all 221 rows of the register: these were Yisrael Beiteinu’s only offices in this government."
-        ]
+        ],
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 30,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-34",
+                "quote": "PersonToPositionID 17248; PersonID 965; PositionID 45; StartDate 2015-05-14T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין נתניהו; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין נתניהו; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "כ",
+            "seats": 10,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-34",
+                "quote": "PersonToPositionID 17256; PersonID 30077; PositionID 39; StartDate 2015-05-14T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יואב גלנט; faction: כולנו בראשות משה כחלון.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יואב גלנט; סיעה: כולנו בראשות משה כחלון."
+              }
+            ]
+          },
+          {
+            "letters": "טב",
+            "seats": 8,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-34",
+                "quote": "PersonToPositionID 17254; PersonID 713; PositionID 39; StartDate 2015-05-14T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אורי אריאל; faction: הבית היהודי בראשות נפתלי בנט.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אורי אריאל; סיעה: הבית היהודי בראשות נפתלי בנט."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 7,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-34",
+                "quote": "PersonToPositionID 17252; PersonID 483; PositionID 39; StartDate 2015-05-14T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דוד אזולאי; faction: ש\"ס.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דוד אזולאי; סיעה: ש\"ס."
+              }
+            ]
+          },
+          {
+            "letters": "ג",
+            "seats": 6,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "idi-coalition",
+                "quote": "United Torah Judaism (UTJ)*"
+              },
+              {
+                "source": "idi-coalition",
+                "quote": "UTJ does not accept ministerial positions, but one of its members is serving as Deputy-Minister of Health"
+              },
+              {
+                "source": "idi-coalition",
+                "quote": "The first parties to sign a coalition agreement with Likud were Moshe Kachlon's Kulanu and United Torah Judaism (UTJ)."
+              },
+              {
+                "source": "appointments-34",
+                "quote": "{\"PersonToPositionID\":17283,\"PersonID\":528,\"PositionID\":40,\"KnessetNum\":20,\"StartDate\":\"2015-05-19T00:00:00\",\"FinishDate\":\"2015-09-02T00:00:00\",\"GovMinistryID\":1109,\"GovMinistryName\":\"משרד הבריאות\",\"DutyDesc\":\"סגן שר הבריאות\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":34,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-12-01T10:51:57.933\"}",
+                "note": "The Knesset’s official record: יעקב ליצמן, יהדות התורה.",
+                "noteHe": "הרישום הרשמי של הכנסת: יעקב ליצמן, יהדות התורה."
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "UTJ joined the coalition formed after the 2015 election with two deputy ministers (health and education)",
+                "locator": "p. 772"
+              },
+              {
+                "source": "rahat-shamir-2023",
+                "quote": "In addition to the Likud, the coalition included the ultra-Orthodox and religious parties (United Torah Judaism, Shas, and the Jewish Home) and Kulanu",
+                "locator": "p. 27"
+              }
+            ],
+            "note": "Two independent studies and the Israel Democracy Institute count United Torah Judaism in the coalition, which it joined under a signed agreement without a cabinet minister. Yakov Litzman’s deputy health post starts on 19 May 2015, not on the investiture day.",
+            "noteEn": "United Torah Judaism does not take ministerial posts; Yakov Litzman became Deputy Health Minister on 19 May 2015.",
+            "noteHe": "יהדות התורה אינה מקבלת תפקידי שרים; יעקב ליצמן מונה לסגן שר הבריאות ב־19 במאי 2015."
+          }
+        ],
+        "coalitionSeats": 61,
+        "supportSeats": 0,
+        "knownMemberSeats": 61,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Each list counts at its election seats, as in the government above; later moves between factions are not added.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated record cited."
+        }
       }
     ]
   },

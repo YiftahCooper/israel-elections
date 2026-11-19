@@ -253,10 +253,10 @@ describe('factions shown equal the Knesset record', () => {
     }
     for (const [id] of Object.entries(rt.people)) for (const r of mkView(rt, Number(id))!.rows) for (const s of r.terms.flatMap((t) => t.segments))
       expect(s.end > s.start || !!s.startTime, `${id} k${r.k} ${s.faction}`).toBe(true);
-    // Bennett, 15 Aug 2022: Yamina to Beyahad (ביחד), with no National Unity line. Not "Together (Bennett)": that is the
-    // English of his 2026 list ביחד בראשות בנט, and nothing stored says the 2022 faction is that party.
+    // Bennett, 15 Aug 2022: Yamina to Beyachad (ביחד), with no National Unity line. One Hebrew name, one English spelling
+    // (owner, fac-english): the 2026 list ביחד is Beyachad too, though nothing stored says the 2022 faction is that party.
     expect(row(BENNETT, 24).events.filter((e) => e.kind === 'faction').map((e) => [e.date, e.faction!.now.en, e.faction!.was.en])).toEqual([
-      ['2022-08-15', 'Beyahad', 'Yamina'], ['2022-09-06', 'Yamina', 'Beyahad']]);
+      ['2022-08-15', 'Beyachad', 'Yamina'], ['2022-09-06', 'Yamina', 'Beyachad']]);
   });
 
   it('a faction is shown only while the member sat; the record keeps its own dates (all 25 Knessets)', () => {
@@ -289,10 +289,10 @@ describe('factions shown equal the Knesset record', () => {
     // Left as they are: the list labels' own conventions, which belong to the lists ("United Arab List" and "Ra'am";
     // straight and curly apostrophes in Hadash–Ta’al and Ra’am–Ta’al).
     // Also left: ביחד, two different bodies with one short name, kept apart on purpose (see Bennett above): the 2022
-    // faction recorded as ביחד ("Beyahad") and the 2026 faction recorded as ביחד בראשות נפתלי בנט, shown under its list's
-    // label ביחד ("Together (Bennett)") since the 26th Knesset's member records arrived (19 Nov 2026).
+    // faction recorded as ביחד ("Beyachad") and the 2026 faction recorded as ביחד בראשות נפתלי בנט, shown under its list's
+    // label ביחד ("Beyachad", one spelling for both, owner fac-english) since the 26th Knesset's member records arrived (19 Nov 2026).
     const LIST_CONVENTION = new Set(['רע״ם', 'חד״ש–תע״ל', 'רע״ם–תע״ל', 'ביחד']);
-    expect([1086, 1111].map((f) => rt.factions[f].slice(0, 2))).toEqual([['ביחד', 'Beyahad'], ['ביחד', 'Together (Bennett)']]);
+    expect([1086, 1111].map((f) => rt.factions[f].slice(0, 2))).toEqual([['ביחד', 'Beyachad'], ['ביחד', 'Beyachad']]);
     const byShown = new Map<string, Set<string>>();
     for (const [, [he, en]] of Object.entries(rt.factions)) {
       if (LIST_CONVENTION.has(he) || !en) continue;

@@ -41,7 +41,9 @@ test('history, split recommendations, direct elections and next-election navigat
   await expect(history).toContainText('Not documented');
   await expect(history).toContainText('Government 1');
   await page.getByRole('button', { name: 'Sources & research coverage' }).click();
-  await expect(page.locator('.after-sources')).toContainText('Pending corroboration');
+  // research notes on events still awaiting a second source never show to visitors (V2 fault S2, 19 Nov 2026)
+  await expect(page.locator('.after-sources')).toBeVisible();
+  await expect(page.locator('.after-sources')).not.toContainText(/Pending corroboration|Research notes/);
 });
 
 test('history remains official after editing votes', async ({ page }) => {
@@ -154,7 +156,7 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await expect(history.locator('[data-support-role="member-without-ministries"]').first()).toContainText(lang === 'he' ? 'אגודת ישראל' : 'Agudat');
   // Flatto-Sharon supported the government from outside (probable since 16 Nov 2026), not by his vote alone
   await expect(history.locator('[data-support-role="outside-support"]').first()).toContainText(lang === 'he' ? 'פלאטו' : 'Flatto');
-  await expect(history.locator('[data-individual="moshe-dayan"]')).toContainText(lang === 'he' ? 'משה דיין' : 'Moshe Dayan');
+  await expect(history.locator('[data-individual="moshe-dayan"]').first()).toContainText(lang === 'he' ? 'משה דיין' : 'Moshe Dayan');
   await expect(history.locator('.after-members-total').first()).toHaveText('62');
   await expect(history.locator('.after-support-total').first()).toHaveText('1');
   await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '63 בעד · 53 נגד' : '63 for · 53 against');
@@ -165,7 +167,9 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await expect(history.locator('.after-support-total').first()).toHaveText('5');
   await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '67 בעד · 53 נגד' : '67 for · 53 against');
   await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
-  await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText(lang === 'he' ? 'לא ידוע' : 'Unknown');
+  // no faction sizes recorded for Peres's 1995 government: a dash and one sentence, not "Unknown" (V2 fault A4)
+  await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText('—');
+  await expect(history.locator('.after-government-change .after-size-note').first()).toBeVisible();
   await choose(election, 'k2');
   // 17 Nov 2026: Mapai's three affiliated Arab lists are members without ministries (two independent books), so the
   // first government's total is published (65, as Galnoor and Blander count). 19 Nov 2026: every later snapshot of the
@@ -343,7 +347,9 @@ for (const lang of ['en', 'he'] as const) test(`the next-election button names t
   await expect(history.locator('footer button.btn')).toHaveText(lang === 'he' ? '← הבחירות הבאות · 2020 · הכנסת ה־23' : '→ Next election · 2020 · 23rd Knesset');
   await expect(history.locator('.after-events time[datetime="2019-12-12"]')).toHaveCount(1); // the dissolution, listed once
   await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k20');
-  await expect(history.locator('footer .after-events')).toHaveCount(1); // 2018: the dissolution is listed nowhere else
+  // 2018: the dissolution is listed once, among the term's events by date (V2 fault A2), not after them
+  await expect(history.locator('.after-events time[datetime="2018-12-26"]')).toHaveCount(1);
+  await expect(history.locator('footer .after-events')).toHaveCount(0);
   await expect(history.locator('footer button.btn')).toContainText(lang === 'he' ? 'אפריל 2019 · הכנסת ה־21' : 'April 2019 · 21st Knesset');
 });
 
@@ -381,7 +387,10 @@ for (const lang of ['en', 'he'] as const) test(`Sources: the election's own data
   const links = block.locator('.after-source-list > li > a');
   await expect(links).toHaveCount(22);
   for (const text of await links.allInnerTexts()) expect(text).not.toMatch(/^www\.|\.(com|org|il)$/);
-  await expect(links.filter({ hasText: lang === 'he' ? /^בית הנשיא$/ : /^President's Residence$/ })).toHaveCount(16);
+  // sources that would read the same share one row with a numbered link each (V2 fault A9)
+  const president = block.locator('.after-source-list > li').filter({ hasText: lang === 'he' ? /^בית הנשיא/ : /^President's Residence/ });
+  await expect(president).toHaveCount(1);
+  await expect(president.locator('> a')).toHaveCount(16);
   if (lang === 'he') for (const name of ['מעריב', 'הארץ', 'ישראל היום']) await expect(links.filter({ hasText: name }).first()).toBeVisible();
   await expect(block.locator('.after-source-list > li').first()).toContainText(lang === 'he' ? 'רשמי · נשלף' : 'Official · Retrieved');
 });
@@ -434,4 +443,76 @@ for (const lang of ['en', 'he'] as const) test(`the coalition count names the li
   const pop = page.locator('.pop').filter({ hasText: lang === 'he' ? 'מקורות וסייגים' : 'Sources & qualifications' });
   await expect(pop).toContainText(lang === 'he' ? 'רשימות הקואליציה זכו ב־98 מנדטים; 73 מחבריהן נספרים' : 'The coalition’s lists won 98 seats; 73 of their members are counted');
   await expect(pop).toContainText(lang === 'he' ? 'כחול לבן 17 מתוך 33' : 'Blue and White 17 of 33');
+});
+
+// Review fault A1: a party that joins or leaves partway through a term changes the member list, dated, under its change.
+for (const lang of ['en', 'he'] as const) test(`a mid-term join or exit shows the new member list under its change (${lang})`, async ({ page }) => {
+  const history = await openAfter(page, 'k9', lang);
+  await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
+  const dmc = history.locator('.after-government-change').filter({ has: page.locator('time[datetime="1977-10-24"]') });
+  await expect(dmc.locator('[data-support-role="member-with-ministries"] .after-coalition')).toContainText(lang === 'he' ? 'ד״ש' : 'Democratic Movement for Change');
+  await expect(dmc.locator('.after-members-total')).toHaveText('77');
+  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k19');
+  await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
+  const out = history.locator('.after-government-change').filter({ has: page.locator('time[datetime="2014-12-04"]') });
+  await expect(out.locator('.after-members-total')).toHaveText('43');
+  await expect(out.locator('.after-coalition').first()).not.toContainText(lang === 'he' ? 'יש עתיד' : 'Yesh Atid');
+});
+
+// V2 fault A4: "Members Unknown" and a column of "Unknown" seats sat beside seats the page itself shows; party rows
+// matched to an election list by name lost their ballot letters.
+for (const lang of ['en', 'he'] as const) test(`a coalition whose faction sizes are not recorded says so once, with no Unknown column: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k12', lang);
+  const totals = history.locator('.after-support-totals').first();
+  await expect(totals.locator('.after-members-total')).toHaveText(lang === 'he' ? 'לפחות 95' : 'at least 95');
+  await expect(totals).not.toContainText(lang === 'he' ? 'לא ידוע' : 'Unknown');
+  await expect(history.locator('.after-size-note').first()).toBeVisible();
+  await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
+  const change = history.locator('.after-government-change').filter({ has: page.locator('time[datetime="1990-06-11"]') });
+  await expect(change.locator('.after-coalition')).not.toContainText(lang === 'he' ? 'לא ידוע' : 'Unknown');
+  await expect(change.locator('.after-party').filter({ hasText: lang === 'he' ? 'הליכוד' : 'Likud' }).locator('bdi[lang="he"]').first()).toHaveText('מחל');
+});
+
+// V2 fault A5: a list whose MKs split their recommendation showed twice under one name ("Joint List … 10" and
+// "Joint List … No recommendation 3"); the part that split off is named, as the President's record says (Balad).
+for (const lang of ['en', 'he'] as const) test(`a split recommendation names the faction that split off: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k22', lang);
+  await history.getByText(lang === 'he' ? 'רשימות והמלצות' : 'Lists & recommendations', { exact: true }).first().click();
+  const rows = history.locator('.after-breakdown tbody tr').filter({ hasText: 'ודעם' });
+  await expect(rows).toHaveCount(2);
+  await expect(rows.filter({ hasText: lang === 'he' ? '(בל״ד)' : '(Balad)' })).toHaveCount(1);
+  await expect(rows.filter({ hasText: lang === 'he' ? '(בל״ד)' : '(Balad)' })).toContainText('3');
+});
+
+// V2 fault A7: an MK elected on a coalition list who stood outside it read "Other participation".
+for (const lang of ['en', 'he'] as const) test(`an MK outside the coalition is said to be so: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k24', lang);
+  const chikli = history.locator('[data-individual="amichai-chikli"]').first();
+  await expect(chikli).toContainText(lang === 'he' ? 'מחוץ לקואליציה' : 'Not in the coalition');
+  await expect(history.locator('.after-individuals').first()).not.toContainText(lang === 'he' ? 'השתתפות אחרת' : 'Other participation');
+});
+
+// V2 fault A8: the 61 line ran through Yesh Atid's letters in 2021's first round, at 1500 and 390 px.
+for (const width of [1500, 390]) test(`the 61 line crosses no list's letters (${width} px)`, async ({ page }) => {
+  await page.setViewportSize({ width, height: 900 });
+  const history = await openAfter(page, 'k24', 'en');
+  const bars = history.locator('.after-bar');
+  await expect(bars.first()).toBeVisible();
+  for (let b = 0; b < await bars.count(); b++) {
+    const bar = bars.nth(b);
+    const line = (await bar.locator('.after-majority').boundingBox())!;
+    const boxes = await bar.locator('.after-group bdi').evaluateAll(els => els.filter(e => getComputedStyle(e).display !== 'none').map(e => { const r = e.getBoundingClientRect(); return { l: r.left, r: r.right, t: e.textContent }; }));
+    for (const x of boxes) expect(x.l > line.x + 2 || x.r < line.x, `${x.t} at ${x.l}–${x.r}, line at ${line.x}`).toBe(true);
+  }
+});
+
+// V2 fault A9: in 1949 "Knesset open data: ministerial appointments · Official · Retrieved 7 Nov 2026" was listed twice.
+for (const lang of ['en', 'he'] as const) test(`no two source rows read the same: ${lang}`, async ({ page }) => {
+  await openAfter(page, 'k1', lang);
+  await page.getByRole('tab', { name: lang === 'he' ? 'מקורות' : 'Sources', exact: true }).click();
+  const rows = page.locator('#analysis-panel .after-source-list > li');
+  await expect(rows.first()).toBeVisible();
+  const texts = await rows.allInnerTexts();
+  expect(new Set(texts).size).toBe(texts.length);
+  await expect(rows.filter({ hasText: lang === 'he' ? 'מינויי שרים' : 'ministerial appointments' }).locator('> a')).toHaveCount(2);
 });

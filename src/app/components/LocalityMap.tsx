@@ -3,6 +3,7 @@ import {MAP_UNASSIGNED_COLOUR} from '../locality-map-model.ts';
 import { groupingName, appGroupingExplanation } from '../groupingName.ts';
 import {MapLineText} from './MapLineText.tsx';
 import { Info } from './ui.tsx';
+import { usePhone } from './UndoGroup.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ResultPreview } from './ResultPreview.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -96,9 +97,20 @@ export function Locality2006Note() {
 
 // Leaflet's zoom buttons refocus the map with a plain focus(), which scrolls a partly visible map into view: the
 // page jumped by up to 54px on each zoom click. Same control, refocusing without scrolling.
+type ZoomControl = Leaflet.Control & { _map?: Leaflet.Map; _disabled?: boolean };
 const ZoomInPlace = Leaflet.Control.Zoom.extend({
-  _refocusOnMap(this: Leaflet.Control & { _map?: Leaflet.Map }, e?: MouseEvent) {
+  _refocusOnMap(this: ZoomControl, e?: MouseEvent) {
     if (this._map && e && e.screenX > 0 && e.screenY > 0) this._map.getContainer().focus({ preventScroll: true });
+  },
+  // the map opens at a fitted quarter-step zoom (V2 fault L2); the buttons go to the next whole level from there, so
+  // one press from 7.5 is 8, not 8.5 rounded up to 9
+  _zoomIn(this: ZoomControl, e: MouseEvent) {
+    const m = this._map; if (this._disabled || !m || m.getZoom() >= m.getMaxZoom()) return;
+    m.setZoom(Math.floor(m.getZoom() + 1e-6) + (e.shiftKey ? 3 : 1));
+  },
+  _zoomOut(this: ZoomControl, e: MouseEvent) {
+    const m = this._map; if (this._disabled || !m || m.getZoom() <= m.getMinZoom()) return;
+    m.setZoom(Math.ceil(m.getZoom() - 1e-6) - (e.shiftKey ? 3 : 1));
   },
 });
 
@@ -153,6 +165,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const [hiddenLines, setHiddenLines] = useState(0);
   const { value: lineData, error: lineError, retry: retryLines } = useJson(`${import.meta.env.BASE_URL}data/map-lines.geojson`, NO_LINES);
   const digits = useDigits();
+  const phone = usePhone();
   const container = useRef<HTMLDivElement>(null), map = useRef<Leaflet.Map | null>(null);
   const [mode, setMode] = useState<'bloc' | 'list'>('bloc');
   const [view, setViewState] = useState<MapView>(readView);
@@ -290,8 +303,9 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     m.attributionControl.addAttribution(credit);
     return () => { m.attributionControl.removeAttribution(credit); };
   }, [mix, lang]);
-  // the Winner dots, for the names to keep clear of (outer radius: the 5 px dot and its white outline; Hebron's dashed ring)
-  const dots = useMemo<Dot[]>(() => mix ? [] : placed.map(p => ({ index: p.index, lat: p.lat, lon: p.lon, r: p.approx ? 9.5 : 7 })), [mix, placed]);
+  // the Winner dots, for the names to keep clear of (outer radius: the 5 px dot and its white outline; Hebron's dashed ring),
+  // plus half a pixel for the edge's smoothing: at the fitted quarter-step zoom a dot sits between pixels (V2 fault L2)
+  const dots = useMemo<Dot[]>(() => mix ? [] : placed.map(p => ({ index: p.index, lat: p.lat, lon: p.lon, r: p.approx ? 10 : 7.5 })), [mix, placed]);
   useEffect(() => { areas.current?.set(areaPlaces, view, dark, selectedIndex, island, dots); }, [areaPlaces, view, dark, selectedIndex, island, dots]);
   useEffect(() => {
     const m = map.current; if (!m || !lineData.features.length) return;
@@ -341,7 +355,12 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     // open fitted to this election's localities (once per election, so a user's own zoom is kept while editing); at
     // once, not by a slide from the default view (at the same zoom Leaflet would otherwise animate the pan)
     if (placed.length && fittedFor.current !== data) {
+      // in quarter steps: at whole zoom levels a tall frame showed the country as a thin strip with Sinai, Jordan and
+      // open sea around it (V2 fault L2, 19 Nov 2026); the zoom buttons still move a whole level
+      m.options.zoomSnap = 0.25;
       m.fitBounds(Leaflet.latLngBounds(placed.map((p) => [p.lat, p.lon] as [number, number])), { padding: [12, 12], animate: false });
+      m.options.zoomSnap = 1;
+      container.current?.setAttribute('data-fit-zoom', String(m.getZoom()));
       fittedFor.current = data;
     }
     // the chosen place keeps its box open (it is how a tap, or a choice from the search, shows the name on the map)
@@ -362,7 +381,9 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       if (!layer.grid) return;
       const grid = layer.grid.clone(), host = m.getContainer().getBoundingClientRect();
       m.getContainer().querySelectorAll('.leaflet-control-zoom, .leaflet-control-attribution').forEach(el => { const r = el.getBoundingClientRect(); grid.rect([r.left - host.left - 2, r.top - host.top - 2, r.right - host.left + 2, r.bottom - host.top + 2]); });
-      const z = m.getZoom();
+      // the thresholds are per whole level: at the fitted quarter-step zoom (7.5, say) an exact test matched none of
+      // them and every town was named, crowded (V2 fault L2)
+      const z = Math.floor(m.getZoom() + 1e-6);
       const min = z <= 7 ? 150_000 : z === 8 ? 50_000 : z === 9 ? 15_000 : z === 10 ? 4_000 : z === 11 ? 1_000 : 0;
       let shown = 0;
       // every name that may be shown at this zoom, measured in one go
@@ -434,18 +455,23 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const legend = mode === 'bloc' ? s.blocs.map(b => ({ id: b.id, color: b.color, label: groupingName(b, lang), title: b.appDefined ? appGroupingExplanation(lang) : undefined }))
     : s.lists.filter(l => mix ? seated.has(l.id) : winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang), title: undefined }));
   const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid, digits)}</span></span>;
+  // On a phone the map comes first: the locality search sits under it, and the note on hidden lines lies over the
+  // map's lower edge instead of holding an empty band above it (owner, loc-phone; review fault L1).
+  const findField = <label className="field">{L('Find a locality ', 'חיפוש יישוב ')}<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder={L('Hebrew, English or code','עברית, אנגלית או סמל')} /></label>;
+  const findMatches = normalizeLocalityName(q) ? <div className="locality-map-matches" aria-label={L('Matching localities','יישובים תואמים')}>
+      {matches.slice(0,30).map(i=><button className="btn small" key={i} onClick={()=>choose(i)} dir="auto">{nameOf(i)} ({data.rows[i].code ?? '—'})</button>)}
+      <p className="small" role="status">{countOf(matches.length, lang, ['match', 'matches'], ['התאמה אחת', 'התאמות'])}{matches.length > 30 ? L('; the first 30 are shown.', '; מוצגות 30 הראשונות.') : '.'}</p>
+    </div> : null;
+  const limitNote = <p className={`small locality-boundary-limit${phone ? ' on-map' : ''}`} style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}><span>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></span></p>;
   return <div className="locality-map-tool">
     <p className="small ink2">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes. English place names are CBS locality names; a few localities missing from CBS lists have this project’s transliteration (dotted underline).', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
     {data.id !== 'k17' && (data.noteEn || data.noteHe) && <p className="small callout">{datesInText((lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe) ?? '')}</p>}
     {split && mode === 'bloc' && <p className="callout small">{L('A list spans several blocs: its locality votes are apportioned by its current elected members’ blocs.', 'רשימה משויכת לכמה גושים: קולותיה ביישוב מחולקים לפי שיוך חבריה הנבחרים כיום.')}</p>}
     <div className="row">
       <ChoicePicker label={L('Colour by', 'צביעה לפי')} value={mode} options={[{ value: 'bloc', label: mix ? L('Blocs', 'גושים') : L('Winning bloc', 'הגוש המוביל'), preview: <ResultPreview s={s} /> }, { value: 'list', label: mix ? L('Lists', 'רשימות') : L('Winning list', 'הרשימה המובילה'), preview: <ResultPreview s={s} blocs={false} /> }]} onChange={v => setMode(v as typeof mode)} />
-      <label className="field">{L('Find a locality ', 'חיפוש יישוב ')}<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder={L('Hebrew, English or code','עברית, אנגלית או סמל')} /></label>
+      {!phone && findField}
     </div>
-    {normalizeLocalityName(q) && <div className="locality-map-matches" aria-label={L('Matching localities','יישובים תואמים')}>
-      {matches.slice(0,30).map(i=><button className="btn small" key={i} onClick={()=>choose(i)} dir="auto">{nameOf(i)} ({data.rows[i].code ?? '—'})</button>)}
-      <p className="small" role="status">{countOf(matches.length, lang, ['match', 'matches'], ['התאמה אחת', 'התאמות'])}{matches.length > 30 ? L('; the first 30 are shown.', '; מוצגות 30 הראשונות.') : '.'}</p>
-    </div>}
+    {!phone && findMatches}
     <form className="locality-map-address" onSubmit={e=>{e.preventDefault();void searchAddress();}}>
       <label className="field">{L('Nearest locality to an address ', 'היישוב הקרוב לכתובת ')}<input type="text" value={address} onChange={e=>setAddress(e.target.value)} /></label>
       <button className="btn" disabled={busy || !address.trim()} title={busy ? L('Search in progress', 'החיפוש מתבצע') : !address.trim() ? L('Enter an address first', 'תחילה הזינו כתובת') : undefined}>{busy?L('Searching…','מחפש…'):L('Find address','חיפוש כתובת')}</button>
@@ -490,9 +516,11 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
         </Info>
       </span>)}
     </fieldset></details>
-    {<p className="small locality-boundary-limit" style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></p>}
+    {!phone && limitNote}
     {lineError && <p className="small bad" role="status">{L('Boundary data could not load.', 'נתוני הקווים לא נטענו.')} <button className="btn small" onClick={retryLines}>{L('Try again', 'נסו שוב')}</button></p>}
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
+    {phone && limitNote}
+    {phone && <div className="locality-find">{findField}{findMatches}</div>}
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}
     {selected && <section className="locality-map-results" aria-live="polite" aria-label={L('Selected locality results','תוצאות היישוב הנבחר')}>
       <h3><LocalityName names={names} row={selected} index={selectedIndex!} /></h3>
@@ -507,7 +535,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       <p className="small ink2 locality-map-facts">
         <span>{L('Turnout ', 'הצבעה ')}<b className="tabnum">{selected.registered ? percent(selected.votesCast, selected.registered, digits) : '—'}</b></span>
         <span>{L('Valid ', 'כשרים ')}<b className="tabnum">{fmtInt(selected.valid)}</b></span>
-        <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered === null ? '—' : fmtInt(selected.registered)}</b></span>
+        <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered ? fmtInt(selected.registered) : '—'}</b></span>
         <span>{L('Invalid ', 'פסולים ')}<b className="tabnum">{fmtInt(selected.invalid)}</b></span>
         <Info title={L('Location and turnout', 'מיקום והצבעה')}><p>{localityNameSource(names, selected, selectedIndex!, lang)}</p>{(() => { const a = placed.find(p => p.index === selectedIndex)?.approx; return a && <p>{lang === 'he' ? a.he : a.en}</p>; })()}{L('Turnout excludes double-envelope votes. Coordinates are CBS locality reference points, not polling stations.', 'ההצבעה אינה כוללת מעטפות חיצוניות. המיקום הוא נקודת ייחוס של הלמ״ס ליישוב ולא מיקום קלפי.')}</Info>
       </p>

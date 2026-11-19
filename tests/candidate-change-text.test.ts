@@ -3,7 +3,7 @@ import { scenarioFromDataset } from '../src/model/scenario.ts';
 import { applyAction } from '../src/model/actions.ts';
 import { editPathLabel, referenceChanges } from '../src/app/derive.ts';
 import { candidateChangeText, markerChangeText, changeText } from '../src/app/changeValue.tsx';
-import { romanize } from '../src/data/names.ts';
+import { romanize } from './letter-by-letter.ts';
 import { dataset } from './graphics-cases.ts';
 
 // Audit c-screens-overview-08: the "Edited" note of a candidate edit says what changed, in a few names, in the

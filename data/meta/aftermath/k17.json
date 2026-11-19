@@ -637,7 +637,90 @@
           }
         ],
         "scope": "mid-term",
-        "formalStep": true
+        "formalStep": true,
+        "governmentNumber": 31,
+        "coalition": [
+          {
+            "letters": "כן",
+            "seats": 29,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-31",
+                "quote": "PersonToPositionID 3362; PersonID 458; PositionID 39; StartDate 2006-05-04T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים רמון; faction: קדימה-עם אהוד אולמרט לראשות הממשלה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים רמון; סיעה: קדימה-עם אהוד אולמרט לראשות הממשלה."
+              }
+            ]
+          },
+          {
+            "letters": "אמת",
+            "seats": 19,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-31",
+                "quote": "PersonToPositionID 3363; PersonID 455; PositionID 39; StartDate 2006-05-04T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אופיר פינס-פז; faction: העבודה-מימד בראשות עמיר פרץ.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אופיר פינס-פז; סיעה: העבודה-מימד בראשות עמיר פרץ."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-31",
+                "quote": "PersonToPositionID 3500; PersonID 494; PositionID 50; StartDate 2006-05-04T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו ישי; faction: ש\"ס-התאחדות הספרדים העולמית שומרי תורה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו ישי; סיעה: ש\"ס-התאחדות הספרדים העולמית שומרי תורה."
+              }
+            ]
+          },
+          {
+            "letters": "זך",
+            "seats": 7,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-31",
+                "quote": "PersonToPositionID 3611; PersonID 4298; PositionID 39; StartDate 2006-05-04T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: רפי איתן; faction: גיל-גימלאי ישראל לכנסת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: רפי איתן; סיעה: גיל-גימלאי ישראל לכנסת."
+              }
+            ]
+          },
+          {
+            "letters": "ל",
+            "seats": 11,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "lieberman-official",
+                "quote": "\"PersonToPositionID\":4613,\"PersonID\":427,\"PositionID\":50,\"StartDate\":\"2006-10-30T00:00:00\",\"FinishDate\":\"2008-01-18T00:00:00\",\"DutyDesc\":\"סגן ראש הממשלה\",\"GovernmentNum\":31",
+                "note": "The Knesset’s official record: Deputy Prime Minister, 30 October 2006 to 18 January 2008.",
+                "noteHe": "הרישום הרשמי של הכנסת: סגן ראש הממשלה, 30 באוקטובר 2006 עד 18 בינואר 2008."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": 78,
+        "supportSeats": 0,
+        "knownMemberSeats": 78,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Each list counts at its election seats, as in the government above; later moves between factions are not added.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated record cited."
+        }
       },
       {
         "date": "2008-01-18",
@@ -653,7 +736,76 @@
           }
         ],
         "scope": "mid-term",
-        "formalStep": true
+        "formalStep": true,
+        "governmentNumber": 31,
+        "coalition": [
+          {
+            "letters": "כן",
+            "seats": 29,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-31",
+                "quote": "PersonToPositionID 3362; PersonID 458; PositionID 39; StartDate 2006-05-04T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים רמון; faction: קדימה-עם אהוד אולמרט לראשות הממשלה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים רמון; סיעה: קדימה-עם אהוד אולמרט לראשות הממשלה."
+              }
+            ]
+          },
+          {
+            "letters": "אמת",
+            "seats": 19,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-31",
+                "quote": "PersonToPositionID 3363; PersonID 455; PositionID 39; StartDate 2006-05-04T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אופיר פינס-פז; faction: העבודה-מימד בראשות עמיר פרץ.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אופיר פינס-פז; סיעה: העבודה-מימד בראשות עמיר פרץ."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-31",
+                "quote": "PersonToPositionID 3500; PersonID 494; PositionID 50; StartDate 2006-05-04T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו ישי; faction: ש\"ס-התאחדות הספרדים העולמית שומרי תורה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו ישי; סיעה: ש\"ס-התאחדות הספרדים העולמית שומרי תורה."
+              }
+            ]
+          },
+          {
+            "letters": "זך",
+            "seats": 7,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-31",
+                "quote": "PersonToPositionID 3611; PersonID 4298; PositionID 39; StartDate 2006-05-04T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: רפי איתן; faction: גיל-גימלאי ישראל לכנסת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: רפי איתן; סיעה: גיל-גימלאי ישראל לכנסת."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": 67,
+        "supportSeats": 0,
+        "knownMemberSeats": 67,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Each list counts at its election seats, as in the government above; later moves between factions are not added.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated record cited."
+        }
       },
       {
         "date": "2008-10-26",

@@ -45,3 +45,13 @@ it('keeps dark motorways and runways distinct from boundary overlays without cha
   for(const layer of localityBasemapStyle(style,false).layers) if(layer.type==='line') expect(layer.paint?.['line-color']).toBe('#000');
   expect(style.layers[0].type==='line' && style.layers[0].paint?.['line-color']).toBe('#000');
 });
+
+// V2 fault L5: the dark basemap asked for a "wood-pattern" image its sprite does not have, logging a warning.
+it('drops fills drawn with a pattern image, which the provider sprite lacks', () => {
+  const style: StyleSpecification = { version: 8, sources: {}, layers: [
+    {id:'land', type:'background'},
+    {id:'wood', type:'fill', source:'osm', 'source-layer':'landcover', paint:{'fill-pattern':'wood-pattern','fill-opacity':0.1}},
+    {id:'water', type:'fill', source:'osm', 'source-layer':'water', paint:{'fill-color':'#000'}},
+  ] };
+  expect(localityBasemapStyle(style, true).layers.map(l => l.id)).toEqual(['land','water']);
+});

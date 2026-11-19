@@ -101,6 +101,14 @@ export function ownSeatRecord(points: SeriesPoint[]): { won: number; best: Serie
   return { won: known.filter((p) => p.own! > 0).length, best, unknown: ran.length - known.length };
 }
 
+/** One name shown two ways: in Hebrew, with and without the definite article (רשימה ממלכתית in 1969, הרשימה הממלכתית
+ *  in 1973 are one name, the State List), so the strip never shows a rename that did not happen. */
+export const sameNameShown = (a: string, b: string, lang: 'he' | 'en') => {
+  if (a === b) return true;
+  if (lang === 'en') return false;
+  const words = (s: string) => s.split(/\s+/).map((w) => w.length > 3 ? w.replace(/^ה/, '') : w).join(' ');
+  return words(a) === words(b);
+};
 /** Consecutive runs of the same name: the name strip under the chart (Mapai | Labor | The Democrats). Each election
  *  shows the name the party ran under then, never a later one (New Right in April 2019, not Yamina). */
 export function erasOf(points: SeriesPoint[], lang: 'he' | 'en'): { from: number; to: number; name: string }[] {
@@ -109,7 +117,7 @@ export function erasOf(points: SeriesPoint[], lang: 'he' | 'en'): { from: number
     if (!p.era) continue;
     const name = partyNameAt(p.era, p.i, lang);
     const last = out[out.length - 1];
-    if (last && last.name === name) last.to = p.i; else out.push({ from: p.i, to: p.i, name });
+    if (last && sameNameShown(last.name, name, lang)) last.to = p.i; else out.push({ from: p.i, to: p.i, name });
   }
   return out;
 }

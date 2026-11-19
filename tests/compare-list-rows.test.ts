@@ -19,7 +19,7 @@ describe('the Lists panel while comparing 2026 with 2022', () => {
     expect(seats(k25, 'Likud')).toBe(32);
     expect(seats(k26, 'Likud')).toBe(27);
     expect(line('Likud')).toMatchObject({ kind: 'pair', seats: 32, names: 'Likud', how: '', bar: true });
-    expect(line('Together (Bennett)')).toMatchObject({ seats: seats(k25, 'Yesh Atid'), names: 'Yesh Atid', how: '(joined)', bar: true });
+    expect(line('Beyachad')).toMatchObject({ seats: seats(k25, 'Yesh Atid'), names: 'Yesh Atid', how: '(joined)', bar: true });
     expect(line('Joint List')).toMatchObject({ names: "Hadash–Ta'al + Balad", how: '(ran separately)' });
     expect(line('The Democrats')).toMatchObject({ names: 'Labor + Meretz', how: '(ran separately)', seats: seats(k25, 'Labor') + seats(k25, 'Meretz') });
   });
@@ -40,7 +40,7 @@ describe('the Lists panel while comparing 2026 with 2022', () => {
   });
   it('writes the Hebrew line in Hebrew', () => {
     const he = refRows(k26, k25, [], true, '2022', 'he');
-    expect(he.byList.get(id(k26, 'Together (Bennett)'))!.how).toBe('(הצטרפה)');
+    expect(he.byList.get(id(k26, 'Beyachad'))!.how).toBe('(הצטרפה)');
     expect(he.byList.get(id(k26, 'Likud'))!.notCounted[0]).toMatch(/לא נספרה/);
   });
 });
@@ -49,7 +49,7 @@ describe('other references', () => {
   it('a later election as the reference (after Swap): 2022 lists against 2026', () => {
     const rows = refRows(k25, k26, [], false, '2026', 'en');
     expect(rows.byList.get(id(k25, 'Likud'))).toMatchObject({ seats: 27, names: 'Likud', bar: true });
-    expect(rows.byList.get(id(k25, 'Yesh Atid'))).toMatchObject({ names: 'Together (Bennett)', how: '(joined)' });
+    expect(rows.byList.get(id(k25, 'Yesh Atid'))).toMatchObject({ names: 'Beyachad', how: '(joined)' });
   });
   it('a later reference says what happened next in its own words: lists that ran together later did not split', () => {
     const en = refRows(k25, k26, [], false, '2026', 'en'), he = refRows(k25, k26, [], false, '2026', 'he');

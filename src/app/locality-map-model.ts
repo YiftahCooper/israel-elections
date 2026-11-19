@@ -5,8 +5,10 @@ import type { Scenario } from '../model/scenario.ts';
 import type { Coordinate } from '../data/locality-coordinates.ts';
 import { allocationOf, seatBlocsOf } from './derive.ts';
 
+/** A search key: points, case, spaces and punctuation ignored, and a doubled vav or yod read as one, since both spellings
+ *  are in everyday use (תקוה / תקווה, קרית / קריית; V2 fault L6, 19 Nov 2026). */
 export function normalizeLocalityName(value: string): string {
-  return value.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+  return value.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '').replace(/וו/g, 'ו').replace(/יי/g, 'י');
 }
 type LocalitySearchNames = { nameHe: string; nameEn?: string; aliases?: string[]; code?: number | null };
 export function matchesLocality(query: string, names: LocalitySearchNames): boolean {

@@ -111,7 +111,7 @@ const K26: WhatIfPreset[] = [
   { id: 'reservists-in', titleEn: 'Reservists & New Economic passes', titleHe: 'המילואימניקים והכלכלית עוברת', body: newVotersBody('26-די'), actions: (s) => (has(s, '26-די') ? toPass(s, '26-די') : null) },
   // as in 2022, when Otzma Yehudit ran on the Religious Zionism list headed by Smotrich (the 2022 dataset's list name and order)
   { id: 'otzma-rz', titleEn: 'Religious Zionism–Zehut and Otzma Yehudit on one list', titleHe: 'הציונות הדתית–זהות ועוצמה יהודית ברשימה אחת', body: (s, lang) => `${t(lang, 'As in 2022.', 'כמו ב־2022.')} ${mergeBody(['26-ט', '26-ב'])(s, lang)}`, actions: (s) => merge(s, ['26-ט', '26-ב']) },
-  { id: 'bennett-yashar', titleEn: 'Together (Bennett) and Yashar! on one list', titleHe: 'ביחד וישר! ברשימה אחת', body: mergeBody(['26-רק', '26-דרך']), actions: (s) => merge(s, ['26-רק', '26-דרך']) },
+  { id: 'bennett-yashar', titleEn: 'Beyachad and Yashar! on one list', titleHe: 'ביחד וישר! ברשימה אחת', body: mergeBody(['26-רק', '26-דרך']), actions: (s) => merge(s, ['26-רק', '26-דרך']) },
   { id: 'arab-joint', titleEn: 'Ra\'am and Joint List on one list', titleHe: 'רע״ם והרשימה המשותפת ברשימה אחת', body: mergeBody(['26-עם', '26-ודם']), actions: (s) => merge(s, ['26-עם', '26-ודם']) },
   // the owner's example (7 Nov): a minority government with the Arab lists' outside support, on the pre-election blocs
   { id: 'minority-outside-support', titleEn: 'A minority government with outside support', titleHe: 'ממשלת מיעוט בתמיכה מבחוץ', ...minority('pre-election-blocs', 'opposition', 'arab') },
