@@ -21,3 +21,5 @@ export function nextScenarioColor(saved: SavedIdentity[], _electionId: string): 
 export function liveScenarioColor(s: Pick<Scenario, 'identityColor' | 'id' | 'electionId'>, saved: SavedIdentity[]): string {
   return isHexColour(s.identityColor) ? s.identityColor! : nextScenarioColor(saved.filter(x => x.id !== s.id), s.electionId);
 }
+/** The palette's names, in the order of SCENARIO_PALETTE (English, Hebrew). */
+export const SCENARIO_COLOUR_NAMES: readonly (readonly [string, string])[] = [['Violet', 'סגול'], ['Slate', 'כחלחל'], ['Ochre', 'אוכרה'], ['Mauve', 'סגלגל'], ['Sage', 'מרווה'], ['Blue', 'כחול'], ['Clay', 'חרס'], ['Olive', 'זית']];

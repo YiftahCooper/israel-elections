@@ -513,7 +513,33 @@ export const withSavedIdentity = (sc: Scenario, x: Pick<SavedScenario, 'id' | 'd
 let openSeq = 0;
 /** Opens an election (optionally replaying a saved or shared log). Resolves false if it could not be loaded.
  *  Replacing unsaved work in the same election first keeps it as a session draft (see stashCurrent). */
-export async function openElection(id: ElectionId, from?: { id?: string; name: string; description?: string; log: Action[]; factionSplitBaseline?: boolean; baseBuiltAt?: string }): Promise<boolean> {
+/** The viewer's own colours win over a scenario's (owner, 19 Nov 2026, colours-yours C): the colours the viewer chose on
+ *  this election's official result, as steps that give `target` those colours wherever the viewer set one. Every other
+ *  colour stays as the scenario's author chose. Colours never count as changes, so nothing here is an edit. */
+export function viewerColourSteps(ds: ElectionDataset, target: Scenario): Action[] {
+  const base = freshScenario(ds);
+  let mine = base;
+  try {
+    const stored: unknown = JSON.parse(localStorage.getItem(`israel-elections:appearance:${ds.id}`) ?? '[]');
+    if (Array.isArray(stored)) for (const a of stored) if (validAction(a) && colourStep(a as Action)) {
+      try { mine = applyAction(mine, a as Action, undefined, { base: baselineOf(ds) }); } catch { /* obsolete palette entity */ }
+    }
+  } catch { return []; }
+  const steps: Action[] = [];
+  for (const l of mine.lists) {
+    const was = base.lists.find(x => x.id === l.id), there = target.lists.find(x => x.id === l.id);
+    if (!there) continue;
+    if (was && l.color !== was.color && there.color !== l.color) steps.push({ type: 'setListMeta', listId: l.id, patch: { color: l.color } });
+    for (const p of l.parties ?? []) if (p.customColor && p.color && there.parties?.some(x => x.id === p.id && x.color !== p.color)) steps.push({ type: 'setPartyColor', listId: l.id, partyId: p.id, color: p.color });
+  }
+  const blocColour = new Map(mine.blocs.filter(b => b.color !== base.blocs.find(x => x.id === b.id)?.color).map(b => [b.id, b.color]));
+  if (target.blocs.some(b => blocColour.has(b.id) && blocColour.get(b.id) !== b.color)) steps.push({ type: 'setBlocAppearance', blocs: target.blocs.map(b => ({ ...b, color: blocColour.get(b.id) ?? b.color })) });
+  return steps;
+}
+
+/** `foreign`: a scenario the viewer did not save (a share link, a file, the gallery): the viewer's own colours replace
+ *  its colours wherever the viewer set one, as it opens, so they are part of what it starts from (never an edit). */
+export async function openElection(id: ElectionId, from?: { id?: string; name: string; description?: string; log: Action[]; factionSplitBaseline?: boolean; baseBuiltAt?: string; foreign?: boolean }): Promise<boolean> {
   const seq = ++openSeq;
   try {
     const ds = await loadDataset(id);
@@ -532,6 +558,7 @@ export async function openElection(id: ElectionId, from?: { id?: string; name: s
       const r = replay(ds, from.name, from.log, from.factionSplitBaseline ?? false);
       // a scenario's undo history is its own: undo never steps back into another scenario's identity
       scenario = { ...r.scenario, ...(from.description ? { description: from.description } : {}), ...(from.id ? { id: from.id } : {}) };
+      if (from.foreign) for (const a of viewerColourSteps(ds, scenario)) { try { scenario = applyAction(scenario, a, undefined, { base: baselineOf(ds) }); } catch { /* not in this scenario */ } }
       reference = scenario;
       const he = state.lang === 'he';
       if (r.failed) notice = he ? `${r.failed === 1 ? 'שינוי אחד' : `${r.failed} שינויים`} לא ניתן היה להחיל מחדש על הנתונים הנוכחיים.` : `${r.failed === 1 ? '1 change' : `${r.failed} changes`} could not be re-applied to the current data.`;
@@ -645,7 +672,7 @@ export async function openImported(sc: Scenario): Promise<boolean> {
       return false;
     }
   }
-  return openElection(sc.electionId, { name: sc.name, ...(sc.description ? { description: sc.description } : {}), log, factionSplitBaseline: split, baseBuiltAt: sc.baseBuiltAt });
+  return openElection(sc.electionId, { name: sc.name, ...(sc.description ? { description: sc.description } : {}), log, factionSplitBaseline: split, baseBuiltAt: sc.baseBuiltAt, foreign: true });
 }
 
 // ---- community gallery links (#g=<issue>): the short link of a scenario published in the gallery
@@ -706,7 +733,7 @@ export async function openSharedFromHash(): Promise<boolean> {
   // the link is cleared only once it has opened, so a failed load can be retried by reloading
   // an unnamed shared scenario is named for where it came from, so it is recognisable among unsaved work
   const name = sh.name || (state.lang === 'he' ? 'תרחיש משותף' : 'Shared scenario');
-  if (await openElection(sh.electionId, { ...sh, name })) { history.replaceState(null, '', location.pathname + location.search); noteGalleryOpened(sh.electionId); }
+  if (await openElection(sh.electionId, { ...sh, name, foreign: true })) { history.replaceState(null, '', location.pathname + location.search); noteGalleryOpened(sh.electionId); }
   // its data could not be loaded: Try again opens the link (still in the address bar), not the plain election
   else if (state.loadError?.id === sh.electionId && !state.loadError.kept) setState({ loadError: { ...state.loadError, retry: () => void openSharedFromHash() } });
   return true;

@@ -8,6 +8,7 @@ import { listLabel } from '../derive.ts';
 import { useFloating } from '../floating.tsx';
 import { useCloseOnFocusAway } from '../focusReturn.ts';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
+import { ScenarioColour } from './ScenarioColour.tsx';
 import { useActiveReference } from '../useActiveReference.ts';
 import { ElectionAbout } from './ElectionContext.tsx';
 import { changeText } from '../changeValue.tsx';
@@ -77,6 +78,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   /** Save & share: the same items in the desktop popup and in the phone menu */
   const shareItems = (close: () => void) => <>
             {s && <ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} />}{dirty && <UnsavedMark />}
+            <ScenarioColour />
             <ScenarioSave onSaved={() => close()} className="btn small" disabled={!s}><Save className="icon sm" aria-hidden />{L('Save in this browser', 'שמירה בדפדפן')}</ScenarioSave>
             <ScenarioSave as onSaved={() => close()} className="btn small" disabled={!s}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>
             <button className="btn small" onClick={async () => {
