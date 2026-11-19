@@ -22,7 +22,7 @@ async function addVotes(page: Page, name: string, n: number) {
   const votes = page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
   const v = Number((await votes.inputValue()).replace(/[^0-9]/g, ''));
   await votes.fill(String(v + n)); await votes.press('Enter');
-  await expect(page.locator('.band').getByRole('button', { name: /^Undo:/ })).toBeEnabled();
+  await expect(page.locator('.session').getByRole('button', { name: /^Undo:/ })).toBeEnabled();
   await page.keyboard.press('Escape');
 }
 
@@ -67,7 +67,7 @@ test('Copy votes: Set as default with Don\'t ask again copies at once; Undo and 
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('israel-elections:settings')!).values.copyAskEachTime)).toBe(false);
 
   // the next copy happens at once, says so, and Undo takes it back
-  const undo = page.locator('.band').getByRole('button', { name: /^Undo:/ });
+  const undo = page.locator('.session').getByRole('button', { name: /^Undo:/ });
   const before = await undo.getAttribute('aria-label');
   await page.getByRole('button', { name: /^Copy votes from .*: Yisrael Beiteinu$/ }).click();
   await expect(box).toHaveCount(0);

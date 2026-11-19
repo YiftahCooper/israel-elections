@@ -43,6 +43,20 @@ describe('what the screen is compared with', () => {
     startComparing();
     expect(getState().comparing).toBe('prev');
     stopComparing();
+    // a sourced grouping and a colour are not edits either; a vote edit on top of a grouping is
+    const scheme = k26.blocSchemes!.find((g) => g.id !== k26.blocSchemeId)!.id;
+    const grouped = applyAction(k26, { type: 'applyBlocScheme', schemeId: scheme }, undefined, { base: k26 });
+    const listId = k26.lists[0].id;
+    for (const sc of [grouped, applyAction(k26, { type: 'setListMeta', listId, patch: { color: '#123456' } }, undefined, { base: k26 })]) {
+      setState({ scenario: sc });
+      startComparing();
+      expect(getState().comparing).toBe('prev');
+      stopComparing();
+    }
+    setState({ scenario: applyAction(grouped, { type: 'setVotes', listId: likud('k26'), votes: 1_300_000 }, undefined, { base: k26 }) });
+    startComparing();
+    expect(getState().comparing).toBe('official');
+    stopComparing();
     setState({ scenario: edited, settings: { compareWith: 'previous' } });
     startComparing();
     expect(getState().comparing).toBe('prev');

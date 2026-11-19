@@ -8,7 +8,7 @@ import type { ElectionDataset, ElectionId, ElectionIndexEntry } from '../../data
 import type { Scenario } from '../../model/scenario.ts';
 import { rosterKey } from '../../model/roster.ts';
 import { baselineOf } from '../factionDefaults.ts';
-import { resultChanges } from '../derive.ts';
+import { resultChanges, resultEdited } from '../derive.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { getSetting, getState, loadDataset, replay, withSavedIdentity, scenarioKey, setState, toast, useStore, type SavedScenario, type ScenarioSession, type State } from '../store.ts';
 
@@ -134,9 +134,9 @@ export function useReference(work: Scenario | null): ReferenceState {
 export function startComparing() {
   const st = getState();
   const s = st.scenario;
-  // edited: anything that makes the official result differ from the work; an edit that leaves it the same (a bloc
-  // grouping) keeps the previous election, since the official result would be nothing to compare
-  const edited = !!s && !!st.datasets[s.electionId] && !sameVotes(baselineOf(st.datasets[s.electionId]!), s);
+  // edited: a change to the result itself; groupings, coalition roles, faction splits and colours keep the previous
+  // election, since they leave this election's official result with nothing to compare
+  const edited = !!s && !!st.datasets[s.electionId] && resultEdited(s, baselineOf(st.datasets[s.electionId]!));
   setState({ comparing: getSetting('compareWith') === 'official' && edited ? 'official' : 'prev', compare: { ...st.compare, chamber: 'work' } });
 }
 export function stopComparing() {

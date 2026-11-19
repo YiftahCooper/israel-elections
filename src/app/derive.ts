@@ -3,7 +3,7 @@ import { hebrewPrefix, hebrewPrefixName } from './hebrewPrefix.ts';
 import { formatDate } from './dateFormat.ts';
 import { seatsText } from './format.ts';
 import { featureLabel } from './features.ts';
-import { factLog } from '../model/actionClassification.ts';
+import { factLog, LIST_FIELDS, SCENARIO_FIELDS } from '../model/actionClassification.ts';
 import { groupingName } from './groupingName.ts';
 import { englishLabel } from '../data/names.ts';
 import {inputDiffs,analysisPart,inputPart,replacementScopes,scopeCovers} from '../model/editScopes.ts';
@@ -442,6 +442,14 @@ export function editPathLabel(s: Scenario, path: EditPath, lang: Lang, fallback?
 export const resultChanges=(s:Scenario,reference:Scenario):EditPath[]=>referenceChanges(s,reference);
 /** True when the only changes are groupings or coalition roles: the scenario differs, its votes and seats do not. */
 export const groupingOnly=(s:Scenario,reference:Scenario):boolean=>{const p=referenceChanges(s,reference);return p.length>0&&p.every(x=>!!analysisPart(x));};
+/** True when a change makes the result itself differ (votes, lists, rules, totals, agreements): groupings, coalition
+ *  roles, faction splits and colours never count (owner, 7 and 19 Nov 2026). Compare starts on the official result
+ *  only then. */
+export const resultEdited=(s:Scenario,reference:Scenario):boolean=>referenceChanges(s,reference).some(p=>{
+ if(p[0]==='parts')return !analysisPart(p);
+ if(p[0]==='lists')return p.length<3||(LIST_FIELDS as Record<string,string>)[p[2]]!=='B'&&(LIST_FIELDS as Record<string,string>)[p[2]]!=='C';
+ return (SCENARIO_FIELDS as Record<string,string>)[p[0]]==='A';
+});
 export const unchangedResultNote=(lang:Lang)=>lang==='he'?'הקולות והמנדטים לא השתנו':'Votes and seats unchanged';
 
 /** The quota written out as the engine computed it: seats + 1 in 1949, Droop, unrounded, or the exact fallback when
