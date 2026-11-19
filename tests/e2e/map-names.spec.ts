@@ -1,7 +1,7 @@
 // The Localities map is colours only (F1, 19 Nov 2026): no list names or shares are written on it at any zoom, place
 // names never sit on a circle or a town's tiles, and a place's lists and shares come from its hover box, a tap, or a
 // choice from the search (the keyboard's way in). The Vote mix hover box once read "[object Object]".
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 const open = async (page: Page, lang: 'en' | 'he', view: 'winner' | 'mix') => {

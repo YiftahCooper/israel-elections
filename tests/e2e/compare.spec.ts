@@ -2,7 +2,7 @@
 // whole results (your work on the left in English, on the right in Hebrew, C3a), one table of paired lists, copies
 // between them with every copied value marked, matching decisions, Swap, save and share, the phone row sheet, Hebrew
 // graphics left to right, and contrast. The figures are the official results (Likud: 32 seats in 2022, 27 in 2026).
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 

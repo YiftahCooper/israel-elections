@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 // 19 Nov 2026 (owner): language and theme live in Settings, Undo, Redo and Start over on the line of changes; the top bar
 // takes one row when everything fits and two balanced rows otherwise; a scenario's colours yield to the viewer's own;

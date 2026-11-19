@@ -1,4 +1,4 @@
-import {expect,test} from '@playwright/test';
+import {expect,test} from './fixtures';
 import { openSettings } from './barMenu.ts';
 import {choose} from './choices.ts';
 for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const width of [1500,1024,390]) test(`component identities ${lang} ${theme} ${width}`,async({page})=>{

@@ -1,4 +1,4 @@
-import{expect,test}from'@playwright/test';
+import{expect,test}from'./fixtures';
 import{deflateRawSync}from'node:zlib';
 import{dataset}from'../graphics-cases.ts';
 import{deltaE2000}from'../../src/data/colour.ts';

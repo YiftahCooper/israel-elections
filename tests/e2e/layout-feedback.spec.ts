@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { barPart } from './barMenu.ts';
 for (const theme of ['light','dark']) for (const lang of ['en', 'he']) for (const width of [1500, 1024, 390]) test(`independent panels and stationary edits ${lang} ${theme} ${width}`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 });

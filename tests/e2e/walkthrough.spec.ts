@@ -1,6 +1,6 @@
 // "How seats were allocated": every stage of each era's method is taught, the steps fit, tables are whole,
 // and an edited scenario is explained against its reference (owner feedback, 5 Nov 2026).
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page, election = 'k26', lang: 'en' | 'he' = 'en', width = 1500) {

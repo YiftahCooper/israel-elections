@@ -1,4 +1,4 @@
-import {test,expect,type Page} from '@playwright/test';
+import {test,expect,type Page} from './fixtures';
 async function start(page:Page,lang='en',level='simple') {
  await page.addInitScript(v=>{if(sessionStorage.getItem('seeded-seats'))return;sessionStorage.setItem('seeded-seats','1');localStorage.setItem('israel-elections:v1',JSON.stringify(v));localStorage.setItem('israel-elections:settings',JSON.stringify({v:2,values:{starterTip:false,decimals:2}}));},{lang,theme:'light',level,hintDismissed:true});
  await page.goto('/');await page.getByRole('tab',{name:lang==='he'?'משפחות מפלגות':'Party families',exact:true}).click();

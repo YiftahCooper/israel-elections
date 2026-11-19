@@ -1,6 +1,6 @@
 // Sensitivity screen (owner review, 5 Nov 2026): the page answers its three questions as soon as it opens, its
 // pickers follow the election, its tables compare with the current result, and its bloc claim matches the chamber.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', width = 1500) {

@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 // Scenario identity and navigation chrome (release-candidate audit, area C).
 async function start(page: Page, lang: 'en' | 'he' = 'en', level = 'expert', size = { width: 1500, height: 1000 }) {
   await page.setViewportSize(size);

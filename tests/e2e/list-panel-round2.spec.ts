@@ -1,5 +1,5 @@
 import{deltaE2000}from'../../src/data/colour.ts';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 // Round-2 audit of the list side panel and the shared controls it uses (5 Nov 2026).
 

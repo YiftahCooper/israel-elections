@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { deflateRawSync } from 'node:zlib';
 import { readFile } from 'node:fs/promises';
 import { dataset } from '../graphics-cases.ts';

@@ -1,6 +1,6 @@
 // The Knesset on a date (owner decisions 8 and 11 Nov 2026): stepping through the 24th Knesset's term, the events
 // each level shows, the seat marks, the seat card, and the election chart's card naming who else held a seat.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page, { lang = 'en', level = 'standard', width = 1500, settings = {}, election = 'k24' }: { lang?: 'en' | 'he'; level?: string; width?: number; settings?: Record<string, unknown>; election?: string } = {}) {

@@ -1,6 +1,6 @@
 // The line of changes on a phone: with no changes it is one line centred in its usual height (no blank strip under
 // "No changes"), and the first change fills the second line without moving anything.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 async function start(page: Page, lang: 'en' | 'he') {
   await page.setViewportSize({ width: 390, height: 844 });

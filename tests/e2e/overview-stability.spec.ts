@@ -1,7 +1,7 @@
 import { choose } from './choices.ts';
 // Overview round 2: nothing moves under the pointer when you edit or open a list, focus is never hidden under
 // the sticky bars, and Hebrew text beside numbers and graphics reads correctly.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 const start = async (page: Page, lang: 'en' | 'he' = 'en', width = 1500, election = 'k26') => {
   await page.setViewportSize({ width, height: width < 600 ? 844 : 1000 });

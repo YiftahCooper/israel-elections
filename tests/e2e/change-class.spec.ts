@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 // Owner, 7 November 2026: grouping and coalition edits are scenario changes (counted, in History, marked, tinted),

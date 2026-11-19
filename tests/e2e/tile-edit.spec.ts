@@ -3,7 +3,7 @@
 // outside closes it. Turnout, eligible voters and invalid ballots always; the threshold only under Experimental rules.
 // The separate fields on the Turnout and Rules tabs are gone. On a phone the window never covers its tile, also when
 // the keyboard takes half the screen.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { openTool } from './openTool.ts';
 
 async function open(page: Page, { lang = 'en', width = 1500, height = 1000 }: { lang?: 'en' | 'he'; width?: number; height?: number } = {}) {

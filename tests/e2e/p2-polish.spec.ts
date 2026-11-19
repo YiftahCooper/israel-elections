@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 // 9 Nov 2026 follow-ups: 2026 gazetted (no "not yet verified" anywhere), "Device" theme wherever theme is chosen,
 // the phone bar pinned while scrolling, and the party-family charts on the shared hover timing (hoverIntent.ts).

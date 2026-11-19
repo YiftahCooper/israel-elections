@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { deflateRawSync } from 'node:zlib';
 import { dataset } from '../graphics-cases.ts';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { choose } from './choices.ts';
 
 for (const lang of ['he', 'en'] as const) for (const theme of ['light', 'dark']) {

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { barLanguage, openBarMenu, openScenarioMenu } from './barMenu.ts';
 import { choose } from './choices.ts';
 

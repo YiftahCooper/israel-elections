@@ -1,5 +1,5 @@
 // Seat safety screen review (5 Nov 2026): each test locks in one repaired behaviour.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', width = 1500) {

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { mkdirSync, readFileSync } from 'node:fs';
 import { choose } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';

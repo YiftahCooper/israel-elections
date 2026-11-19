@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 // Find an MK over the seat chart (owner card "seat", 16 Nov 2026): typing a name rings that member's seat and names it,
 // the other seats fade; several matches are offered as buttons; it works in both layouts and both languages.

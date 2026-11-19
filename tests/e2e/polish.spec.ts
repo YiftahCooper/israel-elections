@@ -3,7 +3,7 @@ import { closeBarMenu, openBarMenu, openSettings } from './barMenu.ts';
 import { allocate } from '../../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput } from '../../src/model/scenario.ts';
 import { readFileSync } from 'node:fs';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 for (const lang of ['he','en']) for (const phone of [false,true]) {
   test(`every election's chamber labels fit: ${lang} ${phone ? 'phone' : 'desktop'}`, async ({page}) => {

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { choose } from './choices.ts';
 for (const lang of ['en', 'he'] as const) test(`${lang}: joint-list default is personal, unedited, persistent and individually overridable`, async ({ page }) => {
   await page.addInitScript(lang => {

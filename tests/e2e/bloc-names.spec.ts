@@ -2,7 +2,7 @@
 // A name may wrap onto two lines inside its band; when any band is too narrow even for that, every name is listed in full
 // in the key beneath the strip instead (always so on a phone). Checked for 2021, 2022 and 2026, every grouping, both
 // languages, every 20 px from 360 to 1500, and for the compared result's strip under it.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 const open = async (page: Page, lang: 'en' | 'he') => {

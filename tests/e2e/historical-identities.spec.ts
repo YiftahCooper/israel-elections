@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { choose } from './choices.ts';
 
 for (const lang of ['en', 'he']) test(`corrected historical identities open their list and candidate details (${lang})`, async ({ page }) => {

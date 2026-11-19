@@ -1,4 +1,4 @@
-import { expect, type Locator } from '@playwright/test';
+import { expect, type Locator } from './fixtures';
 export async function choose(picker: Locator, value: string | { label: string }) {
   const dialogId = await picker.getAttribute('aria-controls');
   // read before choosing: a picker inside the phone menu goes away with the menu once a choice is made

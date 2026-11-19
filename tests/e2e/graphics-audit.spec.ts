@@ -1,6 +1,6 @@
 import { choose } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
-import {expect,test} from '@playwright/test';
+import {expect,test} from './fixtures';
 import {readFileSync} from 'node:fs';
 import {deflateRawSync} from 'node:zlib';
 import {graphicsCases,dataset} from '../graphics-cases.ts';

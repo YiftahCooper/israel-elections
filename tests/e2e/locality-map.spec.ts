@@ -1,6 +1,6 @@
 import { choose } from './choices.ts';
 // the figures below were drawn at one decimal place (Settings → Max decimal places)
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 test('locality map supports bilingual search, address lookup and table fallback', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'en',level:'expert',hintDismissed:true})));

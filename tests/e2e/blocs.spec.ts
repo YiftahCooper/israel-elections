@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { choose } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 // Blocs per election and constituent parties (decision 0087).
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 const start = async (page: Page, level: string) => {
   await page.addInitScript((v) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem('israel-elections:v1', v); const o = JSON.parse(v); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); sessionStorage.setItem('seeded', '1'); } },

@@ -1,5 +1,5 @@
 // Side by side opens from the comparison strip (owner, 12 Nov 2026, C5b), no longer from a Compare tab.
-import { expect, type Page } from '@playwright/test';
+import { expect, type Page } from './fixtures';
 
 export async function openSideBySide(page: Page) {
   if (!(await page.locator('.cmpm-strip').count())) {

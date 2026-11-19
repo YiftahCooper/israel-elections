@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 // Audit 12 Nov 2026, lane c-levels: what the Custom level and the level switch promise, held to what the app does.

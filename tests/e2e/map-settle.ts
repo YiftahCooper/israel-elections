@@ -4,7 +4,7 @@
 // quarter of a second. During a slide the names and the canvas move together, but the canvas's `data-island` stays in
 // the pixels of its last redraw until the slide ends. A test that read the island, the map's box and a name in three
 // separate steps could straddle the slide and see the island 28 px away from where it is drawn (CI run 44441667338).
-import type { Page } from '@playwright/test';
+import type { Page } from './fixtures';
 
 /** Resolves once fonts are ready and the map pane, the island and every name have kept still for several frames. */
 export const settleMap = (page: Page) => page.evaluate(async () => {

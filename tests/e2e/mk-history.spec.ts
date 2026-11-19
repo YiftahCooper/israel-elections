@@ -1,7 +1,7 @@
 // An MK's own history (owner decisions M1–M3, 9 Nov 2026): it opens from the MK's seat in the chamber and from their
 // name in a list's candidates; one row per Knesset; runs that did not win a seat; Hebrew graphics left to right; the
 // phone sheet; viewing it is never an edit.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page, { lang = 'en', width = 1500, k = 'k25' }: { lang?: 'en' | 'he'; width?: number; k?: string } = {}) {

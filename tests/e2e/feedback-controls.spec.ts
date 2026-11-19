@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { choose } from './choices.ts';
 
 for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (const width of [1500, 1024, 390]) {

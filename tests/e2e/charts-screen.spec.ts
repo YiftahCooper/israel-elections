@@ -1,5 +1,5 @@
 // Charts screen (screen-by-screen audit, 2026-11-05): each test locks in one fixed defect class.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', width = 1500) {

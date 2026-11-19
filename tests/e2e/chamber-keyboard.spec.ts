@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 // Audit 12 Nov 2026 (ax-screens-a-03, a-04, a-06): every seat card opens from the keyboard in both layouts and both
 // languages, one tab stop for the whole chamber; Blocks dims the other seats like the arc; Blocks draws (and exports)

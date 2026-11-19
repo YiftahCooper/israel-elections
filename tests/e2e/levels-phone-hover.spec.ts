@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 // Owner decisions of 9 Nov 2026: Settings in level tiers, parties under joint lists by level, the device theme for
 // first-time visitors, the shared hover delay and the one-row phone bar.

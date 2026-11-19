@@ -1,7 +1,7 @@
 import { choose } from './choices.ts';
 // The "definition of success" sequence from the product specification (§16), run in a real browser
 // against the 2022 election. Each step asserts the engine-backed result, not just that a control exists.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { openSideBySide } from './sideBySide.ts';
 import { barLanguage } from './barMenu.ts';
 

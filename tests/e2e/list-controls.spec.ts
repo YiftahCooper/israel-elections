@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 // Release-candidate audit of the lists column and a list's editing controls.
 async function start(page: Page, { lang = 'en', level = 'expert', election = 'k25' } = {}) {

@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { openSideBySide } from './sideBySide.ts';
 
 async function start(page: Page, lang: 'en' | 'he', width: number) {

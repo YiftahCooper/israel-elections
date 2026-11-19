@@ -2,7 +2,7 @@
 // font is blocked and the page falls back to a much wider face, as on a device where the font never arrives. A name's
 // room is kept for the text as the page draws it, so it still never runs onto the double-envelope island, another
 // name, a dot, a circle or a town's tiles, and never off the map. English and Hebrew, phone and desktop, both views.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 import { mapLayout, settleMap } from './map-settle.ts';
 

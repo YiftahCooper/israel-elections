@@ -1,5 +1,5 @@
 // What if…: answers that move no seat say what does change; assumptions and sources are reachable.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', width = 1500) {
   await page.setViewportSize({ width, height: 1000 });

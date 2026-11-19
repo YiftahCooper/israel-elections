@@ -1,6 +1,6 @@
 // Comparing as a mode (Design A): the strip, what it compares with, Swap and Stop comparing; the Lists panel, the seat
 // chart switch and the Copy votes box while comparing; Side by side opened from the strip.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 export async function start(page: Page, lang: 'en' | 'he' = 'en', level = 'standard', width = 1500, values: Record<string, unknown> = {}) {

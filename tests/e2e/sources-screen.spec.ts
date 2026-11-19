@@ -1,5 +1,5 @@
 import { choose } from './choices.ts';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 // The Sources screen, the band's About and the footer: provenance complete and readable, secondary
 // evidence labelled, no dead links, downloads served.

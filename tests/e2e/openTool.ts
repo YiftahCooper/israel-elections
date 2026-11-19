@@ -1,4 +1,4 @@
-import { expect, type Page } from '@playwright/test';
+import { expect, type Page } from './fixtures';
 
 /** Opens a tool from its tab. A greyed-out tab asks first (owner, 16 Nov 2026): the tool is added to Custom (or
  *  shown again), on top of the complexity the test chose. */
