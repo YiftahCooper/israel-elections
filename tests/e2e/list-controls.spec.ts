@@ -53,6 +53,20 @@ test('a small election defaults to a smaller step', async ({ page }) => {
   await expect(page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '1k', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });
 
+test('withdrawing a list with its transfer step open keeps the panel open and logs no error', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  await start(page); await open(page, 'Likud');
+  const panel = page.locator('.side-panel');
+  await panel.getByRole('button', { name: /Scale, share & transfer/ }).click();
+  await expect(panel.getByRole('button', { name: 'Transfer 1 pp', exact: true })).toBeVisible();
+  await panel.getByText('Withdrawn from the race').click();
+  await expect(panel.getByText(/This list has withdrawn/)).toBeVisible();
+  await expect(panel.getByRole('button', { name: 'Transfer 1 pp', exact: true })).toHaveCount(0);
+  expect(errors).toEqual([]);
+});
+
 test('a withdrawn list shows no threshold goals, no stale search and no threshold-crossing note; its row is marked once', async ({ page }) => {
   await start(page); await open(page, 'Likud');
   const panel = page.locator('.side-panel');

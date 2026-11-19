@@ -294,7 +294,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             <div className="row">{quick('×2', l.votes * 2, false)}{quick('÷2', Math.round(l.votes / 2), false)}</div>
             <label className="row small">{L('Share of valid votes (%)', 'שיעור מהקולות הכשרים (%)')}<DecimalInput value={pctValid} digits={Math.max(2, digits)} width={74} label={L('Share of valid votes (%)', 'שיעור מהקולות הכשרים (%)')} onCommit={p => commit((from) => { const t = votesForShare(s, l, p, from); if (t !== null) editTo(t, from); })} /></label>
             {/* the vote-source disclosure above already offers this level's way in; no second one here */}
-            {transferShown && <TransferStep s={s} l={l} />}
+            {transferShown && !l.withdrawn && <TransferStep s={s} l={l} />}
           </div>}
         </fieldset>
         <Feature id="voteStart"><StartFrom s={s} part="votes" /></Feature>
