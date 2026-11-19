@@ -355,7 +355,9 @@ const EXPECTED: Record<Family, string> = {
   // record, and Davidi's in both languages; only note text changes, the other four digests are unchanged.
   // Candidate notes (19 Nov, FV5): the eight 14th-Knesset replacement notes name the newcomer in English (Hebrew given
   // name first), and Hebrew notes use straight quotation marks; note text only, the other four digests are unchanged.
-  model: 'fa34fcaa312256a6b9bb7d9bd779b948255fd49936769e45c07aa8db032bd9a0',
+  // Names (19 Nov, FV5): the Knesset English spellings (Liberman, Penina Rosenblum, New Hope – The United Right), the
+  // 16th and 17th elections called "Election to the Nth Knesset"; names only, the other four digests are unchanged.
+  model: '84e4b3c708cab47c76f4dab7909d291ada8ea871aef88169d1610af06a4804b7',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

@@ -102,7 +102,7 @@ describe('one name per faction: the timeline and MK history', () => {
 describe('the steps the audit named', () => {
   const line = (k: number, id: string, lang: 'en' | 'he') => eventLine(items(k).find((x) => x.id === id)!, mk, lang);
   test('25th Knesset, 13 Mar 2024: the faction is named as on the seat cards and in MK history', () => {
-    expect(line(25, 'k25-faction-3', 'en')).toBe('4 MKs recorded moving from National Unity to National Right.');
+    expect(line(25, 'k25-faction-3', 'en')).toBe('4 MKs recorded moving from National Unity to New Hope – The United Right.');
     expect(line(25, 'k25-faction-3', 'he')).toBe('רישום החברות עבר מסיעת המחנה הממלכתי לסיעת הימין הממלכתי (4 ח״כים).');
   });
   test('24th Knesset, 15 Aug 2022: the splits name National Unity and Beyahad, as the seat cards do', () => {

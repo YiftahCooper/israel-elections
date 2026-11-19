@@ -141,3 +141,32 @@ describe('one date format per language, one Hebrew quotation mark, isolated Engl
     expect(latinQuotesInHebrew('An English "quote" stays whole')).toHaveLength(1);
   });
 });
+
+describe('one English spelling per name, where the Knesset English data gives one', () => {
+  // Shown fields only: quotations, publishers, titles and source descriptions keep the spelling of their source.
+  const KEEP = /^\s*"(quote\w*|publisher\w*|attribution|title\w*|url|credit|description\w*|locator|support|scope|conclusion)": /;
+  const SKIP_DIRS = /data\/meta\/(bios|logos|party-links)\//;
+  const WRONG: [RegExp, string][] = [
+    [/Lieberman/, 'Liberman'], [/Pinchas Rosen/, 'Pinhas Rosen'], [/Yitzhak Mordechai/, 'Itzchak Mordechay'],
+    [/(?<!Shneor )Zalman Shazar/, 'Shneor Zalman Shazar'], [/Haika Grossman(?!-Orkin)/, 'Haika Grossman-Orkin'],
+    [/Pnina Rosenblum/, 'Penina Rosenblum'], [/Ra’am|Ta’al|Sa’ar/, "straight apostrophe (Ra'am, Ta'al, Sa'ar)"],
+    [/\bRaam\b/, "Ra'am"], [/National Right/, 'New Hope – The United Right'], [/\bLabour\b/, 'Labor'],
+  ];
+  const shown = () => [...files('data/meta', /\.json$/), 'scripts/lib/list-meta.ts'].filter((f) => !SKIP_DIRS.test(f))
+    .flatMap((f) => readFileSync(f, 'utf8').split('\n').map((l, i) => ({ l, at: `${f}:${i + 1}` })))
+    .filter(({ l }) => !KEEP.test(l));
+  it('uses the Knesset spelling of people and parties in shown fields', () => {
+    const hits = shown().flatMap(({ l, at }) => WRONG.filter(([re]) => re.test(l)).map(([, want]) => `${at} → ${want}`));
+    expect(hits).toEqual([]);
+  });
+  it('never gives אחריות the English name of a different party (U\'Bizchutan)', () => {
+    const parties = JSON.parse(readFileSync('data/meta/parties.json', 'utf8')).parties as { names?: { nameHe: string; nameEn: string | null }[] }[];
+    const wrong = parties.flatMap((p) => p.names ?? []).filter((n) => n.nameHe.startsWith('אחריות') && /Bizchutan/.test(n.nameEn ?? ''));
+    expect(wrong).toEqual([]);
+  });
+  it('names every election "Election to the Nth Knesset"', () => {
+    const odd = files('public/data', /^k\d+\.json$/).map((f) => JSON.parse(readFileSync(f, 'utf8')).nameEn as string)
+      .filter((n) => !/^Election to the \d+(st|nd|rd|th) Knesset/.test(n));
+    expect(odd).toEqual([]);
+  });
+});

@@ -326,7 +326,7 @@
       "effectiveDate": "2009-02-10",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Ra’am–Ta’al. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date.",
+      "textEn": "Election-day eligibility: Ra'am–Ta'al. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date.",
       "textHe": "מעמד ביום הבחירות: רע״מ–תע״ל. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
@@ -394,7 +394,7 @@
       "effectiveDate": "2019-04-09",
       "contestType": "knesset",
       "type": "disqualification",
-      "textEn": "Election-day eligibility: Ra’am–Balad. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date.",
+      "textEn": "Election-day eligibility: Ra'am–Balad. The Supreme Court reversed the Central Elections Committee exclusion; participation was allowed. Reported by the Israel Democracy Institute (secondary); this date is the election-day status, not the judgment date.",
       "textHe": "מעמד ביום הבחירות: רע״מ–בל״ד. בית המשפט העליון ביטל את פסילת ועדת הבחירות וההשתתפות הותרה. לפי סקירת המכון הישראלי לדמוקרטיה (מקור משני); התאריך הוא יום הבחירות ולא מועד פסק הדין.",
       "source": {
         "url": "https://www.idi.org.il/articles/65951",
@@ -1186,7 +1186,7 @@
       "effectiveDate": "2019-03-24",
       "contestType": "knesset",
       "type": "counting-context",
-      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra’am–Ta’al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
+      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra'am–Ta'al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
       "textHe": "תיאור בדיעבד שפורסם ב־24 במרס 2019: לפי מסמך המחקר של הכנסת, צירוף המעטפות הכפולות בבחירות 2013 העביר מנדט זמני אחד מרע״מ–תע״ל לבית היהודי. התוצאות הסופיות כבר כוללות קולות אלה. המסמך אינו מציין את מועד השינוי המדויק; זו אינה ראיה לתיקון בצו בית משפט.",
       "source": {
         "url": "https://fs.knesset.gov.il/globaldocs/MMM/2e5ce5ea-ec1e-e911-80e1-00155d0a98a9/2_2e5ce5ea-ec1e-e911-80e1-00155d0a98a9_11_10970.pdf",
@@ -1203,7 +1203,7 @@
       "effectiveDate": "2019-03-24",
       "contestType": "knesset",
       "type": "counting-context",
-      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra’am–Ta’al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
+      "textEn": "Retrospective account published 24 March 2019: the Knesset research paper says adding double-envelope votes in the 2013 election shifted one provisional seat from Ra'am–Ta'al to Jewish Home. The final dataset already includes these votes. The paper does not give the exact count-change date; this is not evidence of a court correction.",
       "textHe": "תיאור בדיעבד שפורסם ב־24 במרס 2019: לפי מסמך המחקר של הכנסת, צירוף המעטפות הכפולות בבחירות 2013 העביר מנדט זמני אחד מרע״מ–תע״ל לבית היהודי. התוצאות הסופיות כבר כוללות קולות אלה. המסמך אינו מציין את מועד השינוי המדויק; זו אינה ראיה לתיקון בצו בית משפט.",
       "source": {
         "url": "https://fs.knesset.gov.il/globaldocs/MMM/2e5ce5ea-ec1e-e911-80e1-00155d0a98a9/2_2e5ce5ea-ec1e-e911-80e1-00155d0a98a9_11_10970.pdf",
@@ -1652,7 +1652,7 @@
         },
         {
           "id": "mordechai",
-          "nameEn": "Yitzhak Mordechai",
+          "nameEn": "Itzchak Mordechay",
           "nameHe": "יצחק מרדכי",
           "status": "withdrawn",
           "source": {

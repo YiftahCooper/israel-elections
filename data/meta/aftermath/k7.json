@@ -156,7 +156,7 @@
       "date": "1969-11-01",
       "kind": "consultations",
       "president": {
-        "nameEn": "Zalman Shazar",
+        "nameEn": "Shneor Zalman Shazar",
         "nameHe": "זלמן שזר"
       },
       "nominees": {
@@ -333,7 +333,7 @@
       {
         "date": "1969-11-01",
         "type": "consultations",
-        "textEn": "President Zalman Shazar held consultations on government formation.",
+        "textEn": "President Shneor Zalman Shazar held consultations on government formation.",
         "textHe": "הנשיא זלמן שזר קיים התייעצויות על הרכבת הממשלה.",
         "cites": [
           {

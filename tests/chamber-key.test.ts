@@ -67,6 +67,6 @@ test('2026: Likud heads Likud 26 and New Hope 1, with New Hope\'s own logo and n
   const s = scenarioFromDataset(dataset(26), '', true), r = allocationOf(s);
   const likud = chamberKeyGroups(chamberKeyRows(s, seatOrder(s, r, 'list', 'both'), 'both')).find(g => g.l.shortEn === 'Likud')!;
   expect(likud.byParty).toBe(true);
-  expect(likud.rows.map(x => [x.p?.nameEn, x.n])).toEqual([['Likud', 26], ['New Hope – the National Right', 1]]);
+  expect(likud.rows.map(x => [x.p?.nameEn, x.n])).toEqual([['Likud', 26], ['New Hope – The United Right', 1]]);
   expect(likud.rows.map(x => ownPartyLogo(likud.l, x.p)?.file)).toEqual([undefined, 'logos/newhope-2026.png']);
 });

@@ -34,7 +34,7 @@ test('2026 at Standard: each joint list is one group under its logo, its parties
   const likud = legend.getByRole('group', { name: 'Likud', exact: true });
   await expect(likud.locator('.key-group-head')).toHaveText(/^Likud\s*27$/);
   await expect(likud.locator('.key-group-head .slip.logo')).toHaveCount(1);
-  await expect(likud.locator('button:not(.key-group-head)')).toHaveText([/^Likud\s*26$/, /^New Hope – the National Right\s*1$/]);
+  await expect(likud.locator('button:not(.key-group-head)')).toHaveText([/^Likud\s*26$/, /^New Hope – The United Right\s*1$/]);
   // New Hope's own 2026 logo; Likud's party row does not repeat its list's logo
   await expect(likud.locator('button:not(.key-group-head)').nth(1).locator('.slip.logo img')).toHaveAttribute('src', /newhope-2026/);
   await expect(likud.locator('button:not(.key-group-head)').first().locator('.slip')).toHaveCount(0);
@@ -66,7 +66,7 @@ test('the exported picture keeps the groups, the ballot letters and the logos', 
   expect(images.every(x => x.includes('href="data:image/'))).toBe(true);
   expect(svg).toContain('>ג</text>'); // United Torah Judaism's letter
   expect(svg).toMatch(/font-weight="700"[^>]*>Likud ⁦?27/);
-  expect(svg).toMatch(/>New Hope – the National Right ⁦?1/);
+  expect(svg).toMatch(/>New Hope – The United Right ⁦?1/);
   // one frame per joint list with two or more parties seated (2026: eight)
   expect((svg.match(/<rect [^>]*rx="8" fill="none"/g) ?? []).length).toBe(8);
 });

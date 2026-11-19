@@ -441,7 +441,7 @@
         "orderSeq": 2,
         "orderBasis": "Ben-Gurion's presentation of government 2 (presentation-gov2, 30 Oct 1950) recounts these steps in this order: he returned the mandate, the President tasked Rosen, Rosen declined and advised tasking Ben-Gurion, the President tasked Ben-Gurion again.",
         "type": "mandate-given",
-        "textEn": "The President tasked Pinchas Rosen with forming a government.",
+        "textEn": "The President tasked Pinhas Rosen with forming a government.",
         "textHe": "הנשיא הטיל על פנחס רוזן להרכיב ממשלה.",
         "cites": [
           {
@@ -512,7 +512,7 @@
     ],
     "people": {
       "rosen": {
-        "nameEn": "Pinchas Rosen",
+        "nameEn": "Pinhas Rosen",
         "nameHe": "פנחס רוזן"
       }
     }
