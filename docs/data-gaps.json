@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 12498,
+  "total": 12510,
   "counts": {
-    "unknown": 7370,
+    "unknown": 7374,
     "missing-field": 285,
     "conflict": 19,
-    "single-source": 2988,
+    "single-source": 2996,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1179,
@@ -15,16 +15,16 @@
   "countsByStatus": {
     "inferred-not-verified": 1040,
     "needs-current-status-review": 319,
-    "open": 11139
+    "open": 11151
   },
   "countsByImportance": {
     "high": {
-      "total": 859,
-      "confirmed": 462,
+      "total": 871,
+      "confirmed": 470,
       "probable": 48,
       "provisional": 140,
       "disputed": 11,
-      "unknown": 198
+      "unknown": 202
     },
     "medium": {
       "total": 4483,
@@ -58,7 +58,7 @@
       "unknown": 76
     },
     "Government roles": {
-      "confirmed": 323,
+      "confirmed": 334,
       "probable": 11,
       "provisional": 3,
       "disputed": 3,
@@ -257,15 +257,15 @@
     },
     {
       "election": "k10",
-      "total": 356,
-      "highOpen": 18,
+      "total": 368,
+      "highOpen": 22,
       "mediumOpen": 111,
       "low": 171,
       "counts": {
-        "unknown": 207,
+        "unknown": 211,
         "missing-field": 13,
         "conflict": 0,
-        "single-source": 99,
+        "single-source": 107,
         "low-confidence": 3,
         "release-hold": 0,
         "inferred": 18,
@@ -672,7 +672,7 @@
     {"election":"k11","area":"Formation events","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["mandate-given 1984-08-05"],"file":"data/meta/aftermath/k11.json"},
     {"election":"k11","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k11.json"},
     {"election":"k11","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k11.json"},
-    {"election":"k10","area":"Later governments","count":7,"certainty":{"unknown":7},"kinds":{"unknown":7},"labels":["ת","ני","ב"],"file":"data/meta/aftermath/k10.json"},
+    {"election":"k10","area":"Later governments","count":11,"certainty":{"unknown":11},"kinds":{"unknown":11},"labels":["ת","ני","ב","coalition-change 1982-07-05","coalition-change 1982-07-26"],"file":"data/meta/aftermath/k10.json"},
     {"election":"k10","area":"Recommendations","count":6,"certainty":{"provisional":6},"kinds":{"single-source":6},"labels":["אמת","ו","ת","כן","הן","רצ"],"file":"data/meta/aftermath/k10.json"},
     {"election":"k10","area":"Formation events","count":2,"certainty":{"probable":2},"kinds":{"single-source":1,"unconfirmed":1},"labels":["consultations 1981-07-13","mandate-given 1981-07-15"],"file":"data/meta/aftermath/k10.json"},
     {"election":"k10","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k10/national.reviewed.json"},

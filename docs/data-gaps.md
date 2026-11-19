@@ -1,8 +1,8 @@
 # Data gaps register
 
-12498 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12510 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 859 (confirmed 462, probable 48, provisional 140, disputed 11, unknown 198).
+- High importance: 871 (confirmed 470, probable 48, provisional 140, disputed 11, unknown 202).
 - Medium importance: 4483 (confirmed 1035, probable 248, provisional 182, disputed 8, unknown 2422, family placements: follows scholarship 103, the project’s own judgement 386, sources disagree 15, not yet checked 84).
 - Low importance: 7156 (confirmed 572, provisional 808, unknown 5776).
 
@@ -154,7 +154,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k10
 
-- [Later governments](../data/meta/aftermath/k10.json) ×7: unknown 7. ת, ני, ב
+- [Later governments](../data/meta/aftermath/k10.json) ×11: unknown 11. ת, ני, ב, coalition-change 1982-07-05, coalition-change 1982-07-26
 - [Recommendations](../data/meta/aftermath/k10.json) ×6: provisional 6. אמת, ו, ת, כן, הן, רצ
 - [Formation events](../data/meta/aftermath/k10.json) ×2: probable 2. consultations 1981-07-13, mandate-given 1981-07-15
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k10/national.reviewed.json) ×1: unknown 1
@@ -302,7 +302,7 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Recommendations | 80 | 68 | 80 | 2 | 76 | 306 |
-| Government roles | 323 | 11 | 3 | 3 | 1 | 341 |
+| Government roles | 334 | 11 | 3 | 3 | 1 | 352 |
 | Formation events | 75 | 14 | 37 | 0 | 0 | 126 |
 | Term events | 36 | 49 | 0 | 0 | 0 | 85 |
 | Candidate identity links | 3245 | 57 | 540 | 0 | 0 | 3842 |
@@ -311,9 +311,9 @@ Party-family placements are the project’s classification, not facts, so they c
 
 ## Counts
 
-By kind: unknown: 7370; missing-field: 285; conflict: 19; single-source: 2988; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 199.
+By kind: unknown: 7374; missing-field: 285; conflict: 19; single-source: 2996; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 199.
 
-By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11139.
+By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11151.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -326,7 +326,7 @@ By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 
 | k7 | 15 | 66 | 160 | 274 |
 | k8 | 24 | 96 | 174 | 365 |
 | k9 | 30 | 116 | 197 | 428 |
-| k10 | 18 | 111 | 171 | 356 |
+| k10 | 22 | 111 | 171 | 368 |
 | k11 | 36 | 116 | 204 | 430 |
 | k12 | 22 | 122 | 183 | 392 |
 | k13 | 20 | 116 | 146 | 323 |

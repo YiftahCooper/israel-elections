@@ -221,6 +221,55 @@
       },
       "retainedArtifact": "owner’s private copy of the whole issue (National Library of Israel PDF)",
       "computerReadArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1772-www.nli.org.il/page.html"
+    },
+    "positions-gov19": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2019",
+      "publisher": "Knesset open data: appointments in government 19",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־19",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "positions-gov20": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2020",
+      "publisher": "Knesset open data: appointments in government 20",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־20",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "factions-k10": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2010%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset open data: faction membership",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-1982-07-05": {
+      "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_529811.PDF",
+      "publisher": "Knesset, Divrei HaKnesset, 5 July 1982",
+      "publisherHe": "הכנסת, דברי הכנסת, 5 ביולי 1982",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-1982-07-26": {
+      "url": "https://fs.knesset.gov.il/10/Plenum/10_ptm_529829.PDF",
+      "publisher": "Knesset, Divrei HaKnesset, 26 July 1982",
+      "publisherHe": "הכנסת, דברי הכנסת, 26 ביולי 1982",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "jta-1982-07-28": {
+      "url": "https://www.jta.org/archive/knesset-votes-57-49-to-approve-tehiyas-entry-into-government",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 28 July 1982",
+      "publisherHe": "סוכנות הידיעות היהודית (JTA), 28 ביולי 1982",
+      "kind": "secondary",
+      "accessed": "2026-11-19"
+    },
+    "jta-1984-01-30": {
+      "url": "https://www.jta.org/archive/ben-porat-resigns-from-government",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 30 January 1984",
+      "publisherHe": "סוכנות הידיעות היהודית (JTA), 30 בינואר 1984",
+      "kind": "secondary",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -869,6 +918,272 @@
         "formalStep": true
       },
       {
+        "date": "1982-07-05",
+        "textEn": "Telem joined the government: the Knesset approved Mordechai Ben-Porat as minister.",
+        "textHe": "תל״ם הצטרפה לממשלה: הכנסת אישרה את מרדכי בן־פורת כשר.",
+        "cites": [
+          {
+            "source": "plenum-1982-07-05",
+            "quote": "בעד ההצעה לאשר את הודעת הממשלה 52 נגד 45 ההצעה לאשר את הודעת הממשלה נתקבלה",
+            "note": "The Knesset approved Mordechai Ben-Porat as minister on 5 July 1982, 52 for and 45 against, and his term began that day.",
+            "noteHe": "הכנסת אישרה את מרדכי בן־פורת כשר ב־5 ביולי 1982, 52 בעד ו־45 נגד, ובו ביום החלה כהונתו."
+          },
+          {
+            "source": "positions-gov19",
+            "quote": "PersonToPositionID 4541, PersonID 2206, PositionID 39, StartDate 1982-07-05",
+            "note": "The Knesset’s appointment record: Mordechai Ben-Porat, minister without portfolio from 5 July 1982.",
+            "noteHe": "רישום המינוי של הכנסת: מרדכי בן־פורת, שר בלי תיק מ־5 ביולי 1982."
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 19,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 48,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-19",
+                "quote": "PersonToPositionID 3888; PersonID 2573; PositionID 39; StartDate 1981-08-05T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: מרדכי צפורי-הנדין; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: מרדכי צפורי-הנדין; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "ג",
+            "seats": 4,
+            "note": "Deposited coalition agreement; no Aguda cabinet minister at formation.",
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum1981",
+                "quote": "ההסכם הקואליציוני לכנסת העשירית בין הסיעות: הליכוד, המפלגה הדתית לאומית, יהדות התורה — אגודת ישראל והתנועה למסורת ישראל"
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-19",
+                "quote": "PersonToPositionID 4229; PersonID 2187; PositionID 39; StartDate 1981-08-05T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יוסף בורג; faction: חזית דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יוסף בורג; סיעה: חזית דתית לאומית."
+              }
+            ]
+          },
+          {
+            "letters": "ני",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-19",
+                "quote": "PersonToPositionID 4354; PersonID 2119; PositionID 39; StartDate 1981-08-05T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אהרן אבוחצירא; faction: תנועה למסורת ישראל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אהרן אבוחצירא; סיעה: תנועה למסורת ישראל."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 2,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-1982-07-05",
+                "quote": "בעד ההצעה לאשר את הודעת הממשלה 52 נגד 45 ההצעה לאשר את הודעת הממשלה נתקבלה",
+                "note": "The Knesset approved Mordechai Ben-Porat as minister on 5 July 1982, 52 for and 45 against, and his term began that day.",
+                "noteHe": "הכנסת אישרה את מרדכי בן־פורת כשר ב־5 ביולי 1982, 52 בעד ו־45 נגד, ובו ביום החלה כהונתו."
+              },
+              {
+                "source": "positions-gov19",
+                "quote": "PersonToPositionID 4541, PersonID 2206, PositionID 39, StartDate 1982-07-05",
+                "note": "The Knesset’s appointment record: Mordechai Ben-Porat, minister without portfolio from 5 July 1982.",
+                "noteHe": "רישום המינוי של הכנסת: מרדכי בן־פורת, שר בלי תיק מ־5 ביולי 1982."
+              },
+              {
+                "source": "factions-k10",
+                "quote": "Faction 469 (תנועה להתחדשות ממלכתית): 2 members on 1982-07-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 2 members of Telem on 5 July 1982.",
+                "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת תל״ם ב־5 ביולי 1982."
+              }
+            ],
+            "noteEn": "Its two MKs, Mordechai Ben-Porat and Yigal Hurvitz.",
+            "noteHe": "שני חבריה בכנסת, מרדכי בן־פורת ויגאל הורביץ."
+          }
+        ],
+        "coalitionSeats": 63,
+        "supportSeats": 0,
+        "knownMemberSeats": 63,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "1982-07-26",
+        "textEn": "Tehiya joined the government: the Knesset approved Yuval Ne’eman as Minister of Science and Development.",
+        "textHe": "התחייה הצטרפה לממשלה: הכנסת אישרה את יובל נאמן כשר המדע והפיתוח.",
+        "cites": [
+          {
+            "source": "plenum-1982-07-26",
+            "quote": "החלטת הממשלה בדבר הקמת משרד המדע והפיתוח ובדבר צירופו של חבר הכנסת יובל נאמן לממשלה בתפקיד שר המדע והפיתוח",
+            "note": "The Knesset approved Yuval Ne’eman as Minister of Science and Development on 26 July 1982 and his term began that day.",
+            "noteHe": "הכנסת אישרה את יובל נאמן כשר המדע והפיתוח ב־26 ביולי 1982, ובו ביום החלה כהונתו."
+          },
+          {
+            "source": "jta-1982-07-28",
+            "quote": "The Knesset voted 57-49 yesterday to approve the entry of the ultranationalist Tehiya into Premier Menachem Begin’s coalition government."
+          },
+          {
+            "source": "positions-gov19",
+            "quote": "PersonToPositionID 3571, PersonID 2475, PositionID 39, StartDate 1982-07-26",
+            "note": "The Knesset’s appointment record: Yuval Ne’eman, Minister of Science and Development from 26 July 1982.",
+            "noteHe": "רישום המינוי של הכנסת: יובל נאמן, שר המדע והפיתוח מ־26 ביולי 1982."
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 19,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 48,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-19",
+                "quote": "PersonToPositionID 3888; PersonID 2573; PositionID 39; StartDate 1981-08-05T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: מרדכי צפורי-הנדין; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: מרדכי צפורי-הנדין; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "ג",
+            "seats": 4,
+            "note": "Deposited coalition agreement; no Aguda cabinet minister at formation.",
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum1981",
+                "quote": "ההסכם הקואליציוני לכנסת העשירית בין הסיעות: הליכוד, המפלגה הדתית לאומית, יהדות התורה — אגודת ישראל והתנועה למסורת ישראל"
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-19",
+                "quote": "PersonToPositionID 4229; PersonID 2187; PositionID 39; StartDate 1981-08-05T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יוסף בורג; faction: חזית דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יוסף בורג; סיעה: חזית דתית לאומית."
+              }
+            ]
+          },
+          {
+            "letters": "ני",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-19",
+                "quote": "PersonToPositionID 4354; PersonID 2119; PositionID 39; StartDate 1981-08-05T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אהרן אבוחצירא; faction: תנועה למסורת ישראל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אהרן אבוחצירא; סיעה: תנועה למסורת ישראל."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 2,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-1982-07-05",
+                "quote": "בעד ההצעה לאשר את הודעת הממשלה 52 נגד 45 ההצעה לאשר את הודעת הממשלה נתקבלה",
+                "note": "The Knesset approved Mordechai Ben-Porat as minister on 5 July 1982, 52 for and 45 against, and his term began that day.",
+                "noteHe": "הכנסת אישרה את מרדכי בן־פורת כשר ב־5 ביולי 1982, 52 בעד ו־45 נגד, ובו ביום החלה כהונתו."
+              },
+              {
+                "source": "positions-gov19",
+                "quote": "PersonToPositionID 4541, PersonID 2206, PositionID 39, StartDate 1982-07-05",
+                "note": "The Knesset’s appointment record: Mordechai Ben-Porat, minister without portfolio from 5 July 1982.",
+                "noteHe": "רישום המינוי של הכנסת: מרדכי בן־פורת, שר בלי תיק מ־5 ביולי 1982."
+              },
+              {
+                "source": "factions-k10",
+                "quote": "Faction 469 (תנועה להתחדשות ממלכתית): 2 members on 1982-07-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 2 members of Telem on 5 July 1982.",
+                "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת תל״ם ב־5 ביולי 1982."
+              }
+            ],
+            "noteEn": "Its two MKs, Mordechai Ben-Porat and Yigal Hurvitz.",
+            "noteHe": "שני חבריה בכנסת, מרדכי בן־פורת ויגאל הורביץ."
+          },
+          {
+            "letters": "ת",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-1982-07-26",
+                "quote": "החלטת הממשלה בדבר הקמת משרד המדע והפיתוח ובדבר צירופו של חבר הכנסת יובל נאמן לממשלה בתפקיד שר המדע והפיתוח",
+                "note": "The Knesset approved Yuval Ne’eman as Minister of Science and Development on 26 July 1982 and his term began that day.",
+                "noteHe": "הכנסת אישרה את יובל נאמן כשר המדע והפיתוח ב־26 ביולי 1982, ובו ביום החלה כהונתו."
+              },
+              {
+                "source": "positions-gov19",
+                "quote": "PersonToPositionID 3571, PersonID 2475, PositionID 39, StartDate 1982-07-26",
+                "note": "The Knesset’s appointment record: Yuval Ne’eman, Minister of Science and Development from 26 July 1982.",
+                "noteHe": "רישום המינוי של הכנסת: יובל נאמן, שר המדע והפיתוח מ־26 ביולי 1982."
+              },
+              {
+                "source": "factions-k10",
+                "quote": "Faction 455 (תחייה): 3 members on 1982-07-26, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Tehiya on 26 July 1982.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת התחייה ב־26 ביולי 1982."
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": 66,
+        "supportSeats": 0,
+        "knownMemberSeats": 66,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
         "date": "1983-09-15",
         "type": "resignation",
         "textEn": "Begin formally resigned as prime minister.",
@@ -995,6 +1310,29 @@
           "note": "Not every member of the coalition is known, and its seats at this date have not been counted; the record does not say how each MK voted, so the vote cannot be matched seat by seat. Which MKs voted which way is unknown. The vote: 60 for, 53 against, abstentions not recorded."
         },
         "knownMemberSeats": 0
+      },
+      {
+        "date": "1984-01-31",
+        "type": "ministerial-change",
+        "textEn": "Mordechai Ben-Porat’s resignation as minister took effect. He said his one-member faction would stay in the coalition.",
+        "textHe": "התפטרותו של מרדכי בן־פורת מהממשלה נכנסה לתוקף. לדבריו, סיעת היחיד שלו נשארת בקואליציה.",
+        "cites": [
+          {
+            "source": "positions-gov20",
+            "quote": "PersonToPositionID 4542, PersonID 2206, PositionID 39, FinishDate 1984-01-31",
+            "note": "The Knesset’s appointment record: Mordechai Ben-Porat, minister without portfolio until 31 January 1984, the day his resignation took effect.",
+            "noteHe": "רישום המינוי של הכנסת: מרדכי בן־פורת, שר בלי תיק עד 31 בינואר 1984, היום שבו נכנסה התפטרותו לתוקף."
+          },
+          {
+            "source": "jta-1984-01-30",
+            "quote": "he would remain in the Likud-led coalition as a one-man Knesset faction",
+            "note": "One report of the time; his faction’s place in the coalition after this day rests on it.",
+            "noteHe": "דיווח אחד מאותה עת; מקומה של סיעתו בקואליציה אחרי יום זה נשען עליו."
+          }
+        ],
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 20
       }
     ],
     "confidenceVote": {
