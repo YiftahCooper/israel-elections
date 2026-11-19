@@ -44,7 +44,7 @@ export function Info({ title, children, term, label }: { title?: string; childre
         onFocus={(e) => { if (e.currentTarget.matches(':focus-visible')) setOpen((o) => o || 'focus'); }}
         onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen((o) => (o === 'hover' ? o : false)); }}>i</button>
       {open && (
-        <Floating onPointerEnter={bridge.keep} onPointerLeave={bridge.leave} className="pop" id={id} anchor={() => ref.current?.querySelector('button')?.getBoundingClientRect()}>
+        <Floating onPointerEnter={bridge.enterBox} onPointerLeave={bridge.leaveBox} className="pop" id={id} anchor={() => ref.current?.querySelector('button')?.getBoundingClientRect()}>
           {heading && <b>{heading}{hebrewToo && <> (<span lang="he">{g.nameHe}</span>)</>}</b>}
           {g && <span>{lang === 'he' ? g.defHe : g.defEn}</span>}
           {g && <GlossaryLink g={g} lang={lang} />}

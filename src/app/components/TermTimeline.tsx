@@ -266,7 +266,7 @@ function Chamber({ term, view, ds, mk, lines }: { term: TermRuntime; view: StepV
           return <li key={p}><button type="button" className="link-btn" onClick={() => mk?.people[p] && openMkHistory(p)}><b><bdi>{personName(mk, p, lang)}</bdi></b></button>{l && <> · <bdi>{listLabel(l, lang)}</bdi></>} — <bdi>{what}</bdi> {src && <span className="muted"><bdi>{formatDate(src.date, lang)}</bdi></span>}</li>; })}</ul></div>}
       {(keyKinds.length > 0 || ringed) && <div className="tl-marks">{ringed && <span className="row tl-ring-key"><svg className="tl-mark-icon" viewBox="-12 -12 24 24" aria-hidden="true"><circle r={6} className="tl-ring-swatch" /></svg>{L('Changed on this date', 'השתנה בתאריך הזה')}</span>}{keyKinds.map((k) => <span key={k} className="row"><MarkIcon kind={k} />{k === 'D3x' ? L('Voted against, stayed', 'הצבעה נגד, בלי לעזוב') : k === 'D3a' ? L('Abstained, stayed', 'הימנעות, בלי לעזוב') : k === 'D4c' ? L('Moved to the coalition', 'מעבר לקואליציה') : k === 'D4o' ? L('Left the coalition', 'יציאה מהקואליציה') : L('Seat changed hands', 'חילופי מושב')}</span>)}</div>}
     </div>}
-    {open && <Floating role="dialog" label={L('Who sat here', 'מי ישב כאן')} className="tip tl-card" anchor={() => open.anchor.getBoundingClientRect()} onPointerEnter={hover.keep} onPointerLeave={hover.leave} preferAbove>
+    {open && <Floating role="dialog" label={L('Who sat here', 'מי ישב כאן')} className="tip tl-card" anchor={() => open.anchor.getBoundingClientRect()} onPointerEnter={hover.enterBox} onPointerLeave={hover.leaveBox} preferAbove>
       <SeatCard term={term} seat={open.seat} date={view.step.date} list={listOf(term.seats[open.seat].list)} mk={mk} onClose={() => setOpen(null)} />
     </Floating>}
   </div>;

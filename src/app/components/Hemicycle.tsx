@@ -561,7 +561,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       {/* the card comes next in the page, so Tab goes from a seat into its card (its links) */}
       {/* the per-list seat changes are said once, in the change line under the tools strip */}
       {hover && hv && (
-        <Floating onPointerEnter={hoverBridge.keep} onPointerLeave={hoverBridge.leave} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}
+        <Floating onPointerEnter={hoverBridge.enterBox} onPointerLeave={hoverBridge.leaveBox} className="tip" preferAbove anchor={() => hover.anchor.getBoundingClientRect()}
           role="dialog" label={seatNames[seats.indexOf(hover.seat)] ?? seatLabel(hover.seat)} labelledBy={'aria-labelledby' in nameProps(seatNames[seats.indexOf(hover.seat)] ?? '', lang, '') ? `${seatId}-${seats.indexOf(hover.seat)}` : undefined}><div ref={card} onBlur={onSeatsBlur}>
           <div className="row"><Slip {...hv} name={listLabel(hv, lang)} size="sm" /><b>{listLabel(hv, lang)}</b> <span className="muted">({hv.letters})</span></div>
           {cand ? <div><b><CandidateName candidate={cand} text={hoverCandidateName} /></b> · {L('rank', 'מקום')} {candPlace}{cand.notes?.map((n, k) => <div key={k} className="muted small">{lang === 'he' ? n.he : n.en}</div>)}</div>
