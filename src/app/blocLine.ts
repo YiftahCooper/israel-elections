@@ -302,22 +302,46 @@ export function relaxLine(g: Arc, left: boolean[], c: number, init: Pt[]): Pt[] 
     return out;
   };
   const S = g.seats, rr = g.rad + c * 1.1 + 0.0004; // a hair more than asked, so the straight bits between points keep it too
+  // Speed (PF1, 19 Nov 2026): this runs on every redraw of the chart, so the two seat searches below skip the seats
+  // that cannot change their answer, with the very same arithmetic for the rest; the result is bit-for-bit the same.
   const nearest = (p: Pt, side: boolean): [number, Pt] => {
     let best = Infinity, dir: Pt = [0, 0];
-    S.forEach((st, i) => {
-      if (left[i] !== side) return;
-      const dx = p[0] - st.x, dy = p[1] - st.y, d = Math.hypot(dx, dy);
+    for (let i = 0; i < S.length; i++) {
+      if (left[i] !== side) continue;
+      const st = S[i], dx = p[0] - st.x, dy = p[1] - st.y;
+      // the distance is never less than the larger offset, so a seat that far cannot be nearer than the best so far
+      if (Math.max(Math.abs(dx), Math.abs(dy)) - g.rad >= best) continue;
+      const d = Math.hypot(dx, dy);
       if (d - g.rad < best) { best = d - g.rad; dir = d > 1e-9 ? [dx / d, dy / d] : [0, -1]; }
-    });
+    }
     return [best, dir];
+  };
+  // only seats within rr on both axes can push a point, and those are always in the point's grid cell or the eight
+  // around it (cells a little wider than rr); each cell keeps its neighbourhood's seats in seat order
+  const cellSize = rr * 1.0625, cellOf = (v: number) => Math.floor(v / cellSize), cells = new Map<number, number[]>(), around = new Map<number, number[]>();
+  const cellKey = (cx: number, cy: number) => (cx + 4096) * 8192 + (cy + 4096);
+  S.forEach((st, i) => { const k = cellKey(cellOf(st.x), cellOf(st.y)), list = cells.get(k); if (list) list.push(i); else cells.set(k, [i]); });
+  const seatsNear = (q: Pt): number[] => {
+    const cx = cellOf(q[0]), cy = cellOf(q[1]), k = cellKey(cx, cy), hit = around.get(k);
+    if (hit) return hit;
+    const out: number[] = [];
+    for (let x = cx - 1; x <= cx + 1; x++) for (let y = cy - 1; y <= cy + 1; y++) { const list = cells.get(cellKey(x, y)); if (list) out.push(...list); }
+    out.sort((a, b) => a - b); around.set(k, out);
+    return out;
   };
   const clear = (p: Pt): Pt => {
     let q = p;
-    for (let round = 0; round < 3; round++) for (const st of S) {
-      const dx = q[0] - st.x, dy = q[1] - st.y;
-      if (Math.abs(dx) >= rr || Math.abs(dy) >= rr) continue;
-      const d = Math.hypot(dx, dy);
-      if (d < rr) q = d > 1e-9 ? [st.x + (dx / d) * rr, st.y + (dy / d) * rr] : [st.x, st.y - rr];
+    for (let round = 0; round < 3; round++) {
+      // seats in seat order, as before; after a push, the seats after it are looked up again around the new place
+      let near = seatsNear(q), k = 0, after = -1;
+      while (k < near.length) {
+        const i = near[k++];
+        if (i <= after) continue;
+        const st = S[i], dx = q[0] - st.x, dy = q[1] - st.y;
+        if (Math.abs(dx) >= rr || Math.abs(dy) >= rr) continue;
+        const d = Math.hypot(dx, dy);
+        if (d < rr) { q = d > 1e-9 ? [st.x + (dx / d) * rr, st.y + (dy / d) * rr] : [st.x, st.y - rr]; near = seatsNear(q); k = 0; after = i; }
+      }
     }
     return q;
   };
@@ -355,6 +379,12 @@ export function relaxLine(g: Arc, left: boolean[], c: number, init: Pt[]): Pt[] 
 /** True when every seat of the first side lies inside the region left of the line, every other seat outside it, and no
  *  seat comes closer to the line than `c` (less a hair). Unit coordinates. */
 /** A point's distance from a segment. */
+/** True when the point is surely at least `min` from the segment: it is that far outside the segment's bounding box
+ *  (with a hair to spare for rounding), so its distance need not be worked out. */
+const farFromSegment = (px: number, py: number, a: Pt, b: Pt, min: number) => {
+  const m = min + 1e-9;
+  return px < Math.min(a[0], b[0]) - m || px > Math.max(a[0], b[0]) + m || py < Math.min(a[1], b[1]) - m || py > Math.max(a[1], b[1]) + m;
+};
 function segDistance(px: number, py: number, a: Pt, b: Pt): number {
   const dx = b[0] - a[0], dy = b[1] - a[1], l = dx * dx + dy * dy, t = l ? Math.max(0, Math.min(1, ((px - a[0]) * dx + (py - a[1]) * dy) / l)) : 0;
   return Math.hypot(px - a[0] - t * dx, py - a[1] - t * dy);
@@ -376,7 +406,8 @@ function keepsSides(g: Arc, left: boolean[], c: number, pts: Pt[]): boolean {
   };
   return g.seats.every((st, i) => {
     if (inside(st.x, st.y) !== left[i]) return false;
-    for (let k = 0; k + 1 < pts.length; k++) if (segDistance(st.x, st.y, pts[k], pts[k + 1]) < g.rad + c - 0.0005) return false;
+    const min = g.rad + c - 0.0005;
+    for (let k = 0; k + 1 < pts.length; k++) if (!farFromSegment(st.x, st.y, pts[k], pts[k + 1], min) && segDistance(st.x, st.y, pts[k], pts[k + 1]) < min) return false;
     return true;
   });
 }
@@ -443,7 +474,7 @@ function routeRegions(seats: SeatPos[], bands: number[], seatRadius: number, cx:
       }
       return unit;
     };
-    const clearOf = (u: Pt, v: Pt) => g.seats.every((st) => segDistance(st.x, st.y, u, v) >= g.rad + c + 0.0002);
+    const clearOf = (u: Pt, v: Pt) => g.seats.every((st) => farFromSegment(st.x, st.y, u, v, g.rad + c + 0.0002) || segDistance(st.x, st.y, u, v) >= g.rad + c + 0.0002);
     const inside = (q: Pt) => { const [x, y] = inChamber(q, g); return Math.abs(x - q[0]) < 1e-9 && Math.abs(y - q[1]) < 1e-9; };
     const finish = (base: Pt[]): { line: Pt[]; angles: number[] } | null => {
       // towards the middle where it runs along the rows; kept only if it stays clear of the previous line

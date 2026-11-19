@@ -34,7 +34,8 @@ export function inputDiffs(a:Scenario,b:Scenario):InputPath[]{
  }
  const out:string[][]=[];
  const walk=(x:any,y:any,p:string[])=>{
-  if(equal(x,y))return;
+  // the same object is equal to itself; edits share every untouched part, so most of the tree is skipped unserialised
+  if(x===y||equal(x,y))return;
   if(p.at(-1)==='candidates'&&Array.isArray(x)&&Array.isArray(y)&&x.map(c=>c.id).join()!==y.map(c=>c.id).join()){out.push(p);return;}
   if(Array.isArray(x)&&Array.isArray(y)&&[...x,...y].every(z=>z&&typeof z==='object'&&'id'in z)){
    for(const id of new Set([...x,...y].map(z=>z.id)))walk(x.find(z=>z.id===id),y.find(z=>z.id===id),[...p,id]);
