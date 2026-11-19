@@ -183,3 +183,20 @@ test('Swap and Swap back: an unedited result is called "Official result", never 
   await expect(picker).toContainText('2022 · 25th Knesset · Official result');
   await expect(page.locator('.cmpm-strip')).not.toContainText('historical');
 });
+
+test('Save & share: the unsaved mark sits beside the name; saving with no name keeps the words the field shows', async ({ page }) => {
+  await start(page, 'k26');
+  await editVotes(page, 'Likud', '1247591');
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: 'Save & share' }).click();
+  const field = page.getByRole('textbox', { name: 'Scenario name' });
+  await expect(field).toHaveAttribute('placeholder', 'Untitled scenario');
+  const mark = page.locator('.menu-pop').getByRole('img', { name: 'unsaved changes' });
+  const [f, m] = [await field.boundingBox(), await mark.boundingBox()];
+  // on the field's own line, not on a line of its own under it
+  expect(m!.y).toBeLessThan(f!.y + f!.height);
+  await page.getByRole('button', { name: 'Save in this browser' }).click();
+  await expect(page.locator('.toast').last()).toContainText('Saved in this browser.');
+  await page.getByRole('button', { name: 'Save & share' }).click();
+  await expect(page.locator('.menu-pop').getByRole('button', { name: /\(2026\)/ })).toHaveText(/^Untitled scenario \(2026\)/);
+});

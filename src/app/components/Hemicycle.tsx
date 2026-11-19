@@ -22,6 +22,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, memberNameGivenFirst, referenceLabel, comparisonGroups, groupingLabel, majorityText, seeksMajority } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
+import { untitledName } from '../scenarioDocument.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { arcSeatSlots, frontRowFirst, trayBlocRegions, trayCell, trayShape, TRAY } from '../blocLine.ts';
 import { download, isolate, seatDeltaText } from '../format.ts';
@@ -382,7 +383,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
     });
     const entry = elections.find(e=>e.id===s.electionId);
     const captionY = rowsY + Math.max(...colEnd, LINE) + 8;
-    clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${factLog(s).length ? s.name || L('Scenario', 'תרחיש') : L('Official result', 'התוצאה הרשמית')}`));
+    clone.appendChild(svgText(colStart(0), captionY, 13, `${entry ? electionLabel(entry, elections, lang) : ''}${entry ? ' · ' : ''}${factLog(s).length ? s.name || untitledName(lang) : L('Official result', 'התוצאה הרשמית')}`));
     // the picture leaves the app, so it names the grouping its seats are arranged (and shaded) by, and each bloc with
     // its seats, as the bloc bar does on the board (audit c-screens-overview-12)
     const scheme = s.blocSchemes?.find(g => g.id === s.blocSchemeId);

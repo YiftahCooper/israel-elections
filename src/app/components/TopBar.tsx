@@ -80,7 +80,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
 
   /** Save & share: the same items in the desktop popup and in the phone menu */
   const shareItems = (close: () => void) => <>
-            {s && <ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} />}{dirty && <UnsavedMark />}
+            {s && <span className="scenario-name-row"><ScenarioName key={`${s.id}-${s.name}`} name={s.name} placeholder={L('Untitled scenario', 'תרחיש ללא שם')} label={L('Scenario name', 'שם התרחיש')} />{dirty && <UnsavedMark />}</span>}
             <ScenarioColour />
             <ScenarioSave onSaved={() => close()} className="btn small" disabled={!s}><Save className="icon sm" aria-hidden />{L('Save in this browser', 'שמירה בדפדפן')}</ScenarioSave>
             <ScenarioSave as onSaved={() => close()} className="btn small" disabled={!s}>{L('Save as…', 'שמירה בשם…')}</ScenarioSave>

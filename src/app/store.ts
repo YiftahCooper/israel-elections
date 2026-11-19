@@ -1,5 +1,5 @@
 import { carryEditScopes, inputDiffs } from '../model/editScopes.ts';
-import { nextCopyName, scenarioDirty } from './scenarioDocument.ts';
+import { nextCopyName, scenarioDirty, untitledName } from './scenarioDocument.ts';
 import { ACTION_CLASSIFICATION, isFactAction, hasAppearance, factLog } from '../model/actionClassification.ts';
 import { baselineOf, freshScenario, factionDefault, setFactionDefault } from './factionDefaults.ts';
 import { validItemAnswers, validAnswers, sourceChoice, sourceValue, defaultAnswer, asksEachTime, storedDefault, PREFERENCES, type PreferenceAnswers, type PreferenceAsk, type PreferenceId } from './preferences.ts';
@@ -759,7 +759,7 @@ export function resetAll() {
 export function saveCurrent(name?: string, options?: { newIdentity?: boolean; overwriteId?: string }): boolean {
   const original = state.scenario;
   if (!original) return false;
-  const wanted = name?.trim() || original.name || (state.lang === 'he' ? 'תרחיש' : 'Scenario');
+  const wanted = name?.trim() || original.name || untitledName(state.lang);
   const targetId = options?.overwriteId ?? (options?.newIdentity ? crypto.randomUUID() : original.id);
   if (state.saved.some(x => x.id !== targetId && x.name === wanted)) {
     toast('error', state.lang === 'he' ? 'השם כבר קיים. בחרו שמירה בשם…' : 'Name already exists. Choose Save as…');
@@ -772,7 +772,7 @@ export function saveCurrent(name?: string, options?: { newIdentity?: boolean; ov
   const s = (targetId !== original.id || !prepared.identityColor) ? applyAction(prepared, { type: 'setIdentityColor', color: nextScenarioColor(state.saved.filter(x => x.id !== targetId), original.electionId) }) : prepared;
   if (!s) return false;
   const he = state.lang === 'he';
-  const entry: SavedScenario = { id: s.id, name: wanted || s.name || (he ? 'תרחיש' : 'Scenario'), ...(s.description ? { description: s.description } : {}), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, factionSplitBaseline: s.factionSplitBaseline ?? false, log: s.log.map((e) => e.action) };
+  const entry: SavedScenario = { id: s.id, name: wanted || s.name || untitledName(state.lang), ...(s.description ? { description: s.description } : {}), electionId: s.electionId, savedAt: new Date().toISOString(), baseBuiltAt: s.baseBuiltAt, factionSplitBaseline: s.factionSplitBaseline ?? false, log: s.log.map((e) => e.action) };
   const before = state.saved;
   const oldReference = state.reference;
   const history = { past: state.past, future: state.future };
@@ -790,10 +790,9 @@ export function saveCurrent(name?: string, options?: { newIdentity?: boolean; ov
 export function duplicateCurrent() {
   const s = state.scenario;
   if (!s) return;
-  const he = state.lang === 'he';
   let id = `${s.electionId}-${Date.now().toString(36)}`;
   while (id === s.id || state.saved.some((x) => x.id === id)) id += 'x';
-  const named: Scenario = { ...s, id, name: nextCopyName(s.name || (he ? 'תרחיש' : 'Scenario'), state.saved.map(x => x.name)) };
+  const named: Scenario = { ...s, id, name: nextCopyName(s.name || untitledName(state.lang), state.saved.map(x => x.name)) };
   const copy = applyAction(named, { type: 'setIdentityColor', color: nextScenarioColor(state.saved, s.electionId) });
   const was = { scenario: s, reference: state.reference, past: state.past, future: state.future };
   setState({ scenario: copy, past: [], future: [] });

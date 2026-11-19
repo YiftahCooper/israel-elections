@@ -109,6 +109,9 @@ input, textarea { caret-color: var(--focus); }
 .band .tool:hover:not(:disabled) { background: var(--shell-2); }
 .band .tool:disabled { opacity: .45; cursor: not-allowed; }
 .menu-pop .scenario-name-field { display: block; width: 100%; margin-block-end: 8px; min-height: 32px; }
+/* the unsaved mark sits beside the name it belongs to, not on a line of its own */
+.scenario-name-row { display: flex; align-items: center; gap: 2px; margin-block-end: 8px; }
+.scenario-name-row .scenario-name-field { flex: 1; min-width: 0; margin-block-end: 0; }
 .band .spacer { flex: 1; }
 .band .menu-pop { position: absolute; z-index: 60; inset-inline-end: 0; top: calc(100% + 6px); width: 300px; max-width: calc((100vw - 20px) / var(--text-zoom, 1)); padding: 8px; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: var(--shadow-pop); display: grid; gap: 4px; }
 .band .menu-pop .btn { justify-content: flex-start; width: 100%; }
