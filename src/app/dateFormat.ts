@@ -1,6 +1,17 @@
 import type { Lang } from './i18n.ts';
 export const appLocale = (lang: Lang) => lang === 'he' ? 'he-IL' : 'en-GB';
+// Each answer is kept: toLocaleDateString builds a new formatter on every call, and every edit re-renders lists of
+// dates (the election picker writes all 26), so on a slow phone that was a noticeable share of each edit's work.
+const formatted = new Map<string, string>();
 export function formatDate(value: string, lang: Lang): string {
+  const key = `${lang} ${value}`, hit = formatted.get(key);
+  if (hit !== undefined) return hit;
+  if (formatted.size > 4000) formatted.clear();
+  const out = formatDateNow(value, lang);
+  formatted.set(key, out);
+  return out;
+}
+function formatDateNow(value: string, lang: Lang): string {
   // Preserve source precision: month-only records must not acquire a fabricated day.
   const monthOnly = /^\d{4}-\d{2}$/.test(value);
   if (!monthOnly && !/^\d{4}-\d{2}-\d{2}/.test(value)) return value;
