@@ -25,8 +25,9 @@ export function Info({ title, children, term, label }: { title?: string; childre
   useEffect(() => {
     if (!open) return;
     // Escape closes this popover only, not the panel or dialog around it
-    // (preventDefault too: otherwise the browser's own Escape still closes the popover or dialog around it)
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopImmediatePropagation(); e.preventDefault(); setOpen(false); } };
+    // (one opened by a click or tap also stops the browser's own Escape, which would close the popover or dialog
+    // around it; one opened by focus alone lets it through, so Escape still closes a dialog in one press)
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopImmediatePropagation(); if (open === 'pinned') e.preventDefault(); setOpen(false); } };
     const onDoc = (e: PointerEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
     document.addEventListener('keydown', onKey, true); document.addEventListener('pointerdown', onDoc);
     return () => { document.removeEventListener('keydown', onKey, true); document.removeEventListener('pointerdown', onDoc); };
