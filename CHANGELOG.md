@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Split recommendations (19 Nov): where a list's MKs recommended differently, the part that split off is named, so the list no longer appears twice under one name: Balad of the Joint List in September 2019 and in 2021's second round, and Gesher in 2020.
 - Coalition sizes not on record (19 Nov): where the size of each faction at the time is not recorded, a government's Members reads "at least" the seats that are known, or a dash, with one sentence saying why, instead of "Unknown" beside a column of "Unknown" seats; outside support shows only when known, and a party row matched to its election list keeps its ballot letters (Likud's מחל in 1990).
 - The term's events in date order (19 Nov): the fact that ended a term (a dissolution law, say) now sits among "During the term" by its date, instead of after every other event; in 1961 the dissolution law of 28 March now comes before Eichmann's trial.
 - Sources in Hebrew, without research notes (19 Nov): on the Hebrew Sources tab every source now has a Hebrew description and publisher, and logo credits and licences read in Hebrew ("שימוש הוגן לזיהוי", "נחלת הכלל"); in both languages the tab no longer shows how a page was fetched or checked ("HTTP 403 to scripted clients" and the like), logo credits name who and where without file names or processing notes, and After the election no longer lists research notes on events awaiting a second source. The research records stay in the downloadable sources file.

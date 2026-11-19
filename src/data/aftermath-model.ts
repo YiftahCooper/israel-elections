@@ -14,7 +14,7 @@ export interface DatedFact { id?: string; date: string; endDate?: string; textEn
 /** A recommendation entry's `status`: recommended (with `nominee`), none, other (named a party or a description, not a
  *  person, or did not take part), disputed (sources disagree; the entry carries `certainty: 'disputed'` and both sides),
  *  split, or unknown. `noteEn`/`noteHe` say any condition the list attached; they show in the row's (i). */
-export interface RecommendationEntry { letters: string; seats: number; status: string; nominee?: string; split?: { nominee?: string; status?: string; seats: number }[]; cites?: Cite[]; noteEn?: string; noteHe?: string; certainty?: string }
+export interface RecommendationEntry { letters: string; seats: number; status: string; nominee?: string; split?: { nominee?: string; status?: string; seats: number; /** the faction of the list that took this part (Balad of the Joint List) */ partEn?: string; partHe?: string }[]; cites?: Cite[]; noteEn?: string; noteHe?: string; certainty?: string }
 /** A newspaper page or article read while looking for the round's recommendations, found or not (never shown; the gaps
  *  register lists them so nobody reads them again). `searchNote` says what could not be read. */
 export interface PageRead { paper: string; date: string; page?: number; url: string }

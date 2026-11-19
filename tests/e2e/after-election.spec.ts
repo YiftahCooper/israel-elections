@@ -469,3 +469,14 @@ for (const lang of ['en', 'he'] as const) test(`a coalition whose faction sizes 
   await expect(change.locator('.after-coalition')).not.toContainText(lang === 'he' ? 'לא ידוע' : 'Unknown');
   await expect(change.locator('.after-party').filter({ hasText: lang === 'he' ? 'הליכוד' : 'Likud' }).locator('bdi[lang="he"]').first()).toHaveText('מחל');
 });
+
+// V2 fault A5: a list whose MKs split their recommendation showed twice under one name ("Joint List … 10" and
+// "Joint List … No recommendation 3"); the part that split off is named, as the President's record says (Balad).
+for (const lang of ['en', 'he'] as const) test(`a split recommendation names the faction that split off: ${lang}`, async ({ page }) => {
+  const history = await openAfter(page, 'k22', lang);
+  await history.getByText(lang === 'he' ? 'רשימות והמלצות' : 'Lists & recommendations', { exact: true }).first().click();
+  const rows = history.locator('.after-breakdown tbody tr').filter({ hasText: 'ודעם' });
+  await expect(rows).toHaveCount(2);
+  await expect(rows.filter({ hasText: lang === 'he' ? '(בל״ד)' : '(Balad)' })).toHaveCount(1);
+  await expect(rows.filter({ hasText: lang === 'he' ? '(בל״ד)' : '(Balad)' })).toContainText('3');
+});

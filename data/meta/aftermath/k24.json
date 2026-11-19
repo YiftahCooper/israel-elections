@@ -480,10 +480,7 @@
               "nominee": "lapid",
               "seats": 5
             },
-            {
-              "status": "none",
-              "seats": 1
-            }
+            {"status": "none", "seats": 1, "partEn": "Balad", "partHe": "בל״ד"}
           ]
         },
         {
