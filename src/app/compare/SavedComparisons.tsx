@@ -1,4 +1,5 @@
 // Saved comparisons on the Scenarios page, beside saved scenarios: one place for everything saved in this browser.
+import { askConfirm } from '../askDialog.ts';
 import { FolderOpen, Link2, Trash2 } from 'lucide-react';
 import { useL, useLang } from '../i18n.ts';
 import { electionLabel } from '../electionLabel.ts';
@@ -28,7 +29,7 @@ export function SavedComparisons() {
           <button className="btn small" onClick={() => void open(c)}><FolderOpen className="icon sm" aria-hidden />{L('Open', 'פתיחה')}</button>
           <button className="btn small ghost" onClick={() => void copyComparisonLink(c.link)}><Link2 className="icon sm" aria-hidden />{L('Copy link', 'העתקת קישור')}</button>
           <span className="spacer" />
-          <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${c.name}`, `מחיקת ${c.name}`)} onClick={() => { if (confirm(L(`Delete “${c.name}” from this browser?`, `למחוק את "${c.name}" מהדפדפן?`))) deleteComparison(c.id); }}><Trash2 className="icon sm" aria-hidden /></button>
+          <button className="btn small ghost danger icon-only" aria-label={L(`Delete ${c.name}`, `מחיקת ${c.name}`)} onClick={async () => { if (await askConfirm({ title: L(`Delete “${c.name}” from this browser?`, `למחוק את "${c.name}" מהדפדפן?`), yes: L('Delete', 'מחיקה'), no: L('Cancel', 'ביטול'), danger: true })) deleteComparison(c.id); }}><Trash2 className="icon sm" aria-hidden /></button>
         </div>
       </li>)}
     </ul>

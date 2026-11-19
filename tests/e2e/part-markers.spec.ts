@@ -25,8 +25,9 @@ test('1988 family grouping has one shared part marker per grouping surface, unch
  await page.screenshot({path:'.backup-scratch/part-markers/1988-family-grouping.png',fullPage:true});
 });
 test('2022 blank grouping is marked at each grouping surface and undo clears it',async({page})=>{
- await start(page);await page.getByRole('button',{name:'Edit blocs',exact:true}).click();page.once('dialog',d=>d.accept('My grouping'));
+ await start(page);await page.getByRole('button',{name:'Edit blocs',exact:true}).click();
  await page.getByRole('button',{name:'New grouping',exact:true}).click();
+ await page.locator('dialog.app-ask').getByRole('textbox').fill('My grouping');await page.locator('dialog.app-ask').getByRole('button',{name:'Create',exact:true}).click();
  await expect(part(page)).toHaveCount(3);await expect(items(page)).toHaveCount(0);
  await expect(page.locator('.blocs-head .edit-marker')).toHaveCount(1);
  await expect(page.locator('.lb-seats .tick')).toHaveCount(0);

@@ -424,6 +424,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .tool-ask h2 { margin: 0 0 4px; }
 .tool-ask p { margin: 0 0 10px; }
 .tool-ask-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-block-end: 10px; }
+.app-ask-field { display: grid; gap: 4px; margin-block-end: 12px; } .app-ask-field input { min-inline-size: 0; }
 @media (max-width: 600px) { .tool-ask-actions .btn { min-block-size: 44px; } }
 .tool-intro { color: var(--ink-2); margin: 0 0 10px; }
 

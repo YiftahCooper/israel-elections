@@ -38,3 +38,47 @@ test('1977: a bare majority reads "exactly 61"; outside support has no distance 
   const runs = colours.filter((c, i) => c !== colours[i - 1]);
   expect(new Set(runs).size).toBe(runs.length);
 });
+
+async function editVotes(page: Page, list: string, votes: string) {
+  await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: list, exact: true }).click();
+  const field = page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
+  await field.fill(votes); await field.press('Enter');
+}
+
+test('History: no Undo and Redo of its own, no "revert to here" on the newest change; one Undo takes it back', async ({ page }) => {
+  await start(page, 'k26');
+  await editVotes(page, 'Likud', '1247591');
+  const line = page.locator('.session');
+  await expect(line).toContainText('1 change');
+  await line.getByRole('button', { name: 'History', exact: true }).click();
+  const history = page.locator('.history');
+  await expect(history.locator('li')).toHaveCount(1);
+  await expect(history.getByRole('button', { name: 'revert to here' })).toHaveCount(0);
+  await expect(history.getByRole('button', { name: /^Undo/ })).toHaveCount(0);
+  await page.keyboard.press('Escape');
+  await line.getByRole('button', { name: /^Undo: Likud/ }).click();
+  await expect(line).not.toContainText('1 change');
+});
+
+test('Start over asks in the app\'s own box; Undo and Redo then name it "Start over"', async ({ page }) => {
+  let native = 0;
+  page.on('dialog', (d) => { native++; void d.dismiss(); });
+  await start(page, 'k25', { level: 'expert' });
+  await editVotes(page, 'Likud', '1200000');
+  await editVotes(page, 'Labor', '200000');
+  const line = page.locator('.session');
+  await line.getByRole('button', { name: 'Start over', exact: true }).click();
+  const box = page.getByRole('dialog', { name: 'Start over from the official result?' });
+  await expect(box).toBeVisible();
+  await box.getByRole('button', { name: 'Start over', exact: true }).click();
+  await expect(box).toHaveCount(0);
+  expect(native).toBe(0);
+  await expect(line.getByRole('button', { name: 'Undo: Start over', exact: true })).toBeVisible();
+  await line.getByRole('button', { name: 'Undo: Start over', exact: true }).click();
+  await expect(line).toContainText('2 changes');
+  await expect(line.getByRole('button', { name: 'Redo: Start over', exact: true })).toBeEnabled();
+  // Cancel leaves the work as it was
+  await line.getByRole('button', { name: 'Start over', exact: true }).click();
+  await box.getByRole('button', { name: 'Cancel', exact: true }).click();
+  await expect(line).toContainText('2 changes');
+});
