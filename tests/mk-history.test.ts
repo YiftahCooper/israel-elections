@@ -23,10 +23,10 @@ describe('who gets a history', () => {
     const served = new Set<number>();
     for (let k = 1; k <= 26; k++) for (const t of JSON.parse(readFileSync(`data/research/knesset-member-changes/k${k}.json`, 'utf8')).tenures) served.add(t.personId);
     for (const p of served) expect(rt.people[p], `person ${p}`).toBeDefined();
-    // the 26th Knesset's member records are in (19 Nov 2026): the one person who never sat is Dror David Amos, Shas No. 6,
-    // declared elected and withdrawn before the opening
+    // the 26th Knesset's member records are in (19 Nov 2026), so no one gets a history without a term: Dror David Amos,
+    // Shas No. 6, declared elected but not at the opening, is "not seated" like Alon Davidi in 2021 (seat-takers.ts)
     const never = Object.entries(rt.people).filter(([id]) => !served.has(Number(id)));
-    expect(never.map(([id, p]) => [Number(id), p.runs.map((r) => [r[0], r[1], r[2], r[3]])])).toEqual([[30989, [[26, '26-שס', 6, 'declined']]]]);
+    expect(never.map(([id]) => Number(id))).toEqual([]);
     expect(review.anomalies).toEqual([]);
   });
   it('a candidacy belongs to at most one person', () => {
@@ -369,8 +369,6 @@ describe('a move line never reads “X (until then X)”', () => {
 describe('every elected member has their run', () => {
   it('every member who sat from a Knesset’s opening has a run in that election (all 25 Knessets)', () => {
     const allowed: Record<string, string> = {
-      // no candidacy of the 1955 lists is tied to him in data/meta/bios/k3.json
-      'k3 2390': 'Idov Cohen',
       // the 1977 Likud ranks 21 and 24 are both printed כהן יגאל; which rank is which person is medium-confidence evidence
       'k9 2394': 'Yigal Cohen', 'k9 2399': 'Yigal Cohen-Orgad',
       // the notice prints אמסלם אמיל at Shas #11; the given-name difference is not explained by an official source

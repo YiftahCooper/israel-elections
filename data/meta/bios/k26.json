@@ -1081,7 +1081,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "not elected at the election; entered Knesset 26 in the list's faction (name score 2.5)"
+   "basis": "elected; Knesset 26 member, name matches (2.5)"
   },
   "26-שס#9": {
    "knessetPersonId": 30770,
@@ -1097,7 +1097,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "not elected at the election; entered Knesset 26 in the list's faction (name score 3)"
+   "basis": "elected; Knesset 26 member, name identical (3)"
   },
   "26-שס#10": {
    "knessetPersonId": 30868,

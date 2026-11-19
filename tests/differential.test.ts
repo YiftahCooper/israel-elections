@@ -353,7 +353,10 @@ const EXPECTED: Record<Family, string> = {
   // digests are unchanged.
   // Official resignation notices (19 Nov, YP 15107, 15121, 15139): the notes on Shas Nos. 1, 6 and 7 cite YP 15121, and
   // Shas Nos. 11, 13, 15 and Otzma Yehudit No. 11 get resignation notes. Only those notes and builtAt differ.
-  model: '0d252bdbda1c6ad5ed2eca021cbf5d4b982969f3d043c2a758ce8a31b4049186',
+  // Who took the seat (19 Nov, seat-takers.ts): candidates declared elected who were not at the Knesset's opening are
+  // "not seated" in 1955, 2003, 2015, 2020, 2021 and 2026, so the seat goes to whoever sat; 1955 Progressive No. 6
+  // transcribed. Seat counts are unchanged (the engine digest stands); only who holds them differs.
+  model: '8d8e42c931388f04559ef754ccc8d3cb69d016f1aff87c132a43006c85b38456',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

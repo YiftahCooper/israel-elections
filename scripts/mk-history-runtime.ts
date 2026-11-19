@@ -192,7 +192,8 @@ export function compileMkHistory(root = process.cwd(), review?: MkReview): MkRun
         // medium (scripts/lib/build/bios.ts; audit 12 Nov 2026, c-famous-late-04: Fogel, Bismuth and seven more of 2022)
         if (!b?.knessetPersonId || !knessetMemberSure(b)) continue;
         const p = b.knessetPersonId;
-        if (!terms.has(p) && !(k === 26 && el.has(c.id))) { anomalies.push(`${c.id} ${c.nameHe}: tied to person ${p} by ID but no term and not elected in k26`); continue; }
+        // a candidate declared elected who never took the seat and never sat (2026 Shas No. 6) has no history, as expected
+        if (!terms.has(p) && !(k === 26 && el.has(c.id))) { if (!c.notSeated) anomalies.push(`${c.id} ${c.nameHe}: tied to person ${p} by ID but no term and not elected in k26`); continue; }
         const r: Run = { k, listId: l.id, rank: c.rank, candidateId: c.id, nameHe: c.nameHe, elected: el.has(c.id), notSeated: !!c.notSeated, basis: 'id', via: null };
         (runs.get(p) ?? runs.set(p, []).get(p)!).push(r);
         byCandidate.set(c.id, p);

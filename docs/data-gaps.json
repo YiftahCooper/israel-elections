@@ -1,8 +1,8 @@
 {
   "schemaVersion": 3,
-  "total": 12438,
+  "total": 12439,
   "counts": {
-    "unknown": 7363,
+    "unknown": 7364,
     "missing-field": 285,
     "conflict": 19,
     "single-source": 2946,
@@ -15,7 +15,7 @@
   "countsByStatus": {
     "inferred-not-verified": 1034,
     "needs-current-status-review": 319,
-    "open": 11085
+    "open": 11086
   },
   "countsByImportance": {
     "high": {
@@ -41,12 +41,12 @@
       }
     },
     "low": {
-      "total": 7169,
+      "total": 7170,
       "confirmed": 572,
       "probable": 0,
       "provisional": 802,
       "disputed": 0,
-      "unknown": 5795
+      "unknown": 5796
     }
   },
   "claimCertainty": {
@@ -79,8 +79,8 @@
       "unknown": 0
     },
     "Candidate identity links": {
-      "confirmed": 3247,
-      "probable": 42,
+      "confirmed": 3245,
+      "probable": 45,
       "provisional": 534,
       "disputed": 0,
       "unknown": 0
@@ -131,12 +131,12 @@
     },
     {
       "election": "k3",
-      "total": 286,
+      "total": 287,
       "highOpen": 15,
       "mediumOpen": 74,
-      "low": 160,
+      "low": 161,
       "counts": {
-        "unknown": 174,
+        "unknown": 175,
         "missing-field": 12,
         "conflict": 1,
         "single-source": 65,
@@ -1061,7 +1061,7 @@
     {"election":"k1","area":"Recommendation rounds","count":1,"certainty":{"unknown":1}}
   ],
   "low": [
-    {"area":"data/meta/bios/kN.json candidates","count":4155,"open":4155},
+    {"area":"data/meta/bios/kN.json candidates","count":4156,"open":4156},
     {"area":"Published lists","count":798,"open":566},
     {"area":"data/meta/parties.json parties","count":567,"open":459},
     {"area":"data/meta/kN.json colours","count":442,"open":442},

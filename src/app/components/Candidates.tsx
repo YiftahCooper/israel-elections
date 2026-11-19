@@ -16,9 +16,10 @@ import { Info } from './ui.tsx';
 import { dispatch, useOn, useSetting, useStore } from '../store.ts';
 
 /** The reason each candidate was "not seated", by candidate id: the note of their own list (also after a merge moved
- *  them) that names them or their place on the roster. */
+ *  them) that names them or their place on the roster. A candidate with a note of their own (one who did not take the
+ *  seat at the Knesset's opening: 2021 Alon Davidi) already shows it beside the name, so gets no second one. */
 export function notSeatedReasons(ds: Pick<ElectionDataset, 'lists'>): Record<string, string> {
-  return Object.fromEntries(ds.lists.flatMap((x) => x.candidates.filter((c) => c.notSeated).flatMap((c) => {
+  return Object.fromEntries(ds.lists.flatMap((x) => x.candidates.filter((c) => c.notSeated && !c.notes?.length).flatMap((c) => {
     const n = x.notesHe?.find((t) => t.includes(c.nameHe) || t.includes(`(מקום ${c.rank})`));
     return n ? [[c.id, n] as const] : [];
   })));

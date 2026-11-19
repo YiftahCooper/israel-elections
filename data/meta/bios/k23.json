@@ -989,7 +989,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; reviewed decision: Yael German (#13) was replaced by Idan Roll before the opening (decision 0088 item 4). The link is to German herself (PersonID 23596, Knessets 19–22)."
+   "basis": "not elected; reviewed decision: Yael German (#13) was replaced by Idan Roll before the opening (decision 0088 item 4). The link is to German herself (PersonID 23596, Knessets 19–22)."
   },
   "23-פה#14": {
    "knessetPersonId": 30684,
@@ -1325,7 +1325,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "not elected at the election; entered Knesset 23 in the list's faction (name score 2.5)"
+   "basis": "elected; Knesset 23 member, name matches (2.5)"
   },
   "23-פה#35": {
    "knessetPersonId": 30720,

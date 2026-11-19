@@ -16,7 +16,7 @@ const quotas:Record<number,number>={1:3592,2:5692,3:6938,4:7800,5:8332,6:9881,7:
 const coverage:Record<number,Record<string,number>>={
   1:{א:50,ב:16,ח:17,יד:2,טו:1,ל:1,מ:19,נ:1,ס:4,פ:6,צ:7,ק:4},
   2:{א:45,ב:2,ג:3,ד:2,ו:8,ח:8,טת:34,יד:3,ל:1,מ:15,נ:1,סצ:2,ע:1,פ:4,צ:20,ק:5,ש:16},
-  3:{א:40,ב:11,גד:6,ח:15,יד:2,מ:9,נ:2,ע:1,פ:5,צ:13,ק:6,תו:10},
+  3:{א:40,ב:11,גד:6,ח:15,יד:2,מ:9,נ:2,ע:1,פ:6,צ:13,ק:6,תו:10},
   4:{א:47,ב:12,גד:6,ח:17,יא:2,מ:9,ע:1,פ:6,צ:8,ק:3,רא:2,תו:7},
   5:{א:42,ב:12,ג:4,ד:2,ח:17,יא:2,ל:19,מ:9,ק:5,רא:2,תו:8},
   6:{את:45,ב:11,ג:4,ד:2,ו:3,חל:26,יא:2,כא:10,לע:5,מ:8,ק:1,רא:2,ש:1},
@@ -58,9 +58,11 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
       expect(rr).toBeDefined();expect(list.candidatesTruncated).toBe(!(n===2&&ds.officialSeats![list.id]===0));expect(list.candidatesUnavailable).toBeUndefined();
       expect(list.candidatesSecondary).toBe(false);expect(list.candidatesSource).toBe(reviewed.candidateSourceId);
       expect(list.candidates.map(({id,notSeated,notes,displayNameHe,partyId,bio,nameEn,memberNameHe,...c})=>{expect(id).toBe(`${list.id}#${c.rank}`);return c;})).toEqual(rr!.candidates);
-      // candidates the results notice skipped (below the last elected rank) are flagged not seated, and only they
+      // candidates the results notice skipped (below the last elected rank) are flagged not seated, and only they, besides
+      // one the notice declared elected who was not at the Knesset's opening (1955 Progressive No. 2, Moshe Kol: seat-takers.ts)
       const lastElected=Math.max(...rr!.electedCandidateRanks);
-      expect(list.candidates.filter(c=>c.notSeated).map(c=>c.rank)).toEqual(list.candidates.filter(c=>c.rank<lastElected&&!rr!.electedCandidateRanks.includes(c.rank)).map(c=>c.rank));
+      const atOpening=n===3&&list.letters==='פ'?[2]:[];
+      expect(list.candidates.filter(c=>c.notSeated).map(c=>c.rank)).toEqual(list.candidates.filter(c=>(c.rank<lastElected&&!rr!.electedCandidateRanks.includes(c.rank))||atOpening.includes(c.rank)).map(c=>c.rank));
       expect(list.candidates.map(c=>c.rank)).toEqual(Array.from({length:coverage[n][list.letters]},(_,i)=>i+1));
       expect(rr!.electedCandidateRanks.length).toBe(ds.officialSeats![list.id]);
       expect(rr!.electedNames).toEqual(rr!.electedCandidateRanks.map(r=>list.candidates[r-1].nameHe));

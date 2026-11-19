@@ -20,10 +20,10 @@ test('every elected member of every Knesset is named given name first in the sea
   const k26 = elected(ds(26));
   expect(k26.find((c) => c.id === '26-דרך#2')?.memberNameHe).toBe('יורם כהן');
   expect(k26.filter((c) => !c.memberNameHe)).toEqual([]);
-  // across all 26 Knessets only five seats lack the record (two 1977 ranks both printed כהן יגאל, Emil/Haim Amsalem
-  // 2006, and two members named elected who never sat), and all five are two-word printed names
+  // across all 26 Knessets only three seats lack the record (two 1977 ranks both printed כהן יגאל, Emil/Haim Amsalem
+  // 2006), and all three are two-word printed names; the two named elected who never sat are no longer seated
   const missing = Array.from({ length: 26 }, (_, i) => elected(ds(i + 1))).flat().filter((c) => !c.memberNameHe);
-  expect(missing.map((c) => c.id).sort()).toEqual(['17-שס#11', '20-ל#4', '24-ב#3', '9-מחל#21', '9-מחל#24'].sort());
+  expect(missing.map((c) => c.id).sort()).toEqual(['17-שס#11', '9-מחל#21', '9-מחל#24'].sort());
   for (const c of missing) expect(memberNameGivenFirst(c).split(' ')).toHaveLength(2);
 });
 

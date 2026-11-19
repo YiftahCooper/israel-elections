@@ -116,7 +116,7 @@ export function applyMeta(ds: ElectionDataset, localities?:Pick<LocalityDataset,
           if (m.parties) { for (const p of m.parties) { if (!partyLists.get(p)?.has(lid)) fail(`scheme ${s.id}: ${p} not on ${m.letters}`); out.parties.push(p); } continue; }
           if (m.ranks) {
             const list = lists.find((l) => l.id === lid)!;
-            for (const r of m.ranks) { const c = list.candidates.find((x) => x.rank === r); if (!c) fail(`scheme ${s.id}: ${m.letters} #${r} not in roster`); out.candidates.push(c!.id); }
+            for (const r of m.ranks) { const c = list.candidates.find((x) => x.rank === r); if (!c) fail(`scheme ${s.id}: ${m.letters} #${r} not in roster`); if (c!.notSeated) fail(`scheme ${s.id}: ${m.letters} #${r} did not take a seat (scripts/lib/build/seat-takers.ts): name who sat in it`); out.candidates.push(c!.id); }
             continue;
           }
           out.lists.push(lid);

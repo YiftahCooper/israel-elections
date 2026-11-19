@@ -572,9 +572,10 @@ for k in ELECTIONS:
     linked = lambda e: e.get('knesset') or e.get('hewiki') or e.get('party')
     # An elected member's official identity is kept even without a link (members of the 26th Knesset elected for the
     # first time have a PersonID but no site id yet): the app names every member from the same Knesset person record.
+    # So is a reviewed decision's (2026 Shas No. 6, declared elected but never seated: the build's seat check needs it).
     entries = {cid: {**{f: e.get(f) for f in FIELDS}, **{f: e[f] for f in OPTIONAL if f in e}}
                for cid, e in sorted(result[k].items(), key=lambda x: order[x[0]])
-               if linked(e) or (cid in set(elected[k]) and e.get('knessetPersonId'))}
+               if linked(e) or ((cid in set(elected[k]) or cid in decisions) and e.get('knessetPersonId'))}
     doc = {'electionId': k, 'generatedBy': 'scripts/research/build-bios.py', 'format': 'data/meta/bios/README.md',
            'candidates': entries}
     outputs[OUT / f'{k}.json'] = json.dumps(doc, ensure_ascii=False, indent=1) + '\n'

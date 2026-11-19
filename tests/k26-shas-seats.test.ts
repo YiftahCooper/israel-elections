@@ -18,10 +18,12 @@ let rt: MkRuntime;
 beforeAll(() => { rt = compileMkHistory(process.cwd(), { leftOut: [], anomalies: [] } as MkReview); });
 
 describe('26th Knesset, Shas seats', () => {
-  it('elected by the count: ranks 1–6, as in the results notice', () => {
+  it('the seats go to those who sat (as in 1999): Nos. 1, 6 and 7 not seated, Nos. 8 and 9 elected', () => {
     expect(ds.officialSeats['26-שס']).toBe(6);
     const l = scenarioFromDataset(ds).lists.find((x) => x.id === '26-שס')!;
-    expect(electedOf(l, 6).map((c) => Number(c.id.split('#')[1]))).toEqual([1, 2, 3, 4, 5, 6]);
+    // the count declared Nos. 1–6 elected (YP 15100 §4); the Knesset's opening membership has Nos. 8 and 9 instead of 1 and 6
+    expect(l.candidates.filter((c) => c.notSeated).map((c) => Number(c.id.split('#')[1]))).toEqual([1, 6, 7]);
+    expect(electedOf(l, 6).map((c) => Number(c.id.split('#')[1]))).toEqual([2, 3, 4, 5, 8, 9]);
   });
 
   it('took the seat: the opening membership has Nos. 8 and 9, not Nos. 1 and 6', () => {
@@ -71,21 +73,21 @@ describe('26th Knesset, Shas seats', () => {
       expect(c.notes?.[0]?.he, `${l.id}#${rank}`).toMatch(/^התפטרות מרשימת המועמדים/);
       expect(c.notSeated, `${l.id}#${rank}`).toBeUndefined();
     }
-    // the next in line by the count is unchanged: No. 7 for Shas, No. 8 for Otzma Yehudit
-    expect(shas.candidates.filter((c: { notSeated?: boolean }) => !c.notSeated)[6].rank).toBe(7);
+    // the next in line is unchanged by them: No. 10 for Shas (after Nos. 8 and 9 took the seats), No. 8 for Otzma Yehudit
+    expect(shas.candidates.filter((c: { notSeated?: boolean }) => !c.notSeated)[6].rank).toBe(10);
     expect(otzma.candidates.filter((c: { notSeated?: boolean }) => !c.notSeated)[7].rank).toBe(8);
   });
 
-  it('MK history: Nos. 1 and 6 elected but did not sit, Nos. 8 and 9 sat from the opening', () => {
+  it('MK history: No. 1 elected but did not sit, Nos. 8 and 9 sat from the opening; No. 6 never sat, so has no history', () => {
     const k26 = (p: number) => rt.people[p].runs.find((r) => r[0] === 26)!;
     expect(k26(DERI).slice(0, 4)).toEqual([26, '26-שס', 1, 'declined']);
-    expect(k26(AMOS).slice(0, 4)).toEqual([26, '26-שס', 6, 'declined']);
+    // Dror David Amos never sat in any Knesset: like Alon Davidi (2021), the candidate row and its note tell it
+    expect(rt.people[AMOS]).toBeUndefined();
     expect(k26(BUSSO).slice(0, 4)).toEqual([26, '26-שס', 8, 'first']);
     expect(k26(TAIEB).slice(0, 4)).toEqual([26, '26-שס', 9, 'first']);
     for (const p of [BUSSO, TAIEB]) expect(rt.people[p].terms.find((t) => t[0] === 26)?.[1]).toBe('2026-11-10');
-    expect(rt.people[AMOS].gender ?? null).toBeNull();
     // the official notes reach MK history: on the rows of those who did not sit, and of those below the seats
-    for (const p of [DERI, AMOS, ABUTBUL, MOSHIASHVILI]) expect(k26(p)[6].map(([en]) => en).join(' '), `person ${p}`).toContain('Yalkut HaPirsumim 151');
+    for (const p of [DERI, ABUTBUL, MOSHIASHVILI]) expect(k26(p)[6].map(([en]) => en).join(' '), `person ${p}`).toContain('Yalkut HaPirsumim 151');
     expect(k26(ABUTBUL)[3]).toBe('out');
     expect(k26(MOSHIASHVILI).slice(1, 4)).toEqual(['26-שס', 13, 'out']);
   });

@@ -14,6 +14,8 @@ it('every "not seated" candidate has exactly one source note that explains it', 
     const why = notSeatedReasons(ds);
     for (const l of ds.lists) for (const c of l.candidates.filter((x) => x.notSeated)) {
       count++;
+      // one who did not take the seat at the opening carries a note of their own, shown beside the name
+      if (c.notes?.length) { expect(why[c.id], `${f} ${c.id}`).toBeUndefined(); continue; }
       const matches = (l.notesHe ?? []).filter((t) => t.includes(c.nameHe) || t.includes(`(מקום ${c.rank})`));
       expect(matches, `${f} ${l.id} #${c.rank} ${c.nameHe}`).toHaveLength(1);
       expect(why[c.id]).toBe(matches[0]);

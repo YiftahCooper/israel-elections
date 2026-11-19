@@ -2091,7 +2091,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "elected; reviewed decision: Natan Sharansky withdrew after the election and Marina Solodkin took the seat (decision 0053). The link is to Sharansky himself (PersonID 535)."
+   "basis": "not elected; reviewed decision: Natan Sharansky withdrew after the election and Marina Solodkin took the seat (decision 0053). The link is to Sharansky himself (PersonID 535)."
   },
   "16-כן#2": {
    "knessetPersonId": 532,
@@ -2123,7 +2123,7 @@
    },
    "party": null,
    "confidence": "high",
-   "basis": "not elected at the election; entered Knesset 16 in the list's faction (name score 3)"
+   "basis": "elected; Knesset 16 member, name identical (3)"
   },
   "16-עם#1": {
    "knessetPersonId": 550,
