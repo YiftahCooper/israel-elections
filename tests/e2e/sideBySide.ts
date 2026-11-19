@@ -9,4 +9,8 @@ export async function openSideBySide(page: Page) {
   }
   await page.locator('.cmpm-strip .cmpm-side').click();
   await expect(page.locator('.side-by-side')).toBeVisible();
+  // the section is there at once; its screen loads lazily, and the reference and the workbench inside it after that.
+  // Tests that measure or loop over its rows must not start on a "Loading…".
+  await expect(page.locator('.side-by-side .cmp')).toBeVisible();
+  await expect(page.locator('.side-by-side').getByText(/^(Loading…|טוען…)$/)).toHaveCount(0);
 }

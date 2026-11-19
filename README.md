@@ -83,7 +83,9 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-The browser tests use the production build, so build before running them.
+The browser tests use the production build, so build before running them. Before a release, run them once with the
+CPU slowed (`PW_SLOW=1 npm run test:e2e`) to catch tests that race a slow CI runner; see
+[tests/e2e/README.md](tests/e2e/README.md).
 See [Development](docs/DEVELOPMENT.md) for CI details and test scope.
 
 ## Rebuild the data

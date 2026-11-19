@@ -1,4 +1,5 @@
 import { expect, test } from './fixtures';
+import { waitForStill } from './settle.ts';
 import { barLanguage, openBarMenu, openScenarioMenu } from './barMenu.ts';
 import { choose } from './choices.ts';
 
@@ -28,6 +29,8 @@ test('X1 analysis choices and settings use the shared picker', async ({ page }) 
 
 for (const width of [1500, 1024, 390]) test(`notices and experimental rules leave the board fixed at ${width}`, async ({ page }) => {
   await page.setViewportSize({ width, height: 1000 });
+  // the band's phone layout and the toolbar's height follow a resize a frame later, and move the board
+  await waitForStill(page, ['.band', '.toolbar', '.board']);
   const before = (await page.locator('.board').boundingBox())!.y;
   await openScenarioMenu(page); // phones: the switcher is in the scenario panel
   await choose(page.getByRole('button', { name: 'Switch scenario' }), 'qa2-old');
@@ -35,9 +38,12 @@ for (const width of [1500, 1024, 390]) test(`notices and experimental rules leav
   await page.locator('#tab-rules').click();
   await page.getByRole('button', { name: 'Experimental', exact: true }).click();
   await page.locator('#tab-board').click();
+  await waitForStill(page, ['.band', '.toolbar', '.board']);
   expect((await page.locator('.board').boundingBox())!.y).toBe(before);
   await page.locator('.banner').filter({ hasText: 'rebuilt' }).getByRole('button', { name: 'Dismiss' }).click();
-  expect((await page.locator('.board').boundingBox())!.y + await page.evaluate(() => scrollY)).toBe(before);
+  await waitForStill(page, ['.band', '.toolbar', '.board']);
+  // the board's place on the page, its box and the scroll read in one step
+  expect(await page.locator('.board').evaluate(el => el.getBoundingClientRect().y + scrollY)).toBe(before);
   await expect(page.locator('.banner').filter({ hasText: 'Alternative electoral system' })).toBeVisible();
 });
 

@@ -1,4 +1,5 @@
 import { expect, test } from './fixtures';
+import { waitForStill } from './settle.ts';
 import { barLanguage, closeBarMenu, openBarMenu, openScenarioMenu } from './barMenu.ts';
 import { choose } from './choices.ts';
 
@@ -112,8 +113,12 @@ test('shared selected labels keep their weights and positions', async ({ page })
   await page.locator('#tab-walk').click();
   const stages = page.locator('.walk-stages button'); await expect(stages.first()).toBeVisible();
   await page.setViewportSize({ width: 390, height: 1000 });
+  // the phone bar and the toolbar's height follow a resize a frame later
+  await waitForStill(page, ['.band', '.walk-stages button']);
   const positions = () => stages.evaluateAll(es => es.map(e => [e.getBoundingClientRect().x, e.getBoundingClientRect().width]));
-  const original = await positions(); await stages.nth(2).click(); expect(await positions()).toEqual(original);
+  const original = await positions(); await stages.nth(2).click();
+  await waitForStill(page, '.walk-stages button');
+  expect(await positions()).toEqual(original);
 });
 
 test('unsaved status stays readable without growing the band after an edit', async ({ page }) => {
@@ -142,6 +147,7 @@ for (const width of [390, 1024, 1500]) test(`Hebrew header stays stable across e
 
 test('own choices keep the phone bar compact and are counted in the three-lines panel', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 1000 });
+  await waitForStill(page, '.band'); // the phone bar takes its layout a frame after a resize
   const before = (await page.locator('.band').boundingBox())!.height;
   // 19 Nov 2026: own choices make Custom, counted by a chip beside the complexity buttons
   await openBarMenu(page);
@@ -151,5 +157,6 @@ test('own choices keep the phone bar compact and are counted in the three-lines 
   await openBarMenu(page);
   await expect(page.locator('#app-menu .band-own')).toHaveText('+1');
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
+  await waitForStill(page, '.band');
   expect((await page.locator('.band').boundingBox())!.height).toBe(before);
 });

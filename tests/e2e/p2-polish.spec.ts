@@ -1,4 +1,6 @@
 import { expect, test, type Page } from './fixtures';
+import { waitForStill } from './settle.ts';
+import { clearHover, delayTo, expectAtOnce, expectKeptForGrace, expectWaitedForRest, pastSkipWindow, recordHover } from './hover-timing.ts';
 
 // 9 Nov 2026 follow-ups: 2026 gazetted (no "not yet verified" anywhere), "Device" theme wherever theme is chosen,
 // the phone bar pinned while scrolling, and the party-family charts on the shared hover timing (hoverIntent.ts).
@@ -114,28 +116,32 @@ test.describe('party-family charts use the shared hover timing', () => {
   test('vote and seat charts: a sweep opens nothing, resting opens, the next point opens at once, focus at once', async ({ page }) => {
     await open(page, { level: 'expert' });
     await page.getByRole('tab', { name: 'Party families', exact: true }).click();
-    const tip = page.locator('.family-tooltip');
+    // timings measured in the page (hover-timing.ts), so a slow machine cannot make them pass or fail
+    await recordHover(page, '.family-tooltip');
     for (const chart of ['.family-seat-plot svg', '.family-plots section svg']) {
       const svg = page.locator(chart).first();
       await svg.scrollIntoViewIfNeeded();
+      await waitForStill(page, chart); // the charts are still being laid out just after the tab opens
       const b = (await svg.boundingBox())!;
-      // sweep across in under the rest time: nothing opens
+      await clearHover(page);
+      // sweep across in under the rest time: nothing opens; resting opens after the shared delay
       await page.mouse.move(b.x + b.width * 0.2, b.y + b.height / 2);
       await page.mouse.move(b.x + b.width * 0.8, b.y + b.height / 2, { steps: 4 });
-      await expect(tip).toHaveCount(0);
-      // resting opens after the shared delay
-      await expect(tip).toHaveCount(1, { timeout: 1500 });
-      const first = await tip.textContent();
+      expectWaitedForRest(await delayTo(page, 'shown', 'pointermove', 'first'));
       // the next point while one is open: replaced at once
+      await clearHover(page);
       await page.mouse.move(b.x + b.width * 0.5, b.y + b.height / 2);
-      await expect(tip).not.toHaveText(first!, { timeout: 200 });
+      expectAtOnce(await delayTo(page, 'changed'));
       // leaving: closes after the grace
+      await clearHover(page);
       await page.mouse.move(5, 5);
-      await expect(tip).toHaveCount(0, { timeout: 1500 });
-      await page.waitForTimeout(400);
+      expectKeptForGrace(await delayTo(page, 'gone'));
+      await pastSkipWindow(page);
     }
     // keyboard focus opens at once
+    await clearHover(page);
     await page.locator('.family-plots section').first().locator('g[role=button]').last().focus();
-    await expect(page.getByRole('tooltip')).toBeVisible({ timeout: 200 });
+    expectAtOnce(await delayTo(page, 'shown', 'focusin'));
+    await expect(page.getByRole('tooltip')).toBeVisible();
   });
 });

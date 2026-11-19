@@ -2,6 +2,7 @@ import { choose } from './choices.ts';
 // Overview round 2: nothing moves under the pointer when you edit or open a list, focus is never hidden under
 // the sticky bars, and Hebrew text beside numbers and graphics reads correctly.
 import { expect, test, type Page } from './fixtures';
+import { waitForStill } from './settle.ts';
 
 const start = async (page: Page, lang: 'en' | 'he' = 'en', width = 1500, election = 'k26') => {
   await page.setViewportSize({ width, height: width < 600 ? 844 : 1000 });
@@ -12,6 +13,14 @@ const start = async (page: Page, lang: 'en' | 'he' = 'en', width = 1500, electio
   if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
 };
 const top = (page: Page, sel: string) => page.locator(sel).first().evaluate(e => Math.round(e.getBoundingClientRect().top + scrollY));
+/** the chamber's and the lists' places on the page and the band's height, read in one step once they stand still */
+const layout = async (page: Page) => {
+  await waitForStill(page, ['.chamber-panel', '.lbars', 'header.band', '.side-panel']);
+  return page.evaluate(() => {
+    const top = (sel: string) => Math.round(document.querySelector(sel)!.getBoundingClientRect().top + scrollY);
+    return { chamber: top('.chamber-panel'), lists: top('.lbars'), band: Math.round(document.querySelector('header.band')!.getBoundingClientRect().height) };
+  });
+};
 const increase = (page: Page, lang: 'en' | 'he') => page.locator('.side-panel').getByRole('button', { name: lang === 'he' ? /^הוספת קולות/ : /^Increase Votes/ }).first();
 
 for (const [lang, width] of [['en', 1500], ['he', 1024], ['he', 390]] as const) {
@@ -21,13 +30,14 @@ for (const [lang, width] of [['en', 1500], ['he', 1024], ['he', 390]] as const) 
     await expect(page.locator('.session')).toContainText(lang === 'he' ? 'אין שינויים' : 'No changes');
     await page.locator('.lb-row').nth(6).click();
     const plus = increase(page, lang);
-    const before = { chamber: await top(page, '.chamber-panel'), lists: await top(page, '.lbars'), band: await page.locator('header.band').evaluate(e => Math.round(e.getBoundingClientRect().height)) };
+    await expect(plus).toBeVisible();
+    const before = await layout(page);
     await plus.click();
     await expect(page.locator('.session')).toContainText(lang === 'he' ? 'היסטוריה' : 'History');
-    expect({ chamber: await top(page, '.chamber-panel'), lists: await top(page, '.lbars'), band: await page.locator('header.band').evaluate(e => Math.round(e.getBoundingClientRect().height)) }).toEqual(before);
+    expect(await layout(page)).toEqual(before);
     // further edits that add more to say do not grow the line either
     for (let i = 0; i < 10; i++) await plus.click();
-    expect(await top(page, '.chamber-panel')).toBe(before.chamber);
+    expect((await layout(page)).chamber).toBe(before.chamber);
   });
 }
 

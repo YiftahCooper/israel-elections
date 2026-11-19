@@ -7,7 +7,11 @@ test('a reload restores unsaved edits and their undo', async ({ page }) => {
   const votes = page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
   await votes.fill('1200000'); await votes.press('Enter');
   await expect(votes).toHaveValue('1,200,000');
-  await page.waitForTimeout(400); // the workspace is written a moment after the last change
+  // the workspace is written a moment after the last change
+  await expect.poll(() => page.evaluate(() => {
+    const stored = JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? '{}') as { tabs?: Record<string, { ws?: { current?: { log?: unknown[] } } }> };
+    return Object.values(stored.tabs ?? {}).some(t => (t.ws?.current?.log?.length ?? 0) > 0);
+  }), { message: 'the edit is in the stored workspace' }).toBe(true);
   await page.reload();
   await expect(page.locator('.band .election-status')).toContainText('*');
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();

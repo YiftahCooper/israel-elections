@@ -4,6 +4,7 @@
 // The separate fields on the Turnout and Rules tabs are gone. On a phone the window never covers its tile, also when
 // the keyboard takes half the screen.
 import { expect, test, type Page } from './fixtures';
+import { boxesNow, waitForStill } from './settle.ts';
 import { openTool } from './openTool.ts';
 
 async function open(page: Page, { lang = 'en', width = 1500, height = 1000 }: { lang?: 'en' | 'he'; width?: number; height?: number } = {}) {
@@ -129,8 +130,8 @@ for (const lang of ['en', 'he'] as const) test(`on a phone the window never cove
   expect(overlaps((await t.boundingBox())!, (await pop(page).boundingBox())!)).toBe(false);
   // the keyboard takes about half the screen: the window moves, still beside the tile, its field still on screen
   await page.setViewportSize({ width: 390, height: 420 });
-  await page.waitForTimeout(300);
-  const tb = (await t.boundingBox())!, pb = (await pop(page).boundingBox())!;
+  await waitForStill(page, ['.tn-facts [data-fact]', '.tile-pop']);
+  const [tb, pb] = await boxesNow(t, pop(page));
   expect(overlaps(tb, pb)).toBe(false);
   const fb = (await pop(page).locator('input').first().boundingBox())!;
   expect(fb.y).toBeGreaterThanOrEqual(0); expect(fb.y + fb.height).toBeLessThanOrEqual(420);

@@ -1,5 +1,6 @@
 import {choose} from './choices.ts';
 import {test,expect,type Page} from './fixtures';
+import { waitForStill } from './settle.ts';
 async function start(page:Page,lang='en',theme='light') {
  await page.addInitScript(v=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)),{lang,theme,level:'expert',hintDismissed:true});
  await page.goto('/');await page.getByRole('tab',{name:lang==='he'?'משפחות מפלגות':'Party families',exact:true}).click();
@@ -119,7 +120,8 @@ test('family aggregates open details without navigating; hover never moves plots
  // the seats chart sits above: bring the line charts into view first, so only a hover could move them
  await page.locator('.family-plots').evaluate(e=>e.scrollIntoView({block:'start'}));
  const top=await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top);
- for(const i of [0,18,25]){await marks.nth(i).hover();expect(await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top)).toBe(top);}
+ // the box opens after the pointer rests: check once it is open and everything has come to rest
+ for(const i of [0,18,25]){await marks.nth(i).hover();await expect(page.getByRole('tooltip')).toBeVisible();await waitForStill(page,['.family-plots','[role=tooltip]']);expect(await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top)).toBe(top);}
  await marks.nth(18).focus();await page.keyboard.press('Enter');
  const detail=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(detail).toBeVisible();
  await expect(detail).toContainText('Likud');await expect(detail).toContainText('Yisrael Beiteinu');await expect(detail).toContainText('885,054');await expect(detail.locator('.family-point-delta')).toContainText('≈−158,051 votes · −6.56 pp · ▼ −7 seats');await expect(detail).not.toContainText('0 counted votes');await expect(detail.locator('.family-point-estimate')).toContainText('Estimate by seats: ≈571,003 · ≈15.06%');await expect(detail).toContainText('Since');

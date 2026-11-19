@@ -75,8 +75,8 @@ test("opening someone else's scenario keeps the viewer's own colours where set; 
   await start(page, { saved: [{ id: 'au', name: 'Author', electionId: 'k26', savedAt: '2026-11-19T00:00:00Z', baseBuiltAt: '', log: [{ type: 'setVotes', listId: '26-שס', votes: 239533 }, { type: 'setListMeta', listId: '26-שס', patch: { color: '#aa0000' } }, { type: 'setListMeta', listId: '26-ג', patch: { color: '#00aa00' } }] }] });
   await page.locator('.band .scenario-switcher .choice-trigger').click();
   await page.locator('dialog[open] .choice-option', { hasText: 'Author' }).click();
-  const ask = page.locator('dialog[open]').getByRole('button').filter({ hasText: /official|scenario/i }).first();
-  if (await ask.isVisible().catch(() => false)) await ask.click();
+  // (no question follows: checked at normal and 4x slower speed on 19 Nov. A one-shot "answer it if it is there" was
+  // removed, as a question appearing a moment later would have been missed and left the test waiting.)
   await expect(page.locator('.lb-row[data-list-id="26-שס"] .lb-bar i').first()).toHaveCSS('background-color', 'rgb(170, 0, 0)');
   await page.locator('.band .band-share > .tool').click();
   await page.getByRole('button', { name: 'Copy a share link', exact: true }).click();
