@@ -176,8 +176,10 @@ function Shell() {
   // election open the message is a banner over it; with none, it is the whole page, which offers another election only
   // as the reader's own choice. A shared link or last visit's work waiting for that election is said to be kept.
   const failedName = loadError && ((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id));
-  const failedWhy = loadError && <>{loadError.kind === 'version'
+  // page: under a heading that already names the election and says it did not load, only what to do
+  const failedWhy = (page: boolean) => loadError && <>{loadError.kind === 'version'
     ? L(`The app and the ${failedName} election data are of different versions. Reload the page to fetch both again.`, `האתר ונתוני הבחירות ${failedName} הם מגרסאות שונות. טענו מחדש את הדף כדי להביא את שניהם מחדש.`)
+    : page ? L('Check the connection and try again.', 'בדקו את החיבור ונסו שוב.')
     : L(`Could not load the ${failedName} election data. Check the connection and try again.`, `טעינת נתוני הבחירות ${failedName} נכשלה. בדקו את החיבור ונסו שוב.`)}
     {loadError.kept && <> {L('Your unsaved work on this election is not lost.', 'העבודה שלא נשמרה על הבחירות האלה לא אבדה.')}</>}
     {loadError.link && !loadError.kept && <> {L('The shared scenario is not lost: it opens once this election loads.', 'התרחיש ששותף לא אבד: הוא ייפתח כשהבחירות האלה ייטענו.')}</>}</>;
@@ -186,7 +188,7 @@ function Shell() {
     : <button className="btn small" onClick={() => (loadError.retry ?? (() => void openElection(loadError.id)))()}>{L('Try again', 'נסו שוב')}</button>);
   const loadBanner = loadError && (
     <div className="banner err" role="alert">
-      <span className="banner-text">{failedWhy}{' '}<bdi dir="ltr" className="tiny muted">{loadError.message}</bdi></span>
+      <span className="banner-text">{failedWhy(false)}{' '}<bdi dir="ltr" className="tiny muted">{loadError.message}</bdi></span>
       {failedRetry}
       <button className="btn small ghost icon-only" onClick={() => setState({ loadError: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button>
     </div>
@@ -194,7 +196,7 @@ function Shell() {
   if (!committed || !ds) return <div className="app"><TopBar s={null} r={null} ds={undefined} baseR={null} />{loadError
     ? <main className="work"><section className="panel load-failed" role="alert" aria-labelledby="load-failed-title">
         <h2 id="load-failed-title">{L(`${failedName} could not be loaded`, `הבחירות ${failedName} לא נטענו`)}</h2>
-        <p>{failedWhy}</p>
+        <p>{failedWhy(true)}</p>
         <p className="tiny muted"><bdi dir="ltr">{loadError.message}</bdi></p>
         <div className="row">{failedRetry}
           {/* the election list in the top bar: another election only when the reader picks one */}

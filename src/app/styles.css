@@ -123,8 +123,8 @@ input, textarea { caret-color: var(--focus); }
 .banner.note { background: var(--surface-2); } /* not .info: that class styles the (i) popover and would shrink banner buttons to icon size */
 .banner > .banner-text { flex: 1 1 14rem; min-inline-size: 0; } /* a dismiss button stays beside the text */
 /* an election that could not be loaded with nothing open: the whole page is the message (App.tsx) */
-.load-failed { max-inline-size: 40rem; margin: 32px auto; padding: 20px 24px; border-inline-start: 4px solid var(--bad); background: var(--err-bg); }
-.load-failed h2 { margin: 0 0 8px; font-size: 18px; }
+.panel.load-failed { max-inline-size: 40rem; margin: 32px auto; padding: 20px 24px; border-inline-start: 4px solid var(--bad); background: var(--err-bg); }
+.panel.load-failed h2 { margin: 0 0 8px; font-size: 18px; }
 .load-failed p { margin: 0 0 8px; }
 .load-failed .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 /* One fixed line, present from the start: edits never change its height (no page jump); overflow scrolls sideways
