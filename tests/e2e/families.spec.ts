@@ -272,3 +272,14 @@ test('dark theme: the shaded gap stands out from the panel', async ({page}) => {
  expect(ratios.length).toBeGreaterThan(0);
  for (const r of ratios) expect(r).toBeGreaterThanOrEqual(1.5);
 });
+
+// V2 fault F3: the Centre line stopped after 1988 and restarted in 1996 (1992's lists are not yet classified), with no
+// mark on the chart saying why. The break is now marked where it happens, with a note naming the year.
+for (const lang of ['en','he'] as const) test(`a break where lists are not yet classified is marked on the chart (${lang})`, async ({page}) => {
+ await start(page,lang);
+ const centre=page.locator('.family-chip').filter({hasText:lang==='he'?'מרכז':'Centre'}).first();
+ if ((await centre.getAttribute('aria-pressed'))!=='true') await centre.click();
+ const plot=page.locator('.family-plot').filter({has:page.locator(`svg[aria-label^="${lang==='he'?'מרכז':'Centre'}"]`)}).first();
+ await expect(plot.locator('.family-unclassified')).toHaveCount(1);
+ await expect(plot.locator('.family-unclassified-note')).toContainText(lang==='he'?'רשימות שטרם סווגו: 1992':'Lists not yet classified: 1992');
+});
