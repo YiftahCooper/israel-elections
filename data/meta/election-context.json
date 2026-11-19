@@ -732,8 +732,8 @@
       "effectiveDate": "2015-03-31",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "Opening-day snapshot: Ilan Shohat (#4) is declared elected in the results notice; Robert Ilatov (#7) served at opening. Registered rank, declaration and opening membership are different snapshots; list seats do not change. Shohat announced on 24 March 2015 that he would remain mayor of Safed; this announcement does not date the formal replacement instrument.",
-      "textHe": "תמונת מצב ביום הפתיחה: אילן שוחט (4) מופיע כנבחר בהודעת התוצאות; רוברט אילטוב (7) כיהן בפתיחה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. ב־24 במרס 2015 הודיע שוחט שיישאר ראש עיריית צפת; ההודעה אינה קובעת את מועד מסמך ההחלפה הרשמי.",
+      "textEn": "Opening-day snapshot: Ilan Shohat (#4) is declared elected in the results notice; Robert Ilatov (#7) served at opening. Registered rank, declaration and opening membership are different snapshots; list seats do not change. On 24 March 2015 Shohat announced staying on as mayor of Safed; this announcement does not date the formal replacement instrument.",
+      "textHe": "תמונת מצב ביום הפתיחה: שמו של אילן שוחט (4) מופיע בין הנבחרים בהודעת התוצאות; רוברט אילטוב (7) כיהן בפתיחה. הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים של הרשימה אינו משתנה. הודעת שוחט מ־24 במרס 2015: המשך הכהונה כראש עיריית צפת; ההודעה אינה קובעת את מועד מסמך ההחלפה הרשמי.",
       "source": {
         "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2020%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
         "publisher": "Knesset open data",
@@ -799,8 +799,8 @@
       "effectiveDate": "2021-04-06",
       "contestType": "knesset",
       "type": "membership-snapshot",
-      "textEn": "Alon Davidi (#3) was declared elected in Yalkut HaPirsumim 9511 (31 March 2021, §4). He announced on 5 April that he would remain mayor of Sderot and not take the seat (Davar). Idit Silman (#8) served from the opening on 6 April (Knesset OData). Registered rank, declaration and opening membership are distinct; list seats do not change.",
-      "textHe": "אלון דוידי (3) הוכרז כנבחר בילקוט הפרסומים 9511 (31 במרס 2021, סעיף 4). ב־5 באפריל הודיע שיישאר ראש עיריית שדרות ולא ייכנס לכנסת (דבר). עידית סילמן (8) כיהנה מהפתיחה ב־6 באפריל (נתוני הכנסת). הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים אינו משתנה.",
+      "textEn": "Alon Davidi (#3) was declared elected in Yalkut HaPirsumim 9511 (31 March 2021, §4). On 5 April Davidi announced staying on as mayor of Sderot and not taking the seat (Davar). Idit Silman (#8) served from the opening on 6 April (Knesset OData). Registered rank, declaration and opening membership are distinct; list seats do not change.",
+      "textHe": "שמו של אלון דוידי (3) הופיע בין הנבחרים בילקוט הפרסומים 9511 (31 במרס 2021, סעיף 4). הודעת דוידי מ־5 באפריל: המשך הכהונה כראש עיריית שדרות, בלי כניסה לכנסת (דבר). עידית סילמן (8) כיהנה מהפתיחה ב־6 באפריל (נתוני הכנסת). הדירוג הרשום, הכרזת הבחירה והכהונה בפתיחה הם מצבים נפרדים; מספר המנדטים אינו משתנה.",
       "source": {
         "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2024%20and%20(PositionID%20eq%2043%20or%20PositionID%20eq%2061)",
         "publisher": "Knesset open data",

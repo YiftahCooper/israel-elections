@@ -456,7 +456,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k18.json",
-      "sha256": "549e9bd4ed2f47f88231e9e7cbd2830d88ebba872e19d25e6bc33150d30f9dd1",
+      "sha256": "1f123f8396b3f2816f3a91860008c4eb7a41ac1dafd2b93aca11169385b0dda5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -472,7 +472,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k20.json",
-      "sha256": "f1e36162e23f536259ed30d54a91d47d89b54382425e3bdbf1139a708ce588be",
+      "sha256": "c634079735bcacfc1af198e98c637872abf79efbbc9ffa24f8aac0aa6f1afcac",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -504,7 +504,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k24.json",
-      "sha256": "4bbfa8142a4af7e161cb795a2f8f049df0d4ba3b83c25fcc7c03a375c1f7399a",
+      "sha256": "30d78a09d0713129b6a25b147170da63b98da7ffe4900760e3a31fca7e08a4b5",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -2459,7 +2459,7 @@
       "electionId": "k18",
       "electionDate": "2009-02-10",
       "datasetPath": "public/data/k18.json",
-      "datasetSha256": "549e9bd4ed2f47f88231e9e7cbd2830d88ebba872e19d25e6bc33150d30f9dd1",
+      "datasetSha256": "1f123f8396b3f2816f3a91860008c4eb7a41ac1dafd2b93aca11169385b0dda5",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2009-02-17",
@@ -2712,7 +2712,7 @@
       "electionId": "k20",
       "electionDate": "2015-03-17",
       "datasetPath": "public/data/k20.json",
-      "datasetSha256": "f1e36162e23f536259ed30d54a91d47d89b54382425e3bdbf1139a708ce588be",
+      "datasetSha256": "c634079735bcacfc1af198e98c637872abf79efbbc9ffa24f8aac0aa6f1afcac",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2015-03-25",
@@ -3186,7 +3186,7 @@
       "electionId": "k24",
       "electionDate": "2021-03-23",
       "datasetPath": "public/data/k24.json",
-      "datasetSha256": "4bbfa8142a4af7e161cb795a2f8f049df0d4ba3b83c25fcc7c03a375c1f7399a",
+      "datasetSha256": "30d78a09d0713129b6a25b147170da63b98da7ffe4900760e3a31fca7e08a4b5",
       "datasetStatus": {
         "stage": "official-final",
         "asOf": "2026-11-03",

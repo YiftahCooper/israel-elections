@@ -207,7 +207,7 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
     ? L('The relationship has not been established. It is not counted as membership.', 'המעמד טרם הוברר. אין לראות בו חברות בקואליציה.')
     : entry.certainty === 'provisional' ? L('Provisional classification; the original terms are not fully authenticated.', 'סיווג זמני; תנאי ההסדר המקוריים טרם אומתו במלואם.')
     : entry.certainty === 'disputed' ? L('Sources disagree; both sides are cited below.', 'המקורות חלוקים; שני הצדדים מובאים להלן.') : undefined;
-  const votes = { for: L('For', 'בעד'), against: L('Against', 'נגד'), abstain: L('Abstained', 'נמנע'), absent: L('Absent', 'נעדר'), unknown: L('Vote unknown', 'הצבעה לא ידועה') };
+  const votes = { for: L('For', 'בעד'), against: L('Against', 'נגד'), abstain: L('Abstained', 'הימנעות'), absent: L('Absent', 'היעדרות'), unknown: L('Vote unknown', 'הצבעה לא ידועה') };
   const reconciliation = g.reconciliation.status === 'unresolved' ? L('The difference has not been reconciled.', 'הפער טרם הוסבר.')
     : g.reconciliation.status === 'explained' ? L('The recorded participation and individual votes explain the difference.', 'רישומי ההשתתפות וההצבעות האישיות מסבירים את הפער.')
     : g.reconciliation.status === 'vote-unavailable' ? L('The investiture vote has not been recovered.', 'הצבעת האמון טרם אותרה.')
@@ -237,7 +237,7 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
       return <div className="after-individual" key={person.id} data-individual={person.id}>
         <bdi>{lang === 'he' ? person.nameHe : person.nameEn}</bdi>
         <span className="muted small">{L('Elected on', 'מרשימת')} <bdi>{origin ? listLabel(origin, lang) : person.fromLetters}</bdi></span>
-        {!person.countedInFactionSeats && <span className="small">{role === 'member-with-ministries' ? L('Member', 'חבר בקואליציה') : L(...SUPPORT_LABELS[role])}</span>}
+        {!person.countedInFactionSeats && <span className="small">{role === 'member-with-ministries' ? L('Member', 'חברות בקואליציה') : L(...SUPPORT_LABELS[role])}</span>}
         <span className="after-help-anchor">{votes[person.vote]} <Evidence data={data} cites={person.cites} explanation={person.countedInFactionSeats ? L('Already included in the list seat count. The faction role does not establish a personal ministerial appointment or support.', 'כלול כבר במנדטים של הרשימה. מעמד הסיעה אינו מעיד על מינוי אישי לשר או על תמיכה אישית.'): qualification(person)} notes={person.note ? [person.note] : []} /></span>
       </div>;
     })}</div>}

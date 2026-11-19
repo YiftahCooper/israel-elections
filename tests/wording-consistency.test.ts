@@ -27,3 +27,38 @@ describe('complexity, not "level", in Hebrew', () => {
     expect(srcStrings().filter(({ s }) => /בסיסי/.test(s)).map(({ at }) => at)).toEqual([]);
   });
 });
+
+describe('words about a person follow the Knesset record, else neutral', () => {
+  // A candidate, a named MK or a nominee may be a woman, and most candidates have no Knesset person record. Labels
+  // that describe one person are nouns (כניסה, הימנעות), never a masculine verb or possessive.
+  const HE_LABELS = /L\('(?:moved|enters|leaves|Their vote|votes as its list now|Candidate name|Withdrawn before polling|Member|Abstain|Abstained|Absent)', '([^']*)'\)/g;
+  const MASCULINE = /^(הועבר|נכנס|יוצא|ההצבעה שלו|מצביע כעת כמו רשימתו|שם המועמד|פרש לפני ההצבעה|חבר בקואליציה|נמנע|נעדר)$/;
+  it('labels about one person are not masculine', () => {
+    const hits = files('src').flatMap((f) => [...readFileSync(f, 'utf8').matchAll(HE_LABELS)]
+      .filter((m) => MASCULINE.test(m[1])).map((m) => `${f}: ${m[0]}`));
+    expect(hits).toEqual([]);
+  });
+  it('the neutral form of a gendered word is not the feminine one', () => {
+    // gw(gender, masculine, feminine, neutral) and g(...): "חזרה לכנסת" reads as "she returned" for anyone
+    const CALL = /\b(?:gw|g)\(\s*[\w.]+,\s*'([^']*)',\s*'([^']*)',\s*'([^']*)'\)/g;
+    const hits = files('src').flatMap((f) => [...readFileSync(f, 'utf8').matchAll(CALL)]
+      .filter((m) => m[3] === m[2] || m[3] === m[1]).map((m) => `${f}: ${m[0]}`));
+    expect(hits).toEqual([]);
+  });
+  it('notes about candidates with no Knesset record use no gendered verb', () => {
+    const notes = JSON.parse(readFileSync('data/meta/candidate-notes.json', 'utf8')).notes as { candidateId: string; he: string; en: string }[];
+    const VERB = /(^|[\s;:,])(התפטר|נבחר|הוכרז|הודיע|נשמר|הוחלף|פרש|כיהן|נכנס)(?=[\s;:,.]|$)/;
+    const hits = notes.filter((n) => {
+      const ds = JSON.parse(readFileSync(`public/data/k${n.candidateId.split('-')[0]}.json`, 'utf8'));
+      const c = ds.lists.flatMap((l: { candidates: { id: string; bio?: { knesset?: string } }[] }) => l.candidates).find((x: { id: string }) => x.id === n.candidateId);
+      // a clause naming someone else by list number ("עידית סילמן (8) כיהנה") is about that person
+      return !c?.bio?.knesset && (n.he.split(/[.;]/).some((s) => !/\(\S*\d+\)/.test(s) && VERB.test(s.replace(/השם נשמר/g, ""))) || /\b(he|she|his|her)\b/i.test(n.en));
+    }).map((n) => n.candidateId);
+    expect(hits).toEqual([]);
+  });
+  it('election-context text about Davidi and Shohat (no Knesset record) is neutral', () => {
+    const texts = readFileSync('data/meta/election-context.json', 'utf8').split('\n').filter((l) => /Davidi|Shohat|דוידי|שוחט/.test(l));
+    expect(texts.length).toBeGreaterThan(0);
+    expect(texts.filter((l) => /\b(he|his|him)\b|הודיע|מופיע כנבחר|הוכרז כנבחר|יישאר|ייכנס/i.test(l))).toEqual([]);
+  });
+});

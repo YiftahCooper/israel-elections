@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Words about a person (19 Nov): where the Knesset keeps no record of someone's gender, Hebrew labels about them are now neutral nouns: an edited candidate list says כניסה / יציאה / מרשימה אחרת, a named MK's vote reads ההצבעה with הימנעות, an individual's vote after an election reads הימנעות or היעדרות, a withdrawn prime-minister nominee פרישה לפני ההצבעה and a timeline return שיבה לכנסת; the notes on Alon Davidi (2021), Ilan Shohat (2015) and seven candidates who resigned before polling day no longer say "he".
 - Complexity in Hebrew (19 Nov): the greyed-tool box, every tool's (i) in Settings and the Settings notes on Custom, Copy votes and seat changes now name the complexity itself ("חלק מ"מומחה"", "מעבר ל"מומחה"") or say רמת מורכבות, instead of רמה; Simple is פשוט everywhere.
 - Withdrawing a list (19 Nov): ticking "Withdrawn from the race" while the list's Scale, share & transfer section was open closed the list panel with an error; the panel now stays open and hides the transfer step, whose buttons a withdrawn list cannot use.
 - Map names and the Sensitivity table under any font or load (19 Nov): the Localities map keeps room for a place name as the page actually draws it, so on a device without the app's font (or before it arrives) a name no longer runs onto a dot, a circle, another name or the double-envelope island; the map opens straight on its fitted view instead of sliding there; in Sensitivity, a quick key press no longer leaves the table scrolled to the previous row.

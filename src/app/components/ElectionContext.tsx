@@ -85,7 +85,7 @@ export function PMResult({ contest, onKnesset }: { contest: PMContest; onKnesset
         <p>{lang === 'he' ? b.textHe : b.textEn} <EvidenceLink source={b.source} /></p>
         {contest.noteEn && <p>{lang === 'he' ? contest.noteHe : contest.noteEn}</p>}
       </details>
-      {contest.candidates.some(c => c.status === 'withdrawn') && <details><summary>{L('Withdrawn nominees', 'מועמדים שפרשו')} ({contest.candidates.filter(c => c.status === 'withdrawn').length})</summary><ul>{contest.candidates.filter(c => c.status === 'withdrawn').map(c => <li key={c.id}>{lang === 'he' ? c.nameHe : c.nameEn} · {L('Withdrawn before polling', 'פרש לפני ההצבעה')} · <EvidenceLink source={c.source!} /></li>)}</ul></details>}
+      {contest.candidates.some(c => c.status === 'withdrawn') && <details><summary>{L('Withdrawn nominees', 'מועמדים שפרשו')} ({contest.candidates.filter(c => c.status === 'withdrawn').length})</summary><ul>{contest.candidates.filter(c => c.status === 'withdrawn').map(c => <li key={c.id}>{lang === 'he' ? c.nameHe : c.nameEn} · {L('Withdrawn before polling', 'פרישה לפני ההצבעה')} · <EvidenceLink source={c.source!} /></li>)}</ul></details>}
     </div>
   </section>;
 }

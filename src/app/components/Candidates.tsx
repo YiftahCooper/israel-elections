@@ -95,7 +95,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
               <span className="rk">{i + 1}</span>
               <span style={{ minWidth: 0 }}>
                 {editing === x.id ? (
-                  <input type="text" autoFocus value={draft} style={{ width: `${Math.max(8, draft.length + 3)}ch` }} onChange={(e) => setDraft(e.target.value)} aria-label={L('Candidate name', 'שם המועמד')}
+                  <input type="text" autoFocus value={draft} style={{ width: `${Math.max(8, draft.length + 3)}ch` }} onChange={(e) => setDraft(e.target.value)} aria-label={L('Candidate name', 'שם ברשימה')}
                     onBlur={() => { if (draft.trim() && draft !== x.nameHe) commit(c.map((y) => (y.id === x.id ? { ...y, nameHe: draft.trim(), displayNameHe: undefined, nameEn: undefined } : y)), `rename ${shownName(x)}`); setEditing(null); }}
                     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape') { if (draft !== x.nameHe) { e.preventDefault(); e.stopPropagation(); } setDraft(x.nameHe); setEditing(null); } }} />
                 ) : (
@@ -105,8 +105,8 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
                 {(() => { const p = x.partyId ? l.parties?.find((q) => q.id === x.partyId) : undefined;
                   return p ? <span className="muted tiny"> · {lang === 'he' ? p.nameHe : p.nameEn}</span>
                     : x.partyHe && l.sponsorsHe.includes(';') ? <span className="muted tiny"> · {lang === 'he' ? x.partyHe : romanize(x.partyHe)}</span> : null; })()}
-                {x.originListId && x.originListId !== l.id && !l.originIds.includes(x.originListId) && <span className="muted tiny"> · {L('moved', 'הועבר')}</span>}
-                {changed && <span className={`tiny ${elected ? 'up' : 'down'}`}> · {elected ? L('enters', 'נכנס') : L('leaves', 'יוצא')}</span>}
+                {x.originListId && x.originListId !== l.id && !l.originIds.includes(x.originListId) && <span className="muted tiny"> · {L('moved', 'מרשימה אחרת')}</span>}
+                {changed && <span className={`tiny ${elected ? 'up' : 'down'}`}> · {elected ? L('enters', 'כניסה') : L('leaves', 'יציאה')}</span>}
                 {x.bio && <BioLinks bio={x.bio} name={candidateName(x, lang)} />}
               </span>
               {advanced ? (

@@ -290,7 +290,7 @@ function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders
   const factionName = (f: number) => mk ? factionLabel(mk, f, lang) : '';
   const line = (h: PackedHolder): ReactNode => {
     const gen = genderOf(mk, h[0]);
-    const came = h[3] === 'o' ? L('From the first sitting', 'מהישיבה הראשונה') : h[3] === 'r' ? L('Returned', gw(gen, 'חזר לכנסת', 'חזרה לכנסת', 'חזרה לכנסת')) : L('Entered', gw(gen, 'נכנס לכנסת', 'נכנסה לכנסת', 'כניסה לכנסת'));
+    const came = h[3] === 'o' ? L('From the first sitting', 'מהישיבה הראשונה') : h[3] === 'r' ? L('Returned', gw(gen, 'חזר לכנסת', 'חזרה לכנסת', 'שיבה לכנסת')) : L('Entered', gw(gen, 'נכנס לכנסת', 'נכנסה לכנסת', 'כניסה לכנסת'));
     const why = entryWords(h[5], lang);
     const ended = h[2] !== null && h[2] < term.end;
     // as MK history words it: the Knesset records no reason for most ends, and the words claim none (fx-tlnames)
