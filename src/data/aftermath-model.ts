@@ -62,6 +62,16 @@ export function pageSources(data: Aftermath) {
     .sort(([a, i], [b, j]) => rank(a) - rank(b) || i - j)
     .map(([s]) => s).filter(s => !seen.has(s.url) && !!seen.add(s.url));
 }
+/** The Sources page's rows: sources that would read the same (same name, kind and retrieval date: several articles of one
+ *  paper, several queries of one database) share one row, with a numbered link each (V2 fault A9, 19 Nov 2026). */
+export function sourceRows(data: Aftermath, lang: 'he' | 'en') {
+  const rows: { label: string; kind: HistorySource['kind']; accessed: string; sources: HistorySource[] }[] = [];
+  for (const s of pageSources(data)) {
+    const label = sourceLabel(s, lang), row = rows.find(r => r.label === label && r.kind === s.kind && r.accessed === s.accessed);
+    if (row) row.sources.push(s); else rows.push({ label, kind: s.kind, accessed: s.accessed, sources: [s] });
+  }
+  return rows;
+}
 export const completePolls = (data: Aftermath) => data.issuePolling?.status === 'filled' ? (data.issuePolling.items ?? []).filter(p => p.questionEn && p.questionHe && p.populationEn && p.populationHe && p.fieldDates && p.answers.every(a => a.labelHe)) : [];
 export function validateAftermath(data: Aftermath, ds: ElectionDataset): string[] {
   const errors: string[] = [];

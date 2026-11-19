@@ -1,5 +1,5 @@
-import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { reviewedAftermath, recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, termWithEnd, sourceLabel, pageSources, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-runtime.ts';
+import { Fragment, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { reviewedAftermath, recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, termWithEnd, sourceLabel, sourceRows, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-runtime.ts';
 import type { GovernmentSupport, GovernmentParticipant, GovernmentIndividual } from '../../data/aftermath.ts';
 import { supportRoleGroups, participantName, listsBelowTheirSeats, majorityCrossing, type SupportGroup } from '../governmentSupport.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
@@ -292,7 +292,10 @@ export function AfterElectionSources({ ds }: { ds: ElectionDataset }) {
   if (!data) return null;
   const excluded = data.term.events.filter(e => !visibleTermEvents([e]).length);
   // one row per address, official first, each named and dated (c-design-principles-17, c-rtl-phone-06)
-  return <section className="after-sources"><h3>{L('After the election · sources', 'אחרי הבחירות · מקורות')}</h3><ul className="after-source-list small">{pageSources(data).map(s => <li key={s.url}><a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a> <span className="muted">· {kind(s)} · {L('Retrieved', 'נשלף')} <DateRun date={s.accessed} /></span></li>)}</ul>{/* events still waiting for a second source are research records (data/meta/aftermath, term.candidatesPending):
+  return <section className="after-sources"><h3>{L('After the election · sources', 'אחרי הבחירות · מקורות')}</h3><ul className="after-source-list small">{sourceRows(data, lang).map(r => <li key={r.sources[0].url}>{r.sources.length === 1
+      ? <a href={r.sources[0].url} target="_blank" rel="noreferrer"><bdi><HistoryText text={r.label} /></bdi></a>
+      : <><bdi><HistoryText text={r.label} /></bdi> {r.sources.map((s, i) => <Fragment key={s.url}>{i > 0 && ' · '}<a href={s.url} target="_blank" rel="noreferrer" aria-label={`${r.label} ${i + 1}`}><bdi dir="ltr">{i + 1}</bdi></a></Fragment>)}</>}
+      {' '}<span className="muted">· {kind(r.sources[0])} · {L('Retrieved', 'נשלף')} <DateRun date={r.accessed} /></span></li>)}</ul>{/* events still waiting for a second source are research records (data/meta/aftermath, term.candidatesPending):
      they never show to visitors, in any language (S2, 19 Nov 2026) */}
     {excluded.length > 0 && <details><summary>{L('Pending corroboration · excluded from history', 'ממתינים לאימות נוסף · אינם מוצגים בהיסטוריה')}</summary>{excluded.map((e, i) => <div key={i}><DateRun date={e.date} /> · <FactText data={data} event={e} /></div>)}</details>}</section>;
 }

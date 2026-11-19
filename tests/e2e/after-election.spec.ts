@@ -387,7 +387,10 @@ for (const lang of ['en', 'he'] as const) test(`Sources: the election's own data
   const links = block.locator('.after-source-list > li > a');
   await expect(links).toHaveCount(22);
   for (const text of await links.allInnerTexts()) expect(text).not.toMatch(/^www\.|\.(com|org|il)$/);
-  await expect(links.filter({ hasText: lang === 'he' ? /^בית הנשיא$/ : /^President's Residence$/ })).toHaveCount(16);
+  // sources that would read the same share one row with a numbered link each (V2 fault A9)
+  const president = block.locator('.after-source-list > li').filter({ hasText: lang === 'he' ? 'בית הנשיא' : "President's Residence" });
+  await expect(president).toHaveCount(1);
+  await expect(president.locator('> a')).toHaveCount(16);
   if (lang === 'he') for (const name of ['מעריב', 'הארץ', 'ישראל היום']) await expect(links.filter({ hasText: name }).first()).toBeVisible();
   await expect(block.locator('.after-source-list > li').first()).toContainText(lang === 'he' ? 'רשמי · נשלף' : 'Official · Retrieved');
 });
@@ -501,4 +504,15 @@ for (const width of [1500, 390]) test(`the 61 line crosses no list's letters (${
     const boxes = await bar.locator('.after-group bdi').evaluateAll(els => els.filter(e => getComputedStyle(e).display !== 'none').map(e => { const r = e.getBoundingClientRect(); return { l: r.left, r: r.right, t: e.textContent }; }));
     for (const x of boxes) expect(x.l > line.x + 2 || x.r < line.x, `${x.t} at ${x.l}–${x.r}, line at ${line.x}`).toBe(true);
   }
+});
+
+// V2 fault A9: in 1949 "Knesset open data: ministerial appointments · Official · Retrieved 7 Nov 2026" was listed twice.
+for (const lang of ['en', 'he'] as const) test(`no two source rows read the same: ${lang}`, async ({ page }) => {
+  await openAfter(page, 'k1', lang);
+  await page.getByRole('tab', { name: lang === 'he' ? 'מקורות' : 'Sources', exact: true }).click();
+  const rows = page.locator('#analysis-panel .after-source-list > li');
+  await expect(rows.first()).toBeVisible();
+  const texts = await rows.allInnerTexts();
+  expect(new Set(texts).size).toBe(texts.length);
+  await expect(rows.filter({ hasText: lang === 'he' ? 'מינויי שרים' : 'ministerial appointments' }).locator('> a')).toHaveCount(2);
 });
