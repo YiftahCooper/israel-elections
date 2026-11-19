@@ -177,6 +177,76 @@
       "kind": "academic",
       "accessed": "2026-11-17",
       "evidenceFamily": "author:goldberg"
+    },
+    "positions-gov30": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2030",
+      "publisher": "Knesset open data: appointments in government 30",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־30",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "factions-k16": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%2016%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset open data: faction membership",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2004-06-07": {
+      "url": "https://fs.knesset.gov.il//16/Plenum/16_ptm_129125.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 7 June 2004",
+      "publisherHe": "הכנסת, דברי הכנסת, 7 ביוני 2004",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2004-06-09": {
+      "url": "https://fs.knesset.gov.il//16/Plenum/16_ptm_129124.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 9 June 2004",
+      "publisherHe": "הכנסת, דברי הכנסת, 9 ביוני 2004",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2004-11-15": {
+      "url": "https://fs.knesset.gov.il//16/Plenum/16_ptm_129083.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 15 November 2004",
+      "publisherHe": "הכנסת, דברי הכנסת, 15 בנובמבר 2004",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2004-12-06": {
+      "url": "https://fs.knesset.gov.il//16/Plenum/16_ptm_129074.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 6 December 2004",
+      "publisherHe": "הכנסת, דברי הכנסת, 6 בדצמבר 2004",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2005-01-10": {
+      "url": "https://fs.knesset.gov.il//16/Plenum/16_ptm_129059.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 10 January 2005",
+      "publisherHe": "הכנסת, דברי הכנסת, 10 בינואר 2005",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2005-03-30": {
+      "url": "https://fs.knesset.gov.il//16/Plenum/16_ptm_129010.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 30 March 2005",
+      "publisherHe": "הכנסת, דברי הכנסת, 30 במרץ 2005",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-2005-11-23": {
+      "url": "https://fs.knesset.gov.il//16/Plenum/16_ptm_128906.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 23 November 2005",
+      "publisherHe": "הכנסת, דברי הכנסת, 23 בנובמבר 2005",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "jta-2004-12-02": {
+      "url": "https://www.jta.org/archive/sharon-fires-shinui-over-budget-vote-and-now-must-shore-up-government",
+      "publisher": "Jewish Telegraphic Agency, 2 December 2004",
+      "publisherHe": "סוכנות הידיעות היהודית (JTA), 2 בדצמבר 2004",
+      "kind": "secondary",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -497,7 +567,10 @@
     "Formation timeline is a sourced subset; missing steps must not be inferred from statutory maximum periods.",
     "The official Knesset lexicon confirms the four initial coalition factions; a complete agreement-by-agreement cross-check remains pending.",
     "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
-    "IPU’s December 2005 incapacity wording is erroneous; the official Hebrew government record confirms 4 January and 14 April 2006. NRP and Sharansky ministerial entry on 3 March differs from formation-day support."
+    "IPU’s December 2005 incapacity wording is erroneous; the official Hebrew government record confirms 4 January and 14 April 2006. NRP and Sharansky ministerial entry on 3 March differs from formation-day support.",
+    "United Torah Judaism, January 2005: its agreement with Likud reached the Knesset on 9 January 2005, and Galnoor and Blander date its accession to March 2005; the faction split into Agudat Yisrael and Degel HaTorah on 12 January. Agudat Yisrael’s place in the coalition after the split, and Degel HaTorah’s until 30 March 2005, are not recorded.",
+    "Likud split on 23 November 2005 (Sharon’s National Responsibility faction, later Kadima, 15 MKs; Likud 26), and Likud’s ministers left the government in January 2006. Neither is researched yet, so the member lists after November 2005 still count Likud’s 38 election seats and Yisrael BaAliyah’s 2.",
+    "The National Religious Party, November 2004: no record dates the party’s own decision to leave; the member list changes on 11 November 2004, when Zevulun Orlev’s resignation took effect."
   ],
   "government": {
     "number": 30,
@@ -673,14 +746,257 @@
     ],
     "changes": [
       {
+        "date": "2004-06-06",
+        "textEn": "National Union–Yisrael Beiteinu left the government: the Prime Minister’s dismissal of its ministers, Avigdor Liberman and Binyamin Elon, took effect.",
+        "textHe": "האיחוד הלאומי – ישראל ביתנו יצא מהממשלה: פיטורי שריו, אביגדור ליברמן ובנימין אלון, בידי ראש הממשלה נכנסו לתוקף.",
+        "cites": [
+          {
+            "source": "plenum-2004-06-07",
+            "quote": "כהונתו בממשלה של השר אביגדור ליברמן, שר התחבורה, נפסקה ביום א', 6 ביוני 2004 למניינם, בשעה 10:35",
+            "note": "The Prime Minister dismissed Avigdor Liberman and Binyamin Elon; the letters were dated 4 June and the dismissals took effect on 6 June 2004 (Elon’s at 16:25).",
+            "noteHe": "ראש הממשלה העביר מכהונתם את אביגדור ליברמן ובנימין אלון; כתבי ההעברה נמסרו ב־4 ביוני, והפיטורים נכנסו לתוקף ב־6 ביוני 2004 (של אלון בשעה 16:25)."
+          },
+          {
+            "source": "positions-gov30",
+            "quote": "PersonToPositionID 3704, PersonID 427, PositionID 39, FinishDate 2004-06-06; PersonToPositionID 3699, PersonID 405, PositionID 39, FinishDate 2004-06-06; PersonToPositionID 3690, PersonID 412, PositionID 40, FinishDate 2004-06-06",
+            "note": "The Knesset’s appointment records: Avigdor Liberman and Binyamin Elon, ministers, and Zvi Hendel, deputy minister, until 6 June 2004.",
+            "noteHe": "רישומי המינויים של הכנסת: אביגדור ליברמן ובנימין אלון, שרים, וצבי הנדל, סגן שר, עד 6 ביוני 2004."
+          },
+          {
+            "source": "factions-k16",
+            "quote": "Faction 45 (האיחוד הלאומי - ישראל ביתנו - מולדת - תקומה): 7 members on 2004-06-06, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 7 members of National Union–Yisrael Beiteinu on 6 June 2004.",
+            "noteHe": "רישומי הסיעות של הכנסת: 7 חברים בסיעת האיחוד הלאומי – ישראל ביתנו ב־6 ביוני 2004."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 30,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 38,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "יש",
+            "seats": 15,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3695; PersonID 517; PositionID 39; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יוסף (טומי) לפיד; faction: שינוי התנועה החילונית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יוסף (טומי) לפיד; סיעה: שינוי התנועה החילונית."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 6,
+            "note": "Three independent studies and the Knesset’s own account place the NRP in the coalition. Its ministers took office on 3 March, so on 27 February it is listed without ministries.",
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "coalition-official",
+                "quote": "בהשתתפות הליכוד, שינוי, המפד״ל והאיחוד הלאומי"
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "was a partner in the 2003 Sharon government until bolting in the wake of the disengagement plan",
+                "locator": "p. 780"
+              },
+              {
+                "source": "shamir-arian-2005",
+                "quote": "a new and unprecedented coalition, with Shinui on his left and Mafdal (National Religious Party) and Ihud Leumi on his right.",
+                "locator": "p. 1"
+              },
+              {
+                "source": "rynhold-2008",
+                "quote": "Prime Minister Ariel Sharon formed a centre-right coalition consisting of the Likud, Shinui, the National Religious Party (NRP) and the National Union (NU).",
+                "locator": "p. 157"
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 2,
+            "note": "Probable: one study counts Yisrael BaAliyah, together with the Likud, in the coalition formed after the election; the Knesset’s account names only four parties. Like the NRP’s, its minister (Natan Sharansky) took office on 3 March, so on 27 February it is listed without ministries.",
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "aldrich-et-al-2005",
+                "quote": "The coalition that formed shortly after the election, between the Likud (with Yisrael B’Aliya), Ihud Leumi, the National Religious Party, and Shinui",
+                "locator": "p. 160",
+                "note": "Note 5 of the chapter.",
+                "noteHe": "הערה 5 בפרק."
+              }
+            ],
+            "noteEn": "Its minister, Natan Sharansky, took office on 3 March 2003.",
+            "noteHe": "השר מטעמה, נתן שרנסקי, נכנס לתפקידו ב־3 במרץ 2003."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 61,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2004-06-10",
+        "type": "ministerial-change",
+        "textEn": "Effi Eitam’s resignation as minister took effect, and Yitzhak Levy resigned as deputy minister. The National Religious Party stayed in the coalition: Zevulun Orlev stayed minister.",
+        "textHe": "התפטרותו של אפי איתם מהממשלה נכנסה לתוקף, ויצחק לוי התפטר מתפקיד סגן השר. המפד״ל נשארה בקואליציה: זבולון אורלב נשאר שר.",
+        "cites": [
+          {
+            "source": "positions-gov30",
+            "quote": "PersonToPositionID 3698, PersonID 763, PositionID 39, FinishDate 2004-06-10; PersonToPositionID 3686, PersonID 765, PositionID 40, FinishDate 2004-06-10",
+            "note": "The Knesset’s appointment records: Effi Eitam, minister, and Yitzhak Levy, deputy minister, until 10 June 2004; Zevulun Orlev stayed minister until 11 November 2004.",
+            "noteHe": "רישומי המינויים של הכנסת: אפי איתם, שר, ויצחק לוי, סגן שר, עד 10 ביוני 2004; זבולון אורלב נשאר שר עד 11 בנובמבר 2004."
+          },
+          {
+            "source": "plenum-2004-06-09",
+            "quote": "הגיש לראש הממשלה ביום 8 ביוני 2004 כתב התפטרות מתפקידו",
+            "note": "Yitzhak Levy’s letter of resignation as deputy minister, dated 8 June 2004; the Knesset Speaker said a deputy minister’s resignation takes effect at once, while the appointment record ends it on 10 June.",
+            "noteHe": "מכתב ההתפטרות של יצחק לוי מתפקיד סגן השר, מיום 8 ביוני 2004; יושב־ראש הכנסת אמר שהתפטרות סגן שר תקפה מיד, ואילו רישום המינוי מסיים אותה ב־10 ביוני."
+          }
+        ],
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 30
+      },
+      {
+        "date": "2004-11-11",
+        "textEn": "The National Religious Party left the government: the resignation of its last minister, Zevulun Orlev, took effect.",
+        "textHe": "המפד״ל יצאה מהממשלה: התפטרותו של השר האחרון מטעמה, זבולון אורלב, נכנסה לתוקף.",
+        "cites": [
+          {
+            "source": "plenum-2004-11-15",
+            "quote": "כהונתו בממשלה של שר הרווחה, זבולון אורלב, נפסקה ביום ה', 11 בנובמבר 2004 למניינם בערב",
+            "note": "The day Zevulun Orlev’s resignation took effect, 48 hours after he handed in his letter. No record found dates the party’s own decision to leave.",
+            "noteHe": "היום שבו נכנסה התפטרותו של זבולון אורלב לתוקף, 48 שעות אחרי שמסר את מכתבו. לא נמצא רישום המתארך את החלטת המפלגה עצמה לפרוש."
+          },
+          {
+            "source": "positions-gov30",
+            "quote": "PersonToPositionID 21287, PersonID 521, PositionID 39, FinishDate 2004-11-11",
+            "note": "The Knesset’s appointment record: Zevulun Orlev, minister until 11 November 2004.",
+            "noteHe": "רישום המינוי של הכנסת: זבולון אורלב, שר עד 11 בנובמבר 2004."
+          },
+          {
+            "source": "factions-k16",
+            "quote": "Faction 49 (מפלגה דתית לאומית): 6 members on 2004-11-11, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 6 members of the National Religious Party on 11 November 2004.",
+            "noteHe": "רישומי הסיעות של הכנסת: 6 חברים בסיעת המפד״ל ב־11 בנובמבר 2004."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 30,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 38,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "יש",
+            "seats": 15,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3695; PersonID 517; PositionID 39; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יוסף (טומי) לפיד; faction: שינוי התנועה החילונית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יוסף (טומי) לפיד; סיעה: שינוי התנועה החילונית."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 2,
+            "note": "Probable: one study counts Yisrael BaAliyah, together with the Likud, in the coalition formed after the election; the Knesset’s account names only four parties. Like the NRP’s, its minister (Natan Sharansky) took office on 3 March, so on 27 February it is listed without ministries.",
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "aldrich-et-al-2005",
+                "quote": "The coalition that formed shortly after the election, between the Likud (with Yisrael B’Aliya), Ihud Leumi, the National Religious Party, and Shinui",
+                "locator": "p. 160",
+                "note": "Note 5 of the chapter.",
+                "noteHe": "הערה 5 בפרק."
+              }
+            ],
+            "noteEn": "Its minister, Natan Sharansky, took office on 3 March 2003.",
+            "noteHe": "השר מטעמה, נתן שרנסקי, נכנס לתפקידו ב־3 במרץ 2003."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 55,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
         "date": "2004-12-04",
-        "type": "coalition-change",
-        "textEn": "Shinui’s ministers Yosef (Tommy) Lapid, Avraham Poraz, Eliezer Sandberg, Victor Brailovsky and Ilan Shalgi ceased to serve in the government.",
-        "textHe": "כהונתם בממשלה של שרי שינוי יוסף (טומי) לפיד, אברהם פורז, אליעזר זנדברג, ויקטור בריילובסקי ואילן שלגי הסתיימה.",
+        "type": "coalition-withdrawal",
+        "textEn": "Shinui left the government: the Prime Minister’s dismissal of its ministers Yosef (Tommy) Lapid, Avraham Poraz, Eliezer Sandberg, Victor Brailovsky and Ilan Shalgi took effect.",
+        "textHe": "שינוי יצאה מהממשלה: פיטורי שריה יוסף (טומי) לפיד, אברהם פורז, אליעזר זנדברג, ויקטור בריילובסקי ואילן שלגי בידי ראש הממשלה נכנסו לתוקף.",
         "scope": "mid-term",
         "formalStep": true,
         "governmentNumber": 30,
         "cites": [
+          {
+            "source": "plenum-2004-12-06",
+            "quote": "במוצאי-שבת, 4 בדצמבר 2004 למניינם, נפסקה כהונתם בממשלה של השרים הבאים",
+            "note": "The Government’s notice to the Knesset, 6 December 2004: the day the dismissals took effect.",
+            "noteHe": "הודעת הממשלה לכנסת, 6 בדצמבר 2004: היום שבו נכנסו הפיטורים לתוקף."
+          },
+          {
+            "source": "jta-2004-12-02",
+            "quote": "to sign termination letters for Shinui’s five Cabinet members",
+            "note": "The Prime Minister decided to dismiss them after Shinui voted against the budget on 1 December 2004.",
+            "noteHe": "ראש הממשלה החליט לפטר אותם אחרי ששינוי הצביעה נגד התקציב ב־1 בדצמבר 2004."
+          },
+          {
+            "source": "factions-k16",
+            "quote": "Faction 43 (שינוי התנועה החילונית): 15 members on 2004-12-04, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 15 members of Shinui on 4 December 2004.",
+            "noteHe": "רישומי הסיעות של הכנסת: 15 חברים בסיעת שינוי ב־4 בדצמבר 2004."
+          },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3695,\"PersonID\":517,\"PositionID\":39,\"KnessetNum\":16,\"StartDate\":\"2003-02-27T00:00:00\",\"FinishDate\":\"2004-12-04T00:00:00\",\"GovMinistryID\":869,\"GovMinistryName\":\"משרד המשפטים\",\"DutyDesc\":\"שר המשפטים\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
@@ -741,17 +1057,73 @@
             "note": "The Knesset’s official record.",
             "noteHe": "הרישום הרשמי של הכנסת."
           }
-        ]
+        ],
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 38,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 2,
+            "note": "Probable: one study counts Yisrael BaAliyah, together with the Likud, in the coalition formed after the election; the Knesset’s account names only four parties. Like the NRP’s, its minister (Natan Sharansky) took office on 3 March, so on 27 February it is listed without ministries.",
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "aldrich-et-al-2005",
+                "quote": "The coalition that formed shortly after the election, between the Likud (with Yisrael B’Aliya), Ihud Leumi, the National Religious Party, and Shinui",
+                "locator": "p. 160",
+                "note": "Note 5 of the chapter.",
+                "noteHe": "הערה 5 בפרק."
+              }
+            ],
+            "noteEn": "Its minister, Natan Sharansky, took office on 3 March 2003.",
+            "noteHe": "השר מטעמה, נתן שרנסקי, נכנס לתפקידו ב־3 במרץ 2003."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 40,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
       },
       {
         "date": "2005-01-10",
         "type": "coalition-change",
-        "textEn": "Labor-Meimad’s ministers joined the government; Shimon Peres was appointed Vice Prime Minister.",
-        "textHe": "שרי העבודה–מימד הצטרפו לממשלה; שמעון פרס מונה למשנה לראש הממשלה.",
+        "textEn": "Labor–Meimad’s ministers joined the government, and Shimon Peres was appointed Vice Prime Minister. United Torah Judaism joined the coalition without ministers.",
+        "textHe": "שרי העבודה–מימד הצטרפו לממשלה, ושמעון פרס מונה למשנה לראש הממשלה. יהדות התורה הצטרפה לקואליציה בלי שרים.",
         "scope": "mid-term",
         "formalStep": true,
         "governmentNumber": 30,
         "cites": [
+          {
+            "source": "positions-gov30",
+            "quote": "PersonToPositionID 3736, PersonID 433, PositionID 57, StartDate 2005-01-10; PersonToPositionID 3738, PersonID 1044, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3740, PersonID 456, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3741, PersonID 455, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3742, PersonID 435, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3746, PersonID 461, PositionID 39, StartDate 2005-01-10; PersonToPositionID 4502, PersonID 458, PositionID 39, StartDate 2005-01-10; PersonToPositionID 4503, PersonID 1067, PositionID 39, StartDate 2005-01-10",
+            "note": "The Knesset’s appointment records: Labor–Meimad’s eight ministers, from 10 January 2005.",
+            "noteHe": "רישומי המינויים של הכנסת: שמונת שרי העבודה–מימד, מ־10 בינואר 2005."
+          },
+          {
+            "source": "plenum-2005-01-10",
+            "quote": "אתמול הגיעו ההסכמים הקואליציוניים שנחתמו בין סיעת הליכוד בכנסת לבין סיעת העבודה-מימד בכנסת ובין סיעת הליכוד לבין סיעת יהדות התורה בכנסת",
+            "note": "The Knesset Secretary, 10 January 2005: both signed coalition agreements reached the Knesset the day before.",
+            "noteHe": "מזכיר הכנסת, 10 בינואר 2005: שני ההסכמים הקואליציוניים החתומים הגיעו לכנסת יום קודם לכן."
+          },
           {
             "source": "dr-events-gov30",
             "quote": "{\"PersonToPositionID\":3736,\"PersonID\":433,\"PositionID\":57,\"KnessetNum\":16,\"StartDate\":\"2005-01-10T00:00:00\",\"FinishDate\":\"2005-11-23T00:00:00\",\"GovMinistryID\":611,\"GovMinistryName\":\"משרד התקשורת\",\"DutyDesc\":\"שרת התקשורת\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":30,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2015-03-20T12:03:09\"}",
@@ -848,7 +1220,483 @@
             "note": "The Knesset’s official record.",
             "noteHe": "הרישום הרשמי של הכנסת."
           }
-        ]
+        ],
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 38,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 2,
+            "note": "Probable: one study counts Yisrael BaAliyah, together with the Likud, in the coalition formed after the election; the Knesset’s account names only four parties. Like the NRP’s, its minister (Natan Sharansky) took office on 3 March, so on 27 February it is listed without ministries.",
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "aldrich-et-al-2005",
+                "quote": "The coalition that formed shortly after the election, between the Likud (with Yisrael B’Aliya), Ihud Leumi, the National Religious Party, and Shinui",
+                "locator": "p. 160",
+                "note": "Note 5 of the chapter.",
+                "noteHe": "הערה 5 בפרק."
+              }
+            ],
+            "noteEn": "Its minister, Natan Sharansky, took office on 3 March 2003.",
+            "noteHe": "השר מטעמה, נתן שרנסקי, נכנס לתפקידו ב־3 במרץ 2003."
+          },
+          {
+            "letters": "אמת",
+            "seats": 19,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov30",
+                "quote": "PersonToPositionID 3736, PersonID 433, PositionID 57, StartDate 2005-01-10; PersonToPositionID 3738, PersonID 1044, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3740, PersonID 456, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3741, PersonID 455, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3742, PersonID 435, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3746, PersonID 461, PositionID 39, StartDate 2005-01-10; PersonToPositionID 4502, PersonID 458, PositionID 39, StartDate 2005-01-10; PersonToPositionID 4503, PersonID 1067, PositionID 39, StartDate 2005-01-10",
+                "note": "The Knesset’s appointment records: Labor–Meimad’s eight ministers, from 10 January 2005.",
+                "noteHe": "רישומי המינויים של הכנסת: שמונת שרי העבודה–מימד, מ־10 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-10",
+                "quote": "אתמול הגיעו ההסכמים הקואליציוניים שנחתמו בין סיעת הליכוד בכנסת לבין סיעת העבודה-מימד בכנסת ובין סיעת הליכוד לבין סיעת יהדות התורה בכנסת",
+                "note": "The Knesset Secretary, 10 January 2005: both signed coalition agreements reached the Knesset the day before.",
+                "noteHe": "מזכיר הכנסת, 10 בינואר 2005: שני ההסכמים הקואליציוניים החתומים הגיעו לכנסת יום קודם לכן."
+              },
+              {
+                "source": "factions-k16",
+                "quote": "Faction 42 (העבודה-מימד בראשות מצנע): 19 members on 2005-01-10, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 19 members of Labor–Meimad on 10 January 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 19 חברים בסיעת העבודה–מימד ב־10 בינואר 2005."
+              }
+            ]
+          },
+          {
+            "letters": "ג",
+            "seats": 5,
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "plenum-2005-01-10",
+                "quote": "אתמול הגיעו ההסכמים הקואליציוניים שנחתמו בין סיעת הליכוד בכנסת לבין סיעת העבודה-מימד בכנסת ובין סיעת הליכוד לבין סיעת יהדות התורה בכנסת",
+                "note": "The Knesset Secretary, 10 January 2005: both signed coalition agreements reached the Knesset the day before.",
+                "noteHe": "מזכיר הכנסת, 10 בינואר 2005: שני ההסכמים הקואליציוניים החתומים הגיעו לכנסת יום קודם לכן."
+              },
+              {
+                "source": "factions-k16",
+                "quote": "Faction 48 (יהדות התורה והשבת אגודת ישראל - דגל התורה): 5 members on 2005-01-10, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 5 members of United Torah Judaism on 10 January 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת יהדות התורה ב־10 בינואר 2005."
+              }
+            ],
+            "note": "Its signed agreement with Likud reached the Knesset on 9 January 2005 and it had no ministers. Galnoor and Blander (R8) put its accession in March 2005, and the faction split two days later, so the day it took effect is uncertain.",
+            "noteEn": "Its agreement with Likud reached the Knesset on 9 January 2005; it had no ministers.",
+            "noteHe": "ההסכם שלה עם הליכוד הגיע לכנסת ב־9 בינואר 2005; לא היו לה שרים."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 64,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2005-01-12",
+        "textEn": "United Torah Judaism’s faction split into Agudat Yisrael (3 MKs) and Degel HaTorah (2 MKs).",
+        "textHe": "סיעת יהדות התורה התפלגה לאגודת ישראל (3 חברי כנסת) ולדגל התורה (2 חברי כנסת).",
+        "cites": [
+          {
+            "source": "factions-k16",
+            "quote": "Faction 424 (אגודת ישראל): 3 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 3 members of Agudat Yisrael on 12 January 2005.",
+            "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת אגודת ישראל ב־12 בינואר 2005."
+          },
+          {
+            "source": "factions-k16",
+            "quote": "Faction 422 (דגל התורה): 2 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 2 members of Degel HaTorah on 12 January 2005.",
+            "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת דגל התורה ב־12 בינואר 2005."
+          }
+        ],
+        "type": "faction-split",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 30,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 38,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 2,
+            "note": "Probable: one study counts Yisrael BaAliyah, together with the Likud, in the coalition formed after the election; the Knesset’s account names only four parties. Like the NRP’s, its minister (Natan Sharansky) took office on 3 March, so on 27 February it is listed without ministries.",
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "aldrich-et-al-2005",
+                "quote": "The coalition that formed shortly after the election, between the Likud (with Yisrael B’Aliya), Ihud Leumi, the National Religious Party, and Shinui",
+                "locator": "p. 160",
+                "note": "Note 5 of the chapter.",
+                "noteHe": "הערה 5 בפרק."
+              }
+            ],
+            "noteEn": "Its minister, Natan Sharansky, took office on 3 March 2003.",
+            "noteHe": "השר מטעמה, נתן שרנסקי, נכנס לתפקידו ב־3 במרץ 2003."
+          },
+          {
+            "letters": "אמת",
+            "seats": 19,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov30",
+                "quote": "PersonToPositionID 3736, PersonID 433, PositionID 57, StartDate 2005-01-10; PersonToPositionID 3738, PersonID 1044, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3740, PersonID 456, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3741, PersonID 455, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3742, PersonID 435, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3746, PersonID 461, PositionID 39, StartDate 2005-01-10; PersonToPositionID 4502, PersonID 458, PositionID 39, StartDate 2005-01-10; PersonToPositionID 4503, PersonID 1067, PositionID 39, StartDate 2005-01-10",
+                "note": "The Knesset’s appointment records: Labor–Meimad’s eight ministers, from 10 January 2005.",
+                "noteHe": "רישומי המינויים של הכנסת: שמונת שרי העבודה–מימד, מ־10 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-10",
+                "quote": "אתמול הגיעו ההסכמים הקואליציוניים שנחתמו בין סיעת הליכוד בכנסת לבין סיעת העבודה-מימד בכנסת ובין סיעת הליכוד לבין סיעת יהדות התורה בכנסת",
+                "note": "The Knesset Secretary, 10 January 2005: both signed coalition agreements reached the Knesset the day before.",
+                "noteHe": "מזכיר הכנסת, 10 בינואר 2005: שני ההסכמים הקואליציוניים החתומים הגיעו לכנסת יום קודם לכן."
+              },
+              {
+                "source": "factions-k16",
+                "quote": "Faction 42 (העבודה-מימד בראשות מצנע): 19 members on 2005-01-10, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 19 members of Labor–Meimad on 10 January 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 19 חברים בסיעת העבודה–מימד ב־10 בינואר 2005."
+              }
+            ]
+          },
+          {
+            "factionNameHe": "אגודת ישראל",
+            "factionNameEn": "Agudat Yisrael",
+            "seats": 3,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "factions-k16",
+                "quote": "Faction 424 (אגודת ישראל): 3 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Agudat Yisrael on 12 January 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת אגודת ישראל ב־12 בינואר 2005."
+              }
+            ],
+            "note": "Agudat Yisrael’s place in the coalition after UTJ split is not recorded.",
+            "noteEn": "Whether it kept to United Torah Judaism’s coalition agreement after the split is not recorded.",
+            "noteHe": "לא תועד אם עמדה בהסכם הקואליציוני של יהדות התורה אחרי הפילוג."
+          },
+          {
+            "factionNameHe": "דגל התורה",
+            "factionNameEn": "Degel HaTorah",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "factions-k16",
+                "quote": "Faction 422 (דגל התורה): 2 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 2 members of Degel HaTorah on 12 January 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת דגל התורה ב־12 בינואר 2005."
+              }
+            ],
+            "note": "Degel HaTorah’s place in the coalition from the split until its MK became deputy minister (30 March 2005) is not recorded.",
+            "noteEn": "Whether it kept to United Torah Judaism’s coalition agreement after the split is not recorded.",
+            "noteHe": "לא תועד אם עמדה בהסכם הקואליציוני של יהדות התורה אחרי הפילוג."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 59,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "Agudat Yisrael and Degel HaTorah count their members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2005-03-30",
+        "textEn": "Degel HaTorah’s Avraham Ravitz became a deputy minister, placing his faction in the coalition.",
+        "textHe": "אברהם רביץ מדגל התורה מונה לסגן שר, וסיעתו נמנתה עם הקואליציה.",
+        "cites": [
+          {
+            "source": "positions-gov30",
+            "quote": "PersonToPositionID 4449, PersonID 531, PositionID 40, StartDate 2005-03-30",
+            "note": "The Knesset’s appointment record: Avraham Ravitz, deputy minister from 30 March 2005.",
+            "noteHe": "רישום המינוי של הכנסת: אברהם רביץ, סגן שר מ־30 במרץ 2005."
+          },
+          {
+            "source": "plenum-2005-03-30",
+            "quote": "חבר הכנסת אברהם רביץ - לתפקיד סגן שר במשרד הרווחה, ממונה על-ידי ראש הממשלה ושר הרווחה"
+          }
+        ],
+        "type": "ministerial-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 30,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 38,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 2,
+            "note": "Probable: one study counts Yisrael BaAliyah, together with the Likud, in the coalition formed after the election; the Knesset’s account names only four parties. Like the NRP’s, its minister (Natan Sharansky) took office on 3 March, so on 27 February it is listed without ministries.",
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "aldrich-et-al-2005",
+                "quote": "The coalition that formed shortly after the election, between the Likud (with Yisrael B’Aliya), Ihud Leumi, the National Religious Party, and Shinui",
+                "locator": "p. 160",
+                "note": "Note 5 of the chapter.",
+                "noteHe": "הערה 5 בפרק."
+              }
+            ],
+            "noteEn": "Its minister, Natan Sharansky, took office on 3 March 2003.",
+            "noteHe": "השר מטעמה, נתן שרנסקי, נכנס לתפקידו ב־3 במרץ 2003."
+          },
+          {
+            "letters": "אמת",
+            "seats": 19,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov30",
+                "quote": "PersonToPositionID 3736, PersonID 433, PositionID 57, StartDate 2005-01-10; PersonToPositionID 3738, PersonID 1044, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3740, PersonID 456, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3741, PersonID 455, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3742, PersonID 435, PositionID 39, StartDate 2005-01-10; PersonToPositionID 3746, PersonID 461, PositionID 39, StartDate 2005-01-10; PersonToPositionID 4502, PersonID 458, PositionID 39, StartDate 2005-01-10; PersonToPositionID 4503, PersonID 1067, PositionID 39, StartDate 2005-01-10",
+                "note": "The Knesset’s appointment records: Labor–Meimad’s eight ministers, from 10 January 2005.",
+                "noteHe": "רישומי המינויים של הכנסת: שמונת שרי העבודה–מימד, מ־10 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-10",
+                "quote": "אתמול הגיעו ההסכמים הקואליציוניים שנחתמו בין סיעת הליכוד בכנסת לבין סיעת העבודה-מימד בכנסת ובין סיעת הליכוד לבין סיעת יהדות התורה בכנסת",
+                "note": "The Knesset Secretary, 10 January 2005: both signed coalition agreements reached the Knesset the day before.",
+                "noteHe": "מזכיר הכנסת, 10 בינואר 2005: שני ההסכמים הקואליציוניים החתומים הגיעו לכנסת יום קודם לכן."
+              },
+              {
+                "source": "factions-k16",
+                "quote": "Faction 42 (העבודה-מימד בראשות מצנע): 19 members on 2005-01-10, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 19 members of Labor–Meimad on 10 January 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 19 חברים בסיעת העבודה–מימד ב־10 בינואר 2005."
+              }
+            ]
+          },
+          {
+            "factionNameHe": "אגודת ישראל",
+            "factionNameEn": "Agudat Yisrael",
+            "seats": 3,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "factions-k16",
+                "quote": "Faction 424 (אגודת ישראל): 3 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Agudat Yisrael on 12 January 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת אגודת ישראל ב־12 בינואר 2005."
+              }
+            ],
+            "note": "Agudat Yisrael’s place in the coalition after UTJ split is not recorded.",
+            "noteEn": "Whether it kept to United Torah Judaism’s coalition agreement after the split is not recorded.",
+            "noteHe": "לא תועד אם עמדה בהסכם הקואליציוני של יהדות התורה אחרי הפילוג."
+          },
+          {
+            "factionNameHe": "דגל התורה",
+            "factionNameEn": "Degel HaTorah",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov30",
+                "quote": "PersonToPositionID 4449, PersonID 531, PositionID 40, StartDate 2005-03-30",
+                "note": "The Knesset’s appointment record: Avraham Ravitz, deputy minister from 30 March 2005.",
+                "noteHe": "רישום המינוי של הכנסת: אברהם רביץ, סגן שר מ־30 במרץ 2005."
+              },
+              {
+                "source": "plenum-2005-03-30",
+                "quote": "חבר הכנסת אברהם רביץ - לתפקיד סגן שר במשרד הרווחה, ממונה על-ידי ראש הממשלה ושר הרווחה"
+              },
+              {
+                "source": "factions-k16",
+                "quote": "Faction 422 (דגל התורה): 2 members on 2005-03-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 2 members of Degel HaTorah on 30 March 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת דגל התורה ב־30 במרץ 2005."
+              }
+            ],
+            "noteEn": "Its MK Avraham Ravitz was a deputy minister from 30 March 2005.",
+            "noteHe": "חבר הכנסת מטעמה אברהם רביץ כיהן כסגן שר מ־30 במרץ 2005."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 61,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "Degel HaTorah counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2005-11-23",
+        "textEn": "Labor–Meimad–Am Ehad left the government: the resignations of its ministers took effect, and it became the largest faction in the opposition.",
+        "textHe": "העבודה–מימד–עם אחד יצאה מהממשלה: התפטרויות שריה נכנסו לתוקף, והיא נעשתה הסיעה הגדולה באופוזיציה.",
+        "cites": [
+          {
+            "source": "plenum-2005-11-23",
+            "quote": "ההתפטרות תיכנס לתוקף היום, יום רביעי, כ\"א בחשוון התשס\"ו, 23 בנובמבר 2005, אחר-הצהריים, בין 16:00 ל-17:35",
+            "note": "The Labor ministers handed in their resignations on 21 November 2005; the Knesset Speaker said the faction would become the largest in the opposition at 17:35 that day.",
+            "noteHe": "שרי העבודה הגישו את התפטרותם ב־21 בנובמבר 2005; יושב־ראש הכנסת אמר שהסיעה תהיה הגדולה בסיעות האופוזיציה בשעה 17:35 באותו יום."
+          },
+          {
+            "source": "positions-gov30",
+            "quote": "PersonToPositionID 3740, PersonID 456, PositionID 39, FinishDate 2005-11-23; PersonToPositionID 3736, PersonID 433, PositionID 57, FinishDate 2005-11-23; PersonToPositionID 3738, PersonID 1044, PositionID 39, FinishDate 2005-11-23; PersonToPositionID 3741, PersonID 455, PositionID 39, FinishDate 2005-11-23; PersonToPositionID 3742, PersonID 435, PositionID 39, FinishDate 2005-11-23; PersonToPositionID 3746, PersonID 461, PositionID 39, FinishDate 2005-11-23; PersonToPositionID 4502, PersonID 458, PositionID 39, FinishDate 2005-11-23; PersonToPositionID 4457, PersonID 1067, PositionID 39, FinishDate 2005-11-23; PersonToPositionID 3747, PersonID 865, PositionID 59, FinishDate 2005-11-23; PersonToPositionID 3748, PersonID 437, PositionID 40, FinishDate 2005-11-23",
+            "note": "The Knesset’s appointment records: Labor’s eight ministers and two deputy ministers until 23 November 2005.",
+            "noteHe": "רישומי המינויים של הכנסת: שמונת שרי העבודה ושני סגני השרים מטעמה עד 23 בנובמבר 2005."
+          },
+          {
+            "source": "factions-k16",
+            "quote": "Faction 502 (העבודה - מימד - עם אחד): 21 members on 2005-11-23, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 21 members of Labor–Meimad–Am Ehad on 23 November 2005.",
+            "noteHe": "רישומי הסיעות של הכנסת: 21 חברים בסיעת העבודה–מימד–עם אחד ב־23 בנובמבר 2005."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 30,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 38,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 2,
+            "note": "Probable: one study counts Yisrael BaAliyah, together with the Likud, in the coalition formed after the election; the Knesset’s account names only four parties. Like the NRP’s, its minister (Natan Sharansky) took office on 3 March, so on 27 February it is listed without ministries.",
+            "role": "member-without-ministries",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "aldrich-et-al-2005",
+                "quote": "The coalition that formed shortly after the election, between the Likud (with Yisrael B’Aliya), Ihud Leumi, the National Religious Party, and Shinui",
+                "locator": "p. 160",
+                "note": "Note 5 of the chapter.",
+                "noteHe": "הערה 5 בפרק."
+              }
+            ],
+            "noteEn": "Its minister, Natan Sharansky, took office on 3 March 2003.",
+            "noteHe": "השר מטעמה, נתן שרנסקי, נכנס לתפקידו ב־3 במרץ 2003."
+          },
+          {
+            "factionNameHe": "אגודת ישראל",
+            "factionNameEn": "Agudat Yisrael",
+            "seats": 3,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "factions-k16",
+                "quote": "Faction 424 (אגודת ישראל): 3 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Agudat Yisrael on 12 January 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת אגודת ישראל ב־12 בינואר 2005."
+              }
+            ],
+            "note": "Agudat Yisrael’s place in the coalition after UTJ split is not recorded.",
+            "noteEn": "Whether it kept to United Torah Judaism’s coalition agreement after the split is not recorded.",
+            "noteHe": "לא תועד אם עמדה בהסכם הקואליציוני של יהדות התורה אחרי הפילוג."
+          },
+          {
+            "factionNameHe": "דגל התורה",
+            "factionNameEn": "Degel HaTorah",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov30",
+                "quote": "PersonToPositionID 4449, PersonID 531, PositionID 40, StartDate 2005-03-30",
+                "note": "The Knesset’s appointment record: Avraham Ravitz, deputy minister from 30 March 2005.",
+                "noteHe": "רישום המינוי של הכנסת: אברהם רביץ, סגן שר מ־30 במרץ 2005."
+              },
+              {
+                "source": "plenum-2005-03-30",
+                "quote": "חבר הכנסת אברהם רביץ - לתפקיד סגן שר במשרד הרווחה, ממונה על-ידי ראש הממשלה ושר הרווחה"
+              },
+              {
+                "source": "factions-k16",
+                "quote": "Faction 422 (דגל התורה): 2 members on 2005-03-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 2 members of Degel HaTorah on 30 March 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת דגל התורה ב־30 במרץ 2005."
+              }
+            ],
+            "noteEn": "Its MK Avraham Ravitz was a deputy minister from 30 March 2005.",
+            "noteHe": "חבר הכנסת מטעמה אברהם רביץ כיהן כסגן שר מ־30 במרץ 2005."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 42,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "Labor leaves with the 19 seats the list above counted for it. Its faction had 21 members that day, having merged with Am Ehad on 23 May 2005; Am Ehad’s MKs were never counted as coalition members. The other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
       },
       {
         "date": "2006-01-04",

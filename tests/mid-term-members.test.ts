@@ -24,7 +24,6 @@ describe('a mid-term join or exit changes the member list, dated', () => {
   });
   test('every other change that says a party joined or left is a known data gap', () => {
     const KNOWN_GAPS = new Set([
-      'k16 2004-12-04', 'k16 2005-01-10', // the National Union's dismissal (June 2004) and the NRP's exit (Nov 2004) are not recorded before them
       'k18 2011-01-19', 'k18 2012-05-09', 'k18 2012-07-19', // UTJ's accession of 1 April 2009 is a note without a quoted source
       'k25 2023-10-12', 'k25 2025-07-20', // recorded person by person: no source yet says which factions joined or left
     ]);

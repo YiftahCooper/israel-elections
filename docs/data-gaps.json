@@ -1,30 +1,30 @@
 {
   "schemaVersion": 3,
-  "total": 12621,
+  "total": 12673,
   "counts": {
-    "unknown": 7449,
+    "unknown": 7480,
     "missing-field": 285,
     "conflict": 19,
-    "single-source": 3031,
+    "single-source": 3051,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1179,
     "pending": 357,
-    "unconfirmed": 200
+    "unconfirmed": 201
   },
   "countsByStatus": {
     "inferred-not-verified": 1040,
     "needs-current-status-review": 319,
-    "open": 11262
+    "open": 11314
   },
   "countsByImportance": {
     "high": {
-      "total": 982,
-      "confirmed": 503,
-      "probable": 49,
+      "total": 1034,
+      "confirmed": 513,
+      "probable": 57,
       "provisional": 140,
       "disputed": 11,
-      "unknown": 279
+      "unknown": 313
     },
     "medium": {
       "total": 4483,
@@ -58,11 +58,11 @@
       "unknown": 76
     },
     "Government roles": {
-      "confirmed": 385,
-      "probable": 12,
+      "confirmed": 400,
+      "probable": 20,
       "provisional": 3,
       "disputed": 3,
-      "unknown": 7
+      "unknown": 11
     },
     "Formation events": {
       "confirmed": 75,
@@ -365,20 +365,20 @@
     },
     {
       "election": "k16",
-      "total": 458,
-      "highOpen": 11,
+      "total": 510,
+      "highOpen": 53,
       "mediumOpen": 159,
       "low": 218,
       "counts": {
-        "unknown": 241,
+        "unknown": 272,
         "missing-field": 25,
         "conflict": 1,
-        "single-source": 136,
+        "single-source": 156,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 41,
         "pending": 11,
-        "unconfirmed": 1
+        "unconfirmed": 2
       }
     },
     {
@@ -624,6 +624,7 @@
     {"election":"k17","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k17.json"},
     {"election":"k17","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k17.json"},
     {"election":"k16","area":"Formation conflicts","count":2,"certainty":{"disputed":1,"unknown":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Tasking date"],"file":"data/meta/aftermath/k16.json"},
+    {"election":"k16","area":"Later governments","count":42,"certainty":{"probable":8,"unknown":34},"kinds":{"unknown":31,"single-source":10,"unconfirmed":1},"labels":["כן","ג","coalition-change 2005-01-10","coalition-withdrawal 2004-06-06","coalition-withdrawal 2004-11-11","coalition-withdrawal 2004-12-04","coalition-withdrawal 2005-11-23","faction-split 2005-01-12","ministerial-change 2005-03-30"],"file":"data/meta/aftermath/k16.json"},
     {"election":"k16","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k16.json"},
     {"election":"k16","area":"data/raw/kN/national.reviewed.json discrepancies.status","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k16/national.reviewed.json"},
     {"election":"k16","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k16/national.reviewed.json"},
