@@ -343,7 +343,10 @@ const EXPECTED: Record<Family, string> = {
   // no recommendation and other replace 'Not stated in source'; k12: Hadash and ADP back to Peres, PLP to 'other'). The
   // published k8, k10 and k12 differ only in blocSchemes[1] and builtAt; restoring HEAD's three datasets (with their
   // hash pins) reproduces 689cc589… and all four other digests.
-  model: '0c6ad35ee88acb6e86c31fcd55ed75533dbf283700108aee58c8de3919f92f9b',
+  // The Jerusalem Post, 1974 (19 Nov): the NRP and the Arab List for Bedouin and Villagers move from 'Not stated in
+  // source' to Meir's group (51 → 62). The published k8 differs only in blocSchemes[1] and builtAt; restoring HEAD's k8
+  // (with its hash pins) reproduces 0c6ad35e… and all four other digests.
+  model: 'd688156c80dbf0814abe7c15f86b955ea255684c42234d8f225cad9b6cfc3164',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

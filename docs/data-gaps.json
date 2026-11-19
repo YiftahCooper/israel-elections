@@ -1,30 +1,30 @@
 {
   "schemaVersion": 3,
-  "total": 12422,
+  "total": 12423,
   "counts": {
-    "unknown": 7353,
+    "unknown": 7351,
     "missing-field": 283,
     "conflict": 19,
-    "single-source": 2942,
+    "single-source": 2944,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1174,
     "pending": 356,
-    "unconfirmed": 194
+    "unconfirmed": 195
   },
   "countsByStatus": {
     "inferred-not-verified": 1035,
     "needs-current-status-review": 319,
-    "open": 11068
+    "open": 11069
   },
   "countsByImportance": {
     "high": {
-      "total": 786,
+      "total": 787,
       "confirmed": 420,
-      "probable": 43,
-      "provisional": 138,
+      "probable": 44,
+      "provisional": 140,
       "disputed": 11,
-      "unknown": 174
+      "unknown": 172
     },
     "medium": {
       "total": 4483,
@@ -53,9 +53,9 @@
     "Recommendations": {
       "confirmed": 80,
       "probable": 68,
-      "provisional": 78,
+      "provisional": 80,
       "disputed": 2,
-      "unknown": 78
+      "unknown": 76
     },
     "Government roles": {
       "confirmed": 258,
@@ -66,7 +66,7 @@
     },
     "Formation events": {
       "confirmed": 75,
-      "probable": 13,
+      "probable": 14,
       "provisional": 37,
       "disputed": 0,
       "unknown": 0
@@ -226,10 +226,10 @@
       "mediumOpen": 96,
       "low": 174,
       "counts": {
-        "unknown": 202,
+        "unknown": 200,
         "missing-field": 9,
         "conflict": 0,
-        "single-source": 99,
+        "single-source": 101,
         "low-confidence": 7,
         "release-hold": 0,
         "inferred": 20,
@@ -293,8 +293,8 @@
     },
     {
       "election": "k12",
-      "total": 391,
-      "highOpen": 21,
+      "total": 392,
+      "highOpen": 22,
       "mediumOpen": 122,
       "low": 183,
       "counts": {
@@ -306,7 +306,7 @@
         "release-hold": 0,
         "inferred": 31,
         "pending": 14,
-        "unconfirmed": 10
+        "unconfirmed": 11
       }
     },
     {
@@ -653,10 +653,10 @@
     {"election":"k13","area":"Recommendation rounds","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["r1"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k12","area":"Later governments","count":9,"certainty":{"provisional":2,"disputed":1,"unknown":6},"kinds":{"unknown":6,"conflict":1,"single-source":1,"unconfirmed":1},"labels":["ב","שס","avraham-verdiger","eliezer-mizrachi"],"disputed":["Disputed. A report of the time (JTA) says he backed the government under a separate deal; a later study (Etta Bick, 1995"],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Recommendations","count":4,"certainty":{"probable":4},"kinds":{"unconfirmed":4},"labels":["ו","פ","ע","עץ"],"file":"data/meta/aftermath/k12.json"},
+    {"election":"k12","area":"Formation events","count":2,"certainty":{"probable":1,"provisional":1},"kinds":{"single-source":1,"unconfirmed":1},"labels":["mandate-given 1988-11-14","mandate-given 1990-03-20"],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k12/national.reviewed.json"},
     {"election":"k12","area":"data/raw/kN/national.reviewed.json gazetteTotals.votesCast","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k12/national.reviewed.json"},
-    {"election":"k12","area":"Formation events","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":["mandate-given 1988-11-14"],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Government roles","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["ג"],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
     {"election":"k12","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k12.json"},
@@ -684,7 +684,7 @@
     {"election":"k9","area":"Formation events","count":1,"certainty":{"provisional":1},"kinds":{"unconfirmed":1},"labels":["consultations 1977-05-30"],"file":"data/meta/aftermath/k9.json"},
     {"election":"k9","area":"Government roles","count":1,"certainty":{"probable":1},"kinds":{"unconfirmed":1},"labels":["פש"],"file":"data/meta/aftermath/k9.json"},
     {"election":"k9","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k9.json"},
-    {"election":"k8","area":"Recommendations","count":10,"certainty":{"provisional":3,"unknown":7},"kinds":{"unknown":7,"single-source":3},"labels":["חל טעם","אמת","גד","רצ","ב","ו","לע","עא","רא","קנ"],"file":"data/meta/aftermath/k8.json"},
+    {"election":"k8","area":"Recommendations","count":10,"certainty":{"provisional":5,"unknown":5},"kinds":{"unknown":5,"single-source":5},"labels":["חל טעם","אמת","גד","ב","עא","רצ","ו","לע","רא","קנ"],"file":"data/meta/aftermath/k8.json"},
     {"election":"k8","area":"data/raw/kN/agreements.proposed.json agreementsEvidence.transcription","count":3,"certainty":{"unknown":3},"kinds":{"unknown":3},"labels":[],"file":"data/raw/k8/agreements.proposed.json"},
     {"election":"k8","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k8/national.reviewed.json"},
     {"election":"k8","area":"data/raw/kN/national.reviewed.json gazetteTotals.votesCast","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k8/national.reviewed.json"},
@@ -1124,7 +1124,7 @@
     {"election":"k5","round":"r2","pages":["Maariv, 6 September 1961, p. 1","Maariv, 6 September 1961, p. 2","Maariv, 7 September 1961, p. 1","Maariv, 7 September 1961, p. 2","Davar, 15 September 1961, p. 1","Maariv, 15 September 1961, p. 1","Maariv, 15 September 1961, p. 2"],"stillUnknown":["ח","ל","ב","מ","תו","ק","ג","יא","ד","רא"]},
     {"election":"k6","round":"r1","pages":["Davar, 26 November 1965, p. 1","Davar, 26 November 1965, p. 2 (printed page checked)","Maariv, 26 November 1965, p. 2"],"stillUnknown":["את","ב","מ","לע","ג","יא","ש","ק"]},
     {"election":"k7","round":"r1","pages":["Davar, 7 November 1969, p. 1","Davar, 10 November 1969, p. 1","Davar, 10 November 1969, p. 2"],"stillUnknown":["ג","עמ","ו","ש","ק","ט"]},
-    {"election":"k8","round":"r1","pages":["Davar, 17 January 1974, p. 2","Davar, 18 January 1974, p. 1","Davar, 21 January 1974, p. 2","Maariv, 21 January 1974, p. 2"],"stillUnknown":["רצ","ב","ו","לע","עא","רא","קנ"]},
+    {"election":"k8","round":"r1","pages":["Davar, 17 January 1974, p. 2","Davar, 18 January 1974, p. 1","Davar, 21 January 1974, p. 2","Maariv, 21 January 1974, p. 2","The Jerusalem Post, 18 January 1974, p. 2 (printed page checked)","The Jerusalem Post, 28 January 1974, p. 1 (printed page checked)"],"stillUnknown":["רצ","ו","לע","רא","קנ"],"note":"The Jerusalem Post of 15–31 January 1974 was also read in the archive’s computer-read text of every issue; snow postponed several meetings, and no candidate is reported for the lists still not known."},
     {"election":"k9","round":"r1","pages":["Davar, 3 June 1977, p. 1 (printed page checked)","Davar, 3 June 1977, p. 2 (printed page checked)","Maariv, 3 June 1977, p. 2","Davar, 6 June 1977, p. 1"],"stillUnknown":["ד","לע","רצ","ימ"]},
     {"election":"k10","round":"r1","pages":["Davar, 14 July 1981, p. 1","Davar, 14 July 1981, p. 2","Davar, 15 July 1981, p. 1 (printed page checked)"],"stillUnknown":[],"note":"Maariv of 15 July 1981, p. 2, could not be opened."},
     {"election":"k11","round":"r1","pages":["Davar, 5 August 1984, p. 1","Davar, 5 August 1984, p. 2","Maariv, 5 August 1984, p. 2"],"stillUnknown":[]},

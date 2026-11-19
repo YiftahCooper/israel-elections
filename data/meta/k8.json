@@ -1050,9 +1050,17 @@
           "members": [
             {
               "letters": "אמת"
+            },
+            {
+              "letters": "ב",
+              "note": "Asked the President to task Golda Meir, as head of the largest party, with a national unity government (The Jerusalem Post, 18 January 1974, p. 2)."
+            },
+            {
+              "letters": "עא",
+              "note": "Said the list wanted Golda Meir to form the next government (The Jerusalem Post, 28 January 1974, p. 1)."
             }
           ],
-          "seats": 51
+          "seats": 62
         },
         {
           "id": "other",
@@ -1086,9 +1094,6 @@
           "color": "#cccccc",
           "members": [
             {
-              "letters": "ב"
-            },
-            {
               "letters": "רצ"
             },
             {
@@ -1101,13 +1106,10 @@
               "letters": "רא"
             },
             {
-              "letters": "עא"
-            },
-            {
               "letters": "קנ"
             }
           ],
-          "seats": 25
+          "seats": 14
         }
       ],
       "sources": [
@@ -1147,10 +1149,24 @@
           "kind": "secondary",
           "quote": "נציגי האגודה הציעו להטיל את התפקיד על נציגי המערך,",
           "accessed": "2026-11-17"
+        },
+        {
+          "url": "https://archive.org/download/TheJerusalemPost1974IsraelEnglish/Jan%2018%201974%2C%20The%20Jerusalem%20Post%2C%20%2313998%2C%20Israel%20%28en%29_text.pdf#page=2",
+          "publisher": "The Jerusalem Post, 18 January 1974, p. 2",
+          "kind": "secondary",
+          "quote": "urged the President at noon to charge Mrs. Golda Meir with forming a new Government, since she heads the largest party.",
+          "accessed": "2026-11-19"
+        },
+        {
+          "url": "https://archive.org/download/TheJerusalemPost1974IsraelEnglish/Jan%2028%201974%2C%20The%20Jerusalem%20Post%2C%20%2314006%2C%20Israel%20%28en%29_text.pdf#page=1",
+          "publisher": "The Jerusalem Post, 28 January 1974, p. 1",
+          "kind": "secondary",
+          "quote": "Sheikh Abu Rabi’a said his party wanted Mrs. Meir to form the next government.",
+          "accessed": "2026-11-19"
         }
       ],
       "notes": [
-        "The Alignment recommendation is reported by JTA (\"reportedly suggested\"), not an inspected official recommendation letter. Likud named no candidate according to the same report. The Religious Torah Front named the Alignment, not a person (Davar, 21 January 1974). Seven other lists (25 seats) remain Not stated in source.",
+        "The Alignment recommendation is reported by JTA (\"reportedly suggested\"), not an inspected official recommendation letter. Likud named no candidate according to the same report. The Religious Torah Front named the Alignment, not a person (Davar, 21 January 1974). The National Religious Party and the Arab List for Bedouin and Villagers named Golda Meir (The Jerusalem Post, 18 and 28 January 1974). Five other lists (14 seats) remain Not stated in source.",
         "Mandate date: 30 January 1974, settled by the President’s dated letter reproduced in Knesset sitting 21 (10 March 1974, p.1). The JTA archive heading is 31 January; the primary act takes precedence.",
         "Confidence: medium for the Alignment and Likud entries."
       ]

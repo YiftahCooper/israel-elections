@@ -376,7 +376,7 @@
       "kind": "repository-dataset",
       "publisher": "Official results, Central Elections Committee",
       "locator": "public/data/k8.json",
-      "sha256": "3e74edfa8d22beb4a873ac169970deddfb06e345ca0d6559583c9b45b18dbf86",
+      "sha256": "8aad055a1d94ddc63e802c329863e5348577b4339646d7dbd694674b110d281e",
       "support": "Observed list identity, approved name, votes and sourced constituents; no ideology or cross-election continuity inferred.",
       "publisherHe": "התוצאות הרשמיות, ועדת הבחירות המרכזית"
     },
@@ -1396,7 +1396,7 @@
       "electionId": "k8",
       "electionDate": "1973-12-31",
       "datasetPath": "public/data/k8.json",
-      "datasetSha256": "3e74edfa8d22beb4a873ac169970deddfb06e345ca0d6559583c9b45b18dbf86",
+      "datasetSha256": "8aad055a1d94ddc63e802c329863e5348577b4339646d7dbd694674b110d281e",
       "datasetStatus": {
         "stage": "official-final",
         "noteEn": "National results; every published seat reproduced with the six official list connections from the Central Elections Committee’s calculation record (Form 30 appendix; three had no effect). All 120 elected names transcribed from the official candidate notice (Yalkut HaPirsumim 1954) and cross-checked against the results notice (Yalkut HaPirsumim 1979) and the committee record. Later ranks truncated (Ratz complete); nonwinning rosters untranscribed. Three ballot letters and four list names corrected from the notices. Full amendment chain unverified; no localities.",

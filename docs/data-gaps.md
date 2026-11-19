@@ -1,8 +1,8 @@
 # Data gaps register
 
-12422 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12423 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 786 (confirmed 420, probable 43, provisional 138, disputed 11, unknown 174).
+- High importance: 787 (confirmed 420, probable 44, provisional 140, disputed 11, unknown 172).
 - Medium importance: 4483 (confirmed 1035, probable 248, provisional 182, disputed 8, unknown 2422, family placements: follows scholarship 103, the project’s own judgement 386, sources disagree 15, not yet checked 84).
 - Low importance: 7153 (confirmed 572, provisional 802, unknown 5779).
 
@@ -129,10 +129,10 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 - [Later governments](../data/meta/aftermath/k12.json) ×9: provisional 2, disputed 1, unknown 6. ב, שס, avraham-verdiger, eliezer-mizrachi. Disputed: Disputed. A report of the time (JTA) says he backed the government under a separate deal; a later study (Etta Bick, 1995
 - [Recommendations](../data/meta/aftermath/k12.json) ×4: probable 4. ו, פ, ע, עץ
+- [Formation events](../data/meta/aftermath/k12.json) ×2: probable 1, provisional 1. mandate-given 1988-11-14, mandate-given 1990-03-20
 - [Coalition seat total](../data/meta/aftermath/k12.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k12/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k12/national.reviewed.json) ×1: unknown 1
-- [Formation events](../data/meta/aftermath/k12.json) ×1: provisional 1. mandate-given 1988-11-14
 - [Government roles](../data/meta/aftermath/k12.json) ×1: probable 1. ג
 - [Investiture reconciliation](../data/meta/aftermath/k12.json) ×1: unknown 1
 - [Investiture vote](../data/meta/aftermath/k12.json) ×1: provisional 1
@@ -172,7 +172,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k8
 
-- [Recommendations](../data/meta/aftermath/k8.json) ×10: provisional 3, unknown 7. חל טעם, אמת, גד, רצ, ב, ו, לע, עא, רא, קנ
+- [Recommendations](../data/meta/aftermath/k8.json) ×10: provisional 5, unknown 5. חל טעם, אמת, גד, ב, עא, רצ, ו, לע, רא, קנ
 - [data/raw/kN/agreements.proposed.json agreementsEvidence.transcription](../data/raw/k8/agreements.proposed.json) ×3: unknown 3
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k8/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k8/national.reviewed.json) ×1: unknown 1
@@ -283,7 +283,7 @@ Newspaper pages and articles already read for the recommendations to the Preside
 - **k5 r2**: Maariv, 6 September 1961, p. 1; Maariv, 6 September 1961, p. 2; Maariv, 7 September 1961, p. 1; Maariv, 7 September 1961, p. 2; Davar, 15 September 1961, p. 1; Maariv, 15 September 1961, p. 1; Maariv, 15 September 1961, p. 2. Still not known: ח, ל, ב, מ, תו, ק, ג, יא, ד, רא.
 - **k6 r1**: Davar, 26 November 1965, p. 1; Davar, 26 November 1965, p. 2 (printed page checked); Maariv, 26 November 1965, p. 2. Still not known: את, ב, מ, לע, ג, יא, ש, ק.
 - **k7 r1**: Davar, 7 November 1969, p. 1; Davar, 10 November 1969, p. 1; Davar, 10 November 1969, p. 2. Still not known: ג, עמ, ו, ש, ק, ט.
-- **k8 r1**: Davar, 17 January 1974, p. 2; Davar, 18 January 1974, p. 1; Davar, 21 January 1974, p. 2; Maariv, 21 January 1974, p. 2. Still not known: רצ, ב, ו, לע, עא, רא, קנ.
+- **k8 r1**: Davar, 17 January 1974, p. 2; Davar, 18 January 1974, p. 1; Davar, 21 January 1974, p. 2; Maariv, 21 January 1974, p. 2; The Jerusalem Post, 18 January 1974, p. 2 (printed page checked); The Jerusalem Post, 28 January 1974, p. 1 (printed page checked). Still not known: רצ, ו, לע, רא, קנ. The Jerusalem Post of 15–31 January 1974 was also read in the archive’s computer-read text of every issue; snow postponed several meetings, and no candidate is reported for the lists still not known.
 - **k9 r1**: Davar, 3 June 1977, p. 1 (printed page checked); Davar, 3 June 1977, p. 2 (printed page checked); Maariv, 3 June 1977, p. 2; Davar, 6 June 1977, p. 1. Still not known: ד, לע, רצ, ימ.
 - **k10 r1**: Davar, 14 July 1981, p. 1; Davar, 14 July 1981, p. 2; Davar, 15 July 1981, p. 1 (printed page checked). Still not known: none. Maariv of 15 July 1981, p. 2, could not be opened.
 - **k11 r1**: Davar, 5 August 1984, p. 1; Davar, 5 August 1984, p. 2; Maariv, 5 August 1984, p. 2. Still not known: none.
@@ -296,9 +296,9 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Recommendations | 80 | 68 | 78 | 2 | 78 | 306 |
+| Recommendations | 80 | 68 | 80 | 2 | 76 | 306 |
 | Government roles | 258 | 7 | 3 | 3 | 0 | 271 |
-| Formation events | 75 | 13 | 37 | 0 | 0 | 125 |
+| Formation events | 75 | 14 | 37 | 0 | 0 | 126 |
 | Term events | 36 | 49 | 0 | 0 | 0 | 85 |
 | Candidate identity links | 3245 | 42 | 535 | 0 | 0 | 3822 |
 
@@ -306,9 +306,9 @@ Party-family placements are the project’s classification, not facts, so they c
 
 ## Counts
 
-By kind: unknown: 7353; missing-field: 283; conflict: 19; single-source: 2942; low-confidence: 101; release-hold: 0; inferred: 1174; pending: 356; unconfirmed: 194.
+By kind: unknown: 7351; missing-field: 283; conflict: 19; single-source: 2944; low-confidence: 101; release-hold: 0; inferred: 1174; pending: 356; unconfirmed: 195.
 
-By status: inferred-not-verified: 1035; needs-current-status-review: 319; open: 11068.
+By status: inferred-not-verified: 1035; needs-current-status-review: 319; open: 11069.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -323,7 +323,7 @@ By status: inferred-not-verified: 1035; needs-current-status-review: 319; open: 
 | k9 | 21 | 116 | 197 | 409 |
 | k10 | 18 | 111 | 171 | 356 |
 | k11 | 36 | 116 | 204 | 430 |
-| k12 | 21 | 122 | 183 | 391 |
+| k12 | 22 | 122 | 183 | 392 |
 | k13 | 20 | 116 | 146 | 323 |
 | k14 | 10 | 126 | 148 | 338 |
 | k15 | 27 | 153 | 160 | 396 |

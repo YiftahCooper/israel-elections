@@ -225,3 +225,42 @@ describe('books batch 3: formation and term dates (17 Nov 2026)', () => {
     expect(e.notes.join(' ')).toMatch(/1 December/);
   });
 });
+
+describe('The Jerusalem Post of 1974 and Peres’s 1990 tasking (19 Nov 2026)', () => {
+  const load = (id: string) => JSON.parse(readFileSync(`data/meta/aftermath/${id}.json`, 'utf8'));
+  const entry = (round: any, letters: string) => round.entries.find((e: any) => e.letters === letters);
+  it('one paper read from the printed page makes the NRP and the Bedouin and Villagers list provisional for Meir', () => {
+    const k8 = load('k8'), round = k8.recommendationRounds[0];
+    for (const l of ['ב', 'עא']) {
+      const e = entry(round, l);
+      expect([l, e.status, e.nominee, claimCertainty(e, k8.sources)]).toEqual([l, 'recommended', 'meir', 'provisional']);
+      expect(e.cites).toHaveLength(1);
+      const [c] = e.cites, src = k8.sources[c.source];
+      expect([c.scanChecked, src.evidenceFamily]).toEqual([true, 'the-jerusalem-post']);
+      expect(c.quote.split(/\s+/).length).toBeLessThanOrEqual(25);
+      expect(src.url).toMatch(/^https:\/\/archive\.org\/download\/TheJerusalemPost1974IsraelEnglish\/.+#page=\d+$/);
+      expect(src.retainedArtifact).toMatch(/^private archive \(israel-elections-private\): /);
+      expect([Boolean(e.noteEn), Boolean(e.noteHe)]).toEqual([true, true]);
+    }
+    // the NRP's conditions for joining the government are coalition terms, not part of the recommendation
+    expect(entry(round, 'ב').noteEn).toMatch(/not part of the recommendation/);
+    expect(round.totals).toEqual({ meir: 62, other: 5, none: 39, unknown: 14 });
+    // two pages of one paper still count once
+    expect(claimCertainty({ cites: [...entry(round, 'ב').cites, ...entry(round, 'עא').cites] }, k8.sources)).toBe('provisional');
+  });
+  it('dates Herzog’s 1990 tasking of Peres from two independent reports of the time, probable until the letter is seen', () => {
+    const k12 = load('k12');
+    const step = k12.formation.events.find((e: any) => e.type === 'mandate-given' && e.person === 'peres');
+    expect([step.date, step.scope, step.days, step.certainty, claimCertainty(step, k12.sources)]).toEqual(['1990-03-20', 'mid-term', 21, 'probable', 'probable']);
+    expect(new Set(step.cites.map((c: any) => independenceKey(c.source, k12.sources[c.source]))).size).toBe(2);
+    expect(step.notes.join(' ')).toMatch(/signed letter/);
+    expect(JSON.stringify(k12.formation.events)).not.toMatch(/Not yet recorded: the date Herzog tasked Peres/);
+  });
+  it('leaves the 1984 Hadash and Progressive List rows on the reports that name Peres', () => {
+    // Kol Yisrael's accounts (FBIS, 2 and 3 August 1984) give an Alignment member with conditions; its own count and
+    // JTA's both reach 60 for Peres only with these two lists. Reviewed 19 Nov 2026, not changed.
+    const k11 = load('k11'), round = k11.recommendationRounds[0];
+    for (const l of ['ו', 'פ']) expect([entry(round, l).status, entry(round, l).nominee]).toEqual(['recommended', 'peres']);
+    expect(round.totals.peres).toBe(60);
+  });
+});
