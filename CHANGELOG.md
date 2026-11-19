@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Finding a town in Hebrew (19 Nov): Find a locality reads a doubled vav or yod as one, so "פתח תקוה" finds Petah Tikva and "קרית שמונה" finds Kiryat Shmona, whichever spelling is typed.
 - Localities on a wide screen (19 Nov): the map opens framed on the country, in quarter zoom steps, instead of a whole level out that showed Israel as a thin strip with Sinai, Jordan and open sea around it.
 - Breaks in a family's line (19 Nov): where a family's line breaks because that election's lists are not yet classified (the Centre in 1992), the chart marks the break with a "?" and a note under it names the year.
 - Dark theme on Party families (19 Nov): the shading for "the real figure lies between" is stronger in the dark theme, where it was barely visible against the panel; its key swatches match.
