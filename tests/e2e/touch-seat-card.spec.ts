@@ -27,7 +27,8 @@ test.describe('touch phone (390 × 844)', () => {
     await expect(page.locator('.side-panel')).toHaveCount(0);
     // another seat: the card moves to it, nothing covers the chamber
     const first = await tip.innerText();
-    await seats.nth(60).tap();
+    // the far end of the arc: on a phone the card covers the seats around the one tapped
+    await seats.last().tap();
     await expect(tip).not.toHaveText(first);
     await expect(page.locator('.side-panel')).toHaveCount(0);
     await tip.getByRole('button', { name: L('List details', 'פרטי הרשימה') }).tap();
