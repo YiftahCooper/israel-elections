@@ -2,6 +2,7 @@
 
 ## 19 November 2026
 
+- Comparing with an election where a list split (19 Nov): the line under each successor says the figure is the group's, "2022: 14 · together now 13 ▼ −1 · Religious Zionism (split into 3)", instead of Otzma Yehudit's 7 seats seeming to be 1 fewer than 14; the Coalitions tab names the split beside the same figure.
 - Failed load (19 Nov): the browser's own error words ("Failed to fetch", in the browser's language) are introduced as "Technical detail:" in the app's language, so in Hebrew they no longer pass for part of the app's message.
 - What if… 2026 (19 Nov): the row that removes Likud's surplus agreement names its partner by the list's own name, "No agreement between Likud and Religious Zionism–Zehut" (it said "Religious Zionism").
 - Save & share and unnamed scenarios (19 Nov): the unsaved mark (*) sits beside the scenario name instead of alone on a line under it; a scenario saved, copied or exported without a name is called "Untitled scenario", the words its empty name field shows (it was saved as "Scenario").

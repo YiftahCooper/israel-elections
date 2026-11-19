@@ -217,3 +217,12 @@ test('a failed load in Hebrew: the browser\'s own English words are named as a t
   // nothing but the browser's message is left in English, and it follows its Hebrew label
   expect((await detail.innerText()).startsWith('פרט טכני: ')).toBe(true);
 });
+
+test('compared with 2022, a list from a split shows the split\'s figure as the group\'s: "together now 13"', async ({ page }) => {
+  await start(page, 'k26', { level: 'simple' });
+  await page.locator('.compare-on').first().click();
+  const line = page.locator('.cmpm-line', { hasText: 'Religious Zionism (split into 3)' });
+  await expect(line.first()).toContainText('2022: 14 · together now 13');
+  // never this list's own 7 against the group's 14 without saying so
+  for (const t of await line.allInnerTexts()) expect(t).toMatch(/together now 13/);
+});
