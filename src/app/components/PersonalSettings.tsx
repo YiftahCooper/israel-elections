@@ -107,7 +107,7 @@ function SettingsContent({ close }: { close: () => void }) {
       </div>)}
       <footer className="ps-foot">
         <button type="button" className="btn small" onClick={resetAll}>{L('Reset all settings', 'איפוס כל ההגדרות')}</button>
-        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Questions answered with “Always” are asked again, and every tool and detail follows the level again. Language, detail level and answers remembered for one list, bloc or scenario stay.', 'חזרה לברירות המחדל, עם ביטול. שאלות שנענו ב"תמיד" יישאלו שוב, וכל כלי ופרט חוזרים לפי הרמה. השפה, רמת הפירוט והתשובות השמורות לרשימה, לגוש או לתרחיש אחד נשארות.')}</Info>
+        <Info title={L('Reset all settings', 'איפוס כל ההגדרות')}>{L('Back to the defaults, with Undo. Questions answered with “Set as default” are asked again, and every tool and detail follows the level again. Language, detail level and answers remembered for one list, bloc or scenario stay.', 'חזרה לברירות המחדל, עם ביטול. שאלות שנענו ב"קביעה כברירת מחדל" יישאלו שוב, וכל כלי ופרט חוזרים לפי הרמה. השפה, רמת הפירוט והתשובות השמורות לרשימה, לגוש או לתרחיש אחד נשארות.')}</Info>
       </footer>
     </div>
   </>;
