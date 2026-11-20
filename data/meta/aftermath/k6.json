@@ -743,7 +743,7 @@
             "cites": [
               {
                 "source": "role-roster-13",
-                "quote": "PersonToPositionID 3776; PersonID 2669; PositionID 39; StartDate 1966-01-12T00:00:00",
+                "quote": "PersonToPositionID 3772; PersonID 2669; PositionID 39; StartDate 1967-01-02T00:00:00",
                 "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו ששון; faction: מערך.",
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו ששון; סיעה: מערך."
               }
@@ -890,9 +890,9 @@
               },
               {
                 "source": "positions-gov13",
-                "quote": "PersonToPositionID 4067, PersonID 2179, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3889, PersonID 2512, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3977, PersonID 2277, PositionID 39, StartDate 1967-06-05",
-                "note": "The Knesset’s appointment records: Menachem Begin and Yosef Sapir (Gahal) and Moshe Dayan (Rafi), ministers from 5 June 1967.",
-                "noteHe": "רישומי המינויים של הכנסת: מנחם בגין ויוסף ספיר (גח״ל) ומשה דיין (רפ״י), שרים מ־5 ביוני 1967."
+                "quote": "PersonToPositionID 4067, PersonID 2179, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3889, PersonID 2512, PositionID 39, StartDate 1967-06-05",
+                "note": "The Knesset’s appointment records: Menachem Begin and Yosef Sapir (Gahal), ministers from 5 June 1967.",
+                "noteHe": "רישומי המינויים של הכנסת: מנחם בגין ויוסף ספיר (גח״ל), שרים מ־5 ביוני 1967."
               },
               {
                 "source": "factions-k6",
@@ -918,9 +918,9 @@
               },
               {
                 "source": "positions-gov13",
-                "quote": "PersonToPositionID 4067, PersonID 2179, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3889, PersonID 2512, PositionID 39, StartDate 1967-06-05; PersonToPositionID 3977, PersonID 2277, PositionID 39, StartDate 1967-06-05",
-                "note": "The Knesset’s appointment records: Menachem Begin and Yosef Sapir (Gahal) and Moshe Dayan (Rafi), ministers from 5 June 1967.",
-                "noteHe": "רישומי המינויים של הכנסת: מנחם בגין ויוסף ספיר (גח״ל) ומשה דיין (רפ״י), שרים מ־5 ביוני 1967."
+                "quote": "PersonToPositionID 3977, PersonID 2277, PositionID 39, StartDate 1967-06-05",
+                "note": "The Knesset’s appointment record: Moshe Dayan (Rafi), minister from 5 June 1967.",
+                "noteHe": "רישום המינוי של הכנסת: משה דיין (רפ״י), שר מ־5 ביוני 1967."
               },
               {
                 "source": "factions-k6",

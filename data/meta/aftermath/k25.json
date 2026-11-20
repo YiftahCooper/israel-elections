@@ -1440,22 +1440,10 @@
             "certainty": "confirmed",
             "cites": [
               {
-                "source": "plenum-2023-10-12",
-                "quote": "ההצבעה הראשונה על צירופם של חברי הכנסת גנץ, סער, איזנקוט, טרופר ושאשא ביטון כשרים בממשלה",
-                "note": "The Knesset approved the five as ministers on 12 October 2023, 66 for and 4 against, and their terms began that day.",
-                "noteHe": "הכנסת אישרה את החמישה כשרים ב־12 באוקטובר 2023, 66 בעד ו־4 נגד, ובו ביום החלה כהונתם."
-              },
-              {
                 "source": "positions-gov37",
-                "quote": "PersonToPositionID 31713, PersonID 30657, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31714, PersonID 30836, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31715, PersonID 1027, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31716, PersonID 30683, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31717, PersonID 30082, PositionID 57, StartDate 2023-10-12",
-                "note": "The Knesset’s appointment records: Benny Gantz, Gadi Eisenkot, Gideon Sa'ar, Hili Tropper and Yifat Shasha-Biton, ministers from 12 October 2023.",
-                "noteHe": "רישומי המינויים של הכנסת: בני גנץ, גדי איזנקוט, גדעון סער, חילי טרופר ויפעת שאשא־ביטון, שרים מ־12 באוקטובר 2023."
-              },
-              {
-                "source": "factions-k25",
-                "quote": "Faction 1098 (המחנה הממלכתי): 12 members on 2023-10-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 12 members of National Unity on 12 October 2023.",
-                "noteHe": "רישומי הסיעות של הכנסת: 12 חברים בסיעת המחנה הממלכתי ב־12 באוקטובר 2023."
+                "quote": "PersonToPositionID 31713, PersonID 30657, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31714, PersonID 30836, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31716, PersonID 30683, PositionID 39, StartDate 2023-10-12",
+                "note": "The Knesset’s appointment records: Benny Gantz, Gadi Eisenkot and Hili Tropper, ministers from 12 October 2023.",
+                "noteHe": "רישומי המינויים של הכנסת: בני גנץ, גדי איזנקוט וחילי טרופר, שרים מ־12 באוקטובר 2023."
               },
               {
                 "source": "factions-k25",
@@ -1603,22 +1591,10 @@
             "certainty": "confirmed",
             "cites": [
               {
-                "source": "plenum-2023-10-12",
-                "quote": "ההצבעה הראשונה על צירופם של חברי הכנסת גנץ, סער, איזנקוט, טרופר ושאשא ביטון כשרים בממשלה",
-                "note": "The Knesset approved the five as ministers on 12 October 2023, 66 for and 4 against, and their terms began that day.",
-                "noteHe": "הכנסת אישרה את החמישה כשרים ב־12 באוקטובר 2023, 66 בעד ו־4 נגד, ובו ביום החלה כהונתם."
-              },
-              {
                 "source": "positions-gov37",
-                "quote": "PersonToPositionID 31713, PersonID 30657, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31714, PersonID 30836, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31715, PersonID 1027, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31716, PersonID 30683, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31717, PersonID 30082, PositionID 57, StartDate 2023-10-12",
-                "note": "The Knesset’s appointment records: Benny Gantz, Gadi Eisenkot, Gideon Sa'ar, Hili Tropper and Yifat Shasha-Biton, ministers from 12 October 2023.",
-                "noteHe": "רישומי המינויים של הכנסת: בני גנץ, גדי איזנקוט, גדעון סער, חילי טרופר ויפעת שאשא־ביטון, שרים מ־12 באוקטובר 2023."
-              },
-              {
-                "source": "factions-k25",
-                "quote": "Faction 1098 (המחנה הממלכתי): 12 members on 2023-10-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 12 members of National Unity on 12 October 2023.",
-                "noteHe": "רישומי הסיעות של הכנסת: 12 חברים בסיעת המחנה הממלכתי ב־12 באוקטובר 2023."
+                "quote": "PersonToPositionID 31713, PersonID 30657, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31714, PersonID 30836, PositionID 39, StartDate 2023-10-12; PersonToPositionID 31716, PersonID 30683, PositionID 39, StartDate 2023-10-12",
+                "note": "The Knesset’s appointment records: Benny Gantz, Gadi Eisenkot and Hili Tropper, ministers from 12 October 2023.",
+                "noteHe": "רישומי המינויים של הכנסת: בני גנץ, גדי איזנקוט וחילי טרופר, שרים מ־12 באוקטובר 2023."
               },
               {
                 "source": "factions-k25",
@@ -1975,9 +1951,9 @@
             "cites": [
               {
                 "source": "role-roster-37",
-                "quote": "PersonToPositionID 30691; PersonID 30811; PositionID 39; StartDate 2022-12-29T00:00:00",
-                "note": "Fields of the Knesset’s official record, not a quoted sentence: איתמר בן גביר; faction: עוצמה יהודית בראשות איתמר בן גביר.",
-                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: איתמר בן גביר; סיעה: עוצמה יהודית בראשות איתמר בן גביר."
+                "quote": "PersonToPositionID 30702; PersonID 30717; PositionID 39; StartDate 2022-12-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אופיר סופר; faction: עוצמה יהודית בראשות אופיר סופר.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אופיר סופר; סיעה: עוצמה יהודית בראשות אופיר סופר."
               },
               {
                 "source": "factions-k25",
@@ -1987,9 +1963,9 @@
               },
               {
                 "source": "factions-k25",
-                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 members on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 1 members of Noam on 21 January 2025.",
-                "noteHe": "רישומי הסיעות של הכנסת: 1 חברים בסיעת נעם ב־21 בינואר 2025."
+                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 member on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 1 member of Noam on 21 January 2025.",
+                "noteHe": "רישומי הסיעות של הכנסת: חבר אחד בסיעת נעם ב־21 בינואר 2025."
               }
             ],
             "noteEn": "Religious Zionism (6 MKs that day) and Noam (1), the factions of this ballot that stayed.",
@@ -2038,9 +2014,9 @@
               },
               {
                 "source": "positions-gov37",
-                "quote": "PersonToPositionID 32020, PersonID 1027, PositionID 39, StartDate 2024-09-30",
-                "note": "The Knesset’s appointment record: Gideon Sa'ar, minister without portfolio from 30 September 2024.",
-                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר בלי תיק מ־30 בספטמבר 2024."
+                "quote": "PersonToPositionID 32040, PersonID 1027, PositionID 39, StartDate 2024-11-08",
+                "note": "The Knesset’s appointment record: Gideon Sa'ar, Foreign Minister from 8 November 2024.",
+                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
                 "source": "plenum-2024-09-30",
@@ -2134,9 +2110,9 @@
             "cites": [
               {
                 "source": "role-roster-37",
-                "quote": "PersonToPositionID 30691; PersonID 30811; PositionID 39; StartDate 2022-12-29T00:00:00",
-                "note": "Fields of the Knesset’s official record, not a quoted sentence: איתמר בן גביר; faction: עוצמה יהודית בראשות איתמר בן גביר.",
-                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: איתמר בן גביר; סיעה: עוצמה יהודית בראשות איתמר בן גביר."
+                "quote": "PersonToPositionID 30702; PersonID 30717; PositionID 39; StartDate 2022-12-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אופיר סופר; faction: עוצמה יהודית בראשות אופיר סופר.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אופיר סופר; סיעה: עוצמה יהודית בראשות אופיר סופר."
               },
               {
                 "source": "factions-k25",
@@ -2146,9 +2122,9 @@
               },
               {
                 "source": "factions-k25",
-                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 members on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 1 members of Noam on 21 January 2025.",
-                "noteHe": "רישומי הסיעות של הכנסת: 1 חברים בסיעת נעם ב־21 בינואר 2025."
+                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 member on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 1 member of Noam on 21 January 2025.",
+                "noteHe": "רישומי הסיעות של הכנסת: חבר אחד בסיעת נעם ב־21 בינואר 2025."
               }
             ],
             "noteEn": "Religious Zionism (6 MKs that day) and Noam (1), the factions of this ballot that stayed.",
@@ -2197,9 +2173,9 @@
               },
               {
                 "source": "positions-gov37",
-                "quote": "PersonToPositionID 32020, PersonID 1027, PositionID 39, StartDate 2024-09-30",
-                "note": "The Knesset’s appointment record: Gideon Sa'ar, minister without portfolio from 30 September 2024.",
-                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר בלי תיק מ־30 בספטמבר 2024."
+                "quote": "PersonToPositionID 32040, PersonID 1027, PositionID 39, StartDate 2024-11-08",
+                "note": "The Knesset’s appointment record: Gideon Sa'ar, Foreign Minister from 8 November 2024.",
+                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
                 "source": "plenum-2024-09-30",
@@ -2388,9 +2364,9 @@
             "cites": [
               {
                 "source": "role-roster-37",
-                "quote": "PersonToPositionID 30691; PersonID 30811; PositionID 39; StartDate 2022-12-29T00:00:00",
-                "note": "Fields of the Knesset’s official record, not a quoted sentence: איתמר בן גביר; faction: עוצמה יהודית בראשות איתמר בן גביר.",
-                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: איתמר בן גביר; סיעה: עוצמה יהודית בראשות איתמר בן גביר."
+                "quote": "PersonToPositionID 30702; PersonID 30717; PositionID 39; StartDate 2022-12-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אופיר סופר; faction: עוצמה יהודית בראשות אופיר סופר.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אופיר סופר; סיעה: עוצמה יהודית בראשות אופיר סופר."
               },
               {
                 "source": "factions-k25",
@@ -2400,9 +2376,9 @@
               },
               {
                 "source": "factions-k25",
-                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 members on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 1 members of Noam on 21 January 2025.",
-                "noteHe": "רישומי הסיעות של הכנסת: 1 חברים בסיעת נעם ב־21 בינואר 2025."
+                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 member on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 1 member of Noam on 21 January 2025.",
+                "noteHe": "רישומי הסיעות של הכנסת: חבר אחד בסיעת נעם ב־21 בינואר 2025."
               }
             ],
             "noteEn": "Religious Zionism (6 MKs that day) and Noam (1), the factions of this ballot that stayed.",
@@ -2478,9 +2454,9 @@
               },
               {
                 "source": "positions-gov37",
-                "quote": "PersonToPositionID 32020, PersonID 1027, PositionID 39, StartDate 2024-09-30",
-                "note": "The Knesset’s appointment record: Gideon Sa'ar, minister without portfolio from 30 September 2024.",
-                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר בלי תיק מ־30 בספטמבר 2024."
+                "quote": "PersonToPositionID 32040, PersonID 1027, PositionID 39, StartDate 2024-11-08",
+                "note": "The Knesset’s appointment record: Gideon Sa'ar, Foreign Minister from 8 November 2024.",
+                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
                 "source": "plenum-2024-09-30",
@@ -2630,9 +2606,9 @@
             "cites": [
               {
                 "source": "role-roster-37",
-                "quote": "PersonToPositionID 30691; PersonID 30811; PositionID 39; StartDate 2022-12-29T00:00:00",
-                "note": "Fields of the Knesset’s official record, not a quoted sentence: איתמר בן גביר; faction: עוצמה יהודית בראשות איתמר בן גביר.",
-                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: איתמר בן גביר; סיעה: עוצמה יהודית בראשות איתמר בן גביר."
+                "quote": "PersonToPositionID 30702; PersonID 30717; PositionID 39; StartDate 2022-12-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אופיר סופר; faction: עוצמה יהודית בראשות אופיר סופר.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אופיר סופר; סיעה: עוצמה יהודית בראשות אופיר סופר."
               },
               {
                 "source": "factions-k25",
@@ -2642,9 +2618,9 @@
               },
               {
                 "source": "factions-k25",
-                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 members on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 1 members of Noam on 21 January 2025.",
-                "noteHe": "רישומי הסיעות של הכנסת: 1 חברים בסיעת נעם ב־21 בינואר 2025."
+                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 member on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 1 member of Noam on 21 January 2025.",
+                "noteHe": "רישומי הסיעות של הכנסת: חבר אחד בסיעת נעם ב־21 בינואר 2025."
               }
             ],
             "noteEn": "Religious Zionism (6 MKs that day) and Noam (1), the factions of this ballot that stayed.",
@@ -2658,9 +2634,9 @@
             "cites": [
               {
                 "source": "role-roster-37",
-                "quote": "PersonToPositionID 30687; PersonID 30804; PositionID 39; StartDate 2022-12-29T00:00:00",
-                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים ביטון; faction: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל.",
-                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים ביטון; סיעה: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל."
+                "quote": "PersonToPositionID 31464; PersonID 30660; PositionID 39; StartDate 2023-04-19T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה ארבל; faction: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה ארבל; סיעה: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל."
               },
               {
                 "source": "plenum-2025-07-21",
@@ -2747,9 +2723,9 @@
               },
               {
                 "source": "positions-gov37",
-                "quote": "PersonToPositionID 32020, PersonID 1027, PositionID 39, StartDate 2024-09-30",
-                "note": "The Knesset’s appointment record: Gideon Sa'ar, minister without portfolio from 30 September 2024.",
-                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר בלי תיק מ־30 בספטמבר 2024."
+                "quote": "PersonToPositionID 32040, PersonID 1027, PositionID 39, StartDate 2024-11-08",
+                "note": "The Knesset’s appointment record: Gideon Sa'ar, Foreign Minister from 8 November 2024.",
+                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
                 "source": "plenum-2024-09-30",
@@ -2858,9 +2834,9 @@
             "cites": [
               {
                 "source": "role-roster-37",
-                "quote": "PersonToPositionID 30691; PersonID 30811; PositionID 39; StartDate 2022-12-29T00:00:00",
-                "note": "Fields of the Knesset’s official record, not a quoted sentence: איתמר בן גביר; faction: עוצמה יהודית בראשות איתמר בן גביר.",
-                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: איתמר בן גביר; סיעה: עוצמה יהודית בראשות איתמר בן גביר."
+                "quote": "PersonToPositionID 30702; PersonID 30717; PositionID 39; StartDate 2022-12-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אופיר סופר; faction: עוצמה יהודית בראשות אופיר סופר.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אופיר סופר; סיעה: עוצמה יהודית בראשות אופיר סופר."
               },
               {
                 "source": "factions-k25",
@@ -2870,9 +2846,9 @@
               },
               {
                 "source": "factions-k25",
-                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 members on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 1 members of Noam on 21 January 2025.",
-                "noteHe": "רישומי הסיעות של הכנסת: 1 חברים בסיעת נעם ב־21 בינואר 2025."
+                "quote": "Faction 1107 (נעם - בראשות אבי מעוז): 1 member on 2025-01-21, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 1 member of Noam on 21 January 2025.",
+                "noteHe": "רישומי הסיעות של הכנסת: חבר אחד בסיעת נעם ב־21 בינואר 2025."
               }
             ],
             "noteEn": "Religious Zionism (6 MKs that day) and Noam (1), the factions of this ballot that stayed.",
@@ -2884,12 +2860,6 @@
             "role": "member-without-ministries",
             "certainty": "probable",
             "cites": [
-              {
-                "source": "role-roster-37",
-                "quote": "PersonToPositionID 30687; PersonID 30804; PositionID 39; StartDate 2022-12-29T00:00:00",
-                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים ביטון; faction: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל.",
-                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים ביטון; סיעה: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל."
-              },
               {
                 "source": "plenum-2025-07-21",
                 "quote": "חברותם בממשלה של השרים יעקב מרגי, יואב בן צור, אוריאל בוסו וחיים ביטון נפסקה ביום כ\"ד בתמוז התשפ\"ה, 20 ביולי 2025, בשעה 10:00",
@@ -2975,9 +2945,9 @@
               },
               {
                 "source": "positions-gov37",
-                "quote": "PersonToPositionID 32020, PersonID 1027, PositionID 39, StartDate 2024-09-30",
-                "note": "The Knesset’s appointment record: Gideon Sa'ar, minister without portfolio from 30 September 2024.",
-                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר בלי תיק מ־30 בספטמבר 2024."
+                "quote": "PersonToPositionID 32040, PersonID 1027, PositionID 39, StartDate 2024-11-08",
+                "note": "The Knesset’s appointment record: Gideon Sa'ar, Foreign Minister from 8 November 2024.",
+                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
                 "source": "plenum-2024-09-30",

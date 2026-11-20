@@ -1,8 +1,8 @@
 # Data gaps register
 
-12755 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12758 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 1116 (confirmed 548, probable 65, provisional 140, disputed 11, unknown 352).
+- High importance: 1119 (confirmed 551, probable 65, provisional 140, disputed 11, unknown 352).
 - Medium importance: 4483 (confirmed 1035, probable 248, provisional 182, disputed 8, unknown 2422, family placements: follows scholarship 103, the project’s own judgement 386, sources disagree 15, not yet checked 84).
 - Low importance: 7156 (confirmed 572, provisional 808, unknown 5776).
 
@@ -314,9 +314,9 @@ Party-family placements are the project’s classification, not facts, so they c
 
 ## Counts
 
-By kind: unknown: 7519; missing-field: 285; conflict: 19; single-source: 3086; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 209.
+By kind: unknown: 7519; missing-field: 285; conflict: 19; single-source: 3089; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 209.
 
-By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11396.
+By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11399.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -334,7 +334,7 @@ By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 
 | k12 | 22 | 122 | 183 | 392 |
 | k13 | 24 | 116 | 146 | 331 |
 | k14 | 10 | 126 | 148 | 338 |
-| k15 | 101 | 153 | 160 | 499 |
+| k15 | 101 | 153 | 160 | 502 |
 | k16 | 53 | 159 | 218 | 510 |
 | k17 | 9 | 137 | 230 | 434 |
 | k18 | 13 | 91 | 345 | 503 |

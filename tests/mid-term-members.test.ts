@@ -57,6 +57,23 @@ describe('a mid-term join or exit changes the member list, dated', () => {
     expect(row(utj, 'ג')!.certainty).toBe('unknown'); expect(counted(utj)).not.toContain('ג');
     expect(utj.membershipCoverage).toBe('partial'); expect(utj.coalitionSeats).toBeNull(); expect(utj.knownMemberSeats).toBe(61);
   });
+  // Review of 9a8a48be: a count of one is singular in every aftermath string, the cite quotes included (they are our
+  // description of a record, not a verbatim sentence). The Hebrew check skips 11, 21 and so on.
+  test('no aftermath string says "1 members" or «1 חברים»', () => {
+    const bad: string[] = [];
+    const walk = (v: unknown, where: string): void => {
+      if (typeof v === 'string') { if (/\b1 members\b/.test(v) || /(?<!\d)1 חברים/.test(v)) bad.push(`${where}: ${v.slice(0, 90)}`); }
+      else if (Array.isArray(v)) v.forEach((x, i) => walk(x, `${where}[${i}]`));
+      else if (v && typeof v === 'object') for (const [key, x] of Object.entries(v)) walk(x, `${where}.${key}`);
+    };
+    for (const k of ELECTION_IDS) {
+      let text: string;
+      try { text = readFileSync(`data/meta/aftermath/${k}.json`, 'utf8'); } catch { continue; }
+      walk(JSON.parse(text), k);
+    }
+    expect(bad).toEqual([]);
+    expect(/\b1 members\b/.test('11 members') || /(?<!\d)1 חברים/.test('21 חברים')).toBe(false);
+  });
   test('every other change that says a party joined or left is a known data gap', () => {
     const KNOWN_GAPS = new Set<string>([]); // none left: lane D3 dated every recorded join and exit (night-1119/D3/REPORT.md)
     const open: string[] = [];

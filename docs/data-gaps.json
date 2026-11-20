@@ -1,11 +1,11 @@
 {
   "schemaVersion": 3,
-  "total": 12755,
+  "total": 12758,
   "counts": {
     "unknown": 7519,
     "missing-field": 285,
     "conflict": 19,
-    "single-source": 3086,
+    "single-source": 3089,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1179,
@@ -15,12 +15,12 @@
   "countsByStatus": {
     "inferred-not-verified": 1040,
     "needs-current-status-review": 319,
-    "open": 11396
+    "open": 11399
   },
   "countsByImportance": {
     "high": {
-      "total": 1116,
-      "confirmed": 548,
+      "total": 1119,
+      "confirmed": 551,
       "probable": 65,
       "provisional": 140,
       "disputed": 11,
@@ -347,7 +347,7 @@
     },
     {
       "election": "k15",
-      "total": 499,
+      "total": 502,
       "highOpen": 101,
       "mediumOpen": 153,
       "low": 160,
@@ -355,7 +355,7 @@
         "unknown": 289,
         "missing-field": 20,
         "conflict": 1,
-        "single-source": 134,
+        "single-source": 137,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 30,
