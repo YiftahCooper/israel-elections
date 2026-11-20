@@ -1,6 +1,6 @@
 import { choose } from './choices.ts';
 // Keyboard and touch access found missing in the 4 November 2026 UI audit.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 const start = async (page: Page, settings: Record<string, unknown> = {}) => {
   const lang = (settings.lang as string | undefined) ?? 'en';

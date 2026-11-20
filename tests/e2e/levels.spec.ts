@@ -2,7 +2,7 @@ import { TOOL_FEATURES } from '../../src/app/features.ts';
 // The three interface levels: Simple (minimal), Standard (common, consequential edits) and Expert
 // (every tool). A level changes what is shown, never what is computed.
 import { readFileSync } from 'node:fs';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 const SETTINGS = 'israel-elections:v1';
 const start = async (page: Page, settings: Record<string, unknown> = {}) => {

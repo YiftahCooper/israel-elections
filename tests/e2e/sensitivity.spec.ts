@@ -1,6 +1,7 @@
 // Sensitivity screen (owner review, 5 Nov 2026): the page answers its three questions as soon as it opens, its
 // pickers follow the election, its tables compare with the current result, and its bloc claim matches the chamber.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
+import { boxesNow, waitForStill } from './settle.ts';
 import { choose } from './choices.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', width = 1500) {
@@ -34,9 +35,10 @@ test('tables compare with the current result and mark where it stands now', asyn
   const thrNow = panel(page).locator('table').nth(1).locator('tbody tr[aria-current="true"]');
   await expect(thrNow.locator('td').last()).toHaveText('now');
   await expect(thrNow.locator('td').nth(1)).toHaveText('5%');
-  // the now row of the sweep is scrolled into view within its table, not the page
-  const box = (await panel(page).locator('.tablewrap').first().boundingBox())!;
-  const row = (await sweepNow.boundingBox())!;
+  // the now row of the sweep is scrolled into view within its table, not the page (on a later frame, and again when the
+  // table changes size: wait until the tables and their rows stand still, then read both boxes in one step)
+  await waitForStill(page, ['.tablewrap', '.tablewrap tr[aria-current="true"]']);
+  const [box, row] = await boxesNow(panel(page).locator('.tablewrap').first(), sweepNow);
   expect(row.y).toBeGreaterThanOrEqual(box.y);
   expect(row.y + row.height).toBeLessThanOrEqual(box.y + box.height + 1);
 });

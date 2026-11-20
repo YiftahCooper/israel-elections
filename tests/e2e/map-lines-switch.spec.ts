@@ -1,6 +1,6 @@
 // The Localities map's lines: one "All lines and areas" box over the 12 single boxes (a dash when only some are on),
 // remembered on this device, and the same switch in Settings → Analysis. The lines themselves do not change.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 const open = async (page: Page, lang: 'en' | 'he' = 'en', values: Record<string, unknown> = {}) => {
   await page.addInitScript(([lang, values]) => {

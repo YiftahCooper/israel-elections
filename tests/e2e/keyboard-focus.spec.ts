@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 // Audit 12 Nov 2026 (c-a11y-01, 02, 04–10; c-screens-overview-07): keyboard focus, names and contrast, in English
 // and Hebrew. Opening a panel or sheet moves focus into it (from the keyboard), closing it gives focus back to the

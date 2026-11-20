@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 import { openTool } from './openTool.ts';
 
 test('default analysis survives reload without starting workers; edits calculate automatically', async ({ page }) => {

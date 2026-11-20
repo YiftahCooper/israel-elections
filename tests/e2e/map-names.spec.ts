@@ -1,8 +1,9 @@
 // The Localities map is colours only (F1, 19 Nov 2026): no list names or shares are written on it at any zoom, place
 // names never sit on a circle or a town's tiles, and a place's lists and shares come from its hover box, a tap, or a
 // choice from the search (the keyboard's way in). The Vote mix hover box once read "[object Object]".
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
+import { settleMap } from './map-settle.ts';
 
 const open = async (page: Page, lang: 'en' | 'he', view: 'winner' | 'mix') => {
   await page.addInitScript(([lang, view]) => {
@@ -22,12 +23,12 @@ const open = async (page: Page, lang: 'en' | 'he', view: 'winner' | 'mix') => {
   await page.getByRole('tab', { name: lang === 'he' ? 'יישובים' : 'Localities', exact: true }).click();
   await expect(page.getByRole('region', { name: lang === 'he' ? /מפת תוצאות/ : /Locality results map/ })).toBeVisible();
   await outlines;
-  await page.waitForTimeout(800);
+  await settleMap(page);
 };
 const find = async (page: Page, lang: 'en' | 'he', code: string) => {
   await page.getByRole('searchbox', { name: lang === 'he' ? 'חיפוש יישוב' : 'Find a locality' }).fill(code);
   await page.locator('.locality-map-matches button').first().click();
-  await page.waitForTimeout(800);
+  await settleMap(page);
 };
 /** Each shown place name's box against the Vote mix canvas: no strongly coloured pixel (a circle, tiles, a town's
  *  border) under it. Faint outlines of untiled towns (alpha .34) may pass under a name. */
@@ -52,7 +53,7 @@ for (const lang of ['en', 'he'] as const) {
     expect(far.bad).toEqual([]);
     await find(page, lang, '5000'); // Tel Aviv-Yafo, zoom 12: tiles
     for (const step of [0, 1]) {
-      if (step) { await page.locator('.leaflet-control-zoom-in').click(); await page.waitForTimeout(800); }
+      if (step) { await page.locator('.leaflet-control-zoom-in').click(); await settleMap(page); }
       expect((await namesOverMarks(page)).bad).toEqual([]);
     }
     const texts = await page.evaluate(() => (window as unknown as { __mapText: string[] }).__mapText);

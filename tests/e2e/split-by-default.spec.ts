@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { choose } from './choices.ts';
 for (const lang of ['en', 'he'] as const) test(`${lang}: joint-list default is personal, unedited, persistent and individually overridable`, async ({ page }) => {
   await page.addInitScript(lang => {
@@ -27,10 +27,12 @@ for (const lang of ['en', 'he'] as const) test(`${lang}: joint-list default is p
   await rememberedDefault.check();
   await expect(toggle).toBeChecked();
   await expect(page.locator('.session')).toHaveClass(/idle/);
+  const stored = () => page.evaluate(() => localStorage.getItem('israel-elections:workspace:v1'));
+  const before = await stored();
   await toggle.uncheck();
   await expect(page.locator('.session')).toHaveClass(/idle/);
   await expect(panel.locator('[data-marker-path="factionSplits"] .edit-marker')).toHaveCount(0);
-  await page.waitForTimeout(350); // workspace debounce
+  await expect.poll(stored, { message: 'the workspace is written a moment after the last change' }).not.toBe(before);
   await page.reload();
   await row.click();
   await expect(toggle).not.toBeChecked();

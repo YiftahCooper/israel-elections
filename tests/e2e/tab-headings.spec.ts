@@ -1,6 +1,6 @@
 // Three small headings over the tab row ("Your scenario", "What happened", "How it works"): every tab stays one click
 // away, each heading names a tab list of its own, levels and Custom keep working, and phones get three buttons.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { TOOL_FEATURES } from '../../src/app/features.ts';
 import { TAB_GROUP } from '../../src/app/tabGroups.ts';
 

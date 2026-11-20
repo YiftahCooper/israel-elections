@@ -1,4 +1,4 @@
-import { expect, type Page } from '@playwright/test';
+import { expect, type Page } from './fixtures';
 
 /** Phones (≤600px): the top bar is one row with two buttons for the rest (16 Nov 2026). The three lines open the
  *  tools and the view (level, language, theme, Settings, About) in #app-menu; the status label opens the scenario

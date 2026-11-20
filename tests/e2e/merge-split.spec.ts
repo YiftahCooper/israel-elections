@@ -1,6 +1,6 @@
 // Merge & split screen audit (5 Nov): the preview and the record of applied changes compare a split once with all its
 // parts, the page stays put after applying, split vote shares are explicit and editable, and each era's agreement rule shows.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', width = 1500) {

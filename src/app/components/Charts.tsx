@@ -149,7 +149,7 @@ function VotesVsSeats({ s, r }: { s: Scenario; r: AllocationResult }) {
         })}
         <line x1={x0} x2={x0} y1={4} y2={H - 4} stroke="var(--axis)" />
       </svg>
-      {tip && <Floating onPointerEnter={bridge.keep} onPointerLeave={bridge.leave} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
+      {tip && <Floating onPointerEnter={bridge.enterBox} onPointerLeave={bridge.leaveBox} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
     </figure>
   );
 }
@@ -194,7 +194,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
         })}
         <line x1={mid} x2={mid} y1={2} y2={H - 4} stroke="var(--ink)" strokeWidth={1.5} />
       </svg>
-      {tip && <Floating onPointerEnter={bridge.keep} onPointerLeave={bridge.leave} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
+      {tip && <Floating onPointerEnter={bridge.enterBox} onPointerLeave={bridge.leaveBox} className="chart-tooltip" anchor={() => ({left: tip.x, right: tip.x, top: tip.y, bottom: tip.y})}>{tip.html}</Floating>}
     </figure>
   );
 }

@@ -1,7 +1,8 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { existsSync } from 'node:fs';
 import { choose } from './choices.ts';
 import { barLanguage } from './barMenu.ts';
+import { waitForStill } from './settle.ts';
 
 for (const lang of ['he', 'en'] as const) test(`k26 distinguishes the completed mandate from a new government: ${lang}`, async ({ page }) => {
   await page.goto('/');
@@ -498,11 +499,15 @@ for (const width of [1500, 390]) test(`the 61 line crosses no list's letters (${
   const history = await openAfter(page, 'k24', 'en');
   const bars = history.locator('.after-bar');
   await expect(bars.first()).toBeVisible();
+  // the bars take their widths from the page's layout: measure once they have come to rest, the line and the letters
+  // of a bar in one read (T1)
+  await waitForStill(page, ['.after-bar', '.after-majority', '.after-group bdi']);
   for (let b = 0; b < await bars.count(); b++) {
-    const bar = bars.nth(b);
-    const line = (await bar.locator('.after-majority').boundingBox())!;
-    const boxes = await bar.locator('.after-group bdi').evaluateAll(els => els.filter(e => getComputedStyle(e).display !== 'none').map(e => { const r = e.getBoundingClientRect(); return { l: r.left, r: r.right, t: e.textContent }; }));
-    for (const x of boxes) expect(x.l > line.x + 2 || x.r < line.x, `${x.t} at ${x.l}–${x.r}, line at ${line.x}`).toBe(true);
+    const { line, boxes } = await bars.nth(b).evaluate(bar => ({
+      line: bar.querySelector('.after-majority')!.getBoundingClientRect().x,
+      boxes: [...bar.querySelectorAll('.after-group bdi')].filter(e => getComputedStyle(e).display !== 'none').map(e => { const r = e.getBoundingClientRect(); return { l: r.left, r: r.right, t: e.textContent }; }),
+    }));
+    for (const x of boxes) expect(x.l > line + 2 || x.r < line, `${x.t} at ${x.l}–${x.r}, line at ${line}`).toBe(true);
   }
 });
 

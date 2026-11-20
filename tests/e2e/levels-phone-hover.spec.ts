@@ -1,4 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
+import { clearHover, delayTo, expectAtOnce, expectKeptForGrace, expectNothingOpens, expectWaitedForRest, pastSkipWindow, recordHover } from './hover-timing.ts';
 
 // Owner decisions of 9 Nov 2026: Settings in level tiers, parties under joint lists by level, the device theme for
 // first-time visitors, the shared hover delay and the one-row phone bar.
@@ -97,35 +98,34 @@ test.describe('explanations open on hover after a short rest', () => {
     const info = page.locator('.info button').first();
     await info.scrollIntoViewIfNeeded();
     const box = await info.boundingBox();
+    // timings measured in the page (hover-timing.ts), so a slow machine cannot make them pass or fail
+    await recordHover(page, '.pop');
     await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
-    await page.waitForTimeout(120);
-    await expect(page.locator('.pop')).toHaveCount(0);
-    await expect(page.locator('.pop')).toHaveCount(1, { timeout: 1500 });
+    expectWaitedForRest(await delayTo(page, 'shown'));
     // moving away: the box stays for a short grace, then closes
     await page.mouse.move(5, 900);
-    await page.waitForTimeout(60);
-    await expect(page.locator('.pop')).toHaveCount(1);
-    await expect(page.locator('.pop')).toHaveCount(0, { timeout: 1500 });
+    expectKeptForGrace(await delayTo(page, 'gone'));
     // a click opens at once
+    await pastSkipWindow(page);
+    await clearHover(page);
     await info.click();
-    await expect(page.locator('.pop')).toHaveCount(1, { timeout: 100 });
+    expectAtOnce(await delayTo(page, 'shown', 'pointerdown'));
   });
 
   test('seat details: a sweep across the chart opens nothing; resting opens; the next seat opens at once', async ({ page }) => {
     await open(page);
     const seats = page.locator('.chamber [data-seat]');
     const a = await seats.nth(10).boundingBox(), b = await seats.nth(30).boundingBox();
+    await recordHover(page, '.tip');
     await page.mouse.move(a!.x + a!.width / 2, a!.y + a!.height / 2);
     await page.mouse.move(b!.x + b!.width / 2, b!.y + b!.height / 2, { steps: 5 });
     await page.mouse.move(5, 900);
-    await page.waitForTimeout(500);
-    await expect(page.locator('.tip')).toHaveCount(0);
+    await expectNothingOpens(page);
     await page.mouse.move(a!.x + a!.width / 2, a!.y + a!.height / 2);
-    await expect(page.locator('.tip')).toHaveCount(1, { timeout: 1500 });
-    const first = await page.locator('.tip').innerText();
+    expectWaitedForRest(await delayTo(page, 'shown'));
+    await clearHover(page);
     await page.mouse.move(b!.x + b!.width / 2, b!.y + b!.height / 2);
-    await page.waitForTimeout(60);
-    await expect(page.locator('.tip')).not.toHaveText(first);
+    expectAtOnce(await delayTo(page, 'changed'));
   });
 });
 

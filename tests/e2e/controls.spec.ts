@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 import { openScenarioMenu } from './barMenu.ts';
 async function start(page: Page, lang = 'en', theme = 'light') {

@@ -2,8 +2,9 @@
 // A name may wrap onto two lines inside its band; when any band is too narrow even for that, every name is listed in full
 // in the key beneath the strip instead (always so on a phone). Checked for 2021, 2022 and 2026, every grouping, both
 // languages, every 20 px from 360 to 1500, and for the compared result's strip under it.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
+import { waitForStill } from './settle.ts';
 
 const open = async (page: Page, lang: 'en' | 'he') => {
   await page.setViewportSize({ width: 1500, height: 1000 });
@@ -71,7 +72,7 @@ for (const lang of ['he', 'en'] as const) {
         const grouping = page.getByRole('button', { name: lang === 'en' ? 'Grouping' : 'חלוקה לגושים', exact: true });
         if ((await grouping.getAttribute('data-value')) !== scheme) await choose(grouping, scheme);
         // the bands ease to their new widths
-        await page.waitForTimeout(400);
+        await waitForStill(page, '.blocs .strip .corridor');
         faults.push(...await sweep(page, `${election} ${scheme}`));
       }
     }
@@ -87,7 +88,7 @@ for (const lang of ['he', 'en'] as const) {
       await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
       if (!(await page.locator('.cmpm-refblocs').count())) await page.locator('.compare-on').click();
       await expect(page.locator('.cmpm-refblocs .strip')).toBeVisible();
-      await page.waitForTimeout(400);
+      await waitForStill(page, '.blocs .strip .corridor');
       faults.push(...await sweep(page, `${election} compared`));
     }
     expect(faults).toEqual([]);
@@ -105,8 +106,11 @@ test('the reported case: 2022’s Arab lists are named in full in Hebrew on a la
   await expect(band.locator('.label')).toBeVisible();
   await expect(band.locator('.label .clip')).toHaveText('רשימות ערביות');
   await expect(blocs.locator('.strip-legend')).toBeHidden();
+  // the grouping's bands ease to their widths, and a resize is fitted a frame later
+  await waitForStill(page, '.blocs .strip .corridor');
   expect(await cutNames(page)).toEqual([]);
   await page.setViewportSize({ width: 390, height: 1000 });
   await expect(blocs.locator('.strip-legend')).toContainText('רשימות ערביות 10');
+  await waitForStill(page, ['.blocs .strip .corridor', '.blocs .strip-legend']);
   expect(await cutNames(page)).toEqual([]);
 });

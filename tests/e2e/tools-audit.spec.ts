@@ -1,5 +1,5 @@
 // Release-candidate audit of the tool pages (area E): each test locks in one defect class that was fixed.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 

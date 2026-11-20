@@ -22,13 +22,17 @@ export class HoverIntent {
   private openTimer: unknown = null;
   private closeTimer: unknown = null;
   private pending: (() => void) | null = null;
+  private shows = 0;
+  private inBox = false;
   constructor(private readonly hide: () => void, private readonly clock: HoverClock = realClock) {}
   get isShown() { return shown === this; }
+  /** Counts the boxes shown; a render notes it, so a late "closed" from that render can tell a box shown since. */
+  get stamp() { return this.shows; }
   /** The pointer rests on a trigger; `show` opens (or updates) the box. Repeated calls (a pointer moving over a
    *  chart) update an open box at once and only refresh what a pending one will show. */
   enter(show: () => void) {
     this.stopClose();
-    if (shown === this) { show(); return; }
+    if (shown === this) { this.shows++; show(); return; }
     if (shown || this.clock.now() - lastClosed < HOVER_SKIP_WINDOW) { this.open(show); return; }
     this.pending = show;
     if (this.openTimer === null) this.openTimer = this.clock.set(() => { this.openTimer = null; const run = this.pending; this.pending = null; if (run) this.open(run); }, HOVER_OPEN_DELAY);
@@ -36,26 +40,45 @@ export class HoverIntent {
   /** The pointer left the trigger or the box: a pending open is dropped; an open box closes after the grace. */
   leave = () => {
     this.stopOpen();
+    // the pointer went from the trigger straight into the box: a trigger listening to mouse events hears its
+    // mouseleave after the box heard its pointerenter (the browser sends pointer events first), and must not close it
+    if (this.inBox) return;
     if (shown === this && this.closeTimer === null) this.closeTimer = this.clock.set(() => { this.closeTimer = null; this.close(); }, HOVER_CLOSE_GRACE);
   }
-  /** The pointer reached the box itself: keep it open. */
+  /** Keep the box open (a click or the keyboard opened it, or the pointer reached it). */
   keep = () => { this.stopClose(); };
+  /** The box's own pointerenter and pointerleave: while the pointer is in the box, leaving the trigger does not close it. */
+  enterBox = () => { this.inBox = true; this.stopClose(); };
+  leaveBox = () => { this.inBox = false; this.leave(); };
   /** Close now (another box replaced it). */
   close() {
     this.stopOpen(); this.stopClose();
+    this.inBox = false;
     if (shown !== this) return;
     shown = null; lastClosed = this.clock.now();
     this.hide();
   }
-  /** The box was closed some other way (Escape, a press outside, a click): forget it without calling hide. */
-  closed() {
-    this.stopOpen(); this.stopClose();
+  /** The box was closed some other way (Escape, a press outside, a click): forget it without calling hide.
+   *  `since` (from useHoverIntent's effect): the stamp of the render that showed the box closed. That effect runs a
+   *  moment after the render, and the pointer may have reached the next trigger in between (a slow machine makes it
+   *  likely). Then only what that render saw is forgotten: a box shown since stays known (else it would never close
+   *  when the pointer leaves), and a box still waiting for the rest delay is not cancelled (else it would never open). */
+  closed(since?: number) {
+    if (since !== undefined) {
+      if (shown !== this || since !== this.shows) return;
+      this.stopClose(); this.inBox = false;
+      shown = null; lastClosed = this.clock.now();
+      return;
+    }
+    this.stopOpen(); this.stopClose(); this.inBox = false;
     if (shown === this) { shown = null; lastClosed = this.clock.now(); }
   }
   dispose() { this.closed(); }
   private open(show: () => void) {
     if (shown && shown !== this) shown.close();
     shown = this;
+    this.shows++;
+    this.inBox = false;
     show();
   }
   private stopOpen() { if (this.openTimer !== null) { this.clock.clear(this.openTimer); this.openTimer = null; } this.pending = null; }
@@ -73,7 +96,10 @@ export function useHoverIntent(hide: () => void, open: boolean): HoverIntent {
   const ref = useRef<HoverIntent | null>(null);
   if (!ref.current) ref.current = new HoverIntent(() => latest.current());
   const intent = ref.current;
-  useEffect(() => { if (!open) intent.closed(); }, [open, intent]);
+  // the stamp of this render: the effect runs after the commit, and the pointer may have asked for a box since. It is
+  // left out of the dependencies on purpose: rerunning on a new stamp would close that newer request.
+  const stamp = intent.stamp;
+  useEffect(() => { if (!open) intent.closed(stamp); }, [open, intent]);
   useEffect(() => () => intent.dispose(), [intent]);
   return intent;
 }

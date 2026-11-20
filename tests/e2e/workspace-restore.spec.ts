@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 // Unsaved work survives a reload of the tab, with undo (owner decision 2026-11-04).
 test('a reload restores unsaved edits and their undo', async ({ page }) => {
   await page.addInitScript(() => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', theme: 'light', level: 'standard', hintDismissed: true })); } });
@@ -7,7 +7,11 @@ test('a reload restores unsaved edits and their undo', async ({ page }) => {
   const votes = page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
   await votes.fill('1200000'); await votes.press('Enter');
   await expect(votes).toHaveValue('1,200,000');
-  await page.waitForTimeout(400); // the workspace is written a moment after the last change
+  // the workspace is written a moment after the last change
+  await expect.poll(() => page.evaluate(() => {
+    const stored = JSON.parse(localStorage.getItem('israel-elections:workspace:v1') ?? '{}') as { tabs?: Record<string, { ws?: { current?: { log?: unknown[] } } }> };
+    return Object.values(stored.tabs ?? {}).some(t => (t.ws?.current?.log?.length ?? 0) > 0);
+  }), { message: 'the edit is in the stored workspace' }).toBe(true);
   await page.reload();
   await expect(page.locator('.band .election-status')).toContainText('*');
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();

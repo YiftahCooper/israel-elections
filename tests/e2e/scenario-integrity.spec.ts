@@ -2,7 +2,7 @@
 // description; the expanded merger answer never states a false sum; damaged browser storage still lets the app start;
 // on a phone the comparison strip's icon buttons keep their names.
 import { readFileSync } from 'node:fs';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', width = 1500, extra: Record<string, string> = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });

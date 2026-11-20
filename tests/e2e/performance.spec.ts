@@ -2,7 +2,7 @@ import { choose } from './choices.ts';
 // Loading behaviour introduced for speed: tab panels outside the levels' first tabs come in
 // separate chunks (fetched when the page is idle), and seat-security searches run in workers.
 // Each test checks that the user still gets the same content, with an accessible loading state.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 const SETTINGS = 'israel-elections:v1';
 const start = async (page: Page, settings: Record<string, unknown> = {}) => {

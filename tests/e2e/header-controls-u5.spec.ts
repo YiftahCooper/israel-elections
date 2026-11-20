@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 import { closeBarMenu, openBarMenu, openScenarioMenu } from './barMenu.ts';
 import { choose } from './choices.ts';
 for (const lang of ['en', 'he']) for (const width of [1500,1280,1024,768,390]) {

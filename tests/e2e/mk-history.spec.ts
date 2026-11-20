@@ -1,7 +1,8 @@
 // An MK's own history (owner decisions M1–M3, 9 Nov 2026): it opens from the MK's seat in the chamber and from their
 // name in a list's candidates; one row per Knesset; runs that did not win a seat; Hebrew graphics left to right; the
 // phone sheet; viewing it is never an edit.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
+import { hoverSeat as hoverChamberSeat } from './seat-hover.ts';
 import { choose } from './choices.ts';
 
 async function start(page: Page, { lang = 'en', width = 1500, k = 'k25' }: { lang?: 'en' | 'he'; width?: number; k?: string } = {}) {
@@ -24,7 +25,7 @@ async function hoverSeat(page: Page, list: string, rank: number, word = 'rank') 
   const n = await seats.count();
   for (let i = 0; i < n; i++) {
     if (await seats.nth(i).locator('title').textContent() !== list) continue;
-    await seats.nth(i).hover();
+    await hoverChamberSeat(page, seats.nth(i));
     if ((await page.locator('.tip').textContent())?.includes(`${word} ${rank}`)) return;
   }
   throw new Error(`no seat ${list} ${rank}`);

@@ -1,6 +1,6 @@
 // Audit 12 Nov 2026, lane fx-state2: work is never lost, a failed download can always be tried again, and the analysis
 // figures say what they prove. Pictures for the review with CHK_DIR=<folder>.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 const OUT = process.env.CHK_DIR;

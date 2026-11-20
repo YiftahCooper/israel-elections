@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { barPart, closeBarMenu } from './barMenu.ts';
 import { readFileSync } from 'node:fs';
 import { deflateRawSync } from 'node:zlib';

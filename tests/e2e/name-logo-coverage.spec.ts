@@ -1,4 +1,4 @@
-import {test,expect} from '@playwright/test';
+import {test,expect} from './fixtures';
 import {choose} from './choices.ts';
 import {mkdirSync,readFileSync} from 'node:fs';
 for(const election of ['k26','k25','k12','k1','k21']) test(`${election}: names and party identity in both languages, themes and sizes`,async({browser})=>{

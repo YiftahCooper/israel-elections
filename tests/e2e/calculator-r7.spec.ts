@@ -1,5 +1,5 @@
 // Round 7 calculator fixes: the election list downloads nothing to draw its strips; list pickers show each list's mark.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 import { barLanguage } from './barMenu.ts';
 

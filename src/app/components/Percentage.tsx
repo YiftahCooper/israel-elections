@@ -108,7 +108,7 @@ export function ExactValue({ text, note, svg = false, pad }: { text: string; not
       : exact ? <span {...props} aria-description={described} data-exact dir="ltr">{figure}</span>
       : <span {...props} aria-description={described}>{body}</span>}
     {/* the pointer can move onto the note: it also holds the table's switch, so mouse and touch have it as well */}
-    {open && createPortal(<Floating id={id} className="percentage-pop" anchor={() => ref.current?.getBoundingClientRect()} onPointerEnter={() => intent.keep()} onPointerLeave={() => intent.leave()}>
+    {open && createPortal(<Floating id={id} className="percentage-pop" anchor={() => ref.current?.getBoundingClientRect()} onPointerEnter={() => intent.enterBox()} onPointerLeave={() => intent.leaveBox()}>
       <span ref={pop}><ExactNote note={note} />{scope && <button type="button" className="btn small exact-pop-switch" aria-pressed={exact} onClick={() => toggleExact(scope)}>{exact && <span aria-hidden>✓ </span>}{label}</button>}</span>
     </Floating>, document.body)}
   </>;

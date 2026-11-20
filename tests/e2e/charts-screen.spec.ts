@@ -1,5 +1,6 @@
 // Charts screen (screen-by-screen audit, 2026-11-05): each test locks in one fixed defect class.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
+import { waitForStill } from './settle.ts';
 import { choose } from './choices.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', width = 1500) {
@@ -68,6 +69,8 @@ test('a hover tip near the right edge stays on screen', async ({ page }) => {
   await page.mouse.move(box.x + box.width - 6, box.y + 14);
   const tip = page.locator('.chart-tooltip');
   await expect(tip).toBeVisible();
+  // the tip is placed again when its content takes its size: measure where it comes to rest
+  await waitForStill(page, '.chart-tooltip');
   const t = (await tip.boundingBox())!;
   expect(t.x + t.width).toBeLessThanOrEqual(1024);
 });
@@ -84,13 +87,17 @@ test('switching between charts and table keeps the page height and the switch un
     await page.evaluate((d) => window.scrollBy(0, d), (await seg.boundingBox())!.y - bars - 60);
     for (const name of ['Table', 'Charts', 'Table']) {
       const button = panel(page).getByRole('button', { name, exact: true });
-      const b = (await button.boundingBox())!;
-      const [s0, h0] = await page.evaluate(() => [scrollY, document.documentElement.scrollHeight]);
+      await waitForStill(page, ['#analysis-panel', '#analysis-panel [aria-pressed]']);
+      // the button's box, the scroll and the page's height, read in one step
+      const at = () => button.evaluate(el => { const r = el.getBoundingClientRect(); return { b: { x: r.x, y: r.y, width: r.width, height: r.height }, s: scrollY, h: document.documentElement.scrollHeight }; });
+      const { b, s: s0, h: h0 } = await at();
       // a real pointer click: Playwright's click() would scroll the button into view by itself
       await page.mouse.click(b.x + b.width / 2, b.y + b.height / 2);
       await expect(button).toHaveAttribute('aria-pressed', 'true');
-      const [s1, h1] = await page.evaluate(() => [scrollY, document.documentElement.scrollHeight]);
-      expect(Math.abs((await button.boundingBox())!.y - b.y), `${name} at ${width}`).toBeLessThan(2);
+      // the new view's charts or table take their size over the next frames
+      await waitForStill(page, ['#analysis-panel', '#analysis-panel [aria-pressed]']);
+      const { b: b1, s: s1, h: h1 } = await at();
+      expect(Math.abs(b1.y - b.y), `${name} at ${width}`).toBeLessThan(2);
       expect(s1, `${name} at ${width}`).toBe(s0);
       expect(h1, `${name} at ${width}`).toBeGreaterThanOrEqual(h0 - 2);
     }

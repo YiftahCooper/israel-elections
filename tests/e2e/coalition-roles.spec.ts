@@ -1,6 +1,6 @@
 // Outside support and arranged abstention in the Coalitions tool: the totals line, both tests (more for than
 // against, and 61), the bar treatment, named undo, analysis marking, reload, and the What if… question.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 const start = async (page: Page, lang: 'en' | 'he' = 'en', width = 1500) => {

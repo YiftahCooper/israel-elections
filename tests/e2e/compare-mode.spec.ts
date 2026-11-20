@@ -1,8 +1,9 @@
 // Comparing as a mode (Design A): the strip, what it compares with, Swap and Stop comparing; the Lists panel, the seat
 // chart switch and the Copy votes box while comparing; Side by side opened from the strip.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 import { openTool } from './openTool.ts';
+import { waitForStill } from './settle.ts';
 
 export async function start(page: Page, lang: 'en' | 'he' = 'en', level = 'standard', width = 1500, values: Record<string, unknown> = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
@@ -257,10 +258,16 @@ for (const [lang, width] of [['en', 1024], ['he', 390]] as const) test(`a long r
     await openTool(page, 'turnout');
     const buttons = page.locator('.tn-facts .cmpm-copy-other');
     await expect(buttons.first()).toBeVisible();
-    for (const b of await buttons.all()) {
-      const [own, card] = await b.evaluate((e) => [e.getBoundingClientRect(), e.closest('.tn-fact')!.getBoundingClientRect()].map((r) => ({ left: r.left, right: r.right })));
+    // the cards and their charts take their widths after the screen loads: measure at rest, all in one read (T1)
+    await waitForStill(page, ['.tn-fact', '.tn-facts .cmpm-copy-other']);
+    const { pairs, overflow } = await page.evaluate(() => ({
+      pairs: [...document.querySelectorAll('.tn-facts .cmpm-copy-other')].map((e) => [e.getBoundingClientRect(), e.closest('.tn-fact')!.getBoundingClientRect()].map((r) => ({ left: r.left, right: r.right }))),
+      overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    }));
+    expect(pairs.length).toBe(await buttons.count());
+    for (const [own, card] of pairs) {
       expect(own.left).toBeGreaterThanOrEqual(card.left - 0.5);
       expect(own.right).toBeLessThanOrEqual(card.right + 0.5);
     }
-    expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+    expect(overflow).toBeLessThanOrEqual(1);
 });

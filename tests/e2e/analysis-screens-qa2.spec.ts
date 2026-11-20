@@ -1,4 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
+import { boxesNow, waitForStill } from './settle.ts';
 import { openSideBySide } from './sideBySide.ts';
 
 async function start(page: Page, lang: 'en' | 'he', width: number) {
@@ -49,6 +50,8 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1500]) {
     const values = ladder.locator('.halo');
     expect(await values.count()).toBeGreaterThan(0);
     await expect(values.first()).toHaveAttribute('x', await values.last().getAttribute('x') ?? '');
+    // each table scrolls to its current row on a later frame, and again when it changes size
+    await waitForStill(page, ['.sens .tablewrap', '.sens .tablewrap tr[aria-current="true"]']);
     const table = page.locator('.sens .tablewrap').nth(1);
     const clipped = await table.evaluate(box => {
       const bottom = box.querySelector('th')!.getBoundingClientRect().bottom;
@@ -57,7 +60,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1500]) {
     expect(clipped).toBe(false);
     for (const box of await page.locator('.sens .tablewrap').all()) {
       const current = box.locator('tr[aria-current="true"]');
-      const [row, header, viewport] = [(await current.boundingBox())!, (await box.locator('th').first().boundingBox())!, (await box.boundingBox())!];
+      const [row, header, viewport] = await boxesNow(current, box.locator('th').first(), box);
       expect(row.y).toBeGreaterThanOrEqual(header.y + header.height - 1);
       expect(row.y + row.height).toBeLessThanOrEqual(viewport.y + viewport.height + 1);
     }

@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { openTool } from './openTool.ts';
 import { choose } from './choices.ts';
 import { FEATURES, SHOW_OR_HIDE, TOOL_FEATURES } from '../../src/app/features.ts';

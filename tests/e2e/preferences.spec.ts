@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { choose } from './choices.ts';
 
 test('first-use choices wait for an explicit scope; keyboard and cancellation preserve the edit', async ({ page }) => {

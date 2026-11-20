@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { openSettings } from './barMenu.ts';
 import { choose } from './choices.ts';
 

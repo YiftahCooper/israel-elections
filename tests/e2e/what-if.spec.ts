@@ -1,11 +1,13 @@
 // What if…: answers that move no seat say what does change; assumptions and sources are reachable.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', width = 1500) {
   await page.setViewportSize({ width, height: 1000 });
   await page.addInitScript((lang) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/');
   await page.locator('#tab-whatif').click();
+  // the screen loads lazily: a loop over its rows must not start on an empty page
+  await expect(page.locator('.wi-row').first()).toBeVisible();
 }
 const row = (page: Page, title: string) => page.locator('.wi-row').filter({ hasText: title });
 

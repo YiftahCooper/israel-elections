@@ -2,7 +2,7 @@
 // work stays (audit 12 Nov 2026, c-robustness-01 to -06); a share link naming an unknown election is a damaged link,
 // not a connection failure (c-robustness-04).
 import { deflateRawSync } from 'node:zlib';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 const OUT = process.env.CHK_DIR;
 const good = { id: 'k26-kept', name: 'Kept plan', electionId: 'k26', savedAt: '2026-11-01T00:00:00.000Z', baseBuiltAt: 'x', log: [] };

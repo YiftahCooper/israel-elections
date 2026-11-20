@@ -1,5 +1,5 @@
 import { choose } from './choices.ts';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => { if (!sessionStorage.getItem('context-seeded')) { localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', hintDismissed: true })); sessionStorage.setItem('context-seeded', '1'); } });

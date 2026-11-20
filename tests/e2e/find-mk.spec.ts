@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 // Find an MK over the seat chart (owner card "seat", 16 Nov 2026): typing a name rings that member's seat and names it,

@@ -1,7 +1,8 @@
 // "How seats were allocated": every stage of each era's method is taught, the steps fit, tables are whole,
 // and an edited scenario is explained against its reference (owner feedback, 5 Nov 2026).
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
+import { waitForStill } from './settle.ts';
 
 async function start(page: Page, election = 'k26', lang: 'en' | 'he' = 'en', width = 1500) {
   await page.setViewportSize({ width, height: 1000 });
@@ -192,7 +193,14 @@ test('on a phone the Within pairs buttons wrap long pair names inside the panel'
   const pairs = panel(page).getByRole('button', { name: /\+/ });
   await expect(pairs.first()).toBeVisible();
   expect(await pairs.count()).toBeGreaterThan(1);
-  const box = await panel(page).evaluate((e) => e.getBoundingClientRect().right);
-  for (const b of await pairs.all()) expect(await b.evaluate((e) => e.getBoundingClientRect().right)).toBeLessThanOrEqual(box + 0.5);
-  expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+  // the stage lays out after it appears: measure at rest, the panel, its pair buttons and the page in one read (T1)
+  await waitForStill(page, ['#analysis-panel', '#analysis-panel button']);
+  const { box, rights, overflow } = await pairs.evaluateAll((els) => ({
+    box: document.getElementById('analysis-panel')!.getBoundingClientRect().right,
+    rights: els.map((b) => b.getBoundingClientRect().right),
+    overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  }));
+  expect(rights.length).toBeGreaterThan(1);
+  for (const r of rights) expect(r).toBeLessThanOrEqual(box + 0.5);
+  expect(overflow).toBeLessThanOrEqual(1);
 });

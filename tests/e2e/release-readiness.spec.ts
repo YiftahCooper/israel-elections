@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { openSideBySide } from './sideBySide.ts';
 
 for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {

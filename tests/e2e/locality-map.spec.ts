@@ -1,6 +1,8 @@
 import { choose } from './choices.ts';
 // the figures below were drawn at one decimal place (Settings → Max decimal places)
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
+import { settleMap } from './map-settle.ts';
+import { boxesNow, waitForStill } from './settle.ts';
 
 test('locality map supports bilingual search, address lookup and table fallback', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'en',level:'expert',hintDismissed:true})));
@@ -84,6 +86,7 @@ test('zooming the locality map never scrolls the page', async ({ page }) => {
   await page.getByRole('tab', {name:'Localities',exact:true}).click();
   await expect(page.getByRole('region', {name:/Locality results map/})).toBeVisible();
   // at the top of the page the map is only partly in view: Leaflet's own refocus scrolled it into view (12 px here)
+  await settleMap(page);
   expect(await page.evaluate(() => window.scrollY)).toBe(0);
   // zooming still works: more localities get English labels one level in
   const labels = () => page.locator('.locality-map-label').count();
@@ -92,6 +95,8 @@ test('zooming the locality map never scrolls the page', async ({ page }) => {
   await page.getByRole('button', {name:'Zoom in'}).click();
   await expect.poll(labels).toBeGreaterThan(before);
   await page.getByRole('button', {name:'Zoom out'}).click();
+  // Leaflet focuses the map after the zoom; a scroll it caused would land then
+  await settleMap(page);
   expect(await page.evaluate(() => window.scrollY)).toBe(0);
   await expect(page.locator('.locality-map-canvas')).toBeFocused();
 });
@@ -221,8 +226,10 @@ test('crossing a source precision limit keeps the map and zoom control in place'
  await page.route('https://tiles.openfreemap.org/**',route=>route.abort());await page.setViewportSize({width:390,height:1000});
  await page.goto('/');await page.getByRole('tab',{name:'Localities',exact:true}).click();
  const map=page.locator('.locality-map-canvas');await map.scrollIntoViewIfNeeded();
+ // the map and its legend (collapsed on a phone a moment after it appears) settle before the place is taken
+ await settleMap(page);await waitForStill(page,['.locality-map-canvas','.leaflet-control-zoom']);
  const y=(await map.boundingBox())!.y;const zoom=page.getByRole('button',{name:'Zoom in',exact:true});
- for(let i=0;i<5;i++){await zoom.click();await expect.poll(async()=>(await map.boundingBox())!.y).toBe(y);}
+ for(let i=0;i<5;i++){await zoom.click();await settleMap(page);expect((await map.boundingBox())!.y).toBe(y);}
  await expect(page.getByText('Some approximate lines are hidden at this zoom. Zoom out to see them.',{exact:false})).toBeVisible();
 });
 
@@ -324,14 +331,20 @@ for (const lang of ['en', 'he'] as const) test(`phone: the map comes before the 
   const map = page.getByRole('region', { name: lang === 'he' ? /מפת תוצאות ביישובים/ : /Locality results map/ });
   await expect(map).toBeVisible();
   const search = page.getByRole('searchbox', { name: lang === 'he' ? 'חיפוש יישוב' : 'Find a locality' });
-  const [m, s, lines] = await Promise.all([map.boundingBox(), search.boundingBox(), page.locator('.locality-boundary-disclosure').boundingBox()]);
-  expect(s!.y).toBeGreaterThan(m!.y + m!.height);
-  expect(m!.y - (lines!.y + lines!.height)).toBeLessThanOrEqual(24);
+  // the map fits the country and its phone legend lays out after it appears: read the three boxes at rest, in one step (T1)
+  await settleMap(page);
+  await waitForStill(page, ['.locality-boundary-disclosure', '.locality-find']);
+  const [m, s, lines] = await boxesNow(map, search, page.locator('.locality-boundary-disclosure'));
+  expect(s.y).toBeGreaterThan(m.y + m.height);
+  expect(m.y - (lines.y + lines.height)).toBeLessThanOrEqual(24);
   await search.fill(lang === 'he' ? 'חיפה' : 'Haifa');
   await expect(page.locator('.locality-find .locality-map-matches button').first()).toBeVisible();
   await page.setViewportSize({ width: 1500, height: 1000 });
-  const wide = await page.getByRole('searchbox', { name: lang === 'he' ? 'חיפוש יישוב' : 'Find a locality' }).boundingBox();
-  expect(wide!.y).toBeLessThan((await page.locator('.locality-map-legend').boundingBox())!.y);
+  // the wide layout arrives a frame after the resize: settle, then read both boxes in one step
+  await settleMap(page);
+  await waitForStill(page, ['.locality-find', '.locality-map-legend']);
+  const [wide, legend] = await boxesNow(page.getByRole('searchbox', { name: lang === 'he' ? 'חיפוש יישוב' : 'Find a locality' }), page.locator('.locality-map-legend'));
+  expect(wide.y).toBeLessThan(legend.y);
 });
 
 // Review fault L7: the double-envelope count (registered 0: envelope voters are registered in their home localities)

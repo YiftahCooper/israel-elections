@@ -2,9 +2,10 @@
 // whole results (your work on the left in English, on the right in Hebrew, C3a), one table of paired lists, copies
 // between them with every copied value marked, matching decisions, Swap, save and share, the phone row sheet, Hebrew
 // graphics left to right, and contrast. The figures are the official results (Likud: 32 seats in 2022, 27 in 2026).
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
+import { waitForStill } from './settle.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', width = 1500, level = 'expert') {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
@@ -468,9 +469,14 @@ test('phone, Hebrew: a row sheet with three lists on one side fits the screen', 
   await row(page, 'חרות').locator('.cmp-lname, .cmp-rname').first().click();
   const sheet = page.locator('dialog[open].cmp-sheet');
   await expect(sheet).toContainText('הפרוגרסיבים');
-  const sides = await sheet.locator('.cmp-sheet-side').evaluateAll(els => els.map(e => { const r = e.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.right)]; }));
+  // the sheet and its logos settle a frame or more after it opens: measure at rest, everything in one read (T1)
+  await waitForStill(page, ['dialog[open].cmp-sheet', '.cmp-sheet-side', '.cmp-sheet-side bdi', '.cmp-sheet-side img']);
+  const { sides, names, overflow } = await sheet.evaluate(el => {
+    const lr = (e: Element) => { const r = e.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.right)]; };
+    return { sides: [...el.querySelectorAll('.cmp-sheet-side')].map(lr), names: [...el.querySelectorAll('.cmp-sheet-side bdi')].map(lr),
+      overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth };
+  });
   for (const [l, r] of sides) { expect(l).toBeGreaterThanOrEqual(0); expect(r).toBeLessThanOrEqual(390); }
-  const names = await sheet.locator('.cmp-sheet-side bdi').evaluateAll(els => els.map(e => { const r = e.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.right)]; }));
   for (const [l, r] of names) { expect(l).toBeGreaterThanOrEqual(0); expect(r).toBeLessThanOrEqual(390); }
-  expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(0);
+  expect(overflow).toBeLessThanOrEqual(0);
 });

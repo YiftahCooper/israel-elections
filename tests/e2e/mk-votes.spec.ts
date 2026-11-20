@@ -1,6 +1,6 @@
 // MKs apart from their list in the Coalitions tool (owner, 16 Nov 2026): Expert only and folded; a vote can be set for
 // "one MK" of a list without naming anyone; the recorded first government brings the research's own exceptions.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page, level: string) {

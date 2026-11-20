@@ -1,6 +1,8 @@
 // Faults found by the 19 Nov review of the top bar, Overview, editing, Compare and History (lane FV1).
 import { choose } from './choices.ts';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
+import { openSideBySide } from './sideBySide.ts';
+import { boxesNow, waitForStill } from './settle.ts';
 
 async function start(page: Page, election: string, { lang = 'en', level = 'standard', prefs = '', levelDecimals = false } = {}) {
   await page.addInitScript(([lang, level, prefs, levelDecimals]) => {
@@ -101,7 +103,10 @@ test('line of changes: the rest of a long line is one press away; Hebrew keeps a
   await editVotes(page, 'Likud', '1247591');
   const strip = page.locator('.session .session-changes');
   const end = strip.getByText('no bloc has a majority');
-  const inView = async () => { const [a, b] = [await strip.boundingBox(), await end.boundingBox()]; return !!a && !!b && b.x >= a.x && b.x + b.width <= a.x + a.width + 1; };
+  // the strip and the end of the line in one read (T1); the line takes its final length a frame after the edit
+  const inView = async () => { const [a, b] = await boxesNow(strip, end); return b.x >= a.x && b.x + b.width <= a.x + a.width + 1; };
+  await expect(end).toBeAttached();
+  await waitForStill(page, ['.session .session-changes', '.session .session-changes > *']);
   expect(await inView()).toBe(false);
   await page.locator('.session').getByRole('button', { name: 'Show the rest of the line' }).click();
   await expect.poll(inView).toBe(true);
@@ -146,7 +151,7 @@ const filterCount = async (page: Page, name: string) => Number(await page.locato
 test('Side by side: no filter counts more rows than All; Unmatched obeys "Lists with no seats"', async ({ page }) => {
   await start(page, 'k26', { level: 'expert' });
   await page.locator('.compare-on').first().click();
-  await page.locator('.cmpm-strip').getByRole('button', { name: 'Side by side' }).click();
+  await openSideBySide(page); // waits for the lazily loaded screen, not only its section (T1)
   await expect(page.locator('.cmp-filters')).toBeVisible();
   const all = await filterCount(page, 'All');
   for (const f of ['Different', 'Edited', 'Unmatched']) expect(await filterCount(page, f)).toBeLessThanOrEqual(all);
@@ -163,7 +168,7 @@ test('phone Side by side within one election: each list named once, in full, wit
   await editVotes(page, 'Likud', '1247591');
   await page.keyboard.press('Escape');
   await page.locator('.compare-on').first().click();
-  await page.locator('.cmpm-strip').getByRole('button', { name: 'Side by side' }).click();
+  await openSideBySide(page);
   const row = page.locator('.cmp-table tr.cmp-row', { hasText: 'Yisrael Beiteinu' }).first();
   await expect(row).toBeVisible();
   await expect(row.locator('.cmp-lname')).toBeHidden();
@@ -192,9 +197,12 @@ test('Save & share: the unsaved mark sits beside the name; saving with no name k
   const field = page.getByRole('textbox', { name: 'Scenario name' });
   await expect(field).toHaveAttribute('placeholder', 'Untitled scenario');
   const mark = page.locator('.menu-pop').getByRole('img', { name: 'unsaved changes' });
-  const [f, m] = [await field.boundingBox(), await mark.boundingBox()];
+  // the menu lays out as it opens: read both boxes at rest and in one step (T1)
+  await expect(mark).toBeVisible();
+  await waitForStill(page, ['.menu-pop']);
+  const [f, m] = await boxesNow(field, mark);
   // on the field's own line, not on a line of its own under it
-  expect(m!.y).toBeLessThan(f!.y + f!.height);
+  expect(m.y).toBeLessThan(f.y + f.height);
   await page.getByRole('button', { name: 'Save in this browser' }).click();
   await expect(page.locator('.toast').last()).toContainText('Saved in this browser.');
   await page.getByRole('button', { name: 'Save & share' }).click();

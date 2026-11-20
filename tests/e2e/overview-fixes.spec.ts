@@ -1,7 +1,8 @@
 // Audit of 12 Nov 2026, fix lane fx-overview: the seat card's list place, the chamber key, the Blocks layout, the 1949
 // Qualifying votes card, candidate edit notes, the exported chamber, the step-size switch, the waffle key, edit marks in
 // the lists column and the walkthrough, the export chip, and Sensitivity under Large text.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
+import { boxesNow } from './settle.ts';
 import { choose } from './choices.ts';
 
 async function start(page: Page, { lang = 'en', level = 'expert', election = 'k26', settings = {}, joint = 'on', width = 1500 }: { lang?: 'en' | 'he'; level?: string; election?: string; settings?: Record<string, unknown>; joint?: string; width?: number } = {}) {
@@ -140,7 +141,9 @@ test('Simple: the export chip opens its buttons beside it', async ({ page }) => 
   await start(page, { level: 'simple' });
   const chip = page.getByRole('button', { name: /Export the chamber/ });
   await chip.click();
-  const [a, b] = [(await chip.boundingBox())!, (await page.getByRole('button', { name: 'Export SVG', exact: true }).boundingBox())!];
+  const svgButton = page.getByRole('button', { name: 'Export SVG', exact: true });
+  await expect(svgButton).toBeVisible();
+  const [a, b] = await boxesNow(chip, svgButton);
   expect(Math.abs(b.y - a.y)).toBeLessThan(40);
 });
 

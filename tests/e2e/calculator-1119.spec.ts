@@ -2,7 +2,7 @@
 // edited; no seat change mark beside a row while comparing; the Copy votes box's "Set as default" and "Don't ask
 // again" (copies at once, Undo, "Ask next time", Settings); the first election failing to load shows only the error;
 // the What if line writes its total once; the turnout line above All elections keeps the field's two decimals.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 async function start(page: Page, { lang = 'en', level = 'standard', settings = {} }: { lang?: 'en' | 'he'; level?: string; settings?: Record<string, unknown> } = {}) {
   await page.setViewportSize({ width: 1500, height: 1000 });

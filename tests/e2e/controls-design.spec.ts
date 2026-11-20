@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { choose } from './choices.ts';
 import { barLanguage } from './barMenu.ts';
 test.beforeEach(async ({ page }) => {

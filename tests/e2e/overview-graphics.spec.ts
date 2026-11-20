@@ -1,4 +1,4 @@
-import {expect,test} from '@playwright/test';
+import {expect,test} from './fixtures';
 // Overview board graphics audit (2026-11-04): behaviours that are easy to regress without a visual diff.
 test.describe.configure({mode:'parallel'});
 for(const lang of ['he','en'] as const) test.describe(lang,()=>{

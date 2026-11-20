@@ -1,4 +1,5 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
+import { waitForStill } from './settle.ts';
 import { barPart } from './barMenu.ts';
 for (const theme of ['light','dark']) for (const lang of ['en', 'he']) for (const width of [1500, 1024, 390]) test(`independent panels and stationary edits ${lang} ${theme} ${width}`, async ({ page }) => {
   await page.setViewportSize({ width, height: 900 });
@@ -13,13 +14,14 @@ for (const theme of ['light','dark']) for (const lang of ['en', 'he']) for (cons
   const votes = panel.getByRole('textbox', {name:lang==='en'?'Votes':'קולות',exact:true});
   for (const value of ['1200000','900000','1100000']) {
     await votes.fill(value); await votes.press('Enter');
-    await page.waitForTimeout(150);
+    await waitForStill(page, ['.side-panel', '.side-panel .sp-body']);
     expect(Math.abs(await page.evaluate(() => scrollY)-y)).toBeLessThanOrEqual(3);
   }
   const headerY = await panel.locator('.sp-head').evaluate(el => el.getBoundingClientRect().top);
   await panel.getByRole('button', {name: lang === 'en' ? 'Increase Votes' : 'הוספת קולות', exact:true}).click();
   await panel.getByRole('button', {name:lang==='en'?'Increase Seats':'הוספת מנדטים', exact:true}).click();
   await page.keyboard.press('Control+z'); await page.keyboard.press('Control+Shift+z');
+  await waitForStill(page, ['.side-panel', '.side-panel .sp-body']);
   expect(Math.abs(await page.evaluate(() => scrollY)-y)).toBeLessThanOrEqual(3);
   await panel.locator('.sp-body').evaluate(el => el.scrollTop=el.scrollHeight);
   expect(await panel.locator('.sp-head').evaluate(el => el.getBoundingClientRect().top)).toBe(headerY);
@@ -49,6 +51,7 @@ for (const theme of ['light','dark']) for (const lang of ['en','he']) for (const
  await page.evaluate(()=>{const r=document.querySelector('.blocs-head .info > button')!.getBoundingClientRect(); scrollBy(0,r.bottom-(innerHeight-28));});
  const height=await page.evaluate(()=>document.documentElement.scrollHeight);
  await info.hover();const tip=page.locator('.blocs-head .info .pop');await expect(tip).toBeVisible();
+ await waitForStill(page,'.blocs-head .info .pop'); // placed again once its content has its size
  const box=(await tip.boundingBox())!;expect(box.y).toBeGreaterThanOrEqual(7);expect(box.x).toBeGreaterThanOrEqual(7);
  expect(box.y+box.height).toBeLessThanOrEqual(837);expect(box.x+box.width).toBeLessThanOrEqual(width-7);
  expect(await page.evaluate(()=>document.documentElement.scrollHeight)).toBe(height);
@@ -69,5 +72,6 @@ for(const width of [1500,390]) test(`chamber hover card stays inside a short vie
  await page.setViewportSize({width,height:500});await page.goto('/');
  const seat=page.locator('.chamber [data-seat]').last();await seat.scrollIntoViewIfNeeded();await seat.hover();
  const tip=page.locator('.chamber .tip');await expect(tip).toBeVisible();
+ await waitForStill(page,'.chamber .tip'); // placed again once its content has its size
  const box=(await tip.boundingBox())!;expect(box.x).toBeGreaterThanOrEqual(7);expect(box.y).toBeGreaterThanOrEqual(7);expect(box.x+box.width).toBeLessThanOrEqual(width-7);expect(box.y+box.height).toBeLessThanOrEqual(493);
 });

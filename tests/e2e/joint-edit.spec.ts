@@ -1,6 +1,6 @@
 // Who runs on a joint list can be edited from the list's panel: Balad joins Hadash–Ta'al (2022), a party moves to its own
 // list, and Undo puts each change back. Every change is marked.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page) {

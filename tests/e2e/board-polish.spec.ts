@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { openScenarioMenu } from './barMenu.ts';
 
 test('a share link is cleared when its scenario changes', async ({ page }) => {

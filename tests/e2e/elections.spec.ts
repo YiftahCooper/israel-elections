@@ -2,7 +2,7 @@ import { choose } from './choices.ts';
 // The election picker lists every election in public/data/elections.json, newest first. Elections whose
 // dataset is not yet built and verified are listed but cannot be chosen.
 import { readFileSync } from 'node:fs';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 // The real index, except that 2003 is forced to "not available", so the test does not depend on
 // which elections happen to be released.

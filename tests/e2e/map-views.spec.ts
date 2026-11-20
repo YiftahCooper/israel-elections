@@ -1,7 +1,7 @@
 // The Localities map's two views (U4, 16 Nov 2026): it opens on the Winner dots, a switch in the key shows the Vote mix
 // and the choice is remembered on the device; the double-envelope island selects its row; Hebron is placed, marked
 // approximate.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 import { mapLayout, settleMap } from './map-settle.ts';
 

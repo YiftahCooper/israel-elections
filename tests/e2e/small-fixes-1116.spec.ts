@@ -2,7 +2,7 @@
 // in the seat chart and Find an MK (new members of the 26th Knesset too), the timeline's lines all start at the same
 // edge, a checked party register said as checked, and
 // the double-envelope figures labelled for what they count.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 import { openTool } from './openTool.ts';
 

@@ -2,7 +2,7 @@
 // opposition background measured 1.15:1, Likud 1.83:1; a seat's only edge was a one-unit outline that a phone draws at
 // about 0.4 px). Non-text contrast needs 3:1: each seat has a light ring at least 1 px wide on screen, at 3:1 or more
 // against the background it sits on, keeping the list colours.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 import { choose } from './choices.ts';
 
 async function start(page: Page, width: number) {

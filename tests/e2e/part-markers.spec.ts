@@ -1,4 +1,4 @@
-import {test,expect,type Page} from '@playwright/test';
+import {test,expect,type Page} from './fixtures';
 import {choose} from './choices.ts';
 async function start(page:Page,election='k25'){
  await page.setViewportSize({width:1440,height:900});

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { choose } from './choices.ts';
 
 test('sourced groupings stay official; moving a member is a change; shares preserve the view', async ({ page }) => {

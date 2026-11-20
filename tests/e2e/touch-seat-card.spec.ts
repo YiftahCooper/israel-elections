@@ -1,7 +1,7 @@
 // Touch: tapping a seat opens the seat card (who sits there, their MK history), and the list opens from the card
 // (review V3 F13, 19 Nov 2026: on a touch phone a tap opened the list's full-screen sheet over the card, so an MK's name
 // and history could not be reached from the chamber). A mouse click still selects the list.
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 async function start(page: Page, lang: 'en' | 'he') {
   await page.addInitScript((lang) => {

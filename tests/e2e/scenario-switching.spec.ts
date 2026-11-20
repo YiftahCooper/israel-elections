@@ -1,4 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
+import { boxesNow, waitForStill } from './settle.ts';
 // Scenario identity and navigation chrome (release-candidate audit, area C).
 async function start(page: Page, lang: 'en' | 'he' = 'en', level = 'expert', size = { width: 1500, height: 1000 }) {
   await page.setViewportSize(size);
@@ -108,9 +109,9 @@ test('tablet: the strip stays one line and stays visible under the wrapped band'
   // (16 Nov: the "More in other levels" label is gone; the strip's height is the measure)
   expect((await page.locator('.toolbar [role=tab]').first().boundingBox())!.height).toBeLessThan(48);
   await page.mouse.wheel(0, 900);
-  await page.waitForTimeout(200);
-  const band = (await page.locator('.band').boundingBox())!;
-  const strip = (await page.locator('.toolbar').boundingBox())!;
+  await expect.poll(() => page.evaluate(() => scrollY)).toBeGreaterThan(0);
+  await waitForStill(page, ['.band', '.toolbar']);
+  const [band, strip] = await boxesNow(page.locator('.band'), page.locator('.toolbar'));
   expect(strip.y).toBeGreaterThanOrEqual(band.y + band.height - 1);
   await expect(page.locator('#tab-board')).toBeInViewport();
 });

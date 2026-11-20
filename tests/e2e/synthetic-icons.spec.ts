@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './fixtures';
 import { mkdirSync } from 'node:fs';
 import { choose } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
@@ -28,7 +28,9 @@ for (const election of ['k26','k25','k1']) test(`${election}: synthetic icons in
   await expect(page.locator('.sp-head .synthetic')).toBeVisible();
   await expect(page.locator('.lb-row .synthetic')).toHaveCount(1);
   const image=page.locator('.sp-head .synthetic img');
-  expect(await image.evaluate((el:HTMLImageElement)=>el.complete&&el.naturalWidth>0)).toBe(true);
+  // an image decodes after it is in the page: wait for it, then check it really drew
+  await expect.poll(()=>image.evaluate((el:HTMLImageElement)=>el.complete)).toBe(true);
+  expect(await image.evaluate((el:HTMLImageElement)=>el.naturalWidth)).toBeGreaterThan(0);
   await page.screenshot({path:`.backup-scratch/u6/final/${election}-${lang}-${theme}-${width}-overview.png`,fullPage:true});
   await context.close();
  }

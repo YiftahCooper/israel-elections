@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 import { choose } from './choices.ts';
 
 /** the valid total: the Invalid ballots card's breakdown (no card of its own beside its complement) */
