@@ -278,6 +278,10 @@ test('records added in this pass: the Lavon affair, the 1988 recommendations, Go
   // the appointment register (13 Nov): Maoz 1 Mar 2023, 5 Jun 2023 and 26 Mar 2025, Eichler 19 Jan 2026; 16 since 20 Nov
   // (lane D3): New Hope's split from National Unity's faction, 13 Mar 2024
   await expect(history.locator('.after-government-change')).toHaveCount(16);
+  // a list without a total says why: here UTJ's place after 17 Jul 2025 is not recorded, not a faction size (lane D3)
+  const utj = history.locator('.after-government-change').filter({ hasText: 'יהדות התורה יצאה מהממשלה' });
+  await expect(utj.locator('.after-size-note')).toContainText('מעמד לא ידוע');
+  await expect(utj.locator('.after-size-note')).not.toContainText('גודל הסיעות');
 });
 
 // 19 Nov 2026: The Jerusalem Post (18 and 28 January 1974) puts the NRP and the Bedouin and Villagers list with Meir

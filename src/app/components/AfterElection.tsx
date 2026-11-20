@@ -231,7 +231,12 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
       {investiture && <span className="after-help-anchor">{L('Investiture vote', 'הצבעת האמון')} <strong className="after-confidence-vote">{vote ? <><SupportCount value={vote.for} /> {L('for', 'בעד')} · <SupportCount value={vote.against} /> {L('against', 'נגד')}{vote.abstain !== undefined && <> · <SupportCount value={vote.abstain} /> {vote.abstain === 1 ? L('abstaining', 'נמנע') : L('abstaining', 'נמנעים')}</>}</> : <SupportCount value={null} />}</strong> <Evidence data={data} cites={g.confidenceVoteCites} explanation={reconciliation} notes={[g.reconciliation.note]} /></span>}
       {g.supportSeats != null && <span>{L('Outside support', 'תמיכה מבחוץ')} <strong className="after-support-total"><SupportCount value={g.supportSeats} /></strong></span>}
     </div>
-    {g.coalitionSeats == null && <p className="small muted after-size-note">{L('The size of each faction at that time is not recorded, so the coalition’s seats are not added up; the seats won at the election are not used instead.', 'גודל הסיעות באותה עת לא תועד, ולכן מושבי הקואליציה אינם מסוכמים; המנדטים שבהם זכו בבחירות אינם משמשים במקומם.')}</p>}
+    {/* why there is no total (20 Nov 2026): a faction size not recorded, a faction whose place is not recorded, or members not all known */}
+    {g.coalitionSeats == null && <p className="small muted after-size-note">{g.coalition.some(r => r.seats == null)
+      ? L('The size of each faction at that time is not recorded, so the coalition’s seats are not added up; the seats won at the election are not used instead.', 'גודל הסיעות באותה עת לא תועד, ולכן מושבי הקואליציה אינם מסוכמים; המנדטים שבהם זכו בבחירות אינם משמשים במקומם.')
+      : g.coalition.some(r => r.certainty === 'unknown')
+        ? L('A faction whose place in the coalition is not recorded is listed under “Unknown role” and not counted, so the total is a minimum.', 'סיעה שמעמדה בקואליציה לא תועד מופיעה תחת "מעמד לא ידוע" ואינה נספרת, ולכן הסכום הוא מינימום.')
+        : L('Not every member of the coalition is known, so the total is a minimum.', 'לא כל חברי הקואליציה ידועים, ולכן הסכום הוא מינימום.')}</p>}
     {supportRoleGroups(g.coalition).map(group => <div className="after-role-group" data-support-role={group.role} key={group.role}>
       <h4>{L(...SUPPORT_LABELS[group.role])}</h4>
       <div className="after-coalition">{group.rows.map((entry, i) => {
