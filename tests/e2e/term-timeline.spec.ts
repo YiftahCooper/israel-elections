@@ -132,6 +132,8 @@ test('Hebrew: the bar and the chart stay left to right', async ({ page }) => {
 test('the election chart’s seat card names who else held the seat', async ({ page }) => {
   await start(page, { level: 'standard' });
   const seats = page.locator('.chamber circle[data-seat]');
+  // count the seats only once the election's data has arrived and all 120 are drawn (INT, 20 Nov 2026)
+  await expect(seats).toHaveCount(120);
   const n = await seats.count();
   for (let i = 0; i < n; i++) {
     if (await seats.nth(i).locator('title').textContent() !== 'Shas') continue;

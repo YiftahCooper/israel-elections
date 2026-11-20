@@ -1,5 +1,9 @@
 # Changelog
 
+## 20 November 2026
+
+- Parties joining and leaving a government (20 Nov): on After the election, a party that joined or left a government partway through a term now changes the government's member list on the day the Knesset's records date it (ministers took office, or their departure took effect), with the party's seats that day and the source behind (i): Gahal and Rafi (1967), the NRP and Ratz (1974–76), the DMC split (1978), Telem and Tehiya (1982), Shas and Yi'ud (1993–95), the departures from Barak's government and the changes in Sharon's (1999–2005), UTJ, Labor and Kadima (2009–12), and National Unity, New Hope, Otzma Yehudit, UTJ and Shas (2023–25). Where a party's place afterwards is not recorded (Meretz 2000, UTJ 2025 and others) it is shown under "Unknown role" and not counted, and the line under the list says that is why it has no total (it no longer says faction sizes were not recorded when they were).
+
 ## 19 November 2026
 
 - Seats in dark theme (19 Nov): every seat has a thin light ring, so dark list colours (Yesh Atid, Likud, Shas, Ra'am) stand out from the bloc backgrounds on phones too; the list colours are unchanged.

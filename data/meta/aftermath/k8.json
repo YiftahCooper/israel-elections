@@ -238,6 +238,41 @@
       "evidenceFamily": "the-jerusalem-post",
       "via": "Internet Archive copy of the whole issue (The Jerusalem Post, 1974 collection). Checked against the printed page on 19 November 2026.",
       "retainedArtifact": "private archive (israel-elections-private): scratch/night-1119/R5/jp74-jan28-page1.png"
+    },
+    "positions-gov17": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2017",
+      "publisher": "Knesset open data: appointments in government 17",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־17",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "factions-k8": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%208%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset open data: faction membership",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-1974-10-30": {
+      "url": "https://fs.knesset.gov.il//8/Plenum/8_ptm_253647.pdf",
+      "publisher": "Knesset, Divrei HaKnesset, 30 October 1974",
+      "publisherHe": "הכנסת, דברי הכנסת, 30 באוקטובר 1974",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-1974-11-06": {
+      "url": "https://fs.knesset.gov.il//8/Plenum/8_ptm_253334.pdf",
+      "publisher": "Knesset, Divrei HaKnesset, 6 November 1974",
+      "publisherHe": "הכנסת, דברי הכנסת, 6 בנובמבר 1974",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "plenum-1976-12-20": {
+      "url": "https://fs.knesset.gov.il//8/Plenum/8_ptm_253578.pdf",
+      "publisher": "Knesset, Divrei HaKnesset, 20 December 1976",
+      "publisherHe": "הכנסת, דברי הכנסת, 20 בדצמבר 1976",
+      "kind": "official",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -852,6 +887,455 @@
           "note": "61 member seats + 0 outside-support seats = 61 for, 51 against. Numerical equality alone does not certify every individual’s vote."
         },
         "knownMemberSeats": 61
+      },
+      {
+        "date": "1974-10-30",
+        "textEn": "The National Religious Party joined the government: the Knesset approved Yosef Burg, Yitzhak Raphael and Michael Hazani as ministers.",
+        "textHe": "המפד״ל הצטרפה לממשלה: הכנסת אישרה את יוסף בורג, יצחק רפאל ומיכאל חזני כשרים.",
+        "cites": [
+          {
+            "source": "plenum-1974-10-30",
+            "quote": "הוחלט: לאשר את הודעת הממשלה על צירופם של חברי הכנסת י. בורג, י. רפאל ומ. חזני לממשלה.",
+            "note": "The Knesset approved the three ministers on 30 October 1974, 59 for and 52 against, and their terms began that day. A coalition agreement with the NRP was tabled the same day.",
+            "noteHe": "הכנסת אישרה את שלושת השרים ב־30 באוקטובר 1974, 59 בעד ו־52 נגד, ובו ביום החלה כהונתם. הסכם קואליציוני עם המפד״ל הונח באותו יום על שולחן הכנסת."
+          },
+          {
+            "source": "positions-gov17",
+            "quote": "PersonToPositionID 4231, PersonID 2187, PositionID 39, StartDate 1974-10-30; PersonToPositionID 22731, PersonID 2615, PositionID 39, StartDate 1974-10-30; PersonToPositionID 3942, PersonID 2349, PositionID 39, StartDate 1974-10-30",
+            "note": "The Knesset’s appointment records: Yosef Burg, Yitzhak Raphael and Michael Hazani, ministers from 30 October 1974.",
+            "noteHe": "רישומי המינויים של הכנסת: יוסף בורג, יצחק רפאל ומיכאל חזני, שרים מ־30 באוקטובר 1974."
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 17,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 51,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 3365; PersonID 2520; PositionID 39; StartDate 1974-06-03T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אברהם עופר; faction: מערך.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אברהם עופר; סיעה: מערך."
+              }
+            ]
+          },
+          {
+            "letters": "לע",
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 3837; PersonID 2575; PositionID 39; StartDate 1974-06-03T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול."
+              },
+              {
+                "source": "rubinstein-1979",
+                "quote": "the two Independent Liberal ministers wanted to submit their resignation.",
+                "locator": "p. 187"
+              },
+              {
+                "source": "goldberg-1998",
+                "quote": "It included the Labor Party, Marxist Mapam, secular Independent Liberals, the radical Civil Rights Movement (Ratz), and Arabs Knesset Members.",
+                "locator": "p. 221"
+              }
+            ],
+            "note": "The official roster records the appointment of Moshe Kol, and two independent studies name the Independent Liberals among the parties of Rabin’s first government."
+          },
+          {
+            "letters": "רצ",
+            "seats": 3,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 4392; PersonID 2143; PositionID 57; StartDate 1974-06-03T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שולמית אלוני; faction: ר\"ץ.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שולמית אלוני; סיעה: ר\"ץ."
+              }
+            ],
+            "note": "Earlier research suggests a ministry, but the appointment record does not confirm which party held it, so it is not assumed."
+          },
+          {
+            "letters": "רא",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-gov17",
+                "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              },
+              {
+                "source": "faction-records-k8",
+                "quote": "PersonToPositionID 26929 and 27042: faction מערך from 1974-02-26",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Seif el-Din el-Zoubi and Jabr Muadi. They show the faction, not coalition membership.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סיף-אלדין אלזועבי וג׳בר מועדי. הם מראים את הסיעה, לא חברות בקואליציה."
+              },
+              {
+                "source": "deputy-minister-muadi",
+                "quote": "PersonToPositionID 4152; GovernmentNum 17; סגן שר התקשורת; StartDate 1974-07-16",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Jabr Muadi, Deputy Minister of Communications.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ג׳בר מועדי, סגן שר התקשורת."
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats); the record of 3 June 1974 names “the Arab lists” within the Alignment. Jabr Muadi of this list became a deputy minister (Communications) on 16 July 1974, six weeks after this government was formed; a deputy minister is not a cabinet minister, so the role stays without ministries.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "עא",
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-gov17",
+                "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              },
+              {
+                "source": "faction-records-k8",
+                "quote": "PersonToPositionID 26919: faction מערך from 1974-02-26",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Hamad Abu Rabia. They show the faction, not coalition membership.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חמאד אבו-רביעה. הם מראים את הסיעה, לא חברות בקואליציה."
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats); the record of 3 June 1974 names “the Arab lists” within the Alignment.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "ב",
+            "seats": 10,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-1974-10-30",
+                "quote": "הוחלט: לאשר את הודעת הממשלה על צירופם של חברי הכנסת י. בורג, י. רפאל ומ. חזני לממשלה.",
+                "note": "The Knesset approved the three ministers on 30 October 1974, 59 for and 52 against, and their terms began that day. A coalition agreement with the NRP was tabled the same day.",
+                "noteHe": "הכנסת אישרה את שלושת השרים ב־30 באוקטובר 1974, 59 בעד ו־52 נגד, ובו ביום החלה כהונתם. הסכם קואליציוני עם המפד״ל הונח באותו יום על שולחן הכנסת."
+              },
+              {
+                "source": "positions-gov17",
+                "quote": "PersonToPositionID 4231, PersonID 2187, PositionID 39, StartDate 1974-10-30; PersonToPositionID 22731, PersonID 2615, PositionID 39, StartDate 1974-10-30; PersonToPositionID 3942, PersonID 2349, PositionID 39, StartDate 1974-10-30",
+                "note": "The Knesset’s appointment records: Yosef Burg, Yitzhak Raphael and Michael Hazani, ministers from 30 October 1974.",
+                "noteHe": "רישומי המינויים של הכנסת: יוסף בורג, יצחק רפאל ומיכאל חזני, שרים מ־30 באוקטובר 1974."
+              },
+              {
+                "source": "factions-k8",
+                "quote": "Faction 357 (מפלגה דתית לאומית): 10 members on 1974-10-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 10 members of the National Religious Party on 30 October 1974.",
+                "noteHe": "רישומי הסיעות של הכנסת: 10 חברים בסיעת המפד״ל ב־30 באוקטובר 1974."
+              }
+            ],
+            "noteEn": "Two of its MKs, Zevulun Hammer and Yehuda Ben-Meir, abstained in the approval vote; the faction is counted whole.",
+            "noteHe": "שניים מחבריה, זבולון המר ויהודה בן־מאיר, נמנעו בהצבעה על אישור השרים; הסיעה נספרת כולה."
+          }
+        ],
+        "coalitionSeats": 71,
+        "supportSeats": 0,
+        "knownMemberSeats": 71,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "1974-11-05",
+        "textEn": "Ratz left the coalition: Shulamit Aloni’s resignation as minister took effect.",
+        "textHe": "ר״ץ פרשה מהקואליציה: התפטרותה של השרה שולמית אלוני נכנסה לתוקף.",
+        "cites": [
+          {
+            "source": "plenum-1974-11-06",
+            "quote": "נפסקה כהונתה של השרה שולמית אלוני בממשלה ביום ג', כ' חשון תשל\"ה, 5 בנובמבר 1974",
+            "note": "The day Shulamit Aloni’s term ended, as the Prime Minister told the Knesset on 6 November 1974; she had given notice of her resignation on 3 November.",
+            "noteHe": "היום שבו נפסקה כהונתה של שולמית אלוני, כפי שהודיע ראש הממשלה לכנסת ב־6 בנובמבר 1974; היא הודיעה על התפטרותה ב־3 בנובמבר."
+          },
+          {
+            "source": "plenum-1974-11-06",
+            "quote": "להביע צער על החלטתה של השרה שולמית אלוני ושל סיעתה שלא להמשיך את השותפות, ולו גם הקצרה, בממשלה",
+            "note": "The Prime Minister’s words: the decision not to continue in the government was the faction’s as well as the minister’s.",
+            "noteHe": "דברי ראש הממשלה: ההחלטה שלא להמשיך בממשלה הייתה של הסיעה ושל השרה."
+          },
+          {
+            "source": "positions-gov17",
+            "quote": "PersonToPositionID 4392, PersonID 2143, PositionID 57, FinishDate 1974-11-05",
+            "note": "The Knesset’s appointment record: Shulamit Aloni, minister without portfolio until 5 November 1974.",
+            "noteHe": "רישום המינוי של הכנסת: שולמית אלוני, שרה בלי תיק עד 5 בנובמבר 1974."
+          },
+          {
+            "source": "factions-k8",
+            "quote": "Faction 359 (ר\"ץ): 3 members on 1974-11-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 3 members of Ratz on 5 November 1974.",
+            "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת ר״ץ ב־5 בנובמבר 1974."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 17,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 51,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 3365; PersonID 2520; PositionID 39; StartDate 1974-06-03T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אברהם עופר; faction: מערך.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אברהם עופר; סיעה: מערך."
+              }
+            ]
+          },
+          {
+            "letters": "לע",
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 3837; PersonID 2575; PositionID 39; StartDate 1974-06-03T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול."
+              },
+              {
+                "source": "rubinstein-1979",
+                "quote": "the two Independent Liberal ministers wanted to submit their resignation.",
+                "locator": "p. 187"
+              },
+              {
+                "source": "goldberg-1998",
+                "quote": "It included the Labor Party, Marxist Mapam, secular Independent Liberals, the radical Civil Rights Movement (Ratz), and Arabs Knesset Members.",
+                "locator": "p. 221"
+              }
+            ],
+            "note": "The official roster records the appointment of Moshe Kol, and two independent studies name the Independent Liberals among the parties of Rabin’s first government."
+          },
+          {
+            "letters": "רא",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-gov17",
+                "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              },
+              {
+                "source": "faction-records-k8",
+                "quote": "PersonToPositionID 26929 and 27042: faction מערך from 1974-02-26",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Seif el-Din el-Zoubi and Jabr Muadi. They show the faction, not coalition membership.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סיף-אלדין אלזועבי וג׳בר מועדי. הם מראים את הסיעה, לא חברות בקואליציה."
+              },
+              {
+                "source": "deputy-minister-muadi",
+                "quote": "PersonToPositionID 4152; GovernmentNum 17; סגן שר התקשורת; StartDate 1974-07-16",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Jabr Muadi, Deputy Minister of Communications.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: ג׳בר מועדי, סגן שר התקשורת."
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats); the record of 3 June 1974 names “the Arab lists” within the Alignment. Jabr Muadi of this list became a deputy minister (Communications) on 16 July 1974, six weeks after this government was formed; a deputy minister is not a cabinet minister, so the role stays without ministries.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "עא",
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-gov17",
+                "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              },
+              {
+                "source": "faction-records-k8",
+                "quote": "PersonToPositionID 26919: faction מערך from 1974-02-26",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Hamad Abu Rabia. They show the faction, not coalition membership.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חמאד אבו-רביעה. הם מראים את הסיעה, לא חברות בקואליציה."
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats); the record of 3 June 1974 names “the Arab lists” within the Alignment.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "ב",
+            "seats": 10,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-1974-10-30",
+                "quote": "הוחלט: לאשר את הודעת הממשלה על צירופם של חברי הכנסת י. בורג, י. רפאל ומ. חזני לממשלה.",
+                "note": "The Knesset approved the three ministers on 30 October 1974, 59 for and 52 against, and their terms began that day. A coalition agreement with the NRP was tabled the same day.",
+                "noteHe": "הכנסת אישרה את שלושת השרים ב־30 באוקטובר 1974, 59 בעד ו־52 נגד, ובו ביום החלה כהונתם. הסכם קואליציוני עם המפד״ל הונח באותו יום על שולחן הכנסת."
+              },
+              {
+                "source": "positions-gov17",
+                "quote": "PersonToPositionID 4231, PersonID 2187, PositionID 39, StartDate 1974-10-30; PersonToPositionID 22731, PersonID 2615, PositionID 39, StartDate 1974-10-30; PersonToPositionID 3942, PersonID 2349, PositionID 39, StartDate 1974-10-30",
+                "note": "The Knesset’s appointment records: Yosef Burg, Yitzhak Raphael and Michael Hazani, ministers from 30 October 1974.",
+                "noteHe": "רישומי המינויים של הכנסת: יוסף בורג, יצחק רפאל ומיכאל חזני, שרים מ־30 באוקטובר 1974."
+              },
+              {
+                "source": "factions-k8",
+                "quote": "Faction 357 (מפלגה דתית לאומית): 10 members on 1974-10-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 10 members of the National Religious Party on 30 October 1974.",
+                "noteHe": "רישומי הסיעות של הכנסת: 10 חברים בסיעת המפד״ל ב־30 באוקטובר 1974."
+              }
+            ],
+            "noteEn": "Two of its MKs, Zevulun Hammer and Yehuda Ben-Meir, abstained in the approval vote; the faction is counted whole.",
+            "noteHe": "שניים מחבריה, זבולון המר ויהודה בן־מאיר, נמנעו בהצבעה על אישור השרים; הסיעה נספרת כולה."
+          }
+        ],
+        "coalitionSeats": 68,
+        "supportSeats": 0,
+        "knownMemberSeats": 68,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "1976-12-20",
+        "textEn": "The National Religious Party’s ministers were removed: Yosef Burg, Yitzhak Raphael and Zevulun Hammer were deemed to have resigned.",
+        "textHe": "שרי המפד״ל הוצאו מהממשלה: יוסף בורג, יצחק רפאל וזבולון המר נחשבו כמי שהתפטרו.",
+        "cites": [
+          {
+            "source": "plenum-1976-12-20",
+            "quote": "דינם של חברי הממשלה יוסף בורג, יצחק רפאל וזבולון המר כדין מי שהתפטרו מן הממשלה מיום מסירת הודעה זו לפני הכנסת.",
+            "note": "The day the Government’s notice reached the Knesset, from which the three were deemed to have resigned. The Government decided on 19 December 1976, after the faction abstained in a Knesset vote.",
+            "noteHe": "היום שבו נמסרה הודעת הממשלה לכנסת, וממנו נחשבו השלושה כמי שהתפטרו. הממשלה החליטה על כך ב־19 בדצמבר 1976, לאחר שהסיעה נמנעה בהצבעה בכנסת."
+          },
+          {
+            "source": "positions-gov17",
+            "quote": "PersonToPositionID 4231, PersonID 2187, PositionID 39, FinishDate 1976-12-20; PersonToPositionID 22731, PersonID 2615, PositionID 39, FinishDate 1976-12-20; PersonToPositionID 4322, PersonID 2300, PositionID 39, FinishDate 1976-12-20",
+            "note": "The Knesset’s appointment records: Yosef Burg, Yitzhak Raphael and Zevulun Hammer, ministers until 20 December 1976.",
+            "noteHe": "רישומי המינויים של הכנסת: יוסף בורג, יצחק רפאל וזבולון המר, שרים עד 20 בדצמבר 1976."
+          },
+          {
+            "source": "factions-k8",
+            "quote": "Faction 357 (מפלגה דתית לאומית): 10 members on 1976-12-20, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 10 members of the National Religious Party on 20 December 1976.",
+            "noteHe": "רישומי הסיעות של הכנסת: 10 חברים בסיעת המפד״ל ב־20 בדצמבר 1976."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 17,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 51,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 3365; PersonID 2520; PositionID 39; StartDate 1974-06-03T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אברהם עופר; faction: מערך.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אברהם עופר; סיעה: מערך."
+              }
+            ]
+          },
+          {
+            "letters": "לע",
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-17",
+                "quote": "PersonToPositionID 3837; PersonID 2575; PositionID 39; StartDate 1974-06-03T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: משה קול.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: משה קול."
+              },
+              {
+                "source": "rubinstein-1979",
+                "quote": "the two Independent Liberal ministers wanted to submit their resignation.",
+                "locator": "p. 187"
+              },
+              {
+                "source": "goldberg-1998",
+                "quote": "It included the Labor Party, Marxist Mapam, secular Independent Liberals, the radical Civil Rights Movement (Ratz), and Arabs Knesset Members.",
+                "locator": "p. 221"
+              }
+            ],
+            "note": "The official roster records the appointment of Moshe Kol, and two independent studies name the Independent Liberals among the parties of Rabin’s first government."
+          },
+          {
+            "letters": "רא",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-gov17",
+                "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              },
+              {
+                "source": "faction-records-k8",
+                "quote": "PersonToPositionID 26929 and 27042: faction מערך from 1974-02-26",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Seif el-Din el-Zoubi and Jabr Muadi. They show the faction, not coalition membership.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סיף-אלדין אלזועבי וג׳בר מועדי. הם מראים את הסיעה, לא חברות בקואליציה."
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats); the record of 3 June 1974 names “the Arab lists” within the Alignment. Jabr Muadi of this list became a deputy minister (Communications) on 16 July 1974, six weeks after this government was formed; a deputy minister is not a cabinet minister, so the role stays without ministries.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          },
+          {
+            "letters": "עא",
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-gov17",
+                "quote": "המערך סיעות משתתפות הכנסת לאישור היום מפלגת העבודה, מפ\"ם והרשימות הערביות"
+              },
+              {
+                "source": "faction-records-k8",
+                "quote": "PersonToPositionID 26919: faction מערך from 1974-02-26",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: Hamad Abu Rabia. They show the faction, not coalition membership.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חמאד אבו-רביעה. הם מראים את הסיעה, לא חברות בקואליציה."
+              }
+            ],
+            "note": "Named when the government was presented to the Knesset; no minister from this faction on the official list at formation. A deputy minister is not a cabinet minister. From 26 February 1974 the Knesset’s faction records list its MKs in the Alignment’s faction (the Alignment row keeps its 51 election seats); the record of 3 June 1974 names “the Arab lists” within the Alignment.",
+            "noteEn": "One of the Arab lists affiliated with Mapai and the Alignment: counted in the coalition, with no minister.",
+            "noteHe": "אחת הרשימות הערביות הנלוות למפא״י ולמערך: נמנתה בקואליציה, בלי שר."
+          }
+        ],
+        "coalitionSeats": 58,
+        "supportSeats": 0,
+        "knownMemberSeats": 58,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
       }
     ],
     "endDateCites": [

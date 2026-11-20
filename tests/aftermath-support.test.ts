@@ -21,7 +21,7 @@ describe('government support validation', () => {
   });
 });
 describe('historical edge cases', () => {
-  it('validates every recorded government and the mid-term snapshots (Agudat parties 1952, Progressives 1954, Gahal 1970, and the seven joins and exits of FV2)', () => expect(validateAftermathRecords()).toBe(47));
+  it('validates every recorded government and the mid-term snapshots (Agudat parties 1952, Progressives 1954, Gahal 1970, and the seven joins and exits of FV2, and the joins and exits of lane D3)', () => expect(validateAftermathRecords()).toBe(89));
   const read = (k: number) => JSON.parse(readFileSync(`data/meta/aftermath/k${k}.json`, 'utf8'));
   it('keeps Dayan independent of the opposition Alignment list', () => {
     const g = read(9).government;

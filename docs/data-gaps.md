@@ -1,8 +1,8 @@
 # Data gaps register
 
-12471 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
+12758 review flags, ranked by **importance** (what the gap could change) and **certainty** (what the recorded sources support under the [source policy](source-policy.md)). Open means not yet confirmed. Categories may overlap; bulk rows are grouped by field.
 
-- High importance: 832 (confirmed 451, probable 45, provisional 140, disputed 11, unknown 185).
+- High importance: 1119 (confirmed 551, probable 65, provisional 140, disputed 11, unknown 352).
 - Medium importance: 4483 (confirmed 1035, probable 248, provisional 182, disputed 8, unknown 2422, family placements: follows scholarship 103, the project’s own judgement 386, sources disagree 15, not yet checked 84).
 - Low importance: 7156 (confirmed 572, provisional 808, unknown 5776).
 
@@ -21,6 +21,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k25
 
+- [Later governments](../data/meta/aftermath/k25.json) ×37: probable 8, unknown 29. coalition-change 2023-10-12, coalition-change 2024-09-30, coalition-change 2025-03-19, coalition-withdrawal 2024-03-27, coalition-withdrawal 2024-06-13, coalition-withdrawal 2025-01-21, coalition-withdrawal 2025-07-17, ג, faction-split 2024-03-13, שס, ministerial-change 2025-07-20, ministerial-change 2025-07-22
 - [Bloc schemes](../data/meta/k25.json) ×2: provisional 2. pm-recommendations, pre-election-blocs
 - [Formation events](../data/meta/aftermath/k25.json) ×2: provisional 2. consultations 2022-11-09, mandate-given 2022-11-13
 - [Investiture reconciliation](../data/meta/aftermath/k25.json) ×1: unknown 1
@@ -72,6 +73,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k18
 
+- [Later governments](../data/meta/aftermath/k18.json) ×10: unknown 10. coalition-change 2009-04-01, coalition-change 2012-05-09, coalition-withdrawal 2011-01-19, coalition-withdrawal 2012-07-19, faction-split 2011-01-17
 - [Formation conflicts](../data/meta/aftermath/k18.json) ×1: probable 1
 - [Government](../data/meta/aftermath/k18.json) ×1: probable 1
 - [Recommendation rounds](../data/meta/aftermath/k18.json) ×1: probable 1. r1
@@ -88,6 +90,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k16
 
 - [Formation conflicts](../data/meta/aftermath/k16.json) ×2: disputed 1, unknown 1. Disputed: Tasking date
+- [Later governments](../data/meta/aftermath/k16.json) ×42: probable 8, unknown 34. כן, ג, coalition-change 2005-01-10, coalition-withdrawal 2004-06-06, coalition-withdrawal 2004-11-11, coalition-withdrawal 2004-12-04, coalition-withdrawal 2005-11-23, faction-split 2005-01-12, ministerial-change 2005-03-30
 - [Coalition seat total](../data/meta/aftermath/k16.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json discrepancies.status](../data/raw/k16/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k16/national.reviewed.json) ×1: unknown 1
@@ -101,7 +104,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k15
 
 - [Formation conflicts](../data/meta/aftermath/k15.json) ×2: provisional 1, disputed 1. Disputed: Coalition seats at formation versus later snapshot
-- [Later governments](../data/meta/aftermath/k15.json) ×7: provisional 1, unknown 6. שס, כן
+- [Later governments](../data/meta/aftermath/k15.json) ×81: probable 1, provisional 1, unknown 79. שס, כן, מרצ, coalition-change 2000-06-24, coalition-change 2002-04-08, coalition-change 2002-06-03, coalition-withdrawal 1999-09, coalition-withdrawal 2000-07-11, coalition-withdrawal 2000-07-12, אמת, coalition-withdrawal 2000-08-04, coalition-withdrawal 2002-03-14, coalition-withdrawal 2002-05-23, coalition-withdrawal 2002-11-02 +1
 - [data/meta/election-context.json pmContests.candidates](../data/meta/election-context.json) ×6: provisional 6. barak, begin, bishara, mordechai, netanyahu, sharon
 - [data/meta/election-context.json pmContests.totals](../data/meta/election-context.json) ×6: probable 2, provisional 4. pm1999, pm2001
 - [data/meta/election-context.json pmContests](../data/meta/election-context.json) ×2: provisional 2. pm1999, pm2001
@@ -121,7 +124,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k13
 
 - [Recommendations](../data/meta/aftermath/k13.json) ×9: probable 1, provisional 6, disputed 1, unknown 1. שס, ב, ג, ו, ט, מחל, ע, מרצ, אמת. Disputed: Sources disagree. Hadashot says Shas recommended no one, because Rabin had not invited it into his government; Amigoe re
-- [Later governments](../data/meta/aftermath/k13.json) ×6: provisional 1, unknown 5. אמת
+- [Later governments](../data/meta/aftermath/k13.json) ×10: provisional 1, unknown 9. אמת, coalition-change 1995-01-09, coalition-withdrawal 1993-09-14
 - [Formation events](../data/meta/aftermath/k13.json) ×2: probable 1, provisional 1. consultations 1992-06-28, mandate-given 1992-07-02
 - [data/raw/kN/national.reviewed.json agreements.sourceId](../data/raw/k13/national.reviewed.json) ×1: unknown 1
 - [Investiture vote](../data/meta/aftermath/k13.json) ×1: provisional 1
@@ -154,7 +157,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 ### k10
 
-- [Later governments](../data/meta/aftermath/k10.json) ×7: unknown 7. ת, ני, ב
+- [Later governments](../data/meta/aftermath/k10.json) ×11: unknown 11. ת, ני, ב, coalition-change 1982-07-05, coalition-change 1982-07-26
 - [Recommendations](../data/meta/aftermath/k10.json) ×6: provisional 6. אמת, ו, ת, כן, הן, רצ
 - [Formation events](../data/meta/aftermath/k10.json) ×2: probable 2. consultations 1981-07-13, mandate-given 1981-07-15
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k10/national.reviewed.json) ×1: unknown 1
@@ -165,7 +168,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 
 - [Formation conflicts](../data/meta/aftermath/k9.json) ×2: provisional 1, disputed 1. Disputed: Date of the ministers' oath
 - [Recommendations](../data/meta/aftermath/k9.json) ×13: probable 5, provisional 4, unknown 4. מחל, אמת, יש, ב, ו, ג, כנ, ש, פש, ד, לע, רצ, ימ
-- [Later governments](../data/meta/aftermath/k9.json) ×3: probable 1, unknown 2. פש, coalition-change 1977-10-24
+- [Later governments](../data/meta/aftermath/k9.json) ×9: probable 2, unknown 7. פש, coalition-change 1977-10-24, coalition-withdrawal 1978-09-15
 - [Bloc schemes](../data/meta/k9.json) ×1: unknown 1. labour-affiliated-arab-lists
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k9/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k9/national.reviewed.json) ×1: unknown 1
@@ -176,6 +179,7 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k8
 
 - [Recommendations](../data/meta/aftermath/k8.json) ×10: provisional 5, unknown 5. חל טעם, אמת, גד, ב, עא, רצ, ו, לע, רא, קנ
+- [Later governments](../data/meta/aftermath/k8.json) ×6: unknown 6. coalition-change 1974-10-30, coalition-withdrawal 1974-11-05, coalition-withdrawal 1976-12-20
 - [data/raw/kN/agreements.proposed.json agreementsEvidence.transcription](../data/raw/k8/agreements.proposed.json) ×3: unknown 3
 - [data/raw/kN/national.reviewed.json gazetteTotals.registered](../data/raw/k8/national.reviewed.json) ×1: unknown 1
 - [data/raw/kN/national.reviewed.json gazetteTotals.votesCast](../data/raw/k8/national.reviewed.json) ×1: unknown 1
@@ -192,10 +196,10 @@ Could change seats, votes, a government’s composition, recommendation totals o
 ### k6
 
 - [Recommendations](../data/meta/aftermath/k6.json) ×13: provisional 5, unknown 8. חל, כא, ו, רא, ד, את, ב, מ, לע, ג, יא, ש, ק
+- [Later governments](../data/meta/aftermath/k6.json) ×5: probable 2, unknown 3. מ, לע, coalition-change 1967-06-05
 - [Government roles](../data/meta/aftermath/k6.json) ×2: probable 2. מ, לע
 - [Formation events](../data/meta/aftermath/k6.json) ×1: provisional 1. consultations 1965-11
 - [Investiture reconciliation](../data/meta/aftermath/k6.json) ×1: unknown 1
-- [Later governments](../data/meta/aftermath/k6.json) ×1: unknown 1
 - [Recommendation rounds](../data/meta/aftermath/k6.json) ×1: provisional 1. r1
 
 ### k5
@@ -301,7 +305,7 @@ Every claim in these families, not only gaps. Derived from each claim’s own so
 | Claims | confirmed | probable | provisional | disputed | unknown | Total |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Recommendations | 80 | 68 | 80 | 2 | 76 | 306 |
-| Government roles | 295 | 8 | 3 | 3 | 0 | 309 |
+| Government roles | 475 | 28 | 3 | 3 | 14 | 523 |
 | Formation events | 75 | 14 | 37 | 0 | 0 | 126 |
 | Term events | 36 | 49 | 0 | 0 | 0 | 85 |
 | Candidate identity links | 3245 | 57 | 540 | 0 | 0 | 3842 |
@@ -310,9 +314,9 @@ Party-family placements are the project’s classification, not facts, so they c
 
 ## Counts
 
-By kind: unknown: 7357; missing-field: 285; conflict: 19; single-source: 2977; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 196.
+By kind: unknown: 7519; missing-field: 285; conflict: 19; single-source: 3089; low-confidence: 101; release-hold: 0; inferred: 1179; pending: 357; unconfirmed: 209.
 
-By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11112.
+By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 11399.
 
 | Election | High open | Medium open | Low | Total |
 | --- | ---: | ---: | ---: | ---: |
@@ -321,26 +325,26 @@ By status: inferred-not-verified: 1040; needs-current-status-review: 319; open: 
 | k3 | 15 | 74 | 161 | 287 |
 | k4 | 15 | 87 | 170 | 301 |
 | k5 | 26 | 72 | 152 | 288 |
-| k6 | 19 | 79 | 161 | 301 |
+| k6 | 23 | 79 | 161 | 308 |
 | k7 | 15 | 66 | 160 | 274 |
-| k8 | 18 | 96 | 174 | 355 |
-| k9 | 24 | 116 | 197 | 418 |
-| k10 | 18 | 111 | 171 | 356 |
+| k8 | 24 | 96 | 174 | 365 |
+| k9 | 30 | 116 | 197 | 428 |
+| k10 | 22 | 111 | 171 | 368 |
 | k11 | 36 | 116 | 204 | 430 |
 | k12 | 22 | 122 | 183 | 392 |
-| k13 | 20 | 116 | 146 | 323 |
+| k13 | 24 | 116 | 146 | 331 |
 | k14 | 10 | 126 | 148 | 338 |
-| k15 | 27 | 153 | 160 | 396 |
-| k16 | 11 | 159 | 218 | 458 |
+| k15 | 101 | 153 | 160 | 502 |
+| k16 | 53 | 159 | 218 | 510 |
 | k17 | 9 | 137 | 230 | 434 |
-| k18 | 3 | 91 | 345 | 480 |
+| k18 | 13 | 91 | 345 | 503 |
 | k19 | 5 | 97 | 345 | 494 |
 | k20 | 9 | 100 | 309 | 467 |
 | k21 | 2 | 116 | 340 | 520 |
 | k22 | 5 | 89 | 352 | 500 |
 | k23 | 4 | 98 | 274 | 455 |
 | k24 | 12 | 158 | 310 | 543 |
-| k25 | 7 | 388 | 409 | 872 |
+| k25 | 44 | 388 | 409 | 931 |
 | k26 | 2 | 122 | 419 | 609 |
 | cross-election | 2 | 280 | 1089 | 1543 |
 

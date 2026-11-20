@@ -22,6 +22,9 @@ const listRow = (page: Page, name: string) => page.locator('.lb-row', { has: pag
 /** Hover the seats of a list until the seat card names the given place. */
 async function hoverSeat(page: Page, list: string, rank: number, word = 'rank') {
   const seats = page.locator('circle[data-seat]');
+  // the chamber is drawn once the election's data has arrived, which can be after the page's load event (a start with
+  // no election choice waits for nothing else): count the seats only when all 120 are there (INT, 20 Nov 2026)
+  await expect(seats).toHaveCount(120);
   const n = await seats.count();
   for (let i = 0; i < n; i++) {
     if (await seats.nth(i).locator('title').textContent() !== list) continue;

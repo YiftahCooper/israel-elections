@@ -248,6 +248,27 @@
         "retrievedAt": "2026-11-17T06:53:29.475Z"
       },
       "retainedArtifact": "private archive (israel-elections-private): scratch/collector/recs-newspapers/j1771-www.nli.org.il/page.html"
+    },
+    "positions-gov18": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$format=json&$filter=GovernmentNum%20eq%2018",
+      "publisher": "Knesset open data: appointments in government 18",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: מינויים בממשלה ה־18",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "factions-k9": {
+      "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/KNS_PersonToPosition?$filter=KnessetNum%20eq%209%20and%20PositionID%20eq%2054&$format=json",
+      "publisher": "Knesset open data: faction membership",
+      "publisherHe": "הכנסת, מאגר המידע הפתוח: החברות בסיעות",
+      "kind": "official",
+      "accessed": "2026-11-19"
+    },
+    "jta-1978-09-14": {
+      "url": "https://www.jta.org/archive/amit-resigns-from-government",
+      "publisher": "Jewish Telegraphic Agency, Daily News Bulletin, 14 September 1978",
+      "publisherHe": "סוכנות הידיעות היהודית, 14 בספטמבר 1978",
+      "kind": "secondary",
+      "accessed": "2026-11-19"
     }
   },
   "results": {
@@ -863,6 +884,193 @@
           "status": "vote-unavailable",
           "note": "No confidence vote belongs to this change; the member list follows the dated record cited."
         }
+      },
+      {
+        "date": "1978-09-15",
+        "textEn": "The DMC split. Its seven MKs in the new Movement for Change and Initiative (Shai) left the coalition when Meir Amit’s resignation as minister took effect; the Democratic Movement’s seven stayed.",
+        "textHe": "ד״ש התפצלה. שבעת חבריה בכנסת שהקימו את התנועה לשינוי ויוזמה יצאו מהקואליציה כשהתפטרותו של השר מאיר עמית נכנסה לתוקף; שבעת חברי התנועה הדמוקרטית נשארו בה.",
+        "cites": [
+          {
+            "source": "positions-gov18",
+            "quote": "PersonToPositionID 4148, PersonID 2527, PositionID 39, FinishDate 1978-09-15; PersonToPositionID 22778, PersonID 2527, PositionID 39, FinishDate 1978-09-15",
+            "note": "The Knesset’s appointment records: Meir Amit, minister until 15 September 1978. This is the day his resignation took effect; the faction split the day before.",
+            "noteHe": "רישומי המינויים של הכנסת: מאיר עמית, שר עד 15 בספטמבר 1978. זה היום שבו נכנסה התפטרותו לתוקף; הסיעה התפצלה יום קודם לכן."
+          },
+          {
+            "source": "factions-k9",
+            "quote": "Faction 423 (התנועה הדמוקרטית לשינוי): rows end 1978-09-14; from 1978-09-14 faction 425 (התנועה הדמוקרטית) 7, faction 413 (תנועה לשינוי ויוזמה) 7, faction 439 (יעד) 1",
+            "note": "The Knesset’s faction records: the DMC’s 15 MKs became three factions on 14 September 1978: the Democratic Movement (7), the Movement for Change and Initiative (7) and Yaad (1).",
+            "noteHe": "רישומי הסיעות של הכנסת: 15 חברי ד״ש בכנסת התחלקו ב־14 בספטמבר 1978 לשלוש סיעות: התנועה הדמוקרטית (7), התנועה לשינוי ויוזמה (7) ויעד (1)."
+          },
+          {
+            "source": "jta-1978-09-14",
+            "quote": "the new faction which will not be a member of Begin’s coalition government",
+            "note": "One report of the time: Shai’s place outside the coalition rests on it, together with its only minister’s resignation.",
+            "noteHe": "דיווח אחד מאותה עת: מקומה של התנועה לשינוי ויוזמה מחוץ לקואליציה נשען עליו, יחד עם התפטרות השר היחיד שלה."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 18,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 43,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-18",
+                "quote": "PersonToPositionID 4065; PersonID 2179; PositionID 45; StartDate 1977-06-20T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: מנחם בגין; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: מנחם בגין; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "כנ",
+            "seats": 2,
+            "note": "Merged into the Likud faction after the election.",
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-18",
+                "quote": "PersonToPositionID 4258; PersonID 482; PositionID 39; StartDate 1977-06-20T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: שלומציון.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: שלומציון."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-18",
+                "quote": "PersonToPositionID 3506; PersonID 2119; PositionID 39; StartDate 1977-06-20T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אהרן אבוחצירא; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אהרן אבוחצירא; סיעה: מפלגה דתית לאומית."
+              }
+            ]
+          },
+          {
+            "letters": "ג",
+            "seats": 4,
+            "note": "Aguda declares coalition accession; official formation-day roster contains no Aguda cabinet minister.",
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "knesset-plenum-1977-06-20",
+                "quote": "הצטרפנו לקואליציה אך לא",
+                "locator": "Agudat Yisrael speaker in the investiture debate; continuation concerns cabinet participation"
+              }
+            ]
+          },
+          {
+            "letters": "פש",
+            "seats": 1,
+            "note": "Probable: one study (Elyakim Rubinstein, 1979) says he supported the government from outside the coalition; another (Gregory Mahler, 1981) says only that he would vote with it without formally joining. No agreement of the time has been found.",
+            "role": "outside-support",
+            "certainty": "probable",
+            "cites": [
+              {
+                "source": "jta-1977-06-21",
+                "quote": "Voting for the government were Likud, the National Religious Party (NRP) and Aguda bloc, Moshe Dayan and Samuel Flatto-Sharon."
+              },
+              {
+                "source": "rubinstein-1979",
+                "quote": "After the election Flatto-Sharon supported the government, without formally entering the coalition.",
+                "locator": "p. 196"
+              },
+              {
+                "source": "mahler-1981",
+                "quote": "An independent MK, Samuel Flatto-Sharon, indicated that he would vote with the Government, even though he was not formally a part of the coalition.",
+                "locator": "p. 219"
+              }
+            ],
+            "noteEn": "Supported the government without joining the coalition.",
+            "noteHe": "תמך בממשלה בלי להצטרף לקואליציה."
+          },
+          {
+            "factionNameHe": "התנועה הדמוקרטית",
+            "factionNameEn": "Democratic Movement",
+            "seats": 7,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov18",
+                "quote": "PersonToPositionID 3516, PersonID 2676, PositionID 39, StartDate 1977-10-24; PersonToPositionID 3756, PersonID 3260, PositionID 39, StartDate 1977-10-24",
+                "note": "The Knesset’s appointment records: Shmuel Tamir and Israel Katz stayed ministers after September 1978.",
+                "noteHe": "רישומי המינויים של הכנסת: שמואל תמיר וישראל כץ נשארו שרים אחרי ספטמבר 1978."
+              },
+              {
+                "source": "factions-k9",
+                "quote": "Faction 423 (התנועה הדמוקרטית לשינוי): rows end 1978-09-14; from 1978-09-14 faction 425 (התנועה הדמוקרטית) 7, faction 413 (תנועה לשינוי ויוזמה) 7, faction 439 (יעד) 1",
+                "note": "The Knesset’s faction records: the DMC’s 15 MKs became three factions on 14 September 1978: the Democratic Movement (7), the Movement for Change and Initiative (7) and Yaad (1).",
+                "noteHe": "רישומי הסיעות של הכנסת: 15 חברי ד״ש בכנסת התחלקו ב־14 בספטמבר 1978 לשלוש סיעות: התנועה הדמוקרטית (7), התנועה לשינוי ויוזמה (7) ויעד (1)."
+              }
+            ],
+            "noteEn": "Yigael Yadin’s part of the DMC, with the DMC’s other ministers.",
+            "noteHe": "החלק של ד״ש בראשות יגאל ידין, עם שאר שרי ד״ש."
+          },
+          {
+            "factionNameHe": "יעד",
+            "factionNameEn": "Yaad",
+            "seats": 1,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "factions-k9",
+                "quote": "Faction 423 (התנועה הדמוקרטית לשינוי): rows end 1978-09-14; from 1978-09-14 faction 425 (התנועה הדמוקרטית) 7, faction 413 (תנועה לשינוי ויוזמה) 7, faction 439 (יעד) 1",
+                "note": "The Knesset’s faction records: the DMC’s 15 MKs became three factions on 14 September 1978: the Democratic Movement (7), the Movement for Change and Initiative (7) and Yaad (1).",
+                "noteHe": "רישומי הסיעות של הכנסת: 15 חברי ד״ש בכנסת התחלקו ב־14 בספטמבר 1978 לשלוש סיעות: התנועה הדמוקרטית (7), התנועה לשינוי ויוזמה (7) ויעד (1)."
+              },
+              {
+                "source": "jta-1978-09-14",
+                "quote": "is expected to declare himself a one-man Knesset faction but will continue to support the coalition"
+              }
+            ],
+            "note": "Whether Assaf Yaguri’s one-member faction stayed in the coalition is not recorded; one report of the time expected him to keep supporting it.",
+            "noteEn": "Not recorded whether this one-member faction stayed in the coalition.",
+            "noteHe": "לא תועד אם סיעת היחיד הזאת נשארה בקואליציה."
+          }
+        ],
+        "individuals": [
+          {
+            "id": "moshe-dayan",
+            "nameEn": "Moshe Dayan",
+            "nameHe": "משה דיין",
+            "fromLetters": "אמת",
+            "countedInFactionSeats": false,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "vote": "for",
+            "cites": [
+              {
+                "source": "knesset-plenum-1977-06-20",
+                "quote": "משה דיין – שר החוץ"
+              }
+            ],
+            "note": "Elected on Alignment; joined as Foreign Minister individually. Alignment is not counted as a coalition faction."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 69,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
       }
     ],
     "confidenceVote": {
@@ -1155,7 +1363,8 @@
     "Positions of four one-seat lists in the 1977 consultations not found (ISA file נ-571/13 is the primary target).",
     "No official tally of 1977 recommendations; totals are computed from per-list reports.",
     "Hebrew press (Davar, Maariv, Haaretz on NLI JPress) not used: browser challenge; not circumvented.",
-    "Reaction items and issue polling not filled."
+    "Reaction items and issue polling not filled.",
+    "Yaad (Assaf Yaguri, one MK) after the DMC split of 14 September 1978: whether the faction stayed in the coalition is not recorded. JTA, 14 September 1978, expected him to keep supporting it; a coalition record or the faction’s own announcement would settle it."
   ],
   "supportSchemaVersion": 1
 }
