@@ -167,9 +167,12 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await expect(history.locator('.after-support-total').first()).toHaveText('5');
   await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '67 בעד · 53 נגד' : '67 for · 53 against');
   await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
+  // 20 Nov 2026 (lane D3): the first dated member list is Shas leaving on 14 September 1993 (62 → 56)
+  await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText('56');
   // no faction sizes recorded for Peres's 1995 government: a dash and one sentence, not "Unknown" (V2 fault A4)
-  await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText('—');
-  await expect(history.locator('.after-government-change .after-size-note').first()).toBeVisible();
+  const peres = history.locator('.after-government-change').filter({ has: page.locator('.after-size-note') }).first();
+  await expect(peres.locator('.after-members-total')).toHaveText('—');
+  await expect(peres.locator('.after-size-note')).toBeVisible();
   await choose(election, 'k2');
   // 17 Nov 2026: Mapai's three affiliated Arab lists are members without ministries (two independent books), so the
   // first government's total is published (65, as Galnoor and Blander count). 19 Nov 2026: every later snapshot of the
@@ -231,7 +234,8 @@ for (const lang of ['en', 'he'] as const) test(`acting and interim prime ministe
 test('later-government rows name every faction in English, never transliterated', async ({ page }) => {
   const history = await openAfter(page, 'k10', 'en');
   await history.getByText('Government changes', { exact: true }).click();
-  const change = history.locator('.after-government-change').last();
+  // the last change with a member list (a dated line without one, Ben-Porat's resignation of 1984, follows it)
+  const change = history.locator('.after-government-change').filter({ has: page.locator('.after-coalition') }).last();
   for (const name of ['Tehiya', 'Tami', 'Movement for Social Zionist Renewal', 'National Religious Party']) await expect(change.locator('.after-coalition')).toContainText(name);
   await expect(change).not.toContainText("thyyh");
   for (const [id, name] of [['k6', 'Alignment'], ['k15', 'Yisrael BaAliyah'], ['k13', "Yi'ud"]] as const) {
@@ -271,8 +275,9 @@ test('records added in this pass: the Lavon affair, the 1988 recommendations, Go
   await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k25');
   await history.getByText('שינויים בממשלה', { exact: true }).click();
   // 15: the nine fx-after rows, Goldknopf 15 Jun 2025 and Porush/Tesler 17 Jul 2025 (12 Nov merge), and four rows from
-  // the appointment register (13 Nov): Maoz 1 Mar 2023, 5 Jun 2023 and 26 Mar 2025, Eichler 19 Jan 2026
-  await expect(history.locator('.after-government-change')).toHaveCount(15);
+  // the appointment register (13 Nov): Maoz 1 Mar 2023, 5 Jun 2023 and 26 Mar 2025, Eichler 19 Jan 2026; 16 since 20 Nov
+  // (lane D3): New Hope's split from National Unity's faction, 13 Mar 2024
+  await expect(history.locator('.after-government-change')).toHaveCount(16);
 });
 
 // 19 Nov 2026: The Jerusalem Post (18 and 28 January 1974) puts the NRP and the Bedouin and Villagers list with Meir
