@@ -517,7 +517,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .walk-calc { display: block; font-size: 11.5px; }
 [dir="rtl"] .walk-calc { text-align: left; } /* left-to-right arithmetic, aligned with its number at the cell's end */
 @media (max-width: 760px) {
-  .walk-stages .walk-name { display: none; }
+  /* hidden from sight only: the step's name stays its button's name for a screen reader (review V4 A1) */
+  .walk-stages .walk-name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   .walk-tray { grid-template-columns: repeat(calc((var(--seats) + 1) / 2), minmax(0, 1fr)); }
   .walk-tray > span { height: 12px; }
