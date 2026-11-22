@@ -100,7 +100,7 @@ test('the threshold tile is changed on its tile only under Experimental rules', 
   await openTool(page, 'turnout');
   await tile(page, 'threshold').locator('.tile-pencil').click();
   await expect(pop(page)).toContainText('Change the threshold');
-  await pop(page).getByRole('button', { name: '2% (2006–2013)', exact: true }).click();
+  await pop(page).getByRole('button', { name: '2% 2006–2013', exact: true }).click();
   await expect(tile(page, 'threshold').locator('.tn-d')).toHaveText('2% of valid votes');
   await expect(tile(page, 'threshold').locator('.tn-v .edit-marker')).toHaveText('Edited');
   await pop(page).getByRole('button', { name: /^Reset/ }).click();

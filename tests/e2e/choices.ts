@@ -1,7 +1,7 @@
 import { expect, type Locator } from './fixtures';
 /** A choice button's name: its label, then the choice it shows ("Election: 2026 · 26th Knesset"); the label alone when
  *  nothing is chosen. */
-export const pickerName = (label: string) => new RegExp(`^${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(: |$)`);
+export const pickerName = (label: string) => new RegExp(`^${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:$|: (?!explanation$))`);
 export async function choose(picker: Locator, value: string | { label: string }) {
   const dialogId = await picker.getAttribute('aria-controls');
   // read before choosing: a picker inside the phone menu goes away with the menu once a choice is made

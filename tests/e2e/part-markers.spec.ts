@@ -1,5 +1,5 @@
 import {test,expect,type Page} from './fixtures';
-import {choose} from './choices.ts';
+import {choose,pickerName} from './choices.ts';
 async function start(page:Page,election='k25'){
  await page.setViewportSize({width:1440,height:900});
  await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
@@ -37,7 +37,7 @@ test('2022 blank grouping is marked at each grouping surface and undo clears it'
 });
 test('rules preset has one marker, then an individual threshold edit adds one',async({page})=>{
  await start(page);await page.getByRole('tab',{name:'Rules',exact:true}).click();
- await choose(page.getByRole('button',{name:'Copy rules from…',exact:true}),'preset:il-1992-bader-ofer-1.5');
+ await choose(page.getByRole('button',{name:pickerName('Copy rules from…')}),'preset:il-1992-bader-ofer-1.5');
  await expect(part(page)).toHaveCount(1);await expect(items(page)).toHaveCount(0);
  await page.evaluate(()=>window.scrollTo(0,0));
  await page.screenshot({path:'.backup-scratch/part-markers/2022-rules-preset.png',fullPage:true});

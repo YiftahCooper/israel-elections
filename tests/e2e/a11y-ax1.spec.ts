@@ -55,16 +55,36 @@ for (const lang of LANGS) test.describe(`A2 · ${lang}`, () => {
         await expect(t, `${tool}: ${shown}`).toHaveAccessibleName(new RegExp(`^.+: ${escape(shown)}$`));
       }
     }
-    // the rules' threshold presets: the name holds the visible words in their order
-    for (const b of await page.locator('#analysis-panel button[aria-pressed]').filter({ has: page.locator('.tiny') }).all()) {
-      const [pct, years] = await b.evaluate(e => [e.querySelector('b')!.textContent!, e.querySelector('.tiny')!.textContent!.replace(/[()]/g, '').trim()]);
-      await expect(b).toHaveAccessibleName(new RegExp(`^${escape(pct)}.*${escape(years)}`));
-    }
+    // the rules' threshold presets: the name is the words they show ("0% 1949")
+    const presets = page.locator('#analysis-panel button[aria-pressed]').filter({ has: page.locator('.tiny') });
+    await expect(presets).toHaveCount(5);
+    for (const b of await presets.all()) await expect(b).toHaveAccessibleName((await b.innerText()).replace(/\s+/g, ' ').trim());
     // inside a picker, the option in force is pressed and the others are not, the election picker too
     await election.click();
     const dialog = page.getByRole('dialog', { name: T(lang, 'Election', 'בחירות') });
     await expect(dialog.locator('[data-choice-value="k26"]')).toHaveAttribute('aria-pressed', 'true');
     await expect(dialog.locator('[data-choice-value="k25"]')).toHaveAttribute('aria-pressed', 'false');
+  });
+});
+
+// A2 on a phone
+for (const lang of LANGS) test.describe(`A2 · phone · ${lang}`, () => {
+  test.use(phone);
+  // on a phone the election button stacks "2026" over "26th Knesset" and hides the dot; the words it shows, read as
+  // text (each shown piece of text in order, as a speech-input or checking tool reads it), must be in its name
+  test(`a choice button's shown words are in its name on a phone · ${lang}`, async ({ page }) => {
+    await start(page, lang);
+    const words = (s: string) => s.replace(/[\p{P}\p{S}]/gu, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+    for (const tool of ['board', 'rules']) {
+      if (tool !== 'board') await openTool(page, tool);
+      const triggers = page.locator('.choice-trigger:visible');
+      await expect(triggers.first()).toBeVisible();
+      for (const t of await triggers.all()) {
+        const shown = await t.evaluate(e => { const w = document.createTreeWalker(e, NodeFilter.SHOW_TEXT); let s = ''; for (let n = w.nextNode(); n; n = w.nextNode()) if (n.parentElement!.checkVisibility()) s += n.textContent; return s; });
+        const name = await t.getAttribute('aria-label') ?? '';
+        expect(words(name), `${tool}: "${shown}"`).toContain(words(shown));
+      }
+    }
   });
 });
 

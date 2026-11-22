@@ -76,6 +76,7 @@ function CurrentElection({ label, date, lang }: { label: string; date: string; l
   const short = /\s/.test(when) && /^\d{4}-\d{2}/.test(date) ? formatDate(date.slice(0, 7), lang) : when;
   return <span className="choice-current">
     <span className="choice-current-part"><span className="choice-when-long">{when}</span><span className="choice-when-short">{short}</span></span>
-    {rest.length > 0 && <span className="choice-current-part"><span className="choice-current-dot"> · </span>{rest.join(' · ')}</span>}
+    {/* the space outside the dot: on a phone the dot is hidden and the parts stack, and the name still reads as two words */}
+    {rest.length > 0 && <span className="choice-current-part">{' '}<span className="choice-current-dot">· </span>{rest.join(' · ')}</span>}
   </span>;
 }

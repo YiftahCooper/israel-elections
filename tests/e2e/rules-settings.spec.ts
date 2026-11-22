@@ -57,7 +57,7 @@ test('each era shows its own law: names, era rules and threshold timeline', asyn
   await expect(law).toContainText('2014 · Bader–Ofer · 3.25% threshold');
   const eras = page.getByRole('group', { name: 'Thresholds by era' });
   await expect(eras.getByRole('button')).toHaveText(['0% 1949', '1% 1951–1988', '1.5% 1992–2003', '2% 2006–2013', '3.25% 2015–2026']);
-  await expect(eras.getByRole('button', { name: '3.25% (2015–2026)' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(eras.getByRole('button', { name: '3.25% 2015–2026' })).toHaveAttribute('aria-pressed', 'true');
   // a locked field looks locked
   const threshold = page.getByRole('textbox', { name: 'Threshold %', exact: true });
   await expect(threshold).toBeDisabled();
@@ -72,7 +72,7 @@ test('each era shows its own law: names, era rules and threshold timeline', asyn
   await expect(law).toContainText('1949 · Highest averages · No percentage threshold');
   await expect(page.locator('select[aria-labelledby="remainder-method-label"] option:checked')).toHaveText('Highest averages (1949 law)');
   await expect(page.getByRole('checkbox', { name: /Remainder seats only for lists with a whole quota/ })).toBeChecked();
-  await expect(eras.getByRole('button', { name: '0% (1949)' })).toHaveAttribute('aria-pressed', 'true');
+  await expect(eras.getByRole('button', { name: '0% 1949' })).toHaveAttribute('aria-pressed', 'true');
 
   await election(page, 'k5'); await openRules(page);
   await expect(page.locator('select[aria-labelledby="remainder-method-label"] option:checked')).toHaveText('Largest remainder (1951–1969 law)');
@@ -86,7 +86,7 @@ test('each era shows its own law: names, era rules and threshold timeline', asyn
 test('an experimental rule edit is marked at its own field, and the era timeline sets the threshold', async ({ page }) => {
   await start(page); await openRules(page);
   await page.getByRole('button', { name: 'Experimental', exact: true }).click();
-  await page.getByRole('group', { name: 'Thresholds by era' }).getByRole('button', { name: '1.5% (1992–2003)' }).click();
+  await page.getByRole('group', { name: 'Thresholds by era' }).getByRole('button', { name: '1.5% 1992–2003' }).click();
   await expect(page.getByRole('textbox', { name: 'Threshold %', exact: true })).toHaveValue('1.5');
   const field = page.locator('.field', { has: page.getByRole('textbox', { name: 'Threshold %', exact: true }) });
   await expect(field.locator('.edit-marker')).toHaveCount(1);
@@ -129,7 +129,7 @@ test('re-choosing what is already in force is not an edit', async ({ page }) => 
   const log = () => page.evaluate(() => document.querySelector('.session button[aria-label^="Undo"]')?.getAttribute('aria-label'));
   const before = await log();
   await mode.getByRole('button', { name: 'Experimental', exact: true }).click();
-  await page.getByRole('button', { name: '3.25% (2015–2026)' }).click();
+  await page.getByRole('button', { name: '3.25% 2015–2026' }).click();
   const threshold = page.getByRole('textbox', { name: 'Threshold %', exact: true });
   await threshold.fill('3.25%'); await threshold.press('Enter');
   await page.getByRole('combobox', { name: 'Remainder method' }).selectOption('bader-ofer');

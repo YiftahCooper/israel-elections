@@ -115,7 +115,7 @@ export function Rules({ s }: { s: Scenario; base: Scenario }) {
           {/* a timeline of the law's thresholds: reads left to right in Hebrew too */}
           <div className="quick-actions era-thresholds" role="group" aria-label={L('Thresholds by era', 'אחוזי חסימה לפי תקופה')}>
             {eras.map(({ pct, from, to }) => { const on = Number(s.rules.thresholdPct) === Number(pct); const years = from === to ? `${from}` : `${from}–${to}`;
-              return <button disabled={!exp} key={pct} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} aria-label={`${pct}% (${years})`} onClick={() => set({ thresholdPct: pct })}><b>{pct}%</b>{' '}<span className="tiny">{years}</span></button>; })}
+              return <button disabled={!exp} key={pct} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} onClick={() => set({ thresholdPct: pct })}><b>{pct}%</b>{' '}<span className="tiny">{years}</span></button>; })}
           </div>
         </fieldset>
         <span className="row"><PartEdits s={s} prefix={['rules']} /><StartFrom s={s} part="rules" /></span>

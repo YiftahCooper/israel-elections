@@ -72,7 +72,7 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     expect(box.x + box.width).toBeLessThanOrEqual(phone ? 390 : 1440);
     await page.screenshot({path:`.backup-scratch/custom-level/markers-${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png`});
     await page.getByRole('tab',{name:lang === 'he' ? 'כללים' : 'Rules',exact:true}).click();
-    await page.getByRole('button', {name:lang === 'he' ? 'העתקת כללים מ…' : 'Copy rules from…',exact:true}).click();
+    await page.getByRole('button', {name:pickerName(lang === 'he' ? 'העתקת כללים מ…' : 'Copy rules from…')}).click();
     const options = page.getByRole('dialog').locator('.choice-option');
     expect((await options.allTextContents()).join(' ')).not.toContain('il-');
     await expect(options.filter({hasText:'1977'})).toContainText(lang === 'he' ? 'מגבלת מועמדים' : 'Candidate cap');
