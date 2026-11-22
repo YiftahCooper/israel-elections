@@ -175,7 +175,7 @@ test('boundaries have independent controls, hatch geometry, source and snapshot 
   await legend.getByRole('checkbox',{name:'Armistice lines · Judea and Samaria',exact:true}).uncheck();
   await expect.poll(()=>page.locator('.leaflet-verified-lines-pane path').count()).toBeLessThan(before);
   await expect(legend.getByRole('checkbox',{name:'Lebanon · Blue Line',exact:true})).toBeChecked();
-  await legend.getByRole('button',{name:'Israel–Gaza Strip boundary',exact:true}).click();
+  await legend.getByRole('button',{name:'Israel–Gaza Strip boundary: explanation',exact:true}).click();
   await expect(page.getByText('Geometry snapshot:',{exact:false})).toBeVisible();
   await expect(page.getByRole('link',{name:'UN · S/1471 (1950)',exact:true})).toHaveAttribute('href','https://www.un.org/unispal/document/auto-insert-183322/');
 });
@@ -211,7 +211,7 @@ test('source precision hides approximate lines while locality detail and treaty 
  const paths=page.locator('.leaflet-verified-lines-pane svg > g path');await expect(paths.first()).toBeAttached();
  expect(await paths.evaluateAll(xs=>xs.every(x=>x.getAttribute('stroke-linecap')==='butt'))).toBe(true);
  const legend=page.getByRole('group',{name:'Lines and areas',exact:true});
- await legend.getByRole('button',{name:'Jordan · line with Judea and Samaria',exact:true}).click();
+ await legend.getByRole('button',{name:'Jordan · line with Judea and Samaria: explanation',exact:true}).click();
  await expect(page.getByText(/Any treatment of this line shall be without prejudice to the status of the territory/)).toBeVisible();
  await expect(page.getByRole('link',{name:'Official Hebrew treaty record',exact:true})).toBeVisible();
  await page.keyboard.press('Escape');
@@ -241,14 +241,14 @@ test('Hebrew map references remain isolated LTR and the phone legend is collapse
  await page.getByRole('tab',{name:'יישובים',exact:true}).click();
  const disclosure=page.locator('.locality-boundary-disclosure');await expect(disclosure).not.toHaveAttribute('open');
  await disclosure.locator('summary').click();
- await page.getByRole('button',{name:'קווי שביתת הנשק · יהודה ושומרון',exact:true}).click();
+ await page.getByRole('button',{name:'הסבר: קווי שביתת הנשק · יהודה ושומרון',exact:true}).click();
  const pop=page.locator('.pop').last();
  await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'V(1)(b)'})).toBeVisible();
  await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'±60'})).toBeVisible();
  expect(await pop.locator('bdi').evaluateAll(xs=>xs.every(x=>!/[.,:;]$/.test(x.textContent?.trimEnd()??'')))).toBe(true);
  await expect(pop).not.toContainText('OSM');
  await page.keyboard.press('Escape');
- await page.getByRole('button',{name:'ירדן · הקו מול יהודה ושומרון',exact:true}).click();
+ await page.getByRole('button',{name:'הסבר: ירדן · הקו מול יהודה ושומרון',exact:true}).click();
  await expect(pop).toContainText('1994 · נספח I(א) 2.A.7');
  await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'I(א) 2.A.7'})).toBeVisible();
  await expect(pop).toContainText('ומפות ההדמאה');await expect(pop).not.toContainText('Annex');

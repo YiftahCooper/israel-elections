@@ -17,7 +17,7 @@ test('an info button stays open when clicked, and Escape closes it', async ({ pa
   await fig.locator('> button').click();
   // the definition's (i) is named by what it opens, apart from the note's (i) beside it (audit 12 Nov 2026, fx-copy);
   // its Hebrew name is in the popover's heading, marked as Hebrew
-  await expect(fig.getByRole('button', { name: 'Invalid ballots', exact: true })).toHaveCount(1);
+  await expect(fig.getByRole('button', { name: 'Invalid ballots: explanation', exact: true })).toHaveCount(1);
   const info = fig.getByRole('button', { name: 'Invalid ballots: definition and source', exact: true });
   await info.click();
   await expect(info).toHaveAttribute('aria-expanded', 'true');

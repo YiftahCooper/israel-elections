@@ -16,7 +16,8 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     // A real list without a logo uses its own letters, in either UI language.
     const badge = page.locator('.lb-row .slip:not(.logo)').filter({ hasText: /^ט$/ }).first();
     await expect(badge).toBeVisible();
-    await expect(badge).toHaveAttribute('lang', 'he');
+    await expect(badge).not.toHaveAttribute('lang', /./);
+    await expect(badge.locator('[lang="he"]')).toHaveText('ט');
     await expect(badge).toHaveAttribute('dir', 'rtl');
     await expect(badge).toHaveAttribute('title', lang === 'en' ? 'Ballot letters ט (no logo)' : 'אותיות הפתק ט (ללא סמל)');
     await badge.click();
@@ -36,7 +37,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.screenshot({ path: `.backup-scratch/owner-answers/screenshots/candidates-${lang}-${theme}-${width}.png` });
     await page.getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click();
     await page.locator('#tab-sources').click();
-    const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details' : 'פירוט מצב הנתונים', exact: true });
+    const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details: explanation' : 'הסבר: פירוט מצב הנתונים', exact: true });
     await expect(info).toBeVisible();
     await expect(info.locator('..').locator('..')).toHaveText(lang === 'en' ? 'Official final results i' : 'תוצאות סופיות רשמיות i');
     await info.hover();
@@ -87,7 +88,7 @@ for (const lang of ['en', 'he']) test(`all 26 status notes retained in ${lang}`,
   await page.locator('#tab-sources').click();
   for (let n = 1; n <= 26; n++) {
     await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), `k${n}`);
-    const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details' : 'פירוט מצב הנתונים', exact: true });
+    const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details: explanation' : 'הסבר: פירוט מצב הנתונים', exact: true });
     await info.click();
     // the screen writes dates in the app's format ("4 Nov 2026", not 4.11.2026)
     const expected = datesInText(dataset(`k${n}`).status[lang === 'en' ? 'noteEn' : 'noteHe'].replace('Gazette publication unverified', 'Gazette publication not yet verified').replace('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת'));

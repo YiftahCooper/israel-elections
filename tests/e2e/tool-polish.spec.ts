@@ -5,16 +5,16 @@ for (const lang of ['en', 'he']) test(`tools keep concise labels and reveal assu
   await page.goto('/');
   const panel = page.locator('#analysis-panel');
   await page.locator('#tab-structure').click();
-  const mergeInfo = panel.getByRole('button', { name: lang === 'en' ? 'Merge assumptions' : 'הנחות האיחוד', exact: true });
+  const mergeInfo = panel.getByRole('button', { name: lang === 'en' ? 'Merge assumptions: explanation' : 'הנחות האיחוד', exact: true });
   await mergeInfo.click();
   await expect(page.getByRole('tooltip')).toContainText(lang === 'en' ? 'surplus agreements are dropped' : 'הסכמי העודפים של חברותיה מבוטלים');
   await page.keyboard.press('Escape');
   await page.locator('#tab-coal').click();
-  await panel.getByRole('button', { name: lang === 'en' ? 'Coalition assumptions' : 'הנחות הקואליציה', exact: true }).click();
+  await panel.getByRole('button', { name: lang === 'en' ? 'Coalition assumptions: explanation' : 'הנחות הקואליציה', exact: true }).click();
   await expect(page.getByRole('tooltip')).toContainText(lang === 'en' ? 'political feasibility' : 'הערכה פוליטית');
   await page.keyboard.press('Escape');
   await page.locator('#tab-turnout').click();
-  await panel.getByRole('button', { name: lang === 'en' ? 'Hypothetical modelling' : 'מודל היפותטי', exact: true }).click();
+  await panel.getByRole('button', { name: lang === 'en' ? 'Hypothetical modelling: explanation' : 'הסבר: מודל היפותטי', exact: true }).click();
   await expect(page.getByRole('tooltip')).toContainText(lang === 'en' ? 'not individual voters' : 'לא מצביעים יחידים');
 });
 

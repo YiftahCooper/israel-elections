@@ -60,7 +60,7 @@ test('Expert: polling-station results and double envelopes where the source has 
   const facts = await open(page, { level: 'expert', election: 'k25' });
   // the rows of the official table, named as on Sources, not "ballot boxes" (c-english-07)
   await expect(fact(facts, 'boxes').locator('dt')).toHaveText(/^Polling-station results/);
-  await expect(fact(facts, 'boxes').locator('dt').getByRole('button', { name: 'Polling station', exact: true })).toBeVisible();
+  await expect(fact(facts, 'boxes').locator('dt').getByRole('button', { name: 'Polling station: explanation', exact: true })).toBeVisible();
   await expect(fact(facts, 'boxes').locator('.tn-v')).toHaveText('12,545');
   await expect(fact(facts, 'boxes').locator('.tn-since')).toHaveText('▼ −381 · −2.95% since 2021');
   await expect(fact(facts, 'envelopes').locator('.tn-v')).toHaveText('462,807');
