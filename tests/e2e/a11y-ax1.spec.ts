@@ -66,3 +66,24 @@ for (const lang of LANGS) test.describe(`A2 · ${lang}`, () => {
     await expect(dialog.locator('[data-choice-value="k25"]')).toHaveAttribute('aria-pressed', 'false');
   });
 });
+
+// A3
+for (const lang of LANGS) test.describe(`A3 · ${lang}`, () => {
+  // A3: Compare replaced itself with the strip and focus fell to the page
+  test(`Compare and Stop comparing keep the keyboard in place · ${lang}`, async ({ page }) => {
+    await start(page, lang);
+    const compare = page.getByRole('button', { name: T(lang, 'Compare', 'השוואה'), exact: true });
+    await compare.focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('.cmpm-strip .choice-trigger')).toBeFocused();
+    await expect(page.locator('.cmpm-strip .choice-trigger')).toHaveAccessibleName(new RegExp(`^${T(lang, 'Compare with', 'השוואה עם')}: `));
+    // Swap keeps the keyboard in the strip too (Swap, or Compare with while the result loads)
+    const swap = page.locator('.cmpm-strip .cmpm-swap');
+    await swap.focus();
+    await page.keyboard.press('Enter');
+    await expect(page.locator('.cmpm-strip .cmpm-swap, .cmpm-strip .choice-trigger').and(page.locator(':focus'))).toHaveCount(1);
+    await page.getByRole('button', { name: T(lang, 'Stop comparing', 'סיום ההשוואה') }).focus();
+    await page.keyboard.press('Enter');
+    await expect(compare).toBeFocused();
+  });
+});

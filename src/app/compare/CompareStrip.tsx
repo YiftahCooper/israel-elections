@@ -1,6 +1,7 @@
 // The comparison strip under the tools (Design A): what the screen is compared with, a menu to change it, Swap, Side by side
 // and Stop comparing. While comparing it stays on every screen, so it is always clear that a comparison is on.
 import { useLayoutEffect, useMemo, useRef } from 'react';
+import { flushSync } from 'react-dom';
 import { ArrowLeftRight, Columns2, X } from 'lucide-react';
 import type { Scenario } from '../../model/scenario.ts';
 import { baselineOf } from '../factionDefaults.ts';
@@ -12,12 +13,20 @@ import { ChoicePicker, type Choice } from '../components/ChoicePicker.tsx';
 import { Info } from '../components/ui.tsx';
 import { closeSideBySide, compareWith, openSideBySide, previousElection, startComparing, stopComparing, swapWithReference, useReference } from './mode.ts';
 
+/** Turning comparing on or off replaces the button pressed: the keyboard goes on to the control that takes its place
+ *  ("Compare with" once comparing, "Compare" again after Stop comparing; Swap, or "Compare with" while the swapped
+ *  result loads), not to the top of the page (review V4 A3). */
+const thenFocus = (act: () => void, ...selectors: string[]) => {
+  flushSync(act);
+  for (const selector of selectors) { const el = document.querySelector<HTMLElement>(selector); if (el) { el.focus(); return; } }
+};
+
 /** "⇆ Compare", in the change line under the tools: turns comparing on (the previous election first). */
 export function CompareButton() {
   const L = useL();
   const on = useStore((st) => !!st.comparing);
   if (on) return null;
-  return <button type="button" className="btn small ghost compare-on" onClick={startComparing}><ArrowLeftRight className="icon sm" aria-hidden />{L('Compare', 'השוואה')}</button>;
+  return <button type="button" className="btn small ghost compare-on" onClick={() => thenFocus(startComparing, '.cmpm-strip .cmpm-picker .choice-trigger')}><ArrowLeftRight className="icon sm" aria-hidden />{L('Compare', 'השוואה')}</button>;
 }
 
 /** What can be compared with: any election's official result, saved scenarios of any election, this election's official
@@ -76,7 +85,7 @@ export function CompareStrip({ s }: { s: Scenario }) {
       {picker}
       {state.status === 'loading' && <span className="small muted">{L('Loading…', 'טוען…')}</span>}
     </span>
-    {ready && <button type="button" className="btn small cmpm-swap" aria-label={L('Swap', 'החלפה')} onClick={() => swapWithReference(ready)} title={L(`Make ${ready.year} your work`, `${ready.year} תהפוך לעבודה שלכם`)}>
+    {ready && <button type="button" className="btn small cmpm-swap" aria-label={L('Swap', 'החלפה')} onClick={() => thenFocus(() => swapWithReference(ready), '.cmpm-strip .cmpm-swap', '.cmpm-strip .cmpm-picker .choice-trigger')} title={L(`Make ${ready.year} your work`, `${ready.year} תהפוך לעבודה שלכם`)}>
       <ArrowLeftRight className="icon sm" aria-hidden /><span>{L('Swap', 'החלפה')}</span></button>}
     {ready && <Info title={L('Swap', 'החלפה')} label={L('About Swap', 'הסבר: החלפה')}>{he
       ? `${ready.year} (${ready.name}) הופכת לעבודה שלכם, והעבודה הנוכחית הופכת לנקודת ההשוואה ונשארת כטיוטה שלא נשמרה, עם היסטוריית הביטולים שלה. החלפה נוספת מחזירה. מה שמשווים אליו אינו נערך כאן; כדי לשנות אותו, מחליפים.`
@@ -84,6 +93,6 @@ export function CompareStrip({ s }: { s: Scenario }) {
     {ready && sideShown && (side
       ? <button type="button" className="btn small cmpm-side" aria-pressed aria-label={L('Close side by side', 'סגירת זו לצד זו')} onClick={closeSideBySide}><Columns2 className="icon sm" aria-hidden /><span>{L('Close side by side', 'סגירת זו לצד זו')}</span></button>
       : <button type="button" className="btn small cmpm-side" aria-label={L('Side by side', 'זו לצד זו')} onClick={openSideBySide}><Columns2 className="icon sm" aria-hidden /><span>{L('Side by side', 'זו לצד זו')}</span></button>)}
-    <button type="button" className="btn small ghost cmpm-stop" onClick={stopComparing} aria-label={L('Stop comparing', 'סיום ההשוואה')} title={L('Stop comparing: your work stays as it is now, with any votes you copied', 'סיום ההשוואה: העבודה שלכם נשארת כפי שהיא עכשיו, עם הקולות שהעתקתם')}><span className="cmpm-stop-t">{L('Stop comparing', 'סיום ההשוואה')}</span><X className="icon sm" aria-hidden /></button>
+    <button type="button" className="btn small ghost cmpm-stop" onClick={() => thenFocus(stopComparing, '.compare-on')} aria-label={L('Stop comparing', 'סיום ההשוואה')} title={L('Stop comparing: your work stays as it is now, with any votes you copied', 'סיום ההשוואה: העבודה שלכם נשארת כפי שהיא עכשיו, עם הקולות שהעתקתם')}><span className="cmpm-stop-t">{L('Stop comparing', 'סיום ההשוואה')}</span><X className="icon sm" aria-hidden /></button>
   </div>;
 }
