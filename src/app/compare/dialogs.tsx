@@ -16,6 +16,7 @@ import { ListMark, listChoice } from '../components/ListMark.tsx';
 import { SeatDelta } from '../components/SeatDelta.tsx';
 import { adjustOf, basisOf, COPY_MODE_DEFAULT, duplicatePeople, isDefaultCopyMode, modeOf, planRoster, planWholeList, type CopyBasis, type CopyMode, type Plan, type Removal } from './copy.ts';
 import { COPY_INFO, COPY_WORDS } from './copyText.ts';
+import { listSearchNames, matchesName } from '../nameSearch.ts';
 import { CandidateName } from '../components/CandidateName.tsx';
 import { inOf, personKey, sharedCandidates, type MatchOverride, type MatchRow, type MatchTag } from './match.ts';
 import { cellsOf, sourceOf, type SideModel } from './model.ts';
@@ -252,7 +253,7 @@ function MapTo({ row, early, late, earlyIds, lateIds, onPick }: { row: MatchRow;
   const mine = row.tag === 'ended' ? early.sc.lists.find((l) => l.id === earlyIds[0])! : late.sc.lists.find((l) => l.id === lateIds[0])!;
   const other = row.tag === 'ended' ? late : early;
   const ranked = other.sc.lists.map((l) => ({ l, n: sharedCandidates(mine, l) })).filter((x) => x.l.votes > 0 || x.n > 0)
-    .filter((x) => !q || `${x.l.nameHe} ${x.l.shortHe} ${x.l.shortEn ?? ''}`.toLowerCase().includes(q.toLowerCase()))
+    .filter((x) => matchesName(q, listSearchNames(x.l)))
     .sort((a, b) => b.n - a.n || b.l.votes - a.l.votes).slice(0, 12);
   return <div className="cmp-mapto">
     <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Find a list…', 'חיפוש רשימה…')} aria-label={L('Find a list', 'חיפוש רשימה')} />

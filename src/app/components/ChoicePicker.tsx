@@ -3,12 +3,14 @@ import { useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import { flushSync } from 'react-dom';
 import { useL } from '../i18n.ts';
 import { useSetting } from '../store.ts';
+import { matchesName } from '../nameSearch.ts';
 
 /** A choice button's name: its label, then the choice it shows (the label alone when that is all it shows). */
 export const choiceName = (label: string, shown: string) => shown && shown !== label ? `${label}: ${shown}` : label;
 
-/** mark: the logo or colour dot of the list or party the option names (ListMark.tsx), shown before its name. */
-export interface Choice { value: string; label: string; mark?: ReactNode; detail?: ReactNode; title?: string; group?: string; preview?: ReactNode; disabled?: boolean }
+/** mark: the logo or colour dot of the list or party the option names (ListMark.tsx), shown before its name.
+ *  searchNames: other names the search box finds it by, never shown (a list's or party's other spellings). */
+export interface Choice { value: string; label: string; mark?: ReactNode; detail?: ReactNode; title?: string; group?: string; preview?: ReactNode; disabled?: boolean; searchNames?: readonly string[] }
 /** Native dialog supplies modal focus containment and Escape; buttons retain native activation.
  *  Choosing the option already in force only closes the picker: it is never an edit. */
 export function ChoicePicker({ label, value, options, onChange, className = '', placeholder, children, description }: {
@@ -23,7 +25,7 @@ export function ChoicePicker({ label, value, options, onChange, className = '', 
   // the options are drawn only while the dialog is open: a closed dialog shows nothing, and every picker on the page
   // drawing all its options (some with a result strip each) on every edit made the page slower to open and to edit
   const [open, setOpen] = useState(false);
-  const matches = useMemo(() => options.filter(o => `${o.label} ${o.detail ?? ''} ${o.group ?? ''}`.toLocaleLowerCase().includes(query.toLocaleLowerCase())), [options, query]);
+  const matches = useMemo(() => options.filter(o => matchesName(query, [`${o.label} ${typeof o.detail === 'string' || typeof o.detail === 'number' ? o.detail : ''} ${o.group ?? ''}`, ...(o.searchNames ?? [])])), [options, query]);
   const close = () => { dialog.current?.close(); trigger.current?.focus(); };
   // a short list needs no search box: it opens on the current (or first) option instead
   const searchable = options.length > 7;

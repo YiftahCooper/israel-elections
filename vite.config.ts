@@ -8,6 +8,7 @@ import { compileHistoryRuntime } from './scripts/party-history-runtime.ts';
 import { compileMkHistory } from './scripts/mk-history-runtime.ts';
 import { compileTermTimeline } from './scripts/term-timeline-runtime.ts';
 import { compileElectionTotals } from './scripts/election-totals-runtime.ts';
+import { compileSearchNames } from './scripts/party-search-names.ts';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { scaleAwareMedia } from './scripts/scale-aware-media.ts';
@@ -72,6 +73,11 @@ export default defineConfig({
     name: 'term-timeline-runtime',
     resolveId(id) { if (id === 'virtual:term-timeline') return '\0term-timeline'; },
     load(id) { if (id === '\0term-timeline') return `export default ${JSON.stringify(compileTermTimeline())}`; },
+  }, {
+    // other spellings a party is found by in search boxes (data/meta/parties.json searchNames; src/app/nameSearch.ts)
+    name: 'party-search-names',
+    resolveId(id) { if (id === 'virtual:party-search-names') return '\0party-search-names'; },
+    load(id) { if (id === '\0party-search-names') return `export default ${JSON.stringify(compileSearchNames())}`; },
   }, {
     name: 'election-totals',
     resolveId(id) { if (id === 'virtual:election-totals') return '\0election-totals'; },

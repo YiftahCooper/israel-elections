@@ -34,6 +34,7 @@ import { partyLabel as partyName } from '../../families/registry.ts';
 import { narrowerThan } from '../textScale.ts';
 import { CompareNote, useCrossComparison } from '../components/PartyHistory.tsx';
 import type { Comparison } from '../../history/compare.ts';
+import { listSearchNames, matchesName } from '../nameSearch.ts';
 import './compare.css';
 
 type Dir = 'toRight' | 'toLeft';
@@ -119,7 +120,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
   const hasSeats = (row: MatchRow) => { const { l, r } = view(row); const inGroup = row.group && order.some((x) => x.group === row.group && ((cellsOf(left, x.left)?.seats ?? 0) > 0 || (cellsOf(right, x.right)?.seats ?? 0) > 0)); const notable = !zeroPick && seatlessLists === 'over' && [l, r].some((c) => c && c.total > 0 && c.votes * 200 >= c.total);
     return (l?.seats ?? 0) > 0 || (r?.seats ?? 0) > 0 || !!inGroup || notable || row.right.some((id) => listMarks(right, id).length) || row.left.some((id) => listMarks(left, id).length); };
   const matchesQuery = (row: MatchRow) => !query.trim() || [...row.left.map((id) => left.sc.lists.find((l) => l.id === id)), ...row.right.map((id) => right.sc.lists.find((l) => l.id === id))]
-    .some((l) => l && `${l.nameHe} ${l.shortHe} ${l.shortEn ?? ''}`.toLowerCase().includes(query.trim().toLowerCase()));
+    .some((l) => l && matchesName(query, listSearchNames(l)));
   // every filter obeys "Lists with no seats" as All does, so a part is never counted larger than the whole (V1 review)
   const counts = Object.fromEntries((['all', 'different', 'edited', 'unmatched'] as Filter[]).map((f) => [f, order.filter((r) => qualifies(r, f) && (zero || hasSeats(r))).length])) as Record<Filter, number>;
   const visible = order.filter((row) => (qualifies(row, filter) || kept.has(row.key)) && (zero || hasSeats(row)) && matchesQuery(row));

@@ -5,6 +5,7 @@ import type { ReactNode } from 'react';
 import type { PartyDef } from '../../data/schema.ts';
 import type { SimList } from '../../model/scenario.ts';
 import { listLabel } from '../derive.ts';
+import { listSearchNames, partySearchNames } from '../nameSearch.ts';
 import type { Lang } from '../i18n.ts';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import type { Choice } from './ChoicePicker.tsx';
@@ -34,12 +35,12 @@ export function PartyMark({ party, list }: { party: PartyDef; list?: MarkList })
 
 /** A picker option for a list, with its mark. */
 export function listChoice(l: MarkList, lang: Lang, extra: Partial<Omit<Choice, 'label' | 'mark'>> = {}): Choice {
-  return { value: l.id, label: listLabel(l, lang), mark: <ListMark list={l} lang={lang} />, ...extra };
+  return { value: l.id, label: listLabel(l, lang), mark: <ListMark list={l} lang={lang} />, searchNames: listSearchNames(l), ...extra };
 }
 
 /** A picker option for a party of a joint list, with its mark. */
 export function partyChoice(p: PartyDef, lang: Lang, list?: MarkList, extra: Partial<Omit<Choice, 'label' | 'mark'>> = {}): Choice {
-  return { value: p.id, label: lang === 'he' ? p.nameHe : p.nameEn, mark: <PartyMark party={p} list={list} />, ...extra };
+  return { value: p.id, label: lang === 'he' ? p.nameHe : p.nameEn, mark: <PartyMark party={p} list={list} />, searchNames: [p.nameHe, p.nameEn, ...partySearchNames(p.id)], ...extra };
 }
 
 /** A list's name with its mark, inline (rows, chips, legends). */

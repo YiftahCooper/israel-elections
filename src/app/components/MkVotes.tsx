@@ -11,6 +11,7 @@ import { useL, useLang } from '../i18n.ts';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { Info, Seg, Slip } from './ui.tsx';
 import { X } from 'lucide-react';
+import { listSearchNames, partySearchNames } from '../nameSearch.ts';
 
 type SlipProps = ComponentProps<typeof Slip>;
 export interface MkUnit { id: string; listId: string; partyId: string | null; label: string; letters: string; logo?: SlipProps['logo']; synthetic?: SlipProps['synthetic']; color: string; n: number }
@@ -69,7 +70,7 @@ export function MkVotes({ s, r, units, breaks, roleOf, onChange }: {
       </ul>}
       <div className="row coal-apart-add">
         <ChoicePicker className="coal-apart-unit" label={L('List of the MK', 'רשימת חבר הכנסת')} value={unit} placeholder={L('Add an MK…', 'הוספת חבר כנסת…')}
-          options={units.map((u) => ({ value: u.id, label: u.label, mark: <Slip letters={u.letters} name={u.label} logo={u.logo} synthetic={u.synthetic} color={u.color} size="sm" />, detail: words[roleVote(roleOf(u.id))] }))}
+          options={units.map((u) => ({ value: u.id, label: u.label, searchNames: u.partyId ? partySearchNames(u.partyId) : listSearchNames(s.lists.find((l) => l.id === u.listId) ?? {}), mark: <Slip letters={u.letters} name={u.label} logo={u.logo} synthetic={u.synthetic} color={u.color} size="sm" />, detail: words[roleVote(roleOf(u.id))] }))}
           onChange={(id) => { setUnit(id); setMk(ANY); setVote(null); }} />
         {chosen && <>
           <ChoicePicker className="coal-apart-mk" label={L('Which MK', 'איזה חבר כנסת')} value={mk}
