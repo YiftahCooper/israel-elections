@@ -119,3 +119,25 @@ for (const lang of LANGS) test.describe(`A5 · ${lang}`, () => {
     await expect(page.locator('.fig .more:popover-open')).toHaveAccessibleName(name);
   });
 });
+
+// A6
+for (const lang of LANGS) test.describe(`A6 · ${lang}`, () => {
+  // A6: an (i) opened on mere focus, so every keyboard pass put its Learn more link in the Tab order
+  test(`an (i) opens on request only · ${lang}`, async ({ page }) => {
+    await start(page, lang);
+    const info = page.getByRole('region', { name: T(lang, 'Seats by bloc', 'מנדטים לפי גוש') }).locator('h2 .info > button');
+    await info.focus();
+    await expect(info).toBeFocused();
+    await expect(info).toHaveAttribute('aria-expanded', 'false');
+    await expect(page.getByRole('tooltip')).toHaveCount(0);
+    // Tab moves on past it: its Learn more link is not in the way unless the popup was opened
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('link', { name: new RegExp(T(lang, 'Learn more', 'למידע נוסף')) })).toHaveCount(0);
+    // Enter and Space open it; a second press closes it
+    await info.focus();
+    await page.keyboard.press('Enter');
+    await expect(page.getByRole('tooltip')).toBeVisible();
+    await page.keyboard.press('Space');
+    await expect(page.getByRole('tooltip')).toHaveCount(0);
+  });
+});

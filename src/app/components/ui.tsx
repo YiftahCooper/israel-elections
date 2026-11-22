@@ -9,12 +9,14 @@ import { parseIntInput } from '../format.ts';
 import { useSetting } from '../store.ts';
 import { logoLicence } from '../logoCredit.ts';
 
-/** Accessible info popover: opens on hover (after the shared hover delay), focus or click; Escape closes. */
+/** Accessible info popover: opens on hover (after the shared hover delay) or a press (click, tap, Enter, Space); Escape
+ *  closes. Not on focus alone: a keyboard pass through a heading would open it and put its Learn more link in the Tab
+ *  order (review V4 A6). */
 export function Info({ title, children, term, label }: { title?: string; children?: ReactNode; term?: string; /** the button's name when the title alone would repeat a neighbouring control's */ label?: string }) {
-  // 'hover' and 'focus' are transient; 'pinned' (a click or tap) stays open until Escape, an outside
-  // press or a second click. A click used to toggle a popover that hover or focus had just opened,
+  // 'hover' is transient; 'pinned' (a click, tap, Enter or Space) stays open until Escape, an outside
+  // press or a second press. A click used to toggle a popover that hover or focus had just opened,
   // so it closed at once, and touch users could never open it.
-  const [open, setOpen] = useState<false | 'hover' | 'focus' | 'pinned'>(false);
+  const [open, setOpen] = useState<false | 'hover' | 'pinned'>(false);
   // one hover timing for every popup (hoverIntent.ts): opens after a short rest, closes after a short grace
   const bridge = useHoverIntent(() => setOpen(o => o === 'hover' ? false : o), !!open);
   const id = useId();
@@ -27,7 +29,7 @@ export function Info({ title, children, term, label }: { title?: string; childre
     if (!open) return;
     // Escape closes this popover only, not the panel or dialog around it
     // (one opened by a click or tap also stops the browser's own Escape, which would close the popover or dialog
-    // around it; one opened by focus alone lets it through, so Escape still closes a dialog in one press)
+    // around it; one opened by hover alone lets it through, so Escape still closes a dialog in one press)
     // Escape pressed on something inside the popup (its Learn more link) goes back to the (i), not to the top of the page
     // (review V4 A4)
     const onKey = (e: KeyboardEvent) => {
@@ -50,7 +52,6 @@ export function Info({ title, children, term, label }: { title?: string; childre
       onPointerLeave={(e) => { if (e.pointerType === 'mouse') bridge.leave(); }}>
       <button type="button" aria-label={label ?? (heading || 'info')} aria-expanded={!!open} aria-describedby={open ? id : undefined}
         onClick={() => setOpen((o) => (o === 'pinned' ? false : 'pinned'))}
-        onFocus={(e) => { if (e.currentTarget.matches(':focus-visible')) setOpen((o) => o || 'focus'); }}
         onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen((o) => (o === 'hover' ? o : false)); }}>i</button>
       {open && (
         <Floating onPointerEnter={bridge.enterBox} onPointerLeave={bridge.leaveBox} className="pop" id={id} anchor={() => ref.current?.querySelector('button')?.getBoundingClientRect()}>
