@@ -87,3 +87,20 @@ for (const lang of LANGS) test.describe(`A3 · ${lang}`, () => {
     await expect(compare).toBeFocused();
   });
 });
+
+// A4
+for (const lang of LANGS) test.describe(`A4 · ${lang}`, () => {
+  // A4: Escape inside the Blocs (i) popup lost focus to the page
+  test(`Escape from inside an (i) popup returns to its (i) · ${lang}`, async ({ page }) => {
+    await start(page, lang);
+    const info = page.getByRole('region', { name: T(lang, 'Seats by bloc', 'מנדטים לפי גוש') }).locator('h2 .info > button');
+    await info.focus();
+    await page.keyboard.press('Enter');
+    await expect(info).toHaveAttribute('aria-expanded', 'true');
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('tooltip').getByRole('link')).toBeFocused();
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('tooltip')).toHaveCount(0);
+    await expect(info).toBeFocused();
+  });
+});

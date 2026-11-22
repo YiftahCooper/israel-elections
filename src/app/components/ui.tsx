@@ -28,7 +28,15 @@ export function Info({ title, children, term, label }: { title?: string; childre
     // Escape closes this popover only, not the panel or dialog around it
     // (one opened by a click or tap also stops the browser's own Escape, which would close the popover or dialog
     // around it; one opened by focus alone lets it through, so Escape still closes a dialog in one press)
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopImmediatePropagation(); if (open === 'pinned') e.preventDefault(); setOpen(false); } };
+    // Escape pressed on something inside the popup (its Learn more link) goes back to the (i), not to the top of the page
+    // (review V4 A4)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      e.stopImmediatePropagation(); if (open === 'pinned') e.preventDefault();
+      const button = ref.current?.querySelector<HTMLButtonElement>(':scope > button');
+      if (button && document.activeElement !== button && ref.current?.contains(document.activeElement)) button.focus();
+      setOpen(false);
+    };
     const onDoc = (e: PointerEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
     document.addEventListener('keydown', onKey, true); document.addEventListener('pointerdown', onDoc);
     return () => { document.removeEventListener('keydown', onKey, true); document.removeEventListener('pointerdown', onDoc); };
