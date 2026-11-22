@@ -12,7 +12,7 @@ const start = async (page: Page, level = 'expert', lang = 'en') => {
   await page.goto('/');
 };
 const openRules = (page: Page) => page.getByRole('tab', { name: 'Rules', exact: true }).click();
-const election = (page: Page, id: string) => choose(page.getByRole('button', { name: 'Election', exact: true }), id);
+const election = (page: Page, id: string) => choose(page.getByRole('button', { name: /^Election(: |$)/ }), id);
 
 test('settings sit in their own card, apart from the scenario rules', async ({ page }) => {
   await start(page); await openRules(page);
@@ -24,7 +24,7 @@ test('settings sit in their own card, apart from the scenario rules', async ({ p
   await expect(settings.getByRole('group', { name: 'Joint-list seats', exact: true })).toBeVisible();
   // rules are not in the settings card, settings are not among the rules
   await expect(settings.getByRole('textbox', { name: 'Threshold %' })).toHaveCount(0);
-  await expect(page.locator('.rules-fields').getByRole('button', { name: 'Votes come from' })).toHaveCount(0);
+  await expect(page.locator('.rules-fields').getByRole('button', { name: /^Votes come from(: |$)/ })).toHaveCount(0);
 });
 
 test('a "For this list" answer is listed in Settings and Ask again makes the edit ask again', async ({ page }) => {
@@ -56,7 +56,7 @@ test('each era shows its own law: names, era rules and threshold timeline', asyn
   const law = page.locator('.rules-law');
   await expect(law).toContainText('2014 · Bader–Ofer · 3.25% threshold');
   const eras = page.getByRole('group', { name: 'Thresholds by era' });
-  await expect(eras.getByRole('button')).toHaveText(['0%1949', '1%1951–1988', '1.5%1992–2003', '2%2006–2013', '3.25%2015–2026']);
+  await expect(eras.getByRole('button')).toHaveText(['0% 1949', '1% 1951–1988', '1.5% 1992–2003', '2% 2006–2013', '3.25% 2015–2026']);
   await expect(eras.getByRole('button', { name: '3.25% (2015–2026)' })).toHaveAttribute('aria-pressed', 'true');
   // a locked field looks locked
   const threshold = page.getByRole('textbox', { name: 'Threshold %', exact: true });

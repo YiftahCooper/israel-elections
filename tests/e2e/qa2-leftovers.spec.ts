@@ -14,11 +14,11 @@ test.beforeEach(async ({ page }) => {
 
 test('X1 analysis choices and settings use the shared picker', async ({ page }) => {
   await page.locator('#tab-sens').click();
-  await choose(page.getByRole('button', { name: 'List', exact: true }), { label: 'Likud' });
-  await expect(page.getByRole('button', { name: 'Bloc', exact: true })).toBeVisible();
+  await choose(page.getByRole('button', { name: /^List(: |$)/ }), { label: 'Likud' });
+  await expect(page.getByRole('button', { name: /^Bloc(: |$)/ })).toBeVisible();
   await page.locator('#tab-families').click();
-  await choose(page.getByRole('button', { name: 'Votes come from', exact: true }), 'new');
-  await expect(page.getByRole('button', { name: 'Votes come from', exact: true })).toContainText('People who stayed home');
+  await choose(page.getByRole('button', { name: /^Votes come from(: |$)/ }), 'new');
+  await expect(page.getByRole('button', { name: /^Votes come from(: |$)/ })).toContainText('People who stayed home');
   await page.locator('#tab-rules').click();
   await page.locator('.band').getByRole('button', { name: 'Settings', exact: true }).click();
   // Settings answers sit in segmented buttons (2–4 options), not the picker
@@ -33,7 +33,7 @@ for (const width of [1500, 1024, 390]) test(`notices and experimental rules leav
   await waitForStill(page, ['.band', '.toolbar', '.board']);
   const before = (await page.locator('.board').boundingBox())!.y;
   await openScenarioMenu(page); // phones: the switcher is in the scenario panel
-  await choose(page.getByRole('button', { name: 'Switch scenario' }), 'qa2-old');
+  await choose(page.getByRole('button', { name: /^Switch scenario(: |$)/ }), 'qa2-old');
   await expect(page.locator('.banner').filter({ hasText: 'rebuilt' })).toContainText('rebuilt');
   await page.locator('#tab-rules').click();
   await page.getByRole('button', { name: 'Experimental', exact: true }).click();

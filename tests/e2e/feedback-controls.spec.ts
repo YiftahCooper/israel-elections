@@ -1,5 +1,5 @@
 import { expect, test } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (const width of [1500, 1024, 390]) {
   test(`controls copy and ranges ${lang} ${theme} ${width}`, async ({ page }) => {
@@ -9,7 +9,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.addInitScript(() => localStorage.setItem('israel-elections:preferences', '{}'));
     await page.goto('/');
     for (const election of ['k26', 'k25', 'k12', 'k1']) {
-      await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
+      await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), election);
       await page.locator('.lb-row').first().click();
       const panel = page.locator('.side-panel');
       const steps = panel.getByRole('group', { name: lang === 'en' ? 'Votes step size' : 'קולות גודל צעד', exact: true });

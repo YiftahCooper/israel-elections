@@ -1,5 +1,5 @@
 import { expect, test } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (const width of [1500, 1024, 390]) {
   test(`coalition inspection and scenario flow ${lang} ${theme} ${width}`, async ({ page }) => {
     await page.setViewportSize({ width, height: 1000 });
@@ -8,7 +8,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     const api: string[] = []; page.on('request', r => { if (r.url().includes('api.github.com')) api.push(r.url()); });
     await page.goto('/');
     for (const election of ['k26', 'k25', 'k14', 'k12', 'k1']) {
-      await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+      await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
       await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
       await expect(page.locator('.coal-now')).toHaveCount(0);
       const options = page.locator('.coal-list > li:not(.coal-detail)');

@@ -1,11 +1,11 @@
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 // Release-candidate audit of the lists column and a list's editing controls.
 async function start(page: Page, { lang = 'en', level = 'expert', election = 'k25' } = {}) {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme: 'light', level, hintDismissed: true });
   await page.goto('/');
   await expect(page.locator('.lb-row').first()).toBeVisible();
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
 const open = (page: Page, name: string) => page.getByRole('region', { name: /^(Lists|הרשימות)$/ }).getByRole('button', { name, exact: true }).click();
 

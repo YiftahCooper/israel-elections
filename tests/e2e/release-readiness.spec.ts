@@ -1,3 +1,4 @@
+import { pickerName } from './choices.ts';
 import { expect, test } from './fixtures';
 import { openSideBySide } from './sideBySide.ts';
 
@@ -28,7 +29,7 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) {
 test('comparison seat counts have readable contrast', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert' })));
   await page.goto('/'); await openSideBySide(page);
-  await expect(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'prev'); // compares with the previous election, 2022
+  await expect(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ })).toHaveAttribute('data-value', 'prev'); // compares with the previous election, 2022
   const number = page.locator('.cmp-table .cmp-seats b').first();
   await expect(number).toBeVisible();
   const contrast = await number.evaluate(el => {
@@ -51,7 +52,7 @@ test('locality map survives navigation during a zoom animation', async ({ page }
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'expert' })));
   await page.goto('/');
   const { choose } = await import('./choices.ts');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.locator('#tab-loc').click();
   await page.getByRole('searchbox', { name: 'Find a locality' }).fill('tel aviv');
   await page.getByRole('button', { name: /Tel Aviv.*5000/i }).click();
@@ -65,7 +66,7 @@ for (const lang of ['he', 'en']) test(`long official list names fit the merge pi
   await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert' })), lang);
   await page.goto('/');
   const { choose } = await import('./choices.ts');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k22');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k22');
   await page.locator('#tab-structure').click();
   await expect(page.locator('.structure .chip.coal').first()).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);

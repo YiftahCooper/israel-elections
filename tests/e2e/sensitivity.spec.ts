@@ -11,7 +11,7 @@ async function start(page: Page, lang: 'en' | 'he' = 'en', width = 1500) {
   await page.locator('#tab-sens').click();
 }
 const panel = (page: Page) => page.locator('#analysis-panel');
-const election = (page: Page, id: string) => choose(page.getByRole('button', { name: 'Election', exact: true }), id);
+const election = (page: Page, id: string) => choose(page.getByRole('button', { name: /^Election(: |$)/ }), id);
 const blocRow = (page: Page) => panel(page).locator('.row > .small > bdi[dir="ltr"]');
 
 test('opening the page shows all three answers with defaults, without pressing anything', async ({ page }) => {
@@ -47,7 +47,7 @@ test('switching election on the page gives that election’s lists and blocs', a
   await start(page);
   await expect(blocRow(page)).toHaveText('53 / 61');
   await election(page, 'k12');
-  await expect(panel(page).getByRole('button', { name: 'List', exact: true })).toHaveAttribute('data-value', '12-מחל');
+  await expect(panel(page).getByRole('button', { name: /^List(: |$)/ })).toHaveAttribute('data-value', '12-מחל');
   await expect(panel(page).getByRole('textbox', { name: 'From', exact: true })).toHaveValue('20,549');
   // k12 audit: the opening coalition is 95 (Ravitz's plenum statement), not 97.
   await expect(blocRow(page)).toHaveText('95 / 61');

@@ -1,6 +1,6 @@
 import{deltaE2000}from'../../src/data/colour.ts';
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 // Round-2 audit of the list side panel and the shared controls it uses (5 Nov 2026).
 
 async function start(page: Page, { lang = 'en', theme = 'light', level = 'expert', election = 'k26', width = 1500 } = {}) {
@@ -8,7 +8,7 @@ async function start(page: Page, { lang = 'en', theme = 'light', level = 'expert
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme, level, hintDismissed: true });
   await page.goto('/');
   await expect(page.locator('.lb-row').first()).toBeVisible();
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
 const open = (page: Page, name: string) => page.getByRole('region', { name: /^(Lists|הרשימות)$/ }).getByRole('button', { name, exact: true }).click();
 const hebrew = /[֐-׿]/;
@@ -42,7 +42,7 @@ test('English link labels and sponsor lines carry no Hebrew-only or letter-by-le
   await open(page, 'Religious Zionism');
   await expect(panel.getByText(/^Submitted by:/)).toContainText('Otzma Yehudit');
   // research links name their publisher in English
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k12');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k12');
   await page.locator('.lb-row').first().click();
   const links = panel.locator('.party-links a');
   for (const t of await links.allTextContents()) expect(t).not.toMatch(hebrew);
@@ -105,14 +105,14 @@ test('joint-list parties without a colour of their own are told apart on candida
 
 test('a short picker has no search box; choosing the option in force is not an edit', async ({ page }) => {
   await start(page);
-  const colourBy = page.locator('.chamber-tools').getByRole('button', { name: 'Colour seats by', exact: true });
+  const colourBy = page.locator('.chamber-tools').getByRole('button', { name: /^Colour seats by(: |$)/ });
   await colourBy.click();
   const dialog = page.locator(`[id="${await colourBy.getAttribute('aria-controls')}"]`);
   await expect(dialog.getByRole('searchbox')).toHaveCount(0);
   await expect(dialog.locator('.choice-option[aria-pressed="true"]')).toBeFocused();
   await page.keyboard.press('Escape');
   // the election picker (26 options) keeps its search
-  const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
+  const grouping = page.getByRole('button', { name: /^Grouping(: |$)/ });
   const current = await grouping.getAttribute('data-value');
   await choose(grouping, current!);
   await expect(page.getByRole('button', { name: /^Undo/ }).first()).toBeDisabled();

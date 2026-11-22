@@ -4,6 +4,9 @@ import { flushSync } from 'react-dom';
 import { useL } from '../i18n.ts';
 import { useSetting } from '../store.ts';
 
+/** A choice button's name: its label, then the choice it shows (the label alone when that is all it shows). */
+export const choiceName = (label: string, shown: string) => shown && shown !== label ? `${label}: ${shown}` : label;
+
 /** mark: the logo or colour dot of the list or party the option names (ListMark.tsx), shown before its name. */
 export interface Choice { value: string; label: string; mark?: ReactNode; detail?: ReactNode; title?: string; group?: string; preview?: ReactNode; disabled?: boolean }
 /** Native dialog supplies modal focus containment and Escape; buttons retain native activation.
@@ -26,8 +29,11 @@ export function ChoicePicker({ label, value, options, onChange, className = '', 
   const searchable = options.length > 7;
   const focusStart = () => (searchable ? dialog.current?.querySelector<HTMLElement>('input[type="search"]')
     : dialog.current?.querySelector<HTMLElement>('.choice-option[aria-pressed="true"]:not(:disabled)') ?? dialog.current?.querySelector<HTMLElement>('.choice-option:not(:disabled)'))?.focus();
+  const current = options.find(o => o.value === value), shown = current?.label ?? placeholder ?? label;
   return <span className={`choice-picker ${className}`}>
-    <button ref={trigger} type="button" className="btn choice-trigger" aria-label={label} aria-description={options.find(o => o.value === value)?.title ?? description} title={options.find(o => o.value === value)?.title} data-value={value} aria-haspopup="dialog" aria-controls={dialogId} onClick={() => { flushSync(() => { setQuery(''); setOpen(true); }); dialog.current?.showModal(); focusStart(); }}>{options.find(o => o.value === value)?.preview}{options.find(o => o.value === value)?.mark}<span className="choice-current">{options.find(o => o.value === value)?.label ?? placeholder ?? label}</span><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
+    {/* named by its label and the choice it shows ("Election: 2026 · 26th Knesset"), so a screen reader says what is
+        chosen and a speech user can say the words on it (review V4 A2) */}
+    <button ref={trigger} type="button" className="btn choice-trigger" aria-label={choiceName(label, shown)} aria-description={current?.title ?? description} title={current?.title} data-value={value} aria-haspopup="dialog" aria-controls={dialogId} onClick={() => { flushSync(() => { setQuery(''); setOpen(true); }); dialog.current?.showModal(); focusStart(); }}>{current?.preview}{current?.mark}<span className="choice-current">{shown}</span><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
     <dialog id={dialogId} ref={dialog} className="choice-dialog" aria-label={label} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }} onCancel={e => { e.preventDefault(); e.stopPropagation(); close(); }} onClick={e => { if (e.target === e.currentTarget) close(); }} onClose={() => setOpen(false)}>
       <div className="choice-head"><b>{label}</b><button className="btn" aria-label={L('Close', 'סגירה')} onClick={close}>×</button></div>
       {searchable && <input autoFocus type="search" value={query} aria-label={L('Search choices', 'חיפוש אפשרויות')} placeholder={L('Search…', 'חיפוש…')} onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === 'ArrowDown') { e.preventDefault(); dialog.current?.querySelector<HTMLButtonElement>('.choice-option:not(:disabled)')?.focus(); } }} />}

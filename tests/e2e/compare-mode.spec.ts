@@ -1,7 +1,7 @@
 // Comparing as a mode (Design A): the strip, what it compares with, Swap and Stop comparing; the Lists panel, the seat
 // chart switch and the Copy votes box while comparing; Side by side opened from the strip.
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openTool } from './openTool.ts';
 import { waitForStill } from './settle.ts';
 
@@ -18,7 +18,7 @@ export async function start(page: Page, lang: 'en' | 'he' = 'en', level = 'stand
   await expect(page.locator('.lb-row').first()).toBeVisible();
 }
 const strip = (page: Page) => page.locator('.cmpm-strip');
-const picker = (page: Page) => strip(page).getByRole('button', { name: 'Compare with', exact: true });
+const picker = (page: Page) => strip(page).getByRole('button', { name: /^Compare with(: |$)/ });
 const turnOn = (page: Page) => page.locator('.compare-on').click();
 
 test('comparing starts on the previous election, follows the election opened, and stops', async ({ page }) => {
@@ -32,7 +32,7 @@ test('comparing starts on the previous election, follows the election opened, an
   await expect(strip(page)).toBeVisible();
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();
   // the previous election follows the election you open
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await expect(picker(page)).toContainText('2021 · 24th Knesset');
   await strip(page).getByRole('button', { name: 'Stop comparing' }).click();
   await expect(strip(page)).toHaveCount(0);
@@ -44,9 +44,9 @@ test('a chosen election stays; the first Knesset has nothing earlier', async ({ 
   await turnOn(page);
   await choose(picker(page), 'election:k1');
   await expect(picker(page)).toContainText('1949');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await expect(picker(page)).toContainText('1949');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k1');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k1');
   await expect(strip(page)).toContainText('Nothing to compare');
   await strip(page).getByRole('button', { name: 'Stop comparing' }).click();
   await turnOn(page);
@@ -68,13 +68,13 @@ test('Swap makes 2022 your work and keeps 2026 as an unsaved draft; Swap again b
   await expect(picker(page)).toHaveAttribute('data-value', 'official');
   await choose(picker(page), 'prev');
   await strip(page).getByRole('button', { name: 'Swap', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Election', exact: true })).toContainText('2022');
+  await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toContainText('2022');
   await expect(page.locator('.lb-row').first()).toContainText('Likud');
   await expect(page.locator('.lb-row').first()).toContainText('32');
   await expect(picker(page)).toHaveAttribute('data-value', 'swapped');
   await expect(picker(page)).toContainText('2026');
   await strip(page).getByRole('button', { name: 'Swap', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Election', exact: true })).toContainText('2026');
+  await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toContainText('2026');
   await expect(page.locator('.lb-row').first()).toContainText('29');
   await expect(picker(page)).toContainText('2022');
   await page.getByRole('button', { name: /^Undo:/ }).click();
@@ -254,7 +254,7 @@ for (const [lang, width] of [['en', 1024], ['he', 390]] as const) test(`a long r
     });
     await page.reload();
     await turnOn(page);
-    await choose(strip(page).getByRole('button', { name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact: true }), 'saved:long');
+    await choose(strip(page).getByRole('button', { name: pickerName(lang === 'en' ? 'Compare with' : 'השוואה עם') }), 'saved:long');
     await openTool(page, 'turnout');
     const buttons = page.locator('.tn-facts .cmpm-copy-other');
     await expect(buttons.first()).toBeVisible();

@@ -3,7 +3,7 @@ import {choose} from './choices.ts';
 async function start(page:Page,election='k25'){
  await page.setViewportSize({width:1440,height:900});
  await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
- await page.goto('/');await choose(page.getByRole('button',{name:'Election',exact:true}),election);
+ await page.goto('/');await choose(page.getByRole('button', { name: /^Election(: |$)/ }),election);
 }
 const part=(page:Page)=>page.locator('.edit-marker[data-marker-kind=part]');
 const items=(page:Page)=>page.locator('.edit-marker[data-marker-kind=item]');

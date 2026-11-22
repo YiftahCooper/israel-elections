@@ -1,4 +1,4 @@
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { expect, test, type Page } from './fixtures';
 
 // The Sources screen, the band's About and the footer: provenance complete and readable, secondary
@@ -6,7 +6,7 @@ import { expect, test, type Page } from './fixtures';
 async function open(page: Page, lang: 'en' | 'he', election: string) {
   await page.addInitScript(([lang]) => { if (!sessionStorage.getItem('sources-seeded')) { localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, hintDismissed: true })); sessionStorage.setItem('sources-seeded', '1'); } }, [lang]);
   await page.goto('/');
-  const picker = page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true });
+  const picker = page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') });
   await choose(picker, election);
 }
 const sourcesTab = (page: Page, lang: 'en' | 'he') => page.getByRole('tab', { name: lang === 'he' ? 'מקורות' : 'Sources', exact: true }).click();

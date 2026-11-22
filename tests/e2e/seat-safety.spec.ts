@@ -27,7 +27,7 @@ test('switching election while the tab is open shows the new election instead of
   page.on('pageerror', (e) => errors.push(e.message));
   await start(page);
   await done(page);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await expect(panel(page).getByRole('table', { name: 'Seat safety' }).getByRole('button', { name: 'Yesh Atid', exact: true })).toBeVisible();
   await expect(panel(page).getByText('Something went wrong')).toHaveCount(0);
   expect(errors).toEqual([]);

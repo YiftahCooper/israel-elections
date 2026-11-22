@@ -21,17 +21,17 @@ test('hero charts, collapsed table, policy view, k26 tooltip is official',async(
 test('fork, save, hide, restore and cross-election membership persists',async({page})=>{
  await start(page);await edit(page);await editor(page).getByRole('button',{name:'Save as my version',exact:true}).click();await expect(page.locator('.family-profile')).toContainText('Personal copy');
  const input=editor(page).getByRole('textbox',{name:'Name',exact:true});await input.fill('My family');await input.press('Tab');await expect(page.locator('.family-profile h2')).toHaveText('My family');
- await choose(editor(page).getByRole('button',{name:'Membership election',exact:true}),'k12');await expect(editor(page).getByRole('button',{name:'Membership election',exact:true})).toHaveAttribute('data-value','k12');await expect(editor(page).locator('.family-picker')).toContainText('Degel');
+ await choose(editor(page).getByRole('button', { name: /^Membership election(: |$)/ }),'k12');await expect(editor(page).getByRole('button', { name: /^Membership election(: |$)/ })).toHaveAttribute('data-value','k12');await expect(editor(page).locator('.family-picker')).toContainText('Degel');
  await editor(page).getByRole('button',{name:'Close',exact:true}).click();
  await page.getByRole('button',{name:'Manage',exact:true}).click();await page.getByRole('checkbox',{name:'My family',exact:true}).uncheck();await expect(page.locator('.family-chip')).toHaveCount(9);
  await page.getByRole('checkbox',{name:'My family',exact:true}).check();await page.getByRole('dialog').getByRole('button',{name:'Close',exact:true}).click();await page.getByRole('button',{name:'My family',exact:true}).click();
  await page.reload();await page.getByRole('tab',{name:'Party families',exact:true}).click();await page.getByRole('button',{name:'My family',exact:true}).click();await expect(page.locator('.family-plots svg')).toHaveCount(4);
 });
 test('1988 grouping shows Overview bracket; 2022 +10% previews seats and undoes',async({page})=>{
- await start(page);await choose(page.getByRole('button',{name:'Election',exact:true}),'k12');
+ await start(page);await choose(page.getByRole('button', { name: /^Election(: |$)/ }),'k12');
  await page.getByRole('button',{name:'Apply grouping & open Overview',exact:true}).click();await expect(page.locator('.bloc-panel')).toContainText('Haredi');await expect(page.locator('.bp-card')).toHaveCount(2);await expect(page.locator('.session')).toContainText('1 change from the official result');await expect(page.locator('.session')).toContainText('Votes and seats unchanged');await expect(page.locator('.bloc-panel .bp-seats b')).toHaveText(['13','107']);await expect(page.locator('.session')).not.toContainText('majority');await expect(page.getByRole('button',{name:'Degel HaTorah',exact:true}).locator('.family-row-label')).toHaveText('Haredi');await expect(page.getByRole('button',{name:'Degel HaTorah',exact:true})).toHaveAccessibleDescription(/Haredi/);await expect(page.locator('.family-row-label').first()).toContainText('Haredi');
  await page.screenshot({path:'.backup-scratch/families/overview-grouping-en-light-desktop.png',fullPage:true});await page.getByRole('button',{name:'Degel HaTorah',exact:true}).scrollIntoViewIfNeeded();await page.screenshot({path:'.backup-scratch/families/overview-degel-1988-en-light-desktop.png'});
- await choose(page.getByRole('button',{name:'Election',exact:true}),'k25');await page.getByRole('tab',{name:'Party families',exact:true}).click();await expect(page.locator('.family-consequence')).toContainText('740,474');
+ await choose(page.getByRole('button', { name: /^Election(: |$)/ }),'k25');await page.getByRole('tab',{name:'Party families',exact:true}).click();await expect(page.locator('.family-consequence')).toContainText('740,474');
  await expect(page.locator('.family-consequence .family-seat-strip')).toHaveCount(2);await page.getByRole('button',{name:'Apply vote scaling',exact:true}).click();await expect(page.locator('.family-consequence')).toContainText('814,521');
  await page.getByRole('group',{name:'Scale mode',exact:true}).getByRole('button',{name:'Target share (%)',exact:true}).click();await expect(page.getByRole('textbox',{name:'Scale value',exact:true})).toHaveValue('15.54');await page.getByRole('group',{name:'Scale mode',exact:true}).getByRole('button',{name:'Change votes (%)',exact:true}).click();
  await page.getByRole('button',{name:/^Undo:/}).click();await expect(page.locator('.family-consequence')).toContainText('740,474');
@@ -44,7 +44,7 @@ test('profile loads compact runtime without evidence or registry, suggestions on
  const requests:string[]=[];page.on('request',r=>requests.push(r.url()));await start(page);expect(requests.some(u=>/\/assets\/(haredi-|registry-|FamilyEditor-)/.test(u))).toBe(false);
  await page.getByRole('button',{name:'Definition, sources and limitations',exact:true}).click();await expect(page.getByRole('heading',{name:'Limitations',exact:true})).toBeVisible();await page.getByRole('dialog').getByRole('button',{name:'Close',exact:true}).click();
  await edit(page);await editor(page).getByText('Link historic partners',{exact:true}).click();
- const picker=editor(page).getByRole('button',{name:'Sourced suggestions',exact:true});await picker.click();const choices=page.getByRole('dialog').last();await choices.locator('.choice-option').first().click();
+ const picker=editor(page).getByRole('button', { name: /^Sourced suggestions(: |$)/ });await picker.click();const choices=page.getByRole('dialog').last();await choices.locator('.choice-option').first().click();
  await expect(editor(page).getByRole('button',{name:'Apply suggested link',exact:true})).toBeVisible();await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');
  await editor(page).getByRole('button',{name:'Apply suggested link',exact:true}).click();await expect(page.locator('.family-profile')).toContainText('Personal copy');
 });
@@ -63,7 +63,7 @@ test('opening a historical chart retains a family lens without editing the elect
 });
 test('mixed-only elections are not plotted as zero; mixed policy is a persistent view that never forks',async({page})=>{
  // 2013: Likud ran jointly with Yisrael Beiteinu (20 of 31 seats), a real partnership, so Likud lineage is mixed-only there
- await start(page);await choose(page.getByRole('button',{name:'Election',exact:true}),'k19');await page.getByRole('tab',{name:'Party families',exact:true}).click();
+ await start(page);await choose(page.getByRole('button', { name: /^Election(: |$)/ }),'k19');await page.getByRole('tab',{name:'Party families',exact:true}).click();
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await expect(page.locator('.family-plots .family-legend')).toHaveCount(1);await expect(page.locator('.family-plots .family-legend')).toContainText('Estimate by seats');
  const share=page.locator('.family-plots section').first();await share.locator('[role=button]').nth(18).focus();
@@ -240,13 +240,13 @@ test('family sources are named by who published them; the project never cites it
  expect(await pop.innerText()).not.toMatch(jargon);
 });
 test('family scale: people who stayed home leave eligible voters alone; new citizens raise them',async({page})=>{
- await start(page);const scale=page.locator('.family-scale'),pick=scale.getByRole('button',{name:'Votes come from',exact:true});
+ await start(page);const scale=page.locator('.family-scale'),pick=scale.getByRole('button', { name: /^Votes come from(: |$)/ });
  await expect(scale.getByRole('status')).toContainText('Valid total conserved exactly');
  await choose(pick,'new');await expect(pick).toHaveAttribute('data-value','new');await expect(scale.getByRole('status')).toContainText('Turnout rises; eligible voters unchanged');
  await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('Family votes: 623,349 → 685,684 · Eligible voters +62,335');
 });
 test('family scale vote source in Hebrew: new citizens',async({page})=>{
- await start(page,'he');const scale=page.locator('.family-scale'),pick=scale.getByRole('button',{name:'מקור הקולות',exact:true});
+ await start(page,'he');const scale=page.locator('.family-scale'),pick=scale.getByRole('button', { name: /^מקור הקולות(: |$)/ });
  await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('בעלי זכות הבחירה +62,335');
 });
 

@@ -3,7 +3,7 @@
 // left to right, the phone sheet, contrast, and that viewing history is never an edit.
 import { expect, test, type Page } from './fixtures';
 import { openSideBySide } from './sideBySide.ts';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { existsSync } from 'node:fs';
 
 async function start(page: Page, { lang = 'en', level = 'standard', width = 1500, values = {} }: { lang?: 'en' | 'he'; level?: string; width?: number; values?: Record<string, unknown> } = {}) {
@@ -268,7 +268,7 @@ for (const [lang, width] of [['en', 1500], ['he', 390]] as const) test(`every pa
 for (const lang of ['en', 'he'] as const) test(`a party known by another name shows it, the registered name behind the (i): ${lang}`, async ({ page }) => {
   test.skip(!existsSync('data/research/round7/history-display.json'), 'known-name research not yet in this checkout');
   await start(page, { lang });
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await listRow(page, lang === 'he' ? 'הציונות הדתית' : 'Religious Zionism').click();
   const sec = page.locator('aside .ph-sec');
   const chip = sec.getByRole('button', { name: lang === 'he' ? 'הציונות הדתית' : 'Religious Zionist Party', exact: true });

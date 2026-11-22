@@ -4,7 +4,7 @@ import { choose } from './choices.ts';
 test('sourced groupings stay official; moving a member is a change; shares preserve the view', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
   await page.goto('/');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.getByRole('button', { name: 'Edit blocs', exact: true }).click();
   const panel = page.locator('.bloc-panel');
   const picker = panel.locator('.start-from .choice-trigger');
@@ -34,12 +34,12 @@ test('sourced groupings stay official; moving a member is a change; shares prese
 test('grouping keeps official and saved checkpoints free of stars; voting adds a star', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', theme: 'light', level: 'expert', hintDismissed: true })));
   await page.goto('/');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   const switcher = page.locator('.band .scenario-switcher .choice-trigger');
   const current = page.locator('.band .scenario-switcher .choice-current');
   const changeGrouping = async (value: string) => {
     await page.getByRole('tab', { name: 'Overview', exact: true }).click();
-    await choose(page.getByRole('button', { name: 'Grouping', exact: true }), value);
+    await choose(page.getByRole('button', { name: /^Grouping(: |$)/ }), value);
   };
   await changeGrouping('pm-recommendations');
   await expect(switcher).toHaveAttribute('data-value', 'official');

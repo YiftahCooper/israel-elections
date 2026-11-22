@@ -1,7 +1,7 @@
 // Audit 12 Nov 2026, lane fx-state2: work is never lost, a failed download can always be tried again, and the analysis
 // figures say what they prove. Pictures for the review with CHK_DIR=<folder>.
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 const OUT = process.env.CHK_DIR;
 const WS = 'israel-elections:workspace:v1';
@@ -37,7 +37,7 @@ test('c-robustness-07: a scenario saved in one tab survives an action in a secon
   await expect(b.locator('#analysis-panel figure').first()).toBeVisible();
   await expect.poll(() => savedNames(b)).toEqual(['From tab A']);
   // and B shows it among its scenarios
-  await b.getByRole('button', { name: 'Switch scenario', exact: true }).click();
+  await b.getByRole('button', { name: /^Switch scenario(: |$)/ }).click();
   await expect(b.getByRole('dialog').last().getByRole('button', { name: 'From tab A', exact: true })).toBeVisible();
   await a.reload();
   await expect.poll(() => savedNames(a)).toEqual(['From tab A']);
@@ -153,7 +153,7 @@ for (const lang of ['en', 'he'] as const) test(`c-robustness-05: an error no pan
 for (const lang of ['en', 'he'] as const) test(`c-analysis-code-06: a typed seat count found by sampling says so where it is applied (${lang})`, async ({ page }) => {
   await seed(page, lang);
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), 'k25');
   await page.getByRole('region', { name: lang === 'en' ? 'Lists' : 'הרשימות', exact: true }).getByRole('button', { name: lang === 'en' ? 'Likud' : 'הליכוד', exact: true }).click();
   const seats = page.locator('.side-panel .seat-target').getByRole('textbox', { name: lang === 'en' ? 'Seats' : 'מנדטים', exact: true });
   await seats.fill('40'); await seats.press('Enter');
@@ -181,7 +181,7 @@ for (const lang of ['en', 'he'] as const) test(`c-screens-compare-03: back to th
 for (const lang of ['en', 'he'] as const) test(`c-analysis-code-03: under the 1977 cap the list's details say why another seat is not possible (${lang})`, async ({ page }) => {
   await seed(page, lang);
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k9');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), 'k9');
   await page.locator('#tab-security').click();
   const row = page.locator('.sec-row', { hasText: lang === 'en' ? 'Flatto-Sharon' : 'פלאטו־שרון' }).first();
   await expect(row.locator('.sec-r')).toContainText('—', { timeout: 30_000 });

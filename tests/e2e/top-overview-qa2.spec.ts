@@ -14,7 +14,7 @@ for (const width of [390, 1024, 1500]) test(`scenario and header slots stay usab
   await page.setViewportSize({ width, height: 1000 });
   const heights: number[] = [];
   for (const id of ['k26', 'k25', 'k12', 'k1']) {
-    await choose(page.getByRole('button', { name: 'Election', exact: true }), id);
+    await choose(page.getByRole('button', { name: /^Election(: |$)/ }), id);
     heights.push((await page.locator('.band').boundingBox())!.height);
     // phones (owner, 9 Nov 2026): a one-row bar whose status label opens the scenario (16 Nov: its own panel; the
     // level is in the three-lines panel)
@@ -85,9 +85,9 @@ test('Hebrew phone values, names, grouping and shared name wrapping stay readabl
   const sum = page.locator('.fig .v bdi').last();
   await expect(sum).toHaveAttribute('dir', 'ltr');
   await expect(page.locator('.session')).toHaveCSS('height', '50px');
-  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k12');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k12');
   expect(await page.locator('.board-choices .choice-current').evaluate(e => e.scrollWidth <= e.clientWidth + 1)).toBeTruthy();
-  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k26');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k26');
   const seat = page.locator('circle[data-seat]').filter({ hasText: 'הליכוד' }).first();
   await seat.hover();
   await expect(page.locator('.chamber .tip')).toContainText('בנימין נתניהו');
@@ -137,7 +137,7 @@ for (const width of [390, 1024, 1500]) test(`Hebrew header stays stable across e
   await barLanguage(page, 'he');
   const heights: number[] = [];
   for (const id of ['k26', 'k25', 'k12', 'k1']) {
-    await choose(page.getByRole('button', { name: 'בחירות', exact: true }), id);
+    await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), id);
     heights.push((await page.locator('.band').boundingBox())!.height);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBeTruthy();
   }

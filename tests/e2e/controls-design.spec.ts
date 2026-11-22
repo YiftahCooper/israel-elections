@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page.locator('.lb-row').first()).toBeVisible();
 });
 test('one election timeline, official seat previews and an in-place Open', async ({ page }) => {
-  await page.getByRole('button', { name: 'Election', exact: true }).click();
+  await page.getByRole('button', { name: /^Election(: |$)/ }).click();
   const dialog = page.getByRole('dialog');
   await expect(dialog.getByRole('button', { name: 'Previous election', exact: true })).toHaveCount(0);
   await expect(dialog.getByRole('button', { name: 'All elections', exact: true })).toHaveCount(0);
@@ -19,7 +19,7 @@ test('one election timeline, official seat previews and an in-place Open', async
   await row.click();
   await expect(dialog).not.toBeVisible();
   await expect(page.locator('.election .choice-trigger')).toHaveAttribute('data-value', 'k21');
-  await page.getByRole('button', { name: 'Election', exact: true }).click();
+  await page.getByRole('button', { name: /^Election(: |$)/ }).click();
   await dialog.getByRole('searchbox').fill('2001');
   await expect(dialog.locator('.pm-only')).toBeVisible();
   await expect(dialog.locator('.election-row')).toHaveCount(1);
@@ -28,7 +28,7 @@ test('one election timeline, official seat previews and an in-place Open', async
   await page.keyboard.press('Escape');
 });
 test('one vote stepper, three goals, overflow for rarer operations', async ({ page }) => {
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();
   const panel = page.locator('.side-panel');
   // one vote stepper (the seat count above it is its own, single-step control)
@@ -40,7 +40,7 @@ test('one vote stepper, three goals, overflow for rarer operations', async ({ pa
   await expect(panel.getByRole('button', { name: 'Transfer 1 pp', exact: true })).toBeVisible();
 });
 test('saved official snapshots stay neutral; edited scenarios get distinct identities', async ({ page }) => {
-  const picker = page.getByRole('button', { name: 'Switch scenario', exact: true });
+  const picker = page.getByRole('button', { name: /^Switch scenario(: |$)/ });
   for (const name of ['A', 'B', 'C', 'D']) {
     // U7: names alone are metadata; only factual edits receive scenario tint.
     if (name !== 'A') {
@@ -64,7 +64,7 @@ test('saved official snapshots stay neutral; edited scenarios get distinct ident
   await expect(dialog).not.toContainText('Latest vote source');
 });
 test('threshold goal stays under the pointer when its consequence appears', async ({ page }) => {
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await barLanguage(page, 'he');
   await page.getByRole('region', { name: 'הרשימות', exact: true }).getByRole('button', { name: 'מרצ', exact: true }).click();
   const panel = page.locator('.side-panel');

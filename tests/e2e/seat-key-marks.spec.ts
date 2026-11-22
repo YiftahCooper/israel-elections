@@ -1,6 +1,6 @@
 import { expect, test, type Page } from './fixtures';
 import { readFile } from 'node:fs/promises';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 // Owner, 19 Nov 2026: every entry in the seat chart's key carries its list's ballot letters or logo, or sits in a
 // group headed by them; a party of a joint list shows its own logo where the app holds one, never ballot letters.
@@ -15,7 +15,7 @@ async function start(page: Page, lang: 'en' | 'he', level: string, election = 'k
   }, [lang, level] as const);
   await page.goto('/');
   await expect(page.locator('.chamber [data-seat]').first()).toBeVisible();
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
 
 const unmarked = (page: Page) => page.locator('.chamber .legend').evaluate(legend => [...legend.children].flatMap(el => {

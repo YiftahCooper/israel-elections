@@ -1,4 +1,4 @@
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { closeBarMenu, openBarMenu, openSettings } from './barMenu.ts';
 import { allocate } from '../../src/engine/allocate.ts';
 import { scenarioFromDataset, toEngineInput } from '../../src/model/scenario.ts';
@@ -10,7 +10,7 @@ for (const lang of ['he','en']) for (const phone of [false,true]) {
     await page.setViewportSize(phone ? {width:390,height:844} : {width:1440,height:900});
     await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang,theme:'light',hintDismissed:true})),lang);
     await page.goto('/');
-    const picker=page.getByRole('button', {name:lang==='he'?'בחירות':'Election',exact:true});
+    const picker=page.getByRole('button', { name: pickerName(lang==='he'?'בחירות':'Election') });
     for (let n=1;n<=26;n++) {
       await choose(picker, `k${n}`);
       await expect(page.locator('.lb-row').first()).toBeVisible();
@@ -43,7 +43,7 @@ for (const lang of ['he','en']) for (const theme of ['light','dark']) for (const
     await page.setViewportSize(phone ? {width:390,height:844} : {width:1440,height:900});
     await page.addInitScript(v=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)),{lang,theme,level:'standard',hintDismissed:true});
     await page.goto('/');
-    const picker=page.getByRole('button', {name:lang==='he'?'בחירות':'Election',exact:true});
+    const picker=page.getByRole('button', { name: pickerName(lang==='he'?'בחירות':'Election') });
     await choose(picker, 'k26');
     // phones (owner, 9 Nov 2026): one-row bar with About in the Menu. 2026 is gazetted (YP 15100), so neither the
     // Menu button nor About carries a "not yet verified" mark any more.

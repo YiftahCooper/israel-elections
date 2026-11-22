@@ -8,27 +8,27 @@ async function start(page: Page, level = 'standard') {
     localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level }));
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } })); }, level);
   await page.goto('/');
-  await expect(page.getByRole('button', { name: 'Election', exact: true })).toHaveAttribute('data-value', 'k26');
+  await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toHaveAttribute('data-value', 'k26');
 }
 
 test('opening the election list downloads no election: every strip comes with the list', async ({ page }) => {
   const fetched: string[] = [];
   await start(page);
   page.on('request', (r) => { if (/\/data\/k\d+\.json/.test(r.url())) fetched.push(r.url()); });
-  await page.getByRole('button', { name: 'Election', exact: true }).click();
+  await page.getByRole('button', { name: /^Election(: |$)/ }).click();
   const dialog = page.getByRole('dialog', { name: 'Election' });
   await expect(dialog.locator('.choice-option[data-choice-value="k1"] .result-preview i').first()).toBeVisible();
   await expect(dialog.locator('.preview-loading')).toHaveCount(0);
   await page.waitForTimeout(500);
   expect(fetched).toEqual([]);
   await dialog.locator('[data-choice-value="k25"]').click();
-  await expect(page.getByRole('button', { name: 'Election', exact: true })).toHaveAttribute('data-value', 'k25');
+  await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toHaveAttribute('data-value', 'k25');
   expect(fetched.filter((u) => u.endsWith('/k25.json'))).toHaveLength(1);
 });
 
 test('list pickers show each list’s logo or colour dot', async ({ page }) => {
   await start(page);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.locator('.lb-row').filter({ hasText: "Hadash–Ta'al" }).first().click();
   const partner = page.locator('.side-panel .agreement-partner .choice-trigger');
   await partner.click();
@@ -90,7 +90,7 @@ test('the compared election has a grey band and a key; the turnout line can be t
 // as they were (the scenario's own choices, such as counting joint lists by party, stay inside the scenario).
 test('opening a shared scenario leaves the viewer’s settings and remembered answers unchanged', async ({ page, browser }) => {
   await start(page);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.locator('.lb-row').filter({ hasText: 'Likud' }).first().click();
   await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
@@ -107,7 +107,7 @@ test('opening a shared scenario leaves the viewer’s settings and remembered an
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: settings }));
     localStorage.setItem('israel-elections:preferences', JSON.stringify(preferences)); }, [settings, preferences] as const);
   await viewer.goto(link);
-  await expect(viewer.getByRole('button', { name: 'החלפת תרחיש' })).toContainText('תרחיש משותף');
+  await expect(viewer.getByRole('button', { name: /^החלפת תרחיש(: |$)/ })).toContainText('תרחיש משותף');
   await viewer.waitForTimeout(500);
   const stored = await viewer.evaluate(() => ({ v1: JSON.parse(localStorage.getItem('israel-elections:v1') ?? '{}'), settings: JSON.parse(localStorage.getItem('israel-elections:settings') ?? '{}'), preferences: JSON.parse(localStorage.getItem('israel-elections:preferences') ?? '{}') }));
   expect(stored.v1).toMatchObject({ lang: 'he', level: 'expert' });
@@ -120,7 +120,7 @@ test('opening a shared scenario leaves the viewer’s settings and remembered an
 // the pair; the seat goes to the next list, so the Knesset still has 120 members, and a note says so.
 test('1977: an agreement that cannot fill a seat passes it on; the Knesset keeps 120 seats', async ({ page }) => {
   await start(page, 'expert');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k9');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k9');
   await page.locator('.lb-row').filter({ hasText: 'Flatto-Sharon' }).first().click();
   await choose(page.locator('.side-panel .agreement-partner .choice-trigger'), '9-ד');
   await page.keyboard.press('Escape');

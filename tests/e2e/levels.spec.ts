@@ -49,9 +49,9 @@ test('Standard adds scenario management and consequential list edits, but not id
   await page.keyboard.press('Escape');
 
   await listCard(page, 'Likud').click();
-  await expect(details(page).getByRole('button', { name: 'Votes come from', exact: true })).toBeVisible();
+  await expect(details(page).getByRole('button', { name: /^Votes come from(: |$)/ })).toBeVisible();
   await expect(details(page).getByRole('checkbox', { name: 'Withdrawn from the race' })).toBeVisible();
-  await expect(details(page).getByRole('button', { name: 'Agreement partner', exact: true })).toHaveAttribute('data-value', /.+/);
+  await expect(details(page).getByRole('button', { name: /^Agreement partner(: |$)/ })).toHaveAttribute('data-value', /.+/);
   await expect(details(page).getByLabel('Short name (English)')).toHaveCount(0);
   await expect(page.getByRole('group', { name: 'Chamber layout' })).toHaveCount(0);
 });
@@ -162,7 +162,7 @@ test('a failed election load keeps the open election and offers a retry', async 
   await page.route('**/data/k25.json', (route) => route.fulfill({ status: 404, body: 'missing' }));
   await start(page);
   // This test expects refusal, so do not use choose()'s successful-load barrier.
-  await page.getByRole('button', { name: 'Election', exact: true }).click();
+  await page.getByRole('button', { name: /^Election(: |$)/ }).click();
   await page.getByRole('dialog').locator('[data-choice-value="k25"]').click();
   await expect(page.getByRole('alert').filter({ hasText: /Could not load the 2022 · 25th Knesset election data/ })).toBeVisible();
   await expect(page.getByRole('alert').getByRole('button', { name: 'Try again' })).toBeVisible();
@@ -174,11 +174,11 @@ test('the picker labels the open election correctly even if the index omits it',
   await page.route('**/data/elections.json', (route) => route.fulfill({ json: rows.filter((r) => r.id !== 'k26') }));
   await start(page);
   // wait until the (routed) index has replaced the built-in fallback, which does list 2026
-  await page.getByRole('button', { name: 'Election', exact: true }).click();
+  await page.getByRole('button', { name: /^Election(: |$)/ }).click();
   await expect(page.getByRole('dialog').locator('[data-choice-value="k16"]')).toHaveCount(1);
   await page.keyboard.press('Escape');
-  await expect(page.getByRole('button', { name: 'Election', exact: true })).toHaveAttribute('data-value', 'k26');
-  await expect(page.getByRole('button', { name: 'Election', exact: true })).toContainText('2026 · 26th Knesset');
+  await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toHaveAttribute('data-value', 'k26');
+  await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toContainText('2026 · 26th Knesset');
 });
 
 test('a tool opened from its tab shows at once at every level, with no second disclosure', async ({ page }) => {

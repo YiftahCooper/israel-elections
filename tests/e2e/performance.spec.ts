@@ -43,7 +43,7 @@ test('a tab whose code is still downloading shows a loading status, then its con
   release();
   await expect(side.locator('.cmp-card')).toHaveCount(2);
   // what it is compared with is chosen in the strip above (Side by side has no picker of its own)
-  await expect(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'prev');
+  await expect(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ })).toHaveAttribute('data-value', 'prev');
   await expect(side.getByRole('status')).toHaveCount(0);
 });
 
@@ -51,7 +51,7 @@ test('seat security is computed in background workers and fills the whole table'
   const workers: string[] = [];
   page.on('worker', (w) => workers.push(w.url()));
   await start(page, { level: 'expert' });
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await expect(page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Yesh Atid', exact: true })).toBeVisible();
   await page.getByRole('tab', { name: 'Seat safety' }).click();
   await expect.poll(() => workers.length).toBeGreaterThan(0);

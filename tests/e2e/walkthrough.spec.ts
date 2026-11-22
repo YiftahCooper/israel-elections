@@ -1,14 +1,14 @@
 // "How seats were allocated": every stage of each era's method is taught, the steps fit, tables are whole,
 // and an edited scenario is explained against its reference (owner feedback, 5 Nov 2026).
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { waitForStill } from './settle.ts';
 
 async function start(page: Page, election = 'k26', lang: 'en' | 'he' = 'en', width = 1500) {
   await page.setViewportSize({ width, height: 1000 });
   await page.addInitScript((lang) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/');
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
 const panel = (page: Page) => page.locator('#analysis-panel');
 const walk = async (page: Page) => { await page.locator('#tab-walk').click(); await expect(panel(page).locator('.walk-stages')).toBeVisible(); };
@@ -59,7 +59,7 @@ test('each era explains its own remainder rule and why a list cannot compete', a
   await expect(panel(page).locator('tr', { hasText: 'Flatto-Sharon' })).toContainText('no more candidates');
   await expect(panel(page).locator('tr', { hasText: 'Flatto-Sharon' })).not.toContainText('half-seats cap');
 
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k7');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k7');
   await walk(page);
   await stage(page, 'Remainder seats');
   await expect(panel(page)).toContainText('the votes left after its whole quotas. The largest wins. No list wins two.');
@@ -147,7 +147,7 @@ test('1973 and 1977: Expert notes the Committee sheet’s joint first-stage coun
   await expect(pop).toContainText('Final seats are identical.');
   await expect(pop.getByRole('link')).toHaveAttribute('href', /memorandum-knesset9\/he\/archive_knesset9_memorandum-apdx9\.pdf#page=6$/);
 
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k8');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k8');
   await walk(page);
   await stage(page, 'Whole quotas');
   await expect(panel(page).locator('.walk-cec-note')).toContainText('Elections Committee sheet: 117 + 3, counting each surplus-agreement pair together.');
@@ -156,7 +156,7 @@ test('1973 and 1977: Expert notes the Committee sheet’s joint first-stage coun
   await expect(page.locator('.info .pop').getByRole('link')).toHaveAttribute('href', /memorandum-knesset8\/he\/archive_knesset8_memorandum-apdx\.pdf#page=5$/);
 
   // no other election has the note
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k10');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k10');
   await walk(page);
   await stage(page, 'Whole quotas');
   await expect(panel(page).locator('.walk-cec-note')).toHaveCount(0);
@@ -176,7 +176,7 @@ test('the Committee-sheet note keeps "114 + 6" in order in Hebrew', async ({ pag
 test('Standard does not show the Committee-sheet note', async ({ page }) => {
   await page.addInitScript(() => { localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level: 'standard', hintDismissed: true })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2 } })); });
   await page.goto('/');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k9');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k9');
   await walk(page);
   await stage(page, 'Whole quotas');
   await expect(panel(page)).toContainText('113 seats allocated; 7 remain.');

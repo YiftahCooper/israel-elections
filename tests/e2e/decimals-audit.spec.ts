@@ -18,7 +18,7 @@ async function open(page: Page, max: number, election: string) {
   }, max);
   await page.goto('/');
   await expect(page.locator('.lb-row').first()).toBeVisible();
-  if (election !== 'k26') await choose(page.getByRole('button', { name: 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: /^Election(: |$)/ }), election);
 }
 /** every percentage on screen with more decimals than allowed, and every number with five or more decimals */
 const offenders = (page: Page, max: number) => page.evaluate(([max, law, THRESHOLDS]) => {

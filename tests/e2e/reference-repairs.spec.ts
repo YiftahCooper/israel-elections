@@ -1,10 +1,10 @@
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { expect, test, type Page } from './fixtures';
 import { openSideBySide } from './sideBySide.ts';
 async function start(page: Page, lang = 'en', theme = 'light') {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme, level: 'standard', hintDismissed: true });
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await expect(page.locator('.lb-row').first().locator('.lb-seats b')).toHaveText('32');
 }
 async function split(page: Page, he = false) {
@@ -61,7 +61,7 @@ for (const separate of [false, true]) test(`B2 saved custom grouping draws paire
   if(!separate){await expect(page.locator('.session')).toContainText('1 change from Review A');await expect(page.locator('.session')).toContainText('Review coalition 72 (▲ +4)');}
   await openSideBySide(page);
   // comparing starts on the previous election: compare with the saved grouping instead
-  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true }), { label: 'Review A' });
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ }), { label: 'Review A' });
   await expect(page.locator('.cmp')).not.toContainText('no counterpart in');
   // the reference and the scenario side by side, each with its blocs
   await expect(page.locator('.cmp-card .majority-context')).toHaveCount(2);

@@ -1,5 +1,5 @@
 import {test,expect} from './fixtures';
-import {choose} from './choices.ts';
+import {choose, pickerName } from './choices.ts';
 import {mkdirSync,readFileSync} from 'node:fs';
 for(const election of ['k26','k25','k12','k1','k21']) test(`${election}: names and party identity in both languages, themes and sizes`,async({browser})=>{
  test.setTimeout(180_000);
@@ -11,7 +11,7 @@ for(const election of ['k26','k25','k12','k1','k21']) test(`${election}: names a
   const page = await context.newPage();page.on('pageerror',e=>errors.push(e.message));
   page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
   await page.goto('/');
-  const picker=page.getByRole('button',{name:lang==='en'?'Election':'בחירות',exact:true});
+  const picker=page.getByRole('button', { name: pickerName(lang==='en'?'Election':'בחירות') });
   await expect(picker).toHaveAttribute('data-value','k26');
   if(election!=='k26')await choose(picker,election);
   await page.locator('.lb-row').first().click();
@@ -40,7 +40,7 @@ test('all 26 elections expose English names in surplus partner menus',async({pag
  test.setTimeout(180_000);
  await page.addInitScript(()=>localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level:'expert',hintDismissed:true})));
  await page.goto('/');
- const picker=page.getByRole('button',{name:'Election',exact:true});
+ const picker=page.getByRole('button', { name: /^Election(: |$)/ });
  for(let n=1;n<=26;n++){
   await choose(picker,`k${n}`);await page.locator('.lb-row').first().click();
   for(const label of await page.locator('.side-panel select option').allTextContents())expect(label,`k${n}`).not.toMatch(/[\u0590-\u05ff]/);

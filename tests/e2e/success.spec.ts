@@ -18,7 +18,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   await page.goto('/');
   await barLanguage(page, 'en');
   await page.getByRole('button', { name: 'Expert', exact: true }).click();
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await expect(listButton(page, 'Yesh Atid')).toBeVisible();
   expect(await seatsOf(page, 'Likud')).toBe(32);
 
@@ -39,7 +39,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
 
   // 3. 200,000 additional voters for Arab lists (custom split)
   await page.getByRole('tab', { name: 'Turnout', exact: true }).click();
-  await choose(page.getByRole('button', { name: 'Voter group', exact: true }), 'manual');
+  await choose(page.getByRole('button', { name: /^Voter group(: |$)/ }), 'manual');
   const enter = async (label: string, value: string) => { const f = page.getByLabel(label, { exact: true }); await f.fill(value); await f.press('Enter'); };
   await enter('Group size', '400000');
   await enter('Current turnout %', '50');
@@ -74,7 +74,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
   await expect(page.locator('.chamber circle.seat')).toHaveCount(120);
   await openSideBySide(page);
   // comparing starts on the previous election; the candidates entering and leaving are listed within one election
-  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true }), 'official');
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ }), 'official');
   await expect(page.locator('tr.cmp-row').first()).toBeVisible();
   await page.locator('details.cmp-section > summary').click();
   await expect(page.getByText(/Entering the Knesset \(\d+\)/)).toBeVisible();

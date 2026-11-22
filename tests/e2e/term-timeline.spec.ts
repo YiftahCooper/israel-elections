@@ -2,7 +2,7 @@
 // each level shows, the seat marks, the seat card, and the election chart's card naming who else held a seat.
 import { expect, test, type Page } from './fixtures';
 import { hoverSeat } from './seat-hover.ts';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 async function start(page: Page, { lang = 'en', level = 'standard', width = 1500, settings = {}, election = 'k24' }: { lang?: 'en' | 'he'; level?: string; width?: number; settings?: Record<string, unknown>; election?: string } = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
@@ -13,7 +13,7 @@ async function start(page: Page, { lang = 'en', level = 'standard', width = 1500
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2, ...settings } }));
   }, [lang, level, settings] as const);
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
 async function openTimeline(page: Page, lang: 'en' | 'he' = 'en') {
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
@@ -240,7 +240,7 @@ for (const lang of ['en', 'he'] as const) {
     await expect(tl.locator('.tl-lines li[data-item="k25-faction-3"]')).toContainText(lang === 'he'
       ? 'רישום החברות עבר מסיעת המחנה הממלכתי לסיעת הימין הממלכתי (4 ח״כים).' : '4 MKs recorded moving from National Unity to New Hope – The United Right.');
     await page.getByRole('button', { name: lang === 'he' ? 'מומחה' : 'Expert', exact: true }).first().click();
-    await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k24');
+    await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k24');
     tl = await openTimeline(page, lang);
     // a date outside the 24th Knesset's term (13 Mar 2024) is not kept: the timeline starts at the term's first step
     await expect(tl.locator('.tl-count')).toHaveText(/^(Step|צעד) 1 /);
@@ -268,7 +268,7 @@ test('a seat card says "Membership ended", with the reason only where one is rec
   await expect(card).not.toContainText('reason not yet recorded');
   await expect(card).not.toContainText('Left the Knesset');
   await page.keyboard.press('Escape');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k24');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k24');
   const tl24 = await openTimeline(page);
   await tl24.locator('[data-person="2291"] circle.seat').click();
   await expect(page.locator('.tl-card .tl-holders > li').first()).toContainText('Membership ended · Norwegian law');
@@ -303,7 +303,7 @@ for (const lang of ['en', 'he'] as const) test(`the term chamber has a list key 
     await next.click();
   }
   // the 25th Knesset: a vacant seat leaves its list's count
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await expect(tl.locator('.tl-chamber circle.seat')).toHaveCount(120);
   expect(await sum()).toBe(await filled());
 });

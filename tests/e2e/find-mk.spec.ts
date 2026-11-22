@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 // Find an MK over the seat chart (owner card "seat", 16 Nov 2026): typing a name rings that member's seat and names it,
 // the other seats fade; several matches are offered as buttons; it works in both layouts and both languages.
@@ -70,7 +70,7 @@ test('on a phone the box is a full-size tap target', async ({ page }) => {
 // first sitting is found, with the day they entered, and their history opens from there; no seat is ringed.
 for (const lang of ['en', 'he'] as const) test(`someone who entered later is found, with the day, and opens their history: ${lang}`, async ({ page }) => {
   await open(page, { lang });
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k24');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k24');
   await expect(page.locator('.chamber [data-seat]').first()).toBeVisible();
   await box(page).fill(lang === 'en' ? 'Starkmann' : 'שטרקמן');
   const later = page.locator('.chamber .find-mk-later');

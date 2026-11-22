@@ -1,11 +1,11 @@
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 async function open(page: Page, lang: 'en' | 'he', election = 'k25') {
   // the figures below were drawn at one decimal place (Settings → Decimal places)
   await page.addInitScript(lang => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
+  await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), election);
   await page.locator('#tab-turnout').click();
   return page.locator('#analysis-panel');
 }
@@ -24,7 +24,7 @@ test('the turnout tile\'s Reset appears only when it would change something', as
 
 test('a sourced voter group adds measured voters, saves, exports and imports', async ({ page }) => {
   const panel = await open(page, 'en');
-  await choose(panel.getByRole('button', { name: 'Voter group', exact: true }), 'src:arab');
+  await choose(panel.getByRole('button', { name: /^Voter group(: |$)/ }), 'src:arab');
   await expect(panel.locator('.vg-facts')).toContainText('146 localities · 938,401 registered · turnout 53.2%');
   const target = panel.getByLabel('New turnout %', { exact: true });
   await target.fill('63.2'); await target.press('Enter');
@@ -42,7 +42,7 @@ test('a sourced voter group adds measured voters, saves, exports and imports', a
   await panel.getByRole('button', { name: 'Save', exact: true }).click();
   await page.locator('dialog.app-ask').getByRole('textbox').fill('Arab turnout +10');
   await page.locator('dialog.app-ask').getByRole('button', { name: 'Save', exact: true }).click();
-  await expect(panel.getByRole('button', { name: 'Voter group', exact: true })).toHaveText(/Arab turnout \+10/);
+  await expect(panel.getByRole('button', { name: /^Voter group(: |$)/ })).toHaveText(/Arab turnout \+10/);
   const download = page.waitForEvent('download');
   await panel.getByRole('button', { name: 'Export', exact: true }).click();
   const file = await (await download).path();
@@ -52,17 +52,17 @@ test('a sourced voter group adds measured voters, saves, exports and imports', a
 
   // a sourced group is portable: the imported file applies to another election's localities
   await page.reload();
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k24');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k24');
   await page.locator('#tab-turnout').click();
   await panel.locator('.vg-head input[type=file]').setInputFiles({ name: 'g.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ ...json, id: 'vg-imported', name: 'Imported group' })) });
-  await expect(panel.getByRole('button', { name: 'Voter group', exact: true })).toHaveText(/Imported group/);
+  await expect(panel.getByRole('button', { name: /^Voter group(: |$)/ })).toHaveText(/Imported group/);
   await expect(panel.locator('.vg-facts')).toContainText('localities');
   await expect(panel.getByRole('button', { name: /^Add [\d,]+ voters$/ })).toBeEnabled();
 });
 
 test('elections without locality results explain it and still allow typed groups', async ({ page }) => {
   const panel = await open(page, 'en', 'k14');
-  await panel.getByRole('button', { name: 'Voter group', exact: true }).click();
+  await panel.getByRole('button', { name: /^Voter group(: |$)/ }).click();
   await expect(page.locator('dialog[open] [data-choice-value=none]')).toBeDisabled();
   await page.locator('dialog[open] [data-choice-value=manual]').click();
   // typed numbers have no observed mix: only the user's shares are offered, and a blocked Add says why
@@ -76,7 +76,7 @@ test('elections without locality results explain it and still allow typed groups
 
 test('Hebrew keeps turnout numbers left to right', async ({ page }) => {
   const panel = await open(page, 'he');
-  await choose(panel.getByRole('button', { name: 'קבוצת מצביעים', exact: true }), 'src:arab');
+  await choose(panel.getByRole('button', { name: /^קבוצת מצביעים(: |$)/ }), 'src:arab');
   const target = panel.getByLabel('שיעור הצבעה חדש %', { exact: true });
   await target.fill('63.2'); await target.press('Enter');
   const range = panel.locator('.vg-range bdi').first();
@@ -87,7 +87,7 @@ test('Hebrew keeps turnout numbers left to right', async ({ page }) => {
 
 for (const lang of ['en', 'he'] as const) test(`groups start unchanged and a custom group is editable: ${lang}`, async ({ page }) => {
   const panel = await open(page, lang);
-  const picker = panel.getByRole('button', { name: lang === 'en' ? 'Voter group' : 'קבוצת מצביעים', exact: true });
+  const picker = panel.getByRole('button', { name: pickerName(lang === 'en' ? 'Voter group' : 'קבוצת מצביעים') });
   await choose(picker, 'src:arab');
   await expect(panel.locator('#vg-change')).toHaveValue('0');
   await panel.getByLabel(lang === 'en' ? 'New turnout %' : 'שיעור הצבעה חדש %', { exact: true }).fill('63.2');
@@ -129,7 +129,7 @@ test('zero-vote split descendants share observed local votes once when adding tu
   await expect(page.locator('.election .choice-trigger')).toHaveAttribute('data-value', 'k25');
   await page.locator('#tab-turnout').click();
   const panel = page.locator('#analysis-panel');
-  await choose(panel.getByRole('button', { name: 'Voter group', exact: true }), 'src:test');
+  await choose(panel.getByRole('button', { name: /^Voter group(: |$)/ }), 'src:test');
   const target = panel.getByLabel('New turnout %', { exact: true });
   await target.fill('30'); await target.press('Enter');
   await panel.getByRole('button', { name: 'Add 100 voters', exact: true }).click();

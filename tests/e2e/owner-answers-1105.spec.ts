@@ -1,6 +1,6 @@
 import { expect, test } from './fixtures';
 import { mkdirSync, readFileSync } from 'node:fs';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { datesInText } from '../../src/app/dateFormat.ts';
 import { openSideBySide } from './sideBySide.ts';
 
@@ -47,7 +47,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await expect(info).toHaveAttribute('aria-expanded', 'true');
     await page.keyboard.press('Escape');
     // Also retain historical limitations rather than deleting them in the concise summary.
-    await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k17');
+    await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), 'k17');
     await info.click();
     await expect(page.locator('.pop')).toContainText(datesInText(dataset('k17').status[lang === 'en' ? 'noteEn' : 'noteHe']));
     // Exercise the seat-hover path when a candidate has no English spelling.
@@ -57,7 +57,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
       for (const list of data.lists) for (const candidate of list.candidates) delete candidate.nameEn;
       await route.fulfill({ json: data });
     });
-    await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k26');
+    await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), 'k26');
     await page.locator('#tab-board').click();
     await page.reload();
     await page.locator('.chamber [data-seat]').first().hover();
@@ -70,7 +70,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.locator('.side-panel').getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click();
     await openSideBySide(page);
     // candidates entering and leaving are listed within one election: compare with this election's official result
-    await choose(page.locator('.cmpm-strip').getByRole('button', { name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact: true }), 'official');
+    await choose(page.locator('.cmpm-strip').getByRole('button', { name: pickerName(lang === 'en' ? 'Compare with' : 'השוואה עם') }), 'official');
     await page.locator('details.cmp-section > summary').click();
     const compared = page.locator('.cmp-section li bdi[lang="he"][dir="rtl"]');
     await expect(compared.first()).toBeVisible();
@@ -86,7 +86,7 @@ for (const lang of ['en', 'he']) test(`all 26 status notes retained in ${lang}`,
   await page.goto('/');
   await page.locator('#tab-sources').click();
   for (let n = 1; n <= 26; n++) {
-    await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), `k${n}`);
+    await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), `k${n}`);
     const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details' : 'פירוט מצב הנתונים', exact: true });
     await info.click();
     // the screen writes dates in the app's format ("4 Nov 2026", not 4.11.2026)

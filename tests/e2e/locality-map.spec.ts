@@ -10,7 +10,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.route('https://photon.komoot.io/**', route => route.fulfill({json:{features:[{geometry:{coordinates:[34.78,32.08]},properties:{name:'Test address',city:'Tel Aviv'}}]}}));
   await page.goto('/');
-  await choose(page.getByRole('button', {name:'Election',exact:true}), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.getByRole('tab', {name:'Localities',exact:true}).click();
   await expect(page.getByRole('region', {name:/Locality results map/})).toBeVisible();
   await page.getByRole('searchbox', {name:'Find a locality'}).fill('tel aviv');
@@ -26,7 +26,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
   expect(credit!.x + credit!.width).toBeLessThanOrEqual(bounds!.x + bounds!.width);
   await page.getByRole('searchbox', {name:'Find a locality'}).fill('תֵּל אָבִיב');
   await expect(page.getByRole('button', {name:/Tel Aviv.*5000/i})).toBeVisible();
-  await choose(page.getByRole('button', {name:'Colour by', exact:true}), 'list');
+  await choose(page.getByRole('button', { name: /^Colour by(: |$)/ }), 'list');
   await page.getByRole('textbox', {name:'Nearest locality to an address'}).fill('Test address');
   await page.getByRole('button', {name:'Find address',exact:true}).click();
   await page.getByRole('button', {name:'Test address, Tel Aviv'}).click();
@@ -35,7 +35,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await page.getByRole('searchbox', {name:'Search localities',exact:true}).fill('tel aviv');
   // English mode names localities in English (CBS), never Hebrew only
   await expect(page.getByRole('region', {name:'Scrollable table'}).getByRole('table')).toContainText('Tel Aviv-Yafo');
-  await choose(page.getByRole('button', {name:'Election',exact:true}), 'k17');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k17');
   await page.getByRole('button', {name:'Map',exact:true}).click();
   // Hebron is placed by hand, marked approximate (U4, 16 Nov)
   await expect(page.getByText('1,145 of 1,149 localities placed.')).toBeVisible();
@@ -73,7 +73,7 @@ test('locality map explains a result, speaks English and fits the dark theme', a
   await expect(results.getByRole('columnheader', {name:'Bloc'})).toBeVisible();
   await expect(results.locator('tr.sel')).toHaveCount(1);
   // 2006 has no locality codes, but its rows still have CBS English names
-  await choose(page.getByRole('button', {name:'Election',exact:true}), 'k17');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k17');
   await page.getByRole('button', {name:'Table',exact:true}).click();
   await page.getByRole('searchbox', {name:'Search localities',exact:true}).fill('abu ghosh');
   await expect(page.getByRole('region', {name:'Scrollable table'}).getByRole('table')).toContainText('Abu Ghosh');
@@ -106,7 +106,7 @@ test('2006 Hebrew map explains name placement and lists only the four unplaced l
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'he',level:'expert',hintDismissed:true})));
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
-  await choose(page.getByRole('button', {name:'בחירות',exact:true}), 'k17');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k17');
   await page.getByRole('tab', {name:'יישובים',exact:true}).click();
   await expect(page.getByText('1,145 מתוך 1,149 יישובים ממופים.')).toBeVisible();
   await expect(page.locator('.locality-map-label').first()).toBeVisible();
@@ -263,7 +263,7 @@ for (const election of ['k16', 'k25', 'k26']) for (const width of [1500, 390]) f
     }, {theme});
     await page.route('https://tiles.openfreemap.org/**', route => route.abort());
     await page.goto('/');
-    await choose(page.getByRole('button', {name:'בחירות',exact:true}), election);
+    await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), election);
     await page.getByRole('tab', {name:'יישובים',exact:true}).click();
     const search = page.getByRole('searchbox', {name:'חיפוש יישוב',exact:true});
     // Search by the original CEC alias and verify that results and map agree on the CBS spelling.
@@ -303,7 +303,7 @@ test('Hebrew corrected names agree in nearest-locality messages and downloaded d
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.route('https://photon.komoot.io/**', route => route.fulfill({json:{features:[{geometry:{coordinates:[35.1156242606379,31.293647189077692]},properties:{name:'כתובת בדיקה'}}]}}));
   await page.goto('/');
-  await choose(page.getByRole('button', {name:'בחירות',exact:true}), 'k25');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k25');
   await page.getByRole('tab', {name:'יישובים',exact:true}).click();
   await page.getByRole('textbox', {name:'היישוב הקרוב לכתובת'}).fill('כתובת בדיקה');
   await page.getByRole('button', {name:'חיפוש כתובת',exact:true}).click();

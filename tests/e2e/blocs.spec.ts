@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 // Blocs per election and constituent parties (decision 0087).
 import { expect, test, type Page } from './fixtures';
@@ -8,8 +8,8 @@ const start = async (page: Page, level: string) => {
   await page.addInitScript((v) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem('israel-elections:v1', v); const o = JSON.parse(v); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); sessionStorage.setItem('seeded', '1'); } },
     JSON.stringify({ lang: 'en', hintDismissed: true, level }));
   await page.goto('/');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
-  await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toHaveText(/Government 37 /);
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
+  await expect(page.getByRole('button', { name: /^Grouping(: |$)/ })).toHaveText(/Government 37 /);
 };
 const blocs = (page: Page) => page.getByRole('region', { name: 'Seats by bloc' });
 /** a bloc's band in the strip; its seat count is the bold figure in its label */
@@ -20,7 +20,7 @@ const listRow = (page: Page, name: string) => page.getByRole('region', { name: '
 
 test('an election opens on its first government, and other sourced groupings can be chosen', async ({ page }) => {
   await start(page, 'simple');
-  const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
+  const grouping = page.getByRole('button', { name: /^Grouping(: |$)/ });
   await expect(grouping).toHaveText(/Government 37 /);
   await expect(blocCount(page, 'Coalition')).toHaveText('64');
   await choose(grouping, 'pre-election-blocs');
@@ -62,7 +62,7 @@ test('moving one party of a joint list to another bloc moves only its members’
   const after = Number(await blocCount(page, 'Coalition').innerText());
   expect(after).toBeGreaterThan(before);
   expect(after - before).toBeLessThan(12); // only New Hope's members, not all of National Unity
-  const grouping = page.getByRole('button', { name: 'Grouping', exact: true });
+  const grouping = page.getByRole('button', { name: /^Grouping(: |$)/ });
   await expect(grouping).toContainText('Custom blocs');
   await choose(grouping, { label: 'Government 37 (first government of the Knesset)' });
   await expect(blocCount(page, 'Coalition')).toHaveText(String(before));
@@ -100,8 +100,8 @@ for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25'])
   test(`${election} app-defined grouping labels retain provenance in ${lang}`, async ({ page }) => {
     await page.addInitScript(({lang}) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang, level:'standard', hintDismissed:true})), {lang});
     await page.goto('/');
-    await choose(page.getByRole('button', {name: lang === 'en' ? 'Election' : 'בחירות', exact:true}), election);
-    const picker = page.getByRole('button', {name:lang === 'en' ? 'Grouping' : 'חלוקה לגושים', exact:true});
+    await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), election);
+    const picker = page.getByRole('button', { name: pickerName(lang === 'en' ? 'Grouping' : 'חלוקה לגושים') });
     const scheme = election === 'k24' ? 'knesset-blocs-2021' : 'pre-election-blocs';
     await picker.click();
     const option = page.locator(`.choice-option[data-choice-value="${scheme}"]`);
@@ -140,7 +140,7 @@ for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25'])
     }
     await openSideBySide(page);
     // compared with the previous election (2021 → 2019 Sep, 2022 → 2021)
-    await expect(page.locator('.cmpm-strip').getByRole('button', {name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact:true})).toHaveAttribute('data-value', 'prev');
+    await expect(page.locator('.cmpm-strip').getByRole('button', { name: pickerName(lang === 'en' ? 'Compare with' : 'השוואה עם') })).toHaveAttribute('data-value', 'prev');
     // the open scenario's side names the app grouping once, never on each bloc
     const legend = page.locator('.cmp-card[data-role="main"] .majority-context');
     await expect(legend).toContainText(`· ${tag}`);
