@@ -218,7 +218,7 @@ test('the selected election is a shaded column with its value and year in bold; 
  await page.locator('.family-seat-section h3').getByRole('button').click();
  await expect(page.locator('.info .pop')).toContainText('Bars are elections, evenly spaced: this is not a time scale');
  await page.keyboard.press('Escape');
- await page.locator('.family-plots h3').first().getByRole('button',{name:'Time axis',exact:true}).click();
+ await page.locator('.family-plots h3').first().getByRole('button',{name:'Time axis: explanation',exact:true}).click();
  await expect(page.locator('.info .pop')).toContainText('A true time scale: each point sits on its election day');
 });
 test('the family’s Scale action sits under its charts, above the exact figures (U4 pass, 16 Nov)',async({page})=>{

@@ -132,7 +132,7 @@ test('rules changed by an experimental preset are named at every level, and no z
   await page.getByRole('listitem').filter({ hasText: 'Pure proportional representation' }).getByRole('button', { name: 'Open as a scenario' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Alternative electoral system' })).toContainText('remainder seats by Sainte-Laguë (law: Bader–Ofer)');
   await expect(page.locator('.fig').filter({ hasText: 'Threshold' })).toContainText('None');
-  await page.getByRole('button', { name: 'Experimental rules', exact: true }).click();
+  await page.getByRole('button', { name: 'Experimental rules: explanation', exact: true }).click();
   await expect(page.getByRole('tooltip')).toContainText('not a legally possible Israeli result');
   // a method without a quota stage has no general quota: no "votes per seat" figure at all
   await expect(page.getByRole('button', { name: /^Votes per seat/ })).toHaveCount(0);

@@ -167,3 +167,26 @@ test('the map buttons follow a change of language', async ({ page }) => {
   await barLanguage(page, 'he');
   await expect(page.locator('.leaflet-control-zoom-in')).toHaveAccessibleName('הגדלת המפה');
 });
+
+// A11
+for (const lang of LANGS) test.describe(`A11 · ${lang}`, () => {
+  // A11: an (i) was named by the bare term ("Bloc"), or by the same words as the checkbox beside it
+  test(`an (i) is named so it reads alone · ${lang}`, async ({ page }) => {
+    await start(page, lang);
+    await expect(page.getByRole('region', { name: T(lang, 'Seats by bloc', 'מנדטים לפי גוש') }).locator('h2 .info > button'))
+      .toHaveAccessibleName(T(lang, 'Bloc: explanation', 'הסבר: גוש'));
+    await openTool(page, 'loc');
+    const line = page.getByRole('checkbox', { name: T(lang, 'Armistice lines · Judea and Samaria', 'קווי שביתת הנשק · יהודה ושומרון') });
+    await expect(line).toBeVisible();
+    await expect(page.getByRole('button', { name: T(lang, 'Armistice lines · Judea and Samaria: explanation', 'הסבר: קווי שביתת הנשק · יהודה ושומרון'), exact: true })).toHaveCount(1);
+    // no (i) anywhere on these screens repeats a neighbouring control's name
+    for (const tool of ['loc', 'turnout', 'walk', 'board']) {
+      await openTool(page, tool);
+      const clashes = await page.evaluate(() => [...document.querySelectorAll<HTMLElement>('.info > button')].filter(b => {
+        const name = b.getAttribute('aria-label');
+        return [...document.querySelectorAll('button, input, a, [role=button]')].some(o => o !== b && o.getClientRects().length && (o.getAttribute('aria-label') ?? (o as HTMLElement).innerText?.trim()) === name);
+      }).map(b => b.getAttribute('aria-label')));
+      expect(clashes, tool).toEqual([]);
+    }
+  });
+});

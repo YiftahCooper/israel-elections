@@ -9,6 +9,13 @@ import { parseIntInput } from '../format.ts';
 import { useSetting } from '../store.ts';
 import { logoLicence } from '../logoCredit.ts';
 
+/** An (i)'s name when none is given: one that reads alone in a list of buttons, "Bloc: explanation" / «הסבר: גוש» (review
+ *  V4 A11), like the figures' "Invalid ballots: definition and source". A title that already says it explains (How…,
+ *  Sources…) stays as it is. */
+const SAYS_WHAT = /^(About|How|What|Why|Where|Which|When|Who|Sources?\b|Evidence|Assumptions|Definition)|^(על|איך|מה|למה|מדוע|היכן|כיצד|מאיפה|מתי|מי|מקורות|מקור|ראיות|הנחות|הגדרה)[\s:]/;
+export const infoName = (heading: string, lang: 'he' | 'en') => !heading ? (lang === 'he' ? 'מידע' : 'Information')
+  : SAYS_WHAT.test(heading) ? heading : lang === 'he' ? `הסבר: ${heading}` : `${heading}: explanation`;
+
 /** Accessible info popover: opens on hover (after the shared hover delay) or a press (click, tap, Enter, Space); Escape
  *  closes. Not on focus alone: a keyboard pass through a heading would open it and put its Learn more link in the Tab
  *  order (review V4 A6). */
@@ -50,7 +57,7 @@ export function Info({ title, children, term, label }: { title?: string; childre
     <span className="info" ref={ref}
       onPointerEnter={(e) => { if (e.pointerType === 'mouse' && hoverPopups) bridge.enter(() => setOpen((o) => o || 'hover')); }}
       onPointerLeave={(e) => { if (e.pointerType === 'mouse') bridge.leave(); }}>
-      <button type="button" aria-label={label ?? (heading || 'info')} aria-expanded={!!open} aria-describedby={open ? id : undefined}
+      <button type="button" aria-label={label ?? infoName(heading, lang)} aria-expanded={!!open} aria-describedby={open ? id : undefined}
         onClick={() => setOpen((o) => (o === 'pinned' ? false : 'pinned'))}
         onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen((o) => (o === 'hover' ? o : false)); }}>i</button>
       {open && (

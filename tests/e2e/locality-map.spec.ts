@@ -41,7 +41,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await expect(page.getByText('1,145 of 1,149 localities placed.')).toBeVisible();
   await expect(page.getByText(/because no official locality table exists/)).toHaveCount(0);
   await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
-  await page.getByRole('button', {name:'2006 location matching',exact:true}).click();
+  await page.getByRole('button', {name:'2006 location matching: explanation',exact:true}).click();
   await expect(page.getByText('2006 locations are matched by Hebrew name to a single CBS locality code. Ambiguous or unmatched rows remain unplaced.')).toBeVisible();
 });
 
@@ -110,7 +110,7 @@ test('2006 Hebrew map explains name placement and lists only the four unplaced l
   await page.getByRole('tab', {name:'יישובים',exact:true}).click();
   await expect(page.getByText('1,145 מתוך 1,149 יישובים ממופים.')).toBeVisible();
   await expect(page.locator('.locality-map-label').first()).toBeVisible();
-  await page.getByRole('button', {name:'התאמת מיקומים ב־2006',exact:true}).click();
+  await page.getByRole('button', {name:'הסבר: התאמת מיקומים ב־2006',exact:true}).click();
   await expect(page.getByText('מיקומי 2006 הותאמו לפי השם העברי לסמל יישוב יחיד של הלמ״ס. שורות ללא התאמה או עם התאמה עמומה אינן ממוקמות.')).toBeVisible();
   await page.keyboard.press('Escape');
   const missing = page.locator('.locality-map-tool details').filter({has:page.getByText('שורות ללא מיקום במפה',{exact:true})});
@@ -120,7 +120,7 @@ test('2006 Hebrew map explains name placement and lists only the four unplaced l
   await expect(missing).not.toContainText('חברון');
   await expect(missing).not.toContainText('מעטפות');
   await page.getByRole('button', {name:'טבלה',exact:true}).click();
-  await expect(page.getByRole('button', {name:'התאמת מיקומים ב־2006',exact:true})).toBeVisible();
+  await expect(page.getByRole('button', {name:'הסבר: התאמת מיקומים ב־2006',exact:true})).toBeVisible();
 });
 
 

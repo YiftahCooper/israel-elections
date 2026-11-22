@@ -28,7 +28,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     const hebrewNames = panel.locator('.cands bdi[lang="he"][dir="rtl"]');
     await expect(hebrewNames.first()).toBeAttached();
     if (lang === 'en') {
-      await panel.getByRole('button', { name: 'Candidate names and links', exact: true }).click();
+      await panel.getByRole('button', { name: 'Candidate names and links: explanation', exact: true }).click();
       await expect(page.locator('.pop').filter({ hasText: 'Hebrew-only names have no official English spelling recorded' })).toBeVisible();
       await page.keyboard.press('Escape');
     }
