@@ -3,7 +3,7 @@
 // the lists column and the walkthrough, the export chip, and Sensitivity under Large text.
 import { expect, test, type Page } from './fixtures';
 import { boxesNow } from './settle.ts';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 async function start(page: Page, { lang = 'en', level = 'expert', election = 'k26', settings = {}, joint = 'on', width = 1500 }: { lang?: 'en' | 'he'; level?: string; election?: string; settings?: Record<string, unknown>; joint?: string; width?: number } = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 900 : 1000 });
@@ -16,7 +16,7 @@ async function start(page: Page, { lang = 'en', level = 'expert', election = 'k2
   }, [lang, level, settings, joint] as const);
   await page.goto('/');
   await expect(page.locator('.chamber [data-seat]').first()).toBeVisible();
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
 const seatOf = async (page: Page, text: string) => page.locator(`.chamber [data-seat-pos="${await page.locator('.chamber [data-seat-pos]').evaluateAll((els, t) => els.findIndex(e => (e.getAttribute('aria-label') ?? '').includes(t)), text)}"]`);
 
@@ -40,7 +40,7 @@ test('1977 counted by party: the key and the Hadash rows add up to every seat, t
   expect(rows.reduce((t, n) => t + Number(n), 0)).toBe(Number(await hadash.locator('.lb-seats b').textContent()));
   // one swatch type: every key row starts with a seat dot, in chamber order (Likud 40 before Shinui 2 in 1988)
   await expect(page.locator('.chamber .legend button:not(.key-group-head):not(:has(.component-key))')).toHaveCount(0);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k12');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k12');
   // the names as read out: a list's ballot-letter mark beside a name is hidden from the reading
   const names = await page.locator('.chamber .legend button').evaluateAll(bs => bs.map(b => { const c = b.cloneNode(true) as Element; c.querySelectorAll('[aria-hidden="true"]').forEach(x => x.remove()); return c.textContent!.trim(); }));
   expect(names.findIndex(n => n.startsWith('Likud'))).toBeLessThan(names.findIndex(n => n.startsWith('Shinui')));

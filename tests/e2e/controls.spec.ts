@@ -1,11 +1,11 @@
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openScenarioMenu } from './barMenu.ts';
 async function start(page: Page, lang = 'en', theme = 'light') {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), { lang, theme, level: 'expert', hintDismissed: true });
   await page.goto('/');
   await expect(page.locator('.lb-row').first()).toBeVisible();
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await expect(page.locator('.election .choice-trigger')).toHaveAttribute('data-value', 'k25');
 }
 async function detail(page: Page) {
@@ -13,7 +13,7 @@ async function detail(page: Page) {
   return page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
 }
 // on a phone the switcher is in the scenario panel (the bar's status label), or at the top of an open list sheet (which covers the bar)
-const switcher = async (page: Page) => { const button = page.getByRole('button', { name: 'Switch scenario', exact: true }); if (!await button.count()) await openScenarioMenu(page); return button; };
+const switcher = async (page: Page) => { const button = page.getByRole('button', { name: /^Switch scenario(: |$)/ }); if (!await button.count()) await openScenarioMenu(page); return button; };
 async function save(page: Page, name: string) {
   const close = page.locator('.side-panel').getByRole('button', { name: 'Close', exact: true });
   if (await close.count()) await close.click();
@@ -92,7 +92,7 @@ test('fine vote/share nudges and a paired 1pp transfer are single undo steps', a
 });
 for (const phone of [false, true]) test(`election picker keyboard ${phone ? 'phone' : 'desktop'}`, async ({ page }) => {
   await page.setViewportSize(phone ? { width: 390, height: 844 } : { width: 1440, height: 900 });
-  await start(page); const picker = page.getByRole('button', { name: 'Election', exact: true });
+  await start(page); const picker = page.getByRole('button', { name: /^Election(: |$)/ });
   await picker.focus(); await page.keyboard.press('Enter');
   const search = page.getByRole('searchbox', { name: 'Search choices' }); await expect(search).toBeFocused(); await search.fill('September 2019');
   await search.press('ArrowDown');
@@ -109,7 +109,7 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) for (con
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const suffix = `${lang}-${theme}-${phone ? 'phone' : 'desktop'}`;
   await page.screenshot({ path: `.backup-scratch/controls/board-${suffix}.png` });
-  await page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }).click();
+  await page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }).click();
   await expect(page.getByRole('dialog').locator('.election-row .result-preview').first()).toBeVisible();
   await page.screenshot({ path: `.backup-scratch/controls/elections-${suffix}.png` });
   await page.keyboard.press('Escape');

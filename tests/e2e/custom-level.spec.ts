@@ -1,17 +1,17 @@
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { test, expect, type Page } from './fixtures';
 async function start(page: Page, level = 'simple') {
   await page.addInitScript(level => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en',theme:'light',level,hintDismissed:true})); },level);
   await page.goto('/');
   await expect(page.getByRole('region',{name:'Lists',exact:true})).toBeVisible();
-  await choose(page.getByRole('button', {name:'Election',exact:true}), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await expect(page.locator('.lb-row').filter({has:page.locator('.lb-name',{hasText:'Likud'})}).locator('.lb-seats b')).toHaveText('32');
   await page.getByRole('region',{name:'Lists',exact:true}).getByRole('button',{name:'Likud',exact:true}).click();
 }
 test('Simple opens agreement editing in place and keeps it across reload', async ({page}) => {
   await start(page);
   await page.getByRole('button',{name:'More options: Agreement editing',exact:true}).click();
-  await expect(page.getByRole('button',{name:'Agreement partner',exact:true})).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Agreement partner(: |$)/ })).toBeVisible();
   await page.locator('.feature-disclosure').filter({has:page.getByRole('button',{name:'More options: Agreement editing',exact:true})}).getByRole('button',{name:'Keep this visible',exact:true}).click();
   // 19 Nov: an own choice makes Custom (Simple itself is unchanged), counted beside the complexity buttons
   await expect(page.locator('.band').getByRole('group', { name: 'Complexity' }).getByRole('button', { name: 'Custom', exact: true })).toHaveAttribute('aria-pressed', 'true');
@@ -19,7 +19,7 @@ test('Simple opens agreement editing in place and keeps it across reload', async
   expect((await page.locator('.band').boundingBox())!.height).toBeLessThanOrEqual(60);
   await page.reload();
   await page.getByRole('region',{name:'Lists',exact:true}).getByRole('button',{name:'Likud',exact:true}).click();
-  await expect(page.getByRole('button',{name:'Agreement partner',exact:true})).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Agreement partner(: |$)/ })).toBeVisible();
 });
 test('Settings hides a tool for this level and clearing the own choices restores it', async ({page}) => {
   await start(page,'standard');
@@ -38,7 +38,7 @@ test('blank candidates can be undone and chip changes are human wording', async 
   await expect(candidates).toHaveCount(0);
   await expect(page.locator('.banner.warn').filter({hasText:'unfilled seats'})).toContainText('32 seats and 0 candidates');
   await expect(page.locator('.ld').filter({hasText:'unfilled seats'})).toBeVisible();
-  await page.getByRole('button', { name: 'Switch scenario', exact: true }).click();
+  await page.getByRole('button', { name: /^Switch scenario(: |$)/ }).click();
   await page.getByRole('dialog').locator('.scenario-changes summary').click();
   const changes = page.getByRole('dialog').locator('.scenario-changes ul');
   await expect(changes).toContainText('Candidates');
@@ -53,7 +53,7 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     await page.setViewportSize(phone ? {width:390,height:844} : {width:1440,height:900});
     await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), {lang,theme,level:'expert',hintDismissed:true});
     await page.goto('/');
-    await choose(page.getByRole('button', {name:lang === 'he' ? 'בחירות' : 'Election',exact:true}), 'k25');
+    await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
     await expect(page.locator('.lb-row').filter({has:page.locator('.lb-name',{hasText:lang === 'he' ? 'ליכוד' : 'Likud'})}).locator('.lb-seats b')).toHaveText('32');
     await page.getByRole('tab',{name:lang === 'he' ? 'איחוד ופיצול' : 'Merge & split',exact:true}).click();
     await page.getByRole('button',{name:lang === 'he' ? 'הסכמי עודפים' : 'Surplus agreements',exact:true}).click();
@@ -72,7 +72,7 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     expect(box.x + box.width).toBeLessThanOrEqual(phone ? 390 : 1440);
     await page.screenshot({path:`.backup-scratch/custom-level/markers-${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png`});
     await page.getByRole('tab',{name:lang === 'he' ? 'כללים' : 'Rules',exact:true}).click();
-    await page.getByRole('button', {name:lang === 'he' ? 'העתקת כללים מ…' : 'Copy rules from…',exact:true}).click();
+    await page.getByRole('button', {name:pickerName(lang === 'he' ? 'העתקת כללים מ…' : 'Copy rules from…')}).click();
     const options = page.getByRole('dialog').locator('.choice-option');
     expect((await options.allTextContents()).join(' ')).not.toContain('il-');
     await expect(options.filter({hasText:'1977'})).toContainText(lang === 'he' ? 'מגבלת מועמדים' : 'Candidate cap');

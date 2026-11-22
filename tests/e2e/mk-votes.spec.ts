@@ -8,7 +8,7 @@ async function start(page: Page, level: string) {
     localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', level }));
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false } })); }, level);
   await page.goto('/');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k24');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k24');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
 }
 
@@ -26,8 +26,8 @@ test('June 2021 at Expert: the recorded first government counts Chikli against a
   await expect(section.locator('li')).toHaveCount(2);
   await expect(section.locator('li').filter({ hasText: 'Amichai Chikli' })).toContainText('Recorded vote');
   // one more MK, not named: one of Yesh Atid's MKs votes against (the list votes for); it is the user's edit, and undoable
-  await choose(section.getByRole('button', { name: 'List of the MK', exact: true }), { label: 'Yesh Atid' });
-  await expect(section.getByRole('button', { name: 'Which MK', exact: true })).toContainText('One MK, not named');
+  await choose(section.getByRole('button', { name: /^List of the MK(: |$)/ }), { label: 'Yesh Atid' });
+  await expect(section.getByRole('button', { name: /^Which MK(: |$)/ })).toContainText('One MK, not named');
   await expect(section.getByRole('group', { name: 'Their vote' }).getByRole('button', { name: 'Against', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await section.getByRole('button', { name: 'Add', exact: true }).click();
   await expect(section.locator('li').filter({ hasText: 'one MK' })).toContainText('Edited');

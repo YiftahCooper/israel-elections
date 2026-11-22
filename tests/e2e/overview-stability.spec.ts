@@ -1,4 +1,4 @@
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 // Overview round 2: nothing moves under the pointer when you edit or open a list, focus is never hidden under
 // the sticky bars, and Hebrew text beside numbers and graphics reads correctly.
 import { expect, test, type Page } from './fixtures';
@@ -10,7 +10,7 @@ const start = async (page: Page, lang: 'en' | 'he' = 'en', width = 1500, electio
     JSON.stringify({ lang, hintDismissed: true, level: 'expert' }));
   await page.goto('/');
   await expect(page.locator('.chamber [data-seat]')).toHaveCount(120);
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 };
 const top = (page: Page, sel: string) => page.locator(sel).first().evaluate(e => Math.round(e.getBoundingClientRect().top + scrollY));
 /** the chamber's and the lists' places on the page and the band's height, read in one step once they stand still */
@@ -92,7 +92,7 @@ test('Hebrew phone: bloc counts are spaced from their majority note, the governm
   const legend = page.locator('.blocs .strip-legend');
   await expect(legend).toContainText('64 3 מעל 61');
   await expect(legend).toContainText('56 חסרים 5 ל־61');
-  const current = page.getByRole('button', { name: 'חלוקה לגושים', exact: true }).locator('.choice-current');
+  const current = page.getByRole('button', { name: /^חלוקה לגושים(: |$)/ }).locator('.choice-current');
   expect(await current.evaluate(e => e.scrollWidth <= e.clientWidth)).toBe(true);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
 });

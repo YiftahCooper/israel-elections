@@ -1,4 +1,5 @@
 import { Fragment, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { MarkedText, otherLang } from './LangLabel.tsx';
 import { recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, termWithEnd, sourceLabel, sourceRows, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-model.ts';
 import { useReviewedAftermath } from '../aftermathData.ts';
 import aftermathNames from 'virtual:aftermath-names';
@@ -42,7 +43,7 @@ function Rotation({ number }: { number: number }) {
   const shown = a.sources.filter((s) => s.url && s.inspection !== 'search-snippet-only');
   const info = <Info title={L('Rotation agreement', 'הסכם רוטציה')}>
     <RotationWhy a={a} name={name} />
-    {shown.length > 0 && <span className="after-rotation-src">{shown.map((s) => <a key={s.url} href={s.url} target="_blank" rel="noreferrer">{sourceLinkText(s.url, s.publisher ?? s.url ?? '', lang)}{s.date ? <> · {date(s.date)}</> : null}</a>)}</span>}
+    {shown.length > 0 && <span className="after-rotation-src">{shown.map((s) => <a key={s.url} href={s.url} target="_blank" rel="noreferrer"><MarkedText text={sourceLinkText(s.url, s.publisher ?? s.url ?? '', lang)} />{s.date ? <> · {date(s.date)}</> : null}</a>)}</span>}
   </Info>;
   // the line wraps on a phone; only its last words keep the (i) beside them
   const parts = [plan, outcome].filter(Boolean);
@@ -104,13 +105,13 @@ function LocatorText({ locator }: { locator: string }) {
 /** Sources that disagree: each one's account with its source, then how the record settles it (research language). */
 function ConflictText({ data, conflict }: { data: Aftermath; conflict: Conflict }) {
   const lang = useLang();
-  return <div className="after-conflict" dir="auto"><p><b><HistoryText text={conflict.about} verbatim /></b></p><ul>{conflict.values.map((v, i) => { const s = data.sources[v.source]; return <li key={i}><HistoryText text={v.value} verbatim />{s && <> · <a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a></>}</li>; })}</ul><p><HistoryText text={conflict.resolution} verbatim /></p></div>;
+  return <div className="after-conflict" dir="auto"><p><b><HistoryText text={conflict.about} verbatim /></b></p><ul>{conflict.values.map((v, i) => { const s = data.sources[v.source]; return <li key={i}><HistoryText text={v.value} verbatim />{s && <> · <a href={s.url} target="_blank" rel="noreferrer"><bdi lang={otherLang(sourceLabel(s, lang), lang)}><HistoryText text={sourceLabel(s, lang)} /></bdi></a></>}</li>; })}</ul><p><HistoryText text={conflict.resolution} verbatim /></p></div>;
 }
 function Evidence({ data, cites = [], notes = [], explanation }: { data: Aftermath; cites?: Cite[]; notes?: (string | ReactNode)[]; explanation?: ReactNode }) {
   const L = useL(); const lang = useLang(); const kind = useKindLabel();
   return <Info title={L('Sources & qualifications', 'מקורות וסייגים')}>
     {explanation && <p>{explanation}</p>}
-    {cites.map((c, i) => { const s = data.sources[c.source]; return s && <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)} · <DateRun date={s.accessed} />{c.quote && !isFieldRecord(c.quote) && <blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>}{c.locator && <p dir="auto"><LocatorText locator={c.locator} /></p>}{(lang === 'he' ? c.noteHe ?? c.note : c.note) && <p dir="auto"><HistoryText text={(lang === 'he' ? c.noteHe ?? c.note : c.note)!} verbatim /></p>}</div>; })}
+    {cites.map((c, i) => { const s = data.sources[c.source]; return s && <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi lang={otherLang(sourceLabel(s, lang), lang)}><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)} · <DateRun date={s.accessed} />{c.quote && !isFieldRecord(c.quote) && <blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>}{c.locator && <p dir="auto"><LocatorText locator={c.locator} /></p>}{(lang === 'he' ? c.noteHe ?? c.note : c.note) && <p dir="auto"><HistoryText text={(lang === 'he' ? c.noteHe ?? c.note : c.note)!} verbatim /></p>}</div>; })}
     {notes.length > 0 && <details><summary>{L('Research notes · original language', 'הערות מחקר · בשפת המקור')}</summary>{notes.map((n, i) => typeof n === 'string' ? <p key={i} dir="auto"><HistoryText text={n} verbatim /></p> : n)}</details>}
   </Info>;
 }
@@ -315,8 +316,8 @@ export function AfterElectionSources({ ds }: { ds: ElectionDataset }) {
   const excluded = data.term.events.filter(e => !visibleTermEvents([e]).length);
   // one row per address, official first, each named and dated (c-design-principles-17, c-rtl-phone-06)
   return <section className="after-sources"><h3>{L('After the election · sources', 'אחרי הבחירות · מקורות')}</h3><ul className="after-source-list small">{sourceRows(data, lang).map(r => <li key={r.sources[0].url}>{r.sources.length === 1
-      ? <a href={r.sources[0].url} target="_blank" rel="noreferrer"><bdi><HistoryText text={r.label} /></bdi></a>
-      : <><bdi><HistoryText text={r.label} /></bdi> {r.sources.map((s, i) => <Fragment key={s.url}>{i > 0 && ' · '}<a href={s.url} target="_blank" rel="noreferrer" aria-label={`${r.label} ${i + 1}`}><bdi dir="ltr">{i + 1}</bdi></a></Fragment>)}</>}
+      ? <a href={r.sources[0].url} target="_blank" rel="noreferrer"><bdi lang={otherLang(r.label, lang)}><HistoryText text={r.label} /></bdi></a>
+      : <><bdi lang={otherLang(r.label, lang)}><HistoryText text={r.label} /></bdi> {r.sources.map((s, i) => <Fragment key={s.url}>{i > 0 && ' · '}<a href={s.url} target="_blank" rel="noreferrer" aria-label={`${r.label} ${i + 1}`} lang={otherLang(r.label, lang)}><bdi dir="ltr">{i + 1}</bdi></a></Fragment>)}</>}
       {' '}<span className="muted">· {kind(r.sources[0])} · {L('Retrieved', 'נשלף')} <DateRun date={r.accessed} /></span></li>)}</ul>{/* events still waiting for a second source are research records (data/meta/aftermath, term.candidatesPending):
      they never show to visitors, in any language (S2, 19 Nov 2026) */}
     {excluded.length > 0 && <details><summary>{L('Pending corroboration · excluded from history', 'ממתינים לאימות נוסף · אינם מוצגים בהיסטוריה')}</summary>{excluded.map((e, i) => <div key={i}><DateRun date={e.date} /> · <FactText data={data} event={e} /></div>)}</details>}</section>;

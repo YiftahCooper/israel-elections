@@ -1,5 +1,5 @@
 // Faults found by the 19 Nov review of the top bar, Overview, editing, Compare and History (lane FV1).
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { expect, test, type Page } from './fixtures';
 import { openSideBySide } from './sideBySide.ts';
 import { boxesNow, waitForStill } from './settle.ts';
@@ -16,7 +16,7 @@ async function start(page: Page, election: string, { lang = 'en', level = 'stand
   await page.goto('/');
   const lists = page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true });
   await expect(lists).toBeVisible();
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
   return lists;
 }
 
@@ -131,7 +131,7 @@ test('Copy votes box: counts lists as the message does, names where a row\'s vot
   await start(page, 'k26');
   await editVotes(page, 'Likud', '1247591');
   await page.locator('.session').getByRole('button', { name: 'Compare' }).click();
-  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true }), 'prev');
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ }), 'prev');
   await page.getByRole('button', { name: 'Copy votes…' }).first().click();
   const box = page.locator('.cmpm-copy');
   // one row holds three 2026 lists (Religious Zionism–Zehut, Otzma Yehudit and Noam)
@@ -180,7 +180,7 @@ test('phone Side by side within one election: each list named once, in full, wit
 test('Swap and Swap back: an unedited result is called "Official result", never "historical" or "Your work"', async ({ page }) => {
   await start(page, 'k26');
   await page.locator('.compare-on').first().click();
-  const picker = page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true });
+  const picker = page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ });
   await expect(picker).toContainText('2022 · 25th Knesset · Official result');
   await page.locator('.cmpm-strip').getByRole('button', { name: 'Swap', exact: true }).click();
   await expect(picker).toContainText('2026 · 26th Knesset · Official result');

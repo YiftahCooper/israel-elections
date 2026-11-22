@@ -3,7 +3,7 @@
 // between them with every copied value marked, matching decisions, Swap, save and share, the phone row sheet, Hebrew
 // graphics left to right, and contrast. The figures are the official results (Likud: 32 seats in 2022, 27 in 2026).
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 import { waitForStill } from './settle.ts';
 
@@ -17,9 +17,9 @@ async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', wid
     localStorage.setItem('israel-elections:preferences', JSON.stringify({ voteSource: 'proportional' }));
   }, [lang, level]);
   await page.goto('/');
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
-const picker = (page: Page) => page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true });
+const picker = (page: Page) => page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ });
 // a row by either side's name (in English your work's names are on the left)
 const row = (page: Page, name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname, .cmp-rname', { hasText: name }) }).first();
 // in English your work is the left column, the compared result the right one
@@ -61,7 +61,7 @@ test('this election’s official result is offered only once something is change
   await expect(page.getByRole('dialog').last().locator('[data-choice-value="official"]')).toHaveCount(0);
   await page.keyboard.press('Escape');
   await page.locator('.cmpm-strip .cmpm-stop').click();
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k1');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k1');
   await page.locator('.compare-on').click();
   await expect(page.locator('.cmpm-strip')).toContainText('No earlier election to compare with.');
 });
@@ -172,7 +172,7 @@ test('Swap makes 2022 your work; a saved comparison and its link reopen both sid
   await page.locator('.cmp-swap').click();
   await expect(card(page, 'main')).toContainText('2022');
   await expect(card(page, 'other')).toContainText('2026');
-  await expect(page.getByRole('button', { name: 'Election', exact: true })).toContainText('2022');
+  await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toContainText('2022');
   await page.locator('.cmp-swap').click();
   await expect(card(page, 'main')).toContainText('2026');
   // a copy into the compared 2022, then share: the link carries both sides
@@ -193,7 +193,7 @@ test('Swap makes 2022 your work; a saved comparison and its link reopen both sid
   await expect(other.locator('.cmp-wb')).toBeVisible({ timeout: 15_000 });
   await expect(other.locator('tr.cmp-row').filter({ has: other.locator('.cmp-rname', { hasText: 'Likud' }) }).first().locator('.cmp-rs')).toHaveText(copied);
   await other.close();
-  await expect(page.getByRole('button', { name: 'Saved comparisons' })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Saved comparisons(: |$)/ })).toBeVisible();
 });
 
 test('k1 → k2: copying the 1949 threshold switches 1951 to experimental rules, marked', async ({ page }) => {
@@ -450,7 +450,7 @@ test('opening another election while a row menu is open closes the menu and keep
   await openSideBySide(page);
   await page.locator('tr.cmp-row .cmp-more-btn').first().click();
   await expect(page.locator('.cmp-menu')).toBeVisible();
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k1');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k1');
   await expect(card(page, 'main')).toContainText('1949');
   await expect(page.locator('.cmp-menu')).toHaveCount(0);
   await expect(page.locator('tr.cmp-row').first()).toBeVisible();
@@ -464,7 +464,7 @@ test('phone, Hebrew: a row sheet with three lists on one side fits the screen', 
   await start(page, 'he', 'k3', 390);
   await page.locator('#tab-board').click();
   await page.locator('.compare-on').click();
-  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'השוואה עם', exact: true }), 'election:k26');
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: /^השוואה עם(: |$)/ }), 'election:k26');
   await openSideBySide(page);
   await row(page, 'חרות').locator('.cmp-lname, .cmp-rname').first().click();
   const sheet = page.locator('dialog[open].cmp-sheet');

@@ -16,7 +16,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('the picker offers the built elections and marks the others as not yet available', async ({ page }) => {
-  const picker = page.getByRole('button', { name: 'Election', exact: true });
+  const picker = page.getByRole('button', { name: /^Election(: |$)/ });
   await picker.click();
   await expect(page.getByRole('dialog').locator('.choice-options').getByRole('button', { name: '2026 · 26th Knesset' })).toBeEnabled();
   await expect(page.getByRole('dialog').locator('.choice-options').getByRole('button', { name: '2022 · 25th Knesset' })).toBeEnabled();
@@ -25,7 +25,7 @@ test('the picker offers the built elections and marks the others as not yet avai
 });
 
 test('choosing another election loads its result', async ({ page }) => {
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   const likud = page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true });
   await expect(likud).toContainText('32');
 });

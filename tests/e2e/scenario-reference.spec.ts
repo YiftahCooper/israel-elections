@@ -1,10 +1,10 @@
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { expect, test, type Page } from './fixtures';
 async function start(page: Page, lang = 'en', theme = 'light') {
   await page.addInitScript(v => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)); }, { lang, theme, level: 'expert', hintDismissed: true });
   await page.goto('/');
   await expect(page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true })).toBeVisible();
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await expect(page.locator('.election .choice-trigger')).toHaveAttribute('data-value', 'k25');
   await expect(page.locator('.lb-row').filter({ has: page.locator('.lb-name', { hasText: lang === 'he' ? 'ליכוד' : 'Likud' }) }).locator('.lb-seats b')).toHaveText('32');
 }

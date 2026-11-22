@@ -1,13 +1,13 @@
 import { expect, test } from './fixtures';
 import { existsSync } from 'node:fs';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { barLanguage } from './barMenu.ts';
 import { waitForStill } from './settle.ts';
 
 for (const lang of ['he', 'en'] as const) test(`k26 distinguishes the completed mandate from a new government: ${lang}`, async ({ page }) => {
   await page.goto('/');
   if (lang === 'en') await barLanguage(page, 'en');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k26');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k26');
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
   const history = page.locator('.after-election');
   await expect(history).toContainText(lang === 'he' ? 'הרצוג הטיל על גדי איזנקוט' : 'Herzog tasked Gadi Eisenkot');
@@ -20,7 +20,7 @@ for (const lang of ['he', 'en'] as const) test(`k26 distinguishes the completed 
 test('history, split recommendations, direct elections and next-election navigation', async ({ page }) => {
   await page.goto('/');
   await barLanguage(page, 'en');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k24');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k24');
   await page.locator('.band .election-about > summary').click();
   await page.getByRole('button', { name: 'Government & term →', exact: true }).click();
   await expect(page.getByRole('tab', { name: 'After the election', exact: true })).toHaveAttribute('aria-selected', 'true');
@@ -32,13 +32,13 @@ test('history, split recommendations, direct elections and next-election navigat
   await expect(history.getByRole('cell', { name: /^Yair Lapid/ }).first()).toBeVisible();
   await history.getByRole('button', { name: '→ Next election' }).click();
   await expect(history).toHaveAttribute('data-election', 'k25');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k14');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k14');
   await expect(history).toContainText('PM elected directly');
   await expect(history.locator('.after-round')).toHaveCount(0);
   await history.getByRole('button', { name: /Next election/ }).click();
   await expect(history).toHaveAttribute('data-election', 'k15');
   await expect(history).toContainText('6 Feb 2001');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k1');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k1');
   await expect(history).toContainText('Not documented');
   await expect(history).toContainText('Government 1');
   await page.getByRole('button', { name: 'Sources & research coverage' }).click();
@@ -50,7 +50,7 @@ test('history, split recommendations, direct elections and next-election navigat
 test('history remains official after editing votes', async ({ page }) => {
   await page.goto('/');
   await barLanguage(page, 'en');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.getByRole('tab', { name: 'After the election', exact: true }).click();
   await page.locator('section.tl .tl-chamber circle.seat').first().waitFor(); // the term timeline loads its own data
   const original = await page.locator('.after-election').textContent();
@@ -68,7 +68,7 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
   await page.setViewportSize({ width: 1024, height: 1000 });
   await page.goto('/');
   if (lang === 'en') await barLanguage(page, 'en');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k24');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k24');
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
   const history = page.locator('.after-election');
   const government = history.locator('h3').filter({ hasText: lang === 'he' ? 'הממשלה ה־36' : 'Government 36' });
@@ -123,7 +123,7 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
   await page.keyboard.press('Escape');
   // The same rendering contract applies to every reviewed election, not just the reported example.
   for (let n = 1; n <= 26; n++) {
-    await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), `k${n}`);
+    await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), `k${n}`);
     await expect(history).toHaveAttribute('data-election', `k${n}`);
     await expect(history).not.toContainText(/\d{4}-\d{2}/);
     const ranges = await history.locator('.after-date-run').evaluateAll(nodes => nodes.flatMap(node => {
@@ -151,7 +151,7 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await page.goto('/');
   if (lang === 'en') await barLanguage(page, 'en');
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
-  const election = page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true });
+  const election = page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') });
   const history = page.locator('.after-election');
   await choose(election, 'k9');
   await expect(history.locator('[data-support-role="member-without-ministries"]').first()).toContainText(lang === 'he' ? 'אגודת ישראל' : 'Agudat');
@@ -200,7 +200,7 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
 test('switching language on mounted history updates endpoint direction and visual order', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('tab', { name: 'אחרי הבחירות', exact: true }).click();
-  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k24');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k24');
   for (const lang of ['en', 'he', 'en'] as const) {
     await barLanguage(page, lang);
     const government = page.locator('.after-election h3').filter({ hasText: lang === 'he' ? 'הממשלה ה־36' : 'Government 36' });
@@ -221,7 +221,7 @@ test('switching language on mounted history updates endpoint direction and visua
 const openAfter = async (page: import('@playwright/test').Page, id: string, lang: 'en' | 'he') => {
   await page.goto('/');
   if (lang === 'en') await barLanguage(page, 'en');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), id);
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), id);
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
   return page.locator('.after-election');
 };
@@ -230,9 +230,9 @@ for (const lang of ['en', 'he'] as const) test(`acting and interim prime ministe
   await expect(history.locator('.after-pms')).toHaveText(lang === 'en'
     ? 'Ariel Sharon · 27 Feb 2003→Ehud Olmert (acting Prime Minister) · 4 Jan 2006→Ehud Olmert (interim Prime Minister) · 14 Apr 2006'
     : 'אריאל שרון · 27 בפבר׳ 2003←אהוד אולמרט (ממלא מקום ראש הממשלה) · 4 בינו׳ 2006←אהוד אולמרט (ראש הממשלה בפועל) · 14 באפר׳ 2006');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k13');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k13');
   await expect(history.locator('.after-pms')).toContainText(lang === 'en' ? 'Shimon Peres (acting Prime Minister)' : 'שמעון פרס (ראש הממשלה בפועל)');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k6');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k6');
   await expect(history.locator('.after-pms')).toContainText(lang === 'en' ? 'Yigal Allon (acting Prime Minister)' : 'יגאל אלון (ראש הממשלה בפועל)');
 });
 
@@ -244,7 +244,7 @@ test('later-government rows name every faction in English, never transliterated'
   for (const name of ['Tehiya', 'Tami', 'Movement for Social Zionist Renewal', 'National Religious Party']) await expect(change.locator('.after-coalition')).toContainText(name);
   await expect(change).not.toContainText("thyyh");
   for (const [id, name] of [['k6', 'Alignment'], ['k15', 'Yisrael BaAliyah'], ['k13', "Yi'ud"]] as const) {
-    await choose(page.getByRole('button', { name: 'Election', exact: true }), id);
+    await choose(page.getByRole('button', { name: /^Election(: |$)/ }), id);
     await history.getByText('Government changes', { exact: true }).click();
     await expect(history.locator('.after-government-change .after-coalition').filter({ hasText: name })).not.toHaveCount(0);
   }
@@ -258,9 +258,9 @@ test('a mid-term change shows no investiture vote of its own; a formation bar na
   const change = history.locator('.after-government-change').first();
   await expect(change).toContainText('Gahal');
   await expect(change.locator('.after-confidence-vote')).toHaveCount(0);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k10');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k10');
   await expect(history.locator('.after-mandate small')).toContainText(['Menachem Begin', 'Yitzhak Shamir']);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k18');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k18');
   await expect(history.locator('.after-confidence-vote').first()).toHaveText('69 for · 45 against · 0 abstaining');
 });
 
@@ -268,16 +268,16 @@ test('records added in this pass: the Lavon affair, the 1988 recommendations, Go
   const history = await openAfter(page, 'k4', 'he');
   await history.getByText('שינויים בממשלה', { exact: true }).click();
   await expect(history).toContainText('פרשת לבון הובילה למשבר פוליטי ולבחירות מוקדמות.');
-  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k12');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k12');
   // 17 Nov 2026: two papers of the time (Hadashot, Maariv) put Hadash and ADP with Peres (54); PLP named no person (other 1)
   await expect(history.locator('.after-key')).toContainText('שמעון פרס 54');
   await expect(history.locator('.after-key')).toContainText('אחר 1');
   await expect(history.locator('.after-key')).not.toContainText('לא מתועד');
   await expect(history).not.toContainText('שיחה מקומית');
-  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k11');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k11');
   await expect(history.locator('.after-individual').filter({ hasText: 'אמירה סרטני' })).toContainText('מרשימת המערך');
   await expect(history).not.toContainText('נבחר ברשימת');
-  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k25');
   await history.getByText('שינויים בממשלה', { exact: true }).click();
   // 15: the nine fx-after rows, Goldknopf 15 Jun 2025 and Porush/Tesler 17 Jul 2025 (12 Nov merge), and four rows from
   // the appointment register (13 Nov): Maoz 1 Mar 2023, 5 Jun 2023 and 26 Mar 2025, Eichler 19 Jan 2026; 16 since 20 Nov
@@ -302,7 +302,7 @@ test('1974 recommendations from The Jerusalem Post, and Peres’s 1990 mandate o
   const history = await openAfter(page, 'k8', 'en');
   await expect(history.locator('.after-key')).toContainText('Golda Meir 62');
   await expect(history.locator('.after-key')).toContainText('Not documented 14');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k12');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k12');
   await expect(history.locator('.after-mandate small')).toHaveText(['Yitzhak Shamir', 'Shimon Peres', 'Yitzhak Shamir']);
 });
 
@@ -310,7 +310,7 @@ test('1974 recommendations from The Jerusalem Post, and Peres’s 1990 mandate o
 for (const lang of ['en', 'he'] as const) test(`each recommendation group is named under its own run of the bar, left to right: ${lang}`, async ({ page }) => {
   const history = await openAfter(page, 'k26', lang);
   for (const id of ['k26', 'k25', 'k21', 'k22', 'k11', 'k9']) {
-    if (id !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), id);
+    if (id !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), id);
     await expect(history).toHaveAttribute('data-election', id);
     const round = history.locator('.after-round').first();
     const geometry = await round.evaluate(root => {
@@ -337,7 +337,7 @@ for (const lang of ['en', 'he'] as const) test(`each recommendation group is nam
       expect(a.right <= b.left || b.right <= a.left || a.bottom <= b.top || b.bottom <= a.top, `${id} ${a.key}/${b.key} overlap`).toBe(true);
   }
   // 2026: the 7 who made no recommendation sit at the right end in both languages, as on the bar
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k26');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k26');
   const labels = history.locator('.after-round').first().locator('.after-group-label');
   await expect(labels).toHaveText(lang === 'he' ? ['גדי איזנקוט 67', 'בנימין נתניהו 46', 'ללא המלצה 7'] : ['Gadi Eisenkot 67', 'Benjamin Netanyahu 46', 'No recommendation 7']);
   const xs = await labels.evaluateAll(nodes => nodes.map(n => n.getBoundingClientRect().left));
@@ -359,7 +359,7 @@ for (const lang of ['en', 'he'] as const) test(`an open mandate is drawn inside 
   expect(name.x).toBeGreaterThanOrEqual(line.x);
   await expect(formation.locator('.after-date-line > span').last()).toContainText(lang === 'he' ? 'נבדק' : 'Checked');
   // a closed mandate keeps its own end and no "ongoing"
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await expect(history.locator('.after-mandate[data-open]')).toHaveCount(0);
 });
 
@@ -367,7 +367,7 @@ for (const lang of ['en', 'he'] as const) test(`the next-election button names t
   const history = await openAfter(page, 'k22', lang);
   await expect(history.locator('footer button.btn')).toHaveText(lang === 'he' ? '← הבחירות הבאות · 2020 · הכנסת ה־23' : '→ Next election · 2020 · 23rd Knesset');
   await expect(history.locator('.after-events time[datetime="2019-12-12"]')).toHaveCount(1); // the dissolution, listed once
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k20');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k20');
   // 2018: the dissolution is listed once, among the term's events by date (V2 fault A2), not after them
   await expect(history.locator('.after-events time[datetime="2018-12-26"]')).toHaveCount(1);
   await expect(history.locator('footer .after-events')).toHaveCount(0);
@@ -379,7 +379,7 @@ test('events never go backwards on the page, in all 26 elections', async ({ page
   const history = await openAfter(page, 'k1', 'en');
   const audit: Record<string, string[]> = {};
   for (let n = 1; n <= 26; n++) {
-    if (n > 1) await choose(page.getByRole('button', { name: 'Election', exact: true }), `k${n}`);
+    if (n > 1) await choose(page.getByRole('button', { name: /^Election(: |$)/ }), `k${n}`);
     await expect(history).toHaveAttribute('data-election', `k${n}`);
     const lists = await history.locator('ol.after-events').evaluateAll(ols => ols.map(ol => [...ol.children].map(li => li.querySelector('time')!.getAttribute('datetime')!)));
     for (const dates of lists) dates.slice(1).forEach((d, i) => {
@@ -389,12 +389,12 @@ test('events never go backwards on the page, in all 26 elections', async ({ page
     audit[`k${n}`] = lists.flat();
   }
   // the audit's three cases
-  const k6 = await (async () => { await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k6'); return history.locator('section').filter({ has: page.getByRole('heading', { name: 'During the term' }) }).locator('li').allInnerTexts(); })();
+  const k6 = await (async () => { await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k6'); return history.locator('section').filter({ has: page.getByRole('heading', { name: 'During the term' }) }).locator('li').allInnerTexts(); })();
   expect(k6.findIndex(t => t.includes('national unity government'))).toBeLessThan(k6.findIndex(t => t.includes('fought Egypt, Jordan and Syria')));
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k9');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k9');
   const k9 = await history.locator('section').filter({ has: page.getByRole('heading', { name: 'During the term' }) }).locator('li').allInnerTexts();
   expect(k9.findIndex(t => t.includes('Coastal Road massacre'))).toBeLessThan(k9.findIndex(t => t.includes('Operation Litani')));
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k2');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k2');
   const k2 = await history.locator('section').filter({ has: page.getByRole('heading', { name: 'Government formation' }) }).locator('li').allInnerTexts();
   expect(k2.findIndex(t => t.includes('tasked Sharett'))).toBeLessThan(k2.findIndex(t => t.includes('confidence in government 6')));
 });
@@ -423,7 +423,7 @@ for (const lang of ['en', 'he'] as const) test(`a government's rotation agreemen
   await page.goto('/');
   if (lang === 'en') await barLanguage(page, 'en');
   const open = async (k: string) => {
-    await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), k);
+    await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), k);
     await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
     return page.locator('.after-election .after-rotation');
   };
@@ -446,7 +446,7 @@ test('phone, Hebrew: the government card with its rotation line fits the screen'
   test.skip(!existsSync('data/research/government-rotation-agreements.json'), 'rotation research not yet in this checkout');
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
-  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k24');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k24');
   await page.getByRole('tab', { name: 'אחרי הבחירות', exact: true }).click();
   await expect(page.locator('.after-rotation')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
@@ -456,7 +456,7 @@ test('phone, Hebrew: the government card with its rotation line fits the screen'
 for (const lang of ['en', 'he'] as const) test(`the coalition count names the lists that joined only in part: ${lang}`, async ({ page }) => {
   await page.goto('/');
   if (lang === 'en') await barLanguage(page, 'en');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k23');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k23');
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
   const total = page.locator('.after-support-totals .after-help-anchor').first();
   await expect(total).toContainText(lang === 'he' ? 'חברי הקואליציה 73' : 'Members 73');
@@ -473,7 +473,7 @@ for (const lang of ['en', 'he'] as const) test(`a mid-term join or exit shows th
   const dmc = history.locator('.after-government-change').filter({ has: page.locator('time[datetime="1977-10-24"]') });
   await expect(dmc.locator('[data-support-role="member-with-ministries"] .after-coalition')).toContainText(lang === 'he' ? 'ד״ש' : 'Democratic Movement for Change');
   await expect(dmc.locator('.after-members-total')).toHaveText('77');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k19');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k19');
   await history.getByText(lang === 'he' ? 'שינויים בממשלה' : 'Government changes', { exact: true }).click();
   const out = history.locator('.after-government-change').filter({ has: page.locator('time[datetime="2014-12-04"]') });
   await expect(out.locator('.after-members-total')).toHaveText('43');

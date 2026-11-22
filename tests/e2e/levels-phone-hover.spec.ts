@@ -58,9 +58,9 @@ test.describe('parties under a joint list: Simple none, Standard with seats, Exp
   // 2022: Religious Zionism (14 seats) also held Atid Ehad and Eretz Yisrael Shelanu, with no one elected
   const rz = (page: Page) => page.getByRole('list', { name: /^Religious Zionism.*factions after the split$/ });
   const pick2022 = async (page: Page) => {
-    await page.getByRole('button', { name: 'Election', exact: true }).click();
+    await page.getByRole('button', { name: /^Election(: |$)/ }).click();
     await page.locator('[data-choice-value="k25"]').click();
-    await expect(page.getByRole('button', { name: 'Election', exact: true })).toHaveAttribute('data-value', 'k25');
+    await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toHaveAttribute('data-value', 'k25');
   };
   test('Simple lists only; Standard hides the parties without seats; Expert shows them; the setting overrides', async ({ page }) => {
     // joint lists counted by party (the app's default; the shared test seed turns it off)

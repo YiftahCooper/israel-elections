@@ -1,4 +1,4 @@
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 import {expect,test} from './fixtures';
 import {readFileSync} from 'node:fs';
@@ -69,7 +69,7 @@ for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const ph
       await check();
       if(!c.name.startsWith('k')) await page.locator('.chamber').first().screenshot({path:`.backup-scratch/graphics-audit/blocks-${c.name}-${lang}-${theme}-${phone?'phone':'desktop'}.png`});
       for (const mode of ['bloc','party','list']) {
-        await choose(page.locator('.chamber-tools').getByRole('button',{name:lang==='he'?'צביעת מושבים לפי':'Colour seats by',exact:true}),mode);
+        await choose(page.locator('.chamber-tools').getByRole('button', { name: pickerName(lang==='he'?'צביעת מושבים לפי':'Colour seats by') }),mode);
         await check();
       }
     }
@@ -131,7 +131,7 @@ test('summary, graphics and Compare default follow the same reference setting',a
     }
     await openSideBySide(page);
     // the scenario's result differs from the official one, so comparing starts on it whichever reference marks the changes
-    const target=page.locator('.cmpm-strip').getByRole('button',{name:'Compare with',exact:true});
+    const target=page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ });
     await expect(target).toHaveAttribute('data-value', 'official');
     // the open scenario's chamber keeps the No bloc seats
     if(changed) await expect(page.locator('.cmp-card[data-role="main"] [data-seat][data-bloc="__none"]').first()).toBeAttached();
@@ -148,7 +148,7 @@ test('election choice awaits committed data before opening a list',async({page})
   });
   await page.goto('/');
   await expect(page.locator('.lb-row').first()).toBeVisible();
-  const election=page.getByRole('button',{name:'Election',exact:true});
+  const election=page.getByRole('button', { name: /^Election(: |$)/ });
   await expect(election).toHaveAttribute('data-value','k26');
   await choose(election,'k24');
   expect(await election.getAttribute('data-value')).toBe('k24');

@@ -82,7 +82,7 @@ test('invalid ballots: Escape and a tap outside close the window', async ({ page
 test('turnout: steps, another election\'s turnout, and an exact Reset', async ({ page }) => {
   await open(page);
   await tile(page, 'turnout').locator('.tile-pencil').click();
-  await expect(pop(page).getByRole('button', { name: 'Use another election’s turnout', exact: true })).toBeVisible();
+  await expect(pop(page).getByRole('button', { name: /^Use another election’s turnout(: |$)/ })).toBeVisible();
   for (let i = 0; i < 3; i++) await pop(page).getByRole('button', { name: 'Increase Turnout %', exact: true }).click();
   await expect(tile(page, 'turnout').locator('.tn-v')).toHaveText(/^78\.28%/);
   await expect(tile(page, 'turnout').locator('.tn-v .edit-marker')).toHaveText('Edited');
@@ -100,7 +100,7 @@ test('the threshold tile is changed on its tile only under Experimental rules', 
   await openTool(page, 'turnout');
   await tile(page, 'threshold').locator('.tile-pencil').click();
   await expect(pop(page)).toContainText('Change the threshold');
-  await pop(page).getByRole('button', { name: '2% (2006–2013)', exact: true }).click();
+  await pop(page).getByRole('button', { name: '2% 2006–2013', exact: true }).click();
   await expect(tile(page, 'threshold').locator('.tn-d')).toHaveText('2% of valid votes');
   await expect(tile(page, 'threshold').locator('.tn-v .edit-marker')).toHaveText('Edited');
   await pop(page).getByRole('button', { name: /^Reset/ }).click();

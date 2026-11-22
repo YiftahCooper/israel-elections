@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 // Audit 12 Nov 2026, lane c-levels: what the Custom level and the level switch promise, held to what the app does.
 // Each test names the finding it protects. 16 Nov 2026: the Custom level became the user's own choices for a level,
@@ -126,7 +126,7 @@ for (const lang of ['en', 'he'] as const) {
   test(`c-levels-07: 1949 notes show at Simple, and "not seated" carries its reason (${lang})`, async ({ page }) => {
     await start(page, { lang, level: 'simple' });
     const H = await he(page);
-    await choose(page.getByRole('button', { name: H ? 'בחירות' : 'Election', exact: true }), 'k1');
+    await choose(page.getByRole('button', { name: pickerName(H ? 'בחירות' : 'Election') }), 'k1');
     await listButton(page, H ? 'מפא״י' : 'Mapai').click();
     await expect(details(page).getByRole('heading', { name: H ? 'הערות על המקורות' : 'Notes on the sources (in Hebrew)', exact: true })).toBeVisible();
     await expect(details(page).locator('.disclosure-toggle')).not.toContainText([H ? 'הערות רשמיות לרשימה' : 'Official list notes']);
@@ -139,7 +139,7 @@ for (const lang of ['en', 'he'] as const) {
   test(`c-levels-10: Simple's "Who gets in" says how many it lists, then all elected, then the roster (${lang})`, async ({ page }) => {
     await start(page, { lang, level: 'simple' });
     const H = await he(page);
-    await choose(page.getByRole('button', { name: H ? 'בחירות' : 'Election', exact: true }), 'k25');
+    await choose(page.getByRole('button', { name: pickerName(H ? 'בחירות' : 'Election') }), 'k25');
     await listButton(page, H ? 'הליכוד' : 'Likud').click();
     const heading = details(page).getByRole('heading', { name: H ? /^מי נכנס לכנסת/ : /^Who gets in/ });
     await expect(heading).toHaveText(H ? 'מי נכנס לכנסת (10 הראשונים מתוך 32)' : 'Who gets in (first 10 of 32)');

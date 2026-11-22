@@ -1,4 +1,4 @@
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { expect, test } from './fixtures';
 
 test.beforeEach(async ({ page }) => {
@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByRole('region', { name: 'Lists', exact: true })).toBeVisible();
 });
 test('k14 displays the independent PM ballot in Simple', async ({ page }) => {
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k14');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k14');
   const pm = page.getByRole('region', { name: 'Prime Minister result' });
   await expect(pm).toContainText('Benjamin Netanyahu');
   await expect(pm).toContainText('1,501,023');
@@ -20,7 +20,7 @@ test('k14 displays the independent PM ballot in Simple', async ({ page }) => {
   await expect(page.getByRole('region', { name: 'The Knesset', exact: true })).toBeVisible();
 });
 test('2001 is PM-only and returns to the unaltered k15 chamber', async ({ page }) => {
-  const picker = page.getByRole('button', { name: 'Election', exact: true });
+  const picker = page.getByRole('button', { name: /^Election(: |$)/ });
   await choose(picker, 'pm2001');
   await expect(picker).toHaveAttribute('data-value', 'pm2001');
   const pm = page.getByRole('region', { name: 'Prime Minister result' });
@@ -33,7 +33,7 @@ test('2001 is PM-only and returns to the unaltered k15 chamber', async ({ page }
   await expect(page.getByRole('region', { name: 'The Knesset', exact: true })).toBeVisible();
 });
 test('k1 explains the Constituent Assembly in expandable context', async ({ page }) => {
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k1');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k1');
   await page.getByText('About', { exact: true }).click();
   await expect(page.getByText(/This election chose the Constituent Assembly/)).toBeVisible();
 });
@@ -43,7 +43,7 @@ for (const lang of ['he', 'en']) for (const theme of ['light', 'dark']) for (con
     await page.setViewportSize(size === 'phone' ? { width: 390, height: 844 } : { width: 1500, height: 1000 });
     await page.evaluate(({ lang, theme }) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, theme, hintDismissed: true })), { lang, theme });
     await page.reload();
-    const picker = page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true });
+    const picker = page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') });
     for (const id of ['k14', 'k15', 'pm2001', 'k1']) {
       await choose(picker, id);
       await expect(picker).toHaveAttribute('data-value', id);

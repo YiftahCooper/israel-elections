@@ -1,3 +1,4 @@
+import { MarkedText } from './LangLabel.tsx';
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import { factionLabel, useMkRuntime, openMkHistory, unrecordedFaction, type MkRuntime } from '../../history/mk.ts';
@@ -169,7 +170,7 @@ function Sources({ it }: { it: TimelineItem }) {
   return <Info title={L('Sources & how sure', 'מקורות ומידת ודאות')}>
     {it.type === 'seat' && !it.sources.length ? <p>{L('From the Knesset’s membership records: who left and who entered on this date. Which seat a newcomer took is our pairing within the list.', 'מרשומות החברות של הכנסת: מי עזב ומי נכנס בתאריך זה. איזה מושב תפס מי שנכנס: השיוך שלנו, בתוך הרשימה.')}</p> : null}
     {sure && <p>{sure}</p>}
-    {it.sources.map(([publisher, url, he], i) => <div key={i}><a href={url} target="_blank" rel="noreferrer"><bdi>{sourceLinkText(url, publisherIn(lang, publisher, he), lang)}</bdi></a></div>)}
+    {it.sources.map(([publisher, url, he], i) => <div key={i}><a href={url} target="_blank" rel="noreferrer"><bdi><MarkedText text={sourceLinkText(url, publisherIn(lang, publisher, he), lang)} /></bdi></a></div>)}
   </Info>;
 }
 

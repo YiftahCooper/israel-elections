@@ -2,7 +2,7 @@
 // names never sit on a circle or a town's tiles, and a place's lists and shares come from its hover box, a tap, or a
 // choice from the search (the keyboard's way in). The Vote mix hover box once read "[object Object]".
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { settleMap } from './map-settle.ts';
 
 const open = async (page: Page, lang: 'en' | 'he', view: 'winner' | 'mix') => {
@@ -19,7 +19,7 @@ const open = async (page: Page, lang: 'en' | 'he', view: 'winner' | 'mix') => {
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   const outlines = view === 'mix' ? page.waitForResponse(r => r.url().endsWith('/data/locality-outlines-2022.geojson')) : null;
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await page.getByRole('tab', { name: lang === 'he' ? 'יישובים' : 'Localities', exact: true }).click();
   await expect(page.getByRole('region', { name: lang === 'he' ? /מפת תוצאות/ : /Locality results map/ })).toBeVisible();
   await outlines;

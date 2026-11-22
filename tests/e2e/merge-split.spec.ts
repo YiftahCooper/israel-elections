@@ -1,13 +1,13 @@
 // Merge & split screen audit (5 Nov): the preview and the record of applied changes compare a split once with all its
 // parts, the page stays put after applying, split vote shares are explicit and editable, and each era's agreement rule shows.
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', width = 1500) {
   await page.setViewportSize({ width, height: 1000 });
   await page.addInitScript((lang) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/');
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
   await page.locator('#tab-structure').click();
 }
 const panel = (page: Page) => page.locator('#analysis-panel');
@@ -74,7 +74,7 @@ test('the task tabs stay in place when switching to agreements, and each era sta
   // an agreement with no effect says so once (its chip), not again in a second line
   const dead = panel(page).locator('.st-agreements li').filter({ has: page.locator('.chip.no') }).first();
   await expect(dead.locator('.st-effect')).toHaveCount(0);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k12');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k12');
   await expect(panel(page).locator('.st-rule')).toHaveText('Rule: Pairs of lists · both must pass the 1% threshold');
 });
 

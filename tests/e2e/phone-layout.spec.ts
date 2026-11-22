@@ -1,7 +1,7 @@
 // Phone, tablet and Large-text layout (audit 12 Nov 2026, fx-phone): nothing a reader needs is cut off, covered or
 // out of reach. Every check measures boxes (inside, not overlapping, inside the screen); none compares pixels.
 import { expect, test, type Locator, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 
 type Opts = { lang?: 'en' | 'he'; width?: number; height?: number; text?: 'normal' | 'large'; level?: string };
@@ -21,7 +21,7 @@ async function start(page: Page, { lang = 'en', width = 390, height = 844, text 
 }
 const box = async (l: Locator) => (await l.boundingBox())!;
 const inside = (a: { x: number; width: number }, b: { x: number; width: number }) => a.x >= b.x - 1 && a.x + a.width <= b.x + b.width + 1;
-const electionPicker = (page: Page, lang: 'en' | 'he') => page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }).first();
+const electionPicker = (page: Page, lang: 'en' | 'he') => page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }).first();
 
 test('What if on a phone: no seat change runs under its row\'s "Open as a scenario" button', async ({ page }) => {
   for (const c of [{ lang: 'en', width: 360, height: 740 }, { lang: 'he', width: 360, height: 740 }, { lang: 'en', width: 390, height: 844, text: 'large' }] as Opts[]) {

@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 // Owner, 7 November 2026: grouping and coalition edits are scenario changes (counted, in History, marked, tinted),
 // with "Votes and seats unchanged" where nothing else changed. Only appearance (colours) is exempt.
@@ -7,7 +7,7 @@ const start = async (page: Page, lang: 'en' | 'he', election = 'k25') => {
   await page.addInitScript((v) => { if (!sessionStorage.getItem('seeded')) { localStorage.setItem('israel-elections:v1', v); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2 } })); sessionStorage.setItem('seeded', '1'); } },
     JSON.stringify({ lang, hintDismissed: true, level: 'standard' }));
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
+  await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), election);
 };
 const tint = (page: Page) => page.locator('.app').evaluate(el => (el as HTMLElement).style.getPropertyValue('--scenario-color'));
 const session = (page: Page) => page.locator('.session');

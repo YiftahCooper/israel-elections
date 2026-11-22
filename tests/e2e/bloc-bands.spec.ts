@@ -2,14 +2,14 @@ import { readFile } from 'node:fs/promises';
 import { deflateRawSync } from 'node:zlib';
 import { dataset } from '../graphics-cases.ts';
 import { expect, test } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 for (const lang of ['he', 'en'] as const) for (const theme of ['light', 'dark']) {
   test(`${lang} ${theme}: bloc borders, quiet fills and fixed seat geometry in both layouts`, async ({ page }) => {
     await page.addInitScript(v => localStorage.setItem('israel-elections:v1', JSON.stringify(v)), { lang, theme, level: 'expert', hintDismissed: true });
     await page.goto('/');
     for (const election of ['k26', 'k25', 'k1']) {
-      if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+      if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
       await expect(page.locator('.chamber').first().locator('[data-seat]')).toHaveCount(120);
       for (const layout of ['hemicycle', 'blocks']) {
         await page.getByRole('group', { name: lang === 'he' ? 'פריסה' : 'Chamber layout' }).getByRole('button', { name: layout === 'blocks' ? (lang === 'he' ? 'משבצות' : 'Blocks') : (lang === 'he' ? 'קשת' : 'Arc'), exact: true }).click();
@@ -63,7 +63,7 @@ test('2x DPR: the same shared boundaries render without scaling the border', asy
   const page = await context.newPage();
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'en', theme: 'dark', level: 'expert', hintDismissed: true })));
   await page.goto('/');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await expect(page.locator('.chamber [data-seat]')).toHaveCount(120);
   if (process.env.V1_SCREENSHOTS) {
     await page.mouse.move(0, 0);

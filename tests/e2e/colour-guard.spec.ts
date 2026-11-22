@@ -25,7 +25,7 @@ for(const lang of ['en','he'])for(const theme of ['light','dark'])for(const widt
  const clash=entries.find((s:any)=>s.name==='Colour A').log.findLast((a:any)=>a.type==='setIdentityColor').color;
  await input.fill(clash);await expect(input).toHaveValue(clash);
  await expect(picker.getByRole('status')).toContainText(L('Hard to tell apart from','קשה להבחין בינו לבין'));
- await picker.getByRole('button',{name:L('Colour checks','בדיקת צבעים'),exact:true}).click();
+ await picker.getByRole('button',{name:L('Colour checks: explanation','הסבר: בדיקת צבעים'),exact:true}).click();
  await expect(page.getByRole('tooltip')).toContainText('CIEDE2000');await page.keyboard.press('Escape');
  // The rebuilt Settings popup and large-text layout preserve the explicit choice and its advice.
  await page.locator('.scn-options').getByRole('button',{name:L('Settings…','הגדרות…'),exact:true}).click();

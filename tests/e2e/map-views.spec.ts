@@ -2,7 +2,7 @@
 // and the choice is remembered on the device; the double-envelope island selects its row; Hebron is placed, marked
 // approximate.
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { mapLayout, settleMap } from './map-settle.ts';
 
 const seed = (page: Page, lang: 'en' | 'he') => page.addInitScript((lang) => {
@@ -14,7 +14,7 @@ const openMap = async (page: Page, lang: 'en' | 'he' = 'en') => {
   await seed(page, lang);
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await page.getByRole('tab', { name: lang === 'he' ? 'יישובים' : 'Localities', exact: true }).click();
   await expect(page.getByRole('region', { name: lang === 'he' ? /מפת תוצאות/ : /Locality results map/ })).toBeVisible();
 };
@@ -30,7 +30,7 @@ test('opens on the Winner dots; the Vote mix switch in the key is remembered on 
   await expect(view.getByRole('button', { name: 'Vote mix' })).toHaveAttribute('aria-pressed', 'true');
   // the outlines carry their CBS credit while they are shown
   await expect(page.locator('.leaflet-control-attribution')).toContainText('Outlines: CBS 2022 statistical areas (adapted)');
-  await expect(page.getByRole('button', { name: 'Colour by', exact: true })).toContainText('Blocs');
+  await expect(page.getByRole('button', { name: /^Colour by(: |$)/ })).toContainText('Blocs');
   await page.reload();
   await page.getByRole('tab', { name: 'Localities', exact: true }).click();
   await expect(page.getByRole('group', { name: 'Map view' }).getByRole('button', { name: 'Vote mix' })).toHaveAttribute('aria-pressed', 'true');
@@ -64,7 +64,7 @@ test('Hebron has a dot, marked approximate, and is no longer a row without a loc
   await page.getByRole('button', { name: /^Hebron \(3400\)/ }).click();
   const results = page.getByRole('region', { name: 'Selected locality results' });
   await expect(results.getByRole('heading')).toContainText('Hebron');
-  await results.getByRole('button', { name: 'Location and turnout', exact: true }).click();
+  await results.getByRole('button', { name: 'Location and turnout: explanation', exact: true }).click();
   // (the chosen place's box on the map says it too)
   await expect(results.getByText(/^Approximate position: the Jewish quarter of Hebron/)).toBeVisible();
   await page.keyboard.press('Escape');

@@ -254,6 +254,15 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     const observer = new ResizeObserver(() => m.invalidateSize()); observer.observe(container.current);
     return () => { el.removeEventListener('mousedown', focusInPlace, true); observer.disconnect(); m.remove(); map.current = null; };
   }, []);
+  // the zoom buttons in the page's language (Leaflet names them in English), and the map credits, which are English
+  // names, marked as English so a Hebrew voice does not read them (review V4 A10)
+  useEffect(() => {
+    const el = container.current; if (!el) return;
+    for (const [selector, name] of [['.leaflet-control-zoom-in', L('Zoom in', 'הגדלת המפה')], ['.leaflet-control-zoom-out', L('Zoom out', 'הקטנת המפה')]]) {
+      const button = el.querySelector(selector); button?.setAttribute('title', name); button?.setAttribute('aria-label', name);
+    }
+    map.current?.attributionControl.getContainer()?.setAttribute('lang', 'en');
+  }, [lang]); // eslint-disable-line react-hooks/exhaustive-deps -- L follows lang
   useEffect(() => {
     const m = map.current; if (!m) return;
     const controller = new AbortController();

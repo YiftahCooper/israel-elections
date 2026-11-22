@@ -32,7 +32,7 @@ async function visit(page: Page, vis: Vis): Promise<{ disclosures: Set<string>; 
   };
   const list = async (name: string) => { await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name, exact: true }).click(); await expect(page.locator('.side-panel')).toBeVisible(); await collect(); };
   // 2022: the board (chamber, figures), a list's panel and a joint list's panel
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await expect(page.locator('.chamber rect[data-seat]')).toHaveCount(120);
   await collect();
   await list('Likud');
@@ -56,7 +56,7 @@ async function visit(page: Page, vis: Vis): Promise<{ disclosures: Set<string>; 
   const side = await page.getByRole('button', { name: 'Side by side', exact: true }).count() > 0;
   await page.getByRole('button', { name: 'Stop comparing', exact: true }).click();
   // 1988: a list with official notes
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k12');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k12');
   await list('Likud');
   return { disclosures, side };
 }

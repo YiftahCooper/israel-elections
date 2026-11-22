@@ -9,12 +9,21 @@ import { parseIntInput } from '../format.ts';
 import { useSetting } from '../store.ts';
 import { logoLicence } from '../logoCredit.ts';
 
-/** Accessible info popover: opens on hover (after the shared hover delay), focus or click; Escape closes. */
+/** An (i)'s name when none is given: one that reads alone in a list of buttons, "Bloc: explanation" / «הסבר: גוש» (review
+ *  V4 A11), like the figures' "Invalid ballots: definition and source". A title that already says it explains (How…,
+ *  Sources…) stays as it is. */
+const SAYS_WHAT = /^(About|How|What|Why|Where|Which|When|Who|Sources?\b|Evidence|Assumptions|Definition)|^(על|איך|מה|למה|מדוע|היכן|כיצד|מאיפה|מתי|מי|מקורות|מקור|ראיות|הנחות|הגדרה)[\s:]/;
+export const infoName = (heading: string, lang: 'he' | 'en') => !heading ? (lang === 'he' ? 'מידע' : 'Information')
+  : SAYS_WHAT.test(heading) ? heading : lang === 'he' ? `הסבר: ${heading}` : `${heading}: explanation`;
+
+/** Accessible info popover: opens on hover (after the shared hover delay) or a press (click, tap, Enter, Space); Escape
+ *  closes. Not on focus alone: a keyboard pass through a heading would open it and put its Learn more link in the Tab
+ *  order (review V4 A6). */
 export function Info({ title, children, term, label }: { title?: string; children?: ReactNode; term?: string; /** the button's name when the title alone would repeat a neighbouring control's */ label?: string }) {
-  // 'hover' and 'focus' are transient; 'pinned' (a click or tap) stays open until Escape, an outside
-  // press or a second click. A click used to toggle a popover that hover or focus had just opened,
+  // 'hover' is transient; 'pinned' (a click, tap, Enter or Space) stays open until Escape, an outside
+  // press or a second press. A click used to toggle a popover that hover or focus had just opened,
   // so it closed at once, and touch users could never open it.
-  const [open, setOpen] = useState<false | 'hover' | 'focus' | 'pinned'>(false);
+  const [open, setOpen] = useState<false | 'hover' | 'pinned'>(false);
   // one hover timing for every popup (hoverIntent.ts): opens after a short rest, closes after a short grace
   const bridge = useHoverIntent(() => setOpen(o => o === 'hover' ? false : o), !!open);
   const id = useId();
@@ -27,8 +36,16 @@ export function Info({ title, children, term, label }: { title?: string; childre
     if (!open) return;
     // Escape closes this popover only, not the panel or dialog around it
     // (one opened by a click or tap also stops the browser's own Escape, which would close the popover or dialog
-    // around it; one opened by focus alone lets it through, so Escape still closes a dialog in one press)
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { e.stopImmediatePropagation(); if (open === 'pinned') e.preventDefault(); setOpen(false); } };
+    // around it; one opened by hover alone lets it through, so Escape still closes a dialog in one press)
+    // Escape pressed on something inside the popup (its Learn more link) goes back to the (i), not to the top of the page
+    // (review V4 A4)
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      e.stopImmediatePropagation(); if (open === 'pinned') e.preventDefault();
+      const button = ref.current?.querySelector<HTMLButtonElement>(':scope > button');
+      if (button && document.activeElement !== button && ref.current?.contains(document.activeElement)) button.focus();
+      setOpen(false);
+    };
     const onDoc = (e: PointerEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
     document.addEventListener('keydown', onKey, true); document.addEventListener('pointerdown', onDoc);
     return () => { document.removeEventListener('keydown', onKey, true); document.removeEventListener('pointerdown', onDoc); };
@@ -40,9 +57,8 @@ export function Info({ title, children, term, label }: { title?: string; childre
     <span className="info" ref={ref}
       onPointerEnter={(e) => { if (e.pointerType === 'mouse' && hoverPopups) bridge.enter(() => setOpen((o) => o || 'hover')); }}
       onPointerLeave={(e) => { if (e.pointerType === 'mouse') bridge.leave(); }}>
-      <button type="button" aria-label={label ?? (heading || 'info')} aria-expanded={!!open} aria-describedby={open ? id : undefined}
+      <button type="button" aria-label={label ?? infoName(heading, lang)} aria-expanded={!!open} aria-describedby={open ? id : undefined}
         onClick={() => setOpen((o) => (o === 'pinned' ? false : 'pinned'))}
-        onFocus={(e) => { if (e.currentTarget.matches(':focus-visible')) setOpen((o) => o || 'focus'); }}
         onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen((o) => (o === 'hover' ? o : false)); }}>i</button>
       {open && (
         <Floating onPointerEnter={bridge.enterBox} onPointerLeave={bridge.leaveBox} className="pop" id={id} anchor={() => ref.current?.querySelector('button')?.getBoundingClientRect()}>
@@ -68,12 +84,14 @@ export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { 
     const kind = synthetic!.kind;
     const note = lang === 'he' ? (kind === 'merge' ? 'איחוד רשימות' : kind === 'split' ? `חלק ${synthetic!.part}/${synthetic!.total}` : 'רשימה חדשה')
       : (kind === 'merge' ? 'Merged lists' : kind === 'split' ? `Part ${synthetic!.part}/${synthetic!.total}` : 'New list');
-    return <span className={`slip synthetic ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={`${label} · ${note}`} title={`${label} · ${note}`}><img src={generated} alt="" /></span>;
+    return <span className={`slip synthetic ${size ?? ''}`} style={{ ['--c' as string]: color }} role="img" aria-label={`${label} · ${note}`} title={`${label} · ${note}`}><img src={generated} alt="" /></span>;
   }
+  // every slip is an image named by the list (role img: a name on a plain span is ignored by screen readers; review V4
+  // A12); its name is in the page's language, the letters inside it are marked Hebrew
   // the logo the list used at this election, when a verified local copy is held; the ballot letters stay
   // as its accessible name and a small caption, and the credit travels with the image
   if (logo) return (
-    <span className={`slip logo ${size ?? ''} ${logo.background === 'dark' ? 'on-dark' : ''}`} style={{ ['--c' as string]: color }} aria-label={label}
+    <span className={`slip logo ${size ?? ''} ${logo.background === 'dark' ? 'on-dark' : ''}`} style={{ ['--c' as string]: color }} role="img" aria-label={label}
       title={`${label} · ${logoLicence(logo, lang)}`}>
       <img src={logo.file} alt="" loading="lazy" decoding="async" />
       <span className="slip-letters" lang="he" dir="rtl" aria-hidden>{name ? '' : letters}</span>
@@ -82,8 +100,8 @@ export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { 
   const fallbackLabel = letters ? (lang === 'he' ? `אותיות הפתק ${letters} (ללא סמל)` : `Ballot letters ${letters} (no logo)`)
     : (lang === 'he' ? `${name ?? 'מפלגה'} — אין סמל או אותיות פתק נפרדות` : `${name ?? 'Party'} — no logo or separate ballot letters`);
   // no logo and no letters of its own (a party of a joint list): its colour dot, as in every list picker
-  if (!letters) return <span title={fallbackLabel} className={`slip dot ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel}><span className="list-mark-dot" style={{ background: color }} /></span>;
-  return <span title={fallbackLabel} className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel} lang="he" dir="rtl">{letters}</span>;
+  if (!letters) return <span title={fallbackLabel} className={`slip dot ${size ?? ''}`} style={{ ['--c' as string]: color }} role="img" aria-label={fallbackLabel}><span className="list-mark-dot" style={{ background: color }} /></span>;
+  return <span title={fallbackLabel} className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} role="img" aria-label={fallbackLabel} dir="rtl"><span lang="he">{letters}</span></span>;
 }
 
 /** A list's slip, then its name; the ballot letters are written after the name only where the slip does not show them

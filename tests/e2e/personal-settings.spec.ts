@@ -1,5 +1,5 @@
 import { expect, test } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 for (const lang of ['en', 'he']) test(`saved list answers survive reload, isolate elections, and clear · ${lang}`, async ({ page }) => {
   await page.addInitScript(lang => {
@@ -31,7 +31,7 @@ for (const lang of ['en', 'he']) test(`saved list answers survive reload, isolat
   await choose(ask.locator('.choice-trigger').first(), 'proportional');
   await ask.getByRole('radio', { name: lang === 'en' ? 'For this list' : 'לרשימה זו', exact: true }).check();
   await ask.getByRole('button', { name: lang === 'en' ? 'Apply' : 'החלה', exact: true }).click();
-  await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), 'k25');
   await page.locator('.lb-row').first().click(); await inc.click(); await expect(ask).toBeVisible(); await page.keyboard.press('Escape');
   await gear.click();
   await settings.locator('[data-setting="voteSource"] .pref-disclosure').click();
@@ -46,7 +46,7 @@ for (const [width, election] of [[1500, 'k26'], [1024, 'k25'], [390, 'k1']] as c
     await page.setViewportSize({ width, height: 844 });
     await page.addInitScript(({ lang, theme }) => { localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level: 'expert' })); localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { theme, decimals: 2 } })); }, { lang, theme });
     await page.goto('/');
-    await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
+    await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), election);
     // phones (one-row bar, owner 9 Nov): level and Settings are in the bar's three-lines panel (16 Nov), which
     // Settings gives focus back to. (16 Nov: the Custom level is gone; own choices are rows of Settings.)
     const phone = width === 390, menuBtn = page.locator('.band .band-menu-btn');

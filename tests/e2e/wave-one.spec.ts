@@ -1,17 +1,17 @@
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 import { expect, test, type Page } from './fixtures';
 async function start(page: Page, lang = 'en', theme = 'light', level = 'standard') {
   await page.addInitScript(v => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)), {lang, theme, level, hintDismissed:true});
   await page.goto('/');
   await expect(page.getByRole('region', {name:lang === 'he' ? 'הרשימות' : 'Lists',exact:true})).toBeVisible();
-  await choose(page.getByRole('button', {name:lang === 'he' ? 'בחירות' : 'Election', exact:true}), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await expect(page.getByRole('region', { name: lang === 'he' ? 'הרשימות' : 'Lists', exact: true }).getByRole('button', { name: lang === 'he' ? 'הליכוד' : 'Likud', exact: true }).locator('.lb-seats b')).toHaveText('32');
 }
 test('grouping-only switches stay factual-neutral in Compare and keep named undo', async ({page}) => {
   await start(page);
   for (const scheme of ['pre-election-blocs','first-government']) {
-    await choose(page.getByRole('button', {name:'Grouping',exact:true}), scheme);
+    await choose(page.getByRole('button', { name: /^Grouping(: |$)/ }), scheme);
     await expect(page.getByRole('button', {name:/^Undo: Bloc grouping:/})).toBeEnabled();
     // U7: a sourced grouping changes the view, not election facts.
     await expect(page.getByRole('button', {name:/^History$/})).toHaveCount(0);
@@ -19,7 +19,7 @@ test('grouping-only switches stay factual-neutral in Compare and keep named undo
     await openSideBySide(page);
     // U7 makes both sourced schemes unchanged facts: comparing opens the previous election, and this election's
     // official result is not offered, since nothing has changed
-    const picker = page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true });
+    const picker = page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ });
     await expect(picker).toHaveAttribute('data-value', 'prev');
     await picker.click();
     await expect(page.getByRole('dialog').last().locator('[data-choice-value="official"]')).toHaveCount(0);

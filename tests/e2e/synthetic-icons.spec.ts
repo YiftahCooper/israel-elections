@@ -1,6 +1,6 @@
 import { test, expect } from './fixtures';
 import { mkdirSync } from 'node:fs';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 test.use({ actionTimeout: 20_000 });
 
@@ -14,7 +14,7 @@ for (const election of ['k26','k25','k1']) test(`${election}: synthetic icons in
    localStorage.setItem('israel-elections:preferences',JSON.stringify({voteSource:'proportional',comparison:'reference'}));
   },{lang,theme});
   const page=await context.newPage(); await page.goto('/');
-  if(election!=='k26') await choose(page.getByRole('button',{name:lang==='en'?'Election':'בחירות',exact:true}),election);
+  if(election!=='k26') await choose(page.getByRole('button', { name: pickerName(lang==='en'?'Election':'בחירות') }),election);
   await page.setViewportSize({width,height:1000});
   await page.locator('#tab-structure').click();
   const chips=page.locator('#analysis-panel').getByRole('group',{name:lang==='en'?'Lists':'רשימות',exact:true}).getByRole('button');

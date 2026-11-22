@@ -1,6 +1,6 @@
 import {expect,test} from './fixtures';
 import { openSettings } from './barMenu.ts';
-import {choose} from './choices.ts';
+import {choose, pickerName } from './choices.ts';
 for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const width of [1500,1024,390]) test(`component identities ${lang} ${theme} ${width}`,async({page})=>{
  test.setTimeout(120000);
  await page.setViewportSize({width,height:1000});
@@ -8,7 +8,7 @@ for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const wi
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/');
  for(const election of ['k26','k25','k12','k1']){
-  await choose(page.getByRole('button',{name:lang==='en'?'Election':'בחירות',exact:true}),election);
+  await choose(page.getByRole('button', { name: pickerName(lang==='en'?'Election':'בחירות') }),election);
   if(election==='k26') await page.getByRole('region',{name:lang==='en'?'Lists':'הרשימות',exact:true}).getByRole('button',{name:lang==='en'?'The Democrats':'הדמוקרטים',exact:true}).click();
   else await page.locator('.lb-row').first().click();
   const panel=page.locator('.side-panel');
@@ -49,7 +49,7 @@ for(const lang of ['en','he']) for(const theme of ['light','dark']) for(const wi
    }
    await page.getByRole('tab',{name:lang==='en'?'Rules':'כללים',exact:true}).click();
    await openSettings(page, lang);
-   await page.locator('.personal-settings [data-setting="jointListSeats"]').getByRole('button',{name:lang==='en'?'List':'רשימה',exact:true}).click();
+   await page.locator('.personal-settings [data-setting="jointListSeats"]').getByRole('button', { name: pickerName(lang==='en'?'List':'רשימה') }).click();
   await page.keyboard.press('Escape');
    await page.getByRole('tab',{name:lang==='en'?'Overview':'תמונת מצב',exact:true}).click();
    await expect(page.locator('.chamber [data-component-seat]')).toHaveCount(0);

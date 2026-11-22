@@ -9,6 +9,7 @@ import { loadDataset, loadElectionIndex, useStore } from '../store.ts';
 import { useL, useLang } from '../i18n.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { ResultPreview } from './ResultPreview.tsx';
+import { choiceName } from './ChoicePicker.tsx';
 function OfficialPreview({ ds }: { ds: ElectionDataset }) {
   const s = useMemo(() => scenarioFromDataset(ds), [ds]);
   return <ResultPreview s={s} blocs={false} />;
@@ -41,12 +42,12 @@ export function ElectionPicker({ elections, value, onChange, arrows = true }: { 
   }, [open, previewKey]); // the opened timeline keeps its election snapshot while previews arrive
   return <span className="election choice-picker election-navigation">
     {arrows && <button className="tool election-arrow" aria-label={L('Previous election', 'הבחירות הקודמות')} disabled={at < 0 || at >= options.length - 1 || options[at + 1]?.disabled} onClick={() => onChange(options[at + 1].value)}><span aria-hidden>‹</span></button>}
-    <button ref={trigger} className="btn choice-trigger" aria-label={L('Election', 'בחירות')} aria-haspopup="dialog" data-value={value} onClick={() => { flushSync(() => { setQuery(''); setOpen(true); }); dialog.current?.showModal(); dialog.current?.querySelector<HTMLInputElement>('input')?.focus(); requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>(`[data-choice-value="${value}"]`)?.scrollIntoView({ block: 'nearest' })); }}><CurrentElection label={options[at]?.label ?? ''} date={options[at]?.date ?? ''} lang={lang} /><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
+    <button ref={trigger} className="btn choice-trigger" aria-label={choiceName(L('Election', 'בחירות'), options[at]?.label ?? '')} aria-haspopup="dialog" data-value={value} onClick={() => { flushSync(() => { setQuery(''); setOpen(true); }); dialog.current?.showModal(); dialog.current?.querySelector<HTMLInputElement>('input')?.focus(); requestAnimationFrame(() => dialog.current?.querySelector<HTMLElement>(`[data-choice-value="${value}"]`)?.scrollIntoView({ block: 'nearest' })); }}><CurrentElection label={options[at]?.label ?? ''} date={options[at]?.date ?? ''} lang={lang} /><ChevronsUpDown className="icon sm picker-affordance" aria-hidden /></button>
     {arrows && <button className="tool election-arrow" aria-label={L('Next election', 'הבחירות הבאות')} disabled={at <= 0 || options[at - 1]?.disabled} onClick={() => onChange(options[at - 1].value)}><span aria-hidden>›</span></button>}
     <dialog ref={dialog} className="choice-dialog election-dialog" aria-label={L('Election', 'בחירות')} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }} onCancel={e => { e.preventDefault(); close(); }} onClick={e => { if (e.target === e.currentTarget) close(); }} onClose={() => setOpen(false)}>
       <div className="timeline-search"><input autoFocus type="search" value={query} aria-label={L('Search choices', 'חיפוש אפשרויות')} placeholder={L('Year, Knesset or date…', 'שנה, כנסת או תאריך…')} onChange={e => setQuery(e.target.value)} onKeyDown={e => { if (e.key === 'ArrowDown') { e.preventDefault(); dialog.current?.querySelector<HTMLButtonElement>('.choice-option:not(:disabled)')?.focus(); } }} /><button className="btn" aria-label={L('Close', 'סגירה')} onClick={close}>×</button></div>
       {/* never a silent short list: the built-in two elections are all there is until the index loads */}
-      {indexFailed && <p className="small bad election-index-failed" role="status">{L('The full list of elections could not be loaded; only these are offered.', 'רשימת הבחירות המלאה לא נטענה; מוצגות רק אלה.')} <button type="button" className="btn small" onClick={() => void loadElectionIndex()}>{L('Try again', 'נסו שוב')}</button></p>}
+      {indexFailed && <p className="small bad election-index-failed"><span role="status">{L('The full list of elections could not be loaded; only these are offered.', 'רשימת הבחירות המלאה לא נטענה; מוצגות רק אלה.')}</span> <button type="button" className="btn small" onClick={() => void loadElectionIndex()}>{L('Try again', 'נסו שוב')}</button></p>}
       <div className="choice-options" onKeyDown={e => {
         const buttons = [...e.currentTarget.querySelectorAll<HTMLButtonElement>('.choice-option:not(:disabled)')]; const i = buttons.indexOf(document.activeElement as HTMLButtonElement);
         const focused = document.activeElement?.getAttribute('data-choice-value');
@@ -57,7 +58,7 @@ export function ElectionPicker({ elections, value, onChange, arrows = true }: { 
         {/* drawn only while open (a closed dialog shows nothing): the 27 rows and their strips were redrawn on every edit */}
         {open && matches.map((o, i) => <div key={o.value} className={`election-row ${o.pm ? 'pm-only' : ''}`}>
           {o.group !== matches[i - 1]?.group && <h3 className="choice-era">{o.group}</h3>}
-          <button className="choice-option" data-choice-value={o.value} aria-label={o.label} aria-description={formatDate(o.date, lang)} aria-current={o.value === value ? 'true' : undefined} disabled={o.disabled} onClick={() => commit(o.value)}>
+          <button className="choice-option" data-choice-value={o.value} aria-label={o.label} aria-description={formatDate(o.date, lang)} aria-pressed={o.value === value} disabled={o.disabled} onClick={() => commit(o.value)}>
             <span className="choice-copy"><b>{o.label}</b><small><time dateTime={o.date}>{formatDate(o.date, lang)}</time>{o.disabled ? L(' · unavailable', ' · לא זמין') : ''}</small></span>
             {o.pm ? <span className="pm-marker">{L('PM ballot', 'פתק לראש הממשלה')}</span> : o.preview ? <IndexPreview pieces={o.preview} /> : datasets[o.electionId] ? <OfficialPreview ds={datasets[o.electionId]!} /> : <span className="preview-loading" aria-label={L('Loading result preview', 'טעינת תצוגת התוצאה')} />}
             <span className="election-current-mark" aria-hidden>{o.value === value ? '✓' : ''}</span>
@@ -75,6 +76,7 @@ function CurrentElection({ label, date, lang }: { label: string; date: string; l
   const short = /\s/.test(when) && /^\d{4}-\d{2}/.test(date) ? formatDate(date.slice(0, 7), lang) : when;
   return <span className="choice-current">
     <span className="choice-current-part"><span className="choice-when-long">{when}</span><span className="choice-when-short">{short}</span></span>
-    {rest.length > 0 && <span className="choice-current-part"><span className="choice-current-dot"> · </span>{rest.join(' · ')}</span>}
+    {/* the space outside the dot: on a phone the dot is hidden and the parts stack, and the name still reads as two words */}
+    {rest.length > 0 && <span className="choice-current-part">{' '}<span className="choice-current-dot">· </span>{rest.join(' · ')}</span>}
   </span>;
 }

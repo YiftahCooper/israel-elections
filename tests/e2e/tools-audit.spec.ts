@@ -1,13 +1,13 @@
 // Release-candidate audit of the tool pages (area E): each test locks in one defect class that was fixed.
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 
 async function start(page: Page, lang: 'en' | 'he' = 'en', election = 'k26', width = 1500) {
   await page.setViewportSize({ width, height: 1000 });
   await page.addInitScript((lang) => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true })), lang);
   await page.goto('/');
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
 const tool = (page: Page, id: string) => page.locator(`#tab-${id}`).click();
 const panel = (page: Page) => page.locator('#analysis-panel');
@@ -97,7 +97,7 @@ test('Hebrew charts keep the English left-to-right geometry', async ({ page }) =
   expect(Number(await svg.locator('.bar').last().getAttribute('x'))).toBeLessThan(mid);
   await openSideBySide(page);
   // chosen in the strip above (Side by side has no picker of its own)
-  await expect(page.locator('.cmpm-strip').getByRole('button', { name: 'השוואה עם', exact: true })).toHaveAttribute('data-value', 'prev');
+  await expect(page.locator('.cmpm-strip').getByRole('button', { name: /^השוואה עם(: |$)/ })).toHaveAttribute('data-value', 'prev');
   const figs = panel(page).locator('.cmp-card');
   await expect(figs.nth(0)).toContainText('2022'); // the earlier result is on the left, as before → after
   expect((await figs.nth(0).boundingBox())!.x).toBeLessThan((await figs.nth(1).boundingBox())!.x);

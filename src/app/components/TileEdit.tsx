@@ -109,7 +109,7 @@ export function TileEditor({ s, field, close, title = true }: { s: Scenario; fie
     {field === 'turnout' && <span className="row tile-editor-more"><TurnoutOtherElection s={s} /><StartFrom s={s} part="totals" copyOnly />{!title && note}</span>}
     {field === 'threshold' && <div className="quick-actions era-thresholds" role="group" aria-label={L('Thresholds by era', 'אחוזי חסימה לפי תקופה')}>
       {thresholdEras(elections).map(({ pct, from, to }) => { const on = Number(s.rules.thresholdPct) === Number(pct); const years = from === to ? `${from}` : `${from}–${to}`;
-        return <button type="button" key={pct} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} aria-label={`${pct}% (${years})`} onClick={() => { if (!on) dispatch({ type: 'setRules', patch: { thresholdPct: pct } }); }}><b>{pct}%</b><span className="tiny">{years}</span></button>; })}
+        return <button type="button" key={pct} className={`btn small ${on ? 'primary' : ''}`} aria-pressed={on} onClick={() => { if (!on) dispatch({ type: 'setRules', patch: { thresholdPct: pct } }); }}><b>{pct}%</b>{' '}<span className="tiny">{years}</span></button>; })}
     </div>}
     <div className="row tile-editor-foot">
       <button type="button" className="btn small" onClick={close}>{L('Done', 'סיום')}</button>

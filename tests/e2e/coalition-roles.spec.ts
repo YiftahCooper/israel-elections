@@ -1,7 +1,7 @@
 // Outside support and arranged abstention in the Coalitions tool: the totals line, both tests (more for than
 // against, and 61), the bar treatment, named undo, analysis marking, reload, and the What if… question.
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 const start = async (page: Page, lang: 'en' | 'he' = 'en', width = 1500) => {
   await page.setViewportSize({ width, height: 1000 });
@@ -13,7 +13,7 @@ const role = async (page: Page, name: string, label: string) => { const c = card
 
 test('1992 recreated: 62 members + 5 outside support = 67, the recorded 67–53', async ({ page }) => {
   await start(page);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k13');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k13');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
   for (const n of ['Labor', 'Meretz', 'Shas']) await role(page, n, 'In');
   for (const n of ['Hadash', 'Arab Democratic Party']) await role(page, n, 'Support');
@@ -47,7 +47,7 @@ test('1992 recreated: 62 members + 5 outside support = 67, the recorded 67–53'
 
 test('an arranged abstention lowers the confidence-vote bar below 61, and the search follows it', async ({ page }) => {
   await start(page);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
   for (const n of ['Yesh Atid', 'National Unity', 'Yisrael Beiteinu', 'Labor']) await role(page, n, 'In');
   await role(page, "Ra'am", 'Support');
@@ -81,7 +81,7 @@ for (const lang of ['en', 'he'] as const) test(`What if…: a minority governmen
 
 for (const lang of ['en', 'he'] as const) test(`the recorded first government fills its roles, outside support shown as recorded: ${lang}`, async ({ page }) => {
   await start(page, lang, 390);
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k13');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k13');
   await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
   // the sourced grouping's outside-support group is not offered as a member fill
   await expect(page.locator('.coal').getByRole('button', { name: lang === 'he' ? 'תמיכה מבחוץ' : 'Outside support', exact: true })).toHaveCount(0);
@@ -110,7 +110,7 @@ for (const lang of ['en', 'he'] as const) test(`the recorded first government di
   await start(page, lang);
   // 2003: six MKs voted neither way (Yisrael BaAliyah's role, unknown until books batch 2, is now recorded as a member;
   // 2015, used here before, adds up exactly since United Torah Judaism's membership was recorded on 13 Nov 2026)
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k16');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k16');
   await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
   await page.getByRole('button', { name: lang === 'he' ? 'הממשלה הראשונה המתועדת' : 'Recorded first government', exact: true }).click();
   const line = page.locator('.coal-now .coal-recorded');
@@ -124,7 +124,7 @@ for (const lang of ['en', 'he'] as const) test(`the recorded first government di
 
 test('a loaded record that adds up shows no gap line', async ({ page }) => {
   await start(page);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k13');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k13');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
   await page.getByRole('button', { name: 'Recorded first government', exact: true }).click();
   await expect(page.locator('.coal-now .coal-sum')).toHaveText('62 members + 5 outside support = 67');
@@ -142,7 +142,7 @@ for (const lang of ['en', 'he'] as const) test(`the confidence-vote tests wrap i
     sessionStorage.setItem('seeded', '1'); } }, lang);
   await page.goto('/');
   await expect(page.locator('html')).toHaveAttribute('data-text', 'large');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
   const he = lang === 'he';
   for (const n of he ? ['יש עתיד', 'המחנה הממלכתי', 'ישראל ביתנו', 'העבודה'] : ['Yesh Atid', 'National Unity', 'Yisrael Beiteinu', 'Labor']) await role(page, n, he ? 'בפנים' : 'In');
@@ -170,7 +170,7 @@ for (const lang of ['en', 'he'] as const) test(`the confidence-vote tests wrap i
 // government; the audit saw 'Different from the recorded first-government partners' right after the button in these.
 for (const id of ['k20', 'k9', 'k12', 'k14']) test(`after Recorded first government the comparison says it matches: ${id}`, async ({ page }) => {
   await start(page);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), id);
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), id);
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
   await page.getByRole('button', { name: 'Recorded first government', exact: true }).click();
   const now = page.locator('.coal-now');

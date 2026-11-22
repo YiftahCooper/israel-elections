@@ -14,7 +14,7 @@ async function start(page: Page, width: number) {
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, theme: 'dark' } }));
   });
   await page.goto('/');
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
 }
 
 for (const width of [390, 1500]) {

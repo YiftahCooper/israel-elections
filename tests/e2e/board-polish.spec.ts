@@ -15,7 +15,7 @@ test('a share link is cleared when its scenario changes', async ({ page }) => {
 test('first visit keeps instructions available behind a concise label', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang: 'en', level: 'simple', hintDismissed: false })));
   await page.goto('/');
-  const guidance = page.getByRole('button', { name: 'Explore the board', exact: true });
+  const guidance = page.getByRole('button', { name: 'Explore the board: explanation', exact: true });
   await expect(guidance).toBeVisible();
   await guidance.click();
   await expect(page.getByRole('tooltip')).toContainText('Click any list, seat, bloc or figure');

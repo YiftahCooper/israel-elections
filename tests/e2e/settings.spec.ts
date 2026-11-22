@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openSideBySide } from './sideBySide.ts';
 
 // Each setting is seeded the way a returning visitor has it (the sparse `israel-elections:settings` record), then its
@@ -15,7 +15,7 @@ async function open(page: Page, seed: Seed = {}, election?: string) {
   }, seed);
   await page.goto('/');
   await expect(page.locator('.lb-row').first()).toBeVisible();
-  if (election) await choose(page.getByRole('button', { name: seed.lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election) await choose(page.getByRole('button', { name: pickerName(seed.lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
 // on a phone, Settings is in the bar's Menu (owner, 9 Nov 2026): the helper opens the menu first
 const gear = (page: Page, lang: 'en' | 'he' = 'en') => ({ click: async () => {
@@ -335,7 +335,7 @@ test.describe('every setting takes effect', () => {
     const votes = page.locator('.side-panel').getByRole('textbox', { name: 'Votes', exact: true });
     await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
     await page.locator('.compare-on').click();
-    await expect(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true })).toHaveAttribute('data-value', 'official');
+    await expect(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ })).toHaveAttribute('data-value', 'official');
   });
 
   test('popups on hover: off waits for a click', async ({ page }) => {
@@ -372,7 +372,7 @@ test.describe('every setting takes effect', () => {
 
   test('option previews: the grouping picker draws each result, unless turned off', async ({ page }) => {
     await open(page, {}, 'k25');
-    const picker = page.getByRole('button', { name: 'Grouping', exact: true });
+    const picker = page.getByRole('button', { name: /^Grouping(: |$)/ });
     await picker.click();
     const pop = page.locator(`[id="${await picker.getAttribute('aria-controls')}"]`);
     await expect(pop.locator('.result-preview').first()).toBeVisible();

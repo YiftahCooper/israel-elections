@@ -3,7 +3,7 @@
 // edge, a checked party register said as checked, and
 // the double-envelope figures labelled for what they count.
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { openTool } from './openTool.ts';
 
 async function start(page: Page, { lang = 'en', level = 'standard', width = 1500, election = 'k26' }: { lang?: 'en' | 'he'; level?: string; width?: number; election?: string } = {}) {
@@ -15,7 +15,7 @@ async function start(page: Page, { lang = 'en', level = 'standard', width = 1500
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2 } }));
   }, [lang, level] as const);
   await page.goto('/');
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
 }
 const listRow = (page: Page, name: string) => page.locator('.lb-row', { has: page.locator('.lb-name', { hasText: new RegExp(`^${name}`) }) }).first();
 

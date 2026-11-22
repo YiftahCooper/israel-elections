@@ -1,6 +1,6 @@
 import { expect, test } from './fixtures';
 import { mkdirSync, readFileSync } from 'node:fs';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { datesInText } from '../../src/app/dateFormat.ts';
 import { openSideBySide } from './sideBySide.ts';
 
@@ -16,7 +16,8 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     // A real list without a logo uses its own letters, in either UI language.
     const badge = page.locator('.lb-row .slip:not(.logo)').filter({ hasText: /^ט$/ }).first();
     await expect(badge).toBeVisible();
-    await expect(badge).toHaveAttribute('lang', 'he');
+    await expect(badge).not.toHaveAttribute('lang', /./);
+    await expect(badge.locator('[lang="he"]')).toHaveText('ט');
     await expect(badge).toHaveAttribute('dir', 'rtl');
     await expect(badge).toHaveAttribute('title', lang === 'en' ? 'Ballot letters ט (no logo)' : 'אותיות הפתק ט (ללא סמל)');
     await badge.click();
@@ -28,7 +29,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     const hebrewNames = panel.locator('.cands bdi[lang="he"][dir="rtl"]');
     await expect(hebrewNames.first()).toBeAttached();
     if (lang === 'en') {
-      await panel.getByRole('button', { name: 'Candidate names and links', exact: true }).click();
+      await panel.getByRole('button', { name: 'Candidate names and links: explanation', exact: true }).click();
       await expect(page.locator('.pop').filter({ hasText: 'Hebrew-only names have no official English spelling recorded' })).toBeVisible();
       await page.keyboard.press('Escape');
     }
@@ -36,7 +37,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.screenshot({ path: `.backup-scratch/owner-answers/screenshots/candidates-${lang}-${theme}-${width}.png` });
     await page.getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click();
     await page.locator('#tab-sources').click();
-    const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details' : 'פירוט מצב הנתונים', exact: true });
+    const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details: explanation' : 'הסבר: פירוט מצב הנתונים', exact: true });
     await expect(info).toBeVisible();
     await expect(info.locator('..').locator('..')).toHaveText(lang === 'en' ? 'Official final results i' : 'תוצאות סופיות רשמיות i');
     await info.hover();
@@ -47,7 +48,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await expect(info).toHaveAttribute('aria-expanded', 'true');
     await page.keyboard.press('Escape');
     // Also retain historical limitations rather than deleting them in the concise summary.
-    await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k17');
+    await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), 'k17');
     await info.click();
     await expect(page.locator('.pop')).toContainText(datesInText(dataset('k17').status[lang === 'en' ? 'noteEn' : 'noteHe']));
     // Exercise the seat-hover path when a candidate has no English spelling.
@@ -57,7 +58,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
       for (const list of data.lists) for (const candidate of list.candidates) delete candidate.nameEn;
       await route.fulfill({ json: data });
     });
-    await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k26');
+    await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), 'k26');
     await page.locator('#tab-board').click();
     await page.reload();
     await page.locator('.chamber [data-seat]').first().hover();
@@ -70,7 +71,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.locator('.side-panel').getByRole('button', { name: lang === 'en' ? 'Close' : 'סגירה', exact: true }).click();
     await openSideBySide(page);
     // candidates entering and leaving are listed within one election: compare with this election's official result
-    await choose(page.locator('.cmpm-strip').getByRole('button', { name: lang === 'en' ? 'Compare with' : 'השוואה עם', exact: true }), 'official');
+    await choose(page.locator('.cmpm-strip').getByRole('button', { name: pickerName(lang === 'en' ? 'Compare with' : 'השוואה עם') }), 'official');
     await page.locator('details.cmp-section > summary').click();
     const compared = page.locator('.cmp-section li bdi[lang="he"][dir="rtl"]');
     await expect(compared.first()).toBeVisible();
@@ -86,8 +87,8 @@ for (const lang of ['en', 'he']) test(`all 26 status notes retained in ${lang}`,
   await page.goto('/');
   await page.locator('#tab-sources').click();
   for (let n = 1; n <= 26; n++) {
-    await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), `k${n}`);
-    const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details' : 'פירוט מצב הנתונים', exact: true });
+    await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), `k${n}`);
+    const info = page.getByRole('button', { name: lang === 'en' ? 'Data status details: explanation' : 'הסבר: פירוט מצב הנתונים', exact: true });
     await info.click();
     // the screen writes dates in the app's format ("4 Nov 2026", not 4.11.2026)
     const expected = datesInText(dataset(`k${n}`).status[lang === 'en' ? 'noteEn' : 'noteHe'].replace('Gazette publication unverified', 'Gazette publication not yet verified').replace('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת'));

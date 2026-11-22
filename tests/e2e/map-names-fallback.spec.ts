@@ -3,7 +3,7 @@
 // room is kept for the text as the page draws it, so it still never runs onto the double-envelope island, another
 // name, a dot, a circle or a town's tiles, and never off the map. English and Hebrew, phone and desktop, both views.
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { mapLayout, settleMap } from './map-settle.ts';
 
 const open = async (page: Page, lang: 'en' | 'he', view: 'winner' | 'mix') => {
@@ -23,7 +23,7 @@ const open = async (page: Page, lang: 'en' | 'he', view: 'winner' | 'mix') => {
   await page.route(/\.woff2?$/, route => route.abort());
   const outlines = view === 'mix' ? page.waitForResponse(r => r.url().endsWith('/data/locality-outlines-2022.geojson')) : null;
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await page.getByRole('tab', { name: lang === 'he' ? 'יישובים' : 'Localities', exact: true }).click();
   await expect(page.locator('.vote-mix-canvas')).toHaveAttribute('data-island', /\d/);
   await outlines;

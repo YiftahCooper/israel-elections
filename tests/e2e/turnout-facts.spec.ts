@@ -3,7 +3,7 @@
 // said in words, edits marked against the official result, Hebrew charts left to right, and readable contrast.
 import { expect, test, type Page } from './fixtures';
 import { openTool } from './openTool.ts';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 async function open(page: Page, { lang = 'en', level = 'standard', election = 'k26', width = 1500 }: { lang?: 'en' | 'he'; level?: string; election?: string; width?: number } = {}) {
   await page.setViewportSize({ width, height: 1000 });
@@ -14,7 +14,7 @@ async function open(page: Page, { lang = 'en', level = 'standard', election = 'k
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2 } }));
   }, [lang, level] as const);
   await page.goto('/');
-  if (election !== 'k26') await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
+  if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), election);
   await openTool(page, 'turnout');
   return page.locator('.tn-facts');
 }
@@ -60,7 +60,7 @@ test('Expert: polling-station results and double envelopes where the source has 
   const facts = await open(page, { level: 'expert', election: 'k25' });
   // the rows of the official table, named as on Sources, not "ballot boxes" (c-english-07)
   await expect(fact(facts, 'boxes').locator('dt')).toHaveText(/^Polling-station results/);
-  await expect(fact(facts, 'boxes').locator('dt').getByRole('button', { name: 'Polling station', exact: true })).toBeVisible();
+  await expect(fact(facts, 'boxes').locator('dt').getByRole('button', { name: 'Polling station: explanation', exact: true })).toBeVisible();
   await expect(fact(facts, 'boxes').locator('.tn-v')).toHaveText('12,545');
   await expect(fact(facts, 'boxes').locator('.tn-since')).toHaveText('▼ −381 · −2.95% since 2021');
   await expect(fact(facts, 'envelopes').locator('.tn-v')).toHaveText('462,807');
@@ -87,7 +87,7 @@ test('the chart covers all 26 elections; a column opens its election; the table 
   await facts.locator('.tn-hit[data-chart="reg"]').nth(24).hover();
   await expect(facts.locator('.tn-readout')).toContainText('2022 · 25th Knesset');
   await facts.locator('.tn-hit[data-chart="reg"]').nth(24).click();
-  await expect(page.getByRole('button', { name: 'Election', exact: true })).toHaveAttribute('data-value', 'k25');
+  await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toHaveAttribute('data-value', 'k25');
   await expect(page.locator('#tab-turnout')).toHaveAttribute('aria-selected', 'true');
   await page.locator('.tn-table summary').click();
   await expect(page.locator('.tn-table tbody tr')).toHaveCount(26);

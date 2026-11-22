@@ -26,7 +26,7 @@ export function FittingLabel({ full, short, reference, locale = 'en-GB' }: {
     addEventListener('resize', fit);
     return () => { observer?.disconnect(); removeEventListener('resize', fit); };
   }, [full, short, reference?.prefix, reference?.name, first]);
-  return <b ref={label} className="fit-label" title={full} data-compact={mode !== 'full'} data-mode={mode}>
+  return <b ref={label} className="fit-label" role="status" title={full} data-compact={mode !== 'full'} data-mode={mode}>
     <span ref={measure} className="fit-label-measure" aria-hidden="true">{full}</span>
     <span ref={shortMeasure} className="fit-label-short-measure" aria-hidden="true">{short}</span>
     <span ref={referenceMeasure} className="fit-label-reference-measure" aria-hidden="true">{reference ? `${reference.prefix}${first}…` : ''}</span>

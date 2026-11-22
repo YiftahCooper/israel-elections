@@ -34,7 +34,8 @@ export function AppMenu({ onClose, children }: { onClose: () => void; children?:
   const open = (id: string) => { setState({ tool: id }); window.scrollTo({ top: 0 }); close.current(); };
   useCloseOnFocusAway(!ask, t => !!ref.current?.contains(t) || !!t.closest('.band-menu-btn, .band-tools-btn, dialog'), () => close.current());
   useEffect(() => {
-    ref.current?.querySelector<HTMLElement>('[aria-current="page"], button')?.focus({ preventScroll: true });
+    // the tool on screen, else the first button (one selector list matched the Close button first: review V4 A12)
+    (ref.current?.querySelector<HTMLElement>('[aria-current="page"]') ?? ref.current?.querySelector<HTMLElement>('button'))?.focus({ preventScroll: true });
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape' && !document.querySelector('dialog[open]')) { close.current(); document.querySelector<HTMLElement>('.band-menu-btn, .band-tools-btn')?.focus({ preventScroll: true }); } };
     const onDown = (e: PointerEvent) => { const t = e.target as Element; if (!ref.current?.contains(t) && !t.closest?.('.band-menu-btn, .band-tools-btn, dialog')) close.current(); };
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', onDown);

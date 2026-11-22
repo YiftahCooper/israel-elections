@@ -17,7 +17,7 @@ test('an info button stays open when clicked, and Escape closes it', async ({ pa
   await fig.locator('> button').click();
   // the definition's (i) is named by what it opens, apart from the note's (i) beside it (audit 12 Nov 2026, fx-copy);
   // its Hebrew name is in the popover's heading, marked as Hebrew
-  await expect(fig.getByRole('button', { name: 'Invalid ballots', exact: true })).toHaveCount(1);
+  await expect(fig.getByRole('button', { name: 'Invalid ballots: explanation', exact: true })).toHaveCount(1);
   const info = fig.getByRole('button', { name: 'Invalid ballots: definition and source', exact: true });
   await info.click();
   await expect(info).toHaveAttribute('aria-expanded', 'true');
@@ -47,7 +47,7 @@ test.describe('on a touch phone', () => {
   test('no analysis tab scrolls sideways (1955, 1973, 2022; Expert)', async ({ page }) => {
     await start(page, { level: 'expert' });
     for (const id of ['k3', 'k8', 'k25']) {
-      await choose(page.getByRole('button', { name: 'Election', exact: true }), id);
+      await choose(page.getByRole('button', { name: /^Election(: |$)/ }), id);
       const tabs = page.getByRole('navigation', { name: 'Tools' }).getByRole('tab');
       for (let i = 0; i < await tabs.count(); i++) {
         await tabs.nth(i).click();
@@ -87,7 +87,7 @@ test('the Save & share menu closes on Escape and returns focus to its button', a
 
 test('a candidate links to the Knesset page, the party page and Hebrew Wikipedia marked secondary', async ({ page }) => {
   await start(page);
-  await choose(page.getByRole('button', { name: 'Election', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true }).click();
   await expect(page.getByRole('region', { name: 'List details' }).getByText(/^Who gets in/)).toBeVisible();
   const about = page.getByRole('group', { name: 'About Benjamin Netanyahu' });

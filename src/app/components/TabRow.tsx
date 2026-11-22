@@ -45,8 +45,9 @@ export function TabRow({ tools, level, selected, label, onOpen, onKey, onPrefetc
         return <div key={g.id} className="tab-group" data-tab-group={g.id}>
           <span className="tab-group-head" id={`tab-group-${g.id}`}>{L(...g.label)}</span>
           <div className="tab-group-tabs" role="tablist" aria-labelledby={`tab-group-${g.id}`}>
+            {/* a tool's page is the tab panel; the Overview board is not one, so no tab points at a panel there (V4 A12) */}
             {g.tabs.map((t) => [
-              <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={selected === t.id} aria-controls="analysis-panel" tabIndex={stop === t.id ? 0 : -1}
+              <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={selected === t.id} aria-controls={selected === 'board' ? undefined : 'analysis-panel'} tabIndex={stop === t.id ? 0 : -1}
                 className={locked(t) ? 'locked' : ''}
                 onClick={() => locked(t) && selected !== t.id ? setAsk(t) : onOpen(t.id)} onPointerEnter={() => onPrefetch(t.id)} onFocus={() => onPrefetch(t.id)}
                 onKeyDown={(e) => {

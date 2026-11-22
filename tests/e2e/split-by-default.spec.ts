@@ -1,5 +1,5 @@
 import { expect, test } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 for (const lang of ['en', 'he'] as const) test(`${lang}: joint-list default is personal, unedited, persistent and individually overridable`, async ({ page }) => {
   await page.addInitScript(lang => {
     if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({ lang, level: 'expert', hintDismissed: true }));
@@ -9,7 +9,7 @@ for (const lang of ['en', 'he'] as const) test(`${lang}: joint-list default is p
     }
   }, lang);
   await page.goto('/');
-  await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), 'k25');
+  await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), 'k25');
   const row = page.getByRole('button', { name: lang === 'en' ? 'Religious Zionism' : 'הציונות הדתית', exact: true });
   await row.click();
   const panel = page.locator('.side-panel');

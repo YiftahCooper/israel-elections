@@ -3,7 +3,7 @@
 // phone sheet; viewing it is never an edit.
 import { expect, test, type Page } from './fixtures';
 import { hoverSeat as hoverChamberSeat } from './seat-hover.ts';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 
 async function start(page: Page, { lang = 'en', width = 1500, k = 'k25' }: { lang?: 'en' | 'he'; width?: number; k?: string } = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
@@ -14,7 +14,7 @@ async function start(page: Page, { lang = 'en', width = 1500, k = 'k25' }: { lan
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { starterTip: false, decimals: 2 } }));
   }, [lang] as const);
   await page.goto('/');
-  if (k !== 'k26') await choose(page.getByRole('button', { name: lang === 'he' ? 'בחירות' : 'Election', exact: true }), k);
+  if (k !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), k);
 }
 const card = (page: Page) => page.locator('dialog[open].mk-sheet');
 const listRow = (page: Page, name: string) => page.locator('.lb-row', { has: page.locator('.lb-name', { hasText: new RegExp(`^${name}`) }) }).first();

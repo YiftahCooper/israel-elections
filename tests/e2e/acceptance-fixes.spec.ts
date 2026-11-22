@@ -5,8 +5,8 @@ import { expect, test, type Page } from './fixtures';
 async function start(page: Page) {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })({lang:'en', level:'standard', hintDismissed:true})));
   await page.goto('/');
-  await choose(page.getByRole('button', {name:'Election', exact:true}), 'k25');
-  await expect(page.getByRole('button', { name: 'Grouping', exact: true })).toHaveText(/Government 37 /);
+  await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
+  await expect(page.getByRole('button', { name: /^Grouping(: |$)/ })).toHaveText(/Government 37 /);
 }
 async function split(page: Page) {
   await page.getByRole('button', {name:'United Torah Judaism', exact:true}).click();
@@ -38,7 +38,7 @@ test('E3 separated lists compare once as a group', async ({page}) => {
   await expect(page.locator('.lb-group-comparison')).toContainText('together 4, officially 7');
   await expect(page.locator('.session')).not.toContainText('−7');
   await openSideBySide(page);
-  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true }), 'official');
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ }), 'official');
   const row=page.locator('tr.cmp-row').filter({hasText:'Agudat Yisrael'});
   await expect(row).toHaveCount(1);
   await expect(row).toContainText('Degel HaTorah');
@@ -102,7 +102,7 @@ test('E10 Compare rows carry list identity tiles and signed seat changes', async
   const votes=page.getByRole('region',{name:'List details'}).getByLabel('Votes',{exact:true});
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
   await openSideBySide(page);
-  await choose(page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true }), 'official');
+  await choose(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ }), 'official');
   const likud=page.locator('tr.cmp-row').filter({has:page.locator('.cmp-lname',{hasText:'Likud'})});
   await expect(likud.locator('.cmp-lname .slip')).toBeVisible();
   await expect(likud.locator('.cmp-delta bdi').first()).toHaveText(/^▲\s*\+\d+$/);

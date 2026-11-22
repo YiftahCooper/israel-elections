@@ -3,7 +3,7 @@
 // in the key beneath the strip instead (always so on a phone). Checked for 2021, 2022 and 2026, every grouping, both
 // languages, every 20 px from 360 to 1500, and for the compared result's strip under it.
 import { expect, test, type Page } from './fixtures';
-import { choose } from './choices.ts';
+import { choose, pickerName } from './choices.ts';
 import { waitForStill } from './settle.ts';
 
 const open = async (page: Page, lang: 'en' | 'he') => {
@@ -64,12 +64,12 @@ for (const lang of ['he', 'en'] as const) {
     const faults: string[] = [];
     for (const election of ['k24', 'k25', 'k26']) {
       await page.setViewportSize({ width: 1500, height: 1000 });
-      await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
+      await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), election);
       const schemes = await page.evaluate(async (id) => ((await (await fetch(`/data/${id}.json`)).json()).blocSchemes as { id: string }[]).map(g => g.id), election);
       expect(schemes.length).toBeGreaterThan(1);
       for (const scheme of schemes) {
         await page.setViewportSize({ width: 1500, height: 1000 });
-        const grouping = page.getByRole('button', { name: lang === 'en' ? 'Grouping' : 'חלוקה לגושים', exact: true });
+        const grouping = page.getByRole('button', { name: pickerName(lang === 'en' ? 'Grouping' : 'חלוקה לגושים') });
         if ((await grouping.getAttribute('data-value')) !== scheme) await choose(grouping, scheme);
         // the bands ease to their new widths
         await waitForStill(page, '.blocs .strip .corridor');
@@ -85,7 +85,7 @@ for (const lang of ['he', 'en'] as const) {
     const faults: string[] = [];
     for (const election of ['k25', 'k26']) {
       await page.setViewportSize({ width: 1500, height: 1000 });
-      await choose(page.getByRole('button', { name: lang === 'en' ? 'Election' : 'בחירות', exact: true }), election);
+      await choose(page.getByRole('button', { name: pickerName(lang === 'en' ? 'Election' : 'בחירות') }), election);
       if (!(await page.locator('.cmpm-refblocs').count())) await page.locator('.compare-on').click();
       await expect(page.locator('.cmpm-refblocs .strip')).toBeVisible();
       await waitForStill(page, '.blocs .strip .corridor');
@@ -97,8 +97,8 @@ for (const lang of ['he', 'en'] as const) {
 
 test('the reported case: 2022’s Arab lists are named in full in Hebrew on a laptop and on a phone', async ({ page }) => {
   await open(page, 'he');
-  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k25');
-  await choose(page.getByRole('button', { name: 'חלוקה לגושים', exact: true }), 'pre-election-blocs');
+  await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k25');
+  await choose(page.getByRole('button', { name: /^חלוקה לגושים(: |$)/ }), 'pre-election-blocs');
   const blocs = page.getByRole('region', { name: 'מנדטים לפי גוש' });
   await page.setViewportSize({ width: 1440, height: 1000 });
   // wide enough: the name wraps onto two lines inside its band

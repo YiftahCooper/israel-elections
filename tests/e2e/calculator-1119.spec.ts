@@ -15,7 +15,7 @@ async function start(page: Page, { lang = 'en', level = 'standard', settings = {
   }, [lang, level, settings] as const);
 }
 const ready = async (page: Page) => { await page.goto('/'); await expect(page.locator('.lb-row').first()).toBeVisible(); };
-const picker = (page: Page) => page.locator('.cmpm-strip').getByRole('button', { name: 'Compare with', exact: true });
+const picker = (page: Page) => page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ });
 const likud = (page: Page) => page.locator('.lb-row').filter({ hasText: 'Likud' }).first();
 async function addVotes(page: Page, name: string, n: number) {
   await page.locator('.lb-row').filter({ hasText: name }).first().click();

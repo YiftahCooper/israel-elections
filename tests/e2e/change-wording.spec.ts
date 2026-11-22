@@ -40,7 +40,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1024, 1500])
     await expect(history).toContainText(full);
     for (const time of await history.locator('li .tiny').allTextContents()) expect(time).toMatch(/^\d{1,2}:\d{2}:\d{2}$/);
     await page.keyboard.press('Escape');
-    await session.getByRole('button', { name: lang === 'he' ? 'השינויים שלכם' : 'Your changes', exact: true }).click();
+    await session.getByRole('button', { name: lang === 'he' ? 'הסבר: השינויים שלכם' : 'Your changes: explanation', exact: true }).click();
     await expect(session.locator('.info .pop')).toContainText(lang === 'he' ? 'מהתוצאה הרשמית' : 'from the official result');
     await page.keyboard.press('Escape');
     await (await barPart(page, '.scenario-switcher .choice-trigger')).click();
@@ -81,7 +81,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1024, 1500])
       await page.keyboard.press('Escape');
       // phones: the switcher lives in the Menu, which stays open (and in view under the pinned bar) until closed
       await closeBarMenu(page);
-      await page.locator('.session').getByRole('button', {name:lang === 'he' ? 'השינויים שלכם' : 'Your changes',exact:true}).click();
+      await page.locator('.session').getByRole('button', {name:lang === 'he' ? 'הסבר: השינויים שלכם' : 'Your changes: explanation',exact:true}).click();
       await expect(page.locator('.session .info .pop bdi')).toHaveText(name);
       await page.keyboard.press('Escape');
       // Resizing the same loaded reference must recover the full label when it fits.
