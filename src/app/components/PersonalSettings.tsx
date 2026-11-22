@@ -202,7 +202,7 @@ function Row({ row }: { row: SettingRow }) {
   </>;
   // named apart from the control it explains, so the two never share a name
   const info = row.info && <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...row.info)}</Info>;
-  return <div className={`ps-row ${isToggle ? 'is-toggle' : 'is-seg'}`} data-setting={row.id}>
+  return <div className={`ps-row ${isToggle ? 'is-toggle' : 'is-seg'}${row.control === 'choice' ? ' is-choice' : ''}`} data-setting={row.id}>
     {isToggle
       ? <label className="ps-label switch-row"><span className="ps-label-inner">{head}</span><ToggleControl row={row} label={label} /></label>
       : <span className="ps-label"><span className="ps-label-inner">{head}</span></span>}

@@ -416,6 +416,25 @@ test.describe('every setting takes effect', () => {
   });
 });
 
+// "Votes come from" and the other questions' defaults: the choices sit as one group under the label, never broken
+// unevenly across lines (22 Nov 2026: at 1,500px "New citizens" fell onto a line of its own)
+for (const lang of ['en', 'he'] as const) for (const width of [1500, 1280, 1024, 390]) test(`the choices of a question's default sit as one tidy group · ${lang} ${width}`, async ({ page }) => {
+  await page.setViewportSize({ width, height: width < 800 ? 844 : 1000 });
+  await open(page, { lang, preferences: { voteSource: 'proportional' } });
+  await gear(page, lang).click();
+  for (const id of ['voteSource', 'markChanges', 'copyMode']) {
+    const r = row(page, id);
+    await r.scrollIntoViewIfNeeded();
+    const boxes = await r.locator('.seg button').evaluateAll((bs) => bs.map((b) => { const x = b.getBoundingClientRect(); return { top: Math.round(x.top), left: x.left, right: x.right, clipped: b.scrollWidth > b.clientWidth + 1 }; }));
+    expect(boxes.some((b) => b.clipped), `${id}: text cut`).toBe(false);
+    const lines = [...new Set(boxes.map((b) => b.top))];
+    // one line on a desktop window; on a phone equal cells, two to a line (three when there are three)
+    expect(lines.length, `${id}: lines`).toBe(width > 600 ? 1 : Math.ceil(boxes.length / (boxes.length === 3 ? 3 : 2)));
+    const area = (await r.boundingBox())!;
+    for (const b of boxes) { expect(b.left).toBeGreaterThanOrEqual(area.x - 1); expect(b.right).toBeLessThanOrEqual(area.x + area.width + 1); }
+  }
+});
+
 test.describe('Compare follows Settings', () => {
   const compareRow = (page: Page, name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-rname', { hasText: name }) }).first();
   test('Copy votes: default method, set in Settings, is where the box starts', async ({ page }) => {
