@@ -1,5 +1,5 @@
 import { formatDate } from '../dateFormat.ts';
-import { reviewedAftermath } from '../../data/aftermath-runtime.ts';
+import { useReviewedAftermath } from '../aftermathData.ts';
 import { electionContext } from '../../data/electionContext.ts';
 import type { Certainty } from '../../data/evidence.ts';
 import { AnalysisEdits } from './AnalysisEdits.tsx';
@@ -263,7 +263,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   /** The researched first government (data/meta/aftermath, docs/source-policy.md) as roles: members In, outside
    *  support Support, arranged abstention Abstain. A confidence vote alone, or an unknown relationship, is not an
    *  arrangement and stays Any. Each row keeps its recorded certainty; nothing is upgraded. */
-  const record = reviewedAftermath(s.electionId)?.government;
+  const record = useReviewedAftermath(s.electionId)[0]?.government;
   // 1996 and 1999 elected the Prime Minister directly (Basic Law: The Government, 1992): the legal note says that the
   // confidence-vote arithmetic follows today's rules, not that era's (audit 12 Nov 2026, cx-law-06)
   const directPmYear = electionContext.pmContests.find((c) => c.electionId === s.electionId && c.contestType === 'parallel-pm')?.effectiveDate.slice(0, 4);

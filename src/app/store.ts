@@ -548,10 +548,14 @@ export function viewerColourSteps(ds: ElectionDataset, target: Scenario): Action
 
 /** `foreign`: a scenario the viewer did not save (a share link, a file, the gallery): the viewer's own colours replace
  *  its colours wherever the viewer set one, as it opens, so they are part of what it starts from (never an edit). */
+/** What the open page needs of an election besides its dataset (App.tsx: After the election's record, one file per
+ *  election), fetched alongside it so the election is shown with it; its failure is the page's to report. */
+let alsoNeeded: (id: ElectionId) => Promise<unknown> = () => Promise.resolve();
+export const setAlsoNeeded = (load: typeof alsoNeeded) => { alsoNeeded = load; };
 export async function openElection(id: ElectionId, from?: { id?: string; name: string; description?: string; log: Action[]; factionSplitBaseline?: boolean; baseBuiltAt?: string; foreign?: boolean }): Promise<boolean> {
   const seq = ++openSeq;
   try {
-    const ds = await loadDataset(id);
+    const [ds] = await Promise.all([loadDataset(id), alsoNeeded(id).catch(() => {})]);
     if (seq !== openSeq) return false; // a later request superseded this one
     if (from && state.scenario?.electionId === id) stashCurrent();
     // the unsaved work kept for this election while another was open is kept as a draft, not replaced

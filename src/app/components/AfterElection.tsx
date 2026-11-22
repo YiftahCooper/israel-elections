@@ -1,5 +1,7 @@
 import { Fragment, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { reviewedAftermath, recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, termWithEnd, sourceLabel, sourceRows, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-runtime.ts';
+import { recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, termWithEnd, sourceLabel, sourceRows, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-model.ts';
+import { useReviewedAftermath } from '../aftermathData.ts';
+import aftermathNames from 'virtual:aftermath-names';
 import type { GovernmentSupport, GovernmentParticipant, GovernmentIndividual } from '../../data/aftermath.ts';
 import { supportRoleGroups, participantName, listsBelowTheirSeats, majorityCrossing, type SupportGroup } from '../governmentSupport.ts';
 import type { ElectionDataset } from '../../data/schema.ts';
@@ -11,7 +13,7 @@ import { Info } from './ui.tsx';
 import { TermTimeline } from './TermTimeline.tsx';
 import { formatDate } from '../dateFormat.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
-import { personNames, rotationFor, statutory, type RotationAgreement } from '../../data/rotations.ts';
+import { rotationFor, statutory, type RotationAgreement } from '../../data/rotations.ts';
 import './AfterElection.css';
 import { sourceLinkText } from '../hewiki.ts';
 import { latinQuotesInHebrew } from '../bidiRuns.tsx';
@@ -25,7 +27,8 @@ function DateRun({ date, end }: { date: string; end?: string }) {
 
 /** The rotation agreement of this government, also when the rotation never happened (16 Nov 2026). The planned and the
  *  actual handover are the research record's own; a source read only as a search snippet is not shown as support. */
-const NAMES = personNames();
+// Hebrew names from every election's record, worked out at build time (vite.config.ts), so this page needs only its own
+const NAMES = new Map(aftermathNames);
 function Rotation({ number }: { number: number }) {
   const L = useL(); const lang = useLang();
   const a = rotationFor(number);
@@ -263,12 +266,18 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
   </div>;
 }
 
+/** The election after this one: the one the record says ended the term, else the next number. */
+const nextElectionOf = (id: ElectionDataset['id'], endedBy?: Aftermath['term']['endedBy']) =>
+  (endedBy?.nextElection?.startsWith('k') ? endedBy.nextElection : `k${Number(id.slice(1)) + 1}`) as ElectionDataset['id'];
+
 /** The only input is the immutable election dataset; scenario edits never enter this page. */
 export function AfterElection({ ds }: { ds: ElectionDataset }) {
-  const L = useL(); const lang = useLang(); const data = reviewedAftermath(ds.id);
+  const L = useL(); const lang = useLang();
   const elections = useStore(s => s.elections);
   // a tool set to Hidden (Custom) is not offered by any link
   const sourcesShown = useShown('sources');
+  // this election's record and the next one's (for the Next election button) are fetched together
+  const [data, nextRecord] = useReviewedAftermath(ds.id, nextElectionOf(ds.id));
   if (!data) return <p>{L('History has not yet been reviewed.', 'ההיסטוריה טרם נבדקה.')}</p>;
   const government = data.government; const termEvents = visibleTermEvents(data.term.events);
   const direct = data.formation.events.find(e => e.type === 'direct-election');
@@ -276,8 +285,10 @@ export function AfterElection({ ds }: { ds: ElectionDataset }) {
   // the fact that ended the term takes its place among the term's events by date (V2 fault A2, 19 Nov 2026): placed
   // after them it read as the last event even when, say, Eichmann's trial came after the dissolution law
   const termRows = termWithEnd(termEvents, termEndFact(data));
-  const nextId = (next?.nextElection?.startsWith('k') ? next.nextElection : `k${Number(ds.id.slice(1)) + 1}`) as typeof ds.id;
-  const nextData = reviewedAftermath(nextId);
+  const nextId = nextElectionOf(ds.id, next);
+  // a record naming another next election than the one fetched with it is asked for now (only React's `use` inside, which
+  // may be called conditionally)
+  const nextData = nextId === nextElectionOf(ds.id) ? nextRecord : useReviewedAftermath(nextId)[0];
   const nextEntry = elections.find(e => e.id === nextId);
   return <article className="after-election" data-election={ds.id}>
     <p className="muted small">{L('Recorded history · checked', 'היסטוריה מתועדת · נבדק')} <span className="after-help-anchor"><DateRun date={data.reviewedAt} /> <Info title={L('Recorded history', 'היסטוריה מתועדת')}>{L('These facts use the official election result. Editing votes does not change history. Unknown recommendations do not mean no recommendation.', 'העובדות מבוססות על תוצאות הבחירות הרשמיות. עריכת קולות אינה משנה את ההיסטוריה. המלצה שלא תועדה אינה זהה להיעדר המלצה.')}</Info></span></p>
@@ -299,7 +310,7 @@ export function AfterElection({ ds }: { ds: ElectionDataset }) {
 }
 
 export function AfterElectionSources({ ds }: { ds: ElectionDataset }) {
-  const L = useL(); const lang = useLang(); const kind = useKindLabel(); const data = reviewedAftermath(ds.id);
+  const L = useL(); const lang = useLang(); const kind = useKindLabel(); const [data] = useReviewedAftermath(ds.id);
   if (!data) return null;
   const excluded = data.term.events.filter(e => !visibleTermEvents([e]).length);
   // one row per address, official first, each named and dated (c-design-principles-17, c-rtl-phone-06)

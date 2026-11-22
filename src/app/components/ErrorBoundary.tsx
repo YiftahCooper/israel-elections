@@ -3,11 +3,8 @@ import { Component, type ReactNode } from 'react';
 /** A part of the app whose code could not be downloaded (a dropped connection, or an app updated since the page was
  *  opened, whose old code files are gone): trying again asks for it once more; reloading fetches the current app. */
 export const codeNotLoaded = (e: Error) => /dynamically imported module|Importing a module script failed|error loading dynamically imported module|Unable to preload CSS/i.test(e.message);
-/** Code downloads that failed are kept as failed (so the panel shows this message instead of asking again in a loop)
- *  until the user asks again: Try again here, or opening the tab (audit 12 Nov 2026, c-robustness-09). */
-const failedCode = new Set<() => void>();
-export const rememberFailedCode = (forget: () => void) => { failedCode.add(forget); };
-export const forgetFailedCode = () => { for (const forget of failedCode) forget(); failedCode.clear(); };
+import { forgetFailedCode } from '../failedCode.ts';
+export { forgetFailedCode, rememberFailedCode } from '../failedCode.ts';
 
 /** Contains a rendering error to one panel instead of blanking the whole app. */
 export class ErrorBoundary extends Component<{ children: ReactNode; label: string; resetKey?: unknown }, { error: Error | null; key: unknown }> {

@@ -3,7 +3,7 @@
 // names the governments it covers, the two prime ministers (research identifiers in English), the planned and the
 // actual handover and its outcome, with its sources. Until that file is in this checkout the list is empty and the
 // government card shows no rotation line.
-import { aftermathRecords } from './aftermath-runtime.ts';
+export { personNames } from './aftermath-model.ts';
 
 export interface RotationSource { url?: string; path?: string; publisher?: string; date?: string; locator?: string; inspection?: string; supportingNote?: string }
 export interface RotationAgreement {
@@ -32,16 +32,3 @@ export function rotationFor(governmentNumber: number, agreements: readonly Rotat
 
 /** The statutory office of alternate prime minister (2020 on), as opposed to the 1984 agreement between two governments. */
 export const statutory = (a: RotationAgreement) => /^statutory/i.test(a.legalMechanism ?? '');
-
-/** Hebrew names for the agreements' English names, from the reviewed records' prime ministers, nominees and people. */
-export function personNames(records = Object.values(aftermathRecords)): Map<string, string> {
-  const m = new Map<string, string>();
-  const add = (p?: { nameEn?: string; nameHe?: string }) => { if (p?.nameEn && p.nameHe && !m.has(p.nameEn)) m.set(p.nameEn, p.nameHe); };
-  for (const r of records) {
-    if (!r) continue;
-    for (const p of r.government?.primeMinisters ?? []) add(p);
-    for (const round of r.recommendationRounds) for (const p of Object.values(round.nominees)) add(p);
-    for (const p of Object.values(r.formation.people ?? {})) add(p);
-  }
-  return m;
-}

@@ -429,8 +429,18 @@ function anglesOf(g: Arc, pts: Pt[], fallback: number[]): number[] {
  *  to right on screen); `seatRadius` in unit radii. Coordinates: centre (cx, cy), unit radius `scale`. Below the
  *  baseline the chamber extends by a floor as deep as a seat plus a margin; angles past π or 0 map onto it. */
 export function arcBlocRegions(seats: SeatPos[], bands: number[], seatRadius: number, cx = 500, cy = 470, scale = 400): { regions: BlocRegion[]; lines: BlocLine[] } {
-  const key = [seatRadius, cx, cy, scale, bands.join(','), seats.map((p) => `${p.x.toFixed(6)} ${p.y.toFixed(6)}`).join(',')].join('|');
-  return remember(regionCache, key, () => routeRegions(seats, bands, seatRadius, cx, cy, scale));
+  return remember(regionCache, regionKey(seats, bands, seatRadius, cx, cy, scale), () => routeRegions(seats, bands, seatRadius, cx, cy, scale));
+}
+/** What arcBlocRegions' answer depends on (its cache key). */
+export const regionKey = (seats: SeatPos[], bands: number[], seatRadius: number, cx = 500, cy = 470, scale = 400) =>
+  [seatRadius, cx, cy, scale, bands.join(','), seats.map((p) => `${p.x.toFixed(6)} ${p.y.toFixed(6)}`).join(',')].join('|');
+/** A short fingerprint of a key (cyrb53), so answers worked out at build time can be shipped without their long keys. */
+export function keyHash(key: string): string {
+  let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+  for (let i = 0; i < key.length; i++) { const ch = key.charCodeAt(i); h1 = Math.imul(h1 ^ ch, 2654435761); h2 = Math.imul(h2 ^ ch, 1597334677); }
+  h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507) ^ Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507) ^ Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+  return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
 }
 function routeRegions(seats: SeatPos[], bands: number[], seatRadius: number, cx: number, cy: number, scale: number): { regions: BlocRegion[]; lines: BlocLine[] } {
   const ids = [...new Set(bands)];
@@ -598,11 +608,16 @@ export function frontRowFirst(places: SeatPos[], groups: string[]): SeatPos[] {
  *  in its own order (arcLayout), `bands[i]` is seat i's bloc (non-decreasing in seat order). Returns, for seat i, the
  *  index of its place in `seats`. One bloc (or none): today's order. */
 export function arcSeatSlots(seats: SeatPos[], bands: number[], seatRadius: number): number[] {
-  // only the chamber and how many seats each bloc has matter, so edits inside a bloc reuse the answer
-  const runs = bands.reduce<number[]>((acc, b, i) => { if (i && b === bands[i - 1]) acc[acc.length - 1]++; else acc.push(1); return acc; }, []);
-  const key = [seats.length, seatRadius, runs.join(','), new Set(bands).size === runs.length].join('|');
-  return remember(slotCache, key, () => placeSeats(seats, bands, seatRadius));
+  return remember(slotCache, slotKey(seats, bands, seatRadius), () => placeSeats(seats, bands, seatRadius));
 }
+/** What arcSeatSlots' answer depends on (its cache key): only the chamber and how many seats each bloc has, so edits
+ *  inside a bloc reuse the answer. */
+export function slotKey(seats: SeatPos[], bands: number[], seatRadius: number): string {
+  const runs = bands.reduce<number[]>((acc, b, i) => { if (i && b === bands[i - 1]) acc[acc.length - 1]++; else acc.push(1); return acc; }, []);
+  return [seats.length, seatRadius, runs.join(','), new Set(bands).size === runs.length].join('|');
+}
+/** Places an answer worked out at build time for this key (src/app/blocLineSeed.ts), as if worked out here. */
+export const seedSlots = (key: string, slots: number[]) => { if (!slotCache.has(key)) remember(slotCache, key, () => slots); };
 /** True when the true entries are one unbroken run (or there are none). */
 const oneRun = (xs: boolean[]) => { const a = xs.indexOf(true), b = xs.lastIndexOf(true); return a < 0 || xs.slice(a, b + 1).every(Boolean); };
 function placeSeats(seats: SeatPos[], bands: number[], seatRadius: number): number[] {

@@ -20,11 +20,12 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { LangLabel, nameProps } from './LangLabel.tsx';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario, SimList } from '../../model/scenario.ts';
-import { allocationOf, listLabel, methodOf, seatBlocsOf, seatedOrder, seatCandidate, candidateName, memberNameGivenFirst, referenceLabel, comparisonGroups, groupingLabel, majorityText, seeksMajority } from '../derive.ts';
+import { allocationOf, listLabel, methodOf, seatedOrder, seatCandidate, candidateName, memberNameGivenFirst, referenceLabel, comparisonGroups, groupingLabel, majorityText, seeksMajority } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { untitledName } from '../scenarioDocument.ts';
 import { arcLayout, annularRegions } from '../layout.ts';
 import { arcSeatSlots, frontRowFirst, trayBlocRegions, trayCell, trayShape, TRAY } from '../blocLine.ts';
+import { seededRegions } from '../blocLineSeed.ts';
 import { download, isolate, seatDeltaText } from '../format.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { setSetting, setState, useSetting, useStore } from '../store.ts';
@@ -35,62 +36,15 @@ import { ResultPreview } from './ResultPreview.tsx';
 import { datesInText } from '../dateFormat.ts';
 import { IsolatedText } from '../bidiRuns.tsx';
 
-export interface SeatInfo { listId: string; idx: number; color: string; innerColor?: string; partyColor?: string; partyId?: string; remainder: boolean; bloc: string | null; holder: string }
-
-/** Seats in chamber order. With a bloc grouping, seats are grouped by bloc (decision 0087): each seat counts
- *  for its member's party bloc when it differs from the list's. Within a bloc, lists keep their order. `look`: how a
- *  seat of a joint list counted by party shows its party (`innerColor` for both colours, `color` for the party's only). */
-export function seatOrder(s: Scenario, r: AllocationResult, colorBy: 'list' | 'bloc' | 'party', look: JointLook = 'both'): SeatInfo[] {
-  const out: (SeatInfo & { k: number })[] = [];
-  const split = new Set(s.factionSplits ?? []);
-  let k = 0;
-  for (const l of s.lists) {
-    const lr = r.lists.find((x) => x.id === l.id);
-    if (!lr || !lr.seats) continue;
-    const seated = seatedOrder(l);
-    const blocs = seatBlocsOf(s, l, lr.seats);
-    const parties = [...new Set(seated.map((c) => c.partyHe ?? ''))];
-    for (let i = 0; i < lr.seats; i++) {
-      const c = seated[i];
-      // a constituent party's own colour (decision 0087) where the research gives one
-      let color = l.color;
-      if (colorBy === 'bloc') color = s.blocs.find((b) => b.id === blocs[i])?.color ?? '#8e8e93';
-      if (colorBy === 'party') color = (c?.partyId && l.parties?.some(p => p.id === c.partyId) && partyDisplayColor(l, c.partyId)) || (parties.length > 1 ? shade(l.color, parties.indexOf(c?.partyHe ?? '')) : l.color);
-      const holder = split.has(l.id) && c?.partyId && l.parties?.some((p) => p.id === c.partyId) ? `${l.id}:${c.partyId}` : l.id;
-      const party = l.parties?.find(p => p.id === c?.partyId);
-      const partyColor = split.has(l.id) && (l.parties?.length ?? 0) > 1 && party ? partyDisplayColor(l, party.id) : undefined;
-      const innerColor = look === 'both' ? partyColor : undefined;
-      if (innerColor) color = l.color;
-      else if (look === 'party' && partyColor && colorBy === 'list') color = partyColor;
-      out.push({ innerColor, partyColor: look === 'list' ? undefined : partyColor, partyId: party?.id, listId: l.id, idx: i, color, remainder: i >= lr.initialSeats, bloc: blocs[i], holder, k: k++ });
-    }
-  }
-  // Keep component seats together within each list/bloc, preserving original candidate indices.
-  const componentRank = (st: SeatInfo) => split.has(st.listId) ? s.lists.find(l => l.id === st.listId)?.parties?.findIndex(p => p.id === st.partyId) ?? -1 : 0;
-  const within = (a: SeatInfo & { k: number }, b: SeatInfo & { k: number }) => a.listId === b.listId ? componentRank(a) - componentRank(b) || a.k - b.k : a.k - b.k;
-  if (!s.blocs.length) return out.sort(within);
-  const order = blocDisplayOrder(s);
-  const rank = (b: string | null) => order.indexOf(b);
-  return out.sort((a, b) => rank(a.bloc) - rank(b.bloc) || within(a, b));
-}
-
-/** The group whose places a seat shares: its list (one party of it, when a joint list is counted by party) in its bloc. */
-export const seatGroup = (st: SeatInfo) => `${st.holder}|${st.bloc ?? ''}`;
+// seat order lives in ../seatOrder.ts (plain TypeScript, so the build can work out the opening chamber's bloc line)
+export { seatOrder, seatGroup, type SeatInfo } from '../seatOrder.ts';
+import { seatOrder, seatGroup, type SeatInfo } from '../seatOrder.ts';
 
 /** `text` cut to at most `max` characters at a word boundary, with an ellipsis. */
 export function clipWords(text: string, max: number): string {
   if (text.length <= max) return text;
   const cut = text.slice(0, max - 1), space = cut.lastIndexOf(' ');
   return (space > max / 2 ? cut.slice(0, space) : cut).replace(/[\s·,(–-]+$/u, '') + '…';
-}
-
-function shade(hex: string, i: number): string {
-  if (i <= 0) return hex;
-  const n = parseInt(hex.slice(1), 16);
-  const f = [0, 0.38, -0.3, 0.6, -0.5][i % 5];
-  const ch = (v: number) => Math.round(f > 0 ? v + (255 - v) * f : v * (1 + f));
-  const r = ch((n >> 16) & 255), g = ch((n >> 8) & 255), b = ch(n & 255);
-  return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`;
 }
 
 /** One row of the chamber's key. A joint list counted by party has one row per party, and one more for its seats whose
@@ -227,6 +181,8 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // list, its candidates fill its places front row first, each row left to right
   const placed = useMemo(() => frontRowFirst(arcSeatSlots(pos, bandOf, rad).map((k) => pos[k]), seats.map(seatGroup)), [pos, bandOf, rad, seats]);
   const baselinePlaced = useMemo(() => frontRowFirst(arcSeatSlots(pos, baselineBands, rad).map((k) => pos[k]), baselineSeats.map(seatGroup)), [pos, baselineBands, rad, baselineSeats]);
+  // the opening chamber's regions were worked out at build time (../blocLineSeed.ts); any other is routed here
+  const hemicycleWedges = useMemo(() => layout === 'hemicycle' ? seededRegions(placed, bandOf, rad, 500, 470, 400) ?? annularRegions(placed, bandOf, rad, 500, 470, 400) : [], [layout, placed, bandOf, rad]);
 
   const hoverBridge = useHoverIntent(() => setHover(null), !!hover);
   /** click and the keyboard open the seat card at once; a resting mouse opens it after the shared hover delay */
@@ -488,7 +444,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   let body: React.ReactNode;
   if (layout === 'hemicycle') {
     const cx = W / 2, cy = 470, R = 400;
-    const wedges = annularRegions(placed, bandOf, rad, cx, cy, R);
+    const wedges = hemicycleWedges;
     body = (
       <svg ref={svgRef} className={found !== null ? 'finding' : undefined} viewBox={`40 30 920 ${H - 30}`} role="group" aria-label={`${title ?? L('Knesset seat diagram', 'תרשים מושבי הכנסת')}: ${summary}`}>
         {seats.some(st => st.innerColor) && <desc>{componentDescription}</desc>}

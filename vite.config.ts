@@ -1,7 +1,7 @@
 import { validateGovernmentSupport } from './scripts/lib/build/aftermath.ts';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { ELECTION_IDS, type ElectionDataset } from './src/data/schema.ts';
-import { validateAftermath, type Aftermath } from './src/data/aftermath-model.ts';
+import { personNames, validateAftermath, type Aftermath } from './src/data/aftermath-model.ts';
 import { compileFamilyRuntime } from './scripts/family-runtime.ts';
 import { readFamilyBundle, validateFamilies } from './scripts/validate-families.ts';
 import { compileHistoryRuntime } from './scripts/party-history-runtime.ts';
@@ -12,6 +12,7 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { scaleAwareMedia } from './scripts/scale-aware-media.ts';
 import { analysisVersion } from './scripts/analysis-version.ts';
+import { compileBlocLineSeed } from './scripts/bloc-line-seed.ts';
 
 // base './' so the static build works from any path (GitHub Pages project site, file server).
 export default defineConfig({
@@ -34,6 +35,22 @@ export default defineConfig({
         }
       }
     },
+  }, {
+    // After the election loads one election's record (src/app/aftermathData.ts); the rotation line's Hebrew names come
+    // from every record, so they are worked out here
+    name: 'aftermath-names',
+    resolveId(id) { if (id === 'virtual:aftermath-names') return '\0aftermath-names'; },
+    load(id) {
+      if (id !== '\0aftermath-names') return;
+      // in the order the tests' import.meta.glob reads them (file names sorted), as the first spelling of a name wins
+      const records = readdirSync('data/meta/aftermath').filter((f) => /^k\d+\.json$/.test(f)).sort().map((f) => JSON.parse(readFileSync(`data/meta/aftermath/${f}`, 'utf8')) as Aftermath);
+      return `export default ${JSON.stringify([...personNames(records)])}`;
+    },
+  }, {
+    // the opening chamber's bloc line, worked out here once instead of on every visitor's device (scripts/bloc-line-seed.ts)
+    name: 'bloc-line-seed',
+    resolveId(id) { if (id === 'virtual:bloc-line-seed') return '\0bloc-line-seed'; },
+    load(id) { if (id === '\0bloc-line-seed') return `export default ${JSON.stringify(compileBlocLineSeed())}`; },
   }, {
     name: 'family-runtime',
     // the registry, lineage (pending items too) and presets pass the validator before the app reads them (audit 12 Nov)
