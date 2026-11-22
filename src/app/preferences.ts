@@ -1,3 +1,5 @@
+import { COPY_WORDS } from './compare/copyText.ts';
+
 /** One registry for action-time questions and their Settings controls. Values are stable storage IDs. */
 export const PREFERENCES = {
   voteSource: {
@@ -22,14 +24,15 @@ export const PREFERENCES = {
       { value: 'official', label: ['Official result', 'התוצאה הרשמית'] },
     ],
   },
-  /** How votes copied from another election start out (12 Nov 2026: the share of eligible voters first). Within one
-   *  election a copy is always the same number of votes. */
+  /** How votes copied from another election start out (12 Nov 2026: adjusted for the number of eligible voters first).
+   *  Within one election a copy is always the same number of votes. Each stored method is named as the Copy votes box
+   *  shows it (22 Nov 2026: "Number of votes", with or without the adjustment, and "Share of valid votes"). */
   copyMode: {
     label: ['Copy votes: default method', 'העתקת קולות: שיטת ברירת המחדל'],
     options: [
-      { value: 'eligible', label: ['Same share of eligible voters', 'אותו חלק מבעלי זכות הבחירה'] },
-      { value: 'share', label: ['Same share of valid votes', 'אותו חלק מהקולות הכשרים'] },
-      { value: 'count', label: ['Same number of votes', 'אותו מספר קולות'] },
+      { value: 'eligible', label: COPY_WORDS.adjusted },
+      { value: 'count', label: COPY_WORDS.notAdjusted },
+      { value: 'share', label: COPY_WORDS.share },
     ],
   },
 } as const;

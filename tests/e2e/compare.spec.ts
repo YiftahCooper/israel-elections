@@ -72,9 +72,13 @@ test('k25 → k26: copy Likud’s 2022 votes into your work, marked with its ori
   const likud = row(page, 'Likud');
   await likud.hover();
   await likud.getByRole('button', { name: 'Copy Likud’s votes into 2026' }).click();
-  await expect(box(page)).toContainText('Same share of all eligible voters as in 2022 (16.43%)');
-  await expect(box(page)).toContainText('1,204,575 votes');
-  await expect(box(page).locator('.cmp-mode').filter({ hasText: 'Same number of votes' })).toContainText('1,115,336');
+  // Number of votes, adjusted for the number of eligible voters by default; unticked, the literal count
+  await expect(box(page).getByRole('radio', { name: 'Number of votes (1,115,336)' })).toBeChecked();
+  await expect(box(page).getByRole('checkbox', { name: 'Adjust for the number of eligible voters' })).toBeChecked();
+  await expect(box(page).locator('.cmp-mode[data-mode="eligible"]')).toContainText('1,204,575 votes');
+  await box(page).getByRole('checkbox', { name: 'Adjust for the number of eligible voters' }).uncheck();
+  await expect(box(page).locator('.cmp-mode[data-mode="count"]')).toContainText('1,115,336 votes');
+  await box(page).getByRole('checkbox', { name: 'Adjust for the number of eligible voters' }).check();
   await box(page).getByRole('button', { name: 'Copy into 2026' }).click();
   await expect(page.locator('.toast')).toHaveText('Votes copied to 2026. Likud 28 seats.');
   await expect(workSeats(page, 'Likud')).toHaveText('28');
@@ -100,7 +104,7 @@ test('a copy into the compared result stays there, as its own draft with its own
   await row(page, 'Likud').getByRole('button', { name: 'More for Likud' }).click();
   // the row menu has both directions; the second heading is the compared result
   await page.locator('.cmp-menu').getByRole('button', { name: 'Votes…' }).nth(1).click();
-  await box(page).getByRole('radio', { name: /Same number of votes/ }).check();
+  await box(page).getByRole('checkbox', { name: 'Adjust for the number of eligible voters' }).uncheck();
   await box(page).getByRole('button', { name: 'Copy into 2022' }).click();
   await expect(refSeats(page, 'Likud')).not.toHaveText('32');
   await expect(card(page, 'other')).toContainText('draft');
@@ -120,6 +124,12 @@ test('copy a whole list, then several rows at once', async ({ page }) => {
   const whole = page.locator('dialog[open].cmp-whole');
   await expect(whole).toContainText('Kept from 2026: rules, agreements, bloc and coalition.');
   await expect(whole).toContainText(/Entering \d+, leaving \d+/);
+  // the votes are copied as in the Copy votes box: Number of votes, adjusted for the number of eligible voters
+  await expect(whole.getByRole('combobox', { name: 'Copy as' })).toHaveValue('votes');
+  await expect(whole.getByRole('checkbox', { name: 'Adjust for the number of eligible voters' })).toBeChecked();
+  await whole.getByRole('combobox', { name: 'Copy as' }).selectOption('share');
+  await expect(whole.getByRole('checkbox', { name: 'Adjust for the number of eligible voters' })).toBeDisabled();
+  await whole.getByRole('combobox', { name: 'Copy as' }).selectOption('votes');
   await whole.getByRole('button', { name: 'Replace', exact: true }).click();
   await expect(workSeats(page, 'Likud')).not.toHaveText('27');
   await expect(row(page, 'Likud').locator('.cmp-mark[data-copied]').first()).toHaveText('From 2022');
@@ -130,7 +140,7 @@ test('copy a whole list, then several rows at once', async ({ page }) => {
   await row(page, 'Shas').getByRole('checkbox').check();
   await expect(page.locator('.cmp-selbar')).toContainText('2 selected');
   await page.locator('.cmp-selbar').getByRole('button', { name: 'Copy votes into 2026' }).click();
-  await box(page).getByRole('radio', { name: /Same number of votes/ }).check();
+  await box(page).getByRole('checkbox', { name: 'Adjust for the number of eligible voters' }).uncheck();
   await box(page).getByRole('button', { name: 'Copy into 2026' }).click();
   await expect(workSeats(page, 'Likud')).toHaveText('26');
   await expect(row(page, 'Shas').locator('.cmp-v').first()).toContainText('392,964');
@@ -242,8 +252,10 @@ test('Hebrew: your work on the right, graphics still left to right, signs unmirr
   await expect(likud.locator('.cmp-delta bdi').first()).toHaveText(/^▼\s*−5$/);
   await likud.hover();
   await likud.getByRole('button', { name: 'העתקת הקולות של הליכוד ל־2026' }).click();
-  await expect(box(page)).toContainText('מה נשאר זהה');
-  await expect(box(page)).toContainText('אותו חלק מכלל בעלי זכות הבחירה כמו ב־2022');
+  await expect(box(page)).toContainText('העתקה לפי');
+  await expect(box(page).getByRole('radio', { name: /^מספר קולות/ })).toBeChecked();
+  await expect(box(page).getByRole('checkbox', { name: 'התאמה לגודל ציבור הבוחרים' })).toBeChecked();
+  await expect(box(page).getByRole('radio', { name: /^שיעור מהקולות הכשרים/ })).not.toBeChecked();
   await box(page).getByRole('button', { name: 'העתקה ל־2026' }).click();
   await expect(likud.locator('.cmp-v .cmp-mark[data-copied]')).toHaveText('מ־2022');
 });

@@ -5,6 +5,8 @@ import { CHOICE, resetFeatures, resetRows, restore, snapshot } from '../settings
 import { DECIMAL_CHOICES, FEATURE_GROUP, FEATURE_ROWS, GROUPS, SETTINGS, TIERS, featureMatches, textMatches, isExternal, rowMatches, rowTier, rowVisible, settingValue, type GroupId, type SettingId, type SettingRow } from '../settings.ts';
 import { CUSTOM_LABEL, FEATURE_PREVIEWS, LEVEL_LABELS, PRESETS, SHOW_OR_HIDE, TOOL_FEATURES, featureLabel, featureLevel, ownChoices, shownAs, type FeatureId, type Preset, type Visibility } from '../features.ts';
 import { PREFERENCES, asksEachTime, defaultAnswer, storedDefault } from '../preferences.ts';
+import { adjustOf, basisOf, isDefaultCopyMode, modeOf, type CopyBasis } from '../compare/copy.ts';
+import { COPY_INFO, COPY_WORDS } from '../compare/copyText.ts';
 import { listLabel } from '../derive.ts';
 import { RememberedAnswers } from './SourcePicker.tsx';
 import { ColourChanges } from './ColourChanges.tsx';
@@ -226,6 +228,7 @@ function Control({ row, label }: { row: SettingRow; label: string }) {
   const store = useStore(st => st);
   if (row.control === 'level') return <span className="ps-level"><Complexity count={false} /></span>;
   if (row.control === 'lang') return <Seg label={label} value={store.lang} onChange={v => setState({ lang: v as 'he' | 'en' })} options={row.options!.map(o => ({ v: o.value as 'he' | 'en', label: o.label[0], lang: o.value }))} />;
+  if (row.control === 'choice' && CHOICE[row.id] === 'copyMode') return <CopyModeControl label={label} />;
   if (row.control === 'choice') {
     const q = CHOICE[row.id]!;
     // the default answer ("None": no default, so the question is asked), and apart from it whether it is still asked
@@ -249,3 +252,25 @@ function Control({ row, label }: { row: SettingRow; label: string }) {
   return <Seg label={label} value={String(settingValueOf(store, id))} onChange={v => setSetting(id, v as never)} options={row.options!.map(o => ({ v: o.value, label: L(...o.label) }))} />;
 }
 const settingValueOf = (st: ReturnType<typeof getState>, id: SettingId) => settingValue(st.settings, id, st.level);
+
+/** Copy votes: default method, in the Copy votes box's words (22 Nov 2026): "Number of votes" or "Share of valid
+ *  votes", and under them "Adjust for the number of eligible voters", which counts only with "Number of votes". */
+function CopyModeControl({ label }: { label: string }) {
+  const L = useL();
+  const T = (w: readonly [string, string]) => L(w[0], w[1]);
+  const stored = useStore(st => st.preferences.copyMode);
+  const answer = defaultAnswer(stored), asks = asksEachTime(stored);
+  const mode = isDefaultCopyMode(answer) ? answer : null;
+  // the checkbox keeps its state while "Share of valid votes" or "None" is chosen, ticked by default
+  const [adjust, setAdjust] = useState(() => mode ? adjustOf(mode) : true);
+  // follows the stored method when it changes elsewhere (the box's "Set as default", Reset)
+  useEffect(() => { if (mode !== 'share') setAdjust(mode ? adjustOf(mode) : true); }, [mode]);
+  const save = (basis: CopyBasis, adj: boolean) => setPreference('copyMode', storedDefault(modeOf(basis, adj), asks || stored === undefined));
+  const value = mode ? basisOf(mode) : 'ask';
+  return <span className="ps-copy-mode">
+    <Seg label={label} value={value} onChange={v => v === 'ask' ? setPreference('copyMode', undefined) : save(v, adjust)}
+      options={[{ v: 'ask' as const, label: L('None', 'ללא') }, { v: 'votes' as const, label: T(COPY_WORDS.votes) }, { v: 'share' as const, label: T(COPY_WORDS.share) }]} />
+    <span className="ps-copy-adjust" data-off={value !== 'votes' ? '' : undefined}><label><input type="checkbox" checked={adjust} disabled={value !== 'votes'}
+      onChange={e => { setAdjust(e.target.checked); save('votes', e.target.checked); }} />{T(COPY_WORDS.adjust)}</label> <Info title={T(COPY_WORDS.adjust)}>{T(COPY_INFO.adjust)}</Info></span>
+  </span>;
+}

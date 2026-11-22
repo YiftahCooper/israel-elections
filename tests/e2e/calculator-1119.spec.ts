@@ -80,7 +80,8 @@ test('Copy votes: Set as default with Don\'t ask again copies at once; Undo and 
   await page.getByRole('button', { name: /^Copy votes from .*: Shas$/ }).click();
   await expect(box).toBeVisible();
   // the box opens preset on the default method; this time's answer is not stored unless chosen again
-  await expect(box.getByRole('radio', { name: /^Same share of all eligible voters as in 2022/ })).toBeChecked();
+  await expect(box.getByRole('radio', { name: /^Number of votes/ })).toBeChecked();
+  await expect(box.getByRole('checkbox', { name: 'Adjust for the number of eligible voters' })).toBeChecked();
   await expect(box.getByRole('radio', { name: 'Just this once', exact: true })).toBeChecked();
   await expect(box.getByRole('checkbox', { name: 'Don’t ask again', exact: true })).not.toBeChecked();
 });

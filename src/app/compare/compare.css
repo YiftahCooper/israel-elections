@@ -104,6 +104,18 @@
 .cmp-ask-title { margin: 0; }
 .cmp-mode { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px; align-items: start; padding: 4px 2px; }
 .cmp-mode.refused { color: var(--muted); }
+/* Copy votes (22 Nov 2026): "Number of votes" with its checkbox under it, "Share of valid votes", and in Expert the two
+   ways of copying an edit under their own heading; each with what it would do */
+.cmp-mode label { cursor: pointer; }
+.cmp-mode-result { display: block; }
+.cmp-mode-adjust { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-block: 2px; font-size: 13px; }
+.cmp-mode-adjust label { display: inline-flex; align-items: center; gap: 6px; min-block-size: 28px; }
+.cmp-mode-adjust:has(input:disabled) label { color: var(--muted); cursor: default; }
+.cmp-mode-edit { display: grid; gap: 4px; margin-block-start: 2px; padding-block-start: 6px; border-block-start: 1px solid var(--rule); }
+.cmp-mode-sub { font-size: 12.5px; font-weight: 600; color: var(--muted); }
+.cmpm-copy-sentence p { margin: 0; }
+.cmp-whole-basis { display: flex; flex-wrap: wrap; align-items: end; gap: 4px 10px; }
+@media (max-width: 760px) { .cmp-mode-adjust label { min-block-size: 44px; } }
 .cmp-outcome { display: inline-flex; flex-wrap: wrap; gap: 2px 10px; font-size: 13px; }
 .cmp-copy-votes { display: block; }
 .cmpm-copy-tick-name small { display: block; }

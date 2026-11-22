@@ -423,7 +423,14 @@ test.describe('Compare follows Settings', () => {
     await gear(page).click();
     const r = row(page, 'copyMode');
     await expect(r.getByRole('group', { name: 'Copy votes: default method' })).toBeVisible();
-    await r.getByRole('button', { name: 'Same number of votes', exact: true }).click();
+    // the box's words: Number of votes, and its checkbox, which counts only while Number of votes is chosen
+    const adjust = r.getByRole('checkbox', { name: 'Adjust for the number of eligible voters' });
+    await expect(adjust).toBeDisabled();
+    await r.getByRole('button', { name: 'Number of votes', exact: true }).click();
+    await expect(adjust).toBeEnabled();
+    await expect(adjust).toBeChecked();
+    await adjust.uncheck();
+    expect(await page.evaluate(() => JSON.parse(localStorage.getItem('israel-elections:preferences')!).copyMode)).toBe('ask:count');
     await page.keyboard.press('Escape');
     await openSideBySide(page);
     const likud = compareRow(page, 'Likud');
@@ -431,7 +438,8 @@ test.describe('Compare follows Settings', () => {
     await likud.getByRole('button', { name: 'Copy Likud’s votes into 2026' }).click();
     // the box always opens, starting on the default
     const ask = page.locator('dialog[open].cmp-ask');
-    await expect(ask.getByRole('radio', { name: /Same number of votes/ })).toBeChecked();
+    await expect(ask.getByRole('radio', { name: /^Number of votes/ })).toBeChecked();
+    await expect(ask.getByRole('checkbox', { name: 'Adjust for the number of eligible voters' })).not.toBeChecked();
     await ask.getByRole('button', { name: 'Copy into 2026' }).click();
     await expect(page.locator('.toast')).toContainText('Votes copied to 2026.');
     await expect(likud.locator('.cmp-v').first()).toContainText('1,115,336');
@@ -449,7 +457,7 @@ test.describe('Compare follows Settings', () => {
     const r = row(page, 'copyMode');
     await r.getByRole('button', { name: /Remembered for 1/ }).click();
     await expect(r.locator('.pref-items')).toContainText('Likud');
-    await expect(r.locator('.pref-items')).toContainText('Same share of eligible voters');
+    await expect(r.locator('.pref-items')).toContainText('Votes adjusted for the number of eligible voters');
     await expect(r.locator('.pref-items')).not.toContainText('Unknown list');
     await page.keyboard.press('Escape');
     await likud.hover();

@@ -22,6 +22,15 @@ export type DefaultCopyMode = 'eligible' | 'share' | 'count';
 export const isDefaultCopyMode = (m: unknown): m is DefaultCopyMode => m === 'eligible' || m === 'share' || m === 'count';
 /** The owner's default for copies between elections (12 Nov 2026: the share of eligible voters; Settings can change it). */
 export const COPY_MODE_DEFAULT: DefaultCopyMode = 'eligible';
+/** How the three default methods are offered (22 Nov 2026): two choices, "Number of votes" and "Share of valid votes",
+ *  and under "Number of votes" one checkbox, "Adjust for the number of eligible voters", ticked by default. The stored
+ *  meanings stay the three methods: ticked is `eligible`, unticked is `count`. */
+export type CopyBasis = 'votes' | 'share';
+export const basisOf = (m: DefaultCopyMode): CopyBasis => (m === 'share' ? 'share' : 'votes');
+/** Whether the checkbox is ticked for a stored method; `share` keeps it at its default, ticked. */
+export const adjustOf = (m: DefaultCopyMode): boolean => m !== 'count';
+/** The stored method for a choice and the checkbox. */
+export const modeOf = (basis: CopyBasis, adjust: boolean): DefaultCopyMode => (basis === 'share' ? 'share' : adjust ? 'eligible' : 'count');
 export interface CopySource { sc: Scenario; /** the side's starting point, for As change */ start: Scenario; name: string; official: boolean }
 export interface CopyUnit { src: string[]; dst: string[] }
 export type Plan = { ok: true; action: Action; result: Scenario; targets: { listId: string; before: number; after: number }[]; capped?: number } | { ok: false; reason: Msg };

@@ -14,7 +14,8 @@ import { Info, Slip } from '../components/ui.tsx';
 import { ChoicePicker } from '../components/ChoicePicker.tsx';
 import { ListMark, listChoice } from '../components/ListMark.tsx';
 import { SeatDelta } from '../components/SeatDelta.tsx';
-import { COPY_MODE_DEFAULT, duplicatePeople, isDefaultCopyMode, planRoster, planWholeList, type CopyMode, type Plan, type Removal } from './copy.ts';
+import { adjustOf, basisOf, COPY_MODE_DEFAULT, duplicatePeople, isDefaultCopyMode, modeOf, planRoster, planWholeList, type CopyBasis, type CopyMode, type Plan, type Removal } from './copy.ts';
+import { COPY_INFO, COPY_WORDS } from './copyText.ts';
 import { CandidateName } from '../components/CandidateName.tsx';
 import { inOf, personKey, sharedCandidates, type MatchOverride, type MatchRow, type MatchTag } from './match.ts';
 import { cellsOf, sourceOf, type SideModel } from './model.ts';
@@ -69,14 +70,15 @@ export function SourceSelect({ dest, exclude, value, onChange, label, info }: { 
 }
 
 /** What a plan does to the destination, in seats: "Likud 27 → 30 ▲ +3 · Yashar! 21 → 19 ▼ −2". */
-export function Outcome({ plan, to, focus }: { plan: Plan; to: SideModel; focus?: string[] }) {
+/** info: an (i) beside the seat preview (the Copy votes box: why the share of seats differs from the share of votes) */
+export function Outcome({ plan, to, focus, info }: { plan: Plan; to: SideModel; focus?: string[]; info?: ReactNode }) {
   const L = useL(), lang = useLang();
   if (!plan.ok) return <span className="cmp-refused">{lang === 'he' ? plan.reason.he : plan.reason.en}</span>;
   const after = allocationOf(plan.result);
   const changed = plan.result.lists.map((l) => ({ l, a: to.r.lists.find((x) => x.id === l.id)?.seats ?? 0, b: after.lists.find((x) => x.id === l.id)?.seats ?? 0 }))
     .filter((x) => x.a !== x.b || focus?.includes(x.l.id)).sort((x, y) => Number(focus?.includes(y.l.id)) - Number(focus?.includes(x.l.id)) || Math.abs(y.b - y.a) - Math.abs(x.b - x.a));
   return <span className="cmp-outcome">{changed.length ? changed.slice(0, 4).map(({ l, a, b }) => <span key={l.id}><bdi>{listLabel(l, lang)}</bdi> {a !== b ? <><bdi dir="ltr">{a} → {b}</bdi> <SeatDelta value={b - a} /></> : <>{a} <span className="muted">{L('(unchanged)', '(ללא שינוי)')}</span></>}</span>) : L('Seats unchanged', 'המנדטים ללא שינוי')}
-    {plan.capped !== undefined && <span className="cmp-capped">{L(`Capped at ${fmtInt(plan.capped)} voters staying home`, `מוגבל ל־${fmtInt(plan.capped)} שלא הצביעו`)}</span>}</span>;
+    {plan.capped !== undefined && <span className="cmp-capped">{L(`Capped at ${fmtInt(plan.capped)} voters staying home`, `מוגבל ל־${fmtInt(plan.capped)} שלא הצביעו`)}</span>}{info}</span>;
 }
 
 /** candidatesOnly: the Candidates copy, asked here only when it would put someone on two lists */
@@ -84,12 +86,18 @@ export interface WholeRequest { from: SideModel; to: SideModel; srcId: string; d
 /** Replace a list with the other side's list, or add it beside the existing lists (the Likud example). */
 export function WholeListDialog({ req, onClose, onDone }: { req: WholeRequest; onClose: () => void; onDone: (plan: Plan & { ok: true }, text: string) => void }) {
   const L = useL(), lang = useLang();
+  const T = (w: readonly [string, string]) => L(w[0], w[1]);
   const voteSource = useStore((st) => st.voteSource);
   const only = !!req.candidatesOnly;
   const [opts, setOpts] = useState({ votes: !only, candidates: true, identity: false, appearance: false });
   const [remove, setRemove] = useState<Removal[]>([]);
   const savedMode = useStore((st) => st.preferences.copyMode);
-  const [mode, setMode] = useState<CopyMode>(req.cross ? (isDefaultCopyMode(savedMode) ? savedMode : COPY_MODE_DEFAULT) : 'count');
+  // the two choices and the checkbox of the Copy votes box; adjusting needs both elections' eligible voters
+  const canAdjust = req.cross && !!req.from.sc.registered && !!req.to.sc.registered;
+  const startMode = isDefaultCopyMode(savedMode) ? savedMode : COPY_MODE_DEFAULT;
+  const [basis, setBasis] = useState<CopyBasis>(basisOf(startMode));
+  const [adjust, setAdjust] = useState(canAdjust && adjustOf(startMode));
+  const mode: CopyMode = req.cross ? modeOf(basis, adjust) : 'count';
   const [source, setSource] = useState<SourceChoice>(voteSource.kind === 'transfer' && voteSource.listId === req.dstId ? { kind: 'proportional' } : voteSource);
   const [adding, setAdding] = useState(req.dstId === null);
   const src = req.from.sc.lists.find((l) => l.id === req.srcId)!, dst = req.dstId ? req.to.sc.lists.find((l) => l.id === req.dstId) : undefined;
@@ -113,7 +121,8 @@ export function WholeListDialog({ req, onClose, onDone }: { req: WholeRequest; o
       {!adding && box('identity', L('Name and letters', 'שם ואותיות'))}{!adding && box('appearance', L('Colour', 'צבע'))}
     </fieldset>}
     {opts.votes && <div className="row cmp-whole-votes">
-      {req.cross && <label className="field">{L('Votes as', 'קולות לפי')}<select value={mode} onChange={(e) => setMode(e.target.value as CopyMode)}><option value="share">{L('Share of the vote', 'שיעור מהקולות')}</option><option value="count">{L('Number of votes', 'מספר הקולות')}</option></select></label>}
+      {req.cross && <span className="cmp-whole-basis"><label className="field">{L('Copy as', 'העתקה לפי')}<select value={basis} onChange={(e) => setBasis(e.target.value as CopyBasis)}><option value="votes">{T(COPY_WORDS.votes)}</option><option value="share">{T(COPY_WORDS.share)}</option></select></label>
+        <span className="cmp-mode-adjust"><label><input type="checkbox" checked={adjust} disabled={!canAdjust || basis !== 'votes'} onChange={(e) => setAdjust(e.target.checked)} />{T(COPY_WORDS.adjust)}</label> <Info title={T(COPY_WORDS.adjust)}>{T((canAdjust ? COPY_INFO.adjust : COPY_INFO.noAdjust))}</Info></span></span>}
       <SourceSelect dest={req.to.sc} exclude={req.dstId ? [req.dstId] : []} value={source} onChange={setSource} label={L('Balance with', 'איזון מול')} />
     </div>}
     {!adding && !only && <p className="small muted">{L(`Kept from ${req.to.year}: rules, agreements, bloc and coalition.`, `נשמרים מ־${req.to.year}: הכללים, ההסכמים, הגוש והקואליציה.`)}</p>}

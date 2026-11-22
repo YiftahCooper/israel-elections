@@ -54,7 +54,7 @@ export const FEATURES = [...TOOL_FEATURES,
   ['oneListSource', 'Edit', 'Votes from one list', 'קולות מרשימה אחת', 'standard'],
   ['copyVotesButton', 'Edit', 'Copy votes button', 'כפתור העתקת קולות', 'standard'],
   ['copyMethods', 'Edit', 'Copy votes: more methods', 'העתקת קולות: שיטות נוספות', 'standard'],
-  ['copyChangeMethods', 'Edit', 'Copy votes: change and ratio', 'העתקת קולות: שינוי ויחס', 'expert'],
+  ['copyChangeMethods', 'Edit', 'Copy votes: copy the edit', 'העתקת קולות: העתקת השינוי', 'expert'],
   ['rulesCopy', 'Edit', 'Copy the rules', 'העתקת הכללים', 'expert'],
   // Coalitions: MKs who vote apart from their list (owner, 16 Nov 2026: Expert only, and folded even there)
   ['mkVotes', 'Analyse', 'MKs apart from their list', 'חברי כנסת בנפרד מרשימתם', 'expert'],
@@ -137,7 +137,7 @@ export const FEATURE_PREVIEWS: Record<FeatureId, readonly [string, string]> = {
   compareExpert: ['Rows for the seat method and invalid ballots', 'שורות לשיטת החלוקה ולקולות הפסולים'],
   oneListSource: ['Take added votes from one list only', 'לקחת קולות נוספים מרשימה אחת בלבד'],
   copyVotesButton: ['While comparing, above the lists', 'בזמן השוואה, מעל הרשימות'],
-  copyMethods: ['Share of valid votes or the same number, and remembering the choice', 'חלק מהקולות הכשרים או אותו מספר, וזכירת הבחירה'],
-  copyChangeMethods: ['Copy a change or a ratio between elections', 'העתקת שינוי או יחס בין בחירות'],
+  copyMethods: ['Number of votes or share of valid votes, and remembering the choice', 'מספר קולות או שיעור מהקולות הכשרים, וזכירת הבחירה'],
+  copyChangeMethods: ['Change in vote share or vote multiplier, copied from an edited source', 'שינוי בשיעור הקולות או מכפיל הקולות, מתוך מקור שנערך'],
   rulesCopy: ['On Rules while comparing: copy the threshold, rules or agreements', 'בכללים בזמן השוואה: העתקת אחוז החסימה, הכללים או ההסכמים'],
 };

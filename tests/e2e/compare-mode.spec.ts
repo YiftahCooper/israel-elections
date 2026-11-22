@@ -145,21 +145,36 @@ const copyLikud = async (page: Page) => {
   await row(page, 'Likud').getByRole('button', { name: 'Likud', exact: true }).click();
   await row(page, 'Likud').locator('.cmpm-copy-btn').click();
 };
-test('Copy votes at Standard: three methods, each with its figure and result; the copy is marked and one Undo', async ({ page }) => {
+const adjustBox = (page: Page) => box(page).getByRole('checkbox', { name: 'Adjust for the number of eligible voters' });
+test('Copy votes at Standard: Number of votes with its checkbox, and Share of valid votes; each with its result; marked, one Undo', async ({ page }) => {
   await start(page);
   await turnOn(page);
   await copyLikud(page);
   const methods = box(page).locator('.cmp-mode');
-  await expect(methods).toHaveCount(3);
-  // eligible voters first, then valid votes, then the number (Likud 2022: 1,115,336 of 6,788,804 eligible)
-  await expect(methods.nth(0)).toContainText('Same share of all eligible voters as in 2022 (16.43%)');
-  await expect(methods.nth(0)).toContainText('1,204,575');
+  await expect(methods).toHaveCount(2);
+  // Likud 2022: 1,115,336 votes, 23.41% of the valid votes; 6,788,804 eligible voters then, 7,331,981 in 2026
+  await expect(methods.nth(0)).toContainText('Number of votes (1,115,336)');
+  await expect(methods.nth(0).getByRole('radio')).toBeChecked();
+  await expect(adjustBox(page)).toBeChecked();
+  await expect(methods.nth(0)).toHaveAttribute('data-mode', 'eligible');
+  await expect(methods.nth(0)).toContainText('1,204,575 votes');
   await expect(methods.nth(0)).toContainText(/27 → 28/);
-  await expect(methods.nth(1)).toContainText('Same share of the valid votes as in 2022 (23.41%)');
-  await expect(methods.nth(1)).toContainText('1,332,255');
-  await expect(methods.nth(2)).toContainText('Same number of votes as in 2022 (1,115,336)');
-  await expect(methods.nth(2)).toContainText(/27 → 26/);
-  await expect(methods.nth(0).locator('input')).toBeChecked();
+  await expect(methods.nth(1)).toContainText('Share of valid votes (23.41%)');
+  await expect(methods.nth(1)).toContainText('1,332,255 votes');
+  // why seats are not shared out like votes, beside a seat preview
+  await expect(methods.nth(1).getByRole('button', { name: 'Seats and votes' })).toBeVisible();
+  // unticked: the literal count
+  await adjustBox(page).uncheck();
+  await expect(methods.nth(0)).toHaveAttribute('data-mode', 'count');
+  await expect(methods.nth(0)).toContainText('1,115,336 votes');
+  await expect(methods.nth(0)).toContainText(/27 → 26/);
+  // the checkbox counts only with Number of votes, and keeps its state while Share of valid votes is chosen
+  await methods.nth(1).getByRole('radio').check();
+  await expect(adjustBox(page)).toBeDisabled();
+  await methods.nth(0).getByRole('radio').check();
+  await expect(adjustBox(page)).toBeEnabled();
+  await expect(adjustBox(page)).not.toBeChecked();
+  await adjustBox(page).check();
   await expect(box(page).getByRole('button', { name: pickerName('Extra votes come from') })).toHaveAttribute('data-value', 'proportional');
   await box(page).getByRole('button', { name: 'Copy into 2026' }).click();
   await expect(box(page)).toHaveCount(0);
@@ -170,22 +185,39 @@ test('Copy votes at Standard: three methods, each with its figure and result; th
   await expect(row(page, 'Likud').locator('.lb-seats b')).toHaveText('27');
 });
 
-test('Copy votes at Simple is one sentence; at Expert the two edit-copying methods wait for an edited source', async ({ page }) => {
+test('Copy votes at Simple is one method with its count before and after; at Expert the edit-copying methods wait for an edited source', async ({ page }) => {
   await start(page, 'en', 'simple');
   await turnOn(page);
   await copyLikud(page);
   await expect(box(page).locator('.cmp-mode')).toHaveCount(0);
-  await expect(box(page).locator('.cmpm-copy-sentence')).toContainText('Likud gets the same share of all eligible voters as in 2022 (16.43%)');
-  await expect(box(page).locator('.cmpm-copy-sentence')).toContainText('1,204,575');
+  const one = box(page).locator('.cmpm-copy-sentence');
+  await expect(one).toHaveAttribute('data-mode', 'eligible');
+  await expect(one).toContainText('Votes adjusted for the number of eligible voters');
+  await expect(one.locator('.cmpm-copy-count')).toContainText(/Likud: 1,115,336 votes in 2022 →.*1,204,575 votes/);
+  await expect(one).toContainText(/27 → 28/);
   await box(page).getByRole('button', { name: 'Cancel' }).click();
   await page.evaluate(() => { const raw = JSON.parse(localStorage.getItem('israel-elections:v1') ?? '{}'); localStorage.setItem('israel-elections:v1', JSON.stringify({ ...raw, level: 'expert' })); });
   await page.reload();
   await turnOn(page);
   await copyLikud(page);
   const methods = box(page).locator('.cmp-mode');
-  await expect(methods).toHaveCount(5);
-  await expect(methods.nth(3).locator('input')).toBeDisabled();
-  await expect(methods.nth(3)).toContainText('Only when 2022 was edited');
+  await expect(methods).toHaveCount(4);
+  const edit = box(page).getByRole('group', { name: 'Copy the edit' });
+  await expect(edit.locator('.cmp-mode')).toHaveCount(2);
+  await expect(edit.getByRole('radio', { name: /^Change in vote share/ })).toBeDisabled();
+  await expect(edit.getByRole('radio', { name: /^Vote multiplier/ })).toBeDisabled();
+  await expect(edit).toContainText('Only when 2022 was edited');
+});
+
+test('Copy votes in Hebrew: the same two choices and checkbox, in Hebrew words', async ({ page }) => {
+  await start(page, 'he');
+  await turnOn(page);
+  await row(page, 'הליכוד').getByRole('button', { name: 'הליכוד', exact: true }).click();
+  await row(page, 'הליכוד').locator('.cmpm-copy-btn').click();
+  await expect(box(page).locator('legend').first()).toHaveText('העתקה לפי');
+  await expect(box(page).getByRole('radio', { name: /^מספר קולות/ })).toBeChecked();
+  await expect(box(page).getByRole('checkbox', { name: 'התאמה לגודל ציבור הבוחרים' })).toBeChecked();
+  await expect(box(page).getByRole('radio', { name: /^שיעור מהקולות הכשרים/ })).toBeVisible();
 });
 
 test('Copy votes for every list from the top of the Lists panel; Set as default makes the method the default', async ({ page }) => {
@@ -193,14 +225,16 @@ test('Copy votes for every list from the top of the Lists panel; Set as default 
   await turnOn(page);
   await page.locator('.cmpm-copy-all').click();
   await expect(box(page).locator('.cmpm-copy-ticks input')).not.toHaveCount(0);
-  await box(page).getByRole('radio', { name: /Same number of votes/ }).check();
+  await adjustBox(page).uncheck();
   await box(page).getByRole('radio', { name: 'Set as default' }).check();
   await box(page).getByRole('button', { name: 'Copy into 2026' }).click();
   await expect(page.locator('.toast, [role="status"]').filter({ hasText: 'Votes copied from 2022 for' }).first()).toBeVisible();
   // one step: Undo puts every list back
   await expect(page.getByRole('button', { name: /^Undo:/ })).toBeVisible();
   await copyLikud(page);
-  await expect(box(page).getByRole('radio', { name: /Same number of votes/ })).toBeChecked();
+  await expect(box(page).getByRole('radio', { name: /^Number of votes/ })).toBeChecked();
+  await expect(adjustBox(page)).not.toBeChecked();
+  await expect(box(page).locator('.cmp-mode').first()).toHaveAttribute('data-mode', 'count');
 });
 
 test('Turnout follows the compared result and copies eligible voters and turnout from it', async ({ page }) => {

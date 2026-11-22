@@ -1,11 +1,13 @@
 // The Copy votes box (owner, 12 Nov 2026): one box wherever votes are copied from the compared result into your work, on
 // the Overview and in Side by side. Each method says plainly what stays the same, with its figure, and shows what it
-// would do before anything changes; the box also says where extra votes come from. By level: Simple offers the one
-// method as a sentence; Standard three; Expert also the two that copy an edit. A remembered method is where the box
+// would do before anything changes; the box also says where extra votes come from. By level (22 Nov 2026): Simple
+// offers the one method, adjusted for the number of eligible voters, with its count before and after; Standard two
+// choices, "Number of votes" (with "Adjust for the number of eligible voters", ticked by default) and "Share of valid
+// votes"; Expert also the two that copy an edit, under "Copy the edit". A remembered method is where the box
 // starts; with "Set as default" and "Don't ask again" (owner, 19 Nov 2026) a one-list copy happens at once instead, said
 // in a toast whose "Ask next time" (like Settings → Copy votes: ask each time) brings the box back. Every figure is the
 // engine's, computed on a scratch copy.
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import { percent, rationalPoints } from '../components/Percentage.tsx';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -17,7 +19,8 @@ import { stayingHome, type SourceChoice } from '../voteEdit.ts';
 import { Info } from '../components/ui.tsx';
 import { ScopeChoice, type Scope } from '../components/ScopeChoice.tsx';
 import { ListMark } from '../components/ListMark.tsx';
-import { COPY_MODE_DEFAULT, isDefaultCopyMode, planVotes, ratioText, type CopyMode, type CopyUnit, type Plan } from './copy.ts';
+import { adjustOf, COPY_MODE_DEFAULT, isDefaultCopyMode, planVotes, ratioText, type CopyMode, type CopyUnit, type Plan } from './copy.ts';
+import { COPY_INFO, COPY_WORDS } from './copyText.ts';
 import { remember, remembered } from './answers.ts';
 import { Modal, Outcome, SourceSelect } from './dialogs.tsx';
 import { sourceOf, type SideModel } from './model.ts';
@@ -44,6 +47,8 @@ export function copiedAtOnce(lang: 'he' | 'en', mode: CopyMode): { note: string;
 /** onDone's `auto`: the copy was made at once with the remembered default, without showing the box */
 export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClose: () => void; onDone: (plan: Plan & { ok: true }, req: CopyRequest, auto?: CopyMode) => void }) {
   const L = useL(), lang = useLang(), digits = useDigits();
+  const T = (w: readonly [string, string]) => L(w[0], w[1]);
+  const uid = useId();
   const simple = !useOn('copyMethods'), expert = useOn('copyChangeMethods');
   const voteSource = useStore((st) => st.voteSource);
   const [ticked, setTicked] = useState<Set<string>>(() => new Set(req.choices?.map((c) => c.key)));
@@ -54,12 +59,17 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
   // "2022" between elections; the compared result's own name within one
   const where = cross ? from.year : from.name;
   const edited = units.some((u) => u.src.some((id) => from.sc.lists.find((l) => l.id === id)?.votes !== from.start.lists.find((l) => l.id === id)?.votes));
-  const startName = from.start === from.sc || from.official ? L('the official result', 'התוצאה הרשמית') : L('its starting point', 'נקודת ההתחלה שלה');
+  // the adjustment needs the number of eligible voters in both elections; without it the plain count is offered
+  const canAdjust = cross && !!from.sc.registered && !!to.sc.registered;
   // within one election everyone entitled to vote is the same, so the same number is also the same share of them
-  const basic: CopyMode[] = !cross ? ['count'] : simple ? ['eligible'] : ['eligible', 'share', 'count'];
+  const basic: CopyMode[] = !cross ? ['count'] : simple ? [canAdjust ? 'eligible' : 'count'] : ['eligible', 'count', 'share'];
   const modes: CopyMode[] = [...basic, ...(expert ? ['change', 'ratio'] as const : [])];
   const rem = remembered(to.sc, one, cross);
-  const [mode, setMode] = useState<CopyMode>(() => { const m = rem.mode ?? COPY_MODE_DEFAULT; return basic.includes(m) ? m : basic[0]; });
+  const [mode, setMode] = useState<CopyMode>(() => { const m = rem.mode ?? COPY_MODE_DEFAULT; return basic.includes(m) && (m !== 'eligible' || canAdjust) ? m : basic[0] === 'eligible' && !canAdjust ? 'count' : basic[0]; });
+  // the checkbox under "Number of votes": ticked by default, and kept while "Share of valid votes" is chosen
+  const [adjust, setAdjust] = useState(() => canAdjust && adjustOf(isDefaultCopyMode(rem.mode) ? rem.mode : COPY_MODE_DEFAULT));
+  const votesMode: CopyMode = cross && adjust ? 'eligible' : 'count';
+  const byCount = mode === 'eligible' || mode === 'count';
   const [source, setSource] = useState<SourceChoice>(() => { const v = rem.source ?? voteSource; return v.kind === 'transfer' && dst.includes(v.listId) ? { kind: 'proportional' } : v.kind === 'citizens' ? { kind: 'new' } : v; });
   // "Don't ask again" is on while Settings → Copy votes: ask each time is off; the box then opens on "Set as default"
   const [dontAsk, setDontAsk] = useState(() => !getSetting('copyAskEachTime'));
@@ -69,7 +79,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
   [source, req, ticked, expert, simple, edited]); // eslint-disable-line react-hooks/exhaustive-deps
   const plan = plans[mode];
   // copy at once: one list, a remembered method this level offers and a remembered source, "Don't ask again" ticked
-  const [auto] = useState(() => dontAsk && !req.choices && units.length === 1 && rem.mode !== null && rem.source !== null && basic.includes(rem.mode));
+  const [auto] = useState(() => dontAsk && !req.choices && units.length === 1 && rem.mode !== null && rem.source !== null && basic.includes(rem.mode) && (rem.mode !== 'eligible' || canAdjust));
   const done = useRef(false);
   useEffect(() => {
     if (!auto || done.current || !plan?.ok) return;
@@ -88,29 +98,20 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
     if (m === 'share') return percent(s, valid(from.sc), digits);
     if (m === 'count') return <bdi dir="ltr">{fmtInt(s)}</bdi>;
     if (m === 'change') { const S = BigInt(valid(from.sc)), S0 = BigInt(valid(from.start)); if (!S || !S0) return null;
-      return <>{rationalPoints({ num: 100n * (BigInt(s) * S0 - BigInt(s0) * S), den: S * S0 }, digits)} {L(...PP)}</>; }
+      return <>{rationalPoints({ num: 100n * (BigInt(s) * S0 - BigInt(s0) * S), den: S * S0 }, digits)} {T(PP)}</>; }
     return s0 ? <bdi dir="ltr">{ratioText(s, s0)}</bdi> : null;
   };
   const inWhere = (he: string) => hebrewPrefix('ב', he);
-  /** the method in words, without its figure (also the (i)'s title) */
-  const words = (m: CopyMode) => {
-    switch (m) {
-      case 'eligible': return L(`Same share of all eligible voters as in ${where}`, `אותו חלק מכלל בעלי זכות הבחירה כמו ${inWhere(where)}`);
-      case 'share': return L(`Same share of the valid votes as in ${where}`, `אותו חלק מהקולות הכשרים כמו ${inWhere(where)}`);
-      case 'count': return L(`Same number of votes as in ${where}`, `אותו מספר קולות כמו ${inWhere(where)}`);
-      case 'change': return L(`Same change in share as in ${where} since ${startName}`, `אותו שינוי בשיעור כמו ${inWhere(where)} לעומת ${startName}`);
-      case 'ratio': return L(`Same growth as in ${where} since ${startName}`, `אותו יחס גידול כמו ${inWhere(where)} לעומת ${startName}`);
-    }
-  };
-  const label = (m: CopyMode) => { const f = fig(m); return <>{words(m)}{f ? <> ({f})</> : null}</>; };
+  /** the method's name, without its figure (also the (i)'s title); the two count methods share "Number of votes" */
+  const words = (m: CopyMode) => T((m === 'eligible' || m === 'count' ? COPY_WORDS.votes : COPY_WORDS[m]));
+  /** the figure that stays the same: the source's count, its share of the valid votes, its change or its multiplier */
+  const label = (m: CopyMode) => { const f = fig(m === 'eligible' ? 'count' : m); return <>{words(m)}{f ? <> ({f})</> : null}</>; };
   const why: Partial<Record<CopyMode, string>> = {
-    eligible: L('Keeps how many of everyone entitled to vote chose the list, so a bigger electorate gives it more votes.', 'שומר על החלק של הרשימה מכל מי שזכאי להצביע, כך שציבור בוחרים גדול יותר נותן לה יותר קולות.'),
-    share: L('Keeps the list’s strength among the votes cast, whatever the turnout.', 'שומר על כוח הרשימה בין הקולות שהוטלו, בלי קשר לשיעור ההצבעה.'),
-    count: cross ? L('Copies the number as it is, so a bigger or smaller electorate changes its strength.', 'מעתיק את המספר כמו שהוא, ולכן ציבור בוחרים גדול או קטן יותר משנה את כוחה.')
-      : L('Within one election everyone entitled to vote is the same, so the same number of votes is also the same share of them.', 'בתוך אותן בחירות ציבור בעלי זכות הבחירה זהה, ולכן אותו מספר קולות הוא גם אותו חלק מהם.'),
-    change: L('Adds the change the list made there to its share here.', 'מוסיף לשיעור שלה כאן את השינוי שעשתה שם.'),
-    ratio: L('Grows (or shrinks) its votes here by the same proportion.', 'מגדיל (או מקטין) את קולותיה כאן באותו יחס.'),
+    share: T(COPY_INFO.share), change: T(COPY_INFO.change), ratio: T(COPY_INFO.ratio),
+    count: cross ? undefined : L('Within one election everyone entitled to vote is the same, so the same number of votes is also the same share of them.', 'בתוך אותן בחירות ציבור בעלי זכות הבחירה זהה, ולכן אותו מספר קולות הוא גם אותו חלק מהם.'),
   };
+  // why a list's share of the seats differs from its share of the votes, beside one seat preview
+  const seatsWhy = <Info title={L('Seats and votes', 'מנדטים וקולות')}>{T(COPY_INFO.seats)}</Info>;
   const disabledWhy = L(`Only when ${where} was edited: this copies the edit.`, `רק כאשר ${where} נערכה: שיטה זו מעתיקה את העריכה.`);
   const otherName = source.kind === 'transfer' ? (() => { const l = to.sc.lists.find((x) => x.id === source.listId); return l ? listLabel(l, lang) : ''; })() : '';
   const fromText = source.kind === 'new'
@@ -120,9 +121,17 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
   const nameList = (x: SideModel, ids: string[]) => ids.map((id) => { const l = x.sc.lists.find((y) => y.id === id); return l ? listLabel(l, lang) : id; }).join(' + ');
   const seatsOf = (x: SideModel, ids: string[]) => ids.reduce((n, id) => n + (x.r.lists.find((l) => l.id === id)?.seats ?? 0), 0);
   const names = units.map((x) => x.dst.map((id) => { const l = to.sc.lists.find((y) => y.id === id); return l ? listLabel(l, lang) : id; }).join(' + '));
-  const result = (m: CopyMode) => { const p = plans[m]; const n = target(p); return p ? <>
-    {p.ok && n !== null && <span className="muted cmp-copy-votes"><bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')}</span>}<Outcome plan={p} to={to} focus={dst} />
+  const result = (m: CopyMode, seatsInfo = false) => { const p = plans[m]; const n = target(p); return p ? <>
+    {p.ok && n !== null && <span className="muted cmp-copy-votes"><bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')}</span>}<Outcome plan={p} to={to} focus={dst} info={seatsInfo && p.ok ? seatsWhy : undefined} />
   </> : <span className="muted">{disabledWhy}</span>; };
+  const arrow = <><span aria-hidden> {lang === 'he' ? '←' : '→'} </span><span className="sr-only">{L(', after copying: ', ', אחרי ההעתקה: ')}</span></>;
+  /** one radio choice: its name and figure, its (i), anything under it, and what it would do */
+  const choice = (m: CopyMode, opts: { value?: string; checked: boolean; pick: () => void; under?: ReactNode; seatsInfo?: boolean }) => { const p = plans[m];
+    return <div key={opts.value ?? m} className={`cmp-mode ${p?.ok ? '' : 'refused'}`} data-mode={m}>
+      <input type="radio" id={`${uid}-${opts.value ?? m}`} name="cmp-mode" value={opts.value ?? m} checked={opts.checked} disabled={!p} onChange={opts.pick} />
+      <span><label htmlFor={`${uid}-${opts.value ?? m}`}><b>{label(m)}</b></label>{why[m] && <> <Info title={words(m)}>{why[m]}</Info></>}
+        {opts.under}<span className="cmp-mode-result">{result(m, opts.seatsInfo)}</span></span>
+    </div>; };
 
   // a copy made at once shows nothing (a refused one still opens the box, which says why)
   if (auto && plan?.ok) return null;
@@ -133,8 +142,8 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
       if (!simple && scope === 'default' && storable) setSetting('copyAskEachTime', !dontAsk);
       onDone(plan, { ...req, units }); }}>
       <p className="cmp-ask-title"><b>{req.title}</b> <Info title={L('How copying votes works', 'איך העתקת קולות עובדת')}>{L(
-        `Only votes are copied; seats are always recalculated by the rules of ${to.year}. Share of eligible voters: the list's votes ÷ everyone entitled to vote in ${where} × everyone entitled to vote here. Share of the valid votes: the list's votes ÷ the valid votes in ${where} × the valid votes here. Number of votes: the same count. Rounded to the nearest vote, never across the threshold.`,
-        `מועתקים רק קולות; המנדטים מחושבים תמיד מחדש לפי הכללים של ${to.year}. חלק מבעלי זכות הבחירה: קולות הרשימה ÷ כל בעלי זכות הבחירה ${inWhere(where)} × כל בעלי זכות הבחירה כאן. חלק מהקולות הכשרים: קולות הרשימה ÷ הקולות הכשרים ${inWhere(where)} × הקולות הכשרים כאן. מספר קולות: אותו מספר. מעוגל לקול הקרוב, ולעולם לא מעבר לאחוז החסימה.`)}</Info></p>
+        `Only votes are copied; seats are always recalculated by the rules of ${to.year}. Number of votes: the same count; adjusted for the number of eligible voters, it is multiplied by everyone entitled to vote here ÷ everyone entitled to vote in ${where}. Share of valid votes: the list's votes ÷ the valid votes in ${where} × the valid votes here. Rounded to the nearest vote, never across the threshold.`,
+        `מועתקים רק קולות; המנדטים מחושבים תמיד מחדש לפי הכללים של ${to.year}. מספר קולות: אותו מספר; בהתאמה לגודל ציבור הבוחרים, הוא מוכפל בכל בעלי זכות הבחירה כאן ÷ כל בעלי זכות הבחירה ${inWhere(where)}. שיעור מהקולות הכשרים: קולות הרשימה ÷ הקולות הכשרים ${inWhere(where)} × הקולות הכשרים כאן. מעוגל לקול הקרוב, ולעולם לא מעבר לאחוז החסימה.`)}</Info></p>
       {u && <p className="small cmpm-copy-fromto"><span><bdi>{nameList(from, u.src)}</bdi> · {from.year}, {from.name}: <bdi dir="ltr">{fmtInt(s)}</bdi> {L('votes', 'קולות')}, {seatsOf(from, u.src)} {L('seats', 'מנדטים')}</span>
         <span aria-hidden> {lang === 'he' ? '←' : '→'} </span><span className="sr-only">{L('into', 'אל')}</span>
         <span><bdi>{nameList(to, u.dst)}</bdi> · {to.year}, {to.role === 'main' ? L('your work', 'העבודה שלכם') : to.name}: <bdi dir="ltr">{fmtInt(votes(to.sc, u.dst))}</bdi> {L('votes', 'קולות')}, {seatsOf(to, u.dst)} {L('seats', 'מנדטים')}</span></p>}
@@ -146,16 +155,21 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
           onChange={(e) => { const n = new Set(ticked); if (e.target.checked) n.add(c.key); else n.delete(c.key); setTicked(n); }} />{(() => { const l = req.to.sc.lists.find((x) => x.id === c.unit.dst[0]); return l ? <ListMark list={l} lang={lang} /> : null; })()}<span className="cmpm-copy-tick-name"><bdi>{c.name}</bdi>{nameList(from, c.unit.src) !== c.name && <small className="muted">{L('from ', 'מ־')}{where}: <bdi>{nameList(from, c.unit.src)}</bdi></small>}</span></label>)}</div>
       </fieldset>}
       {!units.length ? <p className="muted">{L('Tick at least one list.', 'סמנו לפחות רשימה אחת.')}</p>
-        : simple ? <p className="cmpm-copy-sentence" data-mode={mode}>
-          {names.length === 1 ? <><b><bdi>{names[0]}</bdi></b>{L(' gets the ', ' מקבלת ')}</> : L('Each list gets the ', 'כל רשימה מקבלת ')}
-          {mode === 'count' ? L(`same number of votes as in ${where}`, `אותו מספר קולות כמו ${inWhere(where)}`) : L(`same share of all eligible voters as in ${where}`, `אותו חלק מכלל בעלי זכות הבחירה כמו ${inWhere(where)}`)}
-          {fig(mode) ? <> ({fig(mode)})</> : null}.
-          <br />{result(mode)}</p>
-        : <fieldset className="cmp-modes"><legend>{L('What stays the same', 'מה נשאר זהה')}</legend>
-          {modes.map((m) => { const p = plans[m]; return <label key={m} className={`cmp-mode ${p?.ok ? '' : 'refused'}`} data-mode={m}>
-            <input type="radio" name="cmp-mode" value={m} checked={mode === m} disabled={!p} onChange={() => setMode(m)} />
-            <span><b>{label(m)}</b> <Info title={words(m)}>{why[m]}</Info><br />{result(m)}</span>
-          </label>; })}
+        : simple ? <div className="cmpm-copy-sentence" data-mode={mode}>
+          <p><b>{T(mode === 'eligible' ? COPY_WORDS.adjusted : COPY_WORDS.votes)}</b>{mode === 'eligible' ? <> <Info title={T(COPY_WORDS.adjusted)}>{T(COPY_INFO.adjust)}</Info></> : !cross ? <> <Info title={T(COPY_WORDS.votes)}>{why.count}</Info></> : null}</p>
+          {cross && !canAdjust && <p className="small muted cmpm-copy-noadjust">{T(COPY_INFO.noAdjust)}</p>}
+          {/* the count before and after, so an adjusted count is never mistaken for a literal copy */}
+          {(() => { const p = plans[mode], n = target(p); return <>
+            <p className="cmpm-copy-count">{names.length === 1 && <><b><bdi>{names[0]}</bdi></b>: </>}<bdi dir="ltr">{fmtInt(votes(from.sc, units.flatMap((x) => x.src)))}</bdi> {L(`votes in ${where}`, `קולות ${inWhere(where)}`)}
+              {n !== null && <>{arrow}<b><bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')}</b></>}</p>
+            {p && <p className="cmpm-copy-seats"><Outcome plan={p} to={to} focus={dst} info={p.ok ? seatsWhy : undefined} /></p>}</>; })()}</div>
+        : <fieldset className="cmp-modes"><legend>{L('Copy as', 'העתקה לפי')}</legend>
+          {choice(votesMode, { value: 'votes', checked: byCount, pick: () => setMode(votesMode), seatsInfo: !cross,
+            under: cross && <span className="cmp-mode-adjust"><label><input type="checkbox" checked={adjust} disabled={!canAdjust || !byCount}
+              onChange={(e) => { setAdjust(e.target.checked); setMode(e.target.checked ? 'eligible' : 'count'); }} />{T(COPY_WORDS.adjust)}</label> <Info title={T(COPY_WORDS.adjust)}>{T((canAdjust ? COPY_INFO.adjust : COPY_INFO.noAdjust))}</Info></span> })}
+          {cross && choice('share', { checked: mode === 'share', pick: () => setMode('share'), seatsInfo: true })}
+          {expert && <div className="cmp-mode-edit" role="group" aria-labelledby="cmp-mode-edit-title"><span id="cmp-mode-edit-title" className="cmp-mode-sub">{T(COPY_WORDS.edit)}</span>
+            {(['change', 'ratio'] as const).map((m) => choice(m, { checked: mode === m, pick: () => setMode(m) }))}</div>}
         </fieldset>}
       {req.notCopied && req.notCopied.length > 0 && <p className="small muted">{L(`Not copied, no list in ${where}: `, `לא מועתקות, אין להן רשימה ${inWhere(where)}: `)}<bdi>{req.notCopied.join(', ')}</bdi></p>}
       {/* asked at every level (owner, 9 Nov 2026) */}

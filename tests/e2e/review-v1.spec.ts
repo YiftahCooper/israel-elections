@@ -141,6 +141,7 @@ test('Copy votes box: counts lists as the message does, names where a row\'s vot
   await box.getByRole('button', { name: 'Copy into 2026' }).click();
   await expect(page.locator('.toast').last()).toContainText('for 12 lists');
   await page.locator("xpath=//button[normalize-space()='Copy votes…'][preceding::*[contains(@class,'lb-row')][1][contains(., 'Shas')]]").first().click();
+  await box.getByRole('checkbox', { name: 'Adjust for the number of eligible voters' }).uncheck();
   const count = box.locator('.cmp-mode[data-mode="count"]');
   await expect(count).toContainText('Shas 9 (unchanged)');
   await expect(count).not.toContainText('9 → 9');
