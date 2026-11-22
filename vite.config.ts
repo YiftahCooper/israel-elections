@@ -12,6 +12,7 @@ import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { scaleAwareMedia } from './scripts/scale-aware-media.ts';
 import { analysisVersion } from './scripts/analysis-version.ts';
+import { compileBlocLineSeed } from './scripts/bloc-line-seed.ts';
 
 // base './' so the static build works from any path (GitHub Pages project site, file server).
 export default defineConfig({
@@ -45,6 +46,11 @@ export default defineConfig({
       const records = readdirSync('data/meta/aftermath').filter((f) => /^k\d+\.json$/.test(f)).sort().map((f) => JSON.parse(readFileSync(`data/meta/aftermath/${f}`, 'utf8')) as Aftermath);
       return `export default ${JSON.stringify([...personNames(records)])}`;
     },
+  }, {
+    // the opening chamber's bloc line, worked out here once instead of on every visitor's device (scripts/bloc-line-seed.ts)
+    name: 'bloc-line-seed',
+    resolveId(id) { if (id === 'virtual:bloc-line-seed') return '\0bloc-line-seed'; },
+    load(id) { if (id === '\0bloc-line-seed') return `export default ${JSON.stringify(compileBlocLineSeed())}`; },
   }, {
     name: 'family-runtime',
     // the registry, lineage (pending items too) and presets pass the validator before the app reads them (audit 12 Nov)
