@@ -1,7 +1,7 @@
 import { validateGovernmentSupport } from './scripts/lib/build/aftermath.ts';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { ELECTION_IDS, type ElectionDataset } from './src/data/schema.ts';
-import { validateAftermath, type Aftermath } from './src/data/aftermath-model.ts';
+import { personNames, validateAftermath, type Aftermath } from './src/data/aftermath-model.ts';
 import { compileFamilyRuntime } from './scripts/family-runtime.ts';
 import { readFamilyBundle, validateFamilies } from './scripts/validate-families.ts';
 import { compileHistoryRuntime } from './scripts/party-history-runtime.ts';
@@ -33,6 +33,17 @@ export default defineConfig({
           validateGovernmentSupport(snapshot, history.sources, `${id}/government`);
         }
       }
+    },
+  }, {
+    // After the election loads one election's record (src/app/aftermathData.ts); the rotation line's Hebrew names come
+    // from every record, so they are worked out here
+    name: 'aftermath-names',
+    resolveId(id) { if (id === 'virtual:aftermath-names') return '\0aftermath-names'; },
+    load(id) {
+      if (id !== '\0aftermath-names') return;
+      // in the order the tests' import.meta.glob reads them (file names sorted), as the first spelling of a name wins
+      const records = readdirSync('data/meta/aftermath').filter((f) => /^k\d+\.json$/.test(f)).sort().map((f) => JSON.parse(readFileSync(`data/meta/aftermath/${f}`, 'utf8')) as Aftermath);
+      return `export default ${JSON.stringify([...personNames(records)])}`;
     },
   }, {
     name: 'family-runtime',

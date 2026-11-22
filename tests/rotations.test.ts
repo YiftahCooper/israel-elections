@@ -3,6 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync } from 'node:fs';
 import { aftermathRecords } from '../src/data/aftermath-runtime.ts';
+import aftermathNames from 'virtual:aftermath-names';
 import { personNames, rotationAgreements, rotationFor, statutory, type RotationAgreement } from '../src/data/rotations.ts';
 
 const shape: RotationAgreement[] = [
@@ -19,14 +20,17 @@ describe('rotation agreements', () => {
     expect(statutory(shape[1])).toBe(true);
   });
   it('every prime minister of a rotation, and Gantz who never served, has a Hebrew name in the reviewed records', () => {
-    const he = personNames();
+    const he = personNames(Object.values(aftermathRecords));
     expect(he.get('Shimon Peres')).toBe('שמעון פרס');
     expect(he.get('Yitzhak Shamir')).toBe('יצחק שמיר');
     expect(he.get('Benny Gantz')).toBe('בני גנץ');
     expect(he.get('Yair Lapid')).toBe('יאיר לפיד');
   });
+  it('the names built for the page (vite.config.ts) are those of every record, in the same order', () => {
+    expect(aftermathNames).toEqual([...personNames(Object.values(aftermathRecords))]);
+  });
   it.runIf(existsSync('data/research/government-rotation-agreements.json'))('the research file: names resolve, governments exist, outcomes are worded', () => {
-    const he = personNames();
+    const he = personNames(Object.values(aftermathRecords));
     const govs = new Set(Object.values(aftermathRecords).map((r) => r?.government?.number));
     expect(rotationAgreements.length).toBeGreaterThan(0);
     for (const a of rotationAgreements) {

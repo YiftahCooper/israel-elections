@@ -125,3 +125,17 @@ export function validateAftermath(data: Aftermath, ds: ElectionDataset): string[
 /** A quote that is a list of database fields (record ids, field names) rather than a sentence: its plain note says what
  *  the record holds, and the fields stay in the data for checking (reader-text pass, 17 Nov 2026). */
 export const isFieldRecord = (quote: string) => /^[{"]*(?:PersonToPositionID|PersonID|PositionID|KnessetDateID|KNS_PersonToPosition|StartDate|Faction \d)/.test(quote);
+
+/** Hebrew names for the rotation agreements' English names (src/data/rotations.ts), from the reviewed records' prime
+ *  ministers, nominees and people. vite.config.ts works this out over every record at build time. */
+export function personNames(records: readonly (Aftermath | undefined)[]): Map<string, string> {
+  const m = new Map<string, string>();
+  const add = (p?: { nameEn?: string; nameHe?: string }) => { if (p?.nameEn && p.nameHe && !m.has(p.nameEn)) m.set(p.nameEn, p.nameHe); };
+  for (const r of records) {
+    if (!r) continue;
+    for (const p of r.government?.primeMinisters ?? []) add(p);
+    for (const round of r.recommendationRounds) for (const p of Object.values(round.nominees)) add(p);
+    for (const p of Object.values(r.formation.people ?? {})) add(p);
+  }
+  return m;
+}

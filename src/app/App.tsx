@@ -12,7 +12,7 @@ import { X } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
 import { LangContext, useL } from './i18n.ts';
-import { activeFeatures, dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setSetting, setState, storageLossText, undo, useSetting, useStore } from './store.ts';
+import { activeFeatures, dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setAlsoNeeded, setSetting, setState, storageLossText, undo, useSetting, useStore } from './store.ts';
 import { Figures as FiguresView } from './components/Figures.tsx';
 import { BlocBar as BlocBarView } from './components/Blocs.tsx';
 import { ListBars as ListBarsView } from './components/ListBars.tsx';
@@ -86,8 +86,20 @@ const TAB_PANEL: Partial<Record<Tab, { preload: () => Promise<void> }>> = {
   after: AfterElection, families: Families, coal: Coalitions, security: SeatSecurity, charts: Charts, structure: Structure,
   turnout: Turnout, sens: Sensitivity, rules: Rules, loc: Localities, sources: Sources,
 };
-/** Starts fetching a tab's code ahead of its first use (a no-op once loaded). */
-const prefetchTab = (t: Tab) => { void TAB_PANEL[t]?.preload().catch(() => {}); };
+/** Tabs that show the open election's After the election record (src/app/aftermathData.ts, one file per election). */
+const WITH_AFTERMATH: readonly Tab[] = ['after', 'coal', 'sources'];
+/** Starts fetching a tab's code ahead of its first use (a no-op once loaded), and the open election's record for a tab
+ *  that shows it. */
+const prefetchTab = (t: Tab) => {
+  void TAB_PANEL[t]?.preload().catch(() => {});
+  const id = getState().scenario?.electionId;
+  if (id && WITH_AFTERMATH.includes(t)) void loadAftermathOf(id).catch(() => {});
+};
+// the loader comes with those tabs' code, not in the opening page's
+const loadAftermathOf = (id: Parameters<typeof openElection>[0]) => import('./aftermathData.ts').then((m) => m.loadAftermath(id));
+// another election opened on one of those tabs is shown once its record is here too (fetched alongside its data), as the
+// page it replaces stays until then: no loading line in between
+setAlsoNeeded((id) => WITH_AFTERMATH.includes(getState().tool as Tab) ? loadAftermathOf(id) : Promise.resolve());
 
 type Tab = typeof TOOL_FEATURES[number][0];
 const TOOLS = TOOL_FEATURES.map(([id,,,, level]) => ({ id, level: level as Preset }));
