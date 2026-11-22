@@ -281,6 +281,34 @@
       "publisherHe": "סוכנות הידיעות היהודית, ידיעה קצרה, יוני 2000",
       "kind": "secondary",
       "accessed": "2026-11-19"
+    },
+    "plenum-1999-07-20": {
+      "url": "https://fs.knesset.gov.il/15/Plenum/15_ptm_532877.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 20 July 1999",
+      "publisherHe": "הכנסת, דברי הכנסת, 20 ביולי 1999",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "plenum-1999-07-28": {
+      "url": "https://fs.knesset.gov.il/15/Plenum/15_ptm_532843.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 28 July 1999",
+      "publisherHe": "הכנסת, דברי הכנסת, 28 ביולי 1999",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "plenum-2001-03-07": {
+      "url": "https://fs.knesset.gov.il/15/Plenum/15_ptm_532912.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 7 March 2001",
+      "publisherHe": "הכנסת, דברי הכנסת, 7 במרץ 2001",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "bronfman-2001": {
+      "url": "https://www.news1.co.il/Archive/002-D-322-00.html",
+      "publisher": "Yoav Yitzhak, interview with Roman Bronfman (Maariv, June 2001), archived by News1",
+      "publisherHe": "יואב יצחק, ראיון עם רומן ברונפמן (מעריב, יוני 2001), בארכיון מחלקה ראשונה",
+      "kind": "secondary",
+      "accessed": "2026-11-22"
     }
   },
   "results": {
@@ -648,10 +676,11 @@
     "Knesset history mirror misdates Ze’evi’s assassination; the inaccurate date remains excluded. Government 29 faction membership and intermediate Barak-to-Sharon formal acts remain incomplete; membership snapshots alone do not establish the legal effective time of resignation.",
     "Government 28 tenure independently checked against retained official gov28.pdf p.120: 6 July 1999–7 March 2001. Intermediate formal resignation/caretaker acts remain incomplete.",
     "The UPI photo caption indexes a 75–29 confidence vote, but the original returned 403. The tally is held out until an inspectable original is obtained; coalition size 75 is independently verified by JTA.",
-    "United Torah Judaism left Barak’s coalition in September 1999 (IDI; Kenig and Rahat); the day is not recorded, so the member list is dated by month only. A faction announcement or a Knesset notice would settle it.",
-    "Meretz after its ministers resigned (24 June 2000): whether and when the faction formally left the coalition is not recorded (a Meretz MK spoke for the coalition on 26 June 2000; IDI says it decided to leave). Shown with an unknown role, not counted.",
-    "Roman Bronfman and Alexander Tsinker left the Yisrael BaAliyah faction on 20 July 1999 (Democratic Choice from 18 October 1999); their place in the coalition until July 2000 is not recorded. The member lists count them within Yisrael BaAliyah’s 6 seats, as IDI does.",
-    "Gesher after David Levy’s term as minister ended (30 July 2002): whether the faction stayed in Sharon’s coalition is not recorded."
+    "United Torah Judaism left Barak’s coalition in September 1999 (Kenig; Kenig and Rahat); a UTJ MK told the Knesset on 8 September 1999 that the faction was in opposition. The day is not recorded, so the member list is dated by month only. The signed and dated letter of its five MKs to Ehud Barak, or its incoming stamp in the Prime Minister’s Office register (4–8 September 1999), would settle it; 5 September is only a lead.",
+    "Meretz after its ministers resigned (24 June 2000): whether and when the faction formally left the coalition is not recorded. Its MKs said in the Knesset on 26 June and 3 July 2000 that it was still in the coalition, and on 4 July one spoke of support from outside; two studies say it left in June. The Meretz faction’s or executive’s resolution ending its coalition membership, its notice to Barak, or a dated Knesset or coalition-chair statement separating the faction’s departure from the ministers’ resignations would settle it. Shown with an unknown role, not counted.",
+    "Roman Bronfman and Alexander Tsinker, July 1999: Bronfman said in 2001 that he had never been part of Barak’s coalition. The member lists count them within Yisrael BaAliyah’s 6 seats from 6 July 1999 until their faction split on 20 July, as the coalition of 75 (JTA) and Uzi Landau in the Knesset (28 July 1999: “originally 75”, then 73) do. The roll call of the confidence vote of 6 July 1999, or a dated statement by the two MKs from that week, would settle it.",
+    "Gesher after David Levy’s term as minister ended (30 July 2002): whether the faction stayed in Sharon’s coalition is not recorded. A Gesher MK called it a coalition faction in the Knesset on 27 May 2002; on 4 November 2002 another MK spoke of Gesher as having left. Gesher’s faction decision or David Levy’s dated withdrawal letter of 28–30 July 2002 covering both its MKs, or a coalition list from after his resignation, would settle it.",
+    "Gesher, August 2000: David Levy and Maxim Levy stayed in the One Israel faction until 7 March 2001. Kenig (Israel Democracy Institute) says Gesher’s MKs left the coalition with David Levy, whose term as Foreign Minister ended on 4 August 2000, but no dated Gesher declaration naming both brothers has been found, so Maxim Levy’s place in the coalition, and the day Gesher left it, are not recorded. Shown with an unknown role, not counted."
   ],
   "government": {
     "number": 28,
@@ -817,6 +846,163 @@
     ],
     "changes": [
       {
+        "date": "1999-07-20",
+        "textEn": "Roman Bronfman and Alexander Tsinker split from Yisrael BaAliyah’s faction and sat in opposition; the coalition went from 75 MKs to 73.",
+        "textHe": "רומן ברונפמן ואלכסנדר צינקר התפלגו מסיעת ישראל בעלייה וישבו באופוזיציה; הקואליציה ירדה מ־75 חברי כנסת ל־73.",
+        "cites": [
+          {
+            "source": "plenum-1999-07-20",
+            "quote": "חברי הכנסת רומן ברונפמן ואלכסנדר צינקר התפלגו מסיעת ישראל בעלייה ואושרו כסיעה.",
+            "note": "The Knesset House Committee’s decision of 20 July 1999, laid on the table that day.",
+            "noteHe": "החלטת ועדת הכנסת מ־20 ביולי 1999, שהונחה על שולחן הכנסת באותו יום."
+          },
+          {
+            "source": "plenum-1999-07-28",
+            "quote": "היו במקור 75. מספרם אכן הוקטן ל-73",
+            "note": "Uzi Landau (Likud) in the Knesset, 28 July 1999, on the coalition’s MKs after the split.",
+            "noteHe": "עוזי לנדאו (הליכוד) בכנסת, 28 ביולי 1999, על מספר חברי הקואליציה אחרי הפילוג."
+          },
+          {
+            "source": "bronfman-2001",
+            "quote": "אנחנו אופוזיציה. אנחנו לא חלק מהקואליציה הנוכחית, וגם לא הקודמת",
+            "note": "Roman Bronfman in June 2001, on Tsinker and himself; the coalition before Sharon’s was Barak’s.",
+            "noteHe": "רומן ברונפמן ביוני 2001, על צינקר ועל עצמו; הקואליציה שלפני זו של שרון הייתה של ברק."
+          }
+        ],
+        "type": "faction-split",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 28,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 26,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3448; PersonID 433; PositionID 57; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: דליה איציק; faction: ישראל אחת.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דליה איציק; סיעה: ישראל אחת."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 17,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3533; PersonID 500; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אליהו סויסה; faction: ש\"ס.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אליהו סויסה; סיעה: ש\"ס."
+              }
+            ]
+          },
+          {
+            "letters": "מרצ",
+            "seats": 10,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 4490; PersonID 507; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: רן כהן; faction: מרצ.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: רן כהן; סיעה: מרצ."
+              }
+            ]
+          },
+          {
+            "letters": "כן",
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 4500; PersonID 535; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: נתן שרנסקי; faction: ישראל בעלייה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: נתן שרנסקי; סיעה: ישראל בעלייה."
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 11 (ישראל בעלייה): 4 members on 1999-07-20, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 4 members of Yisrael BaAliyah on 20 July 1999.",
+                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת ישראל בעלייה ב־20 ביולי 1999."
+              }
+            ],
+            "note": "Four of its six MKs from the faction split of 20 July 1999. Bronfman said in 2001 that he had never been part of Barak’s coalition; the lists before the split count the faction’s six, as the coalition of 75 and Landau’s “originally 75” do.",
+            "noteEn": "Four of its six MKs: Roman Bronfman and Alexander Tsinker split from the faction on 20 July 1999 and sat in opposition.",
+            "noteHe": "ארבעה משישה חברי הכנסת שלה: רומן ברונפמן ואלכסנדר צינקר התפלגו מהסיעה ב־20 ביולי 1999 וישבו באופוזיציה."
+          },
+          {
+            "letters": "פה",
+            "seats": 6,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 3532; PersonID 2468; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק מרדכי; faction: מפלגת המרכז.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק מרדכי; סיעה: מפלגת המרכז."
+              }
+            ]
+          },
+          {
+            "letters": "ב",
+            "seats": 5,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-28",
+                "quote": "PersonToPositionID 4493; PersonID 765; PositionID 39; StartDate 1999-07-06T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק לוי; faction: מפלגה דתית לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק לוי; סיעה: מפלגה דתית לאומית."
+              }
+            ]
+          },
+          {
+            "letters": "ג",
+            "seats": 5,
+            "note": "Two independent studies, and the Israel Democracy Institute, count United Torah Judaism in Barak’s coalition. It had no minister in the official roster.",
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "idi-coalition",
+                "quote": "כללה הקואליציה שבע סיעות ונסמכה על רוב של 75 חברי כנסת"
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "Shas joined the coalition, with UTJ and the NRP following suit.",
+                "locator": "p. 424"
+              },
+              {
+                "source": "mendilow-2003",
+                "quote": "Shas and the Ashkenazi ultraorthodox United Torah Judaism. The latter bolted the coalition in September 1999",
+                "locator": "p. 275"
+              }
+            ]
+          }
+        ],
+        "coalitionSeats": 73,
+        "supportSeats": 0,
+        "knownMemberSeats": 73,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Yisrael BaAliyah counts its 4 members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
         "date": "1999-09",
         "textEn": "United Torah Judaism left the coalition after the government had a power-station turbine moved on the Sabbath.",
         "textHe": "יהדות התורה פרשה מהקואליציה לאחר שהממשלה הורתה להעביר טורבינה של חברת החשמל בשבת.",
@@ -882,7 +1068,7 @@
           },
           {
             "letters": "כן",
-            "seats": 6,
+            "seats": 4,
             "role": "member-with-ministries",
             "certainty": "confirmed",
             "cites": [
@@ -891,8 +1077,17 @@
                 "quote": "PersonToPositionID 4500; PersonID 535; PositionID 39; StartDate 1999-07-06T00:00:00",
                 "note": "Fields of the Knesset’s official record, not a quoted sentence: נתן שרנסקי; faction: ישראל בעלייה.",
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: נתן שרנסקי; סיעה: ישראל בעלייה."
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 11 (ישראל בעלייה): 4 members on 1999-07-20, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 4 members of Yisrael BaAliyah on 20 July 1999.",
+                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת ישראל בעלייה ב־20 ביולי 1999."
               }
-            ]
+            ],
+            "note": "Four of its six MKs from the faction split of 20 July 1999. Bronfman said in 2001 that he had never been part of Barak’s coalition; the lists before the split count the faction’s six, as the coalition of 75 and Landau’s “originally 75” do.",
+            "noteEn": "Four of its six MKs: Roman Bronfman and Alexander Tsinker split from the faction on 20 July 1999 and sat in opposition.",
+            "noteHe": "ארבעה משישה חברי הכנסת שלה: רומן ברונפמן ואלכסנדר צינקר התפלגו מהסיעה ב־20 ביולי 1999 וישבו באופוזיציה."
           },
           {
             "letters": "פה",
@@ -923,9 +1118,9 @@
             ]
           }
         ],
-        "coalitionSeats": 70,
+        "coalitionSeats": 68,
         "supportSeats": 0,
-        "knownMemberSeats": 70,
+        "knownMemberSeats": 68,
         "membershipCoverage": "complete",
         "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
         "confidenceVote": null,
@@ -1028,7 +1223,7 @@
           },
           {
             "letters": "כן",
-            "seats": 6,
+            "seats": 4,
             "role": "member-with-ministries",
             "certainty": "confirmed",
             "cites": [
@@ -1037,8 +1232,17 @@
                 "quote": "PersonToPositionID 4500; PersonID 535; PositionID 39; StartDate 1999-07-06T00:00:00",
                 "note": "Fields of the Knesset’s official record, not a quoted sentence: נתן שרנסקי; faction: ישראל בעלייה.",
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: נתן שרנסקי; סיעה: ישראל בעלייה."
+              },
+              {
+                "source": "factions-k15",
+                "quote": "Faction 11 (ישראל בעלייה): 4 members on 1999-07-20, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 4 members of Yisrael BaAliyah on 20 July 1999.",
+                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת ישראל בעלייה ב־20 ביולי 1999."
               }
-            ]
+            ],
+            "note": "Four of its six MKs from the faction split of 20 July 1999. Bronfman said in 2001 that he had never been part of Barak’s coalition; the lists before the split count the faction’s six, as the coalition of 75 and Landau’s “originally 75” do.",
+            "noteEn": "Four of its six MKs: Roman Bronfman and Alexander Tsinker split from the faction on 20 July 1999 and sat in opposition.",
+            "noteHe": "ארבעה משישה חברי הכנסת שלה: רומן ברונפמן ואלכסנדר צינקר התפלגו מהסיעה ב־20 ביולי 1999 וישבו באופוזיציה."
           },
           {
             "letters": "פה",
@@ -1071,7 +1275,7 @@
         ],
         "coalitionSeats": null,
         "supportSeats": null,
-        "knownMemberSeats": 60,
+        "knownMemberSeats": 58,
         "membershipCoverage": "partial",
         "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
         "confidenceVote": null,
@@ -1199,7 +1403,7 @@
         "supportSeats": null,
         "knownMemberSeats": 37,
         "membershipCoverage": "partial",
-        "coalitionSeatsNote": "Shas leaves with 17 members on the day in the Knesset’s faction records; Yisrael BaAliyah leaves with the 6 seats the list above counted for it, as IDI counts them, though its faction had 4 members that day (two had left it on 20 July 1999). The other rows are carried from the list above.",
+        "coalitionSeatsNote": "Shas leaves with 17 members on the day in the Knesset’s faction records, and Yisrael BaAliyah with its 4. The other rows are carried from the list above.",
         "confidenceVote": null,
         "reconciliation": {
           "status": "vote-unavailable",
@@ -1314,8 +1518,8 @@
       },
       {
         "date": "2000-08-04",
-        "textEn": "David Levy’s resignation as Foreign Minister took effect, and Gesher’s MKs in the One Israel faction left the coalition with him.",
-        "textHe": "התפטרותו של דוד לוי משר החוץ נכנסה לתוקף, וחברי הכנסת של גשר בסיעת ישראל אחת פרשו עמו מהקואליציה.",
+        "textEn": "David Levy’s resignation as Foreign Minister took effect. One study says Gesher’s MKs left the coalition with him; both he and Maxim Levy stayed in the One Israel faction until March 2001.",
+        "textHe": "התפטרותו של דוד לוי משר החוץ נכנסה לתוקף. לפי מחקר אחד, חברי הכנסת של גשר פרשו עמו מהקואליציה; הוא ומקסים לוי נשארו בסיעת ישראל אחת עד מרץ 2001.",
         "cites": [
           {
             "source": "positions-gov28",
@@ -1337,7 +1541,7 @@
             "letters": "אמת",
             "seats": 24,
             "role": "member-with-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "role-roster-28",
@@ -1346,13 +1550,15 @@
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דליה איציק; סיעה: ישראל אחת."
               },
               {
-                "source": "idi-kenig-2010",
-                "quote": "כאשר שר החוץ דוד לוי וחברי הכנסת מגשר פרשו אף הם"
+                "source": "factions-k15",
+                "quote": "Faction 3 (ישראל אחת): 26 members on 2000-08-04, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 26 members of One Israel on 4 August 2000.",
+                "noteHe": "רישומי הסיעות של הכנסת: 26 חברים בסיעת ישראל אחת ב־4 באוגוסט 2000."
               }
             ],
-            "note": "Counted without the Gesher MKs, who left the coalition with David Levy (IDI). Which MKs those were is inferred: the two One Israel MKs who formed the Gesher faction on 7 March 2001, David Levy and Maxim Levy (faction records).",
-            "noteEn": "Without its two Gesher MKs, David Levy and Maxim Levy; that these were Gesher’s MKs is inferred from the faction they formed in March 2001.",
-            "noteHe": "בלי שני חברי הכנסת מגשר, דוד לוי ומקסים לוי; שאלה היו חברי גשר הוסק מהסיעה שהקימו במרץ 2001."
+            "note": "The faction’s 26 MKs less its two Gesher MKs, David Levy and Maxim Levy, who are listed separately.",
+            "noteEn": "24 of the faction’s 26 MKs; its two Gesher MKs are listed separately.",
+            "noteHe": "24 מתוך 26 חברי הסיעה; שני חברי הכנסת שלה מגשר מופיעים בנפרד."
           },
           {
             "letters": "מרצ",
@@ -1398,13 +1604,41 @@
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אמנון ליפקין-שחק; סיעה: מפלגת המרכז."
               }
             ]
+          },
+          {
+            "factionNameHe": "גשר",
+            "factionNameEn": "Gesher",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "unknown",
+            "cites": [
+              {
+                "source": "factions-k15",
+                "quote": "PersonToPositionID 28181 and 28184: faction ישראל אחת from 1999-06-07 to 2001-03-07; PersonToPositionID 28182 and 28185: faction גשר from 2001-03-07",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: David Levy and Maxim Levy stayed in the One Israel faction until Gesher became a faction of its own on 7 March 2001.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: דוד לוי ומקסים לוי נשארו בסיעת ישראל אחת עד שגשר נעשתה סיעה בפני עצמה ב־7 במרץ 2001."
+              },
+              {
+                "source": "idi-kenig-2010",
+                "quote": "כאשר שר החוץ דוד לוי וחברי הכנסת מגשר פרשו אף הם"
+              },
+              {
+                "source": "plenum-2001-03-07",
+                "quote": "נציג הסיעה החדשה, סיעת גשר, חבר הכנסת מקסים לוי",
+                "note": "The chair of the Knesset, 7 March 2001, calling on Maxim Levy for the new Gesher faction.",
+                "noteHe": "יושב־ראש הישיבה, 7 במרץ 2001, מזמין את מקסים לוי בשם סיעת גשר החדשה."
+              }
+            ],
+            "note": "Kenig (Israel Democracy Institute) says Gesher’s MKs left the coalition with David Levy; no dated Gesher statement names both brothers, and both stayed in the One Israel faction until March 2001. Not counted.",
+            "noteEn": "David Levy and Maxim Levy, in the One Israel faction until March 2001. One study says Gesher’s MKs left the coalition with David Levy; no dated statement covers Maxim Levy. Not counted.",
+            "noteHe": "דוד לוי ומקסים לוי, בסיעת ישראל אחת עד מרץ 2001. לפי מחקר אחד, חברי הכנסת של גשר פרשו מהקואליציה עם דוד לוי; אין הודעה מתוארכת שנוגעת למקסים לוי. אינם נספרים."
           }
         ],
         "coalitionSeats": null,
         "supportSeats": null,
         "knownMemberSeats": 30,
         "membershipCoverage": "partial",
-        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "coalitionSeatsNote": "One Israel is counted with 24 of its 26 members on that day in the Knesset’s faction records; its two Gesher MKs are shown but not counted. The other rows are carried from the list above.",
         "confidenceVote": null,
         "reconciliation": {
           "status": "vote-unavailable",

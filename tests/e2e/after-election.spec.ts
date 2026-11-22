@@ -171,7 +171,11 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   // 20 Nov 2026 (lane D3): the first dated member list is Shas leaving on 14 September 1993 (62 → 56)
   await expect(history.locator('.after-government-change .after-members-total').first()).toHaveText('56');
   // no faction sizes recorded for Peres's 1995 government: a dash and one sentence, not "Unknown" (V2 fault A4)
-  const peres = history.locator('.after-government-change').filter({ has: page.locator('.after-size-note') }).first();
+  // 22 Nov 2026 (D3 round 3): Yi'ud's January 1995 list is a minimum (its third MK's place is not recorded)
+  const sized = history.locator('.after-government-change').filter({ has: page.locator('.after-size-note') });
+  await expect(sized.first().locator('.after-members-total')).toContainText('58');
+  await expect(sized.first().locator('.after-members-total')).not.toHaveText('58');
+  const peres = sized.last();
   await expect(peres.locator('.after-members-total')).toHaveText('—');
   await expect(peres.locator('.after-size-note')).toBeVisible();
   await choose(election, 'k2');
@@ -277,12 +281,19 @@ test('records added in this pass: the Lavon affair, the 1988 recommendations, Go
   await history.getByText('שינויים בממשלה', { exact: true }).click();
   // 15: the nine fx-after rows, Goldknopf 15 Jun 2025 and Porush/Tesler 17 Jul 2025 (12 Nov merge), and four rows from
   // the appointment register (13 Nov): Maoz 1 Mar 2023, 5 Jun 2023 and 26 Mar 2025, Eichler 19 Jan 2026; 16 since 20 Nov
-  // (lane D3): New Hope's split from National Unity's faction, 13 Mar 2024
-  await expect(history.locator('.after-government-change')).toHaveCount(16);
-  // a list without a total says why: here UTJ's place after 17 Jul 2025 is not recorded, not a faction size (lane D3)
-  const utj = history.locator('.after-government-change').filter({ hasText: 'יהדות התורה יצאה מהממשלה' });
-  await expect(utj.locator('.after-size-note')).toContainText('מעמד לא ידוע');
-  await expect(utj.locator('.after-size-note')).not.toContainText('גודל הסיעות');
+  // (lane D3): New Hope's split from National Unity's faction, 13 Mar 2024; 20 since 22 Nov (D3 round 3): New Hope's
+  // agreement of 5 Nov 2024, UTJ's announcement of 15 Jul 2025, Shas's decision of 16 Jul and its step of 23 Oct 2025
+  await expect(history.locator('.after-government-change')).toHaveCount(20);
+  // New Hope in September 2024: its leader a minister, the faction without a coalition commitment, so not counted
+  const sept = history.locator('.after-government-change').filter({ hasText: 'גדעון סער מהימין הממלכתי הצטרף לממשלה' });
+  await expect(sept.locator('[data-support-role="other"]')).toContainText('הימין הממלכתי');
+  await expect(sept.locator('.after-members-total')).toHaveText('64');
+  // a list without a total says why: here Gesher's place after 4 Aug 2000 is not recorded, not a faction size (lane D3)
+  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k15');
+  await history.getByText('שינויים בממשלה', { exact: true }).click();
+  const gesher = history.locator('.after-government-change').filter({ hasText: 'התפטרותו של דוד לוי משר החוץ' });
+  await expect(gesher.locator('.after-size-note')).toContainText('מעמד לא ידוע');
+  await expect(gesher.locator('.after-size-note')).not.toContainText('גודל הסיעות');
 });
 
 // 19 Nov 2026: The Jerusalem Post (18 and 28 January 1974) puts the NRP and the Bedouin and Villagers list with Meir

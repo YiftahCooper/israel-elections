@@ -277,6 +277,20 @@
       "kind": "academic",
       "accessed": "2026-11-17",
       "evidenceFamily": "author:kenig-rahat"
+    },
+    "plenum-1994-07-13": {
+      "url": "https://fs.knesset.gov.il/13/Plenum/13_ptm_532377.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 13 July 1994",
+      "publisherHe": "הכנסת, דברי הכנסת, 13 ביולי 1994",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "plenum-1994-07-18": {
+      "url": "https://fs.knesset.gov.il/13/Plenum/13_ptm_532317.docx",
+      "publisher": "Knesset, Divrei HaKnesset, 18 July 1994",
+      "publisherHe": "הכנסת, דברי הכנסת, 18 ביולי 1994",
+      "kind": "official",
+      "accessed": "2026-11-22"
     }
   },
   "results": {
@@ -810,8 +824,8 @@
     "The Knesset history dates Oslo II to Taba on 27 September; the Washington signing ceremony is a different step. This pass does not conflate them.",
     "Official results publication: 1 July 1992 (YP 4021); first sitting: 13 July 1992 (official transcript). No earlier certification act inferred. Government 25 tenure and Peres succession checked against official OData on 6 November 2026.",
     "Recommendations of Hadash and the Arab Democratic Party (June 1992): no usable source yet. Search Hebrew newspapers of 28 June–1 July 1992 (Davar, Al HaMishmar, Maariv, Haaretz via JPress) and the President’s consultation file.",
-    "Shas, September 1993: the date of the faction’s own decision to leave the coalition is not recorded. The member list changes on 14 September 1993, when its ministers’ and deputy ministers’ terms ended (deputy minister Gamliel’s on 9 September); a party or faction decision, or Deri’s signed letter (dated 12 September by Kenig and Rahat), would settle it.",
-    "Yi'ud, 1994: a coalition agreement reported signed on 12 July 1994 (JTA, 14 July 1994) is one report; the agreement text and the day it took effect are not found. The member list changes on 9 January 1995, when Gonen Segev became minister."
+    "Shas, September 1993: the date of the faction’s own decision to leave the coalition is not recorded. The member list changes on 14 September 1993, when its ministers’ and deputy ministers’ terms ended (deputy minister Gamliel’s on 9 September); a Meretz MK still called Shas a coalition partner in the Knesset on 23 September 1993. The dated resolution of Shas’s Council of Torah Sages or of its faction ending the coalition agreement, or its letter to Rabin or the Knesset Secretary (Kenig and Rahat date Deri’s letter 12 September), would settle it; the Deri and Pinchasi judgments settle only when they left office.",
+    "Yi'ud, 1994–95: the coalition agreement tabled on 13 July 1994 (JTA, 14 July 1994, reports it signed on 12 July) has not been found, so the day it was signed, its terms and whether each of the faction’s three MKs backed it are not recorded; nor is Esther Salmovitz’s place in the coalition after her two colleagues joined the government in January 1995. The signed agreement, and a faction or coalition record of January 1995, would settle it."
   ],
   "government": {
     "number": 25,
@@ -1125,6 +1139,171 @@
         }
       },
       {
+        "date": "1994-07-13",
+        "textEn": "Yi'ud joined the coalition without ministers: its signed coalition agreement with Labor was tabled in the Knesset.",
+        "textHe": "יעוד הצטרפה לקואליציה בלי שרים: ההסכם הקואליציוני החתום שלה עם העבודה הונח על שולחן הכנסת.",
+        "cites": [
+          {
+            "source": "plenum-1994-07-13",
+            "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני שנחתם בין סיעת העבודה לבין סיעת יעוד בכנסת",
+            "note": "The Deputy Knesset Secretary, 13 July 1994: a signed coalition agreement between the Labor and Yi'ud factions was tabled in the Knesset that day.",
+            "noteHe": "סגנית מזכיר הכנסת, 13 ביולי 1994: הסכם קואליציוני חתום בין סיעת העבודה לסיעת יעוד הונח באותו יום על שולחן הכנסת."
+          },
+          {
+            "source": "plenum-1994-07-18",
+            "quote": "אני מצטער כי כאופוזיציה, כשהיינו חלק ממנה, לא הצלחנו למנוע את החתימה על ההסכם",
+            "note": "Alex Goldfarb of Yi'ud in the Knesset, 18 July 1994, speaking of the opposition as something his faction had been part of.",
+            "noteHe": "אלכס גולדפרב מיעוד בכנסת, 18 ביולי 1994, על האופוזיציה כעל משהו שסיעתו הייתה חלק ממנו."
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 25,
+        "coalition": [
+          {
+            "letters": "אמת",
+            "seats": 44,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-25",
+                "quote": "PersonToPositionID 4124; PersonID 2634; PositionID 39; StartDate 1992-07-13T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: שמעון שטרית; faction: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: שמעון שטרית; סיעה: מפלגת העבודה הישראלית, מפלגת העבודה הישראלית."
+              }
+            ]
+          },
+          {
+            "letters": "מרצ",
+            "seats": 12,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-25",
+                "quote": "PersonToPositionID 4250; PersonID 510; PositionID 39; StartDate 1993-05-31T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אמנון רובינשטיין; faction: מרצ, מרצ.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אמנון רובינשטיין; סיעה: מרצ, מרצ."
+              }
+            ]
+          },
+          {
+            "letters": "ו",
+            "seats": 3,
+            "role": "outside-support",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "jta1992vote",
+                "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "both parties agreeing to support the Rabin government without being members of it.",
+                "locator": "p. 650"
+              },
+              {
+                "source": "galnoor-oxford-2021",
+                "quote": "coalition agreements with Hadash and the Arab Democratic Party (July 9, 1992), both Arab parties agreed to support the Rabin government without being coalition members",
+                "locator": "p. 157",
+                "note": "Note 12; it cites the agreements Labor signed with Hadash and the Arab Democratic Party on 9 July 1992.",
+                "noteHe": "הערה 12; היא מסתמכת על ההסכמים שחתמה מפלגת העבודה עם חד״ש ועם המפלגה הדמוקרטית הערבית ב־9 ביולי 1992.",
+                "citesRecord": "Labor Party coalition agreements with Hadash and the Arab Democratic Party, 9 July 1992 (published in The Basic Principles of the Government and Coalition Agreements, 1992)"
+              },
+              {
+                "source": "navot-swaid-khalaily-2023",
+                "quote": "along the lines of the second Rabin government, when Mada and Hadash supported the coalition without joining it",
+                "locator": "p. 247"
+              }
+            ],
+            "note": "Several independent studies say both parties supported the Rabin government from outside the coalition; one cites the agreements Labor signed with them on 9 July 1992. One book (Assaf Meydani, 2009, p. 109) counts them in the coalition, citing nothing.",
+            "noteEn": "One book counts them in the coalition; the others, one citing the agreements signed on 9 July 1992, say they supported it from outside.",
+            "noteHe": "ספר אחד מונה אותן בקואליציה; האחרים, ואחד מהם מסתמך על ההסכמים שנחתמו ב־9 ביולי 1992, אומרים שתמכו בממשלה מבחוץ."
+          },
+          {
+            "letters": "ע",
+            "seats": 2,
+            "role": "outside-support",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "jta1992vote",
+                "quote": "Darousha said his two-man faction had decided to support the government, rather than abstain"
+              },
+              {
+                "source": "galnoor-blander-2018",
+                "quote": "both parties agreeing to support the Rabin government without being members of it.",
+                "locator": "p. 650"
+              },
+              {
+                "source": "galnoor-oxford-2021",
+                "quote": "coalition agreements with Hadash and the Arab Democratic Party (July 9, 1992), both Arab parties agreed to support the Rabin government without being coalition members",
+                "locator": "p. 157",
+                "note": "Note 12; it cites the agreements Labor signed with Hadash and the Arab Democratic Party on 9 July 1992.",
+                "noteHe": "הערה 12; היא מסתמכת על ההסכמים שחתמה מפלגת העבודה עם חד״ש ועם המפלגה הדמוקרטית הערבית ב־9 ביולי 1992.",
+                "citesRecord": "Labor Party coalition agreements with Hadash and the Arab Democratic Party, 9 July 1992 (published in The Basic Principles of the Government and Coalition Agreements, 1992)"
+              },
+              {
+                "source": "navot-swaid-khalaily-2023",
+                "quote": "along the lines of the second Rabin government, when Mada and Hadash supported the coalition without joining it",
+                "locator": "p. 247"
+              }
+            ],
+            "note": "Several independent studies say both parties supported the Rabin government from outside the coalition; one cites the agreements Labor signed with them on 9 July 1992. One book (Assaf Meydani, 2009, p. 109) counts them in the coalition, citing nothing.",
+            "noteEn": "One book counts them in the coalition; the others, one citing the agreements signed on 9 July 1992, say they supported it from outside.",
+            "noteHe": "ספר אחד מונה אותן בקואליציה; האחרים, ואחד מהם מסתמך על ההסכמים שנחתמו ב־9 ביולי 1992, אומרים שתמכו בממשלה מבחוץ."
+          },
+          {
+            "factionNameHe": "יעוד",
+            "factionNameEn": "Yi'ud",
+            "seats": 3,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "plenum-1994-07-13",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני שנחתם בין סיעת העבודה לבין סיעת יעוד בכנסת",
+                "note": "The Deputy Knesset Secretary, 13 July 1994: a signed coalition agreement between the Labor and Yi'ud factions was tabled in the Knesset that day.",
+                "noteHe": "סגנית מזכיר הכנסת, 13 ביולי 1994: הסכם קואליציוני חתום בין סיעת העבודה לסיעת יעוד הונח באותו יום על שולחן הכנסת."
+              },
+              {
+                "source": "plenum-1994-07-18",
+                "quote": "אני מצטער כי כאופוזיציה, כשהיינו חלק ממנה, לא הצלחנו למנוע את החתימה על ההסכם",
+                "note": "Alex Goldfarb of Yi'ud in the Knesset, 18 July 1994, speaking of the opposition as something his faction had been part of.",
+                "noteHe": "אלכס גולדפרב מיעוד בכנסת, 18 ביולי 1994, על האופוזיציה כעל משהו שסיעתו הייתה חלק ממנו."
+              },
+              {
+                "source": "plenum-1994-07-18",
+                "quote": "אחד התנאים החשובים שסיעת יעוד חתמה עליהם בהסכם עם סיעת העבודה",
+                "note": "Goldfarb on one of the conditions Yi'ud signed in its agreement with Labor.",
+                "noteHe": "גולדפרב על אחד התנאים שיעוד חתמה עליהם בהסכם עם העבודה."
+              },
+              {
+                "source": "factions-k13",
+                "quote": "Faction 593 (יעוד): 3 members on 1994-07-13, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Yi'ud on 13 July 1994.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת יעוד ב־13 ביולי 1994."
+              }
+            ],
+            "note": "A coalition agreement between the two factions, tabled under section 13B of Basic Law: The Government. JTA (14 July 1994) reports it signed on 12 July. The signed text is not found, so whether each of the three MKs backed it is not recorded; the faction is counted whole, as the agreement was the faction’s.",
+            "noteEn": "Its signed agreement with Labor was tabled on 13 July 1994; it had no ministers.",
+            "noteHe": "ההסכם החתום שלה עם העבודה הונח על שולחן הכנסת ב־13 ביולי 1994; לא היו לה שרים."
+          }
+        ],
+        "coalitionSeats": 59,
+        "supportSeats": 5,
+        "knownMemberSeats": 59,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "Yi'ud counts its 3 members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
         "date": "1995-01-09",
         "textEn": "Two of Yi'ud’s three MKs joined the government: the Knesset approved Gonen Segev as minister.",
         "textHe": "שניים משלושת חברי יעוד בכנסת הצטרפו לממשלה: הכנסת אישרה את גונן שגב כשר.",
@@ -1277,15 +1456,15 @@
                 "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת יעוד ב־9 בינואר 1995."
               }
             ],
-            "noteEn": "Two of the faction’s three MKs, Gonen Segev and Alex Goldfarb; the third, Esther Salmovitz, did not join.",
-            "noteHe": "שניים משלושת חברי הסיעה בכנסת, גונן שגב ואלכס גולדפרב; השלישית, אסתר סלמוביץ, לא הצטרפה."
+            "noteEn": "Two of the faction’s three MKs, Gonen Segev and Alex Goldfarb, joined the government; the third, Esther Salmovitz, did not, and her place in the coalition is not recorded.",
+            "noteHe": "שניים משלושת חברי הסיעה בכנסת, גונן שגב ואלכס גולדפרב, הצטרפו לממשלה; השלישית, אסתר סלמוביץ, לא הצטרפה, ומעמדה בקואליציה לא תועד."
           }
         ],
-        "coalitionSeats": 58,
-        "supportSeats": 5,
+        "coalitionSeats": null,
+        "supportSeats": null,
         "knownMemberSeats": 58,
-        "membershipCoverage": "complete",
-        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "Yi'ud is counted with its two MKs who joined the government. Whether the third, Esther Salmovitz, stayed in the coalition is not recorded, so the total is a minimum. The other rows are carried from the list above.",
         "confidenceVote": null,
         "reconciliation": {
           "status": "vote-unavailable",

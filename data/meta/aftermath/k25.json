@@ -439,6 +439,48 @@
       "publisherHe": "ג׳רוזלם פוסט, 17 ביולי 2025",
       "kind": "secondary",
       "accessed": "2026-11-19"
+    },
+    "plenum-2024-11-06": {
+      "url": "https://fs.knesset.gov.il/25/Plenum/25_ptm_5133499.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 6 November 2024",
+      "publisherHe": "הכנסת, דברי הכנסת, 6 בנובמבר 2024",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "plenum-2025-07-16": {
+      "url": "https://fs.knesset.gov.il/25/Plenum/25_ptm_7716797.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 16 July 2025",
+      "publisherHe": "הכנסת, דברי הכנסת, 16 ביולי 2025",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "agreement-new-hope-2024": {
+      "url": "https://main.knesset.gov.il/mk/government/Documents/CA37-u-right.pdf",
+      "publisher": "Coalition agreement between the Likud and New Hope – The United Right factions, signed 5 November 2024 (Knesset)",
+      "publisherHe": "הסכם קואליציוני לצירוף סיעה לממשלה ה־37, בין סיעת הליכוד לסיעת הימין הממלכתי, נחתם ב־5 בנובמבר 2024 (הכנסת)",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "calcalist-2025-07-15": {
+      "url": "https://www.calcalist.co.il/local_news/article/bj9e6qgigg",
+      "publisher": "Calcalist, 15 July 2025",
+      "publisherHe": "כלכליסט, 15 ביולי 2025",
+      "kind": "secondary",
+      "accessed": "2026-11-22"
+    },
+    "jdn-2025-07-16": {
+      "url": "https://www.jdn.co.il/news/2444353/",
+      "publisher": "JDN, 16 July 2025: the statement of Shas’s Council of Torah Sages",
+      "publisherHe": "חדשות JDN, 16 ביולי 2025: הודעת מועצת חכמי התורה של ש״ס",
+      "kind": "secondary",
+      "accessed": "2026-11-22"
+    },
+    "walla-2025-10-23": {
+      "url": "https://www.walla.co.il/news/breaking-news/3789083",
+      "publisher": "Walla, 23 October 2025",
+      "publisherHe": "וואלה, 23 באוקטובר 2025",
+      "kind": "secondary",
+      "accessed": "2026-11-22"
     }
   },
   "results": {
@@ -1053,9 +1095,8 @@
     "This eight-row selection groups judicial and conflict phases; the 2026 Iran/Lebanon phase remains an explicit evidence gap.",
     "k25 fixer re-check, 6 November 2026: MFA confirms the attributed October 2023 casualty/hostage figures. Ordinary access to the PMO authorization, Knesset chronology, INSS chronologies and AP timeline did not provide readable originals. Full citation-by-citation validation of subordinate term-event notes and chronology independence remains incomplete; existing dates are not thereby disproved.",
     "Detailed term chronology remains partial. Official membership endpoints and the next Knesset opening establish the parliamentary end on 10 November 2026; no government end date is inferred.",
-    "New Hope – The United Right, September 2024: no signed coalition agreement was found, and the coalition chair said in the Knesset on 30 September 2024 that there was none beyond Gideon Sa'ar’s appointment and no coalition commitment from the faction. Shown as a probable member.",
-    "United Torah Judaism, July 2025: its ministers and deputy ministers left the government by 17 July 2025, but whether the faction also left the coalition rests on one news report (and a minister said in the Knesset that the Haredi parties left the government, not the coalition). Shown with an unknown role from 17 July 2025; Israel Eichler’s appointment as deputy minister on 19 January 2026 is not yet reflected in the member list.",
-    "Shas, July 2025: its MKs being told to stay in the coalition rests on one news report and a minister’s remark; the original instruction was not recovered. Shown as a probable member without ministers from 22 July 2025."
+    "United Torah Judaism, January 2026: Israel Eichler became deputy minister in the Communications Ministry on 19 January 2026, and Yitzhak Pindrus took his Knesset seat on 21 January; whether United Torah Judaism, Agudat Yisrael or Degel HaTorah rejoined the coalition is not recorded, so the member list does not change. A January 2026 faction resolution or notice to the Knesset Secretary or the coalition chair, saying who rejoined or that Eichler accepted the appointment on his own, would settle it.",
+    "Shas after 23 October 2025: it announced that it was giving up its coalition posts in the Knesset (one news report), but no record says whether the faction stayed in the coalition, so the member list of 22 July 2025 is not shown as changing. A Shas faction decision, or its notice to the Knesset Secretary or the coalition chair, would settle it."
   ],
   "government": {
     "number": 37,
@@ -1744,9 +1785,9 @@
       },
       {
         "date": "2024-09-30",
-        "type": "coalition-change",
-        "textEn": "New Hope – The United Right returned to the government: the Knesset approved Gideon Sa'ar as minister without portfolio.",
-        "textHe": "הימין הממלכתי חזר לממשלה: הכנסת אישרה את גדעון סער כשר בלי תיק.",
+        "type": "ministerial-change",
+        "textEn": "Gideon Sa'ar of New Hope – The United Right joined the government: the Knesset approved him as minister without portfolio. The coalition chair said his faction made no coalition commitment.",
+        "textHe": "גדעון סער מהימין הממלכתי הצטרף לממשלה: הכנסת אישרה אותו כשר בלי תיק. יושב־ראש הקואליציה אמר שסיעתו לא התחייבה כלפי הקואליציה.",
         "cites": [
           {
             "source": "plenum-2024-09-30",
@@ -1837,8 +1878,8 @@
             "factionNameHe": "הימין הממלכתי",
             "factionNameEn": "New Hope – The United Right",
             "seats": 4,
-            "role": "member-with-ministries",
-            "certainty": "probable",
+            "role": "other",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "plenum-2024-09-30",
@@ -1865,16 +1906,144 @@
                 "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־30 בספטמבר 2024."
               }
             ],
-            "note": "Its leader became a minister, which puts the faction in the government; but the coalition chair said there was no agreement beyond that and no coalition commitment from the faction, and no signed agreement was found.",
-            "noteEn": "Its leader Gideon Sa'ar became a minister; the coalition chair said there was no other agreement and no coalition commitment from the faction.",
-            "noteHe": "העומד בראשה, גדעון סער, מונה לשר; יושב־ראש הקואליציה אמר שאין הסכם נוסף ואין מחויבות קואליציונית מצד הסיעה."
+            "note": "Its leader became a minister, but the coalition chair told the Knesset there was no agreement beyond that and no coalition commitment from the faction. Not counted as a member until its written agreement of 5 November 2024.",
+            "noteEn": "Its leader Gideon Sa'ar became a minister; the coalition chair said the faction made no coalition commitment. Not counted.",
+            "noteHe": "העומד בראשה, גדעון סער, מונה לשר; יושב־ראש הקואליציה אמר שהסיעה לא התחייבה כלפי הקואליציה. אינה נספרת."
+          }
+        ],
+        "coalitionSeats": 64,
+        "supportSeats": 0,
+        "knownMemberSeats": 64,
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "New Hope – The United Right is shown with its 4 members in the Knesset’s faction records but not counted: its leader joined the government without a coalition commitment from the faction. The other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
+      },
+      {
+        "date": "2024-11-05",
+        "textEn": "New Hope – The United Right joined the coalition: it signed a written coalition agreement with Likud, tabled in the Knesset the next day.",
+        "textHe": "הימין הממלכתי הצטרפה לקואליציה: היא חתמה על הסכם קואליציוני כתוב עם הליכוד, שהונח על שולחן הכנסת למחרת.",
+        "cites": [
+          {
+            "source": "agreement-new-hope-2024",
+            "quote": "מעוניינים הצדדים, כי סיעת הימין הממלכתי תצטרף לקואליציה ולממשלה",
+            "locator": "p. 1, preamble",
+            "note": "The written agreement signed by both factions on 5 November 2024; it binds the faction’s MKs to coalition discipline.",
+            "noteHe": "ההסכם הכתוב שנחתם בידי שתי הסיעות ב־5 בנובמבר 2024; הוא מחייב את חברי הכנסת של הסיעה במשמעת קואליציונית."
+          },
+          {
+            "source": "plenum-2024-11-06",
+            "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני לצירוף סיעה לממשלה השלושים-ושבע",
+            "note": "The Deputy Knesset Secretary, 6 November 2024, naming the Likud and New Hope – The United Right factions.",
+            "noteHe": "סגנית מזכיר הכנסת, 6 בנובמבר 2024, בציון סיעות הליכוד והימין הממלכתי."
+          }
+        ],
+        "type": "coalition-change",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 37,
+        "coalition": [
+          {
+            "letters": "מחל",
+            "seats": 32,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-37",
+                "quote": "PersonToPositionID 30679; PersonID 965; PositionID 45; StartDate 2022-12-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: בנימין נתניהו; faction: הליכוד.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: בנימין נתניהו; סיעה: הליכוד."
+              }
+            ]
+          },
+          {
+            "letters": "ט",
+            "seats": 14,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-37",
+                "quote": "PersonToPositionID 30691; PersonID 30811; PositionID 39; StartDate 2022-12-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: איתמר בן גביר; faction: עוצמה יהודית בראשות איתמר בן גביר.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: איתמר בן גביר; סיעה: עוצמה יהודית בראשות איתמר בן גביר."
+              }
+            ]
+          },
+          {
+            "letters": "שס",
+            "seats": 11,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-37",
+                "quote": "PersonToPositionID 30687; PersonID 30804; PositionID 39; StartDate 2022-12-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: חיים ביטון; faction: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: חיים ביטון; סיעה: התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל."
+              }
+            ]
+          },
+          {
+            "letters": "ג",
+            "seats": 7,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-37",
+                "quote": "PersonToPositionID 30682; PersonID 30846; PositionID 39; StartDate 2022-12-29T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: יצחק גולדקנופ; faction: יהדות התורה.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: יצחק גולדקנופ; סיעה: יהדות התורה."
+              }
+            ]
+          },
+          {
+            "factionNameHe": "הימין הממלכתי",
+            "factionNameEn": "New Hope – The United Right",
+            "seats": 4,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "agreement-new-hope-2024",
+                "quote": "מעוניינים הצדדים, כי סיעת הימין הממלכתי תצטרף לקואליציה ולממשלה",
+                "locator": "p. 1, preamble",
+                "note": "The written agreement signed by both factions on 5 November 2024; it binds the faction’s MKs to coalition discipline.",
+                "noteHe": "ההסכם הכתוב שנחתם בידי שתי הסיעות ב־5 בנובמבר 2024; הוא מחייב את חברי הכנסת של הסיעה במשמעת קואליציונית."
+              },
+              {
+                "source": "plenum-2024-11-06",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני לצירוף סיעה לממשלה השלושים-ושבע",
+                "note": "The Deputy Knesset Secretary, 6 November 2024, naming the Likud and New Hope – The United Right factions.",
+                "noteHe": "סגנית מזכיר הכנסת, 6 בנובמבר 2024, בציון סיעות הליכוד והימין הממלכתי."
+              },
+              {
+                "source": "positions-gov37",
+                "quote": "PersonToPositionID 32020, PersonID 1027, PositionID 39, StartDate 2024-09-30",
+                "note": "The Knesset’s appointment record: Gideon Sa'ar, minister without portfolio from 30 September 2024.",
+                "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר בלי תיק מ־30 בספטמבר 2024."
+              },
+              {
+                "source": "factions-k25",
+                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-11-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 5 November 2024.",
+                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־5 בנובמבר 2024."
+              }
+            ],
+            "noteEn": "Its written coalition agreement with Likud was signed on 5 November 2024.",
+            "noteHe": "ההסכם הקואליציוני הכתוב שלה עם הליכוד נחתם ב־5 בנובמבר 2024."
           }
         ],
         "coalitionSeats": 68,
         "supportSeats": 0,
         "knownMemberSeats": 68,
         "membershipCoverage": "complete",
-        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "coalitionSeatsNote": "New Hope – The United Right counts its 4 members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
         "confidenceVote": null,
         "reconciliation": {
           "status": "vote-unavailable",
@@ -2004,13 +2173,20 @@
             "factionNameEn": "New Hope – The United Right",
             "seats": 4,
             "role": "member-with-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
-                "source": "plenum-2024-09-30",
-                "quote": "לצרף לממשלה את חבר הכנסת גדעון סער כשר ללא תיק",
-                "note": "The Knesset approved Gideon Sa'ar as minister without portfolio on 30 September 2024, and his term began that day.",
-                "noteHe": "הכנסת אישרה את גדעון סער כשר בלי תיק ב־30 בספטמבר 2024, ובו ביום החלה כהונתו."
+                "source": "agreement-new-hope-2024",
+                "quote": "מעוניינים הצדדים, כי סיעת הימין הממלכתי תצטרף לקואליציה ולממשלה",
+                "locator": "p. 1, preamble",
+                "note": "The written agreement signed by both factions on 5 November 2024; it binds the faction’s MKs to coalition discipline.",
+                "noteHe": "ההסכם הכתוב שנחתם בידי שתי הסיעות ב־5 בנובמבר 2024; הוא מחייב את חברי הכנסת של הסיעה במשמעת קואליציונית."
+              },
+              {
+                "source": "plenum-2024-11-06",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני לצירוף סיעה לממשלה השלושים-ושבע",
+                "note": "The Deputy Knesset Secretary, 6 November 2024, naming the Likud and New Hope – The United Right factions.",
+                "noteHe": "סגנית מזכיר הכנסת, 6 בנובמבר 2024, בציון סיעות הליכוד והימין הממלכתי."
               },
               {
                 "source": "positions-gov37",
@@ -2019,21 +2195,14 @@
                 "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
-                "source": "plenum-2024-09-30",
-                "quote": "אין שום הסכמים מלבד כניסתו של גדעון סער כשר. אפילו אין מחויבות קואליציונית מצידם.",
-                "note": "The coalition chair, Ofir Katz, in the Knesset before the vote.",
-                "noteHe": "יושב־ראש הקואליציה, אופיר כץ, במליאה לפני ההצבעה."
-              },
-              {
                 "source": "factions-k25",
-                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-09-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 30 September 2024.",
-                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־30 בספטמבר 2024."
+                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-11-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 5 November 2024.",
+                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־5 בנובמבר 2024."
               }
             ],
-            "note": "Its leader became a minister, which puts the faction in the government; but the coalition chair said there was no agreement beyond that and no coalition commitment from the faction, and no signed agreement was found.",
-            "noteEn": "Its leader Gideon Sa'ar became a minister; the coalition chair said there was no other agreement and no coalition commitment from the faction.",
-            "noteHe": "העומד בראשה, גדעון סער, מונה לשר; יושב־ראש הקואליציה אמר שאין הסכם נוסף ואין מחויבות קואליציונית מצד הסיעה."
+            "noteEn": "Its written coalition agreement with Likud was signed on 5 November 2024.",
+            "noteHe": "ההסכם הקואליציוני הכתוב שלה עם הליכוד נחתם ב־5 בנובמבר 2024."
           }
         ],
         "coalitionSeats": 61,
@@ -2163,13 +2332,20 @@
             "factionNameEn": "New Hope – The United Right",
             "seats": 4,
             "role": "member-with-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
-                "source": "plenum-2024-09-30",
-                "quote": "לצרף לממשלה את חבר הכנסת גדעון סער כשר ללא תיק",
-                "note": "The Knesset approved Gideon Sa'ar as minister without portfolio on 30 September 2024, and his term began that day.",
-                "noteHe": "הכנסת אישרה את גדעון סער כשר בלי תיק ב־30 בספטמבר 2024, ובו ביום החלה כהונתו."
+                "source": "agreement-new-hope-2024",
+                "quote": "מעוניינים הצדדים, כי סיעת הימין הממלכתי תצטרף לקואליציה ולממשלה",
+                "locator": "p. 1, preamble",
+                "note": "The written agreement signed by both factions on 5 November 2024; it binds the faction’s MKs to coalition discipline.",
+                "noteHe": "ההסכם הכתוב שנחתם בידי שתי הסיעות ב־5 בנובמבר 2024; הוא מחייב את חברי הכנסת של הסיעה במשמעת קואליציונית."
+              },
+              {
+                "source": "plenum-2024-11-06",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני לצירוף סיעה לממשלה השלושים-ושבע",
+                "note": "The Deputy Knesset Secretary, 6 November 2024, naming the Likud and New Hope – The United Right factions.",
+                "noteHe": "סגנית מזכיר הכנסת, 6 בנובמבר 2024, בציון סיעות הליכוד והימין הממלכתי."
               },
               {
                 "source": "positions-gov37",
@@ -2178,21 +2354,14 @@
                 "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
-                "source": "plenum-2024-09-30",
-                "quote": "אין שום הסכמים מלבד כניסתו של גדעון סער כשר. אפילו אין מחויבות קואליציונית מצידם.",
-                "note": "The coalition chair, Ofir Katz, in the Knesset before the vote.",
-                "noteHe": "יושב־ראש הקואליציה, אופיר כץ, במליאה לפני ההצבעה."
-              },
-              {
                 "source": "factions-k25",
-                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-09-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 30 September 2024.",
-                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־30 בספטמבר 2024."
+                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-11-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 5 November 2024.",
+                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־5 בנובמבר 2024."
               }
             ],
-            "note": "Its leader became a minister, which puts the faction in the government; but the coalition chair said there was no agreement beyond that and no coalition commitment from the faction, and no signed agreement was found.",
-            "noteEn": "Its leader Gideon Sa'ar became a minister; the coalition chair said there was no other agreement and no coalition commitment from the faction.",
-            "noteHe": "העומד בראשה, גדעון סער, מונה לשר; יושב־ראש הקואליציה אמר שאין הסכם נוסף ואין מחויבות קואליציונית מצד הסיעה."
+            "noteEn": "Its written coalition agreement with Likud was signed on 5 November 2024.",
+            "noteHe": "ההסכם הקואליציוני הכתוב שלה עם הליכוד נחתם ב־5 בנובמבר 2024."
           },
           {
             "factionNameHe": "עוצמה יהודית",
@@ -2270,6 +2439,29 @@
         ]
       },
       {
+        "date": "2025-07-15",
+        "type": "coalition-change",
+        "textEn": "United Torah Judaism’s two parties announced that they were leaving the government and the coalition: Degel HaTorah on 14 July 2025, Agudat Yisrael overnight into 15 July.",
+        "textHe": "שתי המפלגות של יהדות התורה הודיעו שהן יוצאות מהממשלה ומהקואליציה: דגל התורה ב־14 ביולי 2025, ואגודת ישראל בלילה שבין 14 ל־15 ביולי.",
+        "cites": [
+          {
+            "source": "plenum-2025-07-14",
+            "quote": "יש לסיים מיידית את ההשתתפות עם הממשלה והקואליציה",
+            "note": "A letter from Rabbi Dov Lando, a leader of Degel HaTorah (four of the faction’s seven MKs), read out in the Knesset on 14 July 2025.",
+            "noteHe": "מכתב של הרב דב לנדו, ממנהיגי דגל התורה (ארבעה משבעת חברי הסיעה בכנסת), שהוקרא בכנסת ב־14 ביולי 2025."
+          },
+          {
+            "source": "calcalist-2025-07-15",
+            "quote": "הורו חברי מועצת גדולי התורה שליט\"א לנציגי אגודת ישראל להתפטר מתפקידיהם הקואליציונים",
+            "note": "Agudat Yisrael’s statement of the night of 14–15 July 2025, quoted in a report that says it left the government and the coalition.",
+            "noteHe": "הודעת אגודת ישראל מליל 14–15 ביולי 2025, מצוטטת בכתבה שלפיה יצאה מהממשלה ומהקואליציה."
+          }
+        ],
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 37
+      },
+      {
         "date": "2025-07-16",
         "type": "ministerial-change",
         "textEn": "Uri Maklev’s terms as deputy minister in the Prime Minister’s Office and Transport Ministry ended.",
@@ -2293,10 +2485,40 @@
         ]
       },
       {
+        "date": "2025-07-16",
+        "type": "coalition-change",
+        "textEn": "Shas’s Council of Torah Sages decided that the party would leave the government but stay in the coalition.",
+        "textHe": "מועצת חכמי התורה של ש״ס החליטה שהתנועה תצא מהממשלה ותישאר בקואליציה.",
+        "cites": [
+          {
+            "source": "plenum-2025-07-16",
+            "quote": "מפלגת ש\"ס החליטה שהיא פורשת מהממשלה. היא פורשת מהממשלה, אבל לא מהקואליציה",
+            "note": "Eitan Ginzburg (National Unity) in the Knesset as the news came in, 16 July 2025.",
+            "noteHe": "איתן גינזבורג (המחנה הממלכתי) בכנסת, עם היוודע הידיעה, 16 ביולי 2025."
+          },
+          {
+            "source": "jdn-2025-07-16",
+            "quote": "על מנת שיהיה אפשר להמשיך בקיום הממשלה ובשותפות הקואליציונית",
+            "locator": "clause ד",
+            "note": "The Council of Torah Sages’ statement, asking for the draft law by the opening of the Knesset’s winter session.",
+            "noteHe": "הודעת מועצת חכמי התורה, הדורשת את חוק הגיוס עד פתיחת כנס החורף של הכנסת."
+          },
+          {
+            "source": "jpost-2025-07-17",
+            "quote": "directed its MKs to remain in the coalition for the time being",
+            "note": "A news report: the Council of Torah Sages told Shas’s MKs to stay in the coalition.",
+            "noteHe": "דיווח חדשותי: מועצת חכמי התורה הורתה לחברי הכנסת של ש״ס להישאר בקואליציה."
+          }
+        ],
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 37
+      },
+      {
         "date": "2025-07-17",
         "type": "coalition-withdrawal",
-        "textEn": "United Torah Judaism left the government: the resignations of Meir Porush and of its last deputy minister took effect. Whether it also left the coalition is not settled.",
-        "textHe": "יהדות התורה יצאה מהממשלה: התפטרויותיהם של מאיר פרוש ושל סגן השר האחרון מטעמה נכנסו לתוקף. לא הוכרע אם יצאה גם מהקואליציה.",
+        "textEn": "United Torah Judaism left the government and the coalition: the resignations of Meir Porush and of its last deputy minister took effect.",
+        "textHe": "יהדות התורה יצאה מהממשלה ומהקואליציה: התפטרויותיהם של מאיר פרוש ושל סגן השר האחרון מטעמה נכנסו לתוקף.",
         "cites": [
           {
             "source": "plenum-2025-07-21",
@@ -2317,12 +2539,6 @@
             "noteHe": "מכתב של הרב דב לנדו, ממנהיגי דגל התורה (ארבעה משבעת חברי הסיעה בכנסת), שהוקרא בכנסת ב־14 ביולי 2025."
           },
           {
-            "source": "jpost-2025-07-14",
-            "quote": "announced on Tuesday its decision to quit the government and the coalition",
-            "note": "One news report: a statement by both Degel HaTorah and Agudat Yisrael. No Knesset record of the faction leaving the coalition was found.",
-            "noteHe": "דיווח חדשותי אחד: הודעה משותפת של דגל התורה ושל אגודת ישראל. לא נמצא רישום של הכנסת על יציאת הסיעה מהקואליציה."
-          },
-          {
             "source": "odata-government37",
             "quote": "{\"PersonToPositionID\":31012,\"PersonID\":563,\"PositionID\":39,\"KnessetNum\":25,\"StartDate\":\"2023-01-23T00:00:00\",\"FinishDate\":\"2025-07-17T00:00:00\",\"GovMinistryID\":583,\"GovMinistryName\":\"משרד ירושלים ומסורת ישראל\",\"DutyDesc\":\"השר לירושלים ומסורת ישראל\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-17T00:26:05.377\"}",
             "note": "The Knesset’s official record: מאיר פרוש.",
@@ -2333,6 +2549,18 @@
             "quote": "{\"PersonToPositionID\":30802,\"PersonID\":30671,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2025-07-17T00:00:00\",\"GovMinistryID\":589,\"GovMinistryName\":\"משרד התרבות והספורט\",\"DutyDesc\":\"סגן שר במשרד התרבות והספורט\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-17T00:29:32.98\"}",
             "note": "The Knesset’s official record: יעקב טסלר.",
             "noteHe": "הרישום הרשמי של הכנסת: יעקב טסלר."
+          },
+          {
+            "source": "calcalist-2025-07-15",
+            "quote": "הורו חברי מועצת גדולי התורה שליט\"א לנציגי אגודת ישראל להתפטר מתפקידיהם הקואליציונים",
+            "note": "Agudat Yisrael’s statement of the night of 14–15 July 2025, quoted in a report that says it left the government and the coalition.",
+            "noteHe": "הודעת אגודת ישראל מליל 14–15 ביולי 2025, מצוטטת בכתבה שלפיה יצאה מהממשלה ומהקואליציה."
+          },
+          {
+            "source": "factions-k25",
+            "quote": "Faction 1101 (יהדות התורה): 7 members on 2025-07-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 7 members of United Torah Judaism on 17 July 2025.",
+            "noteHe": "רישומי הסיעות של הכנסת: 7 חברים בסיעת יהדות התורה ב־17 ביולי 2025."
           }
         ],
         "notes": [
@@ -2399,58 +2627,24 @@
             ]
           },
           {
-            "letters": "ג",
-            "seats": 7,
-            "role": "member-without-ministries",
-            "certainty": "unknown",
-            "cites": [
-              {
-                "source": "plenum-2025-07-21",
-                "quote": "חברותו בממשלה של שר ירושלים ומסורת ישראל מאיר פרוש נפסקה ביום כ\"א בתמוז התשפ\"ה, 17 ביולי 2025, בשעה 00:07",
-                "note": "The Government’s notice of 21 July 2025: Meir Porush’s term ended at 00:07 on 17 July, deputy minister Yaakov Tesler’s at 13:00 that day, and Uri Maklev’s deputy posts on 16 July.",
-                "noteHe": "הודעת הממשלה מ־21 ביולי 2025: כהונת מאיר פרוש הסתיימה ב־17 ביולי בשעה 00:07, כהונת סגן השר יעקב טסלר בשעה 13:00 באותו יום, ותפקידי סגן השר של אורי מקלב ב־16 ביולי."
-              },
-              {
-                "source": "plenum-2025-07-14",
-                "quote": "יש לסיים מיידית את ההשתתפות עם הממשלה והקואליציה",
-                "note": "A letter from Rabbi Dov Lando, a leader of Degel HaTorah (four of the faction’s seven MKs), read out in the Knesset on 14 July 2025.",
-                "noteHe": "מכתב של הרב דב לנדו, ממנהיגי דגל התורה (ארבעה משבעת חברי הסיעה בכנסת), שהוקרא בכנסת ב־14 ביולי 2025."
-              },
-              {
-                "source": "jpost-2025-07-14",
-                "quote": "announced on Tuesday its decision to quit the government and the coalition",
-                "note": "One news report: a statement by both Degel HaTorah and Agudat Yisrael. No Knesset record of the faction leaving the coalition was found.",
-                "noteHe": "דיווח חדשותי אחד: הודעה משותפת של דגל התורה ושל אגודת ישראל. לא נמצא רישום של הכנסת על יציאת הסיעה מהקואליציה."
-              },
-              {
-                "source": "plenum-2025-07-21",
-                "quote": "והם החליטו לפרוש מהממשלה, לא מהקואליציה",
-                "note": "Minister David Amsalem, about the Haredi parties, in the Knesset on 21 July 2025.",
-                "noteHe": "השר דוד אמסלם, על המפלגות החרדיות, במליאה ב־21 ביולי 2025."
-              },
-              {
-                "source": "factions-k25",
-                "quote": "Faction 1101 (יהדות התורה): 7 members on 2025-07-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 7 members of United Torah Judaism on 17 July 2025.",
-                "noteHe": "רישומי הסיעות של הכנסת: 7 חברים בסיעת יהדות התורה ב־17 ביולי 2025."
-              }
-            ],
-            "note": "All its ministers and deputy ministers had left by 17 July 2025. One news report says both its parts quit the coalition; a minister said in the Knesset that the Haredi parties left the government, not the coalition. Not counted.",
-            "noteEn": "Its ministers and deputy ministers left; whether it also left the coalition is not settled.",
-            "noteHe": "שריה וסגני השרים מטעמה יצאו; לא הוכרע אם יצאה גם מהקואליציה."
-          },
-          {
             "factionNameHe": "הימין הממלכתי",
             "factionNameEn": "New Hope – The United Right",
             "seats": 4,
             "role": "member-with-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
-                "source": "plenum-2024-09-30",
-                "quote": "לצרף לממשלה את חבר הכנסת גדעון סער כשר ללא תיק",
-                "note": "The Knesset approved Gideon Sa'ar as minister without portfolio on 30 September 2024, and his term began that day.",
-                "noteHe": "הכנסת אישרה את גדעון סער כשר בלי תיק ב־30 בספטמבר 2024, ובו ביום החלה כהונתו."
+                "source": "agreement-new-hope-2024",
+                "quote": "מעוניינים הצדדים, כי סיעת הימין הממלכתי תצטרף לקואליציה ולממשלה",
+                "locator": "p. 1, preamble",
+                "note": "The written agreement signed by both factions on 5 November 2024; it binds the faction’s MKs to coalition discipline.",
+                "noteHe": "ההסכם הכתוב שנחתם בידי שתי הסיעות ב־5 בנובמבר 2024; הוא מחייב את חברי הכנסת של הסיעה במשמעת קואליציונית."
+              },
+              {
+                "source": "plenum-2024-11-06",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני לצירוף סיעה לממשלה השלושים-ושבע",
+                "note": "The Deputy Knesset Secretary, 6 November 2024, naming the Likud and New Hope – The United Right factions.",
+                "noteHe": "סגנית מזכיר הכנסת, 6 בנובמבר 2024, בציון סיעות הליכוד והימין הממלכתי."
               },
               {
                 "source": "positions-gov37",
@@ -2459,21 +2653,14 @@
                 "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
-                "source": "plenum-2024-09-30",
-                "quote": "אין שום הסכמים מלבד כניסתו של גדעון סער כשר. אפילו אין מחויבות קואליציונית מצידם.",
-                "note": "The coalition chair, Ofir Katz, in the Knesset before the vote.",
-                "noteHe": "יושב־ראש הקואליציה, אופיר כץ, במליאה לפני ההצבעה."
-              },
-              {
                 "source": "factions-k25",
-                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-09-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 30 September 2024.",
-                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־30 בספטמבר 2024."
+                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-11-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 5 November 2024.",
+                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־5 בנובמבר 2024."
               }
             ],
-            "note": "Its leader became a minister, which puts the faction in the government; but the coalition chair said there was no agreement beyond that and no coalition commitment from the faction, and no signed agreement was found.",
-            "noteEn": "Its leader Gideon Sa'ar became a minister; the coalition chair said there was no other agreement and no coalition commitment from the faction.",
-            "noteHe": "העומד בראשה, גדעון סער, מונה לשר; יושב־ראש הקואליציה אמר שאין הסכם נוסף ואין מחויבות קואליציונית מצד הסיעה."
+            "noteEn": "Its written coalition agreement with Likud was signed on 5 November 2024.",
+            "noteHe": "ההסכם הקואליציוני הכתוב שלה עם הליכוד נחתם ב־5 בנובמבר 2024."
           },
           {
             "factionNameHe": "עוצמה יהודית",
@@ -2505,11 +2692,11 @@
             "noteHe": "נבחרה ברשימה המשותפת של הציונות הדתית."
           }
         ],
-        "coalitionSeats": null,
-        "supportSeats": null,
+        "coalitionSeats": 61,
+        "supportSeats": 0,
         "knownMemberSeats": 61,
-        "membershipCoverage": "partial",
-        "coalitionSeatsNote": "The faction that joined or left counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "membershipCoverage": "complete",
+        "coalitionSeatsNote": "United Torah Judaism leaves with its 7 members in the Knesset’s faction records; its parties had announced that they were leaving the coalition. The other rows are carried from the list above.",
         "confidenceVote": null,
         "reconciliation": {
           "status": "vote-unavailable",
@@ -2519,8 +2706,8 @@
       {
         "date": "2025-07-20",
         "type": "ministerial-change",
-        "textEn": "The resignations of Shas’s ministers Haim Biton, Michael Malkieli, Yaakov Margi, Yoav Ben Tzur and Uriel Busso, and of deputy minister Moshe Abutbul, took effect. By one news report, its MKs were told to stay in the coalition.",
-        "textHe": "התפטרויותיהם של שרי ש״ס חיים ביטון, מיכאל מלכיאלי, יעקב מרגי, יואב בן צור ואוריאל בוסו, ושל סגן השר משה אבוטבול, נכנסו לתוקף. לפי דיווח חדשותי אחד, חברי הכנסת שלה התבקשו להישאר בקואליציה.",
+        "textEn": "The resignations of Shas’s ministers Haim Biton, Michael Malkieli, Yaakov Margi, Yoav Ben Tzur and Uriel Busso, and of deputy minister Moshe Abutbul, took effect; the faction stayed in the coalition.",
+        "textHe": "התפטרויותיהם של שרי ש״ס חיים ביטון, מיכאל מלכיאלי, יעקב מרגי, יואב בן צור ואוריאל בוסו, ושל סגן השר משה אבוטבול, נכנסו לתוקף; הסיעה נשארה בקואליציה.",
         "cites": [
           {
             "source": "plenum-2025-07-21",
@@ -2533,12 +2720,6 @@
             "quote": "PersonToPositionID 31010, PersonID 1056, PositionID 39, FinishDate 2025-07-20; PersonToPositionID 31042, PersonID 28513, PositionID 39, FinishDate 2025-07-20; PersonToPositionID 31712, PersonID 30765, PositionID 39, FinishDate 2025-07-20; PersonToPositionID 30687, PersonID 30804, PositionID 39, FinishDate 2025-07-20; PersonToPositionID 30699, PersonID 30470, PositionID 39, FinishDate 2025-07-20; PersonToPositionID 30801, PersonID 30749, PositionID 40, FinishDate 2025-07-20",
             "note": "The Knesset’s appointment records: Shas’s five ministers and deputy minister Moshe Abutbul until 20 July 2025.",
             "noteHe": "רישומי המינויים של הכנסת: חמשת שרי ש״ס וסגן השר משה אבוטבול עד 20 ביולי 2025."
-          },
-          {
-            "source": "jpost-2025-07-17",
-            "quote": "directed its MKs to remain in the coalition for the time being",
-            "note": "One news report: the Council of Torah Sages told Shas’s MKs to stay in the coalition.",
-            "noteHe": "דיווח חדשותי אחד: מועצת חכמי התורה הורתה לחברי הכנסת של ש״ס להישאר בקואליציה."
           },
           {
             "source": "odata-government37",
@@ -2575,6 +2756,12 @@
             "quote": "{\"PersonToPositionID\":30801,\"PersonID\":30749,\"PositionID\":40,\"KnessetNum\":25,\"StartDate\":\"2023-01-03T00:00:00\",\"FinishDate\":\"2025-07-20T00:00:00\",\"GovMinistryID\":967,\"GovMinistryName\":\"משרד החקלאות וביטחון המזון\",\"DutyDesc\":\"סגן שר במשרד החקלאות וביטחון המזון\",\"FactionID\":null,\"FactionName\":null,\"GovernmentNum\":37,\"CommitteeID\":null,\"CommitteeName\":null,\"IsCurrent\":false,\"LastUpdatedDate\":\"2025-07-20T14:35:58.843\"}",
             "note": "The Knesset’s official record: משה אבוטבול.",
             "noteHe": "הרישום הרשמי של הכנסת: משה אבוטבול."
+          },
+          {
+            "source": "plenum-2025-07-16",
+            "quote": "מפלגת ש\"ס החליטה שהיא פורשת מהממשלה. היא פורשת מהממשלה, אבל לא מהקואליציה",
+            "note": "Eitan Ginzburg (National Unity) in the Knesset as the news came in, 16 July 2025.",
+            "noteHe": "איתן גינזבורג (המחנה הממלכתי) בכנסת, עם היוודע הידיעה, 16 ביולי 2025."
           }
         ],
         "notes": [
@@ -2630,7 +2817,7 @@
             "letters": "שס",
             "seats": 11,
             "role": "member-with-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "role-roster-37",
@@ -2645,12 +2832,6 @@
                 "noteHe": "הודעת הממשלה מ־21 ביולי 2025; כהונת מיכאל מלכיאלי הסתיימה בשעה 16:05 באותו יום, וכהונת משה ארבל ב־22 ביולי."
               },
               {
-                "source": "jpost-2025-07-17",
-                "quote": "directed its MKs to remain in the coalition for the time being",
-                "note": "One news report: the Council of Torah Sages told Shas’s MKs to stay in the coalition.",
-                "noteHe": "דיווח חדשותי אחד: מועצת חכמי התורה הורתה לחברי הכנסת של ש״ס להישאר בקואליציה."
-              },
-              {
                 "source": "plenum-2025-07-21",
                 "quote": "והם החליטו לפרוש מהממשלה, לא מהקואליציה",
                 "note": "Minister David Amsalem, about the Haredi parties, in the Knesset on 21 July 2025.",
@@ -2661,65 +2842,50 @@
                 "quote": "Faction 1095 (התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל): 11 members on 2025-07-20, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
                 "note": "The Knesset’s faction records: 11 members of Shas on 20 July 2025.",
                 "noteHe": "רישומי הסיעות של הכנסת: 11 חברים בסיעת ש״ס ב־20 ביולי 2025."
+              },
+              {
+                "source": "plenum-2025-07-16",
+                "quote": "מפלגת ש\"ס החליטה שהיא פורשת מהממשלה. היא פורשת מהממשלה, אבל לא מהקואליציה",
+                "note": "Eitan Ginzburg (National Unity) in the Knesset as the news came in, 16 July 2025.",
+                "noteHe": "איתן גינזבורג (המחנה הממלכתי) בכנסת, עם היוודע הידיעה, 16 ביולי 2025."
+              },
+              {
+                "source": "jdn-2025-07-16",
+                "quote": "על מנת שיהיה אפשר להמשיך בקיום הממשלה ובשותפות הקואליציונית",
+                "locator": "clause ד",
+                "note": "The Council of Torah Sages’ statement, asking for the draft law by the opening of the Knesset’s winter session.",
+                "noteHe": "הודעת מועצת חכמי התורה, הדורשת את חוק הגיוס עד פתיחת כנס החורף של הכנסת."
+              },
+              {
+                "source": "jpost-2025-07-17",
+                "quote": "directed its MKs to remain in the coalition for the time being",
+                "note": "A news report: the Council of Torah Sages told Shas’s MKs to stay in the coalition.",
+                "noteHe": "דיווח חדשותי: מועצת חכמי התורה הורתה לחברי הכנסת של ש״ס להישאר בקואליציה."
               }
             ],
-            "note": "Its ministers resigned but, by one news report and a minister’s remark in the Knesset, its MKs were told to stay in the coalition.",
-            "noteEn": "Its ministers resigned (the last on 22 July 2025); by one news report its MKs were told to stay in the coalition.",
-            "noteHe": "שריה התפטרו (האחרון ב־22 ביולי 2025); לפי דיווח חדשותי אחד, חברי הכנסת שלה התבקשו להישאר בקואליציה."
-          },
-          {
-            "letters": "ג",
-            "seats": 7,
-            "role": "member-without-ministries",
-            "certainty": "unknown",
-            "cites": [
-              {
-                "source": "plenum-2025-07-21",
-                "quote": "חברותו בממשלה של שר ירושלים ומסורת ישראל מאיר פרוש נפסקה ביום כ\"א בתמוז התשפ\"ה, 17 ביולי 2025, בשעה 00:07",
-                "note": "The Government’s notice of 21 July 2025: Meir Porush’s term ended at 00:07 on 17 July, deputy minister Yaakov Tesler’s at 13:00 that day, and Uri Maklev’s deputy posts on 16 July.",
-                "noteHe": "הודעת הממשלה מ־21 ביולי 2025: כהונת מאיר פרוש הסתיימה ב־17 ביולי בשעה 00:07, כהונת סגן השר יעקב טסלר בשעה 13:00 באותו יום, ותפקידי סגן השר של אורי מקלב ב־16 ביולי."
-              },
-              {
-                "source": "plenum-2025-07-14",
-                "quote": "יש לסיים מיידית את ההשתתפות עם הממשלה והקואליציה",
-                "note": "A letter from Rabbi Dov Lando, a leader of Degel HaTorah (four of the faction’s seven MKs), read out in the Knesset on 14 July 2025.",
-                "noteHe": "מכתב של הרב דב לנדו, ממנהיגי דגל התורה (ארבעה משבעת חברי הסיעה בכנסת), שהוקרא בכנסת ב־14 ביולי 2025."
-              },
-              {
-                "source": "jpost-2025-07-14",
-                "quote": "announced on Tuesday its decision to quit the government and the coalition",
-                "note": "One news report: a statement by both Degel HaTorah and Agudat Yisrael. No Knesset record of the faction leaving the coalition was found.",
-                "noteHe": "דיווח חדשותי אחד: הודעה משותפת של דגל התורה ושל אגודת ישראל. לא נמצא רישום של הכנסת על יציאת הסיעה מהקואליציה."
-              },
-              {
-                "source": "plenum-2025-07-21",
-                "quote": "והם החליטו לפרוש מהממשלה, לא מהקואליציה",
-                "note": "Minister David Amsalem, about the Haredi parties, in the Knesset on 21 July 2025.",
-                "noteHe": "השר דוד אמסלם, על המפלגות החרדיות, במליאה ב־21 ביולי 2025."
-              },
-              {
-                "source": "factions-k25",
-                "quote": "Faction 1101 (יהדות התורה): 7 members on 2025-07-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 7 members of United Torah Judaism on 17 July 2025.",
-                "noteHe": "רישומי הסיעות של הכנסת: 7 חברים בסיעת יהדות התורה ב־17 ביולי 2025."
-              }
-            ],
-            "note": "All its ministers and deputy ministers had left by 17 July 2025. One news report says both its parts quit the coalition; a minister said in the Knesset that the Haredi parties left the government, not the coalition. Not counted.",
-            "noteEn": "Its ministers and deputy ministers left; whether it also left the coalition is not settled.",
-            "noteHe": "שריה וסגני השרים מטעמה יצאו; לא הוכרע אם יצאה גם מהקואליציה."
+            "note": "Its ministers resigned; the Council of Torah Sages decided on 16 July 2025 that the faction would stay in the coalition, as an opposition MK reported in the Knesset that day and a minister said on 21 July.",
+            "noteEn": "Its ministers resigned (the last on 22 July 2025); the faction stayed in the coalition.",
+            "noteHe": "שריה התפטרו (האחרון ב־22 ביולי 2025); הסיעה נשארה בקואליציה."
           },
           {
             "factionNameHe": "הימין הממלכתי",
             "factionNameEn": "New Hope – The United Right",
             "seats": 4,
             "role": "member-with-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
-                "source": "plenum-2024-09-30",
-                "quote": "לצרף לממשלה את חבר הכנסת גדעון סער כשר ללא תיק",
-                "note": "The Knesset approved Gideon Sa'ar as minister without portfolio on 30 September 2024, and his term began that day.",
-                "noteHe": "הכנסת אישרה את גדעון סער כשר בלי תיק ב־30 בספטמבר 2024, ובו ביום החלה כהונתו."
+                "source": "agreement-new-hope-2024",
+                "quote": "מעוניינים הצדדים, כי סיעת הימין הממלכתי תצטרף לקואליציה ולממשלה",
+                "locator": "p. 1, preamble",
+                "note": "The written agreement signed by both factions on 5 November 2024; it binds the faction’s MKs to coalition discipline.",
+                "noteHe": "ההסכם הכתוב שנחתם בידי שתי הסיעות ב־5 בנובמבר 2024; הוא מחייב את חברי הכנסת של הסיעה במשמעת קואליציונית."
+              },
+              {
+                "source": "plenum-2024-11-06",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני לצירוף סיעה לממשלה השלושים-ושבע",
+                "note": "The Deputy Knesset Secretary, 6 November 2024, naming the Likud and New Hope – The United Right factions.",
+                "noteHe": "סגנית מזכיר הכנסת, 6 בנובמבר 2024, בציון סיעות הליכוד והימין הממלכתי."
               },
               {
                 "source": "positions-gov37",
@@ -2728,21 +2894,14 @@
                 "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
-                "source": "plenum-2024-09-30",
-                "quote": "אין שום הסכמים מלבד כניסתו של גדעון סער כשר. אפילו אין מחויבות קואליציונית מצידם.",
-                "note": "The coalition chair, Ofir Katz, in the Knesset before the vote.",
-                "noteHe": "יושב־ראש הקואליציה, אופיר כץ, במליאה לפני ההצבעה."
-              },
-              {
                 "source": "factions-k25",
-                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-09-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 30 September 2024.",
-                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־30 בספטמבר 2024."
+                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-11-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 5 November 2024.",
+                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־5 בנובמבר 2024."
               }
             ],
-            "note": "Its leader became a minister, which puts the faction in the government; but the coalition chair said there was no agreement beyond that and no coalition commitment from the faction, and no signed agreement was found.",
-            "noteEn": "Its leader Gideon Sa'ar became a minister; the coalition chair said there was no other agreement and no coalition commitment from the faction.",
-            "noteHe": "העומד בראשה, גדעון סער, מונה לשר; יושב־ראש הקואליציה אמר שאין הסכם נוסף ואין מחויבות קואליציונית מצד הסיעה."
+            "noteEn": "Its written coalition agreement with Likud was signed on 5 November 2024.",
+            "noteHe": "ההסכם הקואליציוני הכתוב שלה עם הליכוד נחתם ב־5 בנובמבר 2024."
           },
           {
             "factionNameHe": "עוצמה יהודית",
@@ -2774,10 +2933,10 @@
             "noteHe": "נבחרה ברשימה המשותפת של הציונות הדתית."
           }
         ],
-        "coalitionSeats": null,
-        "supportSeats": null,
+        "coalitionSeats": 61,
+        "supportSeats": 0,
         "knownMemberSeats": 61,
-        "membershipCoverage": "partial",
+        "membershipCoverage": "complete",
         "coalitionSeatsNote": "Shas counts 11 members that day in the Knesset’s faction records, as before; the other rows are carried from the list above.",
         "confidenceVote": null,
         "reconciliation": {
@@ -2858,19 +3017,13 @@
             "letters": "שס",
             "seats": 11,
             "role": "member-without-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "plenum-2025-07-21",
                 "quote": "חברותם בממשלה של השרים יעקב מרגי, יואב בן צור, אוריאל בוסו וחיים ביטון נפסקה ביום כ\"ד בתמוז התשפ\"ה, 20 ביולי 2025, בשעה 10:00",
                 "note": "The Government’s notice of 21 July 2025; Michael Malkieli’s term ended at 16:05 that day and Moshe Arbel’s on 22 July.",
                 "noteHe": "הודעת הממשלה מ־21 ביולי 2025; כהונת מיכאל מלכיאלי הסתיימה בשעה 16:05 באותו יום, וכהונת משה ארבל ב־22 ביולי."
-              },
-              {
-                "source": "jpost-2025-07-17",
-                "quote": "directed its MKs to remain in the coalition for the time being",
-                "note": "One news report: the Council of Torah Sages told Shas’s MKs to stay in the coalition.",
-                "noteHe": "דיווח חדשותי אחד: מועצת חכמי התורה הורתה לחברי הכנסת של ש״ס להישאר בקואליציה."
               },
               {
                 "source": "plenum-2025-07-21",
@@ -2883,65 +3036,50 @@
                 "quote": "Faction 1095 (התאחדות הספרדים שומרי תורה תנועתו של מרן הרב עובדיה יוסף זצ\"ל): 11 members on 2025-07-20, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
                 "note": "The Knesset’s faction records: 11 members of Shas on 20 July 2025.",
                 "noteHe": "רישומי הסיעות של הכנסת: 11 חברים בסיעת ש״ס ב־20 ביולי 2025."
+              },
+              {
+                "source": "plenum-2025-07-16",
+                "quote": "מפלגת ש\"ס החליטה שהיא פורשת מהממשלה. היא פורשת מהממשלה, אבל לא מהקואליציה",
+                "note": "Eitan Ginzburg (National Unity) in the Knesset as the news came in, 16 July 2025.",
+                "noteHe": "איתן גינזבורג (המחנה הממלכתי) בכנסת, עם היוודע הידיעה, 16 ביולי 2025."
+              },
+              {
+                "source": "jdn-2025-07-16",
+                "quote": "על מנת שיהיה אפשר להמשיך בקיום הממשלה ובשותפות הקואליציונית",
+                "locator": "clause ד",
+                "note": "The Council of Torah Sages’ statement, asking for the draft law by the opening of the Knesset’s winter session.",
+                "noteHe": "הודעת מועצת חכמי התורה, הדורשת את חוק הגיוס עד פתיחת כנס החורף של הכנסת."
+              },
+              {
+                "source": "jpost-2025-07-17",
+                "quote": "directed its MKs to remain in the coalition for the time being",
+                "note": "A news report: the Council of Torah Sages told Shas’s MKs to stay in the coalition.",
+                "noteHe": "דיווח חדשותי: מועצת חכמי התורה הורתה לחברי הכנסת של ש״ס להישאר בקואליציה."
               }
             ],
-            "note": "Its ministers resigned but, by one news report and a minister’s remark in the Knesset, its MKs were told to stay in the coalition.",
-            "noteEn": "No ministers from 22 July 2025; by one news report its MKs were told to stay in the coalition.",
-            "noteHe": "בלי שרים מ־22 ביולי 2025; לפי דיווח חדשותי אחד, חברי הכנסת שלה התבקשו להישאר בקואליציה."
-          },
-          {
-            "letters": "ג",
-            "seats": 7,
-            "role": "member-without-ministries",
-            "certainty": "unknown",
-            "cites": [
-              {
-                "source": "plenum-2025-07-21",
-                "quote": "חברותו בממשלה של שר ירושלים ומסורת ישראל מאיר פרוש נפסקה ביום כ\"א בתמוז התשפ\"ה, 17 ביולי 2025, בשעה 00:07",
-                "note": "The Government’s notice of 21 July 2025: Meir Porush’s term ended at 00:07 on 17 July, deputy minister Yaakov Tesler’s at 13:00 that day, and Uri Maklev’s deputy posts on 16 July.",
-                "noteHe": "הודעת הממשלה מ־21 ביולי 2025: כהונת מאיר פרוש הסתיימה ב־17 ביולי בשעה 00:07, כהונת סגן השר יעקב טסלר בשעה 13:00 באותו יום, ותפקידי סגן השר של אורי מקלב ב־16 ביולי."
-              },
-              {
-                "source": "plenum-2025-07-14",
-                "quote": "יש לסיים מיידית את ההשתתפות עם הממשלה והקואליציה",
-                "note": "A letter from Rabbi Dov Lando, a leader of Degel HaTorah (four of the faction’s seven MKs), read out in the Knesset on 14 July 2025.",
-                "noteHe": "מכתב של הרב דב לנדו, ממנהיגי דגל התורה (ארבעה משבעת חברי הסיעה בכנסת), שהוקרא בכנסת ב־14 ביולי 2025."
-              },
-              {
-                "source": "jpost-2025-07-14",
-                "quote": "announced on Tuesday its decision to quit the government and the coalition",
-                "note": "One news report: a statement by both Degel HaTorah and Agudat Yisrael. No Knesset record of the faction leaving the coalition was found.",
-                "noteHe": "דיווח חדשותי אחד: הודעה משותפת של דגל התורה ושל אגודת ישראל. לא נמצא רישום של הכנסת על יציאת הסיעה מהקואליציה."
-              },
-              {
-                "source": "plenum-2025-07-21",
-                "quote": "והם החליטו לפרוש מהממשלה, לא מהקואליציה",
-                "note": "Minister David Amsalem, about the Haredi parties, in the Knesset on 21 July 2025.",
-                "noteHe": "השר דוד אמסלם, על המפלגות החרדיות, במליאה ב־21 ביולי 2025."
-              },
-              {
-                "source": "factions-k25",
-                "quote": "Faction 1101 (יהדות התורה): 7 members on 2025-07-17, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 7 members of United Torah Judaism on 17 July 2025.",
-                "noteHe": "רישומי הסיעות של הכנסת: 7 חברים בסיעת יהדות התורה ב־17 ביולי 2025."
-              }
-            ],
-            "note": "All its ministers and deputy ministers had left by 17 July 2025. One news report says both its parts quit the coalition; a minister said in the Knesset that the Haredi parties left the government, not the coalition. Not counted.",
-            "noteEn": "Its ministers and deputy ministers left; whether it also left the coalition is not settled.",
-            "noteHe": "שריה וסגני השרים מטעמה יצאו; לא הוכרע אם יצאה גם מהקואליציה."
+            "note": "Its ministers resigned; the Council of Torah Sages decided on 16 July 2025 that the faction would stay in the coalition, as an opposition MK reported in the Knesset that day and a minister said on 21 July.",
+            "noteEn": "No ministers from 22 July 2025; the faction stayed in the coalition.",
+            "noteHe": "בלי שרים מ־22 ביולי 2025; הסיעה נשארה בקואליציה."
           },
           {
             "factionNameHe": "הימין הממלכתי",
             "factionNameEn": "New Hope – The United Right",
             "seats": 4,
             "role": "member-with-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
-                "source": "plenum-2024-09-30",
-                "quote": "לצרף לממשלה את חבר הכנסת גדעון סער כשר ללא תיק",
-                "note": "The Knesset approved Gideon Sa'ar as minister without portfolio on 30 September 2024, and his term began that day.",
-                "noteHe": "הכנסת אישרה את גדעון סער כשר בלי תיק ב־30 בספטמבר 2024, ובו ביום החלה כהונתו."
+                "source": "agreement-new-hope-2024",
+                "quote": "מעוניינים הצדדים, כי סיעת הימין הממלכתי תצטרף לקואליציה ולממשלה",
+                "locator": "p. 1, preamble",
+                "note": "The written agreement signed by both factions on 5 November 2024; it binds the faction’s MKs to coalition discipline.",
+                "noteHe": "ההסכם הכתוב שנחתם בידי שתי הסיעות ב־5 בנובמבר 2024; הוא מחייב את חברי הכנסת של הסיעה במשמעת קואליציונית."
+              },
+              {
+                "source": "plenum-2024-11-06",
+                "quote": "הונח היום על שולחן הכנסת הסכם קואליציוני לצירוף סיעה לממשלה השלושים-ושבע",
+                "note": "The Deputy Knesset Secretary, 6 November 2024, naming the Likud and New Hope – The United Right factions.",
+                "noteHe": "סגנית מזכיר הכנסת, 6 בנובמבר 2024, בציון סיעות הליכוד והימין הממלכתי."
               },
               {
                 "source": "positions-gov37",
@@ -2950,21 +3088,14 @@
                 "noteHe": "רישום המינוי של הכנסת: גדעון סער, שר החוץ מ־8 בנובמבר 2024."
               },
               {
-                "source": "plenum-2024-09-30",
-                "quote": "אין שום הסכמים מלבד כניסתו של גדעון סער כשר. אפילו אין מחויבות קואליציונית מצידם.",
-                "note": "The coalition chair, Ofir Katz, in the Knesset before the vote.",
-                "noteHe": "יושב־ראש הקואליציה, אופיר כץ, במליאה לפני ההצבעה."
-              },
-              {
                 "source": "factions-k25",
-                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-09-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
-                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 30 September 2024.",
-                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־30 בספטמבר 2024."
+                "quote": "Faction 1108 (הימין הממלכתי ): 4 members on 2024-11-05, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 4 members of New Hope – The United Right on 5 November 2024.",
+                "noteHe": "רישומי הסיעות של הכנסת: 4 חברים בסיעת הימין הממלכתי ב־5 בנובמבר 2024."
               }
             ],
-            "note": "Its leader became a minister, which puts the faction in the government; but the coalition chair said there was no agreement beyond that and no coalition commitment from the faction, and no signed agreement was found.",
-            "noteEn": "Its leader Gideon Sa'ar became a minister; the coalition chair said there was no other agreement and no coalition commitment from the faction.",
-            "noteHe": "העומד בראשה, גדעון סער, מונה לשר; יושב־ראש הקואליציה אמר שאין הסכם נוסף ואין מחויבות קואליציונית מצד הסיעה."
+            "noteEn": "Its written coalition agreement with Likud was signed on 5 November 2024.",
+            "noteHe": "ההסכם הקואליציוני הכתוב שלה עם הליכוד נחתם ב־5 בנובמבר 2024."
           },
           {
             "factionNameHe": "עוצמה יהודית",
@@ -2996,16 +3127,33 @@
             "noteHe": "נבחרה ברשימה המשותפת של הציונות הדתית."
           }
         ],
-        "coalitionSeats": null,
-        "supportSeats": null,
+        "coalitionSeats": 61,
+        "supportSeats": 0,
         "knownMemberSeats": 61,
-        "membershipCoverage": "partial",
+        "membershipCoverage": "complete",
         "coalitionSeatsNote": "No row changes its seats; Shas stays without ministers.",
         "confidenceVote": null,
         "reconciliation": {
           "status": "vote-unavailable",
           "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
         }
+      },
+      {
+        "date": "2025-10-23",
+        "type": "coalition-change",
+        "textEn": "Shas announced that it was giving up its coalition posts in the Knesset; its MKs resigned as chairs of Knesset committees. The member list does not change.",
+        "textHe": "ש״ס הודיעה שהיא פורשת מתפקידיה הקואליציוניים בכנסת; חברי הכנסת שלה התפטרו מראשות ועדות הכנסת. רשימת החברים אינה משתנה.",
+        "cites": [
+          {
+            "source": "walla-2025-10-23",
+            "quote": "מפלגת ש\"ס הודיעה היום (חמישי) על פרישתה מתפקידיה הקואליציוניים בכנסת",
+            "note": "A news report; its MKs handed in their resignations as chairs of Knesset committees.",
+            "noteHe": "דיווח חדשותי; חברי הכנסת שלה הגישו את התפטרותם מראשות ועדות הכנסת."
+          }
+        ],
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 37
       },
       {
         "date": "2026-01-19",

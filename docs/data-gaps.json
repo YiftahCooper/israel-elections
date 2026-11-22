@@ -1,30 +1,30 @@
 {
   "schemaVersion": 3,
-  "total": 12758,
+  "total": 12754,
   "counts": {
-    "unknown": 7519,
+    "unknown": 7520,
     "missing-field": 285,
     "conflict": 19,
-    "single-source": 3089,
+    "single-source": 3094,
     "low-confidence": 101,
     "release-hold": 0,
     "inferred": 1179,
     "pending": 357,
-    "unconfirmed": 209
+    "unconfirmed": 199
   },
   "countsByStatus": {
     "inferred-not-verified": 1040,
     "needs-current-status-review": 319,
-    "open": 11399
+    "open": 11395
   },
   "countsByImportance": {
     "high": {
-      "total": 1119,
-      "confirmed": 551,
-      "probable": 65,
-      "provisional": 140,
+      "total": 1115,
+      "confirmed": 559,
+      "probable": 54,
+      "provisional": 141,
       "disputed": 11,
-      "unknown": 352
+      "unknown": 350
     },
     "medium": {
       "total": 4483,
@@ -58,11 +58,11 @@
       "unknown": 76
     },
     "Government roles": {
-      "confirmed": 475,
-      "probable": 28,
+      "confirmed": 510,
+      "probable": 17,
       "provisional": 3,
       "disputed": 3,
-      "unknown": 14
+      "unknown": 8
     },
     "Formation events": {
       "confirmed": 75,
@@ -311,15 +311,15 @@
     },
     {
       "election": "k13",
-      "total": 331,
-      "highOpen": 24,
+      "total": 337,
+      "highOpen": 28,
       "mediumOpen": 116,
       "low": 146,
       "counts": {
-        "unknown": 208,
+        "unknown": 212,
         "missing-field": 12,
         "conflict": 1,
-        "single-source": 64,
+        "single-source": 66,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 26,
@@ -347,38 +347,38 @@
     },
     {
       "election": "k15",
-      "total": 502,
-      "highOpen": 101,
+      "total": 507,
+      "highOpen": 103,
       "mediumOpen": 153,
       "low": 160,
       "counts": {
-        "unknown": 289,
+        "unknown": 292,
         "missing-field": 20,
         "conflict": 1,
-        "single-source": 137,
+        "single-source": 140,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 30,
         "pending": 15,
-        "unconfirmed": 6
+        "unconfirmed": 5
       }
     },
     {
       "election": "k16",
-      "total": 510,
-      "highOpen": 53,
+      "total": 505,
+      "highOpen": 49,
       "mediumOpen": 159,
       "low": 218,
       "counts": {
-        "unknown": 272,
+        "unknown": 273,
         "missing-field": 25,
         "conflict": 1,
-        "single-source": 156,
+        "single-source": 151,
         "low-confidence": 2,
         "release-hold": 0,
         "inferred": 41,
         "pending": 11,
-        "unconfirmed": 2
+        "unconfirmed": 1
       }
     },
     {
@@ -527,20 +527,20 @@
     },
     {
       "election": "k25",
-      "total": 931,
-      "highOpen": 44,
+      "total": 921,
+      "highOpen": 30,
       "mediumOpen": 388,
       "low": 409,
       "counts": {
-        "unknown": 557,
+        "unknown": 550,
         "missing-field": 0,
         "conflict": 2,
-        "single-source": 218,
+        "single-source": 223,
         "low-confidence": 4,
         "release-hold": 0,
         "inferred": 88,
         "pending": 23,
-        "unconfirmed": 39
+        "unconfirmed": 31
       }
     },
     {
@@ -584,7 +584,7 @@
     {"election":"cross-election","area":"data/meta/joint-facts.json record","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/joint-facts.json"},
     {"election":"cross-election","area":"data/meta/joint-facts.json unresolved.personId","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/joint-facts.json"},
     {"election":"k26","area":"Bloc schemes","count":2,"certainty":{"provisional":2},"kinds":{"single-source":2},"labels":["outgoing-government","pre-election-blocs"],"file":"data/meta/k26.json"},
-    {"election":"k25","area":"Later governments","count":37,"certainty":{"probable":8,"unknown":29},"kinds":{"unknown":29,"unconfirmed":8},"labels":["coalition-change 2023-10-12","coalition-change 2024-09-30","coalition-change 2025-03-19","coalition-withdrawal 2024-03-27","coalition-withdrawal 2024-06-13","coalition-withdrawal 2025-01-21","coalition-withdrawal 2025-07-17","ג","faction-split 2024-03-13","שס","ministerial-change 2025-07-20","ministerial-change 2025-07-22"],"file":"data/meta/aftermath/k25.json"},
+    {"election":"k25","area":"Later governments","count":23,"certainty":{"provisional":1,"unknown":22},"kinds":{"unknown":22,"single-source":1},"labels":["coalition-change 2023-10-12","coalition-change 2024-11-05","coalition-change 2025-03-19","coalition-change 2025-10-23","coalition-withdrawal 2024-03-27","coalition-withdrawal 2024-06-13","coalition-withdrawal 2025-01-21","coalition-withdrawal 2025-07-17","faction-split 2024-03-13","ministerial-change 2024-09-30","ministerial-change 2025-07-20","ministerial-change 2025-07-22"],"file":"data/meta/aftermath/k25.json"},
     {"election":"k25","area":"Bloc schemes","count":2,"certainty":{"provisional":2},"kinds":{"single-source":2},"labels":["pm-recommendations","pre-election-blocs"],"file":"data/meta/k25.json"},
     {"election":"k25","area":"Formation events","count":2,"certainty":{"provisional":2},"kinds":{"single-source":2},"labels":["consultations 2022-11-09","mandate-given 2022-11-13"],"file":"data/meta/aftermath/k25.json"},
     {"election":"k25","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k25.json"},
@@ -626,7 +626,7 @@
     {"election":"k17","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k17.json"},
     {"election":"k17","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k17.json"},
     {"election":"k16","area":"Formation conflicts","count":2,"certainty":{"disputed":1,"unknown":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Tasking date"],"file":"data/meta/aftermath/k16.json"},
-    {"election":"k16","area":"Later governments","count":42,"certainty":{"probable":8,"unknown":34},"kinds":{"unknown":31,"single-source":10,"unconfirmed":1},"labels":["כן","ג","coalition-change 2005-01-10","coalition-withdrawal 2004-06-06","coalition-withdrawal 2004-11-11","coalition-withdrawal 2004-12-04","coalition-withdrawal 2005-11-23","faction-split 2005-01-12","ministerial-change 2005-03-30"],"file":"data/meta/aftermath/k16.json"},
+    {"election":"k16","area":"Later governments","count":38,"certainty":{"probable":6,"unknown":32},"kinds":{"unknown":32,"single-source":6},"labels":["כן","coalition-change 2005-01-10","coalition-withdrawal 2004-06-06","coalition-withdrawal 2004-11-11","coalition-withdrawal 2004-12-04","coalition-withdrawal 2005-11-23","coalition-withdrawal 2006-01-15","faction-split 2005-01-12","ministerial-change 2005-03-30"],"file":"data/meta/aftermath/k16.json"},
     {"election":"k16","area":"Coalition seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k16.json"},
     {"election":"k16","area":"data/raw/kN/national.reviewed.json discrepancies.status","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k16/national.reviewed.json"},
     {"election":"k16","area":"data/raw/kN/national.reviewed.json gazetteTotals.registered","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k16/national.reviewed.json"},
@@ -637,7 +637,7 @@
     {"election":"k16","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k16.json"},
     {"election":"k16","area":"Outside-support seat total","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k16.json"},
     {"election":"k15","area":"Formation conflicts","count":2,"certainty":{"provisional":1,"disputed":1},"kinds":{"conflict":1,"single-source":1},"labels":[],"disputed":["Coalition seats at formation versus later snapshot"],"file":"data/meta/aftermath/k15.json"},
-    {"election":"k15","area":"Later governments","count":81,"certainty":{"probable":1,"provisional":1,"unknown":79},"kinds":{"unknown":77,"single-source":3,"unconfirmed":1},"labels":["שס","כן","מרצ","coalition-change 2000-06-24","coalition-change 2002-04-08","coalition-change 2002-06-03","coalition-withdrawal 1999-09","coalition-withdrawal 2000-07-11","coalition-withdrawal 2000-07-12","אמת","coalition-withdrawal 2000-08-04","coalition-withdrawal 2002-03-14","coalition-withdrawal 2002-05-23","coalition-withdrawal 2002-11-02","ministerial-change 2002-07-30"],"file":"data/meta/aftermath/k15.json"},
+    {"election":"k15","area":"Later governments","count":83,"certainty":{"provisional":1,"unknown":82},"kinds":{"unknown":80,"single-source":3},"labels":["שס","כן","מרצ","coalition-change 2000-06-24","coalition-change 2002-04-08","coalition-change 2002-06-03","coalition-withdrawal 1999-09","coalition-withdrawal 2000-07-11","coalition-withdrawal 2000-07-12","coalition-withdrawal 2000-08-04","coalition-withdrawal 2002-03-14","coalition-withdrawal 2002-05-23","coalition-withdrawal 2002-11-02","faction-split 1999-07-20","ministerial-change 2002-07-30"],"file":"data/meta/aftermath/k15.json"},
     {"election":"k15","area":"data/meta/election-context.json pmContests.candidates","count":6,"certainty":{"provisional":6},"kinds":{"single-source":6},"labels":["barak","begin","bishara","mordechai","netanyahu","sharon"],"file":"data/meta/election-context.json"},
     {"election":"k15","area":"data/meta/election-context.json pmContests.totals","count":6,"certainty":{"probable":2,"provisional":4},"kinds":{"single-source":6},"labels":["pm1999","pm2001"],"file":"data/meta/election-context.json"},
     {"election":"k15","area":"data/meta/election-context.json pmContests","count":2,"certainty":{"provisional":2},"kinds":{"single-source":2},"labels":["pm1999","pm2001"],"file":"data/meta/election-context.json"},
@@ -651,7 +651,7 @@
     {"election":"k14","area":"Investiture reconciliation","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
     {"election":"k14","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k14.json"},
     {"election":"k13","area":"Recommendations","count":9,"certainty":{"probable":1,"provisional":6,"disputed":1,"unknown":1},"kinds":{"unknown":1,"conflict":1,"single-source":6,"unconfirmed":1},"labels":["שס","ב","ג","ו","ט","מחל","ע","מרצ","אמת"],"disputed":["Sources disagree. Hadashot says Shas recommended no one, because Rabin had not invited it into his government; Amigoe re"],"file":"data/meta/aftermath/k13.json"},
-    {"election":"k13","area":"Later governments","count":10,"certainty":{"provisional":1,"unknown":9},"kinds":{"unknown":9,"single-source":1},"labels":["אמת","coalition-change 1995-01-09","coalition-withdrawal 1993-09-14"],"file":"data/meta/aftermath/k13.json"},
+    {"election":"k13","area":"Later governments","count":14,"certainty":{"provisional":1,"unknown":13},"kinds":{"unknown":13,"single-source":1},"labels":["אמת","coalition-change 1994-07-13","coalition-change 1995-01-09","coalition-withdrawal 1993-09-14"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k13","area":"Formation events","count":2,"certainty":{"probable":1,"provisional":1},"kinds":{"single-source":1,"unconfirmed":1},"labels":["consultations 1992-06-28","mandate-given 1992-07-02"],"file":"data/meta/aftermath/k13.json"},
     {"election":"k13","area":"data/raw/kN/national.reviewed.json agreements.sourceId","count":1,"certainty":{"unknown":1},"kinds":{"unknown":1},"labels":[],"file":"data/raw/k13/national.reviewed.json"},
     {"election":"k13","area":"Investiture vote","count":1,"certainty":{"provisional":1},"kinds":{"single-source":1},"labels":[],"file":"data/meta/aftermath/k13.json"},

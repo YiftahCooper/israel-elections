@@ -247,6 +247,41 @@
       "publisherHe": "סוכנות הידיעות היהודית, 2 בדצמבר 2004",
       "kind": "secondary",
       "accessed": "2026-11-19"
+    },
+    "plenum-2005-01-11": {
+      "url": "https://fs.knesset.gov.il/16/Plenum/16_ptm_129058.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 11 January 2005",
+      "publisherHe": "הכנסת, דברי הכנסת, 11 בינואר 2005",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "plenum-2005-01-12": {
+      "url": "https://fs.knesset.gov.il/16/Plenum/16_ptm_129057.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 12 January 2005",
+      "publisherHe": "הכנסת, דברי הכנסת, 12 בינואר 2005",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "plenum-2005-01-17": {
+      "url": "https://fs.knesset.gov.il/16/Plenum/16_ptm_129056.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 17 January 2005",
+      "publisherHe": "הכנסת, דברי הכנסת, 17 בינואר 2005",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "plenum-2005-01-18": {
+      "url": "https://fs.knesset.gov.il/16/Plenum/16_ptm_129055.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 18 January 2005",
+      "publisherHe": "הכנסת, דברי הכנסת, 18 בינואר 2005",
+      "kind": "official",
+      "accessed": "2026-11-22"
+    },
+    "plenum-2006-01-26": {
+      "url": "https://fs.knesset.gov.il/16/Plenum/16_ptm_128879.doc",
+      "publisher": "Knesset, Divrei HaKnesset, 26 January 2006",
+      "publisherHe": "הכנסת, דברי הכנסת, 26 בינואר 2006",
+      "kind": "official",
+      "accessed": "2026-11-22"
     }
   },
   "results": {
@@ -568,8 +603,6 @@
     "The official Knesset lexicon confirms the four initial coalition factions; a complete agreement-by-agreement cross-check remains pending.",
     "Recommendation evidence and caveats are inherited from docs/research/pm-recommendations-1977-2006.md; a source quoting the President is not an original presidential record.",
     "IPU’s December 2005 incapacity wording is erroneous; the official Hebrew government record confirms 4 January and 14 April 2006. NRP and Sharansky ministerial entry on 3 March differs from formation-day support.",
-    "United Torah Judaism, January 2005: its agreement with Likud reached the Knesset on 9 January 2005, and Galnoor and Blander date its accession to March 2005; the faction split into Agudat Yisrael and Degel HaTorah on 12 January. Agudat Yisrael’s place in the coalition after the split, and Degel HaTorah’s until 30 March 2005, are not recorded.",
-    "Likud split on 23 November 2005 (Sharon’s National Responsibility faction, later Kadima, 15 MKs; Likud 26), and Likud’s ministers left the government in January 2006. Neither is researched yet, so the member lists after November 2005 still count Likud’s 38 election seats and Yisrael BaAliyah’s 2.",
     "The National Religious Party, November 2004: no record dates the party’s own decision to leave; the member list changes on 11 November 2004, when Zevulun Orlev’s resignation took effect."
   ],
   "government": {
@@ -1284,7 +1317,7 @@
             "letters": "ג",
             "seats": 5,
             "role": "member-without-ministries",
-            "certainty": "probable",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "plenum-2005-01-10",
@@ -1293,13 +1326,19 @@
                 "noteHe": "מזכיר הכנסת, 10 בינואר 2005: שני ההסכמים הקואליציוניים החתומים הגיעו לכנסת יום קודם לכן."
               },
               {
+                "source": "plenum-2005-01-11",
+                "quote": "גם נציג אגודת ישראל וגם נציג דגל התורה; גם חבר הכנסת ליצמן וגם אנוכי חתמנו על הסכם.",
+                "note": "Moshe Gafni in the Knesset, 11 January 2005, the day before the split: both parties’ representatives signed the agreement.",
+                "noteHe": "משה גפני בכנסת, 11 בינואר 2005, יום לפני הפילוג: נציגי שתי המפלגות חתמו על ההסכם."
+              },
+              {
                 "source": "factions-k16",
                 "quote": "Faction 48 (יהדות התורה והשבת אגודת ישראל - דגל התורה): 5 members on 2005-01-10, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
                 "note": "The Knesset’s faction records: 5 members of United Torah Judaism on 10 January 2005.",
                 "noteHe": "רישומי הסיעות של הכנסת: 5 חברים בסיעת יהדות התורה ב־10 בינואר 2005."
               }
             ],
-            "note": "Its signed agreement with Likud reached the Knesset on 9 January 2005 and it had no ministers. Galnoor and Blander (R8) put its accession in March 2005, and the faction split two days later, so the day it took effect is uncertain.",
+            "note": "Its signed agreement with Likud reached the Knesset on 9 January 2005, signed for both its parties (Gafni, 11 January), and it had no ministers. Galnoor and Blander’s March 2005 is the month its MK Avraham Ravitz became a deputy minister.",
             "noteEn": "Its agreement with Likud reached the Knesset on 9 January 2005; it had no ministers.",
             "noteHe": "ההסכם שלה עם הליכוד הגיע לכנסת ב־9 בינואר 2005; לא היו לה שרים."
           }
@@ -1401,43 +1440,85 @@
             "factionNameEn": "Agudat Yisrael",
             "seats": 3,
             "role": "member-without-ministries",
-            "certainty": "unknown",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "factions-k16",
                 "quote": "Faction 424 (אגודת ישראל): 3 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
                 "note": "The Knesset’s faction records: 3 members of Agudat Yisrael on 12 January 2005.",
                 "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת אגודת ישראל ב־12 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-12",
+                "quote": "סיעת אגודת ישראל תמנה שלושה חברי כנסת - יעקב ליצמן, מאיר פרוש וישראל אייכלר",
+                "note": "The Knesset House Committee’s decision on the split, announced on 12 January 2005.",
+                "noteHe": "החלטת ועדת הכנסת על הפילוג, שהוכרזה ב־12 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-11",
+                "quote": "גם נציג אגודת ישראל וגם נציג דגל התורה; גם חבר הכנסת ליצמן וגם אנוכי חתמנו על הסכם.",
+                "note": "Moshe Gafni in the Knesset, 11 January 2005, the day before the split: both parties’ representatives signed the agreement.",
+                "noteHe": "משה גפני בכנסת, 11 בינואר 2005, יום לפני הפילוג: נציגי שתי המפלגות חתמו על ההסכם."
+              },
+              {
+                "source": "plenum-2005-01-17",
+                "quote": "שאגודת ישראל נכנסה לקואליציה ולא דרשה את חידושו של משרד הדתות",
+                "note": "Nissim Zeev (Shas) in the Knesset, 17 January 2005.",
+                "noteHe": "נסים זאב (ש״ס) בכנסת, 17 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-18",
+                "quote": "הרב ליצמן, שנמצא כרגע כיושב-ראש ועדת הכספים",
+                "note": "In the Knesset, 18 January 2005: Yaakov Litzman of Agudat Yisrael chaired the Finance Committee.",
+                "noteHe": "בכנסת, 18 בינואר 2005: יעקב ליצמן מאגודת ישראל עמד בראש ועדת הכספים."
               }
             ],
-            "note": "Agudat Yisrael’s place in the coalition after UTJ split is not recorded.",
-            "noteEn": "Whether it kept to United Torah Judaism’s coalition agreement after the split is not recorded.",
-            "noteHe": "לא תועד אם עמדה בהסכם הקואליציוני של יהדות התורה אחרי הפילוג."
+            "note": "It signed United Torah Judaism’s agreement with Likud before the split; a Shas MK said on 17 January 2005 that it had entered the coalition, and its MK chaired the Finance Committee.",
+            "noteEn": "It signed United Torah Judaism’s agreement with Likud before the split and stayed in the coalition without ministers.",
+            "noteHe": "היא חתמה על ההסכם של יהדות התורה עם הליכוד לפני הפילוג ונשארה בקואליציה בלי שרים."
           },
           {
             "factionNameHe": "דגל התורה",
             "factionNameEn": "Degel HaTorah",
             "seats": 2,
             "role": "member-without-ministries",
-            "certainty": "unknown",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "factions-k16",
                 "quote": "Faction 422 (דגל התורה): 2 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
                 "note": "The Knesset’s faction records: 2 members of Degel HaTorah on 12 January 2005.",
                 "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת דגל התורה ב־12 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-11",
+                "quote": "גם נציג אגודת ישראל וגם נציג דגל התורה; גם חבר הכנסת ליצמן וגם אנוכי חתמנו על הסכם.",
+                "note": "Moshe Gafni in the Knesset, 11 January 2005, the day before the split: both parties’ representatives signed the agreement.",
+                "noteHe": "משה גפני בכנסת, 11 בינואר 2005, יום לפני הפילוג: נציגי שתי המפלגות חתמו על ההסכם."
+              },
+              {
+                "source": "plenum-2005-01-17",
+                "quote": "חזקה עלי מצוותה של הקואליציה - אני שבוע ראשון",
+                "note": "Moshe Gafni of Degel HaTorah in the Knesset, 17 January 2005, on why he would not press his amendment.",
+                "noteHe": "משה גפני מדגל התורה בכנסת, 17 בינואר 2005, על הסיבה שלא יעמוד על הסתייגותו."
+              },
+              {
+                "source": "plenum-2005-01-17",
+                "quote": "זו הפעם הראשונה שאני עומד להגן כאן על הממשלה",
+                "note": "Avraham Ravitz of Degel HaTorah, answering no-confidence motions in the Knesset, 17 January 2005.",
+                "noteHe": "אברהם רביץ מדגל התורה, בתשובה להצעות אי־אמון בכנסת, 17 בינואר 2005."
               }
             ],
-            "note": "Degel HaTorah’s place in the coalition from the split until its MK became deputy minister (30 March 2005) is not recorded.",
-            "noteEn": "Whether it kept to United Torah Judaism’s coalition agreement after the split is not recorded.",
-            "noteHe": "לא תועד אם עמדה בהסכם הקואליציוני של יהדות התורה אחרי הפילוג."
+            "note": "It signed United Torah Judaism’s agreement with Likud before the split, and both its MKs spoke for the coalition in the Knesset on 17 January 2005.",
+            "noteEn": "It signed United Torah Judaism’s agreement with Likud before the split, and its MKs spoke for the coalition after it.",
+            "noteHe": "היא חתמה על ההסכם של יהדות התורה עם הליכוד לפני הפילוג, וחברי הכנסת שלה דיברו בשם הקואליציה אחריו."
           }
         ],
         "coalitionSeats": null,
         "supportSeats": null,
-        "knownMemberSeats": 59,
+        "knownMemberSeats": 64,
         "membershipCoverage": "partial",
-        "coalitionSeatsNote": "Agudat Yisrael and Degel HaTorah count their members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "coalitionSeatsNote": "Agudat Yisrael and Degel HaTorah count their members on that day in the Knesset’s faction records and stay in the coalition; the other rows are carried from the list above.",
         "confidenceVote": null,
         "reconciliation": {
           "status": "vote-unavailable",
@@ -1446,8 +1527,8 @@
       },
       {
         "date": "2005-03-30",
-        "textEn": "Degel HaTorah’s Avraham Ravitz became a deputy minister, placing his faction in the coalition.",
-        "textHe": "אברהם רביץ מדגל התורה מונה לסגן שר, וסיעתו נמנתה עם הקואליציה.",
+        "textEn": "Degel HaTorah’s Avraham Ravitz became a deputy minister in the Welfare Ministry.",
+        "textHe": "אברהם רביץ מדגל התורה מונה לסגן שר במשרד הרווחה.",
         "cites": [
           {
             "source": "positions-gov30",
@@ -1528,18 +1609,42 @@
             "factionNameEn": "Agudat Yisrael",
             "seats": 3,
             "role": "member-without-ministries",
-            "certainty": "unknown",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "factions-k16",
                 "quote": "Faction 424 (אגודת ישראל): 3 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
                 "note": "The Knesset’s faction records: 3 members of Agudat Yisrael on 12 January 2005.",
                 "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת אגודת ישראל ב־12 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-12",
+                "quote": "סיעת אגודת ישראל תמנה שלושה חברי כנסת - יעקב ליצמן, מאיר פרוש וישראל אייכלר",
+                "note": "The Knesset House Committee’s decision on the split, announced on 12 January 2005.",
+                "noteHe": "החלטת ועדת הכנסת על הפילוג, שהוכרזה ב־12 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-11",
+                "quote": "גם נציג אגודת ישראל וגם נציג דגל התורה; גם חבר הכנסת ליצמן וגם אנוכי חתמנו על הסכם.",
+                "note": "Moshe Gafni in the Knesset, 11 January 2005, the day before the split: both parties’ representatives signed the agreement.",
+                "noteHe": "משה גפני בכנסת, 11 בינואר 2005, יום לפני הפילוג: נציגי שתי המפלגות חתמו על ההסכם."
+              },
+              {
+                "source": "plenum-2005-01-17",
+                "quote": "שאגודת ישראל נכנסה לקואליציה ולא דרשה את חידושו של משרד הדתות",
+                "note": "Nissim Zeev (Shas) in the Knesset, 17 January 2005.",
+                "noteHe": "נסים זאב (ש״ס) בכנסת, 17 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-18",
+                "quote": "הרב ליצמן, שנמצא כרגע כיושב-ראש ועדת הכספים",
+                "note": "In the Knesset, 18 January 2005: Yaakov Litzman of Agudat Yisrael chaired the Finance Committee.",
+                "noteHe": "בכנסת, 18 בינואר 2005: יעקב ליצמן מאגודת ישראל עמד בראש ועדת הכספים."
               }
             ],
-            "note": "Agudat Yisrael’s place in the coalition after UTJ split is not recorded.",
-            "noteEn": "Whether it kept to United Torah Judaism’s coalition agreement after the split is not recorded.",
-            "noteHe": "לא תועד אם עמדה בהסכם הקואליציוני של יהדות התורה אחרי הפילוג."
+            "note": "It signed United Torah Judaism’s agreement with Likud before the split; a Shas MK said on 17 January 2005 that it had entered the coalition, and its MK chaired the Finance Committee.",
+            "noteEn": "It signed United Torah Judaism’s agreement with Likud before the split and stayed in the coalition without ministers.",
+            "noteHe": "היא חתמה על ההסכם של יהדות התורה עם הליכוד לפני הפילוג ונשארה בקואליציה בלי שרים."
           },
           {
             "factionNameHe": "דגל התורה",
@@ -1571,9 +1676,9 @@
         ],
         "coalitionSeats": null,
         "supportSeats": null,
-        "knownMemberSeats": 61,
+        "knownMemberSeats": 64,
         "membershipCoverage": "partial",
-        "coalitionSeatsNote": "Degel HaTorah counts its members on that day in the Knesset’s faction records; the other rows are carried from the list above.",
+        "coalitionSeatsNote": "No row changes its seats; Degel HaTorah now has a deputy minister. The other rows are carried from the list above.",
         "confidenceVote": null,
         "reconciliation": {
           "status": "vote-unavailable",
@@ -1582,8 +1687,8 @@
       },
       {
         "date": "2005-11-23",
-        "textEn": "Labor–Meimad–Am Ehad left the government: the resignations of its ministers took effect, and it became the largest faction in the opposition.",
-        "textHe": "העבודה–מימד–עם אחד יצאה מהממשלה: התפטרויות שריה נכנסו לתוקף, והיא נעשתה הסיעה הגדולה באופוזיציה.",
+        "textEn": "Labor–Meimad–Am Ehad left the government: the resignations of its ministers took effect, and it became the largest faction in the opposition. The same day, Ariel Sharon’s National Responsibility split from the Likud faction.",
+        "textHe": "העבודה–מימד–עם אחד יצאה מהממשלה: התפטרויות שריה נכנסו לתוקף, והיא נעשתה הסיעה הגדולה באופוזיציה. באותו יום התפלגה מסיעת הליכוד סיעת אחריות לאומית של אריאל שרון.",
         "cites": [
           {
             "source": "plenum-2005-11-23",
@@ -1602,6 +1707,12 @@
             "quote": "Faction 502 (העבודה - מימד - עם אחד): 21 members on 2005-11-23, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
             "note": "The Knesset’s faction records: 21 members of Labor–Meimad–Am Ehad on 23 November 2005.",
             "noteHe": "רישומי הסיעות של הכנסת: 21 חברים בסיעת העבודה–מימד–עם אחד ב־23 בנובמבר 2005."
+          },
+          {
+            "source": "plenum-2005-11-23",
+            "quote": "סיעת הליכוד התפלגה לשתי סיעות: 1. סיעת הליכוד, אשר תמנה 26 חברי הכנסת",
+            "note": "The Knesset House Committee’s decision, laid on the table on 23 November 2005; the same decision names the 14 MKs of the new faction and records its merger with Noy.",
+            "noteHe": "החלטת ועדת הכנסת שהונחה על שולחן הכנסת ב־23 בנובמבר 2005; אותה החלטה מונה את 14 חברי הסיעה החדשה ומתעדת את איחודה עם נוי."
           }
         ],
         "type": "coalition-withdrawal",
@@ -1611,7 +1722,7 @@
         "coalition": [
           {
             "letters": "מחל",
-            "seats": 38,
+            "seats": 26,
             "role": "member-with-ministries",
             "certainty": "confirmed",
             "cites": [
@@ -1620,44 +1731,93 @@
                 "quote": "PersonToPositionID 3696; PersonID 479; PositionID 39; StartDate 2003-02-27T00:00:00",
                 "note": "Fields of the Knesset’s official record, not a quoted sentence: סילבן שלום; faction: הליכוד.",
                 "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: סילבן שלום; סיעה: הליכוד."
-              }
-            ]
-          },
-          {
-            "letters": "כן",
-            "seats": 2,
-            "note": "Probable: one study counts Yisrael BaAliyah, together with the Likud, in the coalition formed after the election; the Knesset’s account names only four parties. Like the NRP’s, its minister (Natan Sharansky) took office on 3 March, so on 27 February it is listed without ministries.",
-            "role": "member-without-ministries",
-            "certainty": "probable",
-            "cites": [
+              },
               {
-                "source": "aldrich-et-al-2005",
-                "quote": "The coalition that formed shortly after the election, between the Likud (with Yisrael B’Aliya), Ihud Leumi, the National Religious Party, and Shinui",
-                "locator": "p. 160",
-                "note": "Note 5 of the chapter.",
-                "noteHe": "הערה 5 בפרק."
+                "source": "factions-k16",
+                "quote": "Faction 24 (הליכוד): 26 members on 2005-11-23, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 26 members of Likud on 23 November 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 26 חברים בסיעת הליכוד ב־23 בנובמבר 2005."
+              },
+              {
+                "source": "plenum-2005-11-23",
+                "quote": "סיעת הליכוד התפלגה לשתי סיעות: 1. סיעת הליכוד, אשר תמנה 26 חברי הכנסת",
+                "note": "The Knesset House Committee’s decision, laid on the table on 23 November 2005; the same decision names the 14 MKs of the new faction and records its merger with Noy.",
+                "noteHe": "החלטת ועדת הכנסת שהונחה על שולחן הכנסת ב־23 בנובמבר 2005; אותה החלטה מונה את 14 חברי הסיעה החדשה ומתעדת את איחודה עם נוי."
               }
             ],
-            "noteEn": "Its minister, Natan Sharansky, took office on 3 March 2003.",
-            "noteHe": "השר מטעמה, נתן שרנסקי, נכנס לתפקידו ב־3 במרץ 2003."
+            "noteEn": "Its 26 MKs after Ariel Sharon’s faction split from it on 23 November 2005; Yisrael BaAliyah’s former MKs are among them.",
+            "noteHe": "26 חברי הכנסת שלה אחרי שסיעתו של אריאל שרון התפלגה ממנה ב־23 בנובמבר 2005; חברי הכנסת לשעבר של ישראל בעלייה ביניהם."
+          },
+          {
+            "factionNameHe": "אחריות לאומית",
+            "factionNameEn": "National Responsibility",
+            "seats": 15,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 3692; PersonID 482; PositionID 45; StartDate 2003-02-27T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אריאל שרון; faction: אחריות לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אריאל שרון; סיעה: אחריות לאומית."
+              },
+              {
+                "source": "factions-k16",
+                "quote": "Faction 542 (אחריות לאומית): 15 members on 2005-11-23, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 15 members of National Responsibility on 23 November 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 15 חברים בסיעת אחריות לאומית ב־23 בנובמבר 2005."
+              },
+              {
+                "source": "plenum-2005-11-23",
+                "quote": "סיעת הליכוד התפלגה לשתי סיעות: 1. סיעת הליכוד, אשר תמנה 26 חברי הכנסת",
+                "note": "The Knesset House Committee’s decision, laid on the table on 23 November 2005; the same decision names the 14 MKs of the new faction and records its merger with Noy.",
+                "noteHe": "החלטת ועדת הכנסת שהונחה על שולחן הכנסת ב־23 בנובמבר 2005; אותה החלטה מונה את 14 חברי הסיעה החדשה ומתעדת את איחודה עם נוי."
+              }
+            ],
+            "noteEn": "Ariel Sharon’s faction: 14 MKs who left Likud and David Tal of Noy, merged on 23 November 2005. Renamed Kadima on 17 January 2006.",
+            "noteHe": "הסיעה של אריאל שרון: 14 חברי כנסת שפרשו מהליכוד ודוד טל מנוי, שהתאחדו ב־23 בנובמבר 2005. שמה שונה לקדימה ב־17 בינואר 2006."
           },
           {
             "factionNameHe": "אגודת ישראל",
             "factionNameEn": "Agudat Yisrael",
             "seats": 3,
             "role": "member-without-ministries",
-            "certainty": "unknown",
+            "certainty": "confirmed",
             "cites": [
               {
                 "source": "factions-k16",
                 "quote": "Faction 424 (אגודת ישראל): 3 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
                 "note": "The Knesset’s faction records: 3 members of Agudat Yisrael on 12 January 2005.",
                 "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת אגודת ישראל ב־12 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-12",
+                "quote": "סיעת אגודת ישראל תמנה שלושה חברי כנסת - יעקב ליצמן, מאיר פרוש וישראל אייכלר",
+                "note": "The Knesset House Committee’s decision on the split, announced on 12 January 2005.",
+                "noteHe": "החלטת ועדת הכנסת על הפילוג, שהוכרזה ב־12 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-11",
+                "quote": "גם נציג אגודת ישראל וגם נציג דגל התורה; גם חבר הכנסת ליצמן וגם אנוכי חתמנו על הסכם.",
+                "note": "Moshe Gafni in the Knesset, 11 January 2005, the day before the split: both parties’ representatives signed the agreement.",
+                "noteHe": "משה גפני בכנסת, 11 בינואר 2005, יום לפני הפילוג: נציגי שתי המפלגות חתמו על ההסכם."
+              },
+              {
+                "source": "plenum-2005-01-17",
+                "quote": "שאגודת ישראל נכנסה לקואליציה ולא דרשה את חידושו של משרד הדתות",
+                "note": "Nissim Zeev (Shas) in the Knesset, 17 January 2005.",
+                "noteHe": "נסים זאב (ש״ס) בכנסת, 17 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-18",
+                "quote": "הרב ליצמן, שנמצא כרגע כיושב-ראש ועדת הכספים",
+                "note": "In the Knesset, 18 January 2005: Yaakov Litzman of Agudat Yisrael chaired the Finance Committee.",
+                "noteHe": "בכנסת, 18 בינואר 2005: יעקב ליצמן מאגודת ישראל עמד בראש ועדת הכספים."
               }
             ],
-            "note": "Agudat Yisrael’s place in the coalition after UTJ split is not recorded.",
-            "noteEn": "Whether it kept to United Torah Judaism’s coalition agreement after the split is not recorded.",
-            "noteHe": "לא תועד אם עמדה בהסכם הקואליציוני של יהדות התורה אחרי הפילוג."
+            "note": "It signed United Torah Judaism’s agreement with Likud before the split; a Shas MK said on 17 January 2005 that it had entered the coalition, and its MK chaired the Finance Committee.",
+            "noteEn": "It signed United Torah Judaism’s agreement with Likud before the split and stayed in the coalition without ministers.",
+            "noteHe": "היא חתמה על ההסכם של יהדות התורה עם הליכוד לפני הפילוג ונשארה בקואליציה בלי שרים."
           },
           {
             "factionNameHe": "דגל התורה",
@@ -1689,9 +1849,9 @@
         ],
         "coalitionSeats": null,
         "supportSeats": null,
-        "knownMemberSeats": 42,
+        "knownMemberSeats": 46,
         "membershipCoverage": "partial",
-        "coalitionSeatsNote": "Labor leaves with the 19 seats the list above counted for it. Its faction had 21 members that day, having merged with Am Ehad on 23 May 2005; Am Ehad’s MKs were never counted as coalition members. The other rows are carried from the list above.",
+        "coalitionSeatsNote": "Labor leaves with the 19 seats the list above counted for it. Its faction had 21 members that day, having merged with Am Ehad on 23 May 2005; Am Ehad’s MKs were never counted as coalition members. Likud and National Responsibility count their members that day in the Knesset’s faction records, 26 and 15 (with Noy’s one MK); Yisrael BaAliyah’s two seats are within Likud’s 26. The other rows are carried from the list above.",
         "confidenceVote": null,
         "reconciliation": {
           "status": "vote-unavailable",
@@ -1709,6 +1869,145 @@
             "quote": "ב-4 בינואר 2006 לקה ראש הממשלה אריאל שרון באירוע מוחי וחדל לתפקד כראש הממשלה. סמכויותיו הועברו לממלא מקומו אהוד אולמרט. בתום מאה ימים לאשפוזו, ב-14 באפריל 2006, הסתיימה כהונתו כראש הממשלה."
           }
         ]
+      },
+      {
+        "date": "2006-01-15",
+        "textEn": "Likud left the government: the terms of its four ministers, Silvan Shalom, Israel Katz, Limor Livnat and Danny Naveh, ended, and it became the largest faction in the opposition.",
+        "textHe": "הליכוד יצא מהממשלה: כהונת ארבעת שריו, סילבן שלום, ישראל כץ, לימור לבנת ודני נוה, הסתיימה, והוא נעשה הסיעה הגדולה באופוזיציה.",
+        "cites": [
+          {
+            "source": "positions-gov30",
+            "quote": "PersonToPositionID 3696, PersonID 479, PositionID 39, FinishDate 2006-01-15; PersonToPositionID 3702, PersonID 468, PositionID 39, FinishDate 2006-01-15; PersonToPositionID 3703, PersonID 470, PositionID 57, FinishDate 2006-01-15; PersonToPositionID 3707, PersonID 473, PositionID 39, FinishDate 2006-01-15",
+            "note": "The Knesset’s appointment records: Silvan Shalom, Israel Katz, Limor Livnat and Danny Naveh, ministers until 15 January 2006.",
+            "noteHe": "רישומי המינויים של הכנסת: סילבן שלום, ישראל כץ, לימור לבנת ודני נוה, שרים עד 15 בינואר 2006."
+          },
+          {
+            "source": "plenum-2006-01-26",
+            "quote": "ראש האופוזיציה מטעם סיעתו, שהיא הגדולה ביותר בסיעות האופוזיציה, יהיה חבר הכנסת בנימין נתניהו",
+            "note": "The Speaker’s letter of 16 January 2006, read in the Knesset on 26 January: Benjamin Netanyahu became Leader of the Opposition for Likud.",
+            "noteHe": "מכתב יושב־ראש הכנסת מ־16 בינואר 2006, שהוקרא בכנסת ב־26 בינואר: בנימין נתניהו נעשה ראש האופוזיציה מטעם הליכוד."
+          },
+          {
+            "source": "factions-k16",
+            "quote": "Faction 24 (הליכוד): 27 members on 2006-01-15, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+            "note": "The Knesset’s faction records: 27 members of Likud on 15 January 2006.",
+            "noteHe": "רישומי הסיעות של הכנסת: 27 חברים בסיעת הליכוד ב־15 בינואר 2006."
+          }
+        ],
+        "type": "coalition-withdrawal",
+        "scope": "mid-term",
+        "formalStep": true,
+        "governmentNumber": 30,
+        "coalition": [
+          {
+            "factionNameHe": "אחריות לאומית",
+            "factionNameEn": "National Responsibility",
+            "seats": 14,
+            "role": "member-with-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "role-roster-30",
+                "quote": "PersonToPositionID 4456; PersonID 1064; PositionID 39; StartDate 2005-11-07T00:00:00",
+                "note": "Fields of the Knesset’s official record, not a quoted sentence: אהוד אולמרט; faction: אחריות לאומית.",
+                "noteHe": "שדות מתוך הרישום הרשמי של הכנסת, לא ציטוט: אהוד אולמרט; סיעה: אחריות לאומית."
+              },
+              {
+                "source": "factions-k16",
+                "quote": "Faction 542 (אחריות לאומית): 14 members on 2006-01-15, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 14 members of National Responsibility on 15 January 2006.",
+                "noteHe": "רישומי הסיעות של הכנסת: 14 חברים בסיעת אחריות לאומית ב־15 בינואר 2006."
+              },
+              {
+                "source": "plenum-2005-11-23",
+                "quote": "סיעת הליכוד התפלגה לשתי סיעות: 1. סיעת הליכוד, אשר תמנה 26 חברי הכנסת",
+                "note": "The Knesset House Committee’s decision, laid on the table on 23 November 2005; the same decision names the 14 MKs of the new faction and records its merger with Noy.",
+                "noteHe": "החלטת ועדת הכנסת שהונחה על שולחן הכנסת ב־23 בנובמבר 2005; אותה החלטה מונה את 14 חברי הסיעה החדשה ומתעדת את איחודה עם נוי."
+              }
+            ],
+            "noteEn": "Ariel Sharon’s faction, 14 MKs after Omri Sharon left the Knesset on 5 January 2006. Renamed Kadima on 17 January 2006.",
+            "noteHe": "הסיעה של אריאל שרון, 14 חברי כנסת אחרי שעמרי שרון פרש מהכנסת ב־5 בינואר 2006. שמה שונה לקדימה ב־17 בינואר 2006."
+          },
+          {
+            "factionNameHe": "אגודת ישראל",
+            "factionNameEn": "Agudat Yisrael",
+            "seats": 3,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "factions-k16",
+                "quote": "Faction 424 (אגודת ישראל): 3 members on 2005-01-12, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 3 members of Agudat Yisrael on 12 January 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 3 חברים בסיעת אגודת ישראל ב־12 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-12",
+                "quote": "סיעת אגודת ישראל תמנה שלושה חברי כנסת - יעקב ליצמן, מאיר פרוש וישראל אייכלר",
+                "note": "The Knesset House Committee’s decision on the split, announced on 12 January 2005.",
+                "noteHe": "החלטת ועדת הכנסת על הפילוג, שהוכרזה ב־12 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-11",
+                "quote": "גם נציג אגודת ישראל וגם נציג דגל התורה; גם חבר הכנסת ליצמן וגם אנוכי חתמנו על הסכם.",
+                "note": "Moshe Gafni in the Knesset, 11 January 2005, the day before the split: both parties’ representatives signed the agreement.",
+                "noteHe": "משה גפני בכנסת, 11 בינואר 2005, יום לפני הפילוג: נציגי שתי המפלגות חתמו על ההסכם."
+              },
+              {
+                "source": "plenum-2005-01-17",
+                "quote": "שאגודת ישראל נכנסה לקואליציה ולא דרשה את חידושו של משרד הדתות",
+                "note": "Nissim Zeev (Shas) in the Knesset, 17 January 2005.",
+                "noteHe": "נסים זאב (ש״ס) בכנסת, 17 בינואר 2005."
+              },
+              {
+                "source": "plenum-2005-01-18",
+                "quote": "הרב ליצמן, שנמצא כרגע כיושב-ראש ועדת הכספים",
+                "note": "In the Knesset, 18 January 2005: Yaakov Litzman of Agudat Yisrael chaired the Finance Committee.",
+                "noteHe": "בכנסת, 18 בינואר 2005: יעקב ליצמן מאגודת ישראל עמד בראש ועדת הכספים."
+              }
+            ],
+            "note": "It signed United Torah Judaism’s agreement with Likud before the split; a Shas MK said on 17 January 2005 that it had entered the coalition, and its MK chaired the Finance Committee.",
+            "noteEn": "It signed United Torah Judaism’s agreement with Likud before the split and stayed in the coalition without ministers.",
+            "noteHe": "היא חתמה על ההסכם של יהדות התורה עם הליכוד לפני הפילוג ונשארה בקואליציה בלי שרים."
+          },
+          {
+            "factionNameHe": "דגל התורה",
+            "factionNameEn": "Degel HaTorah",
+            "seats": 2,
+            "role": "member-without-ministries",
+            "certainty": "confirmed",
+            "cites": [
+              {
+                "source": "positions-gov30",
+                "quote": "PersonToPositionID 4449, PersonID 531, PositionID 40, StartDate 2005-03-30",
+                "note": "The Knesset’s appointment record: Avraham Ravitz, deputy minister from 30 March 2005.",
+                "noteHe": "רישום המינוי של הכנסת: אברהם רביץ, סגן שר מ־30 במרץ 2005."
+              },
+              {
+                "source": "plenum-2005-03-30",
+                "quote": "חבר הכנסת אברהם רביץ - לתפקיד סגן שר במשרד הרווחה, ממונה על-ידי ראש הממשלה ושר הרווחה"
+              },
+              {
+                "source": "factions-k16",
+                "quote": "Faction 422 (דגל התורה): 2 members on 2005-03-30, counting the rows whose StartDate is on or before that day and whose FinishDate is after it",
+                "note": "The Knesset’s faction records: 2 members of Degel HaTorah on 30 March 2005.",
+                "noteHe": "רישומי הסיעות של הכנסת: 2 חברים בסיעת דגל התורה ב־30 במרץ 2005."
+              }
+            ],
+            "noteEn": "Its MK Avraham Ravitz was a deputy minister from 30 March 2005.",
+            "noteHe": "חבר הכנסת מטעמה אברהם רביץ כיהן כסגן שר מ־30 במרץ 2005."
+          }
+        ],
+        "coalitionSeats": null,
+        "supportSeats": null,
+        "knownMemberSeats": 19,
+        "membershipCoverage": "partial",
+        "coalitionSeatsNote": "Likud leaves with its 27 members that day in the Knesset’s faction records (Omri Sharon’s seat passed to Likud on 5 January 2006); National Responsibility counts its 14. The other rows are carried from the list above.",
+        "confidenceVote": null,
+        "reconciliation": {
+          "status": "vote-unavailable",
+          "note": "No confidence vote belongs to this change; the member list follows the dated records cited."
+        }
       },
       {
         "date": "2006-04-14",
