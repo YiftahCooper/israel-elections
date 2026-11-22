@@ -1,6 +1,7 @@
 // An MK's own history (owner decisions M1–M3, 9 Nov 2026): every Knesset they sat in or ran for, one row each, with
 // their place on the list, their time in that Knesset and the dated facts. Facts only, never judgements. Graphics run
 // left to right in both languages; only text mirrors.
+import { MarkedText } from './LangLabel.tsx';
 import { seatsText } from '../format.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
@@ -212,7 +213,7 @@ function EventSource({ e }: { e: MkEvent }) {
   const L = useL(); const lang = useLang();
   if (!e.sources?.length) return null;
   const kind = /^Official/.test(e.evidence ?? '') ? L('Official record', 'רשומה רשמית') : /statement/i.test(e.evidence ?? '') ? L('Own statement, as reported', 'הודעה אישית, כפי שדווחה') : L('Press report', 'דיווח בעיתונות');
-  return <Info title={kind} label={L('Source', 'מקור')}><span className="mk-src">{e.sources.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer">{sourceLinkText(url, publisherIn(lang, pub), lang)}</a>)}</span></Info>;
+  return <Info title={kind} label={L('Source', 'מקור')}><span className="mk-src">{e.sources.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer"><MarkedText text={sourceLinkText(url, publisherIn(lang, pub), lang)} /></a>)}</span></Info>;
 }
 
 export function Result({ r, v }: { r: MkRow; v: MkView }) {
@@ -225,7 +226,7 @@ export function Result({ r, v }: { r: MkRow; v: MkView }) {
   // a run that research tied to the person: the sources that tie it (owner, 16 Nov 2026), instead of the name rule
   const researchText = run?.research?.length ? <>
     <span className="mk-why">{L(`A report or biography from the time names ${e.o} on this list:`, `דיווח או ביוגרפיה מאותה עת ${g(f, 'מציינים אותו', 'מציינים אותה', 'מזכירים את השם')} ברשימה זו:`)}</span>
-    <span className="mk-src">{run.research.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer" hrefLang={/he\.wikipedia\.org/.test(url) ? 'he' : undefined}>{sourceLinkText(url, publisherIn(lang, pub), lang)}</a>)}</span>
+    <span className="mk-src">{run.research.map(([pub, url]) => <a key={url} href={url} target="_blank" rel="noreferrer" hrefLang={/he\.wikipedia\.org/.test(url) ? 'he' : undefined}><MarkedText text={sourceLinkText(url, publisherIn(lang, pub), lang)} /></a>)}</span>
   </> : null;
   const linkText = researchText ?? basisText;
   const linkTitle = L('How this list is linked', 'איך הרשימה מקושרת');

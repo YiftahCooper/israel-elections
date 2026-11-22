@@ -1,4 +1,5 @@
 // Accessibility repairs from the whole-app review of 19 Nov 2026 (lane V4, faults A1–A12): each block is one fault.
+import { barLanguage } from './barMenu.ts';
 import { openTool } from './openTool.ts';
 import { expect, test, type Page } from './fixtures';
 
@@ -140,4 +141,29 @@ for (const lang of LANGS) test.describe(`A6 · ${lang}`, () => {
     await page.keyboard.press('Space');
     await expect(page.getByRole('tooltip')).toHaveCount(0);
   });
+});
+
+// A10: on the Hebrew page the map's buttons were in English, and English source names had no language mark
+test('the map and the sources are marked with their language on the Hebrew page', async ({ page }) => {
+  await start(page, 'he');
+  await openTool(page, 'loc');
+  await expect(page.locator('.leaflet-control-zoom-in')).toHaveAccessibleName('הגדלת המפה');
+  await expect(page.locator('.leaflet-control-zoom-out')).toHaveAccessibleName('הקטנת המפה');
+  await expect(page.locator('.leaflet-control-attribution')).toHaveAttribute('lang', 'en');
+  await openTool(page, 'sources');
+  const english = await page.evaluate(() => {
+    const visible = (e: Element) => e.getClientRects().length > 0;
+    const w = document.createTreeWalker(document.querySelector('#analysis-panel')!, NodeFilter.SHOW_TEXT); const hits: string[] = []; let t: Node | null;
+    while ((t = w.nextNode())) { const s = t.nodeValue!.trim(); const el = t.parentElement!; if (!/[A-Za-z]{3,}\s+[A-Za-z]{3,}/.test(s) || /[א-ת]/.test(s) || !visible(el) || /^https?:/.test(s)) continue;
+      if (!el.closest('[lang]')?.getAttribute('lang')?.startsWith('en')) hits.push(s); }
+    return hits;
+  });
+  expect(english).toEqual([]);
+});
+test('the map buttons follow a change of language', async ({ page }) => {
+  await start(page, 'en');
+  await openTool(page, 'loc');
+  await expect(page.locator('.leaflet-control-zoom-in')).toHaveAccessibleName('Zoom in');
+  await barLanguage(page, 'he');
+  await expect(page.locator('.leaflet-control-zoom-in')).toHaveAccessibleName('הגדלת המפה');
 });

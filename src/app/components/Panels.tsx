@@ -1,4 +1,5 @@
 import { percent } from './Percentage.tsx';
+import { otherLang } from './LangLabel.tsx';
 import { k19StatusNote } from '../k19Note.ts';
 import { datesInText, formatDate } from '../dateFormat.ts';
 import { AfterElectionSources } from './AfterElection.tsx';
@@ -348,7 +349,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
           const item = (x: typeof logos[number], inCommons: boolean) => {
             const c = logoCredit(x.logo, lang);
             const text = inCommons ? c.by ?? L('Author not named', 'היוצר לא צוין') : c.by ? `${c.by} · ${c.where}` : c.where;
-            return <li key={x.logo.file}><b>{x.names.join(' · ')}</b>: <a href={x.logo.sourceUrl} target="_blank" rel="noreferrer"><bdi>{text}</bdi></a> · {logoLicence(x.logo, lang)}</li>;
+            return <li key={x.logo.file}><b>{x.names.join(' · ')}</b>: <a href={x.logo.sourceUrl} target="_blank" rel="noreferrer"><bdi lang={otherLang(text, lang)}>{text}</bdi></a> · {logoLicence(x.logo, lang)}</li>;
           };
           // the secondary label is said once, for the Commons group, not on every row
           const groups = [{ id: 'party', title: L('From the parties', 'מהמפלגות'), secondary: false, rows: logos.filter((x) => !isCommons(x.logo)) },

@@ -1,5 +1,6 @@
 // Party history and "compared with last time" (docs/features/party-history.md). Facts, not edits: nothing here
 // changes a result or marks a scenario. Graphics are always drawn left to right, in Hebrew too.
+import { MarkedText } from './LangLabel.tsx';
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Scenario } from '../../model/scenario.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -93,7 +94,7 @@ export function EvidenceLinks({ r }: { r: Relation }) {
  *  source (`support`), its file locator and its id are never shown. */
 function sourceName(s: Relation['sources'][number], lang: Lang) {
   const name = (lang === 'he' && s.publisherHe) || s.publisher || (lang === 'he' ? 'מקור' : 'Source');
-  return s.url ? <a href={s.url} target="_blank" rel="noreferrer">{sourceLinkText(s.url, name, lang)}</a> : name;
+  return s.url ? <a href={s.url} target="_blank" rel="noreferrer"><MarkedText text={sourceLinkText(s.url, name, lang)} /></a> : name;
 }
 /** "Labor (4 seats) and Meretz (0 seats)": the whole earlier lists a comparison counts, with their seats. */
 export function countedText(c: Comparison, lang: Lang): string {

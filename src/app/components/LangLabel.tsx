@@ -25,6 +25,19 @@ export function langRuns(text: string, page: Lang): { text: string; lang?: Lang 
   return runs;
 }
 
+/** The language to mark on a text wholly in the other script than the page's (an English source's name on the Hebrew
+ *  page), so a screen reader reads it with the right voice; undefined when it is in the page's language or mixed. */
+export function otherLang(text: string, page: Lang): Lang | undefined {
+  const runs = langRuns(text, page).filter((r) => /[\p{L}]/u.test(r.text));
+  return runs.length > 0 && runs.every((r) => r.lang) ? runs[0].lang : undefined;
+}
+
+/** A text shown as it was written (a source's name), marked with its language when that is not the page's. */
+export function MarkedText({ text }: { text: string }) {
+  const lang = otherLang(text, useLang());
+  return lang ? <span lang={lang}>{text}</span> : <>{text}</>;
+}
+
 /** whether the label has a run in the other language, so it needs a <LangLabel> */
 export const isMixed = (text: string, page: Lang) => langRuns(text, page).some((r) => r.lang);
 
