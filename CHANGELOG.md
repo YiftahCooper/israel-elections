@@ -1,5 +1,9 @@
 # Changelog
 
+## 22 November 2026
+
+- Faster on slow phones (22 Nov): each election's After the election history is fetched on its own instead of all 26 at once (about 250 KB less per visit), the opening seat chart's line between blocs comes ready-made, and party logos load before the code of other tabs; nothing on screen changes.
+
 ## 20 November 2026
 
 - Parties joining and leaving a government (20 Nov): on After the election, a party that joined or left a government partway through a term now changes the government's member list on the day the Knesset's records date it (ministers took office, or their departure took effect), with the party's seats that day and the source behind (i): Gahal and Rafi (1967), the NRP and Ratz (1974–76), the DMC split (1978), Telem and Tehiya (1982), Shas and Yi'ud (1993–95), the departures from Barak's government and the changes in Sharon's (1999–2005), UTJ, Labor and Kadima (2009–12), and National Unity, New Hope, Otzma Yehudit, UTJ and Shas (2023–25). Where a party's place afterwards is not recorded (Meretz 2000, UTJ 2025 and others) it is shown under "Unknown role" and not counted, and the line under the list says that is why it has no total (it no longer says faction sizes were not recorded when they were).
