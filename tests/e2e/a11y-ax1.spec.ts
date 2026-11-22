@@ -190,3 +190,33 @@ for (const lang of LANGS) test.describe(`A11 · ${lang}`, () => {
     }
   });
 });
+
+// A12
+for (const lang of LANGS) test.describe(`A12 · ${lang}`, () => {
+  // A12: tabs pointed at a panel the Overview does not have; logos were named spans with no role; the line of changes
+  // was one live region that also read out its buttons
+  test(`markup slips · ${lang}`, async ({ page }) => {
+    await start(page, lang);
+    const missing = await page.evaluate(() => [...document.querySelectorAll('[aria-controls]')]
+      .filter(e => e.getAttribute('aria-expanded') !== 'false' && !e.getAttribute('aria-controls')!.split(' ').every(id => document.getElementById(id))).map(e => e.id || e.className));
+    expect(missing).toEqual([]);
+    const unnamedRole = await page.evaluate(() => [...document.querySelectorAll('.slip[aria-label]')].filter(e => !e.getAttribute('role')).length);
+    expect(unnamedRole).toBe(0);
+    await expect(page.locator('.slip[aria-label]').first()).toHaveAttribute('role', 'img');
+    const liveWithControls = await page.evaluate(() => [...document.querySelectorAll('[role=status], [aria-live]:not([aria-live=off])')].filter(e => e.querySelector('button, a, input, [role=button]')).length);
+    expect(liveWithControls).toBe(0);
+    await expect(page.getByRole('status').filter({ hasText: T(lang, 'No changes', 'אין שינויים') })).toBeVisible();
+  });
+});
+
+// A12
+for (const lang of LANGS) test.describe(`A12 · ${lang}`, () => {
+  test.use(phone);
+  // A12: the ☰ menu meant to focus the tool on screen, but the first match was its Close button
+  test(`the menu opens on the tool on screen, not on Close · ${lang}`, async ({ page }) => {
+    await start(page, lang);
+    await page.getByRole('button', { name: new RegExp(`^${T(lang, 'Menu', 'תפריט')}`) }).click();
+    const menu = page.getByRole('dialog', { name: T(lang, 'Menu', 'תפריט') });
+    await expect(menu.locator('[aria-current="page"]')).toBeFocused();
+  });
+});

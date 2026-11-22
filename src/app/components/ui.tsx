@@ -84,12 +84,14 @@ export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { 
     const kind = synthetic!.kind;
     const note = lang === 'he' ? (kind === 'merge' ? 'איחוד רשימות' : kind === 'split' ? `חלק ${synthetic!.part}/${synthetic!.total}` : 'רשימה חדשה')
       : (kind === 'merge' ? 'Merged lists' : kind === 'split' ? `Part ${synthetic!.part}/${synthetic!.total}` : 'New list');
-    return <span className={`slip synthetic ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={`${label} · ${note}`} title={`${label} · ${note}`}><img src={generated} alt="" /></span>;
+    return <span className={`slip synthetic ${size ?? ''}`} style={{ ['--c' as string]: color }} role="img" aria-label={`${label} · ${note}`} title={`${label} · ${note}`}><img src={generated} alt="" /></span>;
   }
+  // every slip is an image named by the list (role img: a name on a plain span is ignored by screen readers; review V4
+  // A12); its name is in the page's language, the letters inside it are marked Hebrew
   // the logo the list used at this election, when a verified local copy is held; the ballot letters stay
   // as its accessible name and a small caption, and the credit travels with the image
   if (logo) return (
-    <span className={`slip logo ${size ?? ''} ${logo.background === 'dark' ? 'on-dark' : ''}`} style={{ ['--c' as string]: color }} aria-label={label}
+    <span className={`slip logo ${size ?? ''} ${logo.background === 'dark' ? 'on-dark' : ''}`} style={{ ['--c' as string]: color }} role="img" aria-label={label}
       title={`${label} · ${logoLicence(logo, lang)}`}>
       <img src={logo.file} alt="" loading="lazy" decoding="async" />
       <span className="slip-letters" lang="he" dir="rtl" aria-hidden>{name ? '' : letters}</span>
@@ -98,8 +100,8 @@ export function Slip({ letters, color, size, logo: logoIn, name, synthetic }: { 
   const fallbackLabel = letters ? (lang === 'he' ? `אותיות הפתק ${letters} (ללא סמל)` : `Ballot letters ${letters} (no logo)`)
     : (lang === 'he' ? `${name ?? 'מפלגה'} — אין סמל או אותיות פתק נפרדות` : `${name ?? 'Party'} — no logo or separate ballot letters`);
   // no logo and no letters of its own (a party of a joint list): its colour dot, as in every list picker
-  if (!letters) return <span title={fallbackLabel} className={`slip dot ${size ?? ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel}><span className="list-mark-dot" style={{ background: color }} /></span>;
-  return <span title={fallbackLabel} className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} aria-label={fallbackLabel} lang="he" dir="rtl">{letters}</span>;
+  if (!letters) return <span title={fallbackLabel} className={`slip dot ${size ?? ''}`} style={{ ['--c' as string]: color }} role="img" aria-label={fallbackLabel}><span className="list-mark-dot" style={{ background: color }} /></span>;
+  return <span title={fallbackLabel} className={`slip ${size ?? ''} ${letters.length > 4 ? 'long' : ''}`} style={{ ['--c' as string]: color }} role="img" aria-label={fallbackLabel} dir="rtl"><span lang="he">{letters}</span></span>;
 }
 
 /** A list's slip, then its name; the ballot letters are written after the name only where the slip does not show them

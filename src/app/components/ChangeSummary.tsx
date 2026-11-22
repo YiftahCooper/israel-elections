@@ -111,11 +111,12 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
   const phone = usePhone();
 
   return (
-    <div ref={line} className={`session ${edited ? '' : 'idle'}`} role="status" aria-live="polite">
+    // the label and the changed seats are read out when they change, not the buttons beside them (review V4 A12)
+    <div ref={line} className={`session ${edited ? '' : 'idle'}`}>
       <FittingLabel full={label} short={reference ? String(count) : compact} reference={namedReference} locale={appLocale(lang)} />
       {/* the (i) right after the label it explains, on the same line at every width */}
       <Info title={L('Your changes', 'השינויים שלכם')}>{L('Reference: ', 'נקודת ההשוואה: ')}<bdi>{referenceLabel(reference, lang).name}</bdi>. {L('Counts your actions since the named reference, not individual fields: votes, rules, lists, blocs and coalition roles. Colours do not count. History lists all changes from the official result; you can return to an earlier change there.', 'סופר את הפעולות שלכם מאז נקודת ההשוואה הנקובה, ולא שדות בודדים: קולות, כללים, רשימות, גושים ותפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לחזור בה לשינוי קודם.')}</Info>
-      <span ref={changes} className="session-changes">
+      <span ref={changes} className="session-changes" role="status">
         {edited && <>
           {moves.length === 0
             ? <span className="muted">{resultUnchanged ? unchangedResultNote(lang) : L('No seats changed', 'המנדטים לא השתנו')}</span>
