@@ -199,7 +199,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
         <button className="tool" aria-label={L('Save & share', 'שמירה ושיתוף')} title={L('Save & share', 'שמירה ושיתוף')} ref={menuButton} aria-expanded={menu} aria-controls="scenarios-menu" onClick={() => setMenu((m) => !m)}>
           <Share2 className="icon" aria-hidden /><span className="label">{L('Save & share', 'שמירה ושיתוף')}</span><ChevronDown className="icon sm" aria-hidden /></button>
         {menu && (
-          <div ref={popupRef} className="menu-pop" id="scenarios-menu">
+          <div ref={popupRef} className="menu-pop" id="scenarios-menu" role="group" aria-label={L('Save & share', 'שמירה ושיתוף')}>
             {shareItems(() => setMenu(false))}
           </div>
         )}

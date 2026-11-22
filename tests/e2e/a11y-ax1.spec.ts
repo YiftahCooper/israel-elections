@@ -104,3 +104,18 @@ for (const lang of LANGS) test.describe(`A4 · ${lang}`, () => {
     await expect(info).toBeFocused();
   });
 });
+
+// A5
+for (const lang of LANGS) test.describe(`A5 · ${lang}`, () => {
+  // A5: Save & share opened an unnamed box; the History and figure boxes were the same
+  test(`the boxes the top bar and the board open are named · ${lang}`, async ({ page }) => {
+    await start(page, lang);
+    await page.getByRole('button', { name: T(lang, 'Save & share', 'שמירה ושיתוף') }).click();
+    await expect(page.getByRole('group', { name: T(lang, 'Save & share', 'שמירה ושיתוף') })).toBeVisible();
+    await page.keyboard.press('Escape');
+    const tile = page.locator('.fig:not(.static) > button').first();
+    await tile.click();
+    const name = (await tile.locator('.k').innerText()).trim();
+    await expect(page.locator('.fig .more:popover-open')).toHaveAccessibleName(name);
+  });
+});

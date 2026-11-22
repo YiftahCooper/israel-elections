@@ -138,7 +138,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
         {L('History', 'היסטוריה')}
         {open ? <ChevronUp className="icon sm" aria-hidden /> : <ChevronDown className="icon sm" aria-hidden />}
       </button>}
-      <div id={historyId} ref={pop} className="history" popover="auto" onToggle={(e) => setOpen(e.newState === 'open')}>
+      <div id={historyId} ref={pop} className="history" popover="auto" role="group" aria-label={L('History', 'היסטוריה')} onToggle={(e) => setOpen(e.newState === 'open')}>
         {open && <Suspense fallback={<p className="muted small">{L('Loading…', 'טוען…')}</p>}><History s={s} r={r} ds={ds} reference={reference} /></Suspense>}
       </div>
       {!phone && <SessionUndo />}
