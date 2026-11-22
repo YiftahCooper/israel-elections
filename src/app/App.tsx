@@ -101,6 +101,23 @@ const loadAftermathOf = (id: Parameters<typeof openElection>[0]) => import('./af
 // page it replaces stays until then: no loading line in between
 setAlsoNeeded((id) => WITH_AFTERMATH.includes(getState().tool as Tab) ? loadAftermathOf(id) : Promise.resolve());
 
+/** Resolves once the images loading near the screen (the board's logos) have arrived or failed, or after IMAGES_WAIT_MS
+ *  at most. Looked at a frame after the first render, when the browser has laid them out and started those it loads;
+ *  only images within 600 px of the screen count (every browser's lazy loading fetches those at once), so an image it
+ *  leaves for later is never waited for. */
+const IMAGES_WAIT_MS = 10_000;
+function imagesNowLoading(): Promise<void> {
+  return new Promise((done) => requestAnimationFrame(() => setTimeout(() => {
+    const near = innerHeight + 600;
+    const waiting = [...document.images].filter((img) => !img.complete && img.checkVisibility() && (({ top, bottom }) => bottom > -600 && top < near)(img.getBoundingClientRect()));
+    if (!waiting.length) { done(); return; }
+    let left = waiting.length;
+    const one = () => { if (--left === 0) done(); };
+    for (const img of waiting) { img.addEventListener('load', one, { once: true }); img.addEventListener('error', one, { once: true }); }
+    setTimeout(done, IMAGES_WAIT_MS);
+  })));
+}
+
 type Tab = typeof TOOL_FEATURES[number][0];
 const TOOLS = TOOL_FEATURES.map(([id,,,, level]) => ({ id, level: level as Preset }));
 
@@ -176,11 +193,18 @@ function Shell() {
   }, [ready]);
   // once the election is on screen, fetch the code of this level's tools while the page is idle; the others
   // load when pointed at or focused, so a Simple visit does not download tools it may never open
+  // On a slow connection that code would share the line with the party logos then loading, so it waits for them first
   useEffect(() => {
     if (!ready) return;
     const run = () => TOOLS.filter((t) => RANK[t.level] <= RANK[level]).forEach((t) => prefetchTab(t.id));
-    if (typeof requestIdleCallback === 'function') { const h = requestIdleCallback(run, { timeout: 2000 }); return () => cancelIdleCallback(h); }
-    const h = setTimeout(run, 200); return () => clearTimeout(h);
+    let cancel = () => {};
+    const idle = () => {
+      if (typeof requestIdleCallback === 'function') { const h = requestIdleCallback(run, { timeout: 2000 }); cancel = () => cancelIdleCallback(h); }
+      else { const h = setTimeout(run, 200); cancel = () => clearTimeout(h); }
+    };
+    let live = true;
+    void imagesNowLoading().then(() => { if (live) idle(); });
+    return () => { live = false; cancel(); };
   }, [ready, level]);
 
   // what failed, said as it is: the connection, or an app and data of different versions (reloading fetches both again);
