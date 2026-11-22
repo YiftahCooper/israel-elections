@@ -289,7 +289,7 @@ test('records added in this pass: the Lavon affair, the 1988 recommendations, Go
   await expect(sept.locator('[data-support-role="other"]')).toContainText('הימין הממלכתי');
   await expect(sept.locator('.after-members-total')).toHaveText('64');
   // a list without a total says why: here Gesher's place after 4 Aug 2000 is not recorded, not a faction size (lane D3)
-  await choose(page.getByRole('button', { name: 'בחירות', exact: true }), 'k15');
+  await choose(page.getByRole('button', { name: pickerName('בחירות') }), 'k15');
   await history.getByText('שינויים בממשלה', { exact: true }).click();
   const gesher = history.locator('.after-government-change').filter({ hasText: 'התפטרותו של דוד לוי משר החוץ' });
   await expect(gesher.locator('.after-size-note')).toContainText('מעמד לא ידוע');
