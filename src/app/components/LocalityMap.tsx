@@ -260,14 +260,14 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       // in the vote mix the tooltip gives the biggest shares; on the dots, who leads and by how much
       const mixParts = mix ? areaPlaces.find(a => a.index === p.index)?.parts ?? [] : [];
       const mixSum = mixParts.reduce((a, q) => a + q.votes, 0) || 1;
-      why.textContent = mix ? [...mixParts].sort((a, b) => b.votes - a.votes).slice(0, 3).map(q => `${q.label} ${share(q.votes, mixSum, 0)}`).join(' · ')
+      why.textContent = mix ? [...mixParts].sort((a, b) => b.votes - a.votes).slice(0, 3).map(q => `${q.label} ${Math.round(q.votes / mixSum * 100)}%`).join(' · ')
         : w.tied ? L('Tie', 'שוויון') : w.key === null ? L('Unassigned / no votes', 'ללא שיוך / ללא קולות')
         : `${groupName(w.key)} \u2066+${fmtPoints(w.margin / Math.max(1, p.row.valid) * 100, digits, true)}\u2069 ${L(...PP)}`;
       const source = document.createElement('span'); source.dir = 'auto'; source.textContent = localityNameSource(names, p.row, p.index, lang);
       tip.append(title, why, source);
       if (p.approx) { const note = document.createElement('span'); note.dir = 'auto'; note.textContent = lang === 'he' ? p.approx.he : p.approx.en; tip.append(note); }
       // the vote mix draws its own circles and tiles: the dot stays, unseen, for its tooltip and click
-      if (mix) { Leaflet.circleMarker([p.lat,p.lon], {radius:6, stroke:false, fillOpacity:0}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group); return; }
+      if (mix) { Leaflet.circleMarker([p.lat,p.lon], {radius:6, stroke:false, fillOpacity:0}).bindTooltip(tip, { direction: 'top', offset: [0, -8] }).on('click',()=>setSelectedIndex(p.index)).addTo(group); return; }
       // a thin white outline separates neighbouring dots; a dark ring would darken every colour alike
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#ffffff',weight:4,fill:false,interactive:false}).addTo(group);
       Leaflet.circleMarker([p.lat,p.lon], {radius:5, color:'#111418',weight:1,fillColor:w.color,fillOpacity:1}).bindTooltip(tip).on('click',()=>setSelectedIndex(p.index)).addTo(group);
@@ -286,8 +286,10 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     const m = map.current, rtl = lang === 'he'; if (!m || (!rtl && !names.names.length)) return;
     const layer = Leaflet.layerGroup().addTo(m);
     const ranked = placed.map(p => ({ p, name: localityName(names, p.row, p.index, lang), weight: p.row.registered ?? p.row.votesCast })).filter(x => x.name).sort((a, b) => b.weight - a.weight);
-    const draw = () => {
+    const m2names = new URLSearchParams(location.search).get('m2-names');
+    const draw0 = () => {
       layer.clearLayers();
+      if (m2names === 'off') return;
       const z = m.getZoom();
       const min = z <= 7 ? 150_000 : z === 8 ? 50_000 : z === 9 ? 15_000 : z === 10 ? 4_000 : z === 11 ? 1_000 : 0;
       const view = m.getBounds().pad(0.05), size = m.getSize(), taken: number[][] = [];
@@ -296,15 +298,27 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
         if (!view.contains([p.lat, p.lon])) continue;
         const pt = m.latLngToContainerPoint([p.lat, p.lon]), w = Math.ceil(textWidth(name)) + 4, h = 16;
         // the label reads away from its dot: to the right in English, to the left in Hebrew
-        const box = rtl ? [pt.x - 6 - w, pt.y - h / 2, pt.x - 6, pt.y + h / 2] : [pt.x + 6, pt.y - h / 2, pt.x + 6 + w, pt.y + h / 2];
+        let box = rtl ? [pt.x - 6 - w, pt.y - h / 2, pt.x - 6, pt.y + h / 2] : [pt.x + 6, pt.y - h / 2, pt.x + 6 + w, pt.y + h / 2];
+        let anchor: [number, number] = rtl ? [w + 6, h / 2] : [-6, h / 2];
+        if (m2names === 'clear' && areas.current) {
+          // M2 mock-up: the name goes beside the circle, never over any circle or tiled town; else it is left off
+          const L2 = areas.current; const r = (L2.occCircles.find(c => Math.abs(c[0] - pt.x) < 0.6 && Math.abs(c[1] - pt.y) < 0.6)?.[2] ?? 3) + 3;
+          const cands: [number[], [number, number]][] = [
+            [[pt.x + r, pt.y - h / 2, pt.x + r + w, pt.y + h / 2], [-r, h / 2]], [[pt.x - r - w, pt.y - h / 2, pt.x - r, pt.y + h / 2], [w + r, h / 2]],
+            [[pt.x - w / 2, pt.y - r - h, pt.x + w / 2, pt.y - r], [w / 2, h + r]], [[pt.x - w / 2, pt.y + r, pt.x + w / 2, pt.y + r + h], [w / 2, -r]]];
+          if (rtl) [cands[0], cands[1]] = [cands[1], cands[0]];
+          const ok = cands.find(([b]) => !(b[0] < 0 || b[2] > size.x - 4 || b[1] < 0 || b[3] > size.y) && !taken.some(t => b[0] < t[2] && b[2] > t[0] && b[1] < t[3] && b[3] > t[1]) && !L2.hits(b));
+          if (!ok) continue; box = ok[0]; anchor = ok[1];
+        }
         if (box[0] < 0 || box[2] > size.x - 4 || box[1] < 0 || box[3] > size.y) continue; // never cut off at the frame
         if (taken.some(b => box[0] < b[2] && box[2] > b[0] && box[1] < b[3] && box[3] > b[1])) continue;
         taken.push(box);
-        const icon = Leaflet.divIcon({ className: rtl ? 'locality-map-label rtl' : 'locality-map-label', html: '', iconSize: [w, h], iconAnchor: rtl ? [w + 6, h / 2] : [-6, h / 2] });
+        const icon = Leaflet.divIcon({ className: rtl ? 'locality-map-label rtl' : 'locality-map-label', html: '', iconSize: [w, h], iconAnchor: anchor });
         const marker = Leaflet.marker([p.lat, p.lon], { icon, interactive: false, keyboard: false }).addTo(layer);
         const el = marker.getElement(); if (el) el.textContent = name;
       }
     };
+    const draw = () => { if (m2names === 'clear') setTimeout(draw0, 60); else draw0(); };
     draw(); m.on('zoomend moveend', draw);
     return () => { m.off('zoomend moveend', draw); layer.remove(); };
   }, [placed, names, lang]);
@@ -357,11 +371,25 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
   const legend = mode === 'bloc' ? s.blocs.map(b => ({ id: b.id, color: b.color, label: groupingName(b, lang), title: b.appDefined ? appGroupingExplanation(lang) : undefined }))
     : s.lists.filter(l => mix ? seated.has(l.id) : winners.some(w => w.key === l.id)).map(l => ({ id: l.id, color: l.color, label: listLabel(l, lang), title: undefined }));
   const shareBar = (v: number, top: number, color: string) => <span className="locality-share"><span><i style={{ width: `${v / (top || 1) * 100}%`, background: color }} /></span><span className="tabnum">{share(v, selected!.valid, digits)}</span></span>;
-  return <div className="locality-map-tool">
-    <p className="small ink2">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes. English place names are CBS locality names; a few localities missing from CBS lists have this project’s transliteration (dotted underline).', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
+  // M2 MOCK-UP ONLY (never merged): ?m2-loc=a|b|c redraws the phone layout
+  const m2loc = new URLSearchParams(location.search).get('m2-loc');
+  const m2bar = m2loc && <div className="m2-bar">
+    <span className="m2-ctl"><span className="m2-lab">{L('Show', 'מה רואים')}</span><span className="seg" role="group">
+      <button type="button" aria-pressed={!mix} onClick={() => setView('winner')}>{L('Who came first', 'מי הוביל')}</button>
+      <button type="button" aria-pressed={mix} onClick={() => setView('mix')}>{L('Vote mix', 'תמהיל קולות')}</button></span></span>
+    <span className="m2-ctl"><span className="m2-lab">{L('Count by', 'לפי')}</span><span className="seg" role="group">
+      <button type="button" aria-pressed={mode === 'bloc'} onClick={() => setMode('bloc')}>{L('Blocs', 'גושים')}</button>
+      <button type="button" aria-pressed={mode === 'list'} onClick={() => setMode('list')}>{L('Lists', 'רשימות')}</button></span></span>
+  </div>;
+  const m2key = m2loc && <div className="m2-key">{legend.map(x=><span key={x.id}><i style={{background:x.color}} />{x.label}</span>)}<span><i style={{background:mix ? OTHER : GREY}}/>{mix ? (mode === 'bloc' ? L('No bloc', 'ללא גוש') : L('Other', 'אחרות')) : L('Tie / none', 'שוויון / אין')}</span>
+    <button type="button" className="m2-i" aria-label="i">i</button></div>;
+  const m2find = m2loc && <div className="m2-find"><input type="search" placeholder={L('Find a place or an address', 'חיפוש יישוב או כתובת')} /></div>;
+  return <div className={`locality-map-tool${m2loc ? ` m2 m2-${m2loc}` : ''}`}>
+    {m2bar}{m2key}{m2find}
+    <p className="small ink2 loc-caption">{L('Historical votes · current grouping', 'קולות היסטוריים · חלוקה נוכחית')} <Info title={L('Map assumptions', 'הנחות המפה')}>{L('Historical local votes; colours follow your current scenario grouping. National vote edits are not distributed geographically. Split lists use national vote proportions; split blocs use elected-seat proportions, an estimate rather than measured party votes. English place names are CBS locality names; a few localities missing from CBS lists have this project’s transliteration (dotted underline).', 'קולות היסטוריים ביישובים; הצבעים לפי חלוקת הגושים הנוכחית. שינויי קולות ארציים אינם מחולקים גאוגרפית. רשימות שפוצלו מחולקות לפי יחס הקולות הארצי; גושים בתוך רשימה לפי יחס המושבים הנבחרים — אומדן ולא קולות מפלגתיים שנמדדו.')}</Info></p>
     {data.id !== 'k17' && (data.noteEn || data.noteHe) && <p className="small callout">{lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe}</p>}
     {split && mode === 'bloc' && <p className="callout small">{L('A list spans several blocs: its locality votes are apportioned by its current elected members’ blocs.', 'רשימה משויכת לכמה גושים: קולותיה ביישוב מחולקים לפי שיוך חבריה הנבחרים כיום.')}</p>}
-    <div className="row">
+    <div className="row loc-pickrow">
       <ChoicePicker label={L('Colour by', 'צביעה לפי')} value={mode} options={[{ value: 'bloc', label: mix ? L('Blocs', 'גושים') : L('Winning bloc', 'הגוש המוביל'), preview: <ResultPreview s={s} /> }, { value: 'list', label: mix ? L('Lists', 'רשימות') : L('Winning list', 'הרשימה המובילה'), preview: <ResultPreview s={s} blocs={false} /> }]} onChange={v => setMode(v as typeof mode)} />
       <label className="field">{L('Find a locality ', 'חיפוש יישוב ')}<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder={L('Hebrew, English or code','עברית, אנגלית או סמל')} /></label>
     </div>
@@ -412,7 +440,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
         </Info>
       </span>)}
     </fieldset></details>
-    {<p className="small locality-boundary-limit" style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></p>}
+    {<p className={`small locality-boundary-limit${m2loc && hiddenLines === 0 ? ' m2-none' : ''}`} style={{visibility:hiddenLines>0?'visible':'hidden'}} aria-hidden={hiddenLines===0} role={hiddenLines>0?'status':undefined}>{L('Some approximate lines are hidden at this zoom. Zoom out to see them.', 'חלק מהקווים המקורבים מוסתרים בהגדלה זו. להצגתם, הקטינו את המפה.')} <Info title={L('Line detail limits','מגבלות פירוט הקווים')}>{L('Each layer stops at its source precision. Measured source differences are limited to roughly 20 screen pixels; outlines whose precision is unknown are shown only at overview zooms. Locality dots and names remain available. Each layer’s explanation states its uncertainty.', 'כל שכבה נעצרת לפי דיוק המקור. פערי המקורות שנמדדו מוגבלים לכ־20 פיקסלים במסך; תוואים שדיוקם אינו ידוע מוצגים רק בקנה מידה כללי. נקודות ושמות היישובים ממשיכים להופיע. אי־הוודאות מצוינת בהסבר של כל שכבה.')}</Info></p>}
     {lineError && <p className="small bad" role="status">{L('Boundary data could not load.', 'נתוני הקווים לא נטענו.')} <button className="btn small" onClick={retryLines}>{L('Try again', 'נסו שוב')}</button></p>}
     <div ref={container} className="locality-map-canvas" role="region" aria-label={L('Locality results map; use search or table for keyboard selection','מפת תוצאות ביישובים; לבחירה במקלדת השתמשו בחיפוש או בטבלה')} />
     {tilesFailed && <p className="small bad">{L('The background map could not load; the locality dots still work.', 'מפת הרקע לא נטענה; נקודות היישובים עדיין פעילות.')}</p>}
@@ -439,7 +467,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
       });})()}</tbody></table></div>
     </section>}
     {locationError && <p className="bad" role="alert">{L('Coordinates could not be loaded. The table is still available.', 'לא ניתן לטעון מיקומים. הטבלה עדיין זמינה.')} <button className="btn small" onClick={retryLocations}>{L('Try again', 'נסו שוב')}</button></p>}
-    <p className="small ink2">{L(`${fmtInt(placed.length)} of ${fmtInt(localities)} localities placed. Envelope votes have no geographic location.`,`${fmtInt(placed.length)} מתוך ${fmtInt(localities)} יישובים ממופים. למעטפות החיצוניות אין מיקום גאוגרפי.`)}</p>
-    <details><summary>{L('Rows without a mapped location','שורות ללא מיקום במפה')}</summary><ul>{unplaced.map(i=><li key={i}><button className="btn small" onClick={()=>choose(i)}><LocalityName names={names} row={data.rows[i]} index={i} /> ({data.rows[i].code ?? '—'})</button></li>)}</ul></details>
+    <p className={`small ink2 loc-foot${m2loc && !unplaced.length ? ' m2-none' : ''}`}>{L(`${fmtInt(placed.length)} of ${fmtInt(localities)} localities placed. Envelope votes have no geographic location.`,`${fmtInt(placed.length)} מתוך ${fmtInt(localities)} יישובים ממופים. למעטפות החיצוניות אין מיקום גאוגרפי.`)}</p>
+    <details className={`loc-unplaced${m2loc && !unplaced.length ? ' m2-none' : ''}`}><summary>{L('Rows without a mapped location','שורות ללא מיקום במפה')}</summary><ul>{unplaced.map(i=><li key={i}><button className="btn small" onClick={()=>choose(i)}><LocalityName names={names} row={data.rows[i]} index={i} /> ({data.rows[i].code ?? '—'})</button></li>)}</ul></details>
   </div>;
 }

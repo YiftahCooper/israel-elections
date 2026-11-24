@@ -14,6 +14,9 @@ import * as Leaflet from 'leaflet';
 import { apportion, circleR, groupCells, MIN_TILES, tileSize, type Cell } from '../voteMix.ts';
 
 export type MapView = 'winner' | 'mix';
+// M2 MOCK-UP ONLY (never merged): ?m2-labels=off, ?m2-circles=small|grow
+export const m2 = (k: string) => { try { return new URLSearchParams(location.search).get('m2-' + k); } catch { return null; } };
+const M2_FIXED = 9.25;
 export const SWITCH = 10.5; // circles at zoom <= SWITCH, tiles above
 export interface Part { key: string; color: string; votes: number; label: string }
 export interface AreaPlace { index: number; name: string; lat: number | null; lon: number | null; valid: number; parts: Part[]; geom: number[][][][] | null }
@@ -32,6 +35,7 @@ const inside = (rings: ArrayLike<number>[], x: number, y: number) => {
   return c;
 };
 export class AreasLayer extends Leaflet.Layer {
+  occCircles: number[][] = []; occPolys: { rings: Float64Array[]; bbox: number[] }[] = []; occO = { x: 0, y: 0 };
   places: AreaPlace[] = []; view: MapView = 'winner'; dark = false; selected: number | null = null; island: Island | null = null;
   canvas: HTMLCanvasElement | null = null; cache = new Map<string, unknown>(); token = 0; islandBox: number[] | null = null;
   /** Whether a point on the map (container pixels) is on the island. */
@@ -43,7 +47,7 @@ export class AreasLayer extends Leaflet.Layer {
   onAdd(map: Leaflet.Map) {
     const pane = map.getPane('vote-mix') ?? map.createPane('vote-mix'); pane.style.zIndex = '340'; pane.style.pointerEvents = 'none';
     this.canvas = document.createElement('canvas'); this.canvas.className = 'vote-mix-canvas'; pane.appendChild(this.canvas);
-    map.on('moveend zoomend resize viewreset', this.redraw, this); this.redraw(); return this;
+    map.on('moveend zoomend resize viewreset', this.redraw, this); this.redraw(); (window as unknown as { __m2Map: unknown }).__m2Map = map; return this;
   }
   onRemove(map: Leaflet.Map) { map.off('moveend zoomend resize viewreset', this.redraw, this); this.canvas?.remove(); this.canvas = null; return this; }
   proj(p: AreaPlace, z: number): Proj | null {
@@ -67,14 +71,25 @@ export class AreasLayer extends Leaflet.Layer {
     groupCells(cells, apportion(parts, cells.length));
     this.cache.set(key, cells); return cells;
   }
+  /** M2: does a box (container pixels) cover a circle or a tiled town? */
+  hits(b: number[]) {
+    for (const [x, y, r] of this.occCircles) { const cx = Math.max(b[0], Math.min(x, b[2])), cy = Math.max(b[1], Math.min(y, b[3])); if ((cx - x) ** 2 + (cy - y) ** 2 < (r + 1.5) ** 2) return true; }
+    const o = this.occO;
+    for (const q of this.occPolys) {
+      if (b[2] + o.x < q.bbox[0] || b[0] + o.x > q.bbox[2] || b[3] + o.y < q.bbox[1] || b[1] + o.y > q.bbox[3]) continue;
+      for (let fx = 0; fx <= 1; fx += 0.25) for (const fy of [0, 0.5, 1]) if (inside(q.rings, b[0] + (b[2] - b[0]) * fx + o.x, b[1] + (b[3] - b[1]) * fy + o.y)) return true;
+    }
+    return false;
+  }
   redraw() {
     const map = this._map, cv = this.canvas; if (!map || !cv) return;
     const size = map.getSize(), dpr = window.devicePixelRatio || 1;
     cv.width = size.x * dpr; cv.height = size.y * dpr; cv.style.width = `${size.x}px`; cv.style.height = `${size.y}px`;
     Leaflet.DomUtil.setPosition(cv, map.containerPointToLayerPoint([0, 0]));
     const ctx = cv.getContext('2d')!; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, size.x, size.y);
-    const mix = this.view === 'mix';
-    const z = map.getZoom(), o = map.getPixelBounds().min!, close = mix && z > SWITCH;
+    const mix = this.view === 'mix'; this.occCircles = []; this.occPolys = []; this.occO = { x: map.getPixelBounds().min!.x, y: map.getPixelBounds().min!.y };
+    const m2c = m2('circles'); const R = (zz: number, v: number) => circleR(m2c === 'small' ? Math.min(zz, M2_FIXED) : zz, v);
+    const z = map.getZoom(), o = map.getPixelBounds().min!, close = mix && z > SWITCH && !m2c;
     const ink = this.dark ? 'rgba(236,240,244,.92)' : 'rgba(22,26,32,.88)', pale = this.dark ? 'rgba(220,225,230,.38)' : 'rgba(40,46,54,.34)';
     const ringCol = this.dark ? '#15191e' : '#ffffff', textCol = this.dark ? '#f2f4f7' : '#111418', halo = this.dark ? 'rgba(17,20,24,.92)' : 'rgba(255,255,255,.94)';
     const vis = (b: [number, number, number, number]) => b[2] >= o.x - 50 && b[0] <= o.x + size.x + 50 && b[3] >= o.y - 50 && b[1] <= o.y + size.y + 50;
@@ -86,7 +101,7 @@ export class AreasLayer extends Leaflet.Layer {
     const pie = (p: { lat: number | null; lon: number | null; parts: Part[] }, r: number, dashed = false) => {
       if (p.lat === null || p.lon === null) return;
       const c = map.latLngToContainerPoint([p.lat, p.lon]); if (c.x < -r || c.y < -r || c.x > size.x + r || c.y > size.y + r) return;
-      const sum = sumOf(p.parts); let a0 = -Math.PI / 2; ctx.globalAlpha = 0.95;
+      this.occCircles.push([c.x, c.y, r]); const sum = sumOf(p.parts); let a0 = -Math.PI / 2; ctx.globalAlpha = 0.95;
       for (const q of p.parts) { const a1 = a0 + q.votes / sum * Math.PI * 2; ctx.beginPath(); ctx.moveTo(c.x, c.y); ctx.arc(c.x, c.y, r, a0, a1); ctx.closePath(); ctx.fillStyle = q.color; ctx.fill(); a0 = a1; }
       ctx.globalAlpha = 1; ctx.beginPath(); ctx.arc(c.x, c.y, r, 0, Math.PI * 2); ctx.lineWidth = r > 6 ? 1.2 : 0.9; ctx.strokeStyle = ringCol; ctx.stroke();
       if (r > 6) { ctx.beginPath(); ctx.arc(c.x, c.y, r + 0.9, 0, Math.PI * 2); ctx.lineWidth = 0.8; ctx.strokeStyle = pale; ctx.stroke(); }
@@ -120,15 +135,15 @@ export class AreasLayer extends Leaflet.Layer {
     };
     if (mix) {
       if (!close) {
-        for (const p of this.places) { const pr = this.proj(p, z); if (pr && vis(pr.bbox)) faint(path(pr)); }
-        [...this.places].sort((a, b) => b.valid - a.valid).forEach(p => { pie(p, circleR(z, p.valid), !p.geom); });
+        for (const p of this.places) { const pr = this.proj(p, z); if (pr && vis(pr.bbox)) { if (m2c === 'small' && z > SWITCH) border(path(pr)); else faint(path(pr)); } }
+        [...this.places].sort((a, b) => b.valid - a.valid).forEach(p => { pie(p, R(z, p.valid), !p.geom); });
       } else {
         const T = tileSize(z), small: { p: AreaPlace; dashed: boolean }[] = [];
         for (const p of this.places) {
           const pr = this.proj(p, z); if (!pr) { small.push({ p, dashed: true }); continue; } if (!vis(pr.bbox)) continue;
           const P = path(pr), cells = this.tiles(`t${p.index}@${z}`, pr.rings, pr.bbox, p.parts, T);
           if (cells.length < MIN_TILES) { small.push({ p, dashed: false }); faint(P); continue; }
-          drawTiles(cells, p.parts, T, P, this.dark ? 0.8 : 0.72);
+          drawTiles(cells, p.parts, T, P, this.dark ? 0.8 : 0.72); this.occPolys.push({ rings: pr.rings, bbox: pr.bbox });
           border(P);
         }
         small.sort((a, b) => b.p.valid - a.p.valid).forEach(({ p, dashed }) => pie(p, circleR(z, p.valid), dashed));
@@ -175,7 +190,7 @@ export class AreasLayer extends Leaflet.Layer {
       this._map.getContainer().querySelectorAll('.locality-map-label, .leaflet-control-attribution').forEach(el => { if ((el as HTMLElement).style.visibility === 'hidden') return; const r = el.getBoundingClientRect(); taken.push([r.left - host.left - 2, r.top - host.top - 1, r.right - host.left + 2, r.bottom - host.top + 1]); });
       ctx.save(); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round'; ctx.globalAlpha = 1;
       ctx.font = '700 11.5px "IBM Plex Sans Hebrew", "Segoe UI", system-ui, sans-serif';
-      for (const c of cands.sort((a, b) => b.area - a.area)) {
+      for (const c of (m2('labels') === 'off' ? [] : cands).sort((a, b) => b.area - a.area)) {
         let done = false;
         for (const text of [c.full, c.short]) {
           const w = ctx.measureText(text).width + 6, h = 15; if (w > c.room) continue;
