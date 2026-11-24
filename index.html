@@ -12,6 +12,9 @@
     <!-- The theme before the first paint (store.ts resolves it the same way): a stored choice, else the device's.
          Without this, a dark device would flash the light page until the app starts. -->
     <script>try { var v = JSON.parse(localStorage.getItem('israel-elections:settings') || 'null'), t = v && v.v === 2 && v.values && v.values.theme; if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; document.documentElement.dataset.theme = t; } catch (e) {}</script>
+    <!-- The language and direction before the first paint, in src/app/startLanguage.ts's order: a stored language,
+         else ?lang=he|en, else the address (.il Hebrew, .com English), else Hebrew. tests/start-language.test.ts runs it. -->
+    <script>(function () { var l = null, h; try { var s = JSON.parse(localStorage.getItem('israel-elections:v1') || 'null'); l = s && s.lang; } catch (e) {} try { if (l !== 'he' && l !== 'en') l = (new URLSearchParams(location.search).get('lang') || '').trim().toLowerCase(); if (l !== 'he' && l !== 'en') { h = location.hostname.trim().toLowerCase().replace(/\.$/, ''); l = /\.il$/.test(h) ? 'he' : /\.com$/.test(h) ? 'en' : 'he'; } document.documentElement.lang = l; document.documentElement.dir = l === 'he' ? 'rtl' : 'ltr'; } catch (e) {} })();</script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,5 +1,9 @@
 # Changelog
 
+## 24 November 2026
+
+- Starting language by address (24 Nov): a first visit opens in Hebrew at an Israeli address (.co.il, .org.il) and in English at a .com address; a link with `?lang=he` or `?lang=en` chooses instead, and that parameter is then removed from the address bar (share links and other parameters stay). A language this browser has already stored always wins. The address's choice is stored only with the first thing the app stores, as before. The github.io address still opens in Hebrew.
+
 ## 22 November 2026
 
 - Copy votes, two choices (22 Nov): copying a list's votes from another election now offers "Number of votes" or "Share of valid votes". Under "Number of votes" one checkbox, "Adjust for the number of eligible voters", is ticked by default (Likud 2022 into 2026: 1,204,575 votes; unticked, the same 1,115,336). The calculations are unchanged. Simple shows the adjusted count before and after; Expert also offers "Copy the edit" (change in vote share, vote multiplier) when the source was edited. An (i) beside the seat preview says why a list's share of the seats differs from its share of the votes. The Whole list dialog and Settings → Copy votes: default method use the same words.

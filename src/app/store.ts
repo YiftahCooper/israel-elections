@@ -18,6 +18,7 @@ import { errorText, M, type StorageLoss } from '../model/messages.ts';
 import { dropAnalysisCache } from './analysisCache.ts';
 import { validAction, scenarioFromDataset, validateScenario, type Action, type ActionContext, type ChangeEntry, type Scenario } from '../model/scenario.ts';
 import type { Lang } from './i18n.ts';
+import { startLanguage, withoutLangParam } from './startLanguage.ts';
 import type { SourceChoice } from './voteEdit.ts';
 
 /** Interface level: what is shown, never what is computed. Simple = minimal; Standard = common,
@@ -190,10 +191,22 @@ if ((persisted.lang !== undefined && persisted.lang !== 'he' && persisted.lang !
   || (persisted.customFeatures !== undefined && persisted.customFeatures !== null
     && (!isRecord(persisted.customFeatures) || Object.keys(persistedFeatures!).length < Object.keys(persisted.customFeatures).length))) startupLoss.settings = true;
 
+// A stored language wins; otherwise the link or the address picks the starting default (startLanguage.ts). The default
+// is not written by itself: `synced` starts equal to it, so it is stored only with the first thing the app stores.
+const initialLang: Lang = startLanguage({
+  saved: persisted.lang === 'he' || persisted.lang === 'en' ? persisted.lang : null,
+  search: globalThis.location?.search ?? '', hostname: globalThis.location?.hostname ?? '',
+});
+// `?lang=` has done its work: it leaves the visible address (other parameters and a #s= share link stay)
+try {
+  const clean = globalThis.location ? withoutLangParam(globalThis.location.href) : null;
+  if (clean !== null) history.replaceState(history.state, '', clean);
+} catch { /* an address the browser will not rewrite stays as it is */ }
+
 let state: State = {
   datasets: {}, elections: FALLBACK_INDEX, electionId: 'k26', scenario: null, preview: null, reference: null, markOfficial: persisted.markOfficial === true, past: [], future: [], selectedListId: null, blocPanel: null,
   tool: settingValue(rememberedSettings, 'openOn', initialLevel) === 'last' && TOOL_IDS.has(persisted.tool as string) ? persisted.tool as string : null, comparing: null,
-  lang: persisted.lang === 'en' ? 'en' : 'he', theme: resolvedTheme(settingValue(rememberedSettings, 'theme', initialLevel)),
+  lang: initialLang, theme: resolvedTheme(settingValue(rememberedSettings, 'theme', initialLevel)),
   level: initialLevel, custom: typeof persisted.custom === 'boolean' ? persisted.custom && !!persistedFeatures : !!persistedFeatures && Object.keys(persistedFeatures).length > 0, customBase: initialBase, customFeatures: persistedFeatures, settings: rememberedSettings,
   saved: persistedSaved, toast: null, loadError: null, notice: null, voteSource: sourceChoice(rememberedPreferences.voteSource ?? 'proportional'), preferences: rememberedPreferences, preferenceAsk: null, preferenceFor: rememberedItems, sessions: {}, scenarioDrafts: {},
   compare: { drafts: {}, overrides: {}, snapshot: null, swapped: null, chamber: 'work', back: null },
