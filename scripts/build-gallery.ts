@@ -1,7 +1,7 @@
 /** Build the public gallery once for all visitors. Run on the trusted default branch only. */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { parseBody, retryAfterMs, type GalleryEntry } from '../src/app/gallery/gallery.ts';
-const site = 'https://yiftahcooper.github.io/israel-elections/';
+const site = 'https://haknesset.co.il/';
 const api = 'https://api.github.com/repos/YiftahCooper/israel-elections/issues?labels=scenario&state=open&per_page=100';
 const entries: GalleryEntry[] = [];
 const input = process.argv[2];

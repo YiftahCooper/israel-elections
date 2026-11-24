@@ -30,7 +30,7 @@ It has no separate lint command. Do not substitute a successful Vite build for t
 every 30 minutes (at 17 and 47 minutes past the hour), when an issue changes, and on a manual run.
 The repeated runs refresh the community gallery: `node scripts/build-gallery.ts` reads the open issues
 labelled `scenario` before the build.
-The site is at <https://yiftahcooper.github.io/israel-elections/>; Settings → Pages → Source is GitHub Actions.
+The site is at <https://haknesset.co.il/> (custom domain; the old <https://yiftahcooper.github.io/israel-elections/> forwards there). Settings → Pages → Source is GitHub Actions. DNS is on Cloudflare: haknesset.co.il points at GitHub Pages (DNS only, not proxied); hakneset.co.il redirects there; haknesset.com and hakneset.com forward (at Porkbun) to `https://haknesset.co.il/?lang=en`, which opens the app in English. `scripts/build-gallery.ts` must use the same address as the live site, because the gallery accepts only share links on it.
 The job runs the type check and unit tests before deploying, and is skipped if the repository is ever made private again
 (free plans serve Pages from public repositories only).
 The build uses relative asset paths (`base: './'`), so it works under `/<repository>/`.

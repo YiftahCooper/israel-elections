@@ -2,6 +2,7 @@
 
 ## 24 November 2026
 
+- New address (24 Nov): the site is now at haknesset.co.il, which opens in Hebrew. haknesset.com and hakneset.com open it in English, and hakneset.co.il and the old github.io address forward to it. Gallery share links use the new address.
 - Starting language by address (24 Nov): a first visit opens in Hebrew at an Israeli address (.co.il, .org.il) and in English at a .com address; a link with `?lang=he` or `?lang=en` chooses instead, and that parameter is then removed from the address bar (share links and other parameters stay). A language this browser has already stored always wins. The address's choice is stored only with the first thing the app stores, as before. The github.io address still opens in Hebrew.
 
 ## 22 November 2026

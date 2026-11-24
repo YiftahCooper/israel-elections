@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { buildBody, parseBody, normalizeSearch, filterEntries, GalleryClient, GalleryError, retryAfterMs, validShareLink } from '../src/app/gallery/gallery.ts';
-const site = 'https://yiftahcooper.github.io/israel-elections/';
+const site = 'https://haknesset.co.il/';
 const scenario = { name: 'שלום', description: '<img src=x onerror=alert(1)>\nDetails', electionId: 'k26', year: '2026', tags: ['test'], shareLink: `${site}#s=abc_12` };
 describe('gallery template', () => {
   it('round trips multiline text without interpreting HTML', () => expect(parseBody(buildBody(scenario), site)).toEqual(scenario));

@@ -7,7 +7,7 @@ it('builds a valid static index from issue pages while omitting unsafe links and
   const root = resolve('.backup-scratch/gallery-generator-test'); mkdirSync(root, { recursive: true });
   const dir = mkdtempSync(`${root}/case-`);
   try {
-    const site = 'https://yiftahcooper.github.io/israel-elections/';
+    const site = 'https://haknesset.co.il/';
     const scenario = { name: 'Scenario', description: 'Test', electionId: 'k25', year: '2022', tags: [], shareLink: `${site}#s=abc` };
     const issue = { number: 1, body: buildBody(scenario), user: { login: 'example' }, created_at: '2026-01-01', reactions: { '+1': 2 } };
     const input = `${dir}/issues.json`, output = `${dir}/index.json`;

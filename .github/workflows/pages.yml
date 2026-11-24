@@ -1,6 +1,6 @@
 name: Deploy to GitHub Pages
 # Publishes the static build to GitHub Pages on every push to main.
-# Live at https://yiftahcooper.github.io/israel-elections/ (Settings → Pages → Source: GitHub Actions).
+# Live at https://haknesset.co.il/ (custom domain; Settings → Pages → Source: GitHub Actions).
 # Free GitHub plans serve Pages only from public repositories, so the job is skipped if the
 # repository is made private.
 on:
