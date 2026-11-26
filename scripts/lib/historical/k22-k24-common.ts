@@ -171,6 +171,8 @@ export function reconciliationRecord(n:number){
 export interface BuildConfig {
   n:22|23|24;date:string;counts:Record<string,number>;leaders:Record<string,string>;
   noteEn?:string;noteHe?:string;notes?:Record<string,string[]>;
+  /** what the list panel shows instead of the verbatim `notes` (plain wording; clarity pass, 26 Nov 2026) */
+  readerNotes?:Record<string,string[]>;
   textReplacements?:Record<string,string>;withdrawn?:string[];
 }
 export async function buildHistorical(config:BuildConfig){
@@ -204,6 +206,7 @@ export async function buildHistorical(config:BuildConfig){
   const withoutSpaces = (s:string) => s.replace(/\s+/g,'');
   for(const [letters,notes] of Object.entries(config.notes??{})) for(const note of notes)
     check(withoutSpaces(normalize(noteText)).includes(withoutSpaces(note)),`k${n} ${letters}: note not found verbatim in official notice`);
+  for(const letters of Object.keys(config.readerNotes??{})) check(!!config.notes?.[letters],`k${n} ${letters}: reader note without an official notice`);
   const rosters=await candidateRosters(n,candidatePages);
   check(rosters.length===letters.length && letters.every(L=>rosters.some(r=>r.letters===L)),`k${n}: gazette and national lists differ`);
   const lists:ListRecord[]=national.lists.map((list,i)=>{
@@ -215,15 +218,15 @@ export async function buildHistorical(config:BuildConfig){
     });
     if(config.leaders[list.letters])check(candidates[0].nameHe===config.leaders[list.letters],`k${n} ${list.letters}: unexpected party leader ${candidates[0].nameHe}`);
     return listRecord(n,i,{letters:list.letters,nameHe:normalize(r.nameHe),votes:list.votes,sponsorsHe:normalize(r.sponsorsHe),withdrawn:config.withdrawn?.includes(list.letters) ?? ((n===23&&list.letters==='זץ')||(n===24&&list.letters==='רק')),
-      candidates,candidatesSource:`k${n}-candidates-gazette`,notesHe:config.notes?.[list.letters]??[]});
+      candidates,candidatesSource:`k${n}-candidates-gazette`,notesHe:(config.readerNotes??config.notes)?.[list.letters]??[]});
   });
   const pairs=await agreementPairs(n,surplus);
   checkAgreementPairs(check,`k${n}`,pairs,letters);
   const ds:ElectionDataset={schemaVersion:1,id:`k${n}`,knesset:n,electionDate:config.date,
     nameHe:`הבחירות לכנסת ה-${n}`,nameEn:`Election to the ${n}${n===22?'nd':n===23?'rd':'th'} Knesset`,
     status:{stage:'official-final',asOf:'2026-11-03',
-      noteEn:`Official final Central Elections Committee votes and seats; candidate rosters as printed in the approved-list gazette, before subsequent resignations. ${config.noteEn??''}`.trim(),
-      noteHe:`תוצאות סופיות רשמיות. המועמדים לפי רשימות המועמדים המאושרות בילקוט הפרסומים, לפני התפטרויות מאוחרות. ${config.noteHe??''}`.trim()},
+      noteEn:`Candidate lists are as approved and published, before later resignations. ${config.noteEn??''}`.trim(),
+      noteHe:`רשימות המועמדים כפי שאושרו ופורסמו, לפני התפטרויות מאוחרות. ${config.noteHe??''}`.trim()},
     ruleSetId:'il-2014-bader-ofer-3.25',totals:{...national.totals,ballotBoxes:record.pollingStations,...geographyTotals(rows)},
     lists,agreements:agreementRecords(n,pairs,`k${n}-surplus-gazette`),blocs:[],
     officialSeats:officialSeatsOf(n,national.lists),officialSeatsSourceId:`k${n}-national-html`,sourceIds:[...ids,'law-elections'],

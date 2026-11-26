@@ -45,7 +45,7 @@ describe.each([1,2,3,4,5,6,7])('k%i built national release',n=>{
     expect(ds.sourceIds).toContain(`k${n}-rosters-reviewed`);
     expect(Object.keys(ds.buildInfo.rawSha256)).toEqual(ds.sourceIds);
     expect(Object.values(ds.buildInfo.rawSha256).every(h=>/^[a-f0-9]{64}$/.test(h))).toBe(true);
-    expect(ds.status.noteHe).toContain('דרגות');expect(ds.status.noteEn).toContain('later ranks');
+    expect(ds.status.noteHe).toContain('כל הנבחרים מופיעים');expect(ds.status.noteEn).toContain('All elected candidates are listed');
   });
   it('preserves every contiguous registered prefix and the reviewed elected-rank cross-check',()=>{
     expect(Object.fromEntries(roster.lists.map(l=>[l.letters,l.candidates.length]))).toEqual(coverage[n]);

@@ -85,12 +85,12 @@ describe('k16 — released national and locality datasets; explicit roster limit
       expect(l.candidatesTruncated ?? false, l.id).toBe(r.candidatesTruncated ?? false);
       if (r.candidatesUnavailable) {
         expect(l.candidates).toEqual([]);
-        expect(l.notesHe).toContain(r.unavailableReasonHe);
+        expect(l.notesHe.join(' ')).toContain(`(${r.unresolvedRanks.length > 1 ? 'מקומות' : 'מקום'} ${r.unresolvedRanks.join(', ')})`);
         expect(r.unresolvedRanks.length).toBeGreaterThan(0);
       } else {
         if (r.candidatesTruncated) {
           expect(l.candidates.length).toBeLessThan(r.publishedCount);
-          expect(l.notesHe).toContain(r.truncatedReasonHe);
+          expect(l.notesHe).toContain(`ברשימה הרשמית ${r.publishedCount} מועמדים.`);
         } else expect(l.candidates.length).toBe(r.publishedCount);
         expect(l.candidates.map(c => c.rank)).toEqual(Array.from({ length: l.candidates.length }, (_, i) => i + 1));
         expect(l.candidates.map(c => c.nameHe)).toEqual(r.candidates.map((c: { nameHe: string }) => c.nameHe));
@@ -132,15 +132,15 @@ describe('k16 — released national and locality datasets; explicit roster limit
       secondary.electedCrossCheck!.sourceId = 'k16-membership-odata';
       expect(() => verifyElectedRoster(secondary, seats, 'k16-results-gazette')).toThrow(/official elected cross-check/);
     }
-    expect(ds.status.noteEn).toContain('Every winning list includes all elected ranks');
-    expect(ds.status.noteHe).toContain('סעיף 4');
+    expect(ds.status.noteEn).toContain('All elected candidates are listed');
+    expect(ds.status.noteHe).toContain('כל הנבחרים מופיעים');
   });
   it('retains the approved withdrawn list without treating it as a contestant', () => {
     const l = ds.lists.find(l => l.letters === 'זך')!;
     expect(l.withdrawn).toBe(true);
     expect(l.votes).toBe(0);
     expect(l.candidates.map(c => c.nameHe)).toEqual(['בא-גד יוסף', 'גרוס שלמה', 'בא-גד עמנואל', 'בא-גד משה']);
-    expect(l.notesHe.join(' ')).toContain('התפטרו כל המועמדים');
+    expect(l.notesHe.join(' ')).toContain('כל מועמדי הרשימה התפטרו');
     expect(ds.lists.filter(l => !l.withdrawn)).toHaveLength(27);
     expect(ds.lists.find(l => l.letters === 'ט')!.candidates[2].nameHe).toBe('תורתי אברהם');
     expect(ds.lists.find(l => l.letters === 'קך')!.candidates[9].nameHe).toBe('משקוץ ארקדי');
@@ -152,11 +152,14 @@ describe('k16 — released national and locality datasets; explicit roster limit
     const check = reviewed.lists.find((r: { letters: string }) => r.letters === 'כן').electedCrossCheck;
     expect(check.resultsNamesHe).toEqual(['שרנסקי נתן', 'אדלשטיין יולי-יואל']);
     expect(check.nameVariants).toEqual([]);
-    expect(list.notesHe.join(' ')).toContain('ויתר לאחר הבחירות');
+    // the withdrawal is noted beside his name; the list carries no second copy (clarity pass, 26 Nov 2026)
+    expect(list.notesHe).toEqual([]);
+    expect(list.candidates[0].notes?.[0].en).toContain('withdrew');
+    expect(ds.sourceIds).toContain('k16-sharansky-withdrawal');
   });
   it('has aligned locality columns, null metadata, envelope flags and reconciling totals', () => {
-    expect(loc.noteEn).toMatch(/summed from official polling-station/);
-    expect(loc.noteHe).toMatch(/לא קיימת טבלת יישובים רשמית/);
+    expect(loc.noteEn).toMatch(/no official table by locality/);
+    expect(loc.noteHe).toMatch(/אין טבלה רשמית לפי יישוב/);
     expect(loc.rows).toHaveLength(1172);
     expect(loc.rows.filter(r => r.envelopes)).toHaveLength(1);
     expect(loc.rows.find(r => r.envelopes)?.registered).toBe(null);

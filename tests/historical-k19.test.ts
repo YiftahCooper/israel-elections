@@ -26,13 +26,14 @@ describe('k19 — official 2013 result', () => {
     const ds: ElectionDataset = JSON.parse(readFileSync('public/data/k19.json', 'utf8'));
     expect(ds.status.noteEn).toContain('3,792,472');
     expect(ds.status.noteEn).toContain('Both versions give exactly the same seats');
-    expect(ds.lists.filter(l => l.notesHe.length).map(l => l.letters).sort()).toEqual(['מחל', 'כן', 'יק', 'ד'].sort());
+    // the three declared/detailed differences are explained beside each list's votes (src/app/k19Note.ts), not as list notes
+    expect(ds.lists.filter(l => l.notesHe.length).map(l => l.letters)).toEqual(['ד']);
   });
   it('retains the formal total correction and the approved Balad identity', () => {
     const ds: ElectionDataset = JSON.parse(readFileSync('public/data/k19.json', 'utf8'));
     expect(ds.sourceIds).toContain('k19-results-correction');
     expect(ds.buildInfo.rawSha256['k19-results-correction']).toBe('997628f9f5b6d556b62e2547489cbc9b6fbd64fa721c6eff687577ae1074cc24');
-    expect(ds.status.noteEn).toContain('Yalkut HaPirsumim 6546');
+    expect(ds.status.noteEn).toContain('officially corrected to 3,792,742');
     expect(ds.lists.find(l => l.letters === 'ד')?.nameHe).toBe('בל"ד - אלתג\'מוע אלווטני אלדמוקרטי');
     for (const letters of ['צפ', 'ו']) expect(ds.lists.find(l => l.letters === letters)?.logo).toBeUndefined();
     expect(ds.lists.find(l => l.letters === 'מרצ')?.logo?.file).toBe('logos/meretz-2013-k19-print.png');

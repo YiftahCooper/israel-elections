@@ -134,7 +134,7 @@ for (const lang of ['en', 'he'] as const) {
     const dayan = details(page).locator('.cands li').filter({ hasText: 'דיין משה' });
     await expect(dayan).toContainText(H ? 'ללא כהונה' : 'not seated');
     await dayan.getByRole('button', { name: H ? 'למה אין כהונה' : 'Why not seated', exact: true }).click();
-    await expect(page.locator('.pop').filter({ hasText: 'אינו מופיע בין הנבחרים' })).toBeVisible();
+    await expect(page.locator('.pop').filter({ hasText: 'השם לא פורסם בין הנבחרים' })).toBeVisible();
   });
 
   test(`c-levels-10: Simple's "Who gets in" says how many it lists, then all elected, then the roster (${lang})`, async ({ page }) => {

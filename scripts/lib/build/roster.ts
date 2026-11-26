@@ -33,5 +33,7 @@ export function notSeatedRanks(electedRanks: readonly number[], candidateRanks: 
   const last = Math.max(0, ...electedRanks);
   return new Set(candidateRanks.filter(rank => rank < last && !electedRanks.includes(rank)));
 }
+/** Reader wording, gender-neutral (the notice records no gender). Keeps "(מקום N)" and the name: the roster's
+ *  "not seated (i)" finds a candidate's note by either (src/app/components/Candidates.tsx notSeatedReasons). */
 export const notSeatedNoteHe = (c: { nameHe: string; rank: number }) =>
-  `${c.nameHe} (מקום ${c.rank}) אינו מופיע בין הנבחרים בהודעת התוצאות הרשמית; המנדט עבר למועמד הבא.`;
+  `${c.nameHe} (מקום ${c.rank}): השם לא פורסם בין הנבחרים, והמנדט עבר למועמד הבא ברשימה.`;

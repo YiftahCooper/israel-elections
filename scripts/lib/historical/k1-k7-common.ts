@@ -8,6 +8,7 @@ import { ISRAEL_1949, ISRAEL_1951 } from '../../../src/engine/rules.ts';
 import type { ElectionDataset, ElectionId } from '../../../src/data/schema.ts';
 import { agreementRecords, inKeyOrder, listRecord, officialSeatsOf, seatOrder } from '../build/records.ts';
 import { candidateId, notSeatedNoteHe, notSeatedRanks, rosterFlags } from '../build/roster.ts';
+import { readerListNotes } from '../build/reader-notes.ts';
 import { indexEntry, OUT, rawJson, verifySources } from '../build/sources.ts';
 import { allocateDataset, checker, checkNationalTable, seatDifferences, type Check } from '../build/validate.ts';
 
@@ -132,7 +133,7 @@ export function earlyReleasedDataset(n:number,audit:EarlyAudit=verifyEarlyProgre
     // the pre-roster record marks capacity unknown; a reviewed roster replaces that flag
     const {candidatesUnavailable:_pending,...base}=l;
     return inKeyOrder({...base,
-      notesHe:[...(r.lists.find(x=>x.letters===l.letters)?.notesHe??[]),...(reviewed?.candidates??[]).filter(c=>excluded.has(c.rank)).map(notSeatedNoteHe)],
+      notesHe:[...readerListNotes(r.id,l.letters,r.lists.find(x=>x.letters===l.letters)?.notesHe??[]),...(reviewed?.candidates??[]).filter(c=>excluded.has(c.rank)).map(notSeatedNoteHe)],
       candidates:reviewed?.candidates.map(c=>({...c,id:candidateId(l.id,c.rank),...(excluded.has(c.rank)?{notSeated:true}:{})}))??[],
       ...rosterFlags(!reviewed?'unavailable':reviewed.truncated?'truncated':'complete','explicit'),
     },EARLY_LIST_KEYS) as unknown as ElectionDataset['lists'][number];

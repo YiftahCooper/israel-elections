@@ -1,5 +1,6 @@
 // 26th Knesset (2026): CEC result CSVs (final count), the CEC list pages captured from gov.il,
 // the reviewed candidate gazette for two missing pages, and the surplus gazette.
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import type { Candidate, ElectionDataset } from '../../../src/data/schema.ts';
@@ -17,7 +18,42 @@ interface PageCandidate { rank: number; name: string; party?: string }
 interface PageList { url: string; nameHe: string; letters: string; sponsors: string[]; candidates: PageCandidate[]; notes: string[]; updated: string }
 
 // Official note paragraphs on the CEC list pages: resignations, disqualifications, court rulings, withdrawal.
+// The app shows them in plain words (READER below); the captured page keeps the official text.
 const NOTE_RE = /התפטר|מנוע|אינה מתמודדת|בית המשפט|לא נכלל|נמחק|הוועדה|סעיף 62|הוחלף/;
+
+/** Reader wording of each list's official notes (clarity pass, 26 Nov 2026): who resigned or was left off, and when;
+ *  no addressee, legal preamble or citation. `official` is the first 12 hex digits of the SHA-256 of the list's
+ *  official paragraphs joined by newlines, so a changed capture fails the build instead of showing stale words.
+ *  Verbs follow the gender the official notice uses. */
+const READER: Record<string, { official: string; he: string[] }> = {
+  'שס': { official: 'f71a860cd766', he: ['איציק חוגי (מקום 117) התפטר מהרשימה ב־15.9.2026.'] },
+  'ג': { official: '3e312b31d1c8', he: ['משה דוד מורגנשטרן (מקום 24) ויעקב צבי רוזנשטין (מקום 66) התפטרו מהרשימה ב־4.10.2026.'] },
+  'ט': { official: '376a4803fd40', he: ['בעקבות בדיקת כשירות, לייבלר אברהם שמואל (מקום 31) לא נכלל ברשימה שאישרה ועדת הבחירות ב־27.9.2026.'] },
+  'דרך': { official: '39522dd858a3', he: ['אלמוג אלירן (מקום 78) התפטר מהרשימה ב־13.10.2026.'] },
+  'אמת': { official: '96ab5b4bb372', he: ['ירון גדות זרצנסקי (מקום 75) התפטר מהרשימה ב־16.9.2026.'] },
+  'רק': { official: 'd19150a89b8d', he: ['עופר פליקס מאור (מקום 69) התפטר מהרשימה ב־1.10.2026, ואנטולי בראל (מקום 118) ב־9.10.2026.'] },
+  'עם': { official: '8800029ae9c5', he: [
+    'ב־24 בספטמבר 2026 פסלה ועדת הבחירות את הרשימה מלהתמודד (סעיף 7א לחוק־יסוד: הכנסת); ב־2 באוקטובר 2026 קיבל בית המשפט העליון את הערעור וקבע שהרשימה רשאית להתמודד.',
+    'בעקבות בדיקת כשירות, חסן אחמד (מקום 34) לא נכלל ברשימה שאישרה ועדת הבחירות ב־27.9.2026.'] },
+  'ודם': { official: '43e9d8b9a10b', he: [
+    'תאודור אריאל עמר (מקום 53) התפטר מהרשימה ב־17.9.2026, וסמי אבו שחאדה (מקום 3) ב־2.10.2026.',
+    'ב־24 בספטמבר 2026 פסלה ועדת הבחירות את סמי אבו שחאדה (מקום 3) ואת עופר כסיף (מקום 6) מלהתמודד (סעיף 7א לחוק־יסוד: הכנסת). ב־2 באוקטובר 2026 לא אישר בית המשפט העליון את פסילת עופר כסיף, והוא רשאי להתמודד; בעניין סמי אבו שחאדה לא נדרשה הכרעה, כי התפטר.',
+    'ב־24 בספטמבר 2026 פסלה ועדת הבחירות את הרשימה מלהתמודד (סעיף 7א לחוק־יסוד: הכנסת); ב־2 באוקטובר 2026 קיבל בית המשפט העליון את הערעור וקבע שהרשימה רשאית להתמודד.'] },
+  'די': { official: 'fc70dbe2ccb9', he: ['בעקבות בדיקת כשירות, בהט יונתן (מקום 15) לא נכלל ברשימה שאישרה ועדת הבחירות ב־27.9.2026. בר שמיאן (מקום 37) התפטר מהרשימה ב־28.9.2026, ואלמוג רום (מקום 16) התפטרה ב־11.10.2026.'] },
+  'ך': { official: 'be9fad136f59', he: ['דוד נחום בן ציון (מקום 8) התפטר מהרשימה ב־21.10.2026.'] },
+  'נר': { official: '28585049cdf5', he: ['יונתן יששכר (מקום 3) התפטר מהרשימה ב־22.10.2026.'] },
+  'צף': { official: 'e3a9fd02f457', he: ['בעקבות בדיקת כשירות, פוויץ יהודה אריה (מקום 22) לא נכלל ברשימה שאישרה ועדת הבחירות ב־27.9.2026.'] },
+  'קך': { official: 'bea33c1e979e', he: ['אסתר רוזן (מקום 3), ליאור חיים נאור (מקום 16) ויעל יזרעאלי-נתנאל (מקום 28) התפטרו מהרשימה ב־17.9.2026. בעקבות בדיקת כשירות, אורי מיכאלוב (מקום 21) ואשטון גולן (מקום 24) לא נכללו ברשימה שאישרה ועדת הבחירות ב־27.9.2026.'] },
+  'קץ': { official: 'db7416acb635', he: ['בעקבות בדיקת כשירות, אייזנשטיין מיכאל (מקום 9) לא נכלל ברשימה שאישרה ועדת הבחירות ב־27.9.2026.'] },
+  'צבי': { official: '5a74165c9cee', he: ['כל מועמדי הרשימה התפטרו ב־25.10.2026, והרשימה לא התמודדה בבחירות.'] },
+};
+const officialHash = (notes: readonly string[]) => createHash('sha256').update(notes.join('\n')).digest('hex').slice(0, 12);
+function readerNotes(L: string, official: readonly string[]): string[] {
+  if (!official.length) return [];
+  const r = READER[L];
+  check(r && r.official === officialHash(official), `k26 ${L}: official list-page notes changed (hash ${officialHash(official)}); update READER's plain wording`);
+  return r ? [...r.he] : [];
+}
 
 function parseGovilPages(unrecognised: string[]): PageList[] {
   const d = JSON.parse(readFileSync(join(RAW, 'k26/govil-list-pages.exa.json'), 'utf8')) as { text: string }[];
@@ -160,17 +196,16 @@ export async function buildK26() {
     const id = `26-${L}`;
     const p = gazetteLetters.includes(L) ? undefined : byLetters.get(L);
     let nameHe: string; let sponsors: string[]; let cands: PageCandidate[]; let notes: string[] = []; const gazetted = gazetteLetters.includes(L);
-    if (p) { nameHe = p.nameHe; sponsors = p.sponsors; cands = p.candidates; notes = p.notes; }
+    if (p) { nameHe = p.nameHe; sponsors = p.sponsors; cands = p.candidates; notes = readerNotes(L, p.notes); }
     else {
       const f = reviewed.lists.find(l => l.letters === L);
       check(f, `k26 ${L}: no reviewed official roster`);
-      nameHe = f!.nameHe; sponsors = f!.sponsors; cands = f!.candidates;
-      notes = [`רשימת המועמדים: רשומות, ילקוט הפרסומים 15023 (13.10.2026), עמ׳ ${L === 'בי' ? '834' : '851'}; הפרסום הרשמי נקרא מעותק באתר olaw.org.il (אתר מראה).`];
+      nameHe = f!.nameHe; sponsors = f!.sponsors; cands = f!.candidates; // its source: candidatesSource (Sources tab)
     }
-    if (L === 'ק') notes.push('שם הרשימה בעמוד המועמדים: דרך חזון ותקומה; בטבלת התוצאות הסופיות של הוועדה: תקומה (k26-official-results).');
-    if (L === 'קך') notes.push('בעמוד המועמדים: ולבחירות אישיות; בטבלת התוצאות הסופיות של הוועדה: ובחירות אישיות (k26-official-results).');
+    if (L === 'ק') notes.push('בתוצאות הסופיות של ועדת הבחירות שם הרשימה הוא "תקומה".');
+    if (L === 'קך') notes.push('בתוצאות הסופיות של ועדת הבחירות נכתב בשם הרשימה "ובחירות אישיות" במקום "ולבחירות אישיות".');
     const withdrawn = L === 'כן' || L === 'צבי';
-    if (L === 'כן') notes.push('ועדת הבחירות המרכזית: "הרשימה אינה מתמודדת בבחירות לכנסת ה-26".');
+    if (L === 'כן') notes.push('הרשימה לא התמודדה בבחירות.');
     check(!cands.some(c => /מטעם|\|/.test(c.name)), `k26 ${L}: a candidate name still contains party text or table syntax`);
     sortAndCheckRanks(check, `k26 ${L}`, cands, { nonEmpty: !withdrawn });
     const singleSponsor = sponsors.length === 1 ? sponsors[0] : undefined;
@@ -204,8 +239,8 @@ export async function buildK26() {
     nameHe: 'הבחירות לכנסת ה-26', nameEn: 'Election to the 26th Knesset',
     status: {
       stage: 'official-final', asOf: '2026-11-09',
-      noteHe: 'תוצאות סופיות רשמיות: ההודעה בדבר תוצאות הבחירות, ילקוט הפרסומים 15100 (4.11.2026). כל סיכומי הקולות והמנדטים תואמים את נתוני הוועדה.',
-      noteEn: 'Official final results: the results notice, Yalkut HaPirsumim 15100 (4 Nov 2026). Every vote and seat total agrees with the Central Elections Committee count.',
+      noteHe: 'תוצאות סופיות רשמיות, שפורסמו ב־4 בנובמבר 2026.',
+      noteEn: 'Official final results, published on 4 November 2026.',
     },
     ruleSetId: 'il-2014-bader-ofer-3.25',
     totals: { registered: locTot.registered, votesCast: locTot.votesCast, invalid: locTot.invalid, valid: locTot.valid, ballotBoxes: ballotRows.length, ...geographyTotals(locRows) },

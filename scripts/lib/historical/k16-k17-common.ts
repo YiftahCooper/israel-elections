@@ -277,16 +277,18 @@ export function releaseDataset(audit: Audit): { ds: ElectionDataset; loc: Locali
   const missing = retained.rosters.filter(r => r.candidatesUnavailable).length;
   const truncated = retained.rosters.filter(r => r.candidatesTruncated).length;
   ds.nameHe = `הבחירות לכנסת ה-${n}`; ds.nameEn = `Election to the ${n}th Knesset`;
-  ds.status.noteEn = `Registered voters: Central Bureau of Statistics table 27.2; valid and invalid votes: results gazette; cast = valid + invalid. ${n === 16 ? 'Mafdal and Lider use polling sums; printed gazette figures exceed its own valid total by 410.' : 'Polling-station cast votes are 9 below the gazette-derived national cast total; no authoritative explanation is known.'} Localities are summed polling rows. Every winning list includes all elected ranks, checked name by name against section 4 of the official results notice; literal name variants are documented. ${truncated} winning rosters are truncated to verified elected prefixes; ${missing} non-winning rosters remain unavailable. Later ranks on truncated lists are unverified.`;
-  ds.status.noteHe = `בעלי זכות בחירה: לוח 27.2 של הלשכה המרכזית לסטטיסטיקה; קולות כשרים ופסולים: ילקוט הפרסומים; מצביעים = כשרים + פסולים. ${n === 16 ? 'קולות המפד״ל ולידר לפי סיכומי הקלפיות; הנתונים המודפסים עולים ב-410 על סך הכשרים שבילקוט עצמו.' : 'מספר המצביעים בסיכומי הקלפיות נמוך ב-9 מהסכום הארצי הנגזר מהילקוט; לא ידוע הסבר מוסמך.'} נתוני היישובים סוכמו מקלפיות. בכל רשימה שזכתה במנדטים נכללים כל המקומות שנבחרו, בהצלבה שמית עם סעיף 4 בהודעת התוצאות הרשמית; הבדלי הכתיב מתועדים. ${truncated} רשימות זוכות כוללות רק תחילית מאומתת ומסומנות כקטועות; ${missing} רשימות שלא זכו במנדטים עדיין חסרות. יתר המקומות ברשימות הקטועות טרם אומתו.`;
+  ds.status.noteEn = `Registered voters are from the Central Bureau of Statistics. ${n === 16 ? 'The National Religious Party’s and Lider’s votes are taken from their polling-station totals. With the figures printed for them in the official results notice, its list votes add up to 410 more than its own total of valid votes.' : 'The polling stations add up to 9 fewer voters than the national total; the reason is not known.'} Results by locality are added up from the polling stations. All elected candidates are listed; on ${truncated} winning lists the candidates below them are not, and ${missing} lists that won no seats have no candidates listed.`;
+  ds.status.noteHe = `בעלי זכות הבחירה לפי הלשכה המרכזית לסטטיסטיקה. ${n === 16 ? 'קולות המפד״ל ולידר לקוחים מסיכומי הקלפיות שלהן. עם המספרים שנדפסו להן בהודעת התוצאות הרשמית, סכום קולות הרשימות בהודעה גבוה ב־410 מסך הקולות הכשרים שבה.' : 'בסיכום הקלפיות יש 9 מצביעים פחות מבסיכום הארצי; הסיבה אינה ידועה.'} התוצאות לפי יישוב סוכמו מהקלפיות. כל הנבחרים מופיעים; ב־${truncated} רשימות זוכות המועמדים שאחריהם אינם מופיעים, ול־${missing} רשימות שלא זכו במנדטים לא מופיעים מועמדים.`;
   ds.lists = ds.lists.map(l => {
     const r = retained.rosters.find(r => r.letters === l.letters)!;
     const notesHe: string[] = [];
-    if (r.candidatesUnavailable) notesHe.push(r.unavailableReasonHe!);
-    if (r.candidatesTruncated) notesHe.push(r.truncatedReasonHe!);
-    if (n === 16 && l.letters === 'ב') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 132,730; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 132,370.');
-    if (n === 16 && l.letters === 'ף') notesHe.push('בילקוט הפרסומים 5155, עמ׳ 1406, מודפס 883; נתון זה אינו מתיישב עם סך הקולות הכשרים שבילקוט עצמו (3,148,364). כאן נעשה שימוש בסיכום הקלפיות הרשמי: 833.');
-    if (n === 16 && l.letters === 'כן') notesHe.push('זו הרשימה הרשומה. נתן שרנסקי (מקום 1) ויתר לאחר הבחירות; בהשבעה כיהנו יולי-יואל אדלשטיין (2) ומרינה סולודקין (3). המקור המשני להודעת הוויתור: ynet, 29.1.2003.');
+    // reader wording from the reviewed record's fields; its research reasons stay in the record
+    const ranks = (r.unresolvedRanks ?? []).join(', ');
+    if (r.candidatesUnavailable) notesHe.push(`חלק מהשמות בסריקה הרשמית (${(r.unresolvedRanks?.length ?? 0) > 1 ? 'מקומות' : 'מקום'} ${ranks}) אינם קריאים בוודאות, ולכן רשימת המועמדים אינה מוצגת.`);
+    if (r.candidatesTruncated) notesHe.push(`ברשימה הרשמית ${r.publishedCount} מועמדים.`);
+    if (n === 16 && l.letters === 'ב') notesHe.push('בהודעת התוצאות נדפס 132,730, מספר שאינו מתיישב עם סך הקולות הכשרים שבה (3,148,364); מוצג סיכום הקלפיות: 132,370.');
+    if (n === 16 && l.letters === 'ף') notesHe.push('בהודעת התוצאות נדפס 883, מספר שאינו מתיישב עם סך הקולות הכשרים שבה (3,148,364); מוצג סיכום הקלפיות: 833.');
+    // Sharansky's withdrawal is noted beside his name (data/meta/candidate-notes.json); its source stays in sourceIds
     const { candidatesUnavailable: _pending, ...base } = l; // the pre-roster record marks capacity unknown; the roster replaces that flag
     return inKeyOrder({ ...base, candidates: r.candidates.map(c => ({ id: candidateId(l.id, c.rank), rank: c.rank, nameHe: c.nameHe })),
       ...rosterFlags(r.candidatesUnavailable ? 'unavailable' : r.candidatesTruncated ? 'truncated' : 'complete', 'when-set'),
@@ -298,7 +300,7 @@ export function releaseDataset(audit: Audit): { ds: ElectionDataset; loc: Locali
   const env = retained.rows.find(r => r.nameHe === 'מעטפות כפולות');
   ds.totals.envelopeVotes = env?.votesCast;
   return { ds, loc: { schemaVersion: 1, id: review.id, listIds: ds.lists.map(l => l.id),
-    noteEn: 'Rows are summed from official polling-station results because no official locality table exists for this election. Missing metadata is null. Double-envelope batches exclude the source’s bogus registered-voter field.' + (n === 17 ? ' National totals follow the results gazette; the polling cast total is 9 lower, with no known authoritative explanation.' : ''),
-    noteHe: 'השורות סוכמו מתוצאות הקלפיות הרשמיות משום שלא קיימת טבלת יישובים רשמית לבחירות אלה. נתוני זיהוי חסרים מסומנים null. שדה הבוחרים השגוי באצוות המעטפות הכפולות אינו נסכם.' + (n === 17 ? ' הסיכום הארצי לפי ילקוט הפרסומים; סך המצביעים בקלפיות נמוך ב-9, ללא הסבר מוסמך ידוע.' : ''),
+    noteEn: 'There is no official table by locality for this election: these figures add up its polling stations.' + (n === 17 ? ' They come to 9 fewer voters than the national total; the reason is not known.' : ''),
+    noteHe: 'לבחירות אלה אין טבלה רשמית לפי יישוב: הנתונים כאן הם סיכום הקלפיות.' + (n === 17 ? ' בסיכום זה יש 9 מצביעים פחות מבסיכום הארצי; הסיבה אינה ידועה.' : ''),
     rows: retained.rows.map(r => ({ ...r, ...(r.nameHe === 'מעטפות כפולות' ? { envelopes: true as const } : {}) })) } };
 }

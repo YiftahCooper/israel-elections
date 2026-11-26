@@ -40,6 +40,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
   // Hebron is placed by hand, marked approximate (U4, 16 Nov)
   await expect(page.getByText('4 of 1,149 places have no point on the map; they are listed below.')).toBeVisible();
   await expect(page.getByText(/because no official locality table exists/)).toHaveCount(0);
+  await expect(page.getByText(/no official table by locality/)).toHaveCount(0);
   await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
   // the 2006 note says what it means for the map in one line, with no method essay behind an (i) (clarity pass, 26 Nov 2026)
   await expect(page.getByText('The official 2006 results have no locality codes', {exact:false}).first()).toBeVisible();

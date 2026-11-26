@@ -66,12 +66,12 @@ describe('k17 — released national and locality datasets; explicit roster limit
       expect(l.candidatesTruncated ?? false, l.id).toBe(r.candidatesTruncated ?? false);
       if (r.candidatesUnavailable) {
         expect(l.candidates).toEqual([]);
-        expect(l.notesHe).toContain(r.unavailableReasonHe);
+        expect(l.notesHe.join(' ')).toContain(`(${r.unresolvedRanks.length > 1 ? 'מקומות' : 'מקום'} ${r.unresolvedRanks.join(', ')})`);
         expect(r.unresolvedRanks.length).toBeGreaterThan(0);
       } else {
         if (r.candidatesTruncated) {
           expect(l.candidates.length).toBeLessThan(r.publishedCount);
-          expect(l.notesHe).toContain(r.truncatedReasonHe);
+          expect(l.notesHe).toContain(`ברשימה הרשמית ${r.publishedCount} מועמדים.`);
         } else expect(l.candidates.length).toBe(r.publishedCount);
         expect(l.candidates.map(c => c.rank)).toEqual(Array.from({ length: l.candidates.length }, (_, i) => i + 1));
         expect(l.candidates.map(c => c.nameHe)).toEqual(r.candidates.map((c: { nameHe: string }) => c.nameHe));
@@ -113,8 +113,8 @@ describe('k17 — released national and locality datasets; explicit roster limit
       secondary.electedCrossCheck!.sourceId = 'k17-membership-odata';
       expect(() => verifyElectedRoster(secondary, seats, 'k17-results-gazette')).toThrow(/official elected cross-check/);
     }
-    expect(ds.status.noteEn).toContain('Every winning list includes all elected ranks');
-    expect(ds.status.noteHe).toContain('סעיף 4');
+    expect(ds.status.noteEn).toContain('All elected candidates are listed');
+    expect(ds.status.noteHe).toContain('כל הנבחרים מופיעים');
   });
   it('uses both official notices to resolve the former misspellings and wrapped surname', () => {
     const labor = ds.lists.find(l => l.letters === 'אמת')!;
@@ -132,8 +132,8 @@ describe('k17 — released national and locality datasets; explicit roster limit
     expect(check.nameVariants.map((v: { rank: number }) => v.rank)).toEqual([7]);
   });
   it('has aligned locality columns, null metadata, envelope flags and reconciling totals', () => {
-    expect(loc.noteEn).toMatch(/summed from official polling-station/);
-    expect(loc.noteHe).toMatch(/לא קיימת טבלת יישובים רשמית/);
+    expect(loc.noteEn).toMatch(/no official table by locality/);
+    expect(loc.noteHe).toMatch(/אין טבלה רשמית לפי יישוב/);
     expect(loc.rows).toHaveLength(1150);
     expect(loc.rows.filter(r => r.envelopes)).toHaveLength(1);
     expect(loc.rows.find(r => r.envelopes)?.registered).toBe(null);

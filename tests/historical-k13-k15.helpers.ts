@@ -35,7 +35,7 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
     const index = JSON.parse(readFileSync('public/data/elections.json', 'utf8')).find((e: { id: string }) => e.id === id);
     expect(index.available).toBe(true);
     expect(index.status).toEqual({ stage: ds.status.stage, noteEn: ds.status.noteEn, noteHe: ds.status.noteHe });
-    expect(ds.status.noteEn).toMatch(/Rosters: everyone elected/);
+    expect(ds.status.noteEn).toMatch(/All elected candidates are listed/);
     expect(ds.status.noteHe).toMatch(/כל הנבחרים/);
     expect(ds.hasLocalities).toBe(false);
     expect(ds.totals.localities).toBe(0);
@@ -47,8 +47,8 @@ export function releasedElection(id: 'k13' | 'k14' | 'k15', expected: {
     expect(a.review.agreements.pairs).toEqual(expected.pairs);
     if (id === 'k13') {
       expect(a.review.agreements).toMatchObject({ sourceId: null, complete: false });
-      expect(ds.status.noteEn).toMatch(/notice was not found; agreements that did not affect seats may be missing/);
-      expect(ds.status.noteHe).toMatch(/ייתכן שחסרים הסכמים שלא השפיעו/);
+      expect(ds.status.noteEn).toMatch(/notice of surplus-vote agreements has not been found/);
+      expect(ds.status.noteHe).toMatch(/ההודעה על הסכמי העודפים מ־1992 לא נמצאה/);
     } else {
       expect(a.review.agreements.complete).toBe(true);
       expect(ds.agreements.every(p => p.sourceId === a.review.agreements.sourceId && ds.sourceIds.includes(p.sourceId))).toBe(true);

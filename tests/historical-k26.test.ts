@@ -15,8 +15,8 @@ describe('k26: CEC count, gazetted in the results notice YP 15100', () => {
     expect(Object.values(ds.officialSeats).reduce((a: number, b) => a + Number(b), 0)).toBe(120);
     expect(ds.officialSeatsSourceId).toBe('k26-results-gazette');
     expect(ds.sourceIds).toContain('k26-results-gazette');
-    expect(ds.status.noteEn).toContain('Yalkut HaPirsumim 15100');
-    expect(ds.status.noteHe).toContain('ילקוט הפרסומים 15100');
+    expect(ds.status.noteEn).toContain('published on 4 November 2026');
+    expect(ds.status.noteHe).toContain('שפורסמו ב־4 בנובמבר 2026');
     // nothing describes 2026 as awaiting publication any more
     expect(`${ds.status.noteEn} ${ds.status.noteHe}`).not.toMatch(/unverified|not yet verified|לא אומת|טרם אומת/);
     expect(electionContext.events.filter(e => e.electionId === 'k26' && e.type === 'publication-status')).toEqual([]);
@@ -63,7 +63,8 @@ describe('k26 candidate gazette YP 15023, read from a disclosed mirror', () => {
       const l = ds.lists.find((l: { letters: string }) => l.letters === r.letters);
       expect(l.candidatesSource).toBe('k26-candidates-gazette');
       expect(l.candidatesSecondary).toBe(false);
-      expect(l.notesHe[0]).toContain('olaw.org.il');
+      // the olaw mirror is the roster's source record, not a note the reader sees (clarity pass, 26 Nov 2026)
+      expect(l.notesHe.join(' ')).not.toContain('olaw');
       expect(l.candidates.map((c: { rank: number; nameHe: string; partyHe: string }) => [c.rank, c.nameHe, c.partyHe]))
         .toEqual(r.candidates.map((c: { rank: number; name: string; party: string }) => [c.rank, c.name, c.party]));
     }
@@ -78,7 +79,7 @@ describe('k26 candidate gazette YP 15023, read from a disclosed mirror', () => {
     const blue = ds.lists.find((l: { letters: string }) => l.letters === 'כן');
     expect(blue).toMatchObject({ withdrawn: true, votes: 0 });
     expect(blue.candidates).toHaveLength(39);
-    expect(blue.notesHe).toContain('ועדת הבחירות המרכזית: "הרשימה אינה מתמודדת בבחירות לכנסת ה-26".');
+    expect(blue.notesHe).toEqual(['הרשימה לא התמודדה בבחירות.']);
     expect(ds.lists.find((l: { letters: string }) => l.letters === 'צבי')).toMatchObject({ withdrawn: true, candidates: [], votes: 0 });
   });
 });
