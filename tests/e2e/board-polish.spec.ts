@@ -18,7 +18,7 @@ test('first visit keeps instructions available behind a concise label', async ({
   const guidance = page.getByRole('button', { name: 'Explore the board: explanation', exact: true });
   await expect(guidance).toBeVisible();
   await guidance.click();
-  await expect(page.getByRole('tooltip')).toContainText('Click any list, seat, bloc or figure');
+  await expect(page.getByRole('tooltip')).toContainText('Click a list, seat, bloc or figure');
 });
 
 for (const lang of ['he', 'en']) for (const width of [390, 1024, 1500]) {

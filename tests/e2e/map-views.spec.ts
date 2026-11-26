@@ -66,7 +66,7 @@ test('Hebron has a dot, marked approximate, and is no longer a row without a loc
   await expect(results.getByRole('heading')).toContainText('Hebron');
   await results.getByRole('button', { name: 'Location and turnout: explanation', exact: true }).click();
   // (the chosen place's box on the map says it too)
-  await expect(results.getByText(/^Approximate position: the Jewish quarter of Hebron/)).toBeVisible();
+  await expect(results.getByText(/^Approximate position, in the Jewish quarter of Hebron/)).toBeVisible();
   await page.keyboard.press('Escape');
   const missing = page.locator('.locality-map-tool details').filter({ has: page.getByText('Places not on the map', { exact: true }) });
   await missing.locator('summary').click();

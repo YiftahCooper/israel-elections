@@ -42,8 +42,8 @@ test('blank candidates can be undone and chip changes are human wording', async 
   const count = await candidates.count();
   await page.getByRole('button', {name:'Remove all candidates',exact:true}).click();
   await expect(candidates).toHaveCount(0);
-  await expect(page.locator('.banner.warn').filter({hasText:'unfilled seats'})).toContainText('32 seats and 0 candidates');
-  await expect(page.locator('.ld').filter({hasText:'unfilled seats'})).toBeVisible();
+  await expect(page.locator('.banner.warn').filter({hasText:'stay empty'})).toContainText('32 seats and 0 candidates');
+  await expect(page.locator('.ld').filter({hasText:'stay empty'})).toBeVisible();
   await page.getByRole('button', { name: /^Switch scenario(: |$)/ }).click();
   await page.getByRole('dialog').locator('.scenario-changes summary').click();
   const changes = page.getByRole('dialog').locator('.scenario-changes ul');

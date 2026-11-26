@@ -219,7 +219,7 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 12px 0; }
 .callout { border: 1px solid var(--rule); padding: 6px 10px; background: var(--surface-2); border-radius: var(--radius); }
 /* Sensitivity: status lines reserve their height so computing or cancelling never moves the charts */
 .sens-status { min-height: 43px; margin: 4px 0; }
-.sens-result { display: flow-root; min-height: 180px; }
+.sens-result { display: flow-root; min-height: 200px; }
 .sens-meter { flex: 0 0 120px; }
 /* phones: the result tables fit their box in both languages (numeric headers wrap, cells tighten, as in the walk-through) */
 @media (max-width: 760px) { .sens .tbl th, .sens .tbl td { padding: 4px 5px; } .sens .tbl th.n { white-space: normal; } }
