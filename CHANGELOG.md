@@ -1,5 +1,9 @@
 # Changelog
 
+## 26 November 2026
+
+- Plainer notes from the election data (26 Nov): each election's data status, the notes on lists and candidates (did not take the seat, withdrew, replaced, misprinted names), the place-group definitions on Turnout and the descriptions of what this project typed in now read as short everyday sentences, in English and Hebrew. They no longer talk about transcribing, cross-checking or gazette page numbers; the facts, names, dates and places on the list are unchanged, and the sources stay listed on the Sources tab. Notes no longer guess a candidate's gender where the official wording does not give it, and a note already shown beside a list's votes or a candidate's name is no longer repeated in the list's notes.
+
 ## 24 November 2026
 
 - New address (24 Nov): the site is now at haknesset.co.il, which opens in Hebrew. haknesset.com and hakneset.com open it in English, and hakneset.co.il and the old github.io address forward to it. Gallery share links use the new address.
