@@ -49,7 +49,7 @@ test('SC1 SC2: disabled scenario actions explain their requirements', async ({ p
   await page.route('**/data/scenarios.json', route => route.fulfill({ json: { entries: [], timestamp: Date.now() - 1000 } }));
   await start(page); await tab(page, 'Scenarios');
   await expect(page.locator('.scenario-gallery [role="status"]')).toContainText(/updated \d{1,2} [A-Za-z]{3} \d{4}/);
-  for (const name of ['Duplicate', 'Start over']) {
+  for (const name of ['Start over']) {
     const button = page.locator('main').getByRole('button', { name, exact: true });
     await expect(button).toBeDisabled(); await expect(button).toHaveAttribute('title', /.+/);
   }

@@ -4,7 +4,6 @@ import {ColourPicker} from './ColourPicker.tsx';
 import { scenarioDirty } from '../scenarioDocument.ts';
 import { ScenarioSave, UnsavedMark } from './ScenarioSave.tsx';
 import { hasAppearance, factLog } from '../../model/actionClassification.ts';
-import { Info } from './ui.tsx';
 import { EditMarker } from './EditMarker.tsx';
 import { exportAnnotations } from '../scenarioExport.ts';
 import { errorText } from '../../model/messages.ts';
@@ -14,14 +13,14 @@ import { errorText } from '../../model/messages.ts';
 import { SCENARIO_COLOUR_NAMES, SCENARIO_PALETTE, savedColor, liveScenarioColor, scenarioColor } from '../scenarioIdentity.ts';
 import { dispatch } from '../store.ts';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Check, Copy, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, Trash2, Upload } from 'lucide-react';
+import { Check, Download, FolderOpen, GitCompare, Link2, RotateCcw, Save, Trash2, Upload } from 'lucide-react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { allocationOf, listLabel, baselineOf, resultChanges, changesLabel, groupingOnly, unchangedResultNote } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { download } from '../format.ts';
-import { deleteSaved, withSavedIdentity, duplicateCurrent, getSetting, useSetting, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
+import { deleteSaved, withSavedIdentity, getSetting, useSetting, importScenarioJson, openImported, openSaved, replay, resetAll, scenarioKey, setState, shareLink, toast, useStore, type SavedScenario } from '../store.ts';
 import { ScenarioGallery } from './ScenarioGallery.tsx';
 import { SavedComparisons } from '../compare/SavedComparisons.tsx';
 import { electionLabel } from './TopBar.tsx';
@@ -86,7 +85,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
 
   return (
     <div className="scn">
-      <p className="small ink2" style={{ marginTop: 0 }}>{L('A scenario is your edited election. Save it here, or share a link.', 'תרחיש הוא הבחירות עם השינויים שלכם. שמרו כאן או שתפו קישור.')} <Info title={L('Using scenarios', 'שימוש בתרחישים')}>{L('Change votes, partners or rules in the other tabs, then name and save the result here. Saved scenarios stay in this browser; links and files can be opened on another device.', 'שנו קולות, שותפות או כללים בלשוניות האחרות, ואז תנו שם ושמרו כאן. תרחישים נשמרים בדפדפן זה; קישורים וקבצים נפתחים גם במכשיר אחר.')}</Info></p>
+      <p className="small ink2" style={{ marginTop: 0 }}>{L('A scenario is your edited election. Save it here, or share a link.', 'תרחיש הוא הבחירות עם השינויים שלכם. שמרו כאן או שתפו קישור.')}</p>
       <section className="scn-current">
         <h3>{official ? L('Official result', 'התוצאה הרשמית') : L('This scenario', 'התרחיש הנוכחי')} <span className="muted" style={{ fontWeight: 400 }}>· {electionName(s.electionId)} · {official ? L('No changes', 'אין שינויים') : changesLabel(factLog(s).length, null, lang, true)}{!official && groupingOnly(s, baselineOf(ds)) && ` · ${unchangedResultNote(lang)}`}</span></h3>
         <div className="scn-form">
@@ -95,9 +94,8 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
           <label className="field"><span>{L('Description', 'תיאור')}<EditMarker s={s} path={['description']} /></span>
             <ScenarioText multiline value={s.description ?? ''} label={L('Description', 'תיאור')} placeholder={L('What does this scenario explore, and why?', 'מה התרחיש בודק, ולמה?')} onCommit={(description) => dispatch({ type: 'setDescription', description })} /></label>
         </div>
-        <details className="scn-options"><summary>{L('Colour & comparison', 'צבע והשוואה')}</summary><div className="scn-form">
+        <details className="scn-options"><summary>{L('Colour', 'צבע')}</summary><div className="scn-form">
           <ColourPicker label={L('Scenario colour','צבע התרחיש')} value={liveScenarioColor(s,saved)} onChange={color=>dispatch({type:'setIdentityColor',color})} minDeltaE={20} others={saved.filter(x=>x.id!==s.id).map(x=>({color:savedColor(x.log),name:x.name}))} options={SCENARIO_PALETTE.map((color,i)=>({color,label:L(...SCENARIO_COLOUR_NAMES[i])}))}/>
-        <button className="btn small" onClick={() => setState({ settingsOpen: true, settingsFocus: 'markChanges' })}>{L('Settings…', 'הגדרות…')}</button>
         </div></details>
         <ResultBar s={s} r={allocationOf(s)} />
         <div className="row" style={{ marginTop: 10 }}>
@@ -108,7 +106,6 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
             const url = await shareLink(); setLink(url);
             try { await navigator.clipboard.writeText(url); toast('info', L('Share link copied.', 'קישור השיתוף הועתק.')); } catch { /* the field below shows it */ }
           }}><Link2 className="icon sm" aria-hidden />{L('Copy a share link', 'העתקת קישור שיתוף')}</button>
-          <button className="btn" disabled={official} title={official ? L('Change something first', 'תחילה שנו משהו') : undefined} onClick={() => { duplicateCurrent(); toast('info', L('Saved as a copy in this browser.', 'נשמר עותק בדפדפן זה.')); }}><Copy className="icon sm" aria-hidden />{L('Duplicate', 'שכפול')}</button>
           <button className="btn" onClick={() => exportJson(s)}><Download className="icon sm" aria-hidden />{L('Export', 'ייצוא')}</button>
           <button className="btn" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import', 'ייבוא')}</button>
           <button className="btn ghost" disabled={!s.log.length} title={!s.log.length ? L('Already at the official result', 'כבר בתוצאה הרשמית') : undefined} onClick={async () => { if (getSetting('confirmStartOver') && !(await askConfirm({ title: L('Start over from the official result?', 'להתחיל מחדש מהתוצאה הרשמית?'), text: L('Undo can restore it.', 'אפשר לשחזר בביטול.'), yes: L('Start over', 'התחלה מחדש'), no: L('Cancel', 'ביטול') }))) return; resetAll(); }}><RotateCcw className="icon sm" aria-hidden />{L('Start over', 'התחלה מחדש')}</button>
@@ -125,7 +122,7 @@ export function Scenarios({ s, ds }: { s: Scenario; ds: ElectionDataset }) {
 
       <section style={{ marginTop: 18 }}>
         <h3>{L(`Saved in this browser (${saved.length})`, `שמורים בדפדפן זה (${saved.length})`)}</h3>
-        {saved.length === 0 && <p className="small muted">{L('Save this scenario to find it here.', 'שמרו את התרחיש כדי למצוא אותו כאן.')} <Info title={L('Saving scenarios', 'שמירת תרחישים')}>{L('Nothing saved yet. Name the scenario above and save it to keep it here; share links and exported files work across devices.', 'עדיין לא נשמר דבר. תנו שם לתרחיש למעלה ושמרו אותו כדי שיופיע כאן; קישורי שיתוף וקבצים מיוצאים עובדים גם במכשירים אחרים.')}</Info></p>}
+        {saved.length === 0 && <p className="small muted">{L('Save this scenario to find it here.', 'שמרו את התרחיש כדי למצוא אותו כאן.')}</p>}
         <ul className="scn-cards">
           {saved.map((x) => {
             const res = results.get(x.id);
