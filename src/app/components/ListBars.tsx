@@ -135,7 +135,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         <button type="button" data-list-id={l.id} data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${dimOthers && selected && !open ? 'dim' : ''}`} aria-pressed={open}
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
-          title={l.logo || l.synthetic ? listLabel(l, lang) : `${listLabel(l, lang)} — ${L('Ballot letters (no verified election logo)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
+          title={listLabel(l, lang)}>
           {splitIds.has(l.id) && jointLook !== 'list' && componentSeats.some((st) => st.listId === l.id && st.partyColor)
             ? <span className="slip-joint" style={{ ['--lc' as string]: l.color }} title={L('Joint list: its own colour is the frame; the bar shows its parties', 'רשימה משותפת: צבעה במסגרת; הפס מראה את מפלגותיה')}><Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} /></span>
             : <Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} />}
