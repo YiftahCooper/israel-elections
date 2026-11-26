@@ -41,7 +41,8 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1024, 1500])
     for (const time of await history.locator('li .tiny').allTextContents()) expect(time).toMatch(/^\d{1,2}:\d{2}:\d{2}$/);
     await page.keyboard.press('Escape');
     await session.getByRole('button', { name: lang === 'he' ? 'הסבר: השינויים שלכם' : 'Your changes: explanation', exact: true }).click();
-    await expect(session.locator('.info .pop')).toContainText(lang === 'he' ? 'מהתוצאה הרשמית' : 'from the official result');
+    // the (i) says what counts as a change; the label beside it already names what they are counted from (clarity pass, 26 Nov 2026)
+    await expect(session.locator('.info .pop')).toContainText(lang === 'he' ? 'צבעים אינם נספרים' : 'Colours don’t count');
     await page.keyboard.press('Escape');
     await (await barPart(page, '.scenario-switcher .choice-trigger')).click();
     await expect(page.locator('.scenario-changes summary')).toContainText(full);
@@ -81,9 +82,8 @@ for (const lang of ['en', 'he'] as const) for (const width of [390, 1024, 1500])
       await page.keyboard.press('Escape');
       // phones: the switcher lives in the Menu, which stays open (and in view under the pinned bar) until closed
       await closeBarMenu(page);
-      await page.locator('.session').getByRole('button', {name:lang === 'he' ? 'הסבר: השינויים שלכם' : 'Your changes: explanation',exact:true}).click();
-      await expect(page.locator('.session .info .pop bdi')).toHaveText(name);
-      await page.keyboard.press('Escape');
+      // the reference's full name is in the label's title, History and the scenario menu above; the (i) no longer
+      // repeats it (clarity pass, 26 Nov 2026)
       // Resizing the same loaded reference must recover the full label when it fits.
       if (name === 'Unity') {
         await page.setViewportSize({width:390,height:1000});

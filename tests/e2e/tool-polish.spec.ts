@@ -11,7 +11,7 @@ for (const lang of ['en', 'he']) test(`tools keep concise labels and reveal assu
   await page.keyboard.press('Escape');
   await page.locator('#tab-coal').click();
   await panel.getByRole('button', { name: lang === 'en' ? 'Coalition assumptions: explanation' : 'הנחות הקואליציה', exact: true }).click();
-  await expect(page.getByRole('tooltip')).toContainText(lang === 'en' ? 'political feasibility' : 'הערכה פוליטית');
+  await expect(page.getByRole('tooltip')).toContainText(lang === 'en' ? 'it doesn’t say whether such a coalition is likely' : 'ולא הערכה אם קואליציה כזו סבירה');
   await page.keyboard.press('Escape');
   await page.locator('#tab-turnout').click();
   await panel.getByRole('button', { name: lang === 'en' ? 'Voter group: explanation' : 'הסבר: קבוצת מצביעים', exact: true }).click();

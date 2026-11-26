@@ -87,7 +87,7 @@ test('a joint list can run as separate lists, with the vote shares stated as an 
   await details.getByRole('button', { name: 'Split into separate lists' }).click();
   await expect(details.locator('.joint-split > p').first()).toBeVisible();
   await details.getByRole('button', { name: 'Split assumptions: explanation', exact: true }).click();
-  await expect(details.getByRole('tooltip')).toContainText('the shares below are an assumption');
+  await expect(details.getByRole('tooltip')).toContainText('these shares are your assumption');
   await details.getByRole('button', { name: 'Split assumptions: explanation', exact: true }).click();
   await details.getByRole('button', { name: 'Run as 2 separate lists' }).click();
   await expect(listRow(page, 'Agudat Yisrael')).toBeVisible();
