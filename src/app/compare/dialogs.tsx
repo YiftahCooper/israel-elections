@@ -8,7 +8,7 @@ import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, seatsText } from '../format.ts';
 import { useDigits, useStore } from '../store.ts';
-import { deltaAction, voteSourceLabel, type SourceChoice } from '../voteEdit.ts';
+import { deltaAction, type SourceChoice } from '../voteEdit.ts';
 import { sourceChoice, sourceValue } from '../preferences.ts';
 import { Info, Slip } from '../components/ui.tsx';
 import { ChoicePicker } from '../components/ChoicePicker.tsx';
@@ -20,7 +20,7 @@ import { CandidateName } from '../components/CandidateName.tsx';
 import { inOf, personKey, sharedCandidates, type MatchOverride, type MatchRow, type MatchTag } from './match.ts';
 import { cellsOf, sourceOf, type SideModel } from './model.ts';
 import { partyLabel } from '../../families/registry.ts';
-import { CertChip, countedText, EvidenceLinks, eventText, relationYear, useCrossComparison } from '../components/PartyHistory.tsx';
+import { certWords, countedText, EvidenceLinks, eventText, relationYear, useCrossComparison } from '../components/PartyHistory.tsx';
 import type { Comparison } from '../../history/compare.ts';
 import { RELATIONS } from '../../history/relations.ts';
 import { openModal } from '../focusReturn.ts';
@@ -130,7 +130,7 @@ export function WholeListDialog({ req, onClose, onDone }: { req: WholeRequest; o
     {opts.votes && <div className="row cmp-whole-votes">
       {req.cross && <span className="cmp-whole-basis"><label className="field">{L('Copy as', 'העתקה לפי')}<select value={basis} onChange={(e) => setBasis(e.target.value as CopyBasis)}><option value="votes">{T(COPY_WORDS.votes)}</option><option value="share">{T(COPY_WORDS.share)}</option></select></label>
         <span className="cmp-mode-adjust"><label><input type="checkbox" checked={adjust} disabled={!canAdjust || basis !== 'votes'} onChange={(e) => setAdjust(e.target.checked)} />{T(COPY_WORDS.adjust)}</label> <Info title={T(COPY_WORDS.adjust)}>{T((canAdjust ? COPY_INFO.adjust : COPY_INFO.noAdjust))}</Info></span></span>}
-      <SourceSelect dest={req.to.sc} exclude={req.dstId ? [req.dstId] : []} value={source} onChange={setSource} label={L('Balance with', 'איזון מול')} />
+      <SourceSelect dest={req.to.sc} exclude={req.dstId ? [req.dstId] : []} value={source} onChange={setSource} label={L('Votes come from', 'מקור הקולות')} />
     </div>}
     {!adding && !only && <p className="small muted">{L(`Kept from ${req.to.year}: rules, agreements, bloc and coalition.`, `נשמרים מ־${req.to.year}: הכללים, ההסכמים, הגוש והקואליציה.`)}</p>}
     {dupes.length > 0 && <div className="cmp-dupes" role="group" aria-label={L('On two lists', 'בשתי רשימות')}>
@@ -154,7 +154,7 @@ export function WholeListDialog({ req, onClose, onDone }: { req: WholeRequest; o
 
 /** A side's votes for one list, balanced by the app's vote-source choice (an ordinary vote edit on that side). */
 export function VotesEditor({ side, listId, onClose }: { side: SideModel; listId: string; onClose: () => void }) {
-  const L = useL(), lang = useLang();
+  const L = useL();
   const voteSource = useStore((st) => st.voteSource);
   const l = side.sc.lists.find((x) => x.id === listId)!;
   const [text, setText] = useState(String(l.votes));
@@ -167,8 +167,7 @@ export function VotesEditor({ side, listId, onClose }: { side: SideModel; listId
       <p className="cmp-ask-title"><b>{label}</b></p>
       <label className="field">{L('Votes', 'קולות')}<input inputMode="numeric" autoFocus value={text} onChange={(e) => setText(e.target.value)} aria-label={label} /></label>
       {l.withdrawn && <p className="small cmp-refused">{L('This list withdrew; reinstate it in its list panel first.', 'רשימה זו פרשה; החזירו אותה תחילה בחלונית הרשימה.')}</p>}
-      <SourceSelect dest={side.sc} exclude={[listId]} value={source} onChange={setSource} label={L('Balance with', 'איזון מול')} />
-      <p className="tiny muted">{voteSourceLabel(source, side.sc, lang)}</p>
+      <SourceSelect dest={side.sc} exclude={[listId]} value={source} onChange={setSource} label={L('Votes come from', 'מקור הקולות')} />
       <div className="row"><button type="submit" className="btn small primary" disabled={!action || l.withdrawn}>{L('Apply', 'החלה')}</button><button type="button" className="btn small ghost" onClick={onClose}>{L('Cancel', 'ביטול')}</button></div>
     </form>
   </Modal>;
@@ -207,10 +206,10 @@ export function PairingWhy({ row, early, late, earlyIds, lateIds, c }: { row: Ma
   return <span className="ph-why cmp-why">
     <span>{head}</span>
     <span><span className="cmp-why-k">{L('Why', 'למה')}:</span> {why ? <>{why}. </> : null}{L(...TAG_INFO[row.tag])}</span>
-    {used?.relations.map((r) => <span key={r.id} className="cmp-why-rel"><span>{eventText(r, lang)} ({relationYear(r.date)}) <CertChip c={r.certainty} /></span><EvidenceLinks r={r} /></span>)}
+    {used?.relations.map((r) => <span key={r.id} className="cmp-why-rel"><span>{eventText(r, lang)} ({relationYear(r.date)}{certWords(r.certainty, L)})</span><EvidenceLinks r={r} /></span>)}
     {used?.notCounted.map((n) => <span key={n.partyId + n.listId} className="muted">{L(`Not counted: ${partyLabel(n.partyId, 'en')} ran inside another list in ${at(early)}, and that list's votes cannot be divided.`, `לא נספרה: ${partyLabel(n.partyId, 'he')} רצה ב־${at(early)} בתוך רשימה אחרת, ואת קולות הרשימה ההיא אי אפשר לחלק.`)}</span>)}
     {used?.left.map((n) => <span key={`l${n.partyId}`} className="muted">{L(`${partyLabel(n.partyId, 'en')} has since left for another list.`, `${partyLabel(n.partyId, 'he')} עברה מאז לרשימה אחרת.`)}</span>)}
-    {c?.kind === 'verify' && <span>{L('Not compared yet: it is not yet settled which earlier list it continues.', 'טרם הושוותה: עוד לא הוכרע איזו רשימה קודמת היא ממשיכה.')} {c.toVerify.map((r) => <span key={r.id} className="cmp-why-rel"><span>{eventText(r, lang)} ({relationYear(r.date)}) <CertChip c={r.certainty} /></span><EvidenceLinks r={r} /></span>)}</span>}
+    {c?.kind === 'verify' && <span>{L('No comparison: which earlier list this one continues is not established.', 'אין השוואה: לא בוסס איזו רשימה קודמת היא ממשיכה.')} {c.toVerify.map((r) => <span key={r.id} className="cmp-why-rel"><span>{eventText(r, lang)} ({relationYear(r.date)})</span><EvidenceLinks r={r} /></span>)}</span>}
     {joint && <span className="tiny muted">{L('A joint list’s votes are never divided among its parties.', 'קולות של רשימה משותפת אינם מחולקים בין מפלגותיה.')}</span>}
   </span>;
 }

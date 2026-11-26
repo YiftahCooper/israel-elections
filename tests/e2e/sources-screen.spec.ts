@@ -21,7 +21,7 @@ test('k1: no zero counts for missing localities, no dead project links, secondar
   await expect(panel.locator('a[href^="local:"], a[href^="project:"]')).toHaveCount(0);
   // the project's own transcriptions are listed apart, in plain words, with no file path
   const own = panel.locator('.sources-own');
-  await expect(own.getByRole('heading', { name: 'Typed in by this project' })).toBeVisible();
+  await expect(own.getByRole('heading', { name: 'Copied by hand from the originals' })).toBeVisible();
   await expect(own.locator('li').first()).toContainText('from the official results notice');
   for (const list of [panel.locator('ul.credits').first(), own]) await expect(list).not.toContainText(/data\/raw\/|Project record|decision \d{4}|\bCEC\b|\bYP \d|OData|mirror/);
   await expect(panel.locator('.chip.secondary', { hasText: 'secondary' }).first()).toBeVisible();
@@ -49,7 +49,7 @@ test('k1 in Hebrew: the project’s own transcriptions are described in Hebrew, 
   await sourcesTab(page, 'he');
   const panel = page.locator('#analysis-panel');
   const own = panel.locator('.sources-own');
-  await expect(own.getByRole('heading', { name: 'הוקלד בפרויקט' })).toBeVisible();
+  await expect(own.getByRole('heading', { name: 'הועתק ידנית מהמקורות' })).toBeVisible();
   await expect(own.locator('li').first()).toContainText('מתוך ההודעה הרשמית על התוצאות');
   await expect(own).not.toContainText(/[A-Za-z]{4}/);
   await expect(panel.locator('ul.credits').first()).not.toContainText(/data\/raw\/|ראו החלטה|OData/);
@@ -103,7 +103,7 @@ test('Hebrew: the page does not move when the source list arrives late', async (
   await open(page, 'he', 'k26');
   await sourcesTab(page, 'he');
   const panel = page.locator('#analysis-panel');
-  const note = panel.getByRole('button', { name: 'נתונים של האפליקציה' });
+  const note = panel.getByRole('button', { name: 'אינם נתונים רשמיים' });
   await expect(note).toBeVisible();
   const before = (await note.boundingBox())!.y;
   await page.waitForTimeout(1200);

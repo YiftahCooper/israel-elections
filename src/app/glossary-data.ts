@@ -230,7 +230,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
   },
   {
-    id: 'qualifying', nameHe: 'קולות משתתפים', nameEn: 'Qualifying votes', level: 'standard', provenance: 'sourced',
+    id: 'qualifying', nameHe: 'קולות משתתפים', nameEn: 'Votes for lists that passed', level: 'standard', provenance: 'sourced',
     defHe: 'סך הקולות הכשרים של כל הרשימות שעברו את אחוז החסימה. רק הם מחולקים בין המנדטים, ולכן חלקה של רשימה מהם גדול מחלקה מכלל הקולות הכשרים.',
     defEn: 'The valid votes of all lists that passed the threshold. Only these are divided among the seats, so a list’s share of them is larger than its share of all valid votes.',
     linkHe: L.s81, linkEn: E.seats,
@@ -253,7 +253,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
     id: 'quota', nameHe: 'המודד הכללי', nameEn: 'General quota', level: 'simple', provenance: 'sourced',
     defHe: 'סך הקולות המשתתפים חלקי 120, והמספר השלם היוצא (סעיף 81(ב)). זהו בקירוב "מחיר" של מנדט: כל רשימה מקבלת תחילה מנדט לכל מודד שלם בקולותיה. ב־1949 חילקו את כל הקולות הכשרים ב־121.',
-    defEn: 'Qualifying votes divided by 120, keeping the whole number (section 81(b)). It is roughly the “price” of a seat: each list first gets one seat per whole quota in its votes. In 1949 all valid votes were divided by 121.',
+    defEn: 'The votes of the lists that passed the threshold, divided by 120, keeping the whole number (section 81(b)). It is roughly the “price” of a seat: each list first gets one seat per whole quota in its votes. In 1949 all valid votes were divided by 121.',
     linkHe: H.seats, linkEn: E.seats,
     sources: [
       src(L.s81, 'he', 'law', 's.81(b)–(c): integer quotient is "המודד"; one seat per whole quota'),
@@ -401,7 +401,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
     id: 'cap', nameHe: 'מגבלת מחצית המנדטים', nameEn: 'Half-seats cap', level: 'simple', provenance: 'sourced',
     defHe: 'רשימה שלא קיבלה יותר ממחצית הקולות המשתתפים, אך כבר זכתה במחצית המנדטים, אינה ממשיכה להשתתף בחלוקת העודפים (סעיף 81(ד)(4), מאז 1973). כך שיטת העודפים לא יכולה לתת רוב לרשימה שאין לה רוב קולות.',
-    defEn: 'A list with no more than half the qualifying votes that already holds half the seats takes no further part in the remainder stage (section 81(d)(4), since 1973). The remainder method thus cannot hand a majority to a list without a majority of the votes.',
+    defEn: 'A list with no more than half the votes of the lists that passed the threshold, which already holds half the seats, takes no further part in the remainder stage (section 81(d)(4), since 1973). The remainder method thus cannot hand a majority to a list without a majority of the votes.',
     linkHe: L.s81, linkEn: E.seats,
     sources: [
       src(L.s81, 'he', 'law', 's.81(d)(4)'),
@@ -614,8 +614,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'historical-rules', nameHe: 'כללים היסטוריים', nameEn: 'Historical rules', level: 'standard', provenance: 'app',
-    defHe: 'מצב שבו האפליקציה אוכפת את חוק הבחירות שחל באותן בחירות (מספר המנדטים, אחוז החסימה, שיטת העודפים, הסכמי העודפים ומגבלת המחצית). אפשר לשנות קולות ורשימות, אבל לא את השיטה עצמה.',
-    defEn: 'The mode in which the app enforces the election law in force for that election: number of seats, threshold, remainder method, surplus agreements and the half-seats cap. You can change votes and lists, but not the system itself.',
+    defHe: 'המנדטים מחולקים לפי חוק הבחירות שחל באותן בחירות: מספר המנדטים, אחוז החסימה, חלוקת העודפים, הסכמי העודפים ומגבלת המחצית. אפשר לשנות קולות ורשימות, אבל לא את השיטה עצמה.',
+    defEn: 'Seats follow the election law of that election: the number of seats, the threshold, how remainder seats are shared, surplus agreements and the half-seats cap. You can change votes and lists, but not the system itself.',
     linkHe: L.s81, linkEn: E.seats,
     sources: [
       src(L.s81, 'he', 'law', 'background: the current allocation rules (ss.81–82); earlier eras in docs/ELECTORAL-LAW.md'),
@@ -623,8 +623,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'experimental-rules', nameHe: 'כללים ניסיוניים', nameEn: 'Experimental rules', level: 'simple', provenance: 'app',
-    defHe: 'מצב שבו אפשר לשנות את שיטת הבחירות עצמה, למשל אחוז החסימה, שיטת חלוקת המנדטים או מספר הרשימות בהסכם. התוצאה היא שיטה חלופית ולא תוצאה אפשרית לפי החוק בישראל.',
-    defEn: 'The mode in which you may change the electoral system itself, such as the threshold, the seat-allocation method or how many lists an agreement may join. Results describe an alternative system, not a legally possible Israeli result.',
+    defHe: 'אפשר לשנות את שיטת הבחירות עצמה, למשל אחוז החסימה, שיטת חלוקת המנדטים או מספר הרשימות בהסכם. התוצאה היא שיטה חלופית ולא תוצאה אפשרית לפי החוק בישראל.',
+    defEn: 'You may change the electoral system itself, such as the threshold, how seats are shared or how many lists an agreement may join. The result is an alternative system, not one possible under Israeli law.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
       src(H.methods, 'he', 'institute', 'background: how other formulas change results'),
@@ -632,8 +632,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'seat-security', nameHe: 'ביטחון המנדטים', nameEn: 'Seat safety', level: 'standard', provenance: 'app',
-    defHe: 'לכל רשימה: כמה קולות היא צריכה לאבד כדי לאבד מנדט, וכמה קולות נוספים דרושים למנדט הבא. המספרים מחושבים בחישוב מחדש של כל הבחירות, והם תלויים בשאלה לאן עוברים הקולות. זה איננו המודד הכללי.',
-    defEn: 'For each list, how many votes it would have to lose to lose a seat, and how many more it needs for the next one. The figures come from recomputing the whole election, and they depend on where the votes move. They are not the general quota.',
+    defHe: 'לכל רשימה: כמה קולות היא צריכה לאבד כדי לאבד מנדט, וכמה קולות נוספים דרושים למנדט הבא. המספרים תלויים בשאלה לאן עוברים הקולות.',
+    defEn: 'For each list, how many votes it would have to lose to lose a seat, and how many more it needs for the next one. The figures depend on where the votes move.',
     linkHe: H.seats, linkEn: E.seats,
     sources: [
       src(E.seats, 'en', 'institute', 'background: why the marginal seat depends on all lists’ remainders'),

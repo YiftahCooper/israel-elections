@@ -1,5 +1,7 @@
 // Where to read about a list or party at that election: its own voice (site, platform, newspaper, election
 // material) and a neutral source (Knesset, Hebrew Wikipedia marked secondary, the Elections Committee, research).
+// The groups say in plain words who published them: "From the party" and "Independent" (round 2 of the clarity pass,
+// 26 Nov 2026: "Partisan:" / "Neutral:" confused readers).
 // English Wikipedia is never linked (the build refuses it).
 import type { PartyLink } from '../../data/schema.ts';
 import { useL, useLang } from '../i18n.ts';
@@ -29,7 +31,7 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
       case 'academic': return x.publisher === 'המכון הישראלי לדמוקרטיה' ? L('Israel Democracy Institute', x.publisher) : L('Research', x.publisher);
     }
   };
-  const title = (x: PartyLink) => [datesInText(L(x.titleEn ?? name, x.titleHe ?? name)), x.kind === 'partisan' ? L('the party’s own voice (partisan)', 'בקולה של המפלגה (מפלגתי)') : L('a neutral source', 'מקור ניטרלי'),
+  const title = (x: PartyLink) => [datesInText(L(x.titleEn ?? name, x.titleHe ?? name)), x.kind === 'partisan' ? L('published by the party', 'פרסום של המפלגה') : L('not published by the party', 'לא פרסום של המפלגה'),
     x.sourceType === 'hewiki' ? L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני') : '', x.archivedAt ? L(`archived ${formatDate(x.archivedAt, lang)}`, `ארכיון ${formatDate(x.archivedAt, lang)}`) : ''].filter(Boolean).join(' · ');
   const group = (kind: PartyLink['kind']) => ok.filter((x) => x.kind === kind);
   return (
@@ -37,7 +39,7 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
       <LangLabel id={labelId} text={L(`About ${name}`, `על ${name}`)} />
       {(['partisan', 'neutral'] as const).map((k) => group(k).length > 0 && (
         <span key={k} className="pl-group">
-          <span className="muted">{k === 'partisan' ? L('Partisan:', 'מפלגתי:') : L('Neutral:', 'ניטרלי:')}</span>
+          <span className="muted">{k === 'partisan' ? L('From the party:', 'מהמפלגה:') : L('Independent:', 'מקורות בלתי תלויים:')}</span>
           {group(k).map((x) => <a key={x.url} href={x.url} target="_blank" rel="noreferrer" title={title(x)} hrefLang={x.sourceType === 'hewiki' ? 'he' : undefined}>{label(x)}</a>)}
         </span>
       ))}

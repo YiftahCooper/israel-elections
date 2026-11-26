@@ -131,5 +131,5 @@ test('the joint list page splits only the parties given votes, and says so', asy
   // giving Atid Ehad a share runs it too, marked as having no recorded candidates
   await page.getByLabel('Vote share of Atid Ehad (%)').fill('5');
   await expect(page.getByRole('button', { name: 'Run as 4 separate lists', exact: true })).toBeVisible();
-  await expect(page.locator('.joint-split')).toContainText('No recorded candidates');
+  await expect(page.locator('.joint-split')).toContainText('No candidates of its own');
 });

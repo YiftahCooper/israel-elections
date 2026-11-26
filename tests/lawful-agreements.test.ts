@@ -33,7 +33,7 @@ test('the audit case reproduced: the experiment itself exports and imports', () 
 const ways: [string, Action][] = [
   ['Official rules (start the rules from the official result)', { type: 'startPart', part: 'rules', source: 'official' }],
   ['the law\'s rules chosen as a preset', { type: 'startPart', part: 'rules', source: 'preset', presetId: electionRuleSetId('k26') }],
-  ['Historically valid mode', { type: 'setMode', mode: 'historical' }],
+  ['Law of the time', { type: 'setMode', mode: 'historical' }],
 ];
 for (const [what, action] of ways) test(`${what}: the agreements the law forbids are switched off and named, and the file imports`, () => {
   const { value: back, off } = collectSwitchedOff(() => run(experiment, action));

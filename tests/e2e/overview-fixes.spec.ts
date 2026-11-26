@@ -5,15 +5,15 @@ import { expect, test, type Page } from './fixtures';
 import { boxesNow } from './settle.ts';
 import { choose, pickerName } from './choices.ts';
 
-async function start(page: Page, { lang = 'en', level = 'expert', election = 'k26', settings = {}, joint = 'on', width = 1500 }: { lang?: 'en' | 'he'; level?: string; election?: string; settings?: Record<string, unknown>; joint?: string; width?: number } = {}) {
+async function start(page: Page, { lang = 'en', level = 'expert', election = 'k26', settings = {}, joint = 'on', width = 1500, customFeatures }: { lang?: 'en' | 'he'; level?: string; election?: string; settings?: Record<string, unknown>; joint?: string; width?: number; customFeatures?: Record<string, string> } = {}) {
   await page.setViewportSize({ width, height: width < 800 ? 900 : 1000 });
-  await page.addInitScript(([lang, level, settings, joint]) => {
+  await page.addInitScript(([lang, level, settings, joint, customFeatures]) => {
     if (sessionStorage.getItem('seeded')) return;
     sessionStorage.setItem('seeded', '1');
-    localStorage.setItem('israel-elections:v1', JSON.stringify({ lang, level }));
+    localStorage.setItem('israel-elections:v1', JSON.stringify(customFeatures ? { lang, level, customFeatures } : { lang, level }));
     localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { decimals: 2, starterTip: false, ...settings } }));
     localStorage.setItem('israel-elections:preferences', JSON.stringify({ voteSource: 'proportional', comparison: 'reference', jointSeats: joint }));
-  }, [lang, level, settings, joint] as const);
+  }, [lang, level, settings, joint, customFeatures] as const);
   await page.goto('/');
   await expect(page.locator('.chamber [data-seat]').first()).toBeVisible();
   if (election !== 'k26') await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), election);
@@ -58,10 +58,10 @@ test('Blocks: a second click on the chosen list closes it and the other seats st
 for (const lang of ['en', 'he'] as const) test(`1949 Qualifying votes: no threshold, 21 lists take part, 12 won a seat (${lang})`, async ({ page }) => {
   await start(page, { lang, election: 'k1' });
   // the qualifying votes sit inside the Votes with no seat tile (their complement), not in a tile of their own
-  await expect(page.locator('.fig > button .k').filter({ hasText: lang === 'he' ? 'קולות משתתפים' : 'Qualifying votes' })).toHaveCount(0);
+  await expect(page.locator('.fig > button .k').filter({ hasText: lang === 'he' ? 'קולות משתתפים' : 'Votes for lists that passed' })).toHaveCount(0);
   const fig = page.locator('.fig').filter({ has: page.locator('> button .k', { hasText: lang === 'he' ? 'קולות ללא מנדט' : 'Votes with no seat' }) });
   await fig.getByRole('button').first().click();
-  await expect(fig.locator('.more')).toContainText(lang === 'he' ? 'קולות משתתפים' : 'Qualifying votes');
+  await expect(fig.locator('.more')).toContainText(lang === 'he' ? 'קולות משתתפים' : 'Votes of the lists taking part');
   await expect(fig.locator('.more')).toContainText(lang === 'he' ? 'אין אחוז חסימה: כל 21 הרשימות משתתפות; 12 זכו במנדט' : 'No threshold: all 21 lists take part; 12 won a seat');
   await expect(fig.locator('.more')).not.toContainText(lang === 'he' ? 'שעברו' : 'passed');
 });
@@ -137,8 +137,9 @@ test('an edited list carries the mark at its votes in the lists column with the 
   expect(cellBox.height).toBeLessThan(40);
 });
 
-test('Simple: the export chip opens its buttons beside it', async ({ page }) => {
-  await start(page, { level: 'simple' });
+// the levels no longer fold a section (round 1 of the clarity pass, 26 Nov 2026); Custom still can
+test('Folded in Custom: the export chip opens its buttons beside it', async ({ page }) => {
+  await start(page, { level: 'standard', customFeatures: { chamberLegend: 'collapsed' } });
   const chip = page.getByRole('button', { name: /Export the chamber/ });
   await chip.click();
   const svgButton = page.getByRole('button', { name: 'Export SVG', exact: true });

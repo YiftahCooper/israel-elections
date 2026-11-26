@@ -27,10 +27,10 @@ test('What if on a phone: no seat change runs under its row\'s "Open as a scenar
   for (const c of [{ lang: 'en', width: 360, height: 740 }, { lang: 'he', width: 360, height: 740 }, { lang: 'en', width: 390, height: 844, text: 'large' }] as Opts[]) {
     await start(page, c);
     await page.locator('#tab-whatif').click();
-    await expect(page.locator('.wi-chip').first()).toBeVisible();
+    await expect(page.locator('.wi-sentence').first()).toBeVisible();
     const hits = await page.locator('.wi-row').evaluateAll(rows => rows.flatMap(row => {
       const b = row.querySelector(':scope > .btn')?.getBoundingClientRect(); if (!b) return [];
-      return [...row.querySelectorAll('.wi-chip')].filter(ch => { const r = ch.getBoundingClientRect(); return r.right > b.left && r.left < b.right && r.bottom > b.top && r.top < b.bottom; }).map(ch => ch.textContent);
+      return [...row.querySelectorAll('.wi-chip, .wi-sentence')].filter(ch => { const r = ch.getBoundingClientRect(); return r.right > b.left && r.left < b.right && r.bottom > b.top && r.top < b.bottom; }).map(ch => ch.textContent);
     }));
     expect(hits, JSON.stringify(c)).toEqual([]);
   }
@@ -148,10 +148,14 @@ test('the election selector shows its whole name: desktop, and phones with Large
 test('phones: the (i) of the change line stays beside its label; the result strip never shows a bare "from …"', async ({ page }) => {
   for (const c of [{ lang: 'he' }, { lang: 'en', text: 'large' }] as Opts[]) {
     await start(page, c);
-    const label = await box(page.locator('.session > b')), info = await box(page.locator('.session > .info'));
-    expect(Math.abs((label.y + label.height / 2) - (info.y + info.height / 2)), JSON.stringify(c)).toBeLessThan(8);
+    // no changes, nothing to explain: the (i) comes with the first change (clarity round 2, 26 Nov 2026)
+    await expect(page.locator('.session > .info')).toHaveCount(0);
     await page.locator('.lb-row').first().click();
     await expect(page.locator('aside .phone-result-strip > span').first()).toHaveText(c.lang === 'he' ? 'ללא שינוי מהתוצאה הרשמית' : 'No change from the official result');
+    await page.locator('.side-panel').getByRole('button', { name: c.lang === 'he' ? /^הוספת קולות/ : /^Increase Votes/ }).first().click();
+    await page.keyboard.press('Escape');
+    const label = await box(page.locator('.session > b')), info = await box(page.locator('.session > .info'));
+    expect(Math.abs((label.y + label.height / 2) - (info.y + info.height / 2)), JSON.stringify(c)).toBeLessThan(8);
   }
 });
 

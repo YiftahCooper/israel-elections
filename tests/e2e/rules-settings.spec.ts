@@ -120,9 +120,9 @@ test('Hebrew: the tab and settings are named in Hebrew and the era timeline stil
 
 test('re-choosing what is already in force is not an edit', async ({ page }) => {
   await start(page); await openRules(page);
-  const mode = page.getByRole('group', { name: 'Simulation mode' });
+  const mode = page.getByRole('group', { name: 'Which rules' });
   const undo = page.locator('.session').getByRole('button', { name: /^Undo/ });
-  await mode.getByRole('button', { name: 'Historically valid', exact: true }).click();
+  await mode.getByRole('button', { name: 'Law of the time', exact: true }).click();
   await expect(undo).toBeDisabled();
   await mode.getByRole('button', { name: 'Experimental', exact: true }).click();
   await expect(undo).toHaveAccessibleName(/^Undo: /);

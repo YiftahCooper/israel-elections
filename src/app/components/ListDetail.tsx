@@ -358,7 +358,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         <section>
           <h3>{L('How the list won its seats', 'איך הרשימה זכתה במנדטים')}</h3>
           <div className="kv small">
-            {lr.qualified && <><span>{L('Share of qualifying votes', 'מהקולות המשתתפים')}</span><span>{percent(l.votes, r.qualifyingVotes, digits)}</span></>}
+            {lr.qualified && <><span>{Number(s.rules.thresholdPct) > 0 ? L('Share of votes for lists that passed', 'מהקולות המשתתפים') : L('Share of votes of the lists taking part', 'מהקולות המשתתפים')}</span><span>{percent(l.votes, r.qualifyingVotes, digits)}</span></>}
             <span>{L('Share of ballots cast', 'מכלל המצביעים')}</span><span>{percent(l.votes, votesCast(s), digits)}</span>
             <span>{L('Share of registered voters', 'מבעלי זכות הבחירה')}</span><span>{percent(l.votes, s.registered, digits)}</span>
             {lr.qualified && <>
@@ -396,7 +396,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       <section className="wide">
         <Candidates l={l} seats={lr.seats} baseSeats={baseList ? histSeats : -1} baseCandidates={baseList?.candidates} notSeatedWhy={notSeatedWhy}
           marker={<EditMarker s={s} path={['lists', l.id, 'candidates']} />}
-          secondary={ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small ink2">{L('Secondary source', 'מקור משני')} <Info title={L('Candidate source', 'מקור המועמדים')}>{L('Candidate list from a secondary source (the official page could not be retrieved).', 'רשימת המועמדים ממקור משני (העמוד הרשמי לא נטען).')}</Info></p>} />
+          secondary={ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small ink2">{L('Candidate list from a secondary source', 'רשימת המועמדים ממקור משני')}</p>} />
       </section>
     </div>
   );

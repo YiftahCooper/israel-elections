@@ -11,6 +11,8 @@ import { resultChanges } from './derive.ts';
 import { X } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
+import type { EngineWarning } from '../engine/types.ts';
+import type { Scenario } from '../model/scenario.ts';
 import { LangContext, useL } from './i18n.ts';
 import { activeFeatures, dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setAlsoNeeded, setSetting, setState, storageLossText, undo, useSetting, useStore } from './store.ts';
 import { Figures as FiguresView } from './components/Figures.tsx';
@@ -121,6 +123,11 @@ function imagesNowLoading(): Promise<void> {
 type Tab = typeof TOOL_FEATURES[number][0];
 const TOOLS = TOOL_FEATURES.map(([id,,,, level]) => ({ id, level: level as Preset }));
 
+/** A warning worth a banner: not a pair's internal re-division (the list panel says it), and not a tie that changes
+ *  no seat (round 2 of the clarity pass, 26 Nov 2026: the 1949 result showed one on every screen; the allocation steps
+ *  explain it at its step). */
+const shownWarning = (s: Scenario) => (w: EngineWarning) => w.code !== 'internal-loss' && (w.code !== 'lottery-required' || tieAffectsSeats(s, w));
+
 export function App() {
   const lang = useStore((st) => st.lang);
   const theme = useStore((st) => st.theme);
@@ -214,7 +221,7 @@ function Shell() {
   const failedName = loadError && ((x) => x ? electionLabel(x, elections, lang) : loadError.id)(elections.find((x) => x.id === loadError.id));
   // page: under a heading that already names the election and says it did not load, only what to do
   const failedWhy = (page: boolean) => loadError && <>{loadError.kind === 'version'
-    ? L(`The app and the ${failedName} election data are of different versions. Reload the page to fetch both again.`, `האתר ונתוני הבחירות ${failedName} הם מגרסאות שונות. טענו מחדש את הדף כדי להביא את שניהם מחדש.`)
+    ? L(`This page is out of date. Reload it to open ${failedName} with the latest data.`, `הדף אינו מעודכן. טענו אותו מחדש כדי לפתוח את ${failedName} עם הנתונים העדכניים.`)
     : page ? L('Check the connection and try again.', 'בדקו את החיבור ונסו שוב.')
     : L(`Could not load the ${failedName} election data. Check the connection and try again.`, `טעינת נתוני הבחירות ${failedName} נכשלה. בדקו את החיבור ונסו שוב.`)}
     {loadError.kept && <> {L('Your unsaved work on this election is not lost.', 'העבודה שלא נשמרה על הבחירות האלה לא אבדה.')}</>}
@@ -282,7 +289,7 @@ function Shell() {
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
                 <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><ComparedChamber s={s} r={r} /></ErrorBoundary></div>
               </section>
-              {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
+              {r.warnings.filter(shownWarning(s)).map((w, i) => tieAffectsSeats(s, w)
                 ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
                 : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}
               <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocBar s={s} r={r} /></ErrorBoundary>
@@ -328,12 +335,12 @@ function Shell() {
         {tool !== 'after' && s.mode === 'experimental' && <div className="banner note" role="status">{L('Alternative electoral system', 'שיטת בחירות חלופית')} <Info title={L('Experimental rules', 'כללים ניסיוניים')}>{L('Experimental rules: this is an alternative electoral system, not a legally possible Israeli result.', 'כללים ניסיוניים: זוהי שיטת בחירות חלופית ולא תוצאה אפשרית לפי החוק בישראל.')}</Info>{(() => { const c = ruleChanges(s, lang); return c.length ? <> {L('Changed: ', 'שינויים: ')}<b>{c.join(' · ')}</b>.</> : null; })()} <button className="btn small" onClick={() => dispatch({ type: 'setMode', mode: 'historical' })}>{L('Back to the real rules', 'חזרה לכללים האמיתיים')}</button></div>}
       </main>
       <div className="app-notices">
-        {tool !== 'after' && level === 'simple' && starterTip && <div className="banner note" role="status"><span className="banner-text">{L('Pick a list. Try a change.', 'בחרו רשימה. נסו לשנות.')} <Info title={L('Explore the board', 'מגלים את תמונת המצב')}>{L('Click any list, seat, bloc or figure to see and change what is behind it. Every tool is named in the strip under the header.', 'לחצו על כל רשימה, מושב, גוש או נתון כדי לראות ולשנות את מה שמאחוריו. כל הכלים מופיעים בשורה שמתחת לכותרת.')}</Info></span> <button className="btn small ghost icon-only" onClick={() => setSetting('starterTip', false)} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
+        {tool !== 'after' && level === 'simple' && starterTip && <div className="banner note" role="status"><span className="banner-text">{L('Pick a list. Try a change.', 'בחרו רשימה. נסו לשנות.')} <Info title={L('Explore the board', 'מגלים את תמונת המצב')}>{L('Click a list, seat, bloc or figure to see what is behind it and change it. The other tools are in the tabs under the header.', 'לחצו על רשימה, מושב, גוש או נתון כדי לראות את מה שמאחוריו ולשנות אותו. שאר הכלים נמצאים בלשוניות שמתחת לכותרת.')}</Info></span> <button className="btn small ghost icon-only" onClick={() => setSetting('starterTip', false)} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {loadBanner}
 
         {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {storageLoss && <div className="banner note" role="status"><span className="banner-text">{storageLossText(storageLoss, lang)}</span> <button className="btn small ghost icon-only" onClick={() => setState({ storageLoss: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
-        {tool !== 'board' && r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
+        {tool !== 'board' && r.warnings.filter(shownWarning(s)).map((w, i) => tieAffectsSeats(s, w)
           ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
           : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}

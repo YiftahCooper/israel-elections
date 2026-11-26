@@ -69,10 +69,10 @@ for (const lang of ['en', 'he'] as const) test(`Litzman's first two days: the fa
   const tl = await openTimeline(page, lang);
   await tl.locator('[data-person="528"] circle.seat').click();
   const first = page.locator('.tl-card .tl-holders > li').first();
-  await expect(first.locator('.tl-unrec')).toHaveText(lang === 'he' ? 'הסיעה לא תועדה · 6 באפר׳ 2021 – 8 באפר׳ 2021' : 'Faction not recorded · 6 Apr 2021 – 8 Apr 2021');
+  await expect(first.locator('.tl-unrec')).toHaveText(lang === 'he' ? 'הסיעה אינה ידועה · 6 באפר׳ 2021 – 8 באפר׳ 2021' : 'Faction unknown · 6 Apr 2021 – 8 Apr 2021');
   await first.getByRole('button').first().click();
   const row = page.locator('dialog[open].mk-sheet .mk-rows > li').filter({ hasText: lang === 'he' ? 'הכנסת ה־24' : '24th Knesset' });
-  await expect(row).toContainText(lang === 'he' ? 'הסיעה לא תועדה עד 8 באפר׳ 2021' : 'Faction not recorded until 8 Apr 2021');
+  await expect(row).toContainText(lang === 'he' ? 'הסיעה אינה ידועה עד 8 באפר׳ 2021' : 'Faction unknown until 8 Apr 2021');
   await expect(row.locator('.mk-unrec')).toHaveCount(1);
 });
 

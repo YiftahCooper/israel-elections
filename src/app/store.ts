@@ -694,7 +694,7 @@ export async function openImported(sc: Scenario): Promise<boolean> {
   if (sc.baseBuiltAt === ds.buildInfo.builtAt) {
     const r = replay(ds, sc.name, log, split);
     if (r.failed || inputsText(r.scenario) !== inputsText(sc)) {
-      toast('error', state.lang === 'he' ? 'הקובץ אינו תואם את רשימת השינויים שלו, ולכן לא נפתח. ייצאו אותו שוב מהאתר.' : 'This file does not match its own list of changes, so it was not opened. Export it again from the app.');
+      toast('error', state.lang === 'he' ? 'לא ניתן לפתוח את קובץ התרחיש הזה. ייצאו אותו שוב מהאתר ונסו שנית.' : 'This scenario file could not be opened. Export it again from the app and try again.');
       return false;
     }
   }

@@ -67,7 +67,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
       const next = { ...s, rules: { ...s.rules, ...a.patch } };
       return Object.keys(a.patch).map(k => editPathLabel(next, ['rules',k], lang) + ': ' + changeText(next,['rules',k],lang)).join(' · ');
     }
-    case 'setMode': return a.mode === 'historical' ? (he ? 'מצב תקף היסטורית' : 'Historically valid mode') : (he ? 'מצב ניסיוני' : 'Experimental mode');
+    case 'setMode': return a.mode === 'historical' ? (he ? 'החוק באותה עת' : 'Law of the time') : (he ? 'כללים ניסיוניים' : 'Experimental rules');
     case 'setTotals': return he ? 'שינוי בעלי זכות הבחירה או הפסולים' : 'Changed eligible voters or invalid ballots';
     case 'setBlocs': return he ? 'עריכת גושים' : 'Edited blocs';
     case 'applyBlocScheme': { const sc = s.blocSchemes?.find((x) => x.id === a.schemeId); return he ? `חלוקה לגושים: ${sc ? groupingName(sc, lang) : 'חלוקה שהוסרה'}` : `Bloc grouping: ${sc ? groupingName(sc, lang) : 'Removed grouping'}`; }

@@ -21,15 +21,15 @@ const plotted=(a:Agg)=>a.votes!==null&&a.status==='observed';
 /** One wording for every state a family can be in at one election (chart, tooltip and table share it). */
 export function familyStatus(a:Agg,L:Tr):string|null {
  if(a.votes===null)return L('Unknown','לא ידוע');
- if(a.status==='none-classified')return L('No list classified','אין רשימה מסווגת');
- if(a.status==='unclassified')return L('Lists not yet classified','רשימות שטרם סווגו');
+ if(a.status==='none-classified')return L('No list placed in this family','אין רשימה ששויכה למשפחה');
+ if(a.status==='unclassified')return L('Which lists belong is not settled','לא הוכרע אילו רשימות שייכות');
  if(a.status==='not-counted')return a.excluded?L('Only in mixed lists (left out)','רק ברשימות מעורבות (הושמטו)'):L('No list counted','אין רשימה שנספרה');
  if(onlyMixed(a))return L('Only in mixed lists','רק ברשימות מעורבות');
  return null;
 }
 /** Beside a total: the family has lists still under review in this election, so the total may not be all of it. */
 export function reviewNote(a:Agg,L:Tr):string|null {
- return a.reviews>0&&a.status!=='unclassified'&&a.status!=='unknown'?L('Some lists not yet classified','חלק מהרשימות טרם סווגו'):null;
+ return a.reviews>0&&a.status!=='unclassified'&&a.status!=='unknown'?L('Other lists may also belong','ייתכן שגם רשימות נוספות שייכות'):null;
 }
 /** Round axis steps (1, 2, 2.5, 5 × 10ⁿ) so gridlines read 5/10/15/20 %, never 11/23/34 %. */
 function niceScale(max:number){const raw=max/4,mag=10**Math.floor(Math.log10(raw)),step=[1,2,2.5,5,10].map(m=>m*mag).find(s=>s>=raw)!;const top=Math.ceil(max*1.04/step)*step;return {top,ticks:Array.from({length:Math.round(top/step)+1},(_,i)=>i*step)};}
@@ -42,7 +42,7 @@ export function FamilyCharts({families,cursor,onCursor,onInspect,policy}:{famili
  return <div className="family-plots">{policy&&<div className="family-vote-tools">{policy}</div>}{(['share','votes'] as const).map(metric=>{
   const max=Math.max(metric==='share'?1:1000,...families.flatMap(f=>historyElections.map(d=>{const a=aggregate(f,d),n=Number(a.votes??0n)+Number(a.mixed??0n);return metric==='share'?n*100/d.totals.valid:n;})));
   const scale=niceScale(max);
-  return <section key={metric}><div className="family-plot-head"><h3>{metric==='share'?L('Share of valid votes','שיעור הקולות הכשרים'):L('Absolute votes','מספר קולות')}</h3>
+  return <section key={metric}><div className="family-plot-head"><h3>{metric==='share'?L('Share of valid votes','שיעור הקולות הכשרים'):L('Votes','קולות')}</h3>
    {anyMixed&&metric==='share'&&<p className="family-legend" style={families.length===1?{['--key' as string]:familyColor(families[0])}:undefined}><span aria-hidden><i className="family-key-line"/>{L('Estimate by seats','הערכה לפי מנדטים')}</span><span aria-hidden><i className="family-key-dashed"/>{L('Mixed lists counted whole','רשימות מעורבות במלואן')}</span><span aria-hidden><i className="family-key-mixed"/>{L('The real figure lies between','הנתון האמיתי ביניהם')}</span> <Info title={L('Estimate by seats','הערכה לפי מנדטים')}>{L('A joint list’s votes cannot be split between its parties, so the solid line gives the family a share by its seats on it: Likud won 20 of Likud Yisrael Beiteinu’s 31 seats in 2013, so 20/31 of that list’s votes count.','אי אפשר לפצל קולות של רשימה משותפת בין מפלגותיה, ולכן הקו המלא נותן למשפחה חלק לפי מנדטיה בה: הליכוד זכה ב־20 מתוך 31 המנדטים של הליכוד ביתנו ב־2013, ולכן נספרים 20/31 מקולות הרשימה.')}</Info></p>}</div>
    {families.map(f=><Plot key={f.id} family={f} metric={metric} scale={scale} cursor={cursor} onCursor={onCursor} onInspect={onInspect}/>)}</section>;
  })}</div>;
@@ -129,7 +129,7 @@ function Plot({family:f,metric,scale,cursor,onCursor,onInspect}:{family:Family;m
    {!path&&<text className="family-empty" x={(left+width-right)/2} y={(top+bottom)/2} textAnchor="middle">{L('No lists counted in any election','לא נספרו רשימות באף מערכת בחירות')}</text>}
    {lastAt!==undefined&&<text className="family-end-label" x={width-right+12} y={endY} textAnchor="start">{labelLines.slice(0,3).map((line,i)=><tspan key={i} x={width-right+12} dy={i?13:0}>{line.length>(narrow?11:17)?line.slice(0,narrow?10:16)+'…':line}{i===2&&labelLines.length>3?'…':''}</tspan>)}</text>}
   </svg>
-  {unclassified.length>0&&<p className="family-unclassified-note small muted"><b aria-hidden>?</b> {L('Lists not yet classified','רשימות שטרם סווגו')}: {unclassified.map(({i})=>electionYear(historyElections[i],lang)).join(', ')}</p>}
+  {unclassified.length>0&&<p className="family-unclassified-note small muted"><b aria-hidden>?</b> {L('Which lists belong is not settled','לא הוכרע אילו רשימות שייכות')}: {unclassified.map(({i})=>electionYear(historyElections[i],lang)).join(', ')}</p>}
   {hover&&at>=0&&<Floating className="family-tooltip" anchor={() => ref.current?.querySelector(`[aria-label="${CSS.escape(describe(data[at],historyElections[at]))}"]`)?.getBoundingClientRect() ?? ref.current?.getBoundingClientRect()}><PointFacts f={f} at={at} metric={metric} text={describeRich(data[at],historyElections[at])}/></Floating>}
  </div>;
 }

@@ -114,8 +114,12 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     // the label and the changed seats are read out when they change, not the buttons beside them (review V4 A12)
     <div ref={line} className={`session ${edited ? '' : 'idle'}`}>
       <FittingLabel full={label} short={reference ? String(count) : compact} reference={namedReference} locale={appLocale(lang)} />
-      {/* the (i) right after the label it explains, on the same line at every width */}
-      <Info title={L('Your changes', 'השינויים שלכם')}>{L('Each edit counts once: votes, rules, lists, blocs or coalition roles. Colours don’t count. History lists every change and lets you go back to one.', 'כל עריכה נספרת פעם אחת: קולות, כללים, רשימות, גושים או תפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מופיע כל שינוי, ואפשר לחזור אליו.')}</Info>
+      {/* the (i) right after the label it explains, on the same line at every width; with no changes there is nothing to
+          explain (round 2 of the clarity pass, 26 Nov 2026) */}
+      {count > 0 && <Info title={L('Your changes', 'השינויים שלכם')}>{reference
+        // the full reference name, which the label may cut short on a narrow screen
+        ? <>{L('Changes are counted from ', 'השינויים נספרים מ')}{lang === 'he' && !/^[\u05d0-\u05ea]/.test(referenceName) ? '־' : ''}<bdi>{referenceName}</bdi>. </>
+        : L('Changes are counted from the official result. ', 'השינויים נספרים מהתוצאה הרשמית. ')}{L('Each edit counts once: votes, rules, lists, blocs or coalition roles. Colours don’t count. History lists every change and lets you go back to one.', 'כל עריכה נספרת פעם אחת: קולות, כללים, רשימות, גושים או תפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מופיע כל שינוי, ואפשר לחזור אליו.')}</Info>}
       <span ref={changes} className="session-changes" role="status">
         {edited && <>
           {moves.length === 0
@@ -129,7 +133,7 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
           {blocs && <span className="moves" style={{ color: 'var(--ink-2)' }}>
             {!familyGrouping && <span>{groupingLabel(s, lang)}</span>}
             {blocs.filter((x) => x.n > 0 || x.d).map(({ b, n, d }) => <span key={b.id ?? 'none'} title={'appDefined' in b && b.appDefined ? appGroupingExplanation(lang) : undefined}><bdi>{name(b)}</bdi> {n}{d ? <> <span dir="ltr">(<SeatDelta value={d} />)</span></> : null}</span>)}
-            {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `${hebrewPrefixName('ל', name(holder.b))} יש רוב`) : L('no bloc has a majority', 'לאף גוש אין רוב')}</span>}
+            {!familyGrouping && <span>{holder ? L(`${name(holder.b)} holds a majority`, `${hebrewPrefixName('ל', name(holder.b))} יש רוב`) : L('No bloc has a majority', 'לאף גוש אין רוב')}</span>}
           </span>}
           {s.mode === 'experimental' && <span className="chip exp">{L('Experimental rules', 'כללים ניסיוניים')}</span>}
         </>}

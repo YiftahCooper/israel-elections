@@ -17,7 +17,7 @@ const UNRECORDED='#8a929b';
 const readPartners=()=>{try{return localStorage.getItem(PARTNERS)!=='off';}catch{return true;}};
 type Tr=(en:string,he:string)=>string;
 export const partnerColor=(p:SeatPart)=>p.kind==='unrecorded'||!p.partyId?UNRECORDED:partyDisplayColor({id:p.listId,color:UNRECORDED,parties:[{id:p.partyId,...(p.color?{color:p.color}:{})}]},p.partyId);
-const partnerName=(p:SeatPart,lang:'he'|'en',L:Tr)=>p.kind==='unrecorded'?L('Party not recorded','מפלגה לא מתועדת'):lang==='en'?englishLabel(p.nameEn,p.nameHe):p.nameHe;
+const partnerName=(p:SeatPart,lang:'he'|'en',L:Tr)=>p.kind==='unrecorded'?L('Party unknown','מפלגה לא ידועה'):lang==='en'?englishLabel(p.nameEn,p.nameHe):p.nameHe;
 const year=(e:HistoryElection,lang:'he'|'en')=>{const y=e.electionDate.slice(0,4),twice=historyElections.filter(d=>d.electionDate.startsWith(y)).length>1;return twice?new Date(e.electionDate+'T12:00:00').toLocaleDateString(lang==='he'?'he-IL':'en-GB',{year:'numeric',month:'short'}):y;};
 const seatsWord=(n:number,L:Tr)=>n===1?L('1 seat','מנדט אחד'):`${n} ${L('seats','מנדטים')}`;
 /** Exact words for one segment: party, seats, list and year. */

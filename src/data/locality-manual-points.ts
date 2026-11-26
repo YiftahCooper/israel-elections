@@ -12,8 +12,8 @@ export interface ManualPoint extends Coordinate { code: number; nameHe: string; 
 
 export const MANUAL_POINTS: readonly ManualPoint[] = [
   { code: 3400, nameHe: 'חברון', lat: 31.5248, lon: 35.1085,
-    noteEn: 'Approximate position: the Jewish quarter of Hebron, placed by this project. Not the polling station’s building, whose exact position is not known.',
-    noteHe: 'מיקום משוער: הרובע היהודי בחברון, כפי שמוקם בפרויקט זה. לא בניין הקלפי, שמיקומו המדויק אינו ידוע.' },
+    noteEn: 'Approximate position, in the Jewish quarter of Hebron. The polling station’s exact position is not known.',
+    noteHe: 'מיקום משוער, ברובע היהודי בחברון. המיקום המדויק של הקלפי אינו ידוע.' },
 ];
 
 /** The project's approximate point for a row with no CBS point (matched by code, or by name for a row with no code). */

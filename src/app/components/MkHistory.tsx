@@ -198,7 +198,7 @@ function eventText(e: MkEvent, v: MkView, L: T, lang: Lang): ReactNode {
     case 'left': { const why = reasonWords(e.reason, v.gender, lang); return `${L('Membership ended', 'הכהונה הסתיימה')}${why ? ` · ${why}` : ''}`; }
     case 'faction': return L(`Faction: ${factionMoveName(e.faction!.now, lang)} (until then ${factionMoveName(e.faction!.was, lang)})`, `סיעה: ${factionMoveName(e.faction!.now, lang)} (עד אז ${factionMoveName(e.faction!.was, lang)})`);
     // the Knesset's record gives no faction for these days: none is shown, and the line says so (audit 12 Nov 2026, cx-factions-05)
-    case 'unrecorded': return L(`Faction not recorded until ${formatDate(e.until!, 'en')}`, `הסיעה לא תועדה עד ${formatDate(e.until!, 'he')}`);
+    case 'unrecorded': return L(`Faction unknown until ${formatDate(e.until!, 'en')}`, `הסיעה אינה ידועה עד ${formatDate(e.until!, 'he')}`);
     default: return lang === 'he' ? e.text!.he : e.text!.en;
   }
 }

@@ -283,7 +283,7 @@ export function Waffles({ s, r }: { s: Scenario; r: AllocationResult }) {
           if (!parts.length) return [<span key={l.id} className="row" style={{ gap: 5 }}><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <span className="muted tabnum">{lr.seats}</span></span>];
           return parts.map(({ key, p, n }) => {
             const party = p ? partyDisplayColor(l, p.id) : l.color, inner = p && jointLook === 'both';
-            const name = p ? (lang === 'he' ? p.nameHe : p.nameEn) : L('Party not recorded', 'מפלגה לא מתועדת');
+            const name = p ? (lang === 'he' ? p.nameHe : p.nameEn) : L('Party unknown', 'מפלגה לא ידועה');
             return <span key={key} className="row" style={{ gap: 5 }}>
               <svg className="swatch" width="10" height="10" aria-hidden><rect width="10" height="10" rx="2" fill={inner ? l.color : party} />{inner && <rect x={5 - 5 * PARTY_SHARE} y={5 - 5 * PARTY_SHARE} width={10 * PARTY_SHARE} height={10 * PARTY_SHARE} rx={2 * PARTY_SHARE} fill={party} />}</svg>
               {name === listLabel(l, lang) ? name : `${name} · ${listLabel(l, lang)}`} <span className="muted tabnum">{n}</span></span>;

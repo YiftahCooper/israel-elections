@@ -119,7 +119,7 @@ export function planVotes(o: { from: CopySource; to: Scenario; ctx?: { base?: Sc
   else if (mode === 'eligible') X = units.map((u) => nearest(BigInt(sum(from.sc, u.src)) * R2, R));
   else if (mode === 'ratio') {
     const s0 = units.map((u) => BigInt(sum(from.start, u.src)));
-    if (s0.some((x) => x === 0n)) return refuse('Not possible: the list had no votes at its starting point.', 'לא אפשרי: לרשימה לא היו קולות בנקודת ההתחלה.');
+    if (s0.some((x) => x === 0n)) return refuse('Not possible: the list had no votes before the change.', 'לא אפשרי: לרשימה לא היו קולות לפני השינוי.');
     X = units.map((u, i) => nearest(v[i] * BigInt(sum(from.sc, u.src)), s0[i]));
   }
   else if (policy.kind === 'new') {

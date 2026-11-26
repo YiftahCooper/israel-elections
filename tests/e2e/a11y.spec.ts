@@ -101,6 +101,6 @@ test('a list links to its own voice and to a neutral source, never English Wikip
   await page.getByRole('region', { name: 'Lists' }).getByRole('button', { name: 'Likud', exact: true }).click();
   const about = page.getByRole('group', { name: 'About Likud' }).first();
   await expect(about.getByRole('link').first()).toHaveAttribute('href', /^https:\/\//);
-  await expect(about.getByText('Neutral:')).toBeVisible();
+  await expect(about.getByText('Independent:')).toBeVisible();
   await expect(page.locator('a[href*="en.wikipedia.org"]')).toHaveCount(0);
 });

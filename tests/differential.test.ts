@@ -373,7 +373,9 @@ const EXPECTED: Record<Family, string> = {
   // only. Merged with the lanes above; the other four digests are unchanged.
   // Note wording (26 Nov, lane D): candidate notes in plain words, two misprint notes on Knesset English spellings
   // dropped (the names shown were already right); no name, vote, seat or roster change; the other four digests are unchanged.
-  model: 'b15c847eb6f0d554663291538b3ef53b9ee37a664afb846ead8e9b2a820ebe6b',
+  // Clarity pass round 2 (26 Nov 2026): plainer error messages (src/model/messages.ts) and two part names
+  // (src/model/parts.ts); merged with lane D's note wording above; the other four digests are unchanged.
+  model: '7d96fe50c21c15b58698808d8a3a4d1692318300a7fd9c3437f865861073c2af',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };

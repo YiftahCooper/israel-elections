@@ -85,7 +85,7 @@ describe('Sources tab', () => {
   it('names and descriptions have no files, record ids or bare acronyms', () => {
     const bad: string[] = [];
     for (const s of records) {
-      // the project's own records show only their plain description, under "Typed in by this project"
+      // the project's own records show only their plain description, under "Copied by hand from the originals"
       if (!s.own) for (const n of strings([s.publisher, s.publisherEn])) if (ACRONYM.test(n) || PIPELINE.test(n)) bad.push(`${s.id} name: ${n}`);
       for (const d of strings([s.description, s.descriptionEn, s.note])) if (PIPELINE.test(d) || /\bCEC\b|\bCBS\b|\bYP \d/.test(d)) bad.push(`${s.id} description: ${d.slice(0, 100)}`);
     }

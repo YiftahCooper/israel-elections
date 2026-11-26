@@ -29,8 +29,9 @@ test('the panel shows the party history and the comparison; the full sheet moves
   const line = sec.locator('.ph-cmpline');
   // a sentence, not "Since 2022 Labor + Meretz 4 → 8 ▲ +4" (clarity pass, 26 Nov 2026)
   await expect(line).toContainText('In 2022, Labor + Meretz won 4 seats; now 8 (4 more).');
-  await expect(line.locator('.ph-num')).toHaveText('Vote share −0.42 pp.');
-  await expect(line.locator('.ph-cert')).toHaveText('Probable');
+  await expect(line.locator('.ph-num')).toHaveText('Vote share 0.42 points lower than in 2022.');
+  // how sure the link is is said in words inside the (i), never as a chip (clarity pass round 2, 26 Nov 2026)
+  await expect(line.locator('.ph-cert')).toHaveCount(0);
 
   await sec.getByRole('button', { name: 'Full history', exact: true }).click();
   await expect(sheet(page)).toContainText('Ran in all 26 elections');
@@ -96,7 +97,8 @@ test('in Hebrew the chart is drawn left to right and every word is Hebrew', asyn
   await listRow(page, 'הדמוקרטים').click();
   const sec = page.locator('aside .ph-sec');
   await expect(sec.locator('.ph-cmpline')).toContainText('ב־2022 היו לעבודה + מרצ 4 מנדטים; עכשיו 8 (עוד 4).');
-  await expect(sec.locator('.ph-cert')).toHaveText('סביר');
+  await expect(sec.locator('.ph-num')).toHaveText('שיעור הקולות נמוך ב־0.42 נקודות אחוז לעומת 2022.');
+  await expect(sec.locator('.ph-cmpline .ph-cert')).toHaveCount(0);
   await sec.getByRole('button', { name: 'היסטוריה מלאה', exact: true }).click();
   const bars = sheet(page).locator('.ph-bar');
   const first = (await bars.first().boundingBox())!, last = (await bars.last().boundingBox())!;
@@ -110,7 +112,7 @@ test('Compare tags the Democrats as ran jointly, notes the comparison under the 
   await openSideBySide(page);
   const row = (name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname, .cmp-rname', { hasText: name }) }).first();
   await expect(row('The Democrats').locator('.cmp-tag')).toHaveText('Ran jointly');
-  await expect(row('The Democrats').locator('.ph-cmpnote')).toHaveText(/^Compared with Labor, renamed \+ Meretz \(2022\)\s*Probable$/);
+  await expect(row('The Democrats').locator('.ph-cmpnote')).toHaveText(/^Compared with Labor, renamed \+ Meretz \(2022\)$/);
   await expect(row('Likud').locator('.ph-cmpnote')).toHaveText(/^New Hope.* ran inside National Unity in 2022, so it is not counted$/);
   await expect(row('Shas').locator('.ph-cmpnote')).toHaveCount(0);
   await page.getByRole('button', { name: 'Pair lists', exact: true }).click();
@@ -119,7 +121,7 @@ test('Compare tags the Democrats as ran jointly, notes the comparison under the 
   const dem = panel.locator('li').filter({ hasText: 'Labor + Meretz' });
   await expect(dem).toContainText('The Democrats (2026) is compared with Labor (4 seats) and Meretz (0 seats) in 2022, taken together.');
   await expect(dem).not.toContainText('How sure');
-  await expect(dem).toContainText('Labor renamed The Democrats (2024)');
+  await expect(dem).toContainText('Labor renamed The Democrats (2024; not on official record)');
   await expect(dem).not.toContainText('labor-democrats-rename');
 });
 
@@ -139,7 +141,7 @@ test('each pairing in Compare says what is compared with what and why, behind th
   await page.keyboard.press('Escape');
   await row('The Democrats').getByRole('button', { name: /^Why this pairing/ }).click();
   const dem = page.locator('.pop').filter({ hasText: 'This pairing' });
-  await expect(dem).toContainText('Labor renamed The Democrats (2024)');
+  await expect(dem).toContainText('Labor renamed The Democrats (2024; not on official record)');
   await expect(dem.getByRole('link', { name: /^Israel Democracy Institute/ })).toBeVisible();
 });
 
@@ -168,7 +170,7 @@ test('the chart numbers its events as in the list below, explains where they sit
   await listRow(page, 'The Democrats').click();
   await sec.getByRole('button', { name: 'Full history', exact: true }).click();
   await expect(sheet(page).locator('.ph-ev.weak .ph-evnum text')).toHaveText('5,6,7');
-  await expect(sheet(page).locator('.ph-legend')).toContainText('Dashed: not yet established');
+  await expect(sheet(page).locator('.ph-legend')).toContainText('Dashed: link not established');
 });
 
 test('in Hebrew the event key is Hebrew and the numbers match the list', async ({ page }) => {

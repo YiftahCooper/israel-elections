@@ -178,16 +178,17 @@ export function TextField({ id, disabled = false, value, onCommit, label, placeh
     onKeyDown={(e) => { if (e.key === 'Enter') (e.target as HTMLInputElement).blur(); if (e.key === 'Escape' && text !== value) { e.preventDefault(); e.stopPropagation(); setText(value); } }} />;
 }
 
-/** "Learn more" link for a glossary term, in the interface language, with its publisher. Terms that
- *  describe the app's own tools or an inferred procedure say so, since the link is only background. */
+/** "Learn more" link for a glossary term, in the interface language, with its publisher. */
 export function GlossaryLink({ g, lang }: { g: GlossaryTerm; lang: 'he' | 'en' }) {
   const link = lang === 'he' ? g.linkHe : g.linkEn;
-  const note = g.provenance === 'app' ? (lang === 'he' ? 'מתאר כלי של האפליקציה; הקישור לרקע בלבד.' : 'Describes a tool in this app; the link is background only.')
-    : g.provenance === 'inferred' ? (lang === 'he' ? 'הנוסח המחייב לא אותר; ההליך מוסק מהתוצאה הרשמית.' : 'The governing text was not located; the procedure is inferred from the official result.') : null;
+  // an app tool's link is background reading, said by its label; an inferred procedure says, once, that the exact rule
+  // is not known (round 2 of the clarity pass, 26 Nov 2026: no "governing text was not located")
+  const note = g.provenance === 'inferred' ? (lang === 'he' ? 'הכלל המדויק אינו ידוע; כך חושבה התוצאה הרשמית.' : 'The exact rule is not known; this is how the official result was reached.') : null;
+  const more = g.provenance === 'app' ? (lang === 'he' ? 'לקריאה נוספת' : 'Further reading') : lang === 'he' ? 'למידע נוסף' : 'Learn more';
   return (
     <span className="glossary-link">
       {note && <i className="muted">{note} </i>}
-      <a href={link.url} target="_blank" rel="noreferrer">{lang === 'he' ? 'למידע נוסף' : 'Learn more'}: {link.title}</a>
+      <a href={link.url} target="_blank" rel="noreferrer">{more}: {link.title}</a>
       <span className="muted"> · {link.publisher}</span>
     </span>
   );

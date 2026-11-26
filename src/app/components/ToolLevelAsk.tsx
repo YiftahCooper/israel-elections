@@ -35,7 +35,7 @@ export function ToolLevelAsk({ tool, toolLevel, name, onOpen, onClose }: {
       </div>
       <p className="tiny ink2">{L(`${cEn} is ${myEn} with what you add. ${myEn} itself stays as it is; Settings lists your choices.`, `"${cHe}" הוא "${myHe}" ועוד מה שתוסיפו. "${myHe}" עצמו נשאר כמו שהוא; ההגדרות מציגות את הבחירות שלכם.`)}</p>
     </> : <>
-      <p id="tool-ask-text">{L('You greyed this tool out.', 'בחרתם להציג את הכלי הזה באפור.')}</p>
+      <p id="tool-ask-text">{L('You switched this tool off.', 'כיביתם את הכלי הזה.')}</p>
       <div className="tool-ask-actions">
         <button type="button" className="btn primary" autoFocus onClick={() => done(() => setFeature(tool as FeatureId, 'show'))}>{L('Show it again', 'להציג שוב')}</button>
         <button type="button" className="btn ghost" onClick={onClose}>{L('Cancel', 'ביטול')}</button>

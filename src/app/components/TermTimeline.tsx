@@ -308,7 +308,7 @@ function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders
         {' '}<span className="muted small"><bdi dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi>{formatDate(h[1], lang)}</bdi> – <bdi>{formatDate(h[2] && h[2] < term.end ? h[2] : term.end, lang)}</bdi></bdi></span></div>
       <div className="small">{line(h)}</div>
       {h[7].slice(1).map(([f, from, time], j) => <div key={j} className="small muted">{L('Faction', 'סיעה')}: <bdi>{factionName(f)}</bdi> · <bdi>{formatDate(from, lang)}{time ? `, ${time}` : ''}</bdi></div>)}
-      {unrecorded(h).map((g, j) => <div key={`u${j}`} className="small muted tl-unrec">{L('Faction not recorded', 'הסיעה לא תועדה')} · <bdi dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi>{formatDate(g.start, lang)}</bdi> – <bdi>{formatDate(g.end, lang)}</bdi></bdi></div>)}
+      {unrecorded(h).map((g, j) => <div key={`u${j}`} className="small muted tl-unrec">{L('Faction unknown', 'הסיעה אינה ידועה')} · <bdi dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi>{formatDate(g.start, lang)}</bdi> – <bdi>{formatDate(g.end, lang)}</bdi></bdi></div>)}
     </li>)}</ol>
   </>;
 }

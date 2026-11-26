@@ -330,7 +330,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     return <>
       <ul className="coal-partners">{ids.map(item)}</ul>
       {cmp && before !== null && <p className="small muted cmpm-coal-total">{L(`Their lists in ${cmp.label}: `, `הרשימות שלהן ${hebrewPrefix("ב", cmp.label)}: `)}<b>{before}</b>
-        <Info title={L(`Compared with ${cmp.label}`, `בהשוואה ${hebrewPrefix('ל', cmp.label)}`)}>{L(`The seats that the same lists had in ${cmp.label}, paired as on the Lists panel. A list that split since is counted once, as a whole; lists with no list of their own then are left out.`, `המנדטים שהיו לאותן רשימות ${hebrewPrefix('ב', cmp.label)}, בהתאמה כמו בלוח הרשימות. רשימה שהתפצלה מאז נספרת פעם אחת, בשלמותה; רשימות שלא הייתה להן אז רשימה משלהן אינן נספרות.`)}</Info></p>}
+        <Info title={L(`Compared with ${cmp.label}`, `בהשוואה ${hebrewPrefix('ל', cmp.label)}`)}>{L(`The seats the same lists won in ${cmp.label}. A list that has split since counts once, as a whole; lists that did not run on their own then are left out.`, `המנדטים שבהם זכו אותן רשימות ${hebrewPrefix('ב', cmp.label)}. רשימה שהתפצלה מאז נספרת פעם אחת, בשלמותה; רשימות שלא רצו אז בעצמן אינן נספרות.`)}</Info></p>}
       {others('support', supportIds)}
       {others('abstain', abstainIds)}
       {/* members by bloc only when they span blocs: one bloc would repeat the members total above */}
@@ -342,7 +342,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
         matches: L('Same partners as the first government', 'אותן שותפות כמו בממשלה הראשונה'),
         different: L('Different partners from the first government', 'שותפות שונות מאלה של הממשלה הראשונה'),
       })[firstGovernmentComparison(ids, supportIds, recordedChoices)]}{' '}
-        <Info title={L('Historical comparison', 'השוואה היסטורית')}>{L('Compares members with the recorded first government only, not every government during this Knesset, and not its outside support. Scenario seats can differ from the official result.', 'השוואת החברות בקואליציה לממשלה הראשונה המתועדת בלבד, ולא לכל ממשלה במהלך הכנסת או לתמיכה מבחוץ בה. המנדטים בתרחיש עשויים להיות שונים מהתוצאה הרשמית.')} {`${lang === 'he' ? record.nameHe : record.nameEn} · ${formatDate(record.startDate, lang)}`}</Info></p>}
+        <Info title={L('Historical comparison', 'השוואה היסטורית')}>{L('Compared with the first government only, not later governments of this Knesset or its outside support. Your seats can differ from the official result.', 'השוואה לממשלה הראשונה בלבד, לא לממשלות מאוחרות יותר בכנסת זו ולא לתמיכה מבחוץ. המנדטים שלכם עשויים להיות שונים מהתוצאה הרשמית.')} {`${lang === 'he' ? record.nameHe : record.nameEn} · ${formatDate(record.startDate, lang)}`}</Info></p>}
     </>;
   };
   /** "Recorded vote: 61 for · 59 against. Differs here because …" with the specific reasons from the research
@@ -426,7 +426,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       </section>}
       <h3 style={{ marginTop: 16 }}>{L(`Smallest winning coalitions${pickedIds.length ? ' with your In lists' : ''}`, `הקואליציות המנצחות הקטנות ביותר${pickedIds.length ? ' עם הרשימות שבפנים' : ''}`)}
         <span className="muted" style={{ fontWeight: 400 }}> · {minimal.length.toLocaleString('en-US')}{truncated ? '+' : ''} {L('in all', 'בסך הכול')}</span></h3>
-      <p className="small muted" style={{ marginTop: 0 }}>{L('Select one to see its partners', 'בחרו אחת כדי לראות את השותפות')} <Info title={L('Winning coalitions', 'קואליציות מנצחות')}>{L('Each wins the confidence vote, with any outside support, and needs every member: remove one and it loses. Without abstentions that means 61 seats. Selecting one shows its partners beneath it; your choices stay as they are.', 'כל אחת זוכה בהצבעה על האמון, יחד עם התמיכה מבחוץ אם יש, וזקוקה לכל חברותיה: הוצאת אחת מפילה אותה. בלי נמנעות פירוש הדבר 61 מנדטים. בחירה באחת מציגה את שותפותיה מתחתיה; הבחירות שלכם נשארות כפי שהן.')}</Info></p>
+      <p className="small muted" style={{ marginTop: 0 }}>{L('Select one to see its partners', 'בחרו אחת כדי לראות את השותפות')} <Info title={L('Winning coalitions', 'קואליציות מנצחות')}>{L('Each wins the confidence vote, with any outside support, and needs every member: without any one of them it loses. Without abstentions that means 61 seats.', 'כל אחת זוכה בהצבעה על האמון, יחד עם התמיכה מבחוץ אם יש, וזקוקה לכל חברותיה: בלי אחת מהן היא מפסידה. בלי נמנעות פירוש הדבר 61 מנדטים.')}</Info></p>
       {!minimal.length && <p className="small muted">{already.passes
         ? already.stable ? L('Your In lists already have a majority, even without some of them.', 'לרשימות שבפנים כבר יש רוב, גם בלי חלק מהן.')
           : L('Your choices already win the confidence vote, even without some lists.', 'הבחירות שלכם כבר זוכות בהצבעה על האמון, גם בלי חלק מהרשימות.')

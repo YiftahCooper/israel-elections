@@ -316,7 +316,7 @@ export const PART_INFO: Record<FeatureId, Bi> = {
   candidateDetail: ['Every candidate on each list. Off: only who gets in.', 'כל המועמדים בכל רשימה. כבוי: רק מי שנכנס לכנסת.'],
   whatIfAll: ['Every question on What if. Off: the first four.', 'כל השאלות ב"מה אם". כבוי: ארבע הראשונות.'],
   timelineEvents: ['Events beyond the main ones.', 'אירועים מעבר לעיקריים.'],
-  timelineAllEvents: ['Every recorded event.', 'כל אירוע מתועד.'],
+  timelineAllEvents: ['Every event, however small.', 'כל אירוע, גם הקטנים.'],
   historySources: ['The source of each change in a party’s history.', 'המקור של כל שינוי בהיסטוריה של מפלגה.'],
   turnoutFacts: ['Votes cast, valid and invalid votes, and turnout over the years.', 'מצביעים, קולות כשרים ופסולים ושיעור ההצבעה לאורך השנים.'],
   turnoutCounts: ['Results by polling station, and double-envelope votes.', 'תוצאות לפי קלפי, וקולות במעטפות כפולות.'],

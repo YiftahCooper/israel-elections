@@ -384,7 +384,7 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
     </div>
     {/* the other side's seats open no list: its lists are not the open scenario */}
     <div className="cmp-chamber" onClickCapture={x.role === 'other' ? (ev) => ev.stopPropagation() : undefined}><Hemicycle s={x.sc} r={x.r} reference={x.start} compact paired title={title} /></div>
-    {x.edited && <p className="tiny muted cmp-outline-key">{(x.role === 'main' ? L('Outlined: seats gained compared with its starting point', 'בקו מתאר: מנדטים שנוספו לעומת נקודת ההתחלה') : L('Outlined: seats gained compared with the official result', 'בקו מתאר: מנדטים שנוספו לעומת התוצאה הרשמית'))}</p>}
+    {x.edited && <p className="tiny muted cmp-outline-key">{(x.role === 'main' ? L('Outlined: seats gained since you started editing', 'בקו מתאר: מנדטים שנוספו מאז שהתחלתם לערוך') : L('Outlined: seats gained compared with the official result', 'בקו מתאר: מנדטים שנוספו לעומת התוצאה הרשמית'))}</p>}
   </section>;
 }
 
@@ -541,7 +541,7 @@ function People({ left, right }: { left: SideModel; right: SideModel }) {
       <div><h3>{L(`Entering the Knesset (${entering.length})`, `נכנסים לכנסת (${entering.length})`)}</h3><ul className="small">{entering.map(({ c, l }) => <li key={c.id}><MkName candidate={c}><CandidateName candidate={c} /></MkName> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul></div>
       <div><h3>{L(`Leaving the Knesset (${leaving.length})`, `יוצאים מהכנסת (${leaving.length})`)}</h3><ul className="small">{leaving.map(({ c, l }) => <li key={c.id}><MkName candidate={c}><CandidateName candidate={c} /></MkName> <span className="muted">· {listLabel(l, lang)} #{l.candidates.indexOf(c) + 1}</span></li>)}</ul></div>
     </div>
-    <p className="small muted">{L('Election-night candidates', 'מועמדים בליל הבחירות')} <Info title={L('Candidate coverage', 'כיסוי המועמדים')}>{L('Elected candidates are the first names on each list as registered (election night). Later changes in membership are not modelled.', 'הנבחרים הם המועמדים הראשונים בכל רשימה כפי שנרשמה (ליל הבחירות). שינויים מאוחרים בהרכב אינם מוצגים.')}</Info></p>
+    <p className="small muted">{L('Election-night candidates', 'מועמדים בליל הבחירות')} <Info title={L('Candidate coverage', 'כיסוי המועמדים')}>{L('Those elected on election night: the first names on each list. Later replacements are not shown.', 'מי שנבחרו בליל הבחירות: השמות הראשונים בכל רשימה. החלפות מאוחרות אינן מוצגות.')}</Info></p>
   </details>;
 }
 
