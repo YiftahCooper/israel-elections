@@ -38,11 +38,11 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k17');
   await page.getByRole('button', {name:'Map',exact:true}).click();
   // Hebron is placed by hand, marked approximate (U4, 16 Nov)
-  await expect(page.getByText('1,145 of 1,149 localities placed.')).toBeVisible();
+  await expect(page.getByText('4 of 1,149 places have no point on the map; they are listed below.')).toBeVisible();
   await expect(page.getByText(/because no official locality table exists/)).toHaveCount(0);
   await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
-  await page.getByRole('button', {name:'2006 location matching: explanation',exact:true}).click();
-  await expect(page.getByText('2006 locations are matched by Hebrew name to a single CBS locality code. Ambiguous or unmatched rows remain unplaced.')).toBeVisible();
+  // the 2006 note says what it means for the map in one line, with no method essay behind an (i) (clarity pass, 26 Nov 2026)
+  await expect(page.getByText('The official 2006 results have no locality codes', {exact:false}).first()).toBeVisible();
 });
 
 test('locality map explains a result, speaks English and fits the dark theme', async ({ page }) => {
@@ -176,7 +176,7 @@ test('boundaries have independent controls, hatch geometry, source and snapshot 
   await expect.poll(()=>page.locator('.leaflet-verified-lines-pane path').count()).toBeLessThan(before);
   await expect(legend.getByRole('checkbox',{name:'Lebanon · Blue Line',exact:true})).toBeChecked();
   await legend.getByRole('button',{name:'Israel–Gaza Strip boundary: explanation',exact:true}).click();
-  await expect(page.getByText('Geometry snapshot:',{exact:false})).toBeVisible();
+  await expect(page.getByText('Geometry snapshot:',{exact:false})).toHaveCount(0);
   await expect(page.getByRole('link',{name:'UN · S/1471 (1950)',exact:true})).toHaveAttribute('href','https://www.un.org/unispal/document/auto-insert-183322/');
 });
 

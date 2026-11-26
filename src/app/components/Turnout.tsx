@@ -147,8 +147,8 @@ export function Turnout({ s }: { s: Scenario }) {
 
       <section className="vg" aria-label={L('Voter group', 'קבוצת מצביעים')}>
         <div className="vg-head">
-          <h3>{L('Voter group', 'קבוצת מצביעים')} <Info title={L('Hypothetical modelling', 'מודל היפותטי')}>
-            {L('Change one group’s turnout and see the national result. The change is your assumption, not an official result. Locality groups describe places, not individual voters, and double-envelope votes are not attributed to localities.', 'שנו את שיעור ההצבעה של קבוצה אחת וראו את התוצאה הארצית. השינוי הוא הנחה שלכם ואינו תוצאה רשמית. קבוצות יישובים מתארות מקומות ולא מצביעים יחידים, וקולות המעטפות החיצוניות אינם משויכים ליישובים.')}</Info></h3>
+          <h3>{L('Voter group', 'קבוצת מצביעים')} <Info title={L('Voter group', 'קבוצת מצביעים')}>
+            {L('Change how many people in one group vote, and see what it does to the national result.', 'שנו כמה אנשים בקבוצה אחת מצביעים, וראו מה זה עושה לתוצאה הארצית.')}</Info></h3>
           <ChoicePicker label={L('Voter group', 'קבוצת מצביעים')} placeholder={L('Choose a group…', 'בחירת קבוצה…')} value={value} options={options} onChange={choose} />
           <span className="vg-files">
             {d.members && <button type="button" className="btn small" onClick={async () => {

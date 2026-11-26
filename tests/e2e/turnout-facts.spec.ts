@@ -129,7 +129,7 @@ test('All elections: the open election is shaded with its year in bold; the (i) 
   await expect(history.locator('.tn-axis.cur')).toHaveText(['’15', '’15']);
   expect(await history.locator('.tn-axis.cur').first().evaluate((e) => getComputedStyle(e).fontWeight)).toBe('700');
   await history.locator('h4').getByRole('button').click();
-  await expect(page.locator('.info .pop')).toContainText('evenly spaced: this is not a time scale');
+  await expect(page.locator('.info .pop')).toContainText('evenly spaced whatever the time between them');
 });
 
 // The All-elections charts take the width they are given before they are first drawn: drawn first at a 720 px
