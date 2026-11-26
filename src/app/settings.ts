@@ -299,7 +299,7 @@ export const PART_INFO: Record<FeatureId, Bi> = {
   rules: ['The seat method, the threshold and the number of seats.', 'שיטת החלוקה, אחוז החסימה ומספר המושבים.'],
   sources: ['Where every figure comes from.', 'מאיפה מגיע כל נתון.'],
   splitIdentity: ['When you merge lists: the new list’s name, letters, colour and candidate order.', 'באיחוד רשימות: השם, האותיות, הצבע וסדר המועמדים של הרשימה החדשה.'],
-  voteStart: ['Put a list’s votes back or copy them from elsewhere.', 'החזרת הקולות של רשימה או העתקתם ממקום אחר.'],
+  voteStart: ['Put every list’s votes back to the official result, or copy them from a saved scenario.', 'החזרת הקולות של כל הרשימות לתוצאה הרשמית, או העתקתם מתרחיש שמור.'],
   chamberOptions: ['Seats as an arc or blocks, coloured by list or bloc.', 'המושבים כקשת או כמשבצות, בצבע הרשימה או הגוש.'],
   chamberLegend: ['Download the seat chart as a picture.', 'הורדת תרשים המושבים כתמונה.'],
   voteFigures: ['The totals under the lists: valid votes, votes for lists over the threshold, and votes that won no seat.', 'הסיכומים מתחת לרשימות: קולות כשרים, קולות לרשימות שעברו את אחוז החסימה וקולות שלא זכו במנדט.'],

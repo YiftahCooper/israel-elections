@@ -943,6 +943,8 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .start-from { margin-block: 8px; flex-wrap: wrap; }
 /* in a list's panel the reset row keeps its height, so an edit below it never pushes the controls down */
 .ld .start-from { min-height: 30px; }
+/* nothing to restore or copy yet: no empty row */
+.start-from:empty { display: none; }
 .start-from select { max-width: 100%; min-width: 0; }
 .start-from label { flex-wrap: wrap; min-width: 0; }
 @media print { .edit-tooltip { display: inline; position: static; border: 0; } }
