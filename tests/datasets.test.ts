@@ -34,21 +34,14 @@ describe('available datasets', () => {
   }
 });
 
-// c-results-engine-03: the hand-kept election index repeats the datasets' roster counts; it said 4 and 6 unavailable
-// non-winning rosters for 2003 and 2006 where the datasets have 3 and 5
-it('the election index states the same roster counts as each dataset note', () => {
+// c-results-engine-03: the hand-kept election index repeats the datasets' status notes (it once said 4 and 6 unavailable
+// non-winning rosters for 2003 and 2006 where the datasets had 3 and 5); every note must match its dataset exactly
+it('the election index states the same status note as each dataset', () => {
   const index = JSON.parse(readFileSync('public/data/elections.json', 'utf8')) as { id: string; available: boolean; status: { noteEn?: string; noteHe?: string } }[];
-  let checked = 0;
-  for (const e of index.filter((x) => x.available && x.status.noteEn)) {
+  const available = index.filter((x) => x.available);
+  expect(available.length).toBeGreaterThanOrEqual(26);
+  for (const e of available) {
     const ds = JSON.parse(readFileSync(`public/data/${e.id}.json`, 'utf8'));
-    const counts = (t: string | undefined, re: RegExp) => [...(t ?? '').matchAll(re)].map((m) => m[1]);
-    for (const [a, b] of [[/(\d+) non-winning rosters unavailable/g, /(\d+) non-winning rosters remain unavailable/g], [/(\d+) winning rosters truncated/g, /(\d+) winning rosters are truncated/g],
-      [/ו-(\d+) רשימות שלא זכו במנדטים חסרות/g, /(\d+) רשימות שלא זכו במנדטים עדיין חסרות/g], [/(\d+) רשימות זוכות קטועות/g, /(\d+) רשימות זוכות כוללות רק תחילית/g]] as const) {
-      const said = counts(e.status.noteEn + ' ' + e.status.noteHe, a);
-      if (!said.length) continue;
-      expect(said, e.id).toEqual(counts(ds.status.noteEn + ' ' + ds.status.noteHe, b));
-      checked++;
-    }
+    expect([e.status.noteEn, e.status.noteHe], e.id).toEqual([ds.status.noteEn, ds.status.noteHe]);
   }
-  expect(checked).toBeGreaterThanOrEqual(8);
 });

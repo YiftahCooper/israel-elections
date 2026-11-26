@@ -5,7 +5,7 @@ export async function buildK18() {
     candidateLeaders: {"אמת": "ברק אהוד", "ב": "הרשקוביץ דניאל", "ג": "ליצמן יעקב", "ד": "זחאלקה ג'מאל", "ו": "ברכה מוחמד", "ט": "כץ יעקב דב", "כן": "לבני ציפי צפורה", "ל": "ליברמן אביגדור", "מחל": "נתניהו בנימין", "מרצ": "אורון חיים", "עם": "צרצור אברהים", "שס": "ישי אליהו"},
     candidateCounts: {"אמת": 120, "אר": 20, "ב": 34, "ג": 120, "ד": 105, "ה": 119, "ו": 119, "זך": 26, "חי": 48, "ט": 24, "ים": 23, "ינ": 9, "יק": 17, "כן": 120, "ל": 26, "מחל": 118, "מרצ": 120, "נ": 9, "נפ": 15, "נץ": 4, "נר": 10, "עם": 115, "פ": 12, "פי": 17, "פק": 2, "ץ": 11, "צי": 31, "ק": 40, "קנ": 9, "קפ": 7, "קץ": 16, "רק": 33, "שס": 114},
     totals: { registered: 5278985, votesCast: 3416587, invalid: 43097, valid: 3373490, ballotBoxes: 9264, localities: 0, envelopeVotes: 186919 },
-    noteHe: 'תוצאות רשמיות. פסולים ובעלי זכות בחירה לפי זכרון הדברים של ועדת הבחירות, השונה ממספר הפסולים ברשומות. נתוני היישובים נגזרו מסיכום הקלפיות; ועדה אזורית אינה ידועה (0). המועמדים לפי הפרסום המקורי; שינויים מאוחרים אינם מוחלים.',
-    noteEn: 'Official results. Invalid ballots and electorate follow the Central Elections Committee allocation memorandum, differing from the gazette invalid count. Localities are derived from polling stations, not independently sourced; committee is unknown (0). Candidate rosters are the original gazette snapshot; subsequent changes are not applied.',
+    noteHe: 'הקולות הפסולים ובעלי זכות הבחירה לפי זיכרון הדברים של ועדת הבחירות על חלוקת המנדטים, שבו מספר הפסולים שונה מזה שבהודעת התוצאות. התוצאות לפי יישוב סוכמו מהקלפיות. רשימות המועמדים כפי שפורסמו לראשונה; שינויים מאוחרים אינם מוצגים.',
+    noteEn: 'Invalid votes and registered voters follow the Elections Committee\'s seat-allocation memorandum, whose invalid count differs from the official results notice. Results by locality are added up from the polling stations. Candidate lists are as first published; later changes are not shown.',
   });
 }

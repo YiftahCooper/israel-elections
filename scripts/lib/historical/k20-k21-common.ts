@@ -195,10 +195,10 @@ export async function build(n: 20 | 21, national: National, expectedCounts: Reco
     check(g.candidates.length >= l.seats, `k${n} ${l.letters}: fewer candidates than elected seats`);
     const id = `${n}-${l.letters}`;
     const notesHe: string[] = [];
-    if (n === 20 && l.letters === 'מחל') notesHe.push('ילקוט הפרסומים 7001: המועמדת נטליה ילינסון התפטרה ביום 26.2.2015. הרשימה כאן מציגה את סדר הרישום בילקוט 7000.');
-    if (n === 20 && l.letters === 'יץ') notesHe.push('ילקוט הפרסומים 7001: סעיד בדראן ואבו עאבד ראאף התפטרו ביום 2.3.2015. הרשימה כאן מציגה את סדר הרישום בילקוט 7000.');
-    // State Comptroller 66C p1862: יך withdrew; instruction issued 11 March 2015.
-    if (n === 20 && l.letters === 'יך') notesHe.push('הרשימה פרשה לפני הבחירות; הנחיה להסרת פתקיה נמסרה ב־11.3.2015. מבקר המדינה, דוח 66ג, עמ׳ 1862–1863: https://www.mevaker.gov.il/sites/DigitalLibrary/Documents/2016-66C-314-Veadaa.pdf');
+    if (n === 20 && l.letters === 'מחל') notesHe.push('המועמדת נטליה ילינסון התפטרה מהרשימה ב־26.2.2015.');
+    if (n === 20 && l.letters === 'יץ') notesHe.push('סעיד בדראן ואבו עאבד ראאף התפטרו מהרשימה ב־2.3.2015.');
+    // State Comptroller report 66C pp. 1862–1863 (linked in data/meta/election-context.json): יך withdrew; instruction issued 11 March 2015.
+    if (n === 20 && l.letters === 'יך') notesHe.push('הרשימה פרשה לפני הבחירות; ב־11.3.2015 ניתנה הנחיה להסיר את פתקיה מהקלפיות.');
     const override = corrections?.listOverrides[l.letters];
     notesHe.push(...(override?.notesHe ?? []));
     const sponsorsHe = override?.sponsorsHe ?? g.sponsorsHe;
@@ -215,15 +215,15 @@ export async function build(n: 20 | 21, national: National, expectedCounts: Reco
   const ds: ElectionDataset = {
     schemaVersion: DATASET_SCHEMA_VERSION, id: `k${n}`, knesset: n, electionDate: date, nameHe: `הבחירות לכנסת ה-${n}`, nameEn: `Election to the ${n === 20 ? '20th' : '21st'} Knesset`,
     status: { stage: 'official-final', asOf,
-      noteHe: 'תוצאות רשמיות סופיות. המועמדים לפי סדר הרישום בילקוט הפרסומים; הודעות התפטרות ידועות בהערות.',
-      noteEn: 'Official final results. Candidates follow the gazetted registration order; known resignation notices are labelled.' },
+      noteHe: 'רשימות המועמדים מוצגות כפי שנרשמו; התפטרויות ידועות מצוינות בהערות.',
+      noteEn: 'Candidate lists are shown as registered; known resignations are noted.' },
     ruleSetId: 'il-2014-bader-ofer-3.25', totals: { registered: national.registered, votesCast: national.votesCast, invalid: national.invalid, valid: national.valid, ballotBoxes: geo.ballotRows, ...geographyTotals(geo.rows) },
     lists, agreements: agreementRecords(n, pairs, `k${n}-surplus-gazette`), blocs: [], officialSeats: officialSeatsOf(n, national.lists), officialSeatsSourceId: n === 21 ? 'k21-results-gazette' : nationalSource,
     sourceIds: [...ids, 'law-elections'], buildInfo: { builtAt: new Date().toISOString(), rawSha256 },
   };
   if (n === 20) {
-    ds.status.noteEn += ' The 10,414 polling-result rows comprise 10,119 ordinary stations and 295 central double-envelope counting rows. Central Elections Committee voter information lists 10,372 domestic voting stations (10,119 ordinary, 196 hospital, 57 prison), plus 98 overseas stations. Locality counts describe results-table rows.';
-    ds.status.noteHe += ' 10,414 רשומות התוצאות כוללות 10,119 קלפיות רגילות ו־295 רשומות ספירה מרכזית של מעטפות חיצוניות. במידע לבוחר של ועדת הבחירות נמנו 10,372 קלפיות בארץ (10,119 רגילות, 196 בבתי חולים, 57 בבתי סוהר), ועוד 98 בנציגויות בחו״ל. מספר היישובים מונה שורות תוצאות.';
+    ds.status.noteEn += ' The 10,414 polling-station results are 10,119 ordinary polling stations and 295 central counts of double-envelope votes. The Elections Committee counted 10,372 polling stations in Israel (10,119 ordinary, 196 in hospitals, 57 in prisons) and 98 abroad.';
+    ds.status.noteHe += ' 10,414 תוצאות הקלפי הן 10,119 קלפיות רגילות ו־295 ספירות מרכזיות של מעטפות כפולות. ועדת הבחירות מנתה 10,372 קלפיות בארץ (10,119 רגילות, 196 בבתי חולים, 57 בבתי סוהר) ו־98 בנציגויות בחו״ל.';
   }
   checkReproducesOfficialSeats(check, ds);
   return { ds, loc: localityDataset(`k${n}`, geo.rows, lists) };

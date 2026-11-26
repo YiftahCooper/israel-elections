@@ -54,7 +54,7 @@ export function buildK9(options: VerifyOptions = {}) {
         l.shortHe = ['הפ', 'זך', 'פ', 'פז'].includes(l.letters) ? l.nameHe : (meta?.he ?? l.nameHe);
       }
       if (l.letters === 'זה') l.shortHe = l.nameHe;
-      if (l.candidatesUnavailable) l.notesHe = ['רשימת המועמדים פורסמה בילקוט הפרסומים 2319, אך טרם תומללה באפליקציה.'];
+      if (l.candidatesUnavailable) l.notesHe = ['רשימת המועמדים פורסמה בילקוט הפרסומים 2319, ועדיין לא הוקלדה כאן.'];
     });
     // Darken this k9-only brown so its adjacent Poalei Agudat Yisrael seat
     // stays distinguishable; keep shared metadata and other elections unchanged.

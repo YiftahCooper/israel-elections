@@ -39,7 +39,7 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await page.getByRole('button', {name:'Map',exact:true}).click();
   // Hebron is placed by hand, marked approximate (U4, 16 Nov)
   await expect(page.getByText('1,145 of 1,149 localities placed.')).toBeVisible();
-  await expect(page.getByText(/because no official locality table exists/)).toHaveCount(0);
+  await expect(page.getByText(/no official table by locality/)).toHaveCount(0);
   await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
   await page.getByRole('button', {name:'2006 location matching: explanation',exact:true}).click();
   await expect(page.getByText('2006 locations are matched by Hebrew name to a single CBS locality code. Ambiguous or unmatched rows remain unplaced.')).toBeVisible();

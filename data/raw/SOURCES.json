@@ -700,14 +700,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset16-results.pdf",
     "publisher": "Project transcription of official Central Elections Committee / Reshumot scans",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03T15:31:36.321195+00:00",
     "bytes": 7351,
     "sha256": "fb7381ffe56a49c8d982a8c4cbc24b147a5413d9be4a70ce8521be3ac964f7c1",
     "audit": "Reviewed national evidence for the released k16 dataset; remaining roster gaps and gazette vote discrepancies are explicitly disclosed.",
     "own": true,
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+    "descriptionEn": "Each list’s votes and seats, from the official results notice."
   },
   {
     "id": "k17-surplus-gazette",
@@ -740,14 +740,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset17-results.pdf",
     "publisher": "Project transcription of official Central Elections Committee / Reshumot scans",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03T15:31:36.321449+00:00",
     "bytes": 7653,
     "sha256": "a42dc908024383a004466be2825b7f80481b341b1288e22c42b3c767a310c03f",
     "audit": "Partial reviewed national and agreement transcription. Historical partial transcription, now an input to the released k17 dataset; preserves unresolved source discrepancies.",
     "own": true,
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+    "descriptionEn": "Each list’s votes and seats, from the official results notice."
   },
   {
     "id": "k16-reconciliation-reviewed",
@@ -755,14 +755,14 @@
     "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=498b48e9-5af6-474d-b7a4-5ac1e21d3a08",
     "publisher": "Project derivation of official Central Elections Committee polling-station data",
     "official": false,
-    "description": "תוצאות הקלפיות, מסוכמות ונבדקות מול הסיכומים הארציים.",
+    "description": "סיכום תוצאות הקלפיות.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03T15:33:00.037Z",
     "bytes": 1380,
     "sha256": "ce39e2e4d9c0aff5aab01351ddd1a1612e1dae388eb2c6ed412f963b08f9f433",
     "audit": "Reviewed polling sums and SHA-256 of derived research locality rows; missing fields remain null, not application data.",
     "own": true,
-    "descriptionEn": "Polling-station results, added up and checked against the national totals."
+    "descriptionEn": "The polling-station results, totalled."
   },
   {
     "id": "k17-reconciliation-reviewed",
@@ -770,14 +770,14 @@
     "url": "https://data.gov.il/api/3/action/datastore_search?resource_id=70f8bc93-8d98-4c20-ad7c-768af713f1c5",
     "publisher": "Project derivation of official Central Elections Committee polling-station data",
     "official": false,
-    "description": "תוצאות הקלפיות, מסוכמות ונבדקות מול הסיכומים הארציים.",
+    "description": "סיכום תוצאות הקלפיות.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03T15:33:00.088Z",
     "bytes": 1535,
     "sha256": "6c06dfb518f650693f15308e2a624383698bfff856f00eaa6d33db56d9f3cfd5",
     "audit": "Reviewed polling sums and SHA-256 of derived research locality rows; missing fields remain null, not application data.",
     "own": true,
-    "descriptionEn": "Polling-station results, added up and checked against the national totals."
+    "descriptionEn": "The polling-station results, totalled."
   },
   {
     "id": "k22-surplus-gazette",
@@ -1144,13 +1144,13 @@
     "url": "project:data/raw/k8/national.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-04",
     "bytes": 5979,
     "sha256": "cbb6ffcc0d386340b16f32cc751c257e83872542732b64f93153a62f6382d6bb",
     "audit": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice.",
     "own": true
   },
   {
@@ -1183,13 +1183,13 @@
     "url": "project:data/raw/k9/national.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; חברת הכנסת שנבחרה מטעם רצ לפי רישומי הכנסת.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות; חברת הכנסת שנבחרה מטעם רצ לפי רישומי הכנסת.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:58:39.222721+00:00",
     "bytes": 10000,
     "sha256": "6d68d8f05771d4d5b23a7583ffbf1b3a04b69a9f47dfcf0fc0dcb47c144ab746",
     "audit": "Released national evidence: six official agreements, exact inferred-cap reproduction, all 120 elected names checked; Ratz supplemented by official opening-date Knesset OData.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; Ratz’s elected member from the Knesset’s records.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice; Ratz’s elected member from the Knesset’s records.",
     "own": true
   },
   {
@@ -1198,13 +1198,13 @@
     "url": "project:data/raw/k9/candidates.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T17:01:30.664880+00:00",
     "bytes": 27482,
     "sha256": "0a5828e19e32b97c7596eef1e8d349567f28d7b4c3f83a1c4a061f0f7463d9f4",
     "audit": "Official winning-list leading ranks, all 120 elected-name comparisons (119 results gazette plus Ratz official opening-date Knesset OData), page references and explicit spelling variants.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -1237,13 +1237,13 @@
     "url": "project:data/raw/k10/national.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
     "bytes": 10290,
     "sha256": "0eeee03b5fa9673c7675a4c8e52776f9dabb242cf6c7e9e8e99a381109cbdf73",
     "audit": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice.",
     "own": true
   },
   {
@@ -1276,13 +1276,13 @@
     "url": "project:data/raw/k11/national.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
     "bytes": 10463,
     "sha256": "2ee763c155b44091c63c7da0c17800e1dbec78d52b0df93fb8403959a6ffa09d",
     "audit": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice.",
     "own": true
   },
   {
@@ -1291,13 +1291,13 @@
     "url": "project:data/raw/k11/candidates.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:34:27.797495+00:00",
     "bytes": 38749,
     "sha256": "aedcea95c0d3b6f1e8fe2da48cba22d6e48573e8fc01daece9bf32ce4065d9e2",
     "audit": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -1330,13 +1330,13 @@
     "url": "project:data/raw/k12/national.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-03T16:14:46.283817+00:00",
     "bytes": 11127,
     "sha256": "d06faaaea4d14b56364e90c7e458dc35b87056d292d7ae7dc62510f651a3c874",
     "audit": "Visually checked partial historical research evidence. Scope and unresolved gates are explicit in the file.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice.",
     "own": true
   },
   {
@@ -1393,13 +1393,13 @@
     "url": "project:k16/candidates.reviewed.json",
     "publisher": "Project visual transcription / polling aggregation",
     "official": false,
-    "description": "רשימות המועמדים (במלואן, או עד הנבחר האחרון), כפי שהוקלדו מהסריקות הרשמיות, וכל נבחר נבדק בשמו.",
+    "description": "רשימות המועמדים, במלואן או עד הנבחר האחרון, מתוך הסריקות הרשמיות.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-09",
     "bytes": 102992,
     "sha256": "995f6edbc83a4112e0bbafc86ff1a7c902537f7f341fe7eba478cfbe3bd158dc",
     "audit": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
-    "descriptionEn": "Candidate lists (complete, or up to the last elected member), typed in from the official scans, with every elected member checked by name.",
+    "descriptionEn": "Candidate lists, complete or down to the last member elected, from the official scans.",
     "own": true
   },
   {
@@ -1436,13 +1436,13 @@
     "url": "project:k17/candidates.reviewed.json",
     "publisher": "Project visual transcription / polling aggregation",
     "official": false,
-    "description": "רשימות המועמדים (במלואן, או עד הנבחר האחרון), כפי שהוקלדו מהסריקות הרשמיות, וכל נבחר נבדק בשמו.",
+    "description": "רשימות המועמדים, במלואן או עד הנבחר האחרון, מתוך הסריקות הרשמיות.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-09",
     "bytes": 142118,
     "sha256": "cde7489fce69f8cd3b39c97ad0dba05d103438e32d0ee193cbc7ac2be0d4af3d",
     "audit": "Reviewed manual candidate-scan transcription with complete or elected-prefix coverage, page references, independent section 4 results-notice names and explicit printed-name variants; non-winning unavailable rosters and prior membership/reserve checks retained",
-    "descriptionEn": "Candidate lists (complete, or up to the last elected member), typed in from the official scans, with every elected member checked by name.",
+    "descriptionEn": "Candidate lists, complete or down to the last member elected, from the official scans.",
     "own": true
   },
   {
@@ -1886,14 +1886,14 @@
     "url": "https://www.gov.il/apps/elections/elections-knesset-17/heb/list/ListIndex.html",
     "publisher": "Project capture of primary Central Elections Committee archive pages",
     "official": false,
-    "description": "שמות מועמדים שהועתקו משמונה עמודים שמורים באתר ועדת הבחירות המרכזית, כדי לפענח אותיות לא ברורות בסריקות.",
+    "description": "שמות מועמדים משמונה עמודים שמורים באתר ועדת הבחירות המרכזית, שעזרו לקרוא אותיות לא ברורות בסריקות.",
     "method": "manual-capture",
     "retrievedAt": "2026-11-03",
     "bytes": 42789,
     "sha256": "a82ada50f0073e41d72f188c105dfc0d1d8d3ffeaad7d7d36c6cc27e2e8037d3",
     "audit": "Verbatim candidate-name lines from eight archived official Central Elections Committee pages, used to resolve scan glyphs and line wrapping. Each list includes its actual official URL. Project capture; not a new official publication.",
     "own": true,
-    "descriptionEn": "Candidate names copied from eight archived pages of the Central Elections Committee site, used to read unclear letters in the scans."
+    "descriptionEn": "Candidate names from eight archived pages of the Central Elections Committee site, used to read unclear letters in the scans."
   },
   {
     "id": "k17-candidates-archive-זך",
@@ -1997,13 +1997,13 @@
     "url": "local:reviewed/k1/national",
     "publisher": "Project transcription of official Reshumot and CBS",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
     "bytes": 4797,
     "sha256": "48d9146d5d9c2466be9361a11276ed2262e1b8d9649dd0f3a4ba333befb9d3f0",
     "audit": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice; national totals from the Central Bureau of Statistics.",
     "own": true
   },
   {
@@ -2036,13 +2036,13 @@
     "url": "local:reviewed/k2/national",
     "publisher": "Project transcription of official Reshumot and CBS",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
     "bytes": 4758,
     "sha256": "6a130c0e743c1b6272ad63da7907d5c0eb630b517be255db7430319bd69d4ee8",
     "audit": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice; national totals from the Central Bureau of Statistics.",
     "own": true
   },
   {
@@ -2075,13 +2075,13 @@
     "url": "local:reviewed/k3/national",
     "publisher": "Project transcription of official Reshumot and CBS",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
     "bytes": 5864,
     "sha256": "a855f937f232cf176b821ae174889f6681b21205a91314ede7b3946a164be150",
     "audit": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice; national totals from the Central Bureau of Statistics.",
     "own": true
   },
   {
@@ -2114,13 +2114,13 @@
     "url": "local:reviewed/k4/national",
     "publisher": "Project transcription of official Reshumot and CBS",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
     "bytes": 5982,
     "sha256": "e6297ce2949fcbdba5ab66b27168dc447980cf5c8cc8486fed38ff05793154df",
     "audit": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice; national totals from the Central Bureau of Statistics.",
     "own": true
   },
   {
@@ -2153,13 +2153,13 @@
     "url": "local:reviewed/k5/national",
     "publisher": "Project transcription of official Reshumot and CBS",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
     "bytes": 4512,
     "sha256": "1c03d9d606e2ea14359a23f39e737fe74cb03819c4f6f816ed712f6bff73117b",
     "audit": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice; national totals from the Central Bureau of Statistics.",
     "own": true
   },
   {
@@ -2192,13 +2192,13 @@
     "url": "local:reviewed/k6/national",
     "publisher": "Project transcription of official Reshumot and CBS",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
     "bytes": 5196,
     "sha256": "bc7ce308f04d017eaaf4319e55f2cdfbb57632a01f9bf807af12e2d3b24a0a32",
     "audit": "Visually reviewed national votes and published seats; YP 1225 first partner corrected to רא after fresh primary-scan inspection (0069a). Winning-prefix and elected-name release requirements met; no inferred agreements.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice; national totals from the Central Bureau of Statistics.",
     "own": true
   },
   {
@@ -2231,13 +2231,13 @@
     "url": "local:reviewed/k7/national",
     "publisher": "Project transcription of official Reshumot and CBS",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות; הסיכומים הארציים מהלשכה המרכזית לסטטיסטיקה.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T18:20:00Z",
     "bytes": 3960,
     "sha256": "4626a16731e13440b0442395c3f99946f99157701e84d41bf0f6ccc9590fb697",
     "audit": "Visually reviewed national votes and published seats; release gates and missing rosters explicit. PDF page references retained; no inferred agreements.",
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye; national totals from the Central Bureau of Statistics.",
+    "descriptionEn": "Each list’s votes and seats, from the official results notice; national totals from the Central Bureau of Statistics.",
     "own": true
   },
   {
@@ -2786,14 +2786,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-results.pdf",
     "publisher": "Project reviewed transcription of official gazettes",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 5268,
     "sha256": "d696b8598add75a72c4b96366c6291a7742578df7a6e9731ef5b7790808d55c0",
     "audit": "Reviewed national transcription, with source and printed page references.",
     "own": true,
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+    "descriptionEn": "Each list’s votes and seats, from the official results notice."
   },
   {
     "id": "k13-rosters-reviewed",
@@ -2801,14 +2801,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-cand.pdf",
     "publisher": "Project reviewed transcription of official gazettes",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 20204,
     "sha256": "a178b3291d2a43fc8c02a2143a1858e1edd5a2feb164c30ed721dd34bf43de32",
     "audit": "Reviewed rosters transcription, with source and printed page references.",
     "own": true,
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists."
   },
   {
     "id": "k13-elected-reviewed",
@@ -2816,14 +2816,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset13-results.pdf",
     "publisher": "Project reviewed transcription of official gazettes",
     "official": false,
-    "description": "הנבחרים מכל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות.",
+    "description": "הנבחרים מכל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 7347,
     "sha256": "ac619c9060064059a2abb904f60fe742773ffa7be5d6dc9da34f34b8b33ad75d",
     "audit": "Reviewed elected transcription, with source and printed page references.",
     "own": true,
-    "descriptionEn": "The elected members of each list, typed in from the official results gazette."
+    "descriptionEn": "The elected members of each list, from the official results notice."
   },
   {
     "id": "k14-national-reviewed",
@@ -2831,14 +2831,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
     "publisher": "Project reviewed transcription of official gazettes",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 5455,
     "sha256": "5ebf49a32267d7b23575f71cf43ffdc43494adb53f588a46c98c97ff44425eaa",
     "audit": "Reviewed national transcription, with source and printed page references.",
     "own": true,
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+    "descriptionEn": "Each list’s votes and seats, from the official results notice."
   },
   {
     "id": "k14-rosters-reviewed",
@@ -2846,14 +2846,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-cand.pdf",
     "publisher": "Project reviewed transcription of official gazettes",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 23246,
     "sha256": "711387e420681f4821855598ee1d85e16d3071a0a0d306eda5131502be0ef1fd",
     "audit": "Reviewed rosters transcription, with source and printed page references.",
     "own": true,
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists."
   },
   {
     "id": "k14-elected-reviewed",
@@ -2861,14 +2861,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset14-results.pdf",
     "publisher": "Project reviewed transcription of official gazettes",
     "official": false,
-    "description": "הנבחרים מכל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות.",
+    "description": "הנבחרים מכל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 9728,
     "sha256": "8ad89011de7877fa4afca77827db79782b3902ad19a50cca65b3d0d972c3d679",
     "audit": "Reviewed elected transcription, with source and printed page references.",
     "own": true,
-    "descriptionEn": "The elected members of each list, typed in from the official results gazette."
+    "descriptionEn": "The elected members of each list, from the official results notice."
   },
   {
     "id": "k15-national-reviewed",
@@ -2876,14 +2876,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
     "publisher": "Project reviewed transcription of official gazettes",
     "official": false,
-    "description": "הקולות והמנדטים של כל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות ונבדקו בעין.",
+    "description": "הקולות והמנדטים של כל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 8378,
     "sha256": "d58607aa09b30ee425b5a7026fc4163f1d718e1d042e07a05d0d60c7da3deb4b",
     "audit": "Reviewed national transcription, with source and printed page references.",
     "own": true,
-    "descriptionEn": "Each list’s votes and seats, typed in from the official results gazette and checked by eye."
+    "descriptionEn": "Each list’s votes and seats, from the official results notice."
   },
   {
     "id": "k15-rosters-reviewed",
@@ -2891,14 +2891,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-cand.pdf",
     "publisher": "Project reviewed transcription of official gazettes",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 24129,
     "sha256": "62c9026acc769fc8ad87e9ea08a8320ea505b0e9d95d77ff4a3fecaaf2e8c203",
     "audit": "Reviewed rosters transcription, with source and printed page references.",
     "own": true,
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name."
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists."
   },
   {
     "id": "k15-elected-reviewed",
@@ -2906,14 +2906,14 @@
     "url": "https://www.gov.il/BlobFolder/guide/election-committee-history/he/knesset15-results.pdf",
     "publisher": "Project reviewed transcription of official gazettes",
     "official": false,
-    "description": "הנבחרים מכל רשימה, כפי שהוקלדו מהפרסום הרשמי של התוצאות.",
+    "description": "הנבחרים מכל רשימה, מתוך ההודעה הרשמית על התוצאות.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T16:34:32.905Z",
     "bytes": 8057,
     "sha256": "c2ae25c2a3e6909acf8dab9e1703da9dd8e03ad5803c73858bd7a3812ae7e01c",
     "audit": "Reviewed elected transcription, with source and printed page references.",
     "own": true,
-    "descriptionEn": "The elected members of each list, typed in from the official results gazette."
+    "descriptionEn": "The elected members of each list, from the official results notice."
   },
   {
     "id": "k10-candidates-reviewed",
@@ -2922,12 +2922,12 @@
     "publisher": "Project transcription of official candidate/results gazettes",
     "official": false,
     "method": "manual-review",
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "retrievedAt": "2026-11-03T16:34:27.797461+00:00",
     "bytes": 30571,
     "sha256": "3aebef1efd39d0bc06776dc11b7ab7938e16945a80e85930007dd10d3a34a618",
     "audit": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -2937,12 +2937,12 @@
     "publisher": "Project transcription of official candidate/results gazettes",
     "official": false,
     "method": "manual-review",
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "retrievedAt": "2026-11-03T16:34:27.797524+00:00",
     "bytes": 29592,
     "sha256": "5b3628e54715aa92c0591824b7571b241e53ae4cbd74b25e897c4428b0d24b2a",
     "audit": "Official winning-list leading ranks and name-by-name elected comparisons; page references, spelling variants and incomplete checks explicitly retained.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -3101,14 +3101,14 @@
     "url": "local:reviewed/k1/rosters",
     "publisher": "Project transcription of official candidate and results gazettes",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
     "bytes": 28705,
     "sha256": "6bc720805fee3266fa5c90e38847cf816aa11405d0e539f3e87e379e3ed74706",
     "lastModified": null,
     "audit": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -3117,14 +3117,14 @@
     "url": "local:reviewed/k2/rosters",
     "publisher": "Project transcription of official candidate and results gazettes",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
     "bytes": 34291,
     "sha256": "371cc4bcb3220b3a98c999f4fb915958eeb499d6ae3f70e8d2ee150dd0826efd",
     "lastModified": null,
     "audit": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -3133,14 +3133,14 @@
     "url": "local:reviewed/k3/rosters",
     "publisher": "Project transcription of official candidate and results gazettes",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
     "bytes": 23830,
     "sha256": "f8b69cb2cf5cd50ebeb46cc67a16c4570c0743a7308226845001ff0aeeb5665b",
     "lastModified": null,
     "audit": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -3149,14 +3149,14 @@
     "url": "local:reviewed/k4/rosters",
     "publisher": "Project transcription of official candidate and results gazettes",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
     "bytes": 23317,
     "sha256": "1df3ffa7f0f32fd237f82b8d585ad6fbe2dccbd8e55ea6d477f33af1c7c668a7",
     "lastModified": null,
     "audit": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -3165,14 +3165,14 @@
     "url": "local:reviewed/k5/rosters",
     "publisher": "Project transcription of official candidate and results gazettes",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
     "bytes": 21945,
     "sha256": "5d84a43f11cae78271e5dc9f5b222fa34600c0b94d43fd900ffe31336300251d",
     "lastModified": null,
     "audit": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -3181,14 +3181,14 @@
     "url": "local:reviewed/k7/rosters",
     "publisher": "Project transcription of official candidate and results gazettes",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "visual-primary-review",
     "retrievedAt": "2026-11-03",
     "bytes": 23221,
     "sha256": "1d862922b9dc292c2d98a8850ad611ddfa71c29ae2809dd2a9c35a235da289fb",
     "lastModified": null,
     "audit": "Reviewed contiguous candidate prefixes and name-by-name elected cross-check with page references; later ranks untranscribed.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -3197,13 +3197,13 @@
     "url": "local:reviewed/k6/rosters",
     "publisher": "Project transcription of official Reshumot",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "manual-transcription",
     "retrievedAt": "2026-11-03T17:32:47.908295+00:00",
     "bytes": 22567,
     "sha256": "3a86e6034639ca79d669ae18fcd7233128837e79cd6cde28c33b46677617b511",
     "audit": "Winning-list registered prefixes from YP 1222, cross-checked against all 120 elected names in YP 1230; page references and truncation explicit.",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -3236,13 +3236,13 @@
     "url": "project:data/raw/k8/candidates.reviewed.json",
     "publisher": "Project reviewed derivative (not an official publication)",
     "official": false,
-    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, כפי שהוקלדו מהפרסום הרשמי של רשימות המועמדים, וכל נבחר נבדק בשמו.",
+    "description": "המועמדים בראש כל רשימה שזכתה במנדטים, מתוך ההודעה הרשמית על רשימות המועמדים.",
     "method": "reviewed-transcription",
     "retrievedAt": "2026-11-04T00:00:00+00:00",
     "bytes": 25275,
     "sha256": "b2eb361b04249f3ef39d79baa8f67cca618f37af5a95b7f9f080dcdbccd20031",
     "audit": "Official winning-list leading ranks from YP1954 (printed pp.88–97) for all 10 seat-winning lists (Ratz complete 8/8), with name-by-name elected cross-check against YP1979 section 4 (pp.609–610), printed page references and 8 explicit spelling variants. No notSeated cases. Uses corrected letters (לע).",
-    "descriptionEn": "The leading candidates of each list that won seats, typed in from the official candidate gazette, with every elected member checked by name.",
+    "descriptionEn": "The top candidates of each list that won seats, from the official notice of the candidate lists.",
     "own": true
   },
   {
@@ -3275,14 +3275,14 @@
     "url": "https://knesset.gov.il/Odata/ParliamentInfo.svc/",
     "publisher": "Project reviewed extraction from official Knesset open data",
     "official": false,
-    "description": "120 חברי הכנסת בפתיחת הכנסת ה־8, שנבדקו מול רישומי הכנסת.",
+    "description": "120 חברי הכנסת בפתיחת הכנסת ה־8.",
     "method": "reviewed-api-comparison",
     "retrievedAt": "2026-11-04T00:00:00+00:00",
     "bytes": 24749,
     "sha256": "02ead4c2e28d2460594bd73599c7ac6565782e63ad9843e87e8116d11f36c5cf",
     "audit": "K8 opening-date (1974-01-21) membership cross-check: 120 MKs/120 faction members, every paginated request URL/hash, 102 exact normalized matches and 18 reading-based same-faction pairings; cross-check only, no names substituted.",
     "own": true,
-    "descriptionEn": "The 120 members at the opening of the 8th Knesset, checked against the Knesset’s records."
+    "descriptionEn": "The 120 members at the opening of the 8th Knesset."
   },
   {
     "id": "bios-odata-persons",

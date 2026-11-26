@@ -4,6 +4,7 @@ import type { ElectionDataset, ElectionId } from '../../../src/data/schema.ts';
 import { scenarioFromDataset, validateScenario } from '../../../src/model/scenario.ts';
 import { agreementRecords, listRecord, officialSeatsOf, seatOrder } from '../build/records.ts';
 import { candidateId, notSeatedNoteHe, notSeatedRanks, rosterFlags } from '../build/roster.ts';
+import { readerListNotes } from '../build/reader-notes.ts';
 import { indexEntry, rawJson, verifySources } from '../build/sources.ts';
 import { allocateDataset, checkAgreementPairs, checker, checkNationalTable, type Check } from '../build/validate.ts';
 
@@ -123,7 +124,7 @@ export function historicalDataset({ review, rosters, rawSha256 }: Audit): Electi
         candidates: roster?.candidates.map(c => ({ id: candidateId(id, c.rank), rank: c.rank, nameHe: c.nameHe, ...(notSeated.has(c.rank) ? { notSeated: true } : {}) })) ?? [],
         candidatesSource: roster ? (roster.sourceId ?? rosters.sourceId) : '',
         ...rosterFlags(!roster ? 'unavailable' : roster.complete ? 'complete' : 'truncated', 'explicit'),
-        notesHe: [...(l.notesHe ?? []), ...(roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(c => n === 14 && l.letters === 'אמת' && c.rank === 18 ? 'נמיר אורה (מקום 18) התפטרה ב־21 במאי 1996 (י״פ 4411 עמ׳ 3398); אינה מופיעה בין הנבחרים והדירוג המקורי נשמר.' : notSeatedNoteHe(c))] }, LIST_KEYS);
+        notesHe: [...readerListNotes(review.id, l.letters, l.notesHe ?? []), ...(roster?.candidates ?? []).filter(c => notSeated.has(c.rank)).map(c => n === 14 && l.letters === 'אמת' && c.rank === 18 ? 'נמיר אורה (מקום 18) התפטרה מהרשימה ב־21 במאי 1996, ולכן אינה בין הנבחרים.' : notSeatedNoteHe(c))] }, LIST_KEYS);
       return record;
     })),
     agreements: agreementRecords(n, review.agreements.pairs, review.agreements.sourceId!),

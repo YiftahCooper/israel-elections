@@ -198,7 +198,8 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
       // polling-station sums differ slightly and are noted (decision 0094, owner 16 Nov 2026; before it, 0042)
       votes: l.votes,
       candidates: r.candidates.map(c => ({ ...c, nameHe: normalize(c.nameHe) })), candidatesSource: `k${n}-candidates-gazette`,
-      notesHe: n === 19 && l.letters in correction ? [`מספר הקולות לפי התוצאה המוכרזת ברשומות (י"פ 6540), שלפיה חולקו המנדטים. סכום הקלפיות בתוצאות הסופיות באתר ועדת הבחירות: ${(finalCapture?.lists.find(r => r.letters === l.letters)?.votes ?? l.votes).toLocaleString('en-US')}. ראו החלטה 0094.`] : [] });
+      // 2013's three declared/detailed differences are explained beside each list's votes (src/app/k19Note.ts)
+      notesHe: [] });
   });
   for (const [letters, leader] of Object.entries(o.candidateLeaders)) check(lists.find(l => l.letters === letters)?.candidates[0].nameHe === leader, `k${n} ${letters}: unexpected first candidate`);
   const letters = lists.map(l => l.letters);
@@ -278,8 +279,8 @@ export async function buildHistorical(o: BuildOptions): Promise<{ ds: ElectionDa
   return { ds, loc: n === 18 ? { ...loc, noteEn: K18_LOCALITIES_NOTE.en, noteHe: K18_LOCALITIES_NOTE.he } : loc };
 }
 const K18_LOCALITIES_NOTE = {
-  en: 'Rows are summed from official polling-station results because no official locality table exists for this election.',
-  he: 'השורות סוכמו מתוצאות הקלפיות הרשמיות משום שלא קיימת טבלת יישובים רשמית לבחירות אלה.',
+  en: 'There is no official table by locality for this election: these figures add up its polling stations.',
+  he: 'לבחירות אלה אין טבלה רשמית לפי יישוב: הנתונים כאן הם סיכום הקלפיות.',
 };
 
 /** Explicit maintenance command; ordinary builds never bless changed locality hashes.

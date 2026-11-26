@@ -22,7 +22,7 @@ test('k1: no zero counts for missing localities, no dead project links, secondar
   // the project's own transcriptions are listed apart, in plain words, with no file path
   const own = panel.locator('.sources-own');
   await expect(own.getByRole('heading', { name: 'Typed in by this project' })).toBeVisible();
-  await expect(own.locator('li').first()).toContainText('typed in from the official results gazette');
+  await expect(own.locator('li').first()).toContainText('from the official results notice');
   for (const list of [panel.locator('ul.credits').first(), own]) await expect(list).not.toContainText(/data\/raw\/|Project record|decision \d{4}|\bCEC\b|\bYP \d|OData|mirror/);
   await expect(panel.locator('.chip.secondary', { hasText: 'secondary' }).first()).toBeVisible();
   // 1949's sources are all official; its secondary records were the project's own transcriptions, now listed apart
@@ -50,7 +50,7 @@ test('k1 in Hebrew: the project’s own transcriptions are described in Hebrew, 
   const panel = page.locator('#analysis-panel');
   const own = panel.locator('.sources-own');
   await expect(own.getByRole('heading', { name: 'הוקלד בפרויקט' })).toBeVisible();
-  await expect(own.locator('li').first()).toContainText('כפי שהוקלדו מהפרסום הרשמי של התוצאות');
+  await expect(own.locator('li').first()).toContainText('מתוך ההודעה הרשמית על התוצאות');
   await expect(own).not.toContainText(/[A-Za-z]{4}/);
   await expect(panel.locator('ul.credits').first()).not.toContainText(/data\/raw\/|ראו החלטה|OData/);
 });

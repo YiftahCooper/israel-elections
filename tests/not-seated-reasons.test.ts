@@ -29,5 +29,5 @@ it('1949 Mapai: Moshe Dayan (place 10) is explained by his own note', () => {
   const mapai = ds.lists.find((l) => l.id === '1-א')!;
   const dayan = mapai.candidates.find((c) => c.rank === 10)!;
   expect(dayan.nameHe).toBe('דיין משה');
-  expect(notSeatedReasons(ds)[dayan.id]).toMatch(/^דיין משה \(מקום 10\) אינו מופיע בין הנבחרים/);
+  expect(notSeatedReasons(ds)[dayan.id]).toMatch(/^דיין משה \(מקום 10\): השם לא פורסם בין הנבחרים/);
 });

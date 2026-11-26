@@ -1,11 +1,11 @@
 {
-  "about": "Curated notes shown next to candidates (decision 0088). They never change who is elected or any count: the results notices stay authoritative. Each note cites the official record it rests on. displayNameHe replaces the shown name only where the candidate notice misprints it and the results notice prints the correct name.",
+  "about": "Curated notes shown next to candidates (decision 0088). They never change who is elected or any count: the results notices stay authoritative. Each note cites the official record it rests on. displayNameHe replaces the shown name only where the candidate notice misprints it and the results notice prints the correct name. Wording is for readers: plain facts, no source citations; each note's sources stay in its sources field.",
   "notes": [
     {
       "candidateId": "11-אמת#16",
       "displayNameHe": "שפייזר אליהו",
-      "en": "The candidate notice misprints his name as שפירא אליהו; the results notice prints שפייזר אליהו (Eliahu Speiser).",
-      "he": "בהודעת המועמדים נדפס שמו בטעות \"שפירא אליהו\"; בהודעת התוצאות נדפס \"שפייזר אליהו\".",
+      "en": "Misprinted as שפירא אליהו in the published candidate list.",
+      "he": "ברשימת המועמדים שפורסמה נדפס השם בטעות \"שפירא אליהו\".",
       "sources": [
         "YP 3073 p. 2826 (candidates)",
         "YP 3081 p. 3007 (results)"
@@ -13,8 +13,8 @@
     },
     {
       "candidateId": "3-פ#2",
-      "en": "Named as elected in the results notice, but replaced before the Knesset's first sitting by Idov Cohen (#6).",
-      "he": "נבחר לפי הודעת התוצאות, אך הוחלף לפני הישיבה הראשונה של הכנסת על ידי אידוב כהן (מס׳ 6).",
+      "en": "Elected, but replaced before the Knesset's first sitting by Idov Cohen (#6).",
+      "he": "נבחר, אך הוחלף לפני הישיבה הראשונה של הכנסת באידוב כהן (מס׳ 6).",
       "sources": [
         "results notice p. 1139",
         "Knesset OData opening membership (data/raw/k3/knesset-odata-members.json)"
@@ -22,8 +22,8 @@
     },
     {
       "candidateId": "16-כן#1",
-      "en": "Named as elected in the results notice, but withdrew; Marina Solodkin (#3) took the seat at the Knesset's first sitting.",
-      "he": "נבחר לפי הודעת התוצאות, אך פרש; מרינה סולודקין (מס׳ 3) כיהנה במקומו מהישיבה הראשונה של הכנסת.",
+      "en": "Elected, but withdrew; Marina Solodkin (#3) took the seat at the Knesset's first sitting.",
+      "he": "נבחר, אך פרש; מרינה סולודקין (מס׳ 3) כיהנה במקומו מהישיבה הראשונה של הכנסת.",
       "sources": [
         "decision 0053",
         "Knesset OData opening membership (data/raw/k16/knesset-odata-members.json)"
@@ -31,8 +31,8 @@
     },
     {
       "candidateId": "20-ל#4",
-      "en": "Named as elected in the results notice, but replaced before the Knesset's first sitting by Robert Ilatov (#7).",
-      "he": "בין הנבחרים לפי הודעת התוצאות; את המושב קיבל לפני הישיבה הראשונה של הכנסת רוברט אילטוב (מס׳ 7).",
+      "en": "Elected, but replaced before the Knesset's first sitting by Robert Ilatov (#7).",
+      "he": "בין הנבחרים; לפני הישיבה הראשונה של הכנסת קיבל את המושב רוברט אילטוב (מס׳ 7).",
       "sources": [
         "YP 7010 p. 4372",
         "Knesset OData opening membership (data/raw/k20/knesset-odata-members.json)"
@@ -40,16 +40,16 @@
     },
     {
       "candidateId": "23-פה#13",
-      "en": "Did not take up the seat: Idan Roll (#34) sat from the Knesset's first sitting (Knesset records).",
-      "he": "לא נכנסה לכנסת: עידן רול (מס׳ 34) כיהן מהישיבה הראשונה (רישומי הכנסת).",
+      "en": "Did not take up the seat; Idan Roll (#34) sat from the Knesset's first sitting.",
+      "he": "לא נכנסה לכנסת; עידן רול (מס׳ 34) כיהן מהישיבה הראשונה.",
       "sources": [
         "Knesset OData opening membership (data/raw/k23/knesset-odata-members.json)"
       ]
     },
     {
       "candidateId": "24-ב#3",
-      "en": "Declared elected in Yalkut HaPirsumim 9511 §4; on 5 April 2021 Davidi announced not taking the seat. Idit Silman (#8) sat from the first sitting on 6 April.",
-      "he": "בין הנבחרים לפי ילקוט הפרסומים 9511 סעיף 4; הודעת דוידי מ־5 באפריל 2021: בלי כניסה לכנסת. עידית סילמן (8) כיהנה מהישיבה הראשונה ב־6 באפריל.",
+      "en": "Elected, but on 5 April 2021 Davidi gave up the seat; Idit Silman (#8) sat from the first sitting on 6 April.",
+      "he": "בין הנבחרים, אך ב־5 באפריל 2021 נמסרה הודעה על ויתור על המושב; עידית סילמן (מס׳ 8) כיהנה מהישיבה הראשונה ב־6 באפריל.",
       "sources": [
         "Knesset OData opening membership (data/raw/k24/knesset-odata-members.json)",
         "https://olaw.org.il/yalkut/yalkut-9511.pdf",
@@ -58,8 +58,8 @@
     },
     {
       "candidateId": "26-שס#1",
-      "en": "Aryeh Deri (#1) was declared elected in Yalkut HaPirsumim 15100 §4 and resigned from the Shas candidate list on 8 November 2026, as did Nos. 6 and 7, Dror David Amos and Moshe Abutbul (Yalkut HaPirsumim 15121, p. 1890, signed 9 November 2026). Uriel Busso (#8) and Yosef Taieb (#9) sat from the first sitting on 10 November.",
-      "he": "אריה דרעי (מס׳ 1) הוכרז כנבחר בילקוט הפרסומים 15100 סעיף 4, וב־8 בנובמבר 2026 התפטר מרשימת המועמדים של ש״ס; כך גם מס׳ 6 ומס׳ 7, דרור דוד עמוס ומשה אבוטבול (הודעה בילקוט הפרסומים 15121, עמ׳ 1890, שנחתמה ב־9 בנובמבר 2026). אוריאל בוסו (מס׳ 8) ויוסף טייב (מס׳ 9) כיהנו מהישיבה הראשונה ב־10 בנובמבר.",
+      "en": "Aryeh Deri (#1) was elected, then resigned from the Shas list on 8 November 2026, as did Nos. 6 and 7, Dror David Amos and Moshe Abutbul. Uriel Busso (#8) and Yosef Taieb (#9) sat from the first sitting on 10 November.",
+      "he": "אריה דרעי (מס׳ 1) נבחר, וב־8 בנובמבר 2026 התפטר מרשימת ש״ס, וכך גם מס׳ 6 ומס׳ 7, דרור דוד עמוס ומשה אבוטבול. אוריאל בוסו (מס׳ 8) ויוסף טייב (מס׳ 9) כיהנו מהישיבה הראשונה ב־10 בנובמבר.",
       "sources": [
         "Yalkut HaPirsumim 15100 §4 p. 1645 (data/raw/k26/yp15100-results.pdf)",
         "Yalkut HaPirsumim 15121 p. 1890, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 9 Nov 2026 (data/raw/k26/yp15121-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15121)",
@@ -69,8 +69,8 @@
     },
     {
       "candidateId": "26-שס#6",
-      "en": "Declared elected in Yalkut HaPirsumim 15100 §4. Resigned from the Shas candidate list on 8 November 2026, before the Knesset opened (Yalkut HaPirsumim 15121, p. 1890, signed 9 November 2026); Uriel Busso (#8) and Yosef Taieb (#9) took the two seats.",
-      "he": "בין הנבחרים לפי ילקוט הפרסומים 15100 סעיף 4. התפטרות מרשימת המועמדים של ש״ס ב־8 בנובמבר 2026, לפני פתיחת הכנסת (הודעה בילקוט הפרסומים 15121, עמ׳ 1890, שנחתמה ב־9 בנובמבר 2026); את שני המושבים קיבלו אוריאל בוסו (8) ויוסף טייב (9).",
+      "en": "Elected, then resigned from the Shas list on 8 November 2026, before the Knesset opened; Uriel Busso (#8) and Yosef Taieb (#9) took the two seats.",
+      "he": "בין הנבחרים; ב־8 בנובמבר 2026, לפני פתיחת הכנסת, הוגשה התפטרות מרשימת ש״ס. את שני המושבים קיבלו אוריאל בוסו (מס׳ 8) ויוסף טייב (מס׳ 9).",
       "sources": [
         "Yalkut HaPirsumim 15100 §4 p. 1645 (data/raw/k26/yp15100-results.pdf)",
         "Yalkut HaPirsumim 15121 p. 1890, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 9 Nov 2026 (data/raw/k26/yp15121-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15121)",
@@ -80,8 +80,8 @@
     },
     {
       "candidateId": "26-שס#7",
-      "en": "Resigned from the Shas candidate list on 8 November 2026, before the Knesset opened (Yalkut HaPirsumim 15121, p. 1890, signed 9 November 2026), so the seats of Nos. 1 and 6 went to Nos. 8 and 9.",
-      "he": "ב־8 בנובמבר 2026, לפני פתיחת הכנסת, התפטר מרשימת המועמדים של ש״ס (הודעה בילקוט הפרסומים 15121, עמ׳ 1890, שנחתמה ב־9 בנובמבר 2026), ולכן מושבי מס׳ 1 ומס׳ 6 עברו למס׳ 8 ומס׳ 9.",
+      "en": "Resigned from the Shas list on 8 November 2026, before the Knesset opened, so the seats of Nos. 1 and 6 went to Nos. 8 and 9.",
+      "he": "ב־8 בנובמבר 2026, לפני פתיחת הכנסת, התפטר מרשימת ש״ס, ולכן מושבי מס׳ 1 ומס׳ 6 עברו למס׳ 8 ומס׳ 9.",
       "sources": [
         "Yalkut HaPirsumim 15121 p. 1890, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 9 Nov 2026 (data/raw/k26/yp15121-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15121)",
         "Knesset OData opening membership, retrieved 19 Nov 2026 (data/raw/k26/knesset-odata-members.json)",
@@ -90,56 +90,56 @@
     },
     {
       "candidateId": "26-שס#11",
-      "en": "Resigned from the candidate list on 2 November 2026, after polling day (Yalkut HaPirsumim 15107, p. 1702, signed 4 November 2026); the registered roster is preserved.",
-      "he": "התפטרות מרשימת המועמדים ב־2 בנובמבר 2026, אחרי יום הבחירות (הודעה בילקוט הפרסומים 15107, עמ׳ 1702, שנחתמה ב־4 בנובמבר 2026); הרשימה הרשומה נשמרת.",
+      "en": "Resigned from the list on 2 November 2026, after polling day.",
+      "he": "התפטרות מהרשימה ב־2 בנובמבר 2026, אחרי יום הבחירות.",
       "sources": [
         "Yalkut HaPirsumim 15107 p. 1702, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 4 Nov 2026 (data/raw/k26/yp15107-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15107)"
       ]
     },
     {
       "candidateId": "26-שס#13",
-      "en": "Resigned from the candidate list on 3 November 2026, after polling day (Yalkut HaPirsumim 15107, p. 1702, signed 4 November 2026); the registered roster is preserved.",
-      "he": "התפטרות מרשימת המועמדים ב־3 בנובמבר 2026, אחרי יום הבחירות (הודעה בילקוט הפרסומים 15107, עמ׳ 1702, שנחתמה ב־4 בנובמבר 2026); הרשימה הרשומה נשמרת.",
+      "en": "Resigned from the list on 3 November 2026, after polling day.",
+      "he": "התפטרות מהרשימה ב־3 בנובמבר 2026, אחרי יום הבחירות.",
       "sources": [
         "Yalkut HaPirsumim 15107 p. 1702, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 4 Nov 2026 (data/raw/k26/yp15107-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15107)"
       ]
     },
     {
       "candidateId": "26-שס#15",
-      "en": "Resigned from the candidate list on 2 November 2026, after polling day (Yalkut HaPirsumim 15107, p. 1702, signed 4 November 2026); the registered roster is preserved.",
-      "he": "התפטרות מרשימת המועמדים ב־2 בנובמבר 2026, אחרי יום הבחירות (הודעה בילקוט הפרסומים 15107, עמ׳ 1702, שנחתמה ב־4 בנובמבר 2026); הרשימה הרשומה נשמרת.",
+      "en": "Resigned from the list on 2 November 2026, after polling day.",
+      "he": "התפטרות מהרשימה ב־2 בנובמבר 2026, אחרי יום הבחירות.",
       "sources": [
         "Yalkut HaPirsumim 15107 p. 1702, notice of the Central Elections Committee chair under section 87(b) of the Elections Law, signed 4 Nov 2026 (data/raw/k26/yp15107-withdrawals.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15107)"
       ]
     },
     {
       "candidateId": "26-ב#11",
-      "en": "Resigned from the candidate list on 10 November 2026, after polling day (Yalkut HaPirsumim 15139, p. 2054, notice of the Knesset Secretary signed 15 November 2026); the registered roster is preserved.",
-      "he": "התפטרות מרשימת המועמדים ב־10 בנובמבר 2026, אחרי יום הבחירות (הודעת מזכיר הכנסת בילקוט הפרסומים 15139, עמ׳ 2054, שנחתמה ב־15 בנובמבר 2026); הרשימה הרשומה נשמרת.",
+      "en": "Resigned from the list on 10 November 2026, after polling day.",
+      "he": "התפטרות מהרשימה ב־10 בנובמבר 2026, אחרי יום הבחירות.",
       "sources": [
         "Yalkut HaPirsumim 15139 p. 2054, notice of the Knesset Secretary under section 87(a) of the Elections Law, signed 15 Nov 2026 (data/raw/k26/yp15139-withdrawal.pdf; https://reshumot.justice.gov.il/officialGazette/publicNotices/15139)"
       ]
     },
     {
       "candidateId": "24-צכ#15",
-      "en": "Resigned from the candidate list on 2021-03-03, before polling day; the registered roster is preserved.",
-      "he": "התפטרות מרשימת המועמדים ב־2021-03-03, לפני יום הבחירות; הרשימה הרשומה נשמרת.",
+      "en": "Resigned from the list on 2021-03-03, before polling day.",
+      "he": "התפטרות מהרשימה ב־2021-03-03, לפני יום הבחירות.",
       "sources": [
         "YP 9478 p.4284; data/raw/k24/surplus.pdf; https://olaw.org.il/yalkut/yalkut-9478.pdf"
       ]
     },
     {
       "candidateId": "24-זץ#2",
-      "en": "Resigned from the candidate list on 2021-03-10, before polling day; the registered roster is preserved.",
-      "he": "התפטרות מרשימת המועמדים ב־2021-03-10, לפני יום הבחירות; הרשימה הרשומה נשמרת.",
+      "en": "Resigned from the list on 2021-03-10, before polling day.",
+      "he": "התפטרות מהרשימה ב־2021-03-10, לפני יום הבחירות.",
       "sources": [
         "YP 9478 p.4284; data/raw/k24/surplus.pdf; https://olaw.org.il/yalkut/yalkut-9478.pdf"
       ]
     },
     {
       "candidateId": "24-ת#48",
-      "en": "Resigned from the candidate list on 2021-03-10, before polling day; the registered roster is preserved.",
-      "he": "התפטרות מרשימת המועמדים ב־2021-03-10, לפני יום הבחירות; הרשימה הרשומה נשמרת.",
+      "en": "Resigned from the list on 2021-03-10, before polling day.",
+      "he": "התפטרות מהרשימה ב־2021-03-10, לפני יום הבחירות.",
       "sources": [
         "YP 9478 p.4284; data/raw/k24/surplus.pdf; https://olaw.org.il/yalkut/yalkut-9478.pdf"
       ]
@@ -147,8 +147,8 @@
     {
       "candidateId": "20-ודעם#12",
       "displayNameHe": "סעדי אוסאמה",
-      "en": "The candidate notice prints סעדיה אוסאמה; the results notice and Knesset record identify him as סעדי אוסאמה (Osama Saadi).",
-      "he": "בהודעת המועמדים נדפס סעדיה אוסאמה; בהודעת התוצאות וברישום הכנסת מופיע סעדי אוסאמה.",
+      "en": "Printed as סעדיה אוסאמה in the published candidate list.",
+      "he": "ברשימת המועמדים שפורסמה נדפס השם \"סעדיה אוסאמה\".",
       "sources": [
         "YP 7000 p. 3941: סעדיה אוסאמה",
         "YP 7010 p. 4372: סעדי אוסאמה",
@@ -157,40 +157,40 @@
     },
     {
       "candidateId": "18-אמת#48",
-      "en": "Resigned on 2009-01-26; retained in the original approved roster.",
-      "he": "התפטרות בתאריך 2009-01-26; השם נשמר ברשימת המועמדים המקורית.",
+      "en": "Resigned from the list on 2009-01-26.",
+      "he": "התפטרות מהרשימה ב־2009-01-26.",
       "sources": [
         "YP 5912 p. 2254 (data/raw/k18/surplus.pdf)"
       ]
     },
     {
       "candidateId": "18-ט#12",
-      "en": "Resigned on 2009-01-26; retained in the original approved roster.",
-      "he": "התפטרות בתאריך 2009-01-26; השם נשמר ברשימת המועמדים המקורית.",
+      "en": "Resigned from the list on 2009-01-26.",
+      "he": "התפטרות מהרשימה ב־2009-01-26.",
       "sources": [
         "YP 5912 p. 2254 (data/raw/k18/surplus.pdf)"
       ]
     },
     {
       "candidateId": "18-מרצ#12",
-      "en": "Resigned on 2009-01-26; retained in the original approved roster.",
-      "he": "התפטרות בתאריך 2009-01-26; השם נשמר ברשימת המועמדים המקורית.",
+      "en": "Resigned from the list on 2009-01-26.",
+      "he": "התפטרות מהרשימה ב־2009-01-26.",
       "sources": [
         "YP 5912 p. 2254 (data/raw/k18/surplus.pdf)"
       ]
     },
     {
       "candidateId": "18-צי#11",
-      "en": "Resigned on 2009-01-28; retained in the original approved roster.",
-      "he": "התפטרות בתאריך 2009-01-28; השם נשמר ברשימת המועמדים המקורית.",
+      "en": "Resigned from the list on 2009-01-28.",
+      "he": "התפטרות מהרשימה ב־2009-01-28.",
       "sources": [
         "YP 5912 p. 2254 (data/raw/k18/surplus.pdf)"
       ]
     },
     {
       "candidateId": "18-ל#9",
-      "en": "Approved roster: סאמואלסון מיכלבסקי אנסטסיה; elected-name notice: מיכאלי סאמואלסון אנסטסיה. Original roster spelling retained.",
-      "he": "ברשימה המקורית: סאמואלסון מיכלבסקי אנסטסיה; בהודעת הנבחרים: מיכאלי סאמואלסון אנסטסיה. נשמר הכתיב ברשימה המקורית.",
+      "en": "Printed among the elected as מיכאלי סאמואלסון אנסטסיה.",
+      "he": "בהודעת הנבחרים נדפס השם \"מיכאלי סאמואלסון אנסטסיה\".",
       "sources": [
         "YP 5909 (candidates)",
         "YP 5917 p. 2403 (results)"
@@ -198,35 +198,17 @@
     },
     {
       "candidateId": "12-אמת#21",
-      "en": "The candidate notice prints אברהם בורג; the later results notice prints אברם בורג. Registered spelling retained.",
-      "he": "בהודעת המועמדים: אברהם בורג; בהודעת התוצאות המאוחרת: אברם בורג. כתיב הרשימה הרשומה נשמר.",
+      "en": "Printed among the elected as אברם בורג.",
+      "he": "בהודעת התוצאות נדפס השם \"אברם בורג\".",
       "sources": [
         "YP 3588 p.146 rank 21",
         "YP 3591 p.243 §4(א) rank 21"
       ]
     },
     {
-      "candidateId": "12-ג#1",
-      "en": "The Knesset English header spells his name “Moseh  Zeev Feldman”; Hebrew: משה זאב פלדמן (Moshe Zeev Feldman).",
-      "he": "בכותרת האנגלית באתר הכנסת נדפס \"Moseh  Zeev Feldman\"; ברשומות: משה זאב פלדמן.",
-      "sources": [
-        "Knesset English member header (retained siteId extract)",
-        "YP 3591 pp.243–244"
-      ]
-    },
-    {
-      "candidateId": "12-מחל#41",
-      "en": "The Knesset English header spells his name “Yeushua Sagi”; Hebrew: יהושע שגיא (Yehoshua Sagi).",
-      "he": "בכותרת האנגלית באתר הכנסת נדפס \"Yeushua Sagi\"; ברשומות: יהושע שגיא.",
-      "sources": [
-        "Knesset English member header (retained siteId extract)",
-        "YP 3591 pp.243–244"
-      ]
-    },
-    {
       "candidateId": "15-שס#18",
-      "en": "The 1999 candidate and elected notices print גאגולה איסק (surname first). The Knesset’s records use יצחק גאגולה. The name as printed in the gazette is kept.",
-      "he": "בהודעות המועמדים והנבחרים מ־1999 נדפס \"גאגולה איסק\"; ברישומי הכנסת מופיע \"יצחק גאגולה\". נשמר השם כפי שנדפס ברשומות.",
+      "en": "The Knesset’s records give the name as יצחק גאגולה.",
+      "he": "ברישומי הכנסת: יצחק גאגולה.",
       "sources": [
         "YP 4748 p.3048; YP 4757 p.3378",
         "data/raw/k15/knesset-odata-members.json, PersonID 485"
@@ -234,64 +216,64 @@
     },
     {
       "candidateId": "14-מחל#23",
-      "en": "Membership ended 1996-09-01; Reuven Rivlin began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved.",
-      "he": "הכהונה הסתיימה ב־1996-09-01; ראובן ריבלין החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "en": "Membership ended 1996-09-01; Reuven Rivlin began serving that day.",
+      "he": "הכהונה הסתיימה ב־1996-09-01, ובאותו יום החל לכהן ראובן ריבלין.",
       "sources": [
         "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
       ]
     },
     {
       "candidateId": "14-אמת#21",
-      "en": "Membership ended 1996-10-15; Eitan Cabel began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved.",
-      "he": "הכהונה הסתיימה ב־1996-10-15; איתן כבל החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "en": "Membership ended 1996-10-15; Eitan Cabel began serving that day.",
+      "he": "הכהונה הסתיימה ב־1996-10-15, ובאותו יום החל לכהן איתן כבל.",
       "sources": [
         "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
       ]
     },
     {
       "candidateId": "14-ב#8",
-      "en": "Membership ended 1997-05-12; Nissan Slomiansky began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved.",
-      "he": "הכהונה הסתיימה ב־1997-05-12; ניסן סלומינסקי החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "en": "Membership ended 1997-05-12; Nissan Slomiansky began serving that day.",
+      "he": "הכהונה הסתיימה ב־1997-05-12, ובאותו יום החל לכהן ניסן סלומינסקי.",
       "sources": [
         "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
       ]
     },
     {
       "candidateId": "14-ב#1",
-      "en": "Membership ended 1998-01-20; Eliahu Gabbay began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved.",
-      "he": "הכהונה הסתיימה ב־1998-01-20; אליהו גבאי החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "en": "Membership ended 1998-01-20; Eliahu Gabbay began serving that day.",
+      "he": "הכהונה הסתיימה ב־1998-01-20, ובאותו יום החל לכהן אליהו גבאי.",
       "sources": [
         "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
       ]
     },
     {
       "candidateId": "14-אמת#24",
-      "en": "Membership ended 1998-03-20; Rafik Haj Yahia began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved.",
-      "he": "הכהונה הסתיימה ב־1998-03-20; רפיק חג׳ יחיא החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "en": "Membership ended 1998-03-20; Rafik Haj Yahia began serving that day.",
+      "he": "הכהונה הסתיימה ב־1998-03-20, ובאותו יום החל לכהן רפיק חג׳ יחיא.",
       "sources": [
         "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
       ]
     },
     {
       "candidateId": "14-ג#4",
-      "en": "Membership ended 1998-10-23; Avraham Leizerson began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved.",
-      "he": "הכהונה הסתיימה ב־1998-10-23; אברהם יוסף לייזרזון החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "en": "Membership ended 1998-10-23; Avraham Leizerson began serving that day.",
+      "he": "הכהונה הסתיימה ב־1998-10-23, ובאותו יום החל לכהן אברהם יוסף לייזרזון.",
       "sources": [
         "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
       ]
     },
     {
       "candidateId": "14-מחל#10",
-      "en": "Membership ended 1998-11-18; Israel Katz began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved.",
-      "he": "הכהונה הסתיימה ב־1998-11-18; ישראל כץ החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "en": "Membership ended 1998-11-18; Israel Katz began serving that day.",
+      "he": "הכהונה הסתיימה ב־1998-11-18, ובאותו יום החל לכהן ישראל כץ.",
       "sources": [
         "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
       ]
     },
     {
       "candidateId": "14-מחל#31",
-      "en": "Membership ended 1998-11-30; Doron Shmueli began serving on that date (the Knesset’s records, 14th Knesset). The election-day roster is preserved.",
-      "he": "הכהונה הסתיימה ב־1998-11-30; דורון שמואלי החל לכהן בתאריך זה (נתוני הכנסת הרשמיים, הכנסת ה־14). רשימת הנבחרים המקורית נשמרת.",
+      "en": "Membership ended 1998-11-30; Doron Shmueli began serving that day.",
+      "he": "הכהונה הסתיימה ב־1998-11-30, ובאותו יום החל לכהן דורון שמואלי.",
       "sources": [
         "Knesset OData, KNS_PersonToPosition, PositionID 43/61, KnessetNum 14; data/raw/k14/knesset-odata-members.json"
       ]
@@ -299,8 +281,8 @@
     {
       "candidateId": "8-חל טעם#38",
       "displayNameHe": "שכטרמן אברהם",
-      "en": "The candidate notice misprints his name as שחטרמן אברהם; the results notice prints שכטרמן אברהם (Abraham Shechterman). The registered spelling and candidate ID are preserved.",
-      "he": "בהודעת המועמדים נדפס שמו בטעות \"שחטרמן אברהם\"; בהודעת התוצאות נדפס \"שכטרמן אברהם\". הכתיב הרשום ומזהה המועמד נשמרים.",
+      "en": "Misprinted as שחטרמן אברהם in the published candidate list.",
+      "he": "ברשימת המועמדים שפורסמה נדפס השם בטעות \"שחטרמן אברהם\".",
       "sources": [
         "YP 1954 p.91: 38. שחטרמן אברהם (data/raw/research/k08-candidates.pdf)",
         "YP 1979 p.609 §4(ה): 38. שכטרמן אברהם (data/raw/research/k08-results.pdf)",
@@ -309,8 +291,8 @@
     },
     {
       "candidateId": "4-מ#1",
-      "en": "The results notice misprints Meir Ya’ari as יערי יעקב. Yalkut HaPirsumim 724 p. 501 formally corrects it to יערי מאיר.",
-      "he": "בהודעת התוצאות נדפס בטעות \"יערי יעקב\". בתיקון הרשמי בילקוט הפרסומים 724 עמ׳ 501 תוקן ל\"יערי מאיר\".",
+      "en": "Misprinted as יערי יעקב in the results notice, and officially corrected.",
+      "he": "בהודעת התוצאות נדפס בטעות \"יערי יעקב\", ותוקן רשמית.",
       "sources": [
         "YP 717 p.265 (results)",
         "YP 724 p.501 (correction), https://olaw.org.il/yalkut/yalkut-0724.pdf"

@@ -14,6 +14,8 @@ const DERI = 2291, AMOS = 30989, BUSSO = 30765, TAIEB = 30770, ABUTBUL = 30749, 
 const ds = JSON.parse(readFileSync('public/data/k26.json', 'utf8'));
 const shas = ds.lists.find((l: { id: string }) => l.id === '26-שס');
 const note = (rank: number) => shas.candidates.find((c: { rank: number }) => c.rank === rank).notes?.[0];
+const NOTES = (JSON.parse(readFileSync('data/meta/candidate-notes.json', 'utf8')) as { notes: { candidateId: string; sources: string[] }[] }).notes;
+const noteSources = (rank: number) => NOTES.find((n) => n.candidateId === `26-שס#${rank}`)?.sources ?? [];
 let rt: MkRuntime;
 beforeAll(() => { rt = compileMkHistory(process.cwd(), { leftOut: [], anomalies: [] } as MkReview); });
 
@@ -43,9 +45,10 @@ describe('26th Knesset, Shas seats', () => {
     for (const rank of [1, 6, 7]) {
       expect(note(rank)?.en, `#${rank}`).toContain('8 November 2026');
       expect(note(rank)?.he, `#${rank}`).toContain('8 בנובמבר 2026');
-      // the basis is the official notice, not the press
-      expect(note(rank)?.en, `#${rank}`).toContain('Yalkut HaPirsumim 15121, p. 1890, signed 9 November 2026');
-      expect(note(rank)?.he, `#${rank}`).toContain('ילקוט הפרסומים 15121, עמ׳ 1890, שנחתמה ב־9 בנובמבר 2026');
+      // the basis is the official notice, not the press: it is kept with the note (the shown wording names no source)
+      expect(noteSources(rank).join(' '), `#${rank}`).toContain('Yalkut HaPirsumim 15121 p. 1890');
+      expect(noteSources(rank).join(' '), `#${rank}`).toContain('signed 9 Nov 2026');
+      expect(noteSources(rank).join(' '), `#${rank}`).not.toMatch(/Israel Hayom|Ynet|Kikar/i);
       expect(`${note(rank)?.en} ${note(rank)?.he}`, `#${rank}`).not.toMatch(/Israel Hayom|Ynet|Kikar|ישראל היום|כיכר השבת/i);
     }
     expect(note(1).en).toMatch(/Aryeh Deri.*Uriel Busso \(#8\) and Yosef Taieb \(#9\)/);
@@ -69,8 +72,9 @@ describe('26th Knesset, Shas seats', () => {
       [shas, 11, '2 November 2026', '15107'], [shas, 13, '3 November 2026', '15107'], [shas, 15, '2 November 2026', '15107'], [otzma, 11, '10 November 2026', '15139']];
     for (const [l, rank, date, issue] of cases) {
       const c = l.candidates.find((x: { rank: number }) => x.rank === rank);
-      expect(c.notes?.[0]?.en, `${l.id}#${rank}`).toContain(`Resigned from the candidate list on ${date}, after polling day (Yalkut HaPirsumim ${issue}`);
-      expect(c.notes?.[0]?.he, `${l.id}#${rank}`).toMatch(/^התפטרות מרשימת המועמדים/);
+      expect(c.notes?.[0]?.en, `${l.id}#${rank}`).toBe(`Resigned from the list on ${date}, after polling day.`);
+      expect(c.notes?.[0]?.he, `${l.id}#${rank}`).toMatch(/^התפטרות מהרשימה/);
+      expect(NOTES.find((n) => n.candidateId === `${l.id}#${rank}`)?.sources.join(' '), `${l.id}#${rank}`).toContain(`Yalkut HaPirsumim ${issue}`);
       expect(c.notSeated, `${l.id}#${rank}`).toBeUndefined();
     }
     // the next in line is unchanged by them: No. 10 for Shas (after Nos. 8 and 9 took the seats), No. 8 for Otzma Yehudit
@@ -87,7 +91,7 @@ describe('26th Knesset, Shas seats', () => {
     expect(k26(TAIEB).slice(0, 4)).toEqual([26, '26-שס', 9, 'first']);
     for (const p of [BUSSO, TAIEB]) expect(rt.people[p].terms.find((t) => t[0] === 26)?.[1]).toBe('2026-11-10');
     // the official notes reach MK history: on the rows of those who did not sit, and of those below the seats
-    for (const p of [DERI, ABUTBUL, MOSHIASHVILI]) expect(k26(p)[6].map(([en]) => en).join(' '), `person ${p}`).toContain('Yalkut HaPirsumim 151');
+    for (const [p, date] of [[DERI, '8 November 2026'], [ABUTBUL, '8 November 2026'], [MOSHIASHVILI, '3 November 2026']] as const) expect(k26(p)[6].map(([en]) => en).join(' '), `person ${p}`).toContain(date);
     expect(k26(ABUTBUL)[3]).toBe('out');
     expect(k26(MOSHIASHVILI).slice(1, 4)).toEqual(['26-שס', 13, 'out']);
   });

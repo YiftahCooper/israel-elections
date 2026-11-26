@@ -371,7 +371,9 @@ const EXPECTED: Record<Family, string> = {
   // the digest is neither lane's own; the other four digests are unchanged.
   // Beyachad and State List (19 Nov, FV2): the 2026 list, its party and the 1969 list take one English name each; names
   // only. Merged with the lanes above; the other four digests are unchanged.
-  model: '014254443657575be99d0ad9612282a29a18a4b16cc78c3e679c62375ed96f45',
+  // Note wording (26 Nov, lane D): candidate notes in plain words, two misprint notes on Knesset English spellings
+  // dropped (the names shown were already right); no name, vote, seat or roster change; the other four digests are unchanged.
+  model: 'b15c847eb6f0d554663291538b3ef53b9ee37a664afb846ead8e9b2a820ebe6b',
   validation: 'bcf6fe5f3902db11a1017a25e5d7ad881b11d7df0123ee2e2feebdc37b03536b',
   rules: 'bbfef9576f2d5a01b4368b3ab969163cc0a320a39c539e08ee6cb9af64d7843c',
 };
