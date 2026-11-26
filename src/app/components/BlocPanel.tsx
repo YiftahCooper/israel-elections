@@ -6,7 +6,7 @@ import { appGroupingTag, appGroupingExplanation } from '../groupingName.ts';
 import { Slip } from './ui.tsx';
 import { BlocVoteStepper } from './BlocVoteStepper.tsx';
 import { ScenarioSwitcher } from './ScenarioSwitcher.tsx';
-import { voteSourceLabel } from '../voteEdit.ts';
+import { voteSourceSentence } from '../voteEdit.ts';
 import { useSetting, useVoteSource, useStore } from '../store.ts';
 import { partyListed } from '../seatlessParties.ts';
 import { FamilyGroupingLink } from './FamilyTreatment.tsx';
@@ -156,7 +156,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
         <FamilyGroupingLink />
         <StartFrom s={s} part="blocs" />
         <button className="btn small" onClick={()=>dispatch({type:'resetColors'})}>{L('Reset all colours','איפוס כל הצבעים')}</button>
-        <p className="tiny muted">{L(`Vote changes here are balanced by: ${voteSourceLabel(src, s, lang)}`, `שינויי קולות כאן מתקזזים מול: ${voteSourceLabel(src, s, lang)}`)}</p>
+        <p className="tiny muted">{voteSourceSentence(src, s, lang)}</p>
         <p className="small">{groupingLabel(s, lang)} <AnalysisEdits s={s} outlet="bloc-panel" /></p>
         {picked && (
           <p className="bp-picked small" role="status">

@@ -1,4 +1,5 @@
-import { SeatDelta, SeatEffects } from './SeatDelta.tsx';
+import { seatChangeSentence } from '../analysisWords.ts';
+import { hebrewPrefixName } from '../hebrewPrefix.ts';
 import { useMemo, useState } from 'react';
 import { applyAction } from '../../model/actions.ts';
 import { allocate } from '../../engine/allocate.ts';
@@ -18,13 +19,20 @@ export function TransferStep({ s, l }: { s: Scenario; l: SimList }) {
   const votes = Math.round(s.lists.reduce((t, x) => t + x.votes, 0) / 100);
   const action = donor && votes > 0 && donor.votes >= votes ? { type: 'transfer' as const, from: donor.id, to: l.id, votes } : null;
   const consequence = useMemo(() => {
-    if (!action) return L('The source cannot supply a whole percentage point; no votes are clipped.', 'המקור אינו יכול לספק נקודת אחוז שלמה; אין קיטום קולות.');
+    if (!donor) return '';
+    if (!action) return L(`${listLabel(donor, 'en')} has fewer than ${fmtInt(votes)} votes to give.`, `${hebrewPrefixName('ל', listLabel(donor, 'he'))} אין ${fmtInt(votes)} קולות לתת.`);
     const before = allocate(toEngineInput(s)), after = allocate(toEngineInput(applyAction(s, action)));
-    return <SeatEffects>{after.lists.map(x => ({ id: x.id, d: x.seats - (before.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => <span key={x.id}>{listLabel(s.lists.find(y => y.id === x.id)!, lang)} <SeatDelta value={x.d} /> </span>)}</SeatEffects>;
+    const moves = after.lists.map(x => ({ id: x.id, d: x.seats - (before.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d);
+    const name = (id: string) => listLabel(s.lists.find(y => y.id === id)!, lang);
+    // "Moving 47,647 votes from Yesh Atid to Likud: no seats change." (turnout and the valid total stay as they are)
+    const what = lang === 'he' ? `העברת ${fmtInt(votes)} קולות ${hebrewPrefixName('מ', name(donor.id))} ${hebrewPrefixName('ל', name(l.id))}: ` : `Moving ${fmtInt(votes)} votes from ${name(donor.id)} to ${name(l.id)}: `;
+    const said = seatChangeSentence(moves, name, lang === 'he');
+    return what + (lang === 'he' || moves.length ? said : said.charAt(0).toLowerCase() + said.slice(1));
   }, [s, l.id, donor?.id, votes, lang]);
   return <div className="transfer-step">
-    <ChoicePicker label={L('Transfer from', 'העברה מתוך')} value={donor?.id ?? ''} options={donors.map(x => listChoice(x, lang, { detail: `${fmtInt(x.votes)} ${L('votes', 'קולות')}` }))} onChange={setSelected} />
-    <button className="btn small" disabled={!action} onClick={() => { if (action) dispatchMany([action]); }}>{L('Transfer 1 pp', 'העברת נק׳ אחוז אחת')}</button>
-    <p className="tiny" aria-live="polite">{donor ? `${listLabel(donor, lang)} ${lang === 'he' ? '←' : '→'} ${listLabel(l, lang)} · ${fmtInt(votes)} ${L('votes', 'קולות')} · ` : ''}{L('Valid total and turnout unchanged', 'סך הכשרים ושיעור ההצבעה ללא שינוי')} · {consequence}</p>
+    {/* reads as one phrase: [Take 1 pp from] [Likud ▾] */}
+    <button className="btn small" disabled={!action} onClick={() => { if (action) dispatchMany([action]); }}>{L('Take 1 pp from', 'לקחת נק׳ אחוז אחת מתוך')}</button>
+    <ChoicePicker label={L('List to take 1 pp from', 'הרשימה שממנה לוקחים נק׳ אחוז')} value={donor?.id ?? ''} options={donors.map(x => listChoice(x, lang, { detail: `${fmtInt(x.votes)} ${L('votes', 'קולות')}` }))} onChange={setSelected} />
+    <p className="tiny" aria-live="polite">{consequence}</p>
   </div>;
 }

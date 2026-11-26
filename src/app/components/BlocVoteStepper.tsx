@@ -1,5 +1,5 @@
 import { hebrewPrefixName } from '../hebrewPrefix.ts';
-import { SeatDelta, SeatEffects } from './SeatDelta.tsx';
+import { seatChangeSentence } from '../analysisWords.ts';
 import { useState } from 'react';
 import { allocate } from '../../engine/allocate.ts';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -13,7 +13,7 @@ import { useL, useLang } from '../i18n.ts';
 import { NumericStepper } from './NumericStepper.tsx';
 export function BlocVoteStepper({ s, r, bloc }: { s: Scenario; r: AllocationResult; bloc: string | null }) {
   const L = useL(), lang = useLang(), src = useVoteSource();
-  const [effect, setEffect] = useState<import('react').ReactNode>('');
+  const [effect, setEffect] = useState('');
   const members = s.lists.filter(l => !l.withdrawn && l.bloc === bloc), ids = new Set(members.map(l => l.id));
   const total = members.reduce((t, l) => t + l.votes, 0);
   // the plan for a target under a vote source: the dialog may answer a different source than the one shown
@@ -44,6 +44,7 @@ export function BlocVoteStepper({ s, r, bloc }: { s: Scenario; r: AllocationResu
     targetForStep={(step, dir) => Math.max(0, Math.round(total + dir * step.amount))}
     onCommit={target => withSource(`bloc:${bloc}`, L('Lists’ votes', 'קולות הרשימות'), [...ids], (from) => { const p = plan(from); const why = refusal(target, p, from); if (why) { setEffect(why); return; } dispatchMany(p.actionsFor(target)); setEffect(''); })} onPreview={target => {
       const next = allocate(toEngineInput(actionsFor(target).reduce((cur, a) => applyAction(cur, a), s)));
-      setEffect(<SeatEffects>{next.lists.map(x => ({ id: x.id, d: x.seats - (r.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d).map(x => <span key={x.id}>{listLabel(s.lists.find(l => l.id === x.id)!, lang)} <SeatDelta value={x.d} /> </span>)}</SeatEffects>);
+      const moves = next.lists.map(x => ({ id: x.id, d: x.seats - (r.lists.find(y => y.id === x.id)?.seats ?? 0) })).filter(x => x.d);
+      setEffect(seatChangeSentence(moves, id => listLabel(s.lists.find(l => l.id === id)!, lang), lang === 'he', { subject: { ids: [...ids], name: L('the bloc’s lists', 'רשימות הגוש') }, votes: Math.round(target) - total }));
     }} /><p className="tiny" aria-live="polite">{effect}</p></div>;
 }
