@@ -37,8 +37,8 @@ test('a closest call quotes the same figure as the table', async ({ page }) => {
   await start(page);
   await done(page);
   const call = panel(page).locator('.sec-call').first();
-  // each chip is a sentence (clarity pass, 26 Nov 2026): "X is 5,308 votes from another seat" / "X would lose a seat after losing 3,656 votes"
-  const [, gainName, gainVotes, loseName, loseVotes] = (await call.innerText()).match(/^(?:(.+?) is ([\d,]+) votes? from another seat|(.+?) would lose a seat after losing ([\d,]+) votes?)$/)!;
+  // each chip is a sentence (clarity pass, 26 Nov 2026): "X is 5,308 votes from another seat" / "X is 3,656 votes from losing a seat" (shorter, 26 Nov 2026 afternoon)
+  const [, gainName, gainVotes, loseName, loseVotes] = (await call.innerText()).match(/^(?:(.+?) is ([\d,]+) votes? from another seat|(.+?) is ([\d,]+) votes? from losing a seat)$/)!;
   const name = gainName ?? loseName, sign = gainName ? '+' : '−', votes = gainVotes ?? loseVotes;
   const row = panel(page).locator('.sec-row').filter({ has: page.getByRole('button', { name, exact: true }) });
   await expect(row.locator(sign === '+' ? '.sec-r' : '.sec-l')).toContainText(votes);

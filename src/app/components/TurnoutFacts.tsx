@@ -6,14 +6,15 @@ import type { Scenario } from '../../model/scenario.ts';
 import { votesCast } from '../../model/scenario.ts';
 import type { ElectionId } from '../../data/schema.ts';
 import { allocationOf, referenceLabel } from '../derive.ts';
-import { fmtInt, fmtPct, trimDecimal, PP } from '../format.ts';
+import { fmtInt, fmtPct, trimDecimal } from '../format.ts';
 import { useL, useLang } from '../i18n.ts';
 import { openElection, useDigits, useOn, useSetting, useStore } from '../store.ts';
 import { useHoverIntent } from '../hoverIntent.ts';
 import { electionLabel } from '../electionLabel.ts';
 import { countChange, ELECTION_TOTALS, electionWhen, officialThreshold, previousTotals, totalsOf, turnoutPct, type ElectionTotalsRow } from '../turnoutFacts.ts';
 import { EditMarker } from './EditMarker.tsx';
-import { percent, percentNum, points } from './Percentage.tsx';
+import { percent, percentNum } from './Percentage.tsx';
+import { ChangeMark, PointsDelta } from './SeatDelta.tsx';
 import { Info } from './ui.tsx';
 import { TURNOUT_FIELD_DIGITS } from './TurnoutSteps.tsx';
 import { TileEditPopup, TileEditedMark, tileEditable, type TileField } from './TileEdit.tsx';
@@ -22,20 +23,14 @@ import { refLabel } from '../compare/useRefRows.ts';
 import { CopyOtherButton } from '../compare/CopyOtherButton.tsx';
 import type { OtherCopy } from '../compare/copyOther.ts';
 
-const arrow = (n: number) => (n > 0 ? '▲ ' : n < 0 ? '▼ ' : '');
-const signOf = (n: number) => (n > 0 ? '+' : n < 0 ? '−' : '±');
-
-/** "▲ +543,177 · +8%": the arrow and sign read without colour; colour (green up, red down) is an extra cue. */
+/** "▲543,177 · 8%": the arrow carries the direction (no sign beside it) and colour (green up, red down) is an extra
+ *  cue (owner, 26 Nov 2026). */
 function CountDelta({ now, before, digits }: { now: number; before: number; digits: number }) {
   const { diff, rel } = countChange(now, before);
-  return <bdi dir="ltr" className="seat-delta tn-delta" data-sign={Math.sign(diff)}>
-    {arrow(diff)}{signOf(diff)}{fmtInt(Math.abs(diff))}{rel !== null && diff !== 0 && <> · {signOf(diff)}{percent(Math.abs(diff), before, digits)}</>}
-  </bdi>;
+  return <ChangeMark sign={diff} className="tn-delta">{diff === 0 ? '±0' : fmtInt(Math.abs(diff))}{rel !== null && diff !== 0 && <> · {percent(Math.abs(diff), before, digits)}</>}</ChangeMark>;
 }
-function PointDelta({ value, digits }: { value: number; digits: number }) {
-  const L = useL();
-  return <span className="seat-delta tn-delta" data-sign={Math.sign(value)}><bdi dir="ltr">{arrow(value)}{points(value, digits)}</bdi> {L(...PP)}</span>;
-}
+/** "▲7.35 pts" */
+const PointDelta = ({ value, digits }: { value: number; digits: number }) => <PointsDelta value={value} digits={digits} className="tn-delta" />;
 
 /** edit: the number this tile changes, in a window under the tile (TileEdit.tsx); its pencil sits in the corner */
 function Fact({ id, k, info, v, d, since, copy, edit }: { id: string; k: string; info?: ReactNode; v: ReactNode; d?: ReactNode; since?: ReactNode; copy?: ReactNode; edit?: { s: Scenario; field: TileField } }) {

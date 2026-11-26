@@ -1,4 +1,4 @@
-// The Lists panel while comparing: each list's line ("2022: 32 ▼ −5 · Likud"), its screen-reader words, the legend for
+// The Lists panel while comparing: each list's line ("2022: Seats 32 → 27 ▼5"), its screen-reader words, the legend for
 // the two bars and the folded group of reference lists with no list now.
 import { useState } from 'react';
 import type { AllocationResult } from '../../engine/types.ts';
@@ -14,11 +14,12 @@ export function RefLine({ line, label, r }: { line: Line; label: string; r: Allo
   const L = useL();
   if (line.kind === 'new') return <span className="cmpm-line" data-kind="new"><bdi>{label}</bdi>: {L('no list of its own (new)', 'ללא רשימה משלה (חדשה)')}</span>;
   if (line.kind === 'check') return <span className="cmpm-line" data-kind="check"><bdi>{label}</bdi>: <bdi>{L(`not compared with ${line.names}`, `לא הושוותה ${hebrewPrefixName('ל', line.names)}`)}</bdi></span>;
-  // "2022: Yesh Atid (joined), 24 seats · now ▼ −12": the old name only when it differs, then its seats, then the change
+  // "2022: Yesh Atid (joined) · Seats 24 → 12 ▼12": the old name only when it differs, then the seats then and now and
+  // the change as one compact mark (owner, 26 Nov 2026); the sentence is the row's screen-reader words (refLineText)
   return <>
     {/* a split is counted as a whole: the change is the successors' together, said so, never this list's own 7 against 14 */}
-    <span className="cmpm-line" data-kind={line.tag}><bdi>{label}</bdi>: {(line.names || line.how) && <><span className="muted">{line.names && <bdi>{line.names}</bdi>}{line.names && line.how ? ' ' : ''}{line.how}</span>, </>}<b>{line.seats}</b> {line.seats === 1 ? L('seat', 'מנדט') : L('seats', 'מנדטים')}
-      {' · '}{line.together.length > 1 ? <>{L('together now', 'יחד עכשיו')} <b>{now(line, r)}</b></> : L('now', 'עכשיו')} <SeatDelta value={now(line, r) - line.seats} /></span>
+    <span className="cmpm-line" data-kind={line.tag}><bdi>{label}</bdi>: {(line.names || line.how) && <><span className="muted">{line.names && <bdi>{line.names}</bdi>}{line.names && line.how ? ' ' : ''}{line.how}</span> · </>}<span className="nowrap">{line.together.length > 1 ? L('Seats together', 'מנדטים יחד') : L('Seats', 'מנדטים')}{' '}
+      <bdi dir="ltr">{line.seats} → {now(line, r)} <SeatDelta value={now(line, r) - line.seats} /></bdi></span></span>
     {line.notCounted.length > 0 && <span className="cmpm-line tiny muted">{line.notCounted.join(' ')}</span>}
   </>;
 }

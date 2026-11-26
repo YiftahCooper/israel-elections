@@ -147,7 +147,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
             <span className="ink2">{L('Closest calls:', 'הקרובים ביותר:')}</span>
             {tightest.map((x) => {
               const l = s.lists.find((y) => y.id === x.id)!;
-              const say = x.t === 'gain' ? L(`${nm(x.id)} is ${votesText(x.v, 'en')} from another seat`, `${nm(x.id)} במרחק ${votesText(x.v, 'he')} ממנדט נוסף`) : L(`${nm(x.id)} would lose a seat after losing ${votesText(x.v, 'en')}`, `${nm(x.id)} תאבד מנדט באובדן ${votesText(x.v, 'he')}`);
+              const say = x.t === 'gain' ? L(`${nm(x.id)} is ${votesText(x.v, 'en')} from another seat`, `${nm(x.id)} במרחק ${votesText(x.v, 'he')} ממנדט נוסף`) : L(`${nm(x.id)} is ${votesText(x.v, 'en')} from losing a seat`, `${nm(x.id)} במרחק ${votesText(x.v, 'he')} מאובדן מנדט`);
               return <button key={x.id + x.t} type="button" className="chip sec-call" onClick={() => open(x.id)}><span className="swatch" style={{ background: l.color }} />{say}</button>;
             })}
           </>}

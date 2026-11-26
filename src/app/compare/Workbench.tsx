@@ -1,4 +1,4 @@
-import { percent, rationalPoints } from '../components/Percentage.tsx';
+import { percent } from '../components/Percentage.tsx';
 import { TURNOUT_FIELD_DIGITS } from '../components/TurnoutSteps.tsx';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { ordinalEn } from '../electionLabel.ts';
@@ -14,11 +14,11 @@ import { allocationOf, changeCount, editPathLabel, electedOf, listLabel, markerR
 import { baselineOf } from '../factionDefaults.ts';
 import { markerChangeText } from '../changeValue.tsx';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtRat, PP } from '../format.ts';
+import { fmtInt, fmtRat } from '../format.ts';
 import { setState, toast, useDigits, useOn, useSetting, useStore } from '../store.ts';
 import { Floating } from '../floating.tsx';
 import { Hemicycle } from '../components/Hemicycle.tsx';
-import { SeatDelta } from '../components/SeatDelta.tsx';
+import { PointsDelta, SeatDelta } from '../components/SeatDelta.tsx';
 import { CandidateName } from '../components/CandidateName.tsx';
 import { MkName } from '../components/MkHistory.tsx';
 import { Info, Slip } from '../components/ui.tsx';
@@ -285,7 +285,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
         <thead><tr>
           {!simple && <th className="cmp-tick"><span className="sr-only">{L('Select', 'בחירה')}</span></th>}
           <th className="cmp-name cmp-lname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(left)}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n">{L('Seats', 'מנדטים')}</th>
-          <th className="cmp-mid">{L('Change', 'שינוי')} {!simple && <Info title={L('Change', 'שינוי')}>{L('Seats, then the change in the share of valid votes. pp: percentage points, the difference between two percentages.', 'מנדטים, ואז השינוי בשיעור הקולות הכשרים. נק׳ אחוז: נקודות אחוז, ההפרש בין שני אחוזים.')}</Info>}</th>
+          <th className="cmp-mid">{L('Change', 'שינוי')} {!simple && <Info title={L('Change', 'שינוי')}>{L('Seats, then the change in the share of valid votes. pts: percentage points, the difference between two percentages.', 'מנדטים, ואז השינוי בשיעור הקולות הכשרים. נק׳ אחוז: נקודות אחוז, ההפרש בין שני אחוזים.')}</Info>}</th>
           <th className="n">{L('Seats', 'מנדטים')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="cmp-name cmp-rname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(right)}</th>
         </tr></thead>
         <tbody>
@@ -311,7 +311,7 @@ export function Workbench({ main, other, picker }: { main: SideModel; other: Sid
                 <span className="cmp-mid-in">
                   <span className="cmp-delta">
                     {grouped ? <span className="tiny muted">{L('see group', 'ראו קבוצה')}</span> : d !== null ? <SeatDelta value={d} /> : <span className="muted">—</span>}
-                    {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{rationalPoints(shareD, digits)}</bdi> {L(...PP)}</span>}
+                    {!simple && shareD && shareD.num !== 0n && <span className="tiny cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><PointsDelta value={shareD} digits={digits} /></span>}
                     {/* the (i) by every tag stays (owner, 16 Nov 2026, party/c9-5); its text is plain words, no method or certainty talk */}
                     {(cross || row.tag !== 'same') && <span className="cmp-tagwhy"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><Info title={L('This pairing', 'ההתאמה הזו')} label={L(`Why this pairing: ${what}`, `למה ההתאמה הזו: ${what}`)}>{why(row)}</Info></span>}
                   </span>

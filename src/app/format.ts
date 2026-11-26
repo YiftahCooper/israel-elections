@@ -10,8 +10,9 @@ export function countOf(n: number | bigint, lang: 'he' | 'en', en: readonly [str
   if (Number(n) === 1) return lang === 'he' ? he[0] : `1 ${en[0]}`;
   return `${fmtInt(n)} ${lang === 'he' ? he[1] : en[1]}`;
 }
-/** The unit of a change between two percentages, one form on every screen. */
-export const PP = ['pp', 'נק׳ אחוז'] as const;
+/** The unit of a change between two percentages, one form on every screen: "pts", which a member of the public reads
+ *  more easily than "pp" (owner, 26 Nov 2026). */
+export const PP = ['pts', 'נק׳ אחוז'] as const;
 export const SEATS = { en: ['seat', 'seats'], he: ['מנדט אחד', 'מנדטים'] } as const;
 export const VOTES = { en: ['vote', 'votes'], he: ['קול אחד', 'קולות'] } as const;
 export const seatsText = (n: number | bigint, lang: 'he' | 'en') => countOf(n, lang, SEATS.en, SEATS.he);
@@ -147,5 +148,7 @@ export const signed = (d: number | bigint) => {
   return `\u2066${n > 0 ? '+' : n < 0 ? '−' : '±'}${EN.format(Math.abs(n))}\u2069`;
 };
 
-/** Plain-text equivalent of SeatDelta, also used in exported SVG legends. */
-export const seatDeltaText = (n: number) => `${n > 0 ? "▲ " : n < 0 ? "▼ " : ""}${fmtSigned(n)}`;
+/** The arrow of a change mark: ▲ up, ▼ down, nothing for no change. */
+export const arrowOf = (n: number) => (n > 0 ? '▲' : n < 0 ? '▼' : '');
+/** Plain-text equivalent of SeatDelta, also used in exported SVG legends: "▲4", "▼1", "±0" (the arrow, no sign). */
+export const seatDeltaText = (n: number) => (n === 0 ? '±0' : `${arrowOf(n)}${fmtInt(Math.abs(n))}`);

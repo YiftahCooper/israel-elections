@@ -1,8 +1,7 @@
-import { percentNum, points } from './Percentage.tsx';
-import { PP } from '../format.ts';
+import { percentNum } from './Percentage.tsx';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { datesInText, formatDate } from '../dateFormat.ts';
-import { SeatDelta } from './SeatDelta.tsx';
+import { CountDelta, PointsDelta, SeatDelta } from './SeatDelta.tsx';
 import {englishLabel} from '../../data/names.ts';
 import {useEffect,useState} from 'react';
 import type {ElectionDataset,ElectionId} from '../../data/schema.ts';
@@ -53,7 +52,6 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  // The change follows the vote chart's solid line: exact when neither election has a mixed list, otherwise the estimate by seats.
  const exact=counted&&prevCounted&&!a.mixed&&!prev?.mixed,est=!exact&&before&&previous?[familyEstimate(f,electionId),familyEstimate(f,before.id)] as const:null;
  const voteChange=exact?{approx:false,votes:Number(a.votes!-prev!.votes!),pp:share(a.votes!,ds)-share(prev!.votes!,previous!)}:est?.[0]&&est[1]?{approx:est.some(v=>v!.high>v!.estimate&&v!.estimate>v!.low),votes:Math.round(est[0].estimate-est[1].estimate),pp:est[0].estimate*100/ds.totals.valid-est[1].estimate*100/previous!.totals.valid}:null;
- const signed=(n:number|bigint,digits?:number)=>{const x=Number(n);return <bdi dir="ltr">{digits===undefined?<>{x>0?'+':x<0?'−':'±'}{Math.abs(x).toLocaleString('en-US')}</>:points(x,digits)}</bdi>;};
  // every recorded kind has its words; a data code is never shown (an unknown kind reads as a plain change)
  const relation=(s:string)=>L(...(RELATION_WORD[s as RelationKind]??['Change','שינוי']));
  // a source is named by who published it; one without a link (the official results the app holds) is plain text, never a file name or id
@@ -64,7 +62,7 @@ export function FamilyPoint({family:f,electionId}:{family:Family;electionId:Elec
  return <div className="family-point" style={{['--family-color' as string]:familyColor(f)}}>
   <h3>{shortFamilyName(f,lang)} · {familyDate(historyElections[at],lang)}</h3>
   <div className="family-point-total">{status&&<span>{status}</span>}{counted&&<span><b>{Number(a.votes).toLocaleString('en-US')} {L('votes','קולות')}</b> · <bdi dir="ltr">{percentNum(share(a.votes!,ds),digits)}</bdi></span>}{seat.known&&<span className="family-point-seats"><b>{seatsWord(seat.own)}</b>{seat.partners>0&&<> <bdi dir="ltr">+{seat.partners}</bdi> {seat.partners===1?L('partner','שותפה'):L('partners','שותפות')}</>}</span>}{!!a.mixed&&<span className="family-point-mixed"><i className="family-key-mixed" aria-hidden/><span>{L('Mixed lists','רשימות מעורבות')}: {Number(a.mixed).toLocaleString('en-US')} · <bdi dir="ltr">{percentNum(share(a.mixed,ds),digits)}</bdi></span></span>}{nowEst&&<span className="family-point-estimate"><b>{L('Estimate by seats','הערכה לפי מנדטים')}: ≈{Math.round(nowEst.estimate).toLocaleString('en-US')}</b> · <bdi dir="ltr">≈{percentNum(nowEst.estimate*100/ds.totals.valid,digits)}</bdi></span>}{reviewNote(a,L)&&<span className="family-point-review">{reviewNote(a,L)}</span>}</div>
-  {before&&previous&&prev&&(voteChange||seat.change!==null||mixedDelta!==null)&&<p className="family-point-delta">{L('Since','מאז')} {familyDate(before,lang)}: {voteChange&&<>{voteChange.approx&&<span title={L('Estimate by seats','הערכה לפי מנדטים')}>≈</span>}{signed(voteChange.votes)} {L('votes','קולות')} · {signed(voteChange.pp,digits)} {L(...PP)}</>}{seat.change!==null&&<>{voteChange?' · ':''}<SeatDelta value={seat.change} /> {L('seats','מנדטים')}</>}{mixedDelta!==null&&<>{voteChange||seat.change!==null?' · ':''}{L('mixed lists','רשימות מעורבות')} {signed(mixedDelta)}</>}</p>}
+  {before&&previous&&prev&&(voteChange||seat.change!==null||mixedDelta!==null)&&<p className="family-point-delta">{L('Since','מאז')} {familyDate(before,lang)}: {voteChange&&<>{voteChange.approx&&<span title={L('Estimate by seats','הערכה לפי מנדטים')}>≈</span>}{L('votes','קולות')} <CountDelta value={Number(voteChange.votes)} /> · {L('vote share','שיעור הקולות')} <PointsDelta value={Number(voteChange.pp)} digits={digits} /></>}{seat.change!==null&&<>{voteChange?' · ':''}{L('seats','מנדטים')} <SeatDelta value={seat.change} /></>}{mixedDelta!==null&&<>{voteChange||seat.change!==null?' · ':''}{L('mixed lists','רשימות מעורבות')} <CountDelta value={Number(mixedDelta)} /></>}</p>}
   {!ds.officialSeats&&<p className="small muted">{L('Calculated seats · Gazette not yet verified','מנדטים מחושבים · הפרסום ברשומות טרם אומת')} <Info title={L('Seat counts','ספירת מנדטים')}>{L('Worked out from the published votes; the official seat count is not yet published.','חושב מהקולות שפורסמו; ספירת המנדטים הרשמית טרם פורסמה.')}</Info></p>}
   <div className="family-point-lists">{lists.map(l=>{const member=row?.members.find(x=>x.listId===l.id),review=row?.reviewCandidates.find(x=>x.listId===l.id),mixed=member?.scope==='mixed',isCounted=m.selected.has(l.id),separate=m.mixed.has(l.id);
    const ownParty=(id:string)=>!!member?.partyIds.some(x=>canonicalParty(x)===canonicalParty(id));

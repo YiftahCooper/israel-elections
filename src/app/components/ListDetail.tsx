@@ -35,6 +35,7 @@ import { JointParties } from './JointParties.tsx';
 import { JointEdit } from './JointEdit.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { listChoice } from './ListMark.tsx';
+import { SeatMoves } from './SeatDelta.tsx';
 import { DecimalInput, Info, TextField } from './ui.tsx';
 import { SourcePicker } from './SourcePicker.tsx';
 import { datesInText } from '../dateFormat.ts';
@@ -298,7 +299,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         <fieldset disabled={l.withdrawn} style={{ border: 0, padding: 0, margin: 0, minWidth: 0, display: 'grid', gap: 8 }}>
           <NumericStepper label={L('Votes', 'קולות')} value={l.votes} onCommit={(v) => commit((from) => editTo(v, from))} max={clampTarget(s, l, Number.MAX_SAFE_INTEGER, src)}
             onStepCommit={(step, direction) => commit((from) => editTo(step.unit === 'pp' ? votesForShare(s, l, pctValid + direction * step.amount, from) ?? l.votes : l.votes + direction * step.amount, from))}
-            steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }, { id: '0.1pp', label: L('0.1 pp', '0.1 נק׳ אחוז'), amount: 0.1, unit: 'pp' }, { id: '1pp', label: L('1 pp', '1 נק׳ אחוז'), amount: 1, unit: 'pp' }]}
+            steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }, { id: '0.1pp', label: L('0.1 pts', '0.1 נק׳ אחוז'), amount: 0.1, unit: 'pp' }, { id: '1pp', label: L('1 pt', '1 נק׳ אחוז'), amount: 1, unit: 'pp' }]}
             defaultStep={defaultStep}
             targetForStep={(step, direction) => step.unit === 'pp' ? votesForShare(s, l, pctValid + direction * step.amount, src) : l.votes + direction * step.amount}
             onPreview={explainTarget} />
@@ -338,7 +339,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           {agr && <p className="small" style={{ margin: '6px 0 0' }}>
             {!agr.enabled ? L('Switched off: both lists compete alone for the remaining seats.', 'כבוי: שתי הרשימות מתחרות לבד על המנדטים הנותרים.')
               : !agrStatus?.active ? (agrStatus?.reason === 'member-withdrawn' ? L('No effect: a partner withdrew.', 'ללא השפעה: שותפה פרשה.') : agrStatus?.reason === 'duplicate-membership' ? L('No effect: a list is in two agreements.', 'ללא השפעה: רשימה בשני הסכמים.') : agrStatus?.reason === 'too-many-members' ? L('Not allowed under these rules.', 'לא מותר לפי הכללים.') : agrStatus?.reason === 'member-no-initial-seat' ? L('No effect: a partner won no full seat of its own.', 'ללא השפעה: שותפה לא זכתה במנדט שלם משלה.') : L('No effect: a partner failed the threshold.', 'ללא השפעה: שותפה לא עברה את החסימה.'))
-              : agreementEffect && agreementEffect.length ? L('Thanks to the agreement, ', 'בזכות ההסכם, ') + seatChangeSentence(agreementEffect, nameOf, lang === 'he') : L('The agreement changes no seats.', 'ההסכם לא משנה אף מנדט.')}
+              : agreementEffect && agreementEffect.length ? <>{L('Thanks to the agreement:', 'בזכות ההסכם:')} <SeatMoves moves={agreementEffect} name={nameOf} title={L('Thanks to the agreement, ', 'בזכות ההסכם, ') + seatChangeSentence(agreementEffect, nameOf, lang === 'he')} /></> : L('The agreement changes no seats.', 'ההסכם לא משנה אף מנדט.')}
           </p>}
         </section></Feature>
 

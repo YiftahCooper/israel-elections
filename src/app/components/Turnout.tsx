@@ -1,6 +1,6 @@
 import { percentNum } from './Percentage.tsx';
 import { askConfirm, askText } from '../askDialog.ts';
-import { SeatDelta } from './SeatDelta.tsx';
+import { CountDelta, PointsDelta, SeatDelta } from './SeatDelta.tsx';
 import './turnout.css';
 import { TurnoutFacts } from './TurnoutFacts.tsx';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -215,7 +215,7 @@ export function Turnout({ s }: { s: Scenario }) {
           {f && <>
             <div className="vg-turnout">
               <label className="small" htmlFor="vg-change">{L('Turnout', 'שיעור הצבעה')}</label>
-              <span className="vg-range"><bdi dir="ltr"><b>{percentNum(curPct, digits)}</b> → <b>{percentNum(curPct + d.change, digits)}</b></bdi> <span className="ink2">({signed(Math.round(d.change * 10) / 10)} {L(...PP)})</span></span>
+              <span className="vg-range"><bdi dir="ltr"><b>{percentNum(curPct, digits)}</b> → <b>{percentNum(curPct + d.change, digits)}</b></bdi> <PointsDelta value={Math.round(d.change * 10) / 10} digits={1} /></span>
               <input id="vg-change" type="range" min={-Math.floor(curPct * 10) / 10} max={Math.floor((100 - curPct) * 10) / 10} step={0.1} value={d.change}
                 aria-valuetext={`${fmtPctNum(curPct + d.change, digits)}`} onChange={(e) => set({ change: Number(e.target.value) })} />
               <PctField label={L('New turnout %', 'שיעור הצבעה חדש %')} bare value={Math.round((curPct + d.change) * 10) / 10} max={100} onCommit={(n) => set({ change: Math.round((n - curPct) * 10) / 10 })} />
@@ -250,7 +250,7 @@ export function Turnout({ s }: { s: Scenario }) {
               {change?.error === 'no-split' && <p id="vg-why" className="small bad">{L('Give at least one list a share.', 'תנו חלק לרשימה אחת לפחות.')}</p>}
               {change?.error === 'too-few' && <p id="vg-why" className="small bad">{L('Some lists do not have enough votes to remove.', 'לחלק מהרשימות אין די קולות להסרה.')}</p>}
               {change && !change.error && change.delta !== 0 && <>
-                <p className="small"><bdi dir="ltr">{signed(change.delta)}</bdi> {L('ballots', 'פתקים')} · <bdi dir="ltr">{signed(change.invalid)}</bdi> {L('invalid', 'פסולים')}</p>
+                <p className="small">{L('Ballots', 'פתקים')} <CountDelta value={change.delta} /> · {L('invalid', 'פסולים')} <CountDelta value={change.invalid} /></p>
                 <div className="vg-seats small" aria-live="polite">{seatDiff?.length ? seatDiff.map(({ l, n }) => <span key={l.id} className="chip"><span className="swatch" style={{ background: l.color }} />{listLabel(l, lang)} <b><bdi dir="ltr"><SeatDelta value={n} /></bdi></b></span>) : <span className="ink2">{L('No seat changes', 'אין שינוי במנדטים')}</span>}</div>
               </>}
               <button type="button" className="btn primary" disabled={!change || !!change.error || !change.delta} aria-describedby={change?.error ? 'vg-why' : undefined} onClick={apply}>
