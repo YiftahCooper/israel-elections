@@ -54,7 +54,7 @@ it('rejects cross-election, missing electorate, invalid percentages, envelopes a
  const d=fixture();d.id='k24';expect(()=>demographicTurnout(base,d,adjustment)).toThrow('This change is not valid, so it was not made.');
  d.id='k25';d.rows[0].registered=null;expect(()=>demographicTurnout(base,d,adjustment)).toThrow('Eligible voters are not known for these localities.');
  d.rows[0].registered=1000;d.rows[0].envelopes=true;expect(()=>demographicTurnout(base,d,adjustment)).toThrow("This group's localities cannot be used. Choose another group.");
- d.rows[0].envelopes=false;d.listIds[0]='absent';expect(()=>demographicTurnout(base,d,adjustment)).toThrow("A list from the election is no longer in this scenario, so its voters' choice has nowhere to go.");
+ d.rows[0].envelopes=false;d.listIds[0]='absent';expect(()=>demographicTurnout(base,d,adjustment)).toThrow("A list from the election is no longer in this scenario. Restore it before changing this group's turnout.");
  for(const value of [NaN,Infinity,-1,101])expect(()=>demographicTurnout(base,fixture(),[{groupId:'test',turnoutPercent:value}])).toThrow();
  expect(()=>demographicTurnout(base,fixture(),[{groupId:'unknown',turnoutPercent:50}])).toThrow('This group is no longer available.');
 });

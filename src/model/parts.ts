@@ -1,14 +1,14 @@
 import { NO_COALITION, type Scenario } from './scenario.ts';
 export const PARTS = {
   votes: { en: 'Votes', he: 'קולות', blank: false },
-  identity: { en: 'List identity', he: 'זהות הרשימות', blank: false },
+  identity: { en: 'List names and colours', he: 'שמות וצבעים של הרשימות', blank: false },
   structure: { en: 'Merges, splits and withdrawals', he: 'איחודים, פיצולים ופרישות', blank: false },
   agreements: { en: 'Agreements', he: 'הסכמי עודפים', blank: true },
   blocs: { en: 'Blocs', he: 'גושים', blank: true },
   coalitions: { en: 'Coalitions', he: 'קואליציות', blank: true },
   candidates: { en: 'Candidates', he: 'מועמדים', blank: true },
   rules: { en: 'Rules', he: 'כללים', blank: false },
-  totals: { en: 'Turnout and totals', he: 'הצבעה וסיכומים', blank: false },
+  totals: { en: 'Turnout and vote totals', he: 'שיעור ההצבעה וסך הקולות', blank: false },
 } as const;
 export type Part = keyof typeof PARTS;
 export type PartSnapshot = Partial<Pick<Scenario, 'familyDefinition' | 'blocs' | 'blocSchemeId' | 'customGroupingName' | 'partyBlocs' | 'candidateBlocs' | 'agreements' | 'rules' | 'mode' | 'coalition' | 'lists' | 'registered' | 'invalid' | 'factionSplits'>> & { validVotes?: number; listBlocs?: Record<string, string | null> };

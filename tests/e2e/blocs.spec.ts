@@ -24,7 +24,7 @@ test('an election opens on its first government, and other sourced groupings can
   await expect(grouping).toHaveText(/Government 37 /);
   await expect(blocCount(page, 'Coalition')).toHaveText('64');
   await choose(grouping, 'pre-election-blocs');
-  await expect(grouping).toContainText('Comparison groups · App');
+  await expect(grouping).toContainText('Comparison groups · Unofficial');
   // a band opens the bloc editor beside the chamber, at every level
   await band(page, 'Netanyahu bloc').click();
   await expect(editor(page).getByRole('textbox', { name: 'Bloc name' }).first()).toHaveValue('Netanyahu bloc');
@@ -105,7 +105,7 @@ for (const lang of ['en', 'he'] as const) for (const election of ['k24', 'k25'])
     const scheme = election === 'k24' ? 'knesset-blocs-2021' : 'pre-election-blocs';
     await picker.click();
     const option = page.locator(`.choice-option[data-choice-value="${scheme}"]`);
-    const tag = lang === 'en' ? 'App' : 'של האפליקציה';
+    const tag = lang === 'en' ? 'Unofficial' : 'לא רשמי';
     await expect(option).toContainText(`· ${tag}`);
     await expect(option).toHaveAttribute('title', /not an official|אינה חלוקה רשמית/);
     await option.click();
@@ -158,7 +158,7 @@ test('a bloc in a sourced scheme keeps its own marker', async ({ page }) => {
   });
   await start(page, 'standard');
   const panel = blocs(page);
-  await expect(panel.locator('.majority-context')).not.toContainText('· App');
-  await expect(band(page, 'Coalition').locator('.app-grouping-tag')).toHaveText('· App');
+  await expect(panel.locator('.majority-context')).not.toContainText('· Unofficial');
+  await expect(band(page, 'Coalition').locator('.app-grouping-tag')).toHaveText('· Unofficial');
   await expect(band(page, 'Opposition').locator('.app-grouping-tag')).toHaveCount(0);
 });

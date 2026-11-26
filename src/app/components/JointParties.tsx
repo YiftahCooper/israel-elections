@@ -131,7 +131,7 @@ export function JointParties({ s, r, l }: { s: Scenario; r: AllocationResult; l:
                     onChange={(e) => { const next = [...pct]; next[i] = Math.max(0, Number(e.target.value) || 0); setShares(next); }} />%
                   {expert && <span className="muted tabnum">{fmtInt(votes[i])}</span>}
                   {votes[i] === 0 ? <SplitPartNote own={hasOwnCandidates(l, p.id)} home={home && home !== p ? name(home) : null} />
-                    : !hasOwnCandidates(l, p.id) && p.id !== parties[plan.home]?.id && <span className="tiny muted">{L('No recorded candidates', 'אין מועמדים מתועדים')}</span>}
+                    : !hasOwnCandidates(l, p.id) && p.id !== parties[plan.home]?.id && <span className="tiny muted">{L('No candidates of its own', 'אין לה מועמדים משלה')}</span>}
                 </span>
               </Fragment>
             ))}

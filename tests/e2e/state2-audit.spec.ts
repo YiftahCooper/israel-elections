@@ -73,7 +73,7 @@ for (const lang of ['en', 'he'] as const) test(`c-robustness-05: a data file of 
   await page.route('**/data/k25.json', (route) => { asked++; return route.fulfill({ json: { ...k25, schemaVersion: 99 } }); });
   await page.getByRole('button', { name: lang === 'en' ? 'Previous election' : 'הבחירות הקודמות', exact: true }).click(); // 2022
   const banner = page.locator('.banner.err');
-  await expect(banner).toContainText(lang === 'en' ? 'different versions' : 'מגרסאות שונות');
+  await expect(banner).toContainText(lang === 'en' ? 'This page is out of date' : 'הדף אינו מעודכן');
   await expect(banner.getByRole('button', { name: lang === 'en' ? 'Reload' : 'טעינה מחדש', exact: true })).toBeVisible();
   expect(asked).toBe(2); // the browser's copy, then once more from the server
   if (OUT) await banner.screenshot({ path: `${OUT}/chk-version-banner-${lang}.png` });

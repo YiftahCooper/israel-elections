@@ -31,7 +31,7 @@ test('hovering a segment gives its exact facts; the bar lists every partner with
  await start(page,'en','standard');await only(page,'Religious');
  await seg(page,14,6).hover();const tip=page.getByRole('tooltip');
  await expect(tip).toContainText('Israeli Labor Party: 23 seats · One Israel');await expect(tip).toContainText('31 seats');await expect(tip).toContainText('Partners on joint lists: +31');
- for(const row of ['Herut – The National Movement 1 · National Union','Party not recorded 1 · United Arab List','Gesher 2 · One Israel','Moledet 2 · National Union','Arab Democratic Party 2 · United Arab List'])await expect(tip).toContainText(row);
+ for(const row of ['Herut – The National Movement 1 · National Union','Party unknown 1 · United Arab List','Gesher 2 · One Israel','Moledet 2 · National Union','Arab Democratic Party 2 · United Arab List'])await expect(tip).toContainText(row);
  // the space above a bar is the bar's own target
  await bar(page,25).hover({position:{x:4,y:4}});await expect(tip).toContainText('Zehut 1 · Religious Zionism–Zehut');await expect(tip).not.toContainText('Israeli Labor Party');
 });
