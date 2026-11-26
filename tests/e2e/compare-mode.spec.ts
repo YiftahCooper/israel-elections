@@ -194,7 +194,7 @@ test('Copy votes at Simple is one method with its count before and after; at Exp
   await expect(one).toHaveAttribute('data-mode', 'eligible');
   await expect(one).toContainText('Votes adjusted for the number of eligible voters');
   await expect(one.locator('.cmpm-copy-count')).toContainText(/Likud: 1,115,336 votes in 2022 →.*1,204,575 votes/);
-  await expect(one).toContainText(/27 → 28/);
+  await expect(one).toContainText('Likud would have 28 seats (1 more).');
   await box(page).getByRole('button', { name: 'Cancel' }).click();
   await page.evaluate(() => { const raw = JSON.parse(localStorage.getItem('israel-elections:v1') ?? '{}'); localStorage.setItem('israel-elections:v1', JSON.stringify({ ...raw, level: 'expert' })); });
   await page.reload();

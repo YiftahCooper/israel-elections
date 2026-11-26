@@ -143,20 +143,20 @@ test('Copy votes box: counts lists as the message does, names where a row\'s vot
   await page.locator("xpath=//button[normalize-space()='Copy votes…'][preceding::*[contains(@class,'lb-row')][1][contains(., 'Shas')]]").first().click();
   await box.getByRole('checkbox', { name: 'Adjust for the number of eligible voters' }).uncheck();
   const count = box.locator('.cmp-mode[data-mode="count"]');
-  await expect(count).toContainText('Shas 9 (unchanged)');
+  await expect(count).toContainText('Shas stays at 9 seats.');
   await expect(count).not.toContainText('9 → 9');
 });
 
 const filterCount = async (page: Page, name: string) => Number(await page.locator('.cmp-filters button', { hasText: name }).locator('.cmp-count').innerText());
 
-test('Side by side: no filter counts more rows than All; Unmatched obeys "Lists with no seats"', async ({ page }) => {
+test('Side by side: no filter counts more rows than All; New or ended obeys "Lists with no seats"', async ({ page }) => {
   await start(page, 'k26', { level: 'expert' });
   await page.locator('.compare-on').first().click();
   await openSideBySide(page); // waits for the lazily loaded screen, not only its section (T1)
   await expect(page.locator('.cmp-filters')).toBeVisible();
   const all = await filterCount(page, 'All');
-  for (const f of ['Different', 'Edited', 'Unmatched']) expect(await filterCount(page, f)).toBeLessThanOrEqual(all);
-  await page.locator('.cmp-filters button', { hasText: 'Unmatched' }).click();
+  for (const f of ['Different', 'Edited', 'New or ended']) expect(await filterCount(page, f)).toBeLessThanOrEqual(all);
+  await page.locator('.cmp-filters button', { hasText: 'New or ended' }).click();
   // no 2022 list without seats (Economic Freedom and the like) while "Lists with no seats" is off
   await expect(page.locator('.cmp-table tbody')).not.toContainText('Economic Freedom');
   await page.getByLabel('Lists with no seats').check();
@@ -231,7 +231,7 @@ test('compared with 2022, a list from a split shows the split\'s figure as the g
   await start(page, 'k26', { level: 'simple' });
   await page.locator('.compare-on').first().click();
   const line = page.locator('.cmpm-line', { hasText: 'Religious Zionism (split into 3)' });
-  await expect(line.first()).toContainText('2022: 14 · together now 13');
+  await expect(line.first()).toContainText('2022: Religious Zionism (split into 3), 14 seats · together now 13');
   // never this list's own 7 against the group's 14 without saying so
   for (const t of await line.allInnerTexts()) expect(t).toMatch(/together now 13/);
 });

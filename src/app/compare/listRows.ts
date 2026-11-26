@@ -82,7 +82,8 @@ export function refRows(work: Scenario, ref: Scenario, overrides: MatchOverride[
     const how = successors > 1 ? (en ? `split into ${successors}` : `התפצלה ל־${successors}`) : (later ? HOW_LATER : HOW)[row.tag]?.[en ? 0 : 1] ?? '';
     const notCounted = g.flatMap(notCountedOf);
     for (const id of right) {
-      const plain = same && row.tag === 'same' && left.length === 1 && right.length === 1 && names === nameOf(id) && nameOf(id) === listLabel(work.lists.find((l) => l.id === id)!, lang);
+      // the old name only when it differs from the list's name now ("2022: 32 seats", never "2022: Likud, 32 seats" under Likud)
+      const plain = left.length === 1 && right.length === 1 && names === listLabel(work.lists.find((l) => l.id === id)!, lang);
       byList.set(id, { kind: 'pair', tag: row.tag, seats: seatsOf(left), together: right, names: plain ? '' : names, how: how ? `(${how})` : '', bar: parts === 1, notCounted });
     }
   }

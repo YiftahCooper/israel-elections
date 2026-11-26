@@ -264,16 +264,16 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
 
     <div className="cmp-toolbar row">
       <span className="cmp-filters" role="group" aria-label={L('Show rows', 'הצגת שורות')}>
-        {([['all', L('All', 'הכול')], ['different', L('Different', 'שונות')], ['edited', L('Edited', 'נערכו')], ['unmatched', L('Unmatched', 'ללא התאמה')]] as [Filter, string][]).map(([f, t]) =>
+        {([['all', L('All', 'הכול')], ['different', L('Different', 'שונות')], ['edited', L('Edited', 'נערכו')], ['unmatched', L('New or ended', 'חדשות או שהסתיימו')]] as [Filter, string][]).map(([f, t]) =>
           <button key={f} type="button" className={`btn small ${filter === f ? 'primary' : 'ghost'}`} aria-pressed={filter === f} onClick={() => pickFilter(f)}>{t} <span className="cmp-count">{counts[f]}</span></button>)}
       </span>
       {!simple && <input type="search" className="cmp-search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder={L('Find a list…', 'חיפוש רשימה…')} aria-label={L('Find a list', 'חיפוש רשימה')} />}
       {!simple && <label className="cmp-switch small"><input type="checkbox" checked={zero} onChange={(e) => setZero(e.target.checked)} />{L('Lists with no seats', 'רשימות ללא מנדטים')}</label>}
-      {cross && <button type="button" className="btn small" onClick={() => setMatching(true)} disabled={simple && !toCheck}>{L('Matching', 'התאמת רשימות')}{toCheck > 0 && <span className="cmp-tag tag-check">{L(`${toCheck} to verify`, `${toCheck} לבדיקה`)}</span>}</button>}
+      {cross && <button type="button" className="btn small" onClick={() => setMatching(true)} disabled={simple && !toCheck}>{L('Pair lists', 'התאמת רשימות')}{toCheck > 0 && <span className="cmp-tag tag-check">{L(`${toCheck} to check`, `${toCheck} לבדיקה`)}</span>}</button>}
     </div>
     {selected.size > 0 && !simple && (() => { const r = unitSel('toRight'), l = unitSel('toLeft'); return <div className="cmp-selbar row" role="region" aria-label={L('Selected rows', 'שורות שנבחרו')}>
       <b>{L(`${selected.size} selected`, `${selected.size} נבחרו`)}</b>
-      {r.skipped > 0 && <span className="small cmp-refused">{L(`${r.skipped} need a decision (no counterpart or to verify)`, `${r.skipped} דורשות החלטה (אין מקבילה או לבדיקה)`)}</span>}
+      {r.skipped > 0 && <span className="small cmp-refused">{L(`${r.skipped} can’t be copied: no list to pair with, or the pair is still to check`, `${r.skipped} לא יועתקו: אין רשימה מקבילה, או שההתאמה עוד לבדיקה`)}</span>}
       {/* into your work first; into the compared result (its own draft) second */}
       {([toWork, toWork === 'toLeft' ? 'toRight' : 'toLeft'] as Dir[]).map((d) => { const x = d === 'toRight' ? r : l, to = d === 'toRight' ? right : left;
         return <button key={d} type="button" className={`btn small ${to.role === 'main' ? '' : 'ghost'}`} disabled={!x.units.length || x.skipped > 0} onClick={() => copyVotes(x.units, d)}>{L(`Copy votes into ${nameOf(to)}`, `העתקת קולות ${hebrewPrefix('ל', nameOf(to))}`)}</button>; })}
@@ -285,7 +285,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
         <thead><tr>
           {!simple && <th className="cmp-tick"><span className="sr-only">{L('Select', 'בחירה')}</span></th>}
           <th className="cmp-name cmp-lname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(left)}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n">{L('Seats', 'מנדטים')}</th>
-          <th className="cmp-mid">{L('Change', 'שינוי')} {!simple && <Info title={L('Change', 'שינוי')}>{L(`${nameOf(mainLeft ? left : right)} minus ${nameOf(mainLeft ? right : left)}: seats, then the share of valid votes in percentage points (pp).`, `${nameOf(mainLeft ? left : right)} פחות ${nameOf(mainLeft ? right : left)}: מנדטים, ואז שיעור הקולות הכשרים בנקודות אחוז (נק׳ אחוז).`)}</Info>}</th>
+          <th className="cmp-mid">{L('Change', 'שינוי')} {!simple && <Info title={L('Change', 'שינוי')}>{L('Seats, then the change in the share of valid votes. pp: percentage points, the difference between two percentages.', 'מנדטים, ואז השינוי בשיעור הקולות הכשרים. נק׳ אחוז: נקודות אחוז, ההפרש בין שני אחוזים.')}</Info>}</th>
           <th className="n">{L('Seats', 'מנדטים')}</th><th className="n cmp-s">{L('Share', 'שיעור')}</th><th className="n cmp-v">{L('Votes', 'קולות')}</th><th className="cmp-name cmp-rname" dir={lang === 'he' ? 'rtl' : 'ltr'}>{nameOf(right)}</th>
         </tr></thead>
         <tbody>
@@ -312,6 +312,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
                   <span className="cmp-delta">
                     {grouped ? <span className="tiny muted">{L('see group', 'ראו קבוצה')}</span> : d !== null ? <SeatDelta value={d} /> : <span className="muted">—</span>}
                     {!simple && shareD && shareD.num !== 0n && <span className="tiny muted cmp-pp" dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi dir="ltr">{rationalPoints(shareD, digits)}</bdi> {L(...PP)}</span>}
+                    {/* the (i) by every tag stays (owner, 16 Nov 2026, party/c9-5); its text is plain words, no method or certainty talk */}
                     {(cross || row.tag !== 'same') && <span className="cmp-tagwhy"><span className={`cmp-tag tag-${row.tag}`}>{tagText(row.tag, L)}</span><Info title={L('This pairing', 'ההתאמה הזו')} label={L(`Why this pairing: ${what}`, `למה ההתאמה הזו: ${what}`)}>{why(row)}</Info></span>}
                   </span>
                   {/* the row's actions, centred between the two columns: Copy into your work, then "⋯" for the rest */}
@@ -338,7 +339,6 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
       menuKey={menu?.key ?? null} onMore={(field, label, anchor) => { const key = `band:${field}`; setMenu(menu?.key === key ? null : { key, field, label, anchor }); }} />
 
     {!cross && <People left={left} right={right} />}
-    {cross && <p className="small muted">{L('Lists are paired from party records', 'הרשימות מותאמות לפי רישומי המפלגות')} <Info title={L('Pairing lists', 'התאמת רשימות')}>{L('Pairs come from the party registry and documented lineage, never from names or ballot letters. A copy is a snapshot: later edits on the other side don’t change it. Seats are always recalculated.', 'ההתאמות לפי מרשם המפלגות והשושלת המתועדת, לעולם לא לפי שמות או אותיות. העתקה היא תמונת מצב: עריכות מאוחרות בצד השני אינן משנות אותה. המנדטים תמיד מחושבים מחדש.')}</Info></p>}
 
     {!stale && menu && createPortal(<Floating id={menuId} anchor={() => menu.anchor.getBoundingClientRect()} className="cmp-menu" role="dialog" label={L('Row actions', 'פעולות לשורה')}>
       <span ref={menuRef} className="cmp-menu-in" onKeyDown={(e) => { if (e.key === 'Escape') { e.stopPropagation(); setMenu(null); menu.anchor.focus(); } }}>

@@ -13,11 +13,12 @@ const now = (line: Line, r: AllocationResult) => line.together.reduce((t, id) =>
 export function RefLine({ line, label, r }: { line: Line; label: string; r: AllocationResult }) {
   const L = useL();
   if (line.kind === 'new') return <span className="cmpm-line" data-kind="new"><bdi>{label}</bdi>: {L('no list of its own (new)', 'ללא רשימה משלה (חדשה)')}</span>;
-  if (line.kind === 'check') return <span className="cmpm-line" data-kind="check"><bdi>{label}</bdi>: <span className="ph-cert ph-cert-unknown">{L('To verify', 'לבדיקה')}</span> · <bdi>{line.names}</bdi></span>;
+  if (line.kind === 'check') return <span className="cmpm-line" data-kind="check"><bdi>{label}</bdi>: <bdi>{L(`not compared with ${line.names}`, `לא הושוותה ${hebrewPrefixName('ל', line.names)}`)}</bdi></span>;
+  // "2022: Yesh Atid (joined), 24 seats · now ▼ −12": the old name only when it differs, then its seats, then the change
   return <>
     {/* a split is counted as a whole: the change is the successors' together, said so, never this list's own 7 against 14 */}
-    <span className="cmpm-line" data-kind={line.tag}><bdi>{label}</bdi>: <b>{line.seats}</b>{line.together.length > 1 && <> · {L('together now', 'יחד עכשיו')} <b>{now(line, r)}</b></>} <SeatDelta value={now(line, r) - line.seats} />
-      {(line.names || line.how) && <span className="muted"> · {line.names && <bdi>{line.names}</bdi>}{line.names && line.how ? ' ' : ''}{line.how}</span>}</span>
+    <span className="cmpm-line" data-kind={line.tag}><bdi>{label}</bdi>: {(line.names || line.how) && <><span className="muted">{line.names && <bdi>{line.names}</bdi>}{line.names && line.how ? ' ' : ''}{line.how}</span>, </>}<b>{line.seats}</b> {line.seats === 1 ? L('seat', 'מנדט') : L('seats', 'מנדטים')}
+      {' · '}{line.together.length > 1 ? <>{L('together now', 'יחד עכשיו')} <b>{now(line, r)}</b></> : L('now', 'עכשיו')} <SeatDelta value={now(line, r) - line.seats} /></span>
     {line.notCounted.length > 0 && <span className="cmpm-line tiny muted">{line.notCounted.join(' ')}</span>}
   </>;
 }
@@ -26,7 +27,7 @@ export function RefLine({ line, label, r }: { line: Line; label: string; r: Allo
 export function refLineText(line: Line, label: string, r: AllocationResult, lang: 'he' | 'en'): string {
   const en = lang === 'en';
   if (line.kind === 'new') return en ? `, ${label}: no list of its own` : `, ${label}: ללא רשימה משלה`;
-  if (line.kind === 'check') return en ? `, ${label}: to verify, ${line.names}` : `, ${label}: לבדיקה, ${line.names}`;
+  if (line.kind === 'check') return en ? `, ${label}: not compared with ${line.names}` : `, ${label}: לא הושוותה ${hebrewPrefixName('ל', line.names)}`;
   const d = now(line, r) - line.seats;
   const change = d === 0 ? (en ? 'unchanged' : 'ללא שינוי') : en ? `${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}` : `${Math.abs(d)} ${d > 0 ? 'יותר' : 'פחות'}`;
   const together = line.together.length > 1 ? (en ? `, ${seatsText(now(line, r), 'en')} together now` : `, ${seatsText(now(line, r), 'he')} יחד עכשיו`) : '';

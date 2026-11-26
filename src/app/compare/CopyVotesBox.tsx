@@ -142,9 +142,9 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
       if (!simple && scope === 'default' && storable) setSetting('copyAskEachTime', !dontAsk);
       onDone(plan, { ...req, units }); }}>
       <p className="cmp-ask-title"><b>{req.title}</b> <Info title={L('How copying votes works', 'איך העתקת קולות עובדת')}>{L(
-        `Only votes are copied; seats are always recalculated by the rules of ${to.year}. Number of votes: the same count; adjusted for the number of eligible voters, it is multiplied by everyone entitled to vote here ÷ everyone entitled to vote in ${where}. Share of valid votes: the list's votes ÷ the valid votes in ${where} × the valid votes here. Rounded to the nearest vote, never across the threshold.`,
-        `מועתקים רק קולות; המנדטים מחושבים תמיד מחדש לפי הכללים של ${to.year}. מספר קולות: אותו מספר; בהתאמה לגודל ציבור הבוחרים, הוא מוכפל בכל בעלי זכות הבחירה כאן ÷ כל בעלי זכות הבחירה ${inWhere(where)}. שיעור מהקולות הכשרים: קולות הרשימה ÷ הקולות הכשרים ${inWhere(where)} × הקולות הכשרים כאן. מעוגל לקול הקרוב, ולעולם לא מעבר לאחוז החסימה.`)}</Info></p>
-      {u && <p className="small cmpm-copy-fromto"><span><bdi>{nameList(from, u.src)}</bdi> · {from.year}, {from.name}: <bdi dir="ltr">{fmtInt(s)}</bdi> {L('votes', 'קולות')}, {seatsOf(from, u.src)} {L('seats', 'מנדטים')}</span>
+        `Only votes are copied. The seats are then worked out again under the rules of ${to.year}.`,
+        `מועתקים רק קולות. המנדטים מחושבים אחר כך מחדש לפי הכללים של ${to.year}.`)}</Info></p>
+      {u && !simple && <p className="small cmpm-copy-fromto"><span><bdi>{nameList(from, u.src)}</bdi> · {from.year}, {from.name}: <bdi dir="ltr">{fmtInt(s)}</bdi> {L('votes', 'קולות')}, {seatsOf(from, u.src)} {L('seats', 'מנדטים')}</span>
         <span aria-hidden> {lang === 'he' ? '←' : '→'} </span><span className="sr-only">{L('into', 'אל')}</span>
         <span><bdi>{nameList(to, u.dst)}</bdi> · {to.year}, {to.role === 'main' ? L('your work', 'העבודה שלכם') : to.name}: <bdi dir="ltr">{fmtInt(votes(to.sc, u.dst))}</bdi> {L('votes', 'קולות')}, {seatsOf(to, u.dst)} {L('seats', 'מנדטים')}</span></p>}
       {req.choices && req.choices.length > 1 && <fieldset className="cmpm-copy-lists"><legend>{(() => { const n = req.choices!.filter((c) => ticked.has(c.key)).reduce((t, c) => t + c.unit.dst.length, 0), all = req.choices!.reduce((t, c) => t + c.unit.dst.length, 0);
@@ -161,7 +161,9 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
           {/* the count before and after, so an adjusted count is never mistaken for a literal copy */}
           {(() => { const p = plans[mode], n = target(p); return <>
             <p className="cmpm-copy-count">{names.length === 1 && <><b><bdi>{names[0]}</bdi></b>: </>}<bdi dir="ltr">{fmtInt(votes(from.sc, units.flatMap((x) => x.src)))}</bdi> {L(`votes in ${where}`, `קולות ${inWhere(where)}`)}
-              {n !== null && <>{arrow}<b><bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')}</b></>}</p>
+              {n !== null && <>{arrow}<b><bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')}</b></>}
+              {/* the figure now, which the line above this level leaves out */}
+              {<span className="muted"> {L('(now ', '(עכשיו ')}<bdi dir="ltr">{fmtInt(votes(to.sc, dst))}</bdi>{L(')', ')')}</span>}</p>
             {p && <p className="cmpm-copy-seats"><Outcome plan={p} to={to} focus={dst} info={p.ok ? seatsWhy : undefined} /></p>}</>; })()}</div>
         : <fieldset className="cmp-modes"><legend>{L('Copy as', 'העתקה לפי')}</legend>
           {choice(votesMode, { value: 'votes', checked: byCount, pick: () => setMode(votesMode), seatsInfo: !cross,
