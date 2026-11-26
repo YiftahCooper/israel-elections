@@ -162,9 +162,9 @@ test('a split copies only as a group; nothing is left to check in 2022 → 2026;
   await expect(line.getByRole('button', { name: 'Copy the group’s votes to 2026' })).toBeVisible();
   const dem = row(page, 'The Democrats');
   await expect(dem.locator('.cmp-tag')).toHaveText('Ran jointly');
-  await page.locator('.cmp-toolbar').getByRole('button', { name: /Matching/ }).click();
+  await page.locator('.cmp-toolbar').getByRole('button', { name: /Pair lists/ }).click();
   const panel = page.locator('dialog[open].cmp-matching');
-  await panel.getByRole('button', { name: 'To verify', exact: true }).click();
+  await panel.getByRole('button', { name: 'To check', exact: true }).click();
   await expect(panel.locator('.cmp-match-list')).toHaveText('Nothing here.');
   await panel.getByRole('button', { name: 'All', exact: true }).click();
   const yashar = panel.locator('li').filter({ hasText: 'Yashar!' }).first();
@@ -179,11 +179,11 @@ test('Swap makes 2022 your work; a saved comparison and its link reopen both sid
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await start(page);
   await openSideBySide(page);
-  await page.locator('.cmp-swap').click();
+  await page.locator('.cmpm-strip .cmpm-swap').click();
   await expect(card(page, 'main')).toContainText('2022');
   await expect(card(page, 'other')).toContainText('2026');
   await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toContainText('2022');
-  await page.locator('.cmp-swap').click();
+  await page.locator('.cmpm-strip .cmpm-swap').click();
   await expect(card(page, 'main')).toContainText('2026');
   // a copy into the compared 2022, then share: the link carries both sides
   await row(page, 'Likud').getByRole('button', { name: 'More for Likud' }).click();
@@ -300,7 +300,7 @@ test('the share change carries its unit', async ({ page }) => {
   await openSideBySide(page);
   await expect(row(page, 'Likud').locator('.cmp-pp')).toHaveText(/^[−+]2\.89 pp$/);
   await page.locator('.cmp-table th.cmp-mid').getByRole('button').click();
-  await expect(page.getByText(/share of valid votes in percentage points/)).toBeVisible();
+  await expect(page.getByText(/pp: percentage points/)).toBeVisible();
 });
 
 test('an import that puts someone on two lists warns, names both, and removes only on request', async ({ page }) => {
@@ -404,7 +404,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
   test(`no copy control in Side by side is an arrow: ${lang}, ${width}px`, async ({ page }) => {
     await start(page, lang, 'k26', width);
     await openSideBySide(page);
-    const arrowControls = async () => page.locator('.side-by-side, .cmp-menu, dialog[open]').evaluateAll((roots) => roots.flatMap((root) =>
+    const arrowControls = async () => page.locator('.cmpm-strip, .side-by-side, .cmp-menu, dialog[open]').evaluateAll((roots) => roots.flatMap((root) =>
       [...root.querySelectorAll('button, [role="button"], a')].filter((b) => b.querySelector('svg[class*="arrow"]') || /[←→⇐⇒⟵⟶➜⬅➡]/.test(b.textContent ?? ''))
         .map((b) => b.getAttribute('aria-label') || b.textContent?.trim() || '')));
     const notCopy = /^(Swap|החלפה|Compare|השוואה)(?=$|[\s:])/;
@@ -412,7 +412,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
     const band = page.locator('.cmp-band-row[data-key="turnout"]');
     await expect(band.locator('.cmp-band-copy')).toHaveText(lang === 'he' ? 'העתקה' : 'Copy');
     const found = await arrowControls();
-    expect(found.some((name) => /^(Swap|החלפה)/.test(name))).toBe(true); // the check sees arrow icons (Swap has one)
+    expect(found.some((name) => /^(Swap|החלפה)/.test(name))).toBe(true); // the check sees arrow icons (the strip's Swap has one)
     for (const name of found) expect(name).toMatch(notCopy);
     await expect(page.locator('.cmp-arrow')).toHaveCount(0);
     await band.locator('.cmp-band-more').click();

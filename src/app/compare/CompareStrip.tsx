@@ -85,11 +85,11 @@ export function CompareStrip({ s }: { s: Scenario }) {
       {picker}
       {state.status === 'loading' && <span className="small muted">{L('Loading…', 'טוען…')}</span>}
     </span>
-    {ready && <button type="button" className="btn small cmpm-swap" aria-label={L('Swap', 'החלפה')} onClick={() => thenFocus(() => swapWithReference(ready), '.cmpm-strip .cmpm-swap', '.cmpm-strip .cmpm-picker .choice-trigger')} title={L(`Make ${ready.year} your work`, `${ready.year} תהפוך לעבודה שלכם`)}>
+    {ready && <button type="button" className="btn small cmpm-swap" aria-label={L('Swap', 'החלפה')} onClick={() => thenFocus(() => swapWithReference(ready), '.cmpm-strip .cmpm-swap', '.cmpm-strip .cmpm-picker .choice-trigger')} title={L(`Edit ${ready.year} instead`, `עריכת ${ready.year} במקום`)}>
       <ArrowLeftRight className="icon sm" aria-hidden /><span>{L('Swap', 'החלפה')}</span></button>}
     {ready && <Info title={L('Swap', 'החלפה')} label={L('About Swap', 'הסבר: החלפה')}>{he
-      ? `${ready.year} (${ready.name}) הופכת לעבודה שלכם, והעבודה הנוכחית הופכת לנקודת ההשוואה ונשארת כטיוטה שלא נשמרה, עם היסטוריית הביטולים שלה. החלפה נוספת מחזירה. מה שמשווים אליו אינו נערך כאן; כדי לשנות אותו, מחליפים.`
-      : `${ready.year} (${ready.name}) becomes your work, and your current work becomes the reference, kept as an unsaved draft with its own undo history. Swap again to go back. The reference is never edited here; to change it, swap.`}</Info>}
+      ? `${ready.year} (${ready.name}) הופכת לתוצאה שאתם עורכים, ומה שערכתם הופך לתוצאה שמשווים אליה. החלפה נוספת מחזירה, וכל עריכה נשמרת.`
+      : `${ready.year} (${ready.name}) becomes the result you edit, and what you were editing becomes the one you compare with. Swap again to go back; nothing is lost.`}</Info>}
     {ready && sideShown && (side
       ? <button type="button" className="btn small cmpm-side" aria-pressed aria-label={L('Close side by side', 'סגירת זו לצד זו')} onClick={closeSideBySide}><Columns2 className="icon sm" aria-hidden /><span>{L('Close side by side', 'סגירת זו לצד זו')}</span></button>
       : <button type="button" className="btn small cmpm-side" aria-label={L('Side by side', 'זו לצד זו')} onClick={openSideBySide}><Columns2 className="icon sm" aria-hidden /><span>{L('Side by side', 'זו לצד זו')}</span></button>)}

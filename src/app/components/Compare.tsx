@@ -9,7 +9,7 @@ import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { baseContext, dispatch, redo, resetAll, undo, useStore } from '../store.ts';
 import { dispatchSide, redoSide, startOverSide, undoSide } from '../compare/sides.ts';
-import { startComparing, swapWithReference, useReference, yearOf } from '../compare/mode.ts';
+import { startComparing, useReference, yearOf } from '../compare/mode.ts';
 import type { SideModel } from '../compare/model.ts';
 import type { Action } from '../../model/scenario.ts';
 
@@ -55,7 +55,7 @@ export function Compare({ s, r, base, ds }: { s: Scenario; r: AllocationResult; 
     <div className="cmpm-side-head"><h2>{L('Side by side', 'זו לצד זו')}</h2></div>
     <AnalysisEdits s={s} outlet="compare-grouping" />
     <Suspense fallback={<p className="small muted">{L('Loading…', 'טוען…')}</p>}>
-      <Workbench main={main} other={other} onSwap={() => swapWithReference(ref)}
+      <Workbench main={main} other={other}
         picker={null} />
     </Suspense>
   </div>;

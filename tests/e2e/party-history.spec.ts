@@ -113,17 +113,17 @@ test('Compare tags the Democrats as ran jointly, notes the comparison under the 
   await expect(row('The Democrats').locator('.ph-cmpnote')).toHaveText(/^Compared with Labor, renamed \+ Meretz \(2022\)\s*Probable$/);
   await expect(row('Likud').locator('.ph-cmpnote')).toHaveText(/^New Hope.* ran inside National Unity in 2022, so it is not counted$/);
   await expect(row('Shas').locator('.ph-cmpnote')).toHaveCount(0);
-  await page.getByRole('button', { name: 'Matching', exact: true }).click();
+  await page.getByRole('button', { name: 'Pair lists', exact: true }).click();
   const panel = page.locator('dialog[open].cmp-matching');
   await panel.getByRole('button', { name: 'All', exact: true }).click();
   const dem = panel.locator('li').filter({ hasText: 'Labor + Meretz' });
   await expect(dem).toContainText('The Democrats (2026) is compared with Labor (4 seats) and Meretz (0 seats) in 2022, taken together.');
-  await expect(dem).toContainText('How sure: Probable');
+  await expect(dem).not.toContainText('How sure');
   await expect(dem).toContainText('Labor renamed The Democrats (2024)');
   await expect(dem).not.toContainText('labor-democrats-rename');
 });
 
-test('each pairing in Compare says what is compared with what, why and how sure, behind the (i) by its tag', async ({ page }) => {
+test('each pairing in Compare says what is compared with what and why, behind the (i) by its tag', async ({ page }) => {
   await start(page);
   await openSideBySide(page);
   const row = (name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname, .cmp-rname', { hasText: name }) }).first();
@@ -131,7 +131,7 @@ test('each pairing in Compare says what is compared with what, why and how sure,
   const pop = page.locator('.pop').filter({ hasText: 'This pairing' });
   await expect(pop).toContainText('Joint List (2026) is compared with Hadash–Ta\'al (5 seats) and Balad (0 seats) in 2022, taken together.');
   await expect(pop).toContainText('Why: Same leading party: Hadash.');
-  await expect(pop).toContainText('How sure: Confirmed');
+  await expect(pop).not.toContainText('How sure');
   await expect(pop).toContainText('A joint list’s votes are never divided among its parties.');
   await page.keyboard.press('Escape');
   await row('Likud').getByRole('button', { name: 'Why this pairing: Likud' }).click();

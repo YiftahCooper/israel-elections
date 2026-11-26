@@ -175,7 +175,7 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <figure ref={box} style={{ margin: 0, position: 'relative' }}>
       <figcaption><h3>{L('Distance from the threshold (closest lists)', 'מרחק מאחוז החסימה (הרשימות הקרובות)')}</h3></figcaption>
-      <p className="small muted" style={{ margin: '0 0 4px' }}>{L(`Threshold: ${fmtInt(thr)} votes. Bars right of the line pass.`, `אחוז החסימה: ${fmtInt(thr)} קולות. מימין לקו — עוברת.`)}</p>
+      <p className="small muted" style={{ margin: '0 0 4px' }}>{L(`The line is the threshold, ${fmtInt(thr)} votes. Each number is how many votes a list had above it (+) or was short of it (−).`, `הקו הוא אחוז החסימה, ${fmtInt(thr)} קולות. כל מספר הוא כמה קולות הרשימה קיבלה מעליו (+) או חסרו לה כדי לעבור אותו (−).`)}</p>
       <svg className="chart" viewBox={`0 0 ${W} ${H}`} width="100%" role="img" aria-label={L('Votes above or below the threshold', 'קולות מעל או מתחת לאחוז החסימה')}>
         {rows.map(({ l, d, name }, i) => {
           const w = (Math.abs(d) / max) * half;
@@ -183,8 +183,8 @@ function ThresholdDistance({ s, r }: { s: Scenario; r: AllocationResult }) {
           const x = d >= 0 ? mid : mid - w;
           const lx = stacked ? (he ? W - 4 : 4) : mid + (d >= 0 ? 4 : -4);
           return (
-            <g key={l.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.enter(() => setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> })); }}
-              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.keep(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? '+' : '−'}{fmtInt(Math.abs(d))} {L('vs threshold', 'מול החסימה')}</div></> }); } setState({ selectedListId: l.id }); }} style={{ cursor: 'pointer' }}>
+            <g key={l.id} onMouseMove={(e) => { if (!hoverPopups) return; bridge.enter(() => setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? L(`${fmtInt(d)} above the threshold`, `${fmtInt(d)} מעל אחוז החסימה`) : L(`${fmtInt(-d)} short of the threshold`, `חסרו ${fmtInt(-d)} לאחוז החסימה`)}</div></> })); }}
+              onMouseLeave={bridge.leave} onClick={(e) => { if (!hoverPopups) { bridge.keep(); setTip({ x: e.clientX, y: e.clientY, html: <><b>{name}</b><div>{fmtInt(l.votes)} {L('votes', 'קולות')}</div><div>{d >= 0 ? L(`${fmtInt(d)} above the threshold`, `${fmtInt(d)} מעל אחוז החסימה`) : L(`${fmtInt(-d)} short of the threshold`, `חסרו ${fmtInt(-d)} לאחוז החסימה`)}</div></> }); } setState({ selectedListId: l.id }); }} style={{ cursor: 'pointer' }}>
               <rect x={0} y={y - 3} width={W} height={rowH - 2} fill="transparent" />
               <text x={lx} y={y + 9} textAnchor={stacked ? (he ? 'end' : 'start') : (d >= 0 ? 'start' : 'end')} fill="var(--ink)" data-chart-label=""><title>{name}</title>{isolate(name)}</text>
               <rect className="bar" x={x} y={yb + 2} width={Math.max(1, w)} height={12} rx={2} fill={l.color} stroke={edge(l.color)} strokeWidth={1} />

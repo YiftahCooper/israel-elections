@@ -23,9 +23,9 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Scenario } from '../../model/scenario.ts';
 import { useL, useLang } from '../i18n.ts';
 import { csvEscape, download } from '../format.ts';
-import { deleteSaved, dispatch, setSetting, useSetting, duplicateCurrent, importScenarioJson, openElection, openImported, openSaved, replay, scenarioKey, setState, shareLink, toast, useShown, useStore } from '../store.ts';
+import { deleteSaved, dispatch, setSetting, useSetting, importScenarioJson, openElection, openImported, openSaved, replay, scenarioKey, setState, shareLink, toast, useShown, useStore } from '../store.ts';
 import { compareWith } from '../compare/mode.ts';
-import { ChevronDown, Copy, Download, FolderOpen, Link2, Menu, RotateCcw, Save, Share2, Table2, Trash2, Upload, Settings, X } from 'lucide-react';
+import { ChevronDown, Download, FolderOpen, Link2, Menu, RotateCcw, Save, Share2, Table2, Trash2, Upload, Settings, X } from 'lucide-react';
 import { PersonalSettings } from './PersonalSettings.tsx';
 import { AppMenu } from './AppMenu.tsx';
 import { Seg } from './ui.tsx';
@@ -90,7 +90,6 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
               catch { toast('info', L('Copy the link from the field below.', 'העתיקו את הקישור מהשדה שלמטה.')); }
             }}><Link2 className="icon sm" aria-hidden />{L('Copy a share link', 'העתקת קישור שיתוף')}</button>
             {shareUrl && <input type="text" readOnly value={shareUrl} aria-label={L('Share link', 'קישור שיתוף')} onFocus={(e) => e.target.select()} style={{ width: '100%' }} />}
-            <button className="btn small" onClick={() => { duplicateCurrent(); toast('info', L('Saved as a copy in this browser.', 'נשמר עותק בדפדפן זה.')); close(); }}><Copy className="icon sm" aria-hidden />{L('Duplicate scenario', 'שכפול תרחיש')}</button>
             <button className="btn small" onClick={() => { if (s && ds) download(`${s.electionId}-${fileName(s.name)}.json`, JSON.stringify({ ...s, ...exportAnnotations(s, lang), datasetBuiltAt: ds.buildInfo.builtAt }, null, 1), 'application/json'); close(); }}><Download className="icon sm" aria-hidden />{L('Export scenario (JSON)', 'ייצוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => fileRef.current?.click()}><Upload className="icon sm" aria-hidden />{L('Import scenario (JSON)', 'ייבוא תרחיש (JSON)')}</button>
             <button className="btn small" onClick={() => { exportCsv(); close(); }}><Table2 className="icon sm" aria-hidden />{L('Export results table (CSV)', 'ייצוא טבלת תוצאות (CSV)')}</button>

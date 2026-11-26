@@ -100,7 +100,9 @@ test('the Lists panel shows each list in 2022: a striped bar and a line; new and
   await expect(page.locator('.cmpm-refbar')).toHaveCount(0);
   await turnOn(page);
   await expect(page.locator('.cmpm-legend')).toContainText('2026');
-  await expect(row(page, 'Likud')).toContainText(/2022: 32 ▼ [−-]5 · Likud/);
+  await expect(row(page, 'Likud')).toContainText(/2022: 32 seats · now ▼ [−-]5/);
+  // the 2022 name is left out when it is the list's name now
+  await expect(row(page, 'Likud')).not.toContainText('· Likud');
   await expect(row(page, 'Likud').locator('.cmpm-refbar')).toHaveCount(1);
   await expect(row(page, 'Beyachad')).toContainText('Yesh Atid (joined)');
   await expect(row(page, 'Yashar!')).toContainText('2022: no list of its own (new)');
@@ -117,7 +119,7 @@ test('the Lists panel shows each list in 2022: a striped bar and a line; new and
 test('Settings can turn the striped bars off; the line stays', async ({ page }) => {
   await start(page, 'en', 'simple', 1500, { compareBars: false });
   await turnOn(page);
-  await expect(row(page, 'Likud')).toContainText(/2022: 32 ▼ [−-]5/);
+  await expect(row(page, 'Likud')).toContainText(/2022: 32 seats · now ▼ [−-]5/);
   await expect(page.locator('.cmpm-refbar')).toHaveCount(0);
   await expect(page.locator('.cmpm-legend')).toHaveCount(0);
 });
@@ -158,7 +160,7 @@ test('Copy votes at Standard: Number of votes with its checkbox, and Share of va
   await expect(adjustBox(page)).toBeChecked();
   await expect(methods.nth(0)).toHaveAttribute('data-mode', 'eligible');
   await expect(methods.nth(0)).toContainText('1,204,575 votes');
-  await expect(methods.nth(0)).toContainText(/27 → 28/);
+  await expect(methods.nth(0)).toContainText('Likud would have 28 seats (1 more).');
   await expect(methods.nth(1)).toContainText('Share of valid votes (23.41%)');
   await expect(methods.nth(1)).toContainText('1,332,255 votes');
   // why seats are not shared out like votes, beside a seat preview
@@ -167,7 +169,7 @@ test('Copy votes at Standard: Number of votes with its checkbox, and Share of va
   await adjustBox(page).uncheck();
   await expect(methods.nth(0)).toHaveAttribute('data-mode', 'count');
   await expect(methods.nth(0)).toContainText('1,115,336 votes');
-  await expect(methods.nth(0)).toContainText(/27 → 26/);
+  await expect(methods.nth(0)).toContainText('Likud would have 26 seats (1 fewer).');
   // the checkbox counts only with Number of votes, and keeps its state while Share of valid votes is chosen
   await methods.nth(1).getByRole('radio').check();
   await expect(adjustBox(page)).toBeDisabled();
@@ -194,7 +196,7 @@ test('Copy votes at Simple is one method with its count before and after; at Exp
   await expect(one).toHaveAttribute('data-mode', 'eligible');
   await expect(one).toContainText('Votes adjusted for the number of eligible voters');
   await expect(one.locator('.cmpm-copy-count')).toContainText(/Likud: 1,115,336 votes in 2022 →.*1,204,575 votes/);
-  await expect(one).toContainText(/27 → 28/);
+  await expect(one).toContainText('Likud would have 28 seats (1 more).');
   await box(page).getByRole('button', { name: 'Cancel' }).click();
   await page.evaluate(() => { const raw = JSON.parse(localStorage.getItem('israel-elections:v1') ?? '{}'); localStorage.setItem('israel-elections:v1', JSON.stringify({ ...raw, level: 'expert' })); });
   await page.reload();

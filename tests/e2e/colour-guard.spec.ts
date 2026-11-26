@@ -1,4 +1,5 @@
 import{expect,test}from'./fixtures';
+import{openSettings}from'./barMenu';
 import{deflateRawSync}from'node:zlib';
 import{dataset}from'../graphics-cases.ts';
 import{deltaE2000}from'../../src/data/colour.ts';
@@ -26,11 +27,10 @@ for(const lang of ['en','he'])for(const theme of ['light','dark'])for(const widt
  await input.fill(clash);await expect(input).toHaveValue(clash);
  await expect(picker.getByRole('status')).toContainText(L('Hard to tell apart from','קשה להבחין בינו לבין'));
  await picker.getByRole('button',{name:L('Colour checks: explanation','הסבר: בדיקת צבעים'),exact:true}).click();
- await expect(page.getByRole('tooltip')).toContainText('CIEDE2000');await page.keyboard.press('Escape');
+ await expect(page.getByRole('tooltip')).toContainText(L('hard to tell apart','קשה להבחין'));await page.keyboard.press('Escape');
  // The rebuilt Settings popup and large-text layout preserve the explicit choice and its advice.
- await page.locator('.scn-options').getByRole('button',{name:L('Settings…','הגדרות…'),exact:true}).click();
+ await openSettings(page,lang);
  const settings=page.locator('.personal-settings');
- await expect(settings.locator('[data-setting="markChanges"]')).toBeInViewport();
  await settings.locator('[data-setting="textSize"]').getByRole('button',{name:L('Large','גדול'),exact:true}).click();
  await page.keyboard.press('Escape');
  await expect(page.locator('html')).toHaveAttribute('data-text','large');

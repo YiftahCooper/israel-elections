@@ -18,7 +18,8 @@ describe('the Lists panel while comparing 2026 with 2022', () => {
   it('gives each list its 2022 seats, the name it ran under and what happened', () => {
     expect(seats(k25, 'Likud')).toBe(32);
     expect(seats(k26, 'Likud')).toBe(27);
-    expect(line('Likud')).toMatchObject({ kind: 'pair', seats: 32, names: 'Likud', how: '', bar: true });
+    // the 2022 name is left out when it is the list's name now
+    expect(line('Likud')).toMatchObject({ kind: 'pair', seats: 32, names: '', how: '', bar: true });
     expect(line('Beyachad')).toMatchObject({ seats: seats(k25, 'Yesh Atid'), names: 'Yesh Atid', how: '(joined)', bar: true });
     expect(line('Joint List')).toMatchObject({ names: "Hadash–Ta'al + Balad", how: '(ran separately)' });
     expect(line('The Democrats')).toMatchObject({ names: 'Labor + Meretz', how: '(ran separately)', seats: seats(k25, 'Labor') + seats(k25, 'Meretz') });
@@ -48,7 +49,7 @@ describe('the Lists panel while comparing 2026 with 2022', () => {
 describe('other references', () => {
   it('a later election as the reference (after Swap): 2022 lists against 2026', () => {
     const rows = refRows(k25, k26, [], false, '2026', 'en');
-    expect(rows.byList.get(id(k25, 'Likud'))).toMatchObject({ seats: 27, names: 'Likud', bar: true });
+    expect(rows.byList.get(id(k25, 'Likud'))).toMatchObject({ seats: 27, names: '', bar: true });
     expect(rows.byList.get(id(k25, 'Yesh Atid'))).toMatchObject({ names: 'Beyachad', how: '(joined)' });
   });
   it('a later reference says what happened next in its own words: lists that ran together later did not split', () => {

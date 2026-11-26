@@ -101,7 +101,7 @@ export function TurnoutFacts({ s }: { s: Scenario }) {
         ? <Fact id="threshold" k={L('Threshold', 'אחוז החסימה')} info={<Info term="threshold" />} v={<>{L('None', 'אין')}<EditMarker s={s} path={['rules', 'thresholdPct']} outlet="turnout-tile" /></>} d={L('No percentage threshold', 'ללא אחוז חסימה')} edit={{ s, field: 'threshold' }} />
         : <Fact id="threshold" k={L('Threshold', 'אחוז החסימה')} info={<Info term="threshold" />}
           v={<><bdi dir="ltr">{fmtInt(r.thresholdVotes)}</bdi> {L('votes', 'קולות')}<EditMarker s={s} path={['rules', 'thresholdPct']} outlet="turnout-tile" /></>} d={<>{trimDecimal(s.rules.thresholdPct)}% {L('of valid votes', 'מהקולות הכשרים')}</>} edit={{ s, field: 'threshold' }} />)}
-      {expert && <Fact id="boxes" k={L('Polling-station results', 'תוצאות קלפי')} info={<Info term="polling-station"><span>{L('Rows in the official results table, which can include central double-envelope counts; not the number of physical polling stations.', 'שורות בטבלת התוצאות הרשמית, שעשויות לכלול ספירה מרכזית של מעטפות חיצוניות; אין זה מספר הקלפיות הפיזיות.')}</span></Info>}
+      {expert && <Fact id="boxes" k={L('Polling-station results', 'תוצאות קלפי')} info={<Info term="polling-station"><span>{L('Results reported one by one, including central counts of double envelopes, so a little more than the number of polling stations.', 'תוצאות שדווחו אחת־אחת, כולל ספירה מרכזית של מעטפות כפולות, ולכן מעט יותר ממספר הקלפיות.')}</span></Info>}
         v={official.ballotBoxes === null ? '—' : <bdi dir="ltr">{fmtInt(official.ballotBoxes)}</bdi>}
         d={official.ballotBoxes === null ? L('Not in the source for this election', 'לא מופיע במקור לבחירות אלה') : undefined}
         since={official.ballotBoxes !== null && prev?.ballotBoxes ? sinceWords(<CountDelta now={official.ballotBoxes} before={prev.ballotBoxes} digits={digits} />) : undefined} />}
@@ -168,7 +168,7 @@ function TurnoutHistory({ current, compared }: { current: ElectionId; compared: 
 
   // turnout is written with the turnout field's two decimals everywhere on this tab, like the figure above (owner, 19 Nov 2026)
   return <div className="tn-history">
-    <h4>{L('All elections', 'כל הבחירות')} <Info title={L('All elections', 'כל הבחירות')}>{L('Official national totals of each election. Choose an election to open it. Columns are elections, evenly spaced: this is not a time scale, since Knessets last different lengths. The shaded column is the open election.', 'הסיכומים הארציים הרשמיים של כל בחירות. בחירה בבחירות פותחת אותן. העמודות הן מערכות בחירות, במרווחים שווים: זה אינו ציר זמן, כי משך כל כנסת שונה. העמודה המוצללת היא הבחירות הפתוחות.')}</Info></h4>
+    <h4>{L('All elections', 'כל הבחירות')} <Info title={L('All elections', 'כל הבחירות')}>{L('Each column is one election, evenly spaced whatever the time between them. Choose one to open it.', 'כל עמודה היא מערכת בחירות אחת, במרווחים שווים בלי קשר לזמן שעבר ביניהן. בחירה בעמודה פותחת אותה.')}</Info></h4>
     <p className="tn-readout small" aria-live="polite">
       <b>{name(shown)}</b> · {L('Eligible', 'בעלי זכות')} <bdi dir="ltr">{fmtInt(shown.registered)}</bdi> · {L('Turnout', 'הצבעה')} {percentNum(pcts[rows.indexOf(shown)], TURNOUT_FIELD_DIGITS)}
     </p>

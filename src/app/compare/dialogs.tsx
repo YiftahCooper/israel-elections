@@ -6,14 +6,13 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Scenario, SimList } from '../../model/scenario.ts';
 import { allocationOf, electedOf, listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt } from '../format.ts';
+import { fmtInt, seatsText } from '../format.ts';
 import { useDigits, useStore } from '../store.ts';
 import { deltaAction, voteSourceLabel, type SourceChoice } from '../voteEdit.ts';
 import { sourceChoice, sourceValue } from '../preferences.ts';
 import { Info, Slip } from '../components/ui.tsx';
 import { ChoicePicker } from '../components/ChoicePicker.tsx';
 import { ListMark, listChoice } from '../components/ListMark.tsx';
-import { SeatDelta } from '../components/SeatDelta.tsx';
 import { adjustOf, basisOf, COPY_MODE_DEFAULT, duplicatePeople, isDefaultCopyMode, modeOf, planRoster, planWholeList, type CopyBasis, type CopyMode, type Plan, type Removal } from './copy.ts';
 import { COPY_INFO, COPY_WORDS } from './copyText.ts';
 import { listSearchNames, matchesName } from '../nameSearch.ts';
@@ -21,7 +20,7 @@ import { CandidateName } from '../components/CandidateName.tsx';
 import { inOf, personKey, sharedCandidates, type MatchOverride, type MatchRow, type MatchTag } from './match.ts';
 import { cellsOf, sourceOf, type SideModel } from './model.ts';
 import { partyLabel } from '../../families/registry.ts';
-import { CertChip, CERT_INFO, countedText, EvidenceLinks, eventText, relationYear, useCrossComparison } from '../components/PartyHistory.tsx';
+import { CertChip, countedText, EvidenceLinks, eventText, relationYear, useCrossComparison } from '../components/PartyHistory.tsx';
 import type { Comparison } from '../../history/compare.ts';
 import { RELATIONS } from '../../history/relations.ts';
 import { openModal } from '../focusReturn.ts';
@@ -32,15 +31,15 @@ export const TAGS: Record<MatchTag, [string, string]> = {
   new: ['New', 'חדשה'], ended: ['Ended', 'הסתיימה'], check: ['Check', 'לבדיקה'], yours: ['Yours', 'שלכם'],
 };
 export const TAG_INFO: Record<MatchTag, [string, string]> = {
-  same: ['The same party ran, alone or leading the list (party registry).', 'אותה מפלגה התמודדה, לבדה או בראש הרשימה (מרשם המפלגות).'],
-  renamed: ['The same party under a new name (recorded rename).', 'אותה מפלגה בשם חדש (שינוי שם מתועד).'],
-  joined: ['The party now runs inside a joint list led by another party (party registry).', 'המפלגה רצה כעת בתוך רשימה משותפת בראשות מפלגה אחרת (מרשם המפלגות).'],
-  'ran-jointly': ['Several parties shared one list at this election; they did not merge (party registry).', 'כמה מפלגות התמודדו ברשימה אחת בבחירות אלה; הן לא התאחדו (מרשם המפלגות).'],
-  merged: ['Parties merged into one party (recorded merger).', 'מפלגות התאחדו למפלגה אחת (איחוד מתועד).'],
+  same: ['The same party ran, alone or leading the list.', 'אותה מפלגה התמודדה, לבדה או בראש הרשימה.'],
+  renamed: ['The same party under a new name.', 'אותה מפלגה בשם חדש.'],
+  joined: ['The party now runs inside a joint list led by another party.', 'המפלגה רצה כעת בתוך רשימה משותפת בראשות מפלגה אחרת.'],
+  'ran-jointly': ['Several parties shared one list at this election; they did not merge.', 'כמה מפלגות התמודדו ברשימה אחת בבחירות אלה; הן לא התאחדו.'],
+  merged: ['Parties merged into one party.', 'מפלגות התאחדו למפלגה אחת.'],
   split: ['Its parties now run on several lists. Its votes cannot be divided by list.', 'מפלגותיה רצות כעת בכמה רשימות. אין לחלק את קולותיה לפי רשימה.'],
-  new: ['No sourced predecessor. Lists are never matched by name, letters or rank.', 'אין קודמת מתועדת. רשימות אינן מותאמות לפי שם, אותיות או דירוג.'],
-  ended: ['No sourced successor.', 'אין ממשיכה מתועדת.'],
-  check: ['A recorded link that is not yet established (To verify). Accept it to copy along it.', 'קשר מתועד שטרם אומת (לבדיקה). אשרו אותו כדי להעתיק לפיו.'],
+  new: ['No earlier list continues into this one.', 'אין רשימה קודמת שממשיכה לרשימה זו.'],
+  ended: ['No later list continues it.', 'אין רשימה מאוחרת שממשיכה אותה.'],
+  check: ['These may be the same list. Accept the pair to copy between them.', 'ייתכן שזו אותה רשימה. אשרו את ההתאמה כדי להעתיק ביניהן.'],
   yours: ['Paired by you, for this comparison only.', 'הותאם על ידיכם, להשוואה זו בלבד.'],
 };
 export const tagText = (t: MatchTag, L: L) => L(...TAGS[t]);
@@ -65,7 +64,7 @@ export function SourceSelect({ dest, exclude, value, onChange, label, info }: { 
   const others = dest.lists.filter((l) => !exclude.includes(l.id) && !l.withdrawn).sort((a, b) => b.votes - a.votes);
   return <div className="field"><span>{label}{info && <> {info}</>}</span>
     <ChoicePicker label={label} value={sourceValue(value)} onChange={(v) => onChange(sourceChoice(v))}
-      options={[{ value: 'proportional', label: L('Other lists, proportionally', 'שאר הרשימות, באופן יחסי') }, { value: 'new', label: L('New voters / staying home', 'מצביעים חדשים / מי שלא הצביעו') },
+      options={[{ value: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { value: 'new', label: L('People who stayed home', 'מי שלא הצביעו') },
         ...others.map((l) => listChoice(l, lang, { value: `t:${l.id}`, group: L('One list', 'רשימה אחת') }))]} />
   </div>;
 }
@@ -78,7 +77,14 @@ export function Outcome({ plan, to, focus, info }: { plan: Plan; to: SideModel; 
   const after = allocationOf(plan.result);
   const changed = plan.result.lists.map((l) => ({ l, a: to.r.lists.find((x) => x.id === l.id)?.seats ?? 0, b: after.lists.find((x) => x.id === l.id)?.seats ?? 0 }))
     .filter((x) => x.a !== x.b || focus?.includes(x.l.id)).sort((x, y) => Number(focus?.includes(y.l.id)) - Number(focus?.includes(x.l.id)) || Math.abs(y.b - y.a) - Math.abs(x.b - x.a));
-  return <span className="cmp-outcome">{changed.length ? changed.slice(0, 4).map(({ l, a, b }) => <span key={l.id}><bdi>{listLabel(l, lang)}</bdi> {a !== b ? <><bdi dir="ltr">{a} → {b}</bdi> <SeatDelta value={b - a} /></> : <>{a} <span className="muted">{L('(unchanged)', '(ללא שינוי)')}</span></>}</span>) : L('Seats unchanged', 'המנדטים ללא שינוי')}
+  // each change as a sentence with its subject (owner, 26 Nov 2026): "Likud would have 28 seats (1 more). Ra'am would have 7 seats (1 fewer)."
+  const sentence = (name: string, a: number, b: number) => {
+    const d = b - a;
+    if (!d) return lang === 'he' ? `${name}: ${seatsText(a, 'he')}, ללא שינוי.` : `${name} stays at ${seatsText(a, 'en')}.`;
+    return lang === 'he' ? `${hebrewPrefixName('ל', name)} יהיו ${seatsText(b, 'he')} (${d > 0 ? 'יותר' : 'פחות'} ב־${Math.abs(d)}).`
+      : `${name} would have ${seatsText(b, 'en')} (${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}).`;
+  };
+  return <span className="cmp-outcome">{changed.length ? changed.slice(0, 4).map(({ l, a, b }) => <span key={l.id} data-change={Math.sign(b - a)}><bdi>{sentence(listLabel(l, lang), a, b)}</bdi></span>) : L('Seats unchanged', 'המנדטים ללא שינוי')}
     {plan.capped !== undefined && <span className="cmp-capped">{L(`Capped at ${fmtInt(plan.capped)} voters staying home`, `מוגבל ל־${fmtInt(plan.capped)} שלא הצביעו`)}</span>}{info}</span>;
 }
 
@@ -172,15 +178,15 @@ const reasonText = (row: MatchRow, L: L, lang: 'he' | 'en') => {
   const r = row.reason;
   if (r.kind === 'leading-party') return L(`Same leading party: ${partyLabel(r.partyId, 'en')}`, `אותה מפלגה מובילה: ${partyLabel(r.partyId, 'he')}`);
   if (r.kind === 'constituent') return L(`Shared party: ${r.partyIds.map((p) => partyLabel(p, 'en')).join(', ')}`, `מפלגה משותפת: ${r.partyIds.map((p) => partyLabel(p, 'he')).join(', ')}`);
-  if (r.kind === 'lineage') { const rel = RELATIONS.find((x) => x.id === r.edgeId); return rel ? eventText(rel, lang) : L('Documented lineage', 'שושלת מתועדת'); }
+  if (r.kind === 'lineage') { const rel = RELATIONS.find((x) => x.id === r.edgeId); return rel ? eventText(rel, lang) : L('The same party line', 'אותו רצף מפלגתי'); }
   if (r.kind === 'pending') return L('Announced merger, not legally completed', 'איחוד שהוכרז, טרם הושלם כחוק');
   if (r.kind === 'origin') return L('Same origin in this election', 'אותו מקור בבחירות אלה');
   if (r.kind === 'user') return L('Paired by you', 'הותאם על ידיכם');
-  return lang === 'he' ? 'אין קשר מתועד' : 'No sourced relation';
+  return lang === 'he' ? 'אין רשימה שממשיכה אותה' : 'No list continues it';
 };
 
 /**
- * One pairing in plain words: what is compared with what, why, how sure, and the evidence. The same text sits behind
+ * One pairing in plain words: what is compared with what, why, and the evidence (no certainty talk: clarity pass, 26 Nov 2026). The same text sits behind
  * the (i) by each row's tag, in Matching and in the phone row sheet. `c`: the shared comparison rule's answer for the
  * later list (between elections, one later list), or null.
  */
@@ -204,8 +210,7 @@ export function PairingWhy({ row, early, late, earlyIds, lateIds, c }: { row: Ma
     {used?.relations.map((r) => <span key={r.id} className="cmp-why-rel"><span>{eventText(r, lang)} ({relationYear(r.date)}) <CertChip c={r.certainty} /></span><EvidenceLinks r={r} /></span>)}
     {used?.notCounted.map((n) => <span key={n.partyId + n.listId} className="muted">{L(`Not counted: ${partyLabel(n.partyId, 'en')} ran inside another list in ${at(early)}, and that list's votes cannot be divided.`, `לא נספרה: ${partyLabel(n.partyId, 'he')} רצה ב־${at(early)} בתוך רשימה אחרת, ואת קולות הרשימה ההיא אי אפשר לחלק.`)}</span>)}
     {used?.left.map((n) => <span key={`l${n.partyId}`} className="muted">{L(`${partyLabel(n.partyId, 'en')} has since left for another list.`, `${partyLabel(n.partyId, 'he')} עברה מאז לרשימה אחרת.`)}</span>)}
-    {c?.kind === 'verify' && <span>{L('Not compared yet: the link that decides it is not established.', 'טרם הושווה: הקשר שמכריע זאת טרם בוסס.')} {c.toVerify.map((r) => <span key={r.id} className="cmp-why-rel"><span>{eventText(r, lang)} ({relationYear(r.date)}) <CertChip c={r.certainty} /></span><EvidenceLinks r={r} /></span>)}</span>}
-    {used && <span><span className="cmp-why-k">{L('How sure', 'מידת הוודאות')}:</span> <CertChip c={used.certainty} /> <span className="tiny muted">{L(...CERT_INFO[used.certainty])}</span></span>}
+    {c?.kind === 'verify' && <span>{L('Not compared yet: it is not yet settled which earlier list it continues.', 'טרם הושוותה: עוד לא הוכרע איזו רשימה קודמת היא ממשיכה.')} {c.toVerify.map((r) => <span key={r.id} className="cmp-why-rel"><span>{eventText(r, lang)} ({relationYear(r.date)}) <CertChip c={r.certainty} /></span><EvidenceLinks r={r} /></span>)}</span>}
     {joint && <span className="tiny muted">{L('A joint list’s votes are never divided among its parties.', 'קולות של רשימה משותפת אינם מחולקים בין מפלגותיה.')}</span>}
   </span>;
 }
@@ -224,9 +229,9 @@ export function MatchingPanel({ rows, flip, left, right, overrides, setOverrides
   const shown1 = (x: SideModel, row: MatchRow, side: 'left' | 'right') => inOf(row, side) ? L(`in ${name(x, [inOf(row, side)!])}`, `בתוך ${name(x, [inOf(row, side)!])}`) : name(x, row[side]);
   const mine = (row: MatchRow) => overrides.some((o) => earlyIds(row).includes(o.left) && lateIds(row).includes(o.right ?? ''));
   const lineage = useCrossComparison(early.sc.electionId !== late.sc.electionId ? late : null, early.sc.electionId !== late.sc.electionId ? early : null);
-  return <Modal label={L('Matching', 'התאמת רשימות')} onClose={onClose} className="cmp-matching">
-    <div className="choice-head"><b>{L('Matching', 'התאמת רשימות')}</b> <Info title={L('How lists are matched', 'כיצד רשימות מותאמות')}>{L('From the party registry and documented lineage only: the leading party, shared constituent parties, renames, mergers and splits. Never by name, ballot letters or rank. Your pairings stay with this comparison and never change a result.', 'רק לפי מרשם המפלגות והשושלת המתועדת: המפלגה המובילה, מפלגות מרכיבות משותפות, שינויי שם, איחודים ופיצולים. לעולם לא לפי שם, אותיות או דירוג. ההתאמות שלכם נשמרות להשוואה זו בלבד ואינן משנות תוצאה.')}</Info><button className="btn" aria-label={L('Close', 'סגירה')} onClick={onClose}>×</button></div>
-    <div className="seg-row" role="group" aria-label={L('Show', 'הצגה')}>{([['all', L('All', 'הכול')], ['check', L('To verify', 'לבדיקה')], ['unmatched', L('Unmatched', 'ללא התאמה')]] as const).map(([v, t]) =>
+  return <Modal label={L('Pair lists', 'התאמת רשימות')} onClose={onClose} className="cmp-matching">
+    <div className="choice-head"><b>{L('Pair lists', 'התאמת רשימות')}</b> <Info title={L('Pair lists', 'התאמת רשימות')}>{L('Which list of one election is compared with which of the other. Your own pairings stay with this comparison and never change a result.', 'איזו רשימה במערכת בחירות אחת מושווית לאיזו רשימה במערכת האחרת. ההתאמות שלכם נשמרות להשוואה זו בלבד ואינן משנות תוצאה.')}</Info><button className="btn" aria-label={L('Close', 'סגירה')} onClick={onClose}>×</button></div>
+    <div className="seg-row" role="group" aria-label={L('Show', 'הצגה')}>{([['all', L('All', 'הכול')], ['check', L('To check', 'לבדיקה')], ['unmatched', L('New or ended', 'חדשות או שהסתיימו')]] as const).map(([v, t]) =>
       <button key={v} type="button" className={`btn small ${filter === v ? 'primary' : ''}`} aria-pressed={filter === v} onClick={() => setFilter(v)}>{t}</button>)}</div>
     <ul className="cmp-match-list">{shown.map((row) => <li key={row.key}>
       <div className="row cmp-match-names" dir="ltr">{!inOf(row, 'left') && marksOf(left, row.left, lang)}<bdi>{shown1(left, row, 'left')}</bdi><span aria-hidden>{flip ? '←' : '→'}</span>{!inOf(row, 'right') && marksOf(right, row.right, lang)}<bdi>{shown1(right, row, 'right')}</bdi>

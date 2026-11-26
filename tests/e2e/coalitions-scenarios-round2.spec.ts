@@ -64,7 +64,7 @@ test('scenarios: Save shows state — nothing to save, unsaved, saved', async ({
   const current = page.locator('.scn-current');
   await expect(current.locator('h3')).toContainText('Official result');
   await expect(current.getByRole('button', { name: 'Save', exact: true })).toBeDisabled();
-  await expect(current.getByRole('button', { name: 'Duplicate', exact: true })).toBeDisabled();
+  await expect(current.getByRole('button', { name: 'Save as…', exact: true })).toBeDisabled();
   await page.getByRole('textbox', { name: 'Name', exact: true }).fill('Trial');
   await page.getByRole('textbox', { name: 'Name', exact: true }).press('Enter');
   await expect(current.locator('h3')).toContainText('This scenario');

@@ -38,11 +38,11 @@ test('locality map supports bilingual search, address lookup and table fallback'
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k17');
   await page.getByRole('button', {name:'Map',exact:true}).click();
   // Hebron is placed by hand, marked approximate (U4, 16 Nov)
-  await expect(page.getByText('1,145 of 1,149 localities placed.')).toBeVisible();
+  await expect(page.getByText('4 of 1,149 places have no point on the map; they are listed below.')).toBeVisible();
   await expect(page.getByText(/because no official locality table exists/)).toHaveCount(0);
   await expect(page.locator('.locality-map-label').filter({hasText:'Jerusalem'})).toHaveCount(1);
-  await page.getByRole('button', {name:'2006 location matching: explanation',exact:true}).click();
-  await expect(page.getByText('2006 locations are matched by Hebrew name to a single CBS locality code. Ambiguous or unmatched rows remain unplaced.')).toBeVisible();
+  // the 2006 note says what it means for the map in one line, with no method essay behind an (i) (clarity pass, 26 Nov 2026)
+  await expect(page.getByText('The official 2006 results have no locality codes', {exact:false}).first()).toBeVisible();
 });
 
 test('locality map explains a result, speaks English and fits the dark theme', async ({ page }) => {
@@ -102,25 +102,23 @@ test('zooming the locality map never scrolls the page', async ({ page }) => {
 });
 
 
-test('2006 Hebrew map explains name placement and lists only the four unplaced localities', async ({page}) => {
+test('2006 Hebrew map says in one line why a few places are missing and lists only those four', async ({page}) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 1 } })); return JSON.stringify(o); })({lang:'he',level:'expert',hintDismissed:true})));
   await page.route('https://tiles.openfreemap.org/**', route => route.abort());
   await page.goto('/');
   await choose(page.getByRole('button', { name: /^בחירות(: |$)/ }), 'k17');
   await page.getByRole('tab', {name:'יישובים',exact:true}).click();
-  await expect(page.getByText('1,145 מתוך 1,149 יישובים ממופים.')).toBeVisible();
+  await expect(page.getByText('ל־4 מתוך 1,149 מקומות אין נקודה במפה; הם מפורטים למטה.')).toBeVisible();
   await expect(page.locator('.locality-map-label').first()).toBeVisible();
-  await page.getByRole('button', {name:'הסבר: התאמת מיקומים ב־2006',exact:true}).click();
-  await expect(page.getByText('מיקומי 2006 הותאמו לפי השם העברי לסמל יישוב יחיד של הלמ״ס. שורות ללא התאמה או עם התאמה עמומה אינן ממוקמות.')).toBeVisible();
-  await page.keyboard.press('Escape');
-  const missing = page.locator('.locality-map-tool details').filter({has:page.getByText('שורות ללא מיקום במפה',{exact:true})});
+  await expect(page.getByText('בתוצאות הרשמיות של 2006 אין סמלי יישובים', {exact:false}).first()).toBeVisible();
+  const missing = page.locator('.locality-map-tool details').filter({has:page.getByText('מקומות שאינם במפה',{exact:true})});
   await missing.locator('summary').click();
   await expect(missing.locator('li')).toHaveCount(4);
   for(const name of ['דלתון','נווה אילן','סנסנה','שושנת העמקים']) await expect(missing).toContainText(name);
   await expect(missing).not.toContainText('חברון');
   await expect(missing).not.toContainText('מעטפות');
   await page.getByRole('button', {name:'טבלה',exact:true}).click();
-  await expect(page.getByRole('button', {name:'הסבר: התאמת מיקומים ב־2006',exact:true})).toBeVisible();
+  await expect(page.getByText('בתוצאות הרשמיות של 2006 אין סמלי יישובים', {exact:false}).first()).toBeVisible();
 });
 
 
@@ -176,7 +174,7 @@ test('boundaries have independent controls, hatch geometry, source and snapshot 
   await expect.poll(()=>page.locator('.leaflet-verified-lines-pane path').count()).toBeLessThan(before);
   await expect(legend.getByRole('checkbox',{name:'Lebanon · Blue Line',exact:true})).toBeChecked();
   await legend.getByRole('button',{name:'Israel–Gaza Strip boundary: explanation',exact:true}).click();
-  await expect(page.getByText('Geometry snapshot:',{exact:false})).toBeVisible();
+  await expect(page.getByText('Geometry snapshot:',{exact:false})).toHaveCount(0);
   await expect(page.getByRole('link',{name:'UN · S/1471 (1950)',exact:true})).toHaveAttribute('href','https://www.un.org/unispal/document/auto-insert-183322/');
 });
 
@@ -272,8 +270,7 @@ for (const election of ['k16', 'k25', 'k26']) for (const width of [1500, 390]) f
     await expect(result).toContainText('קודייראת א-צאנע (שבט)');
     await result.click();
     await expect(page.locator('.locality-map-results h3')).toHaveText('קודייראת א-צאנע (שבט)');
-    await expect(page.locator('.locality-map-results h3 span')).toHaveAttribute('title', /ועדת הבחירות \(מקור\)/);
-    await expect(page.locator('.locality-map-label').filter({hasText:/^קודייראת א-צאנע \(שבט\)$/})).toBeVisible();
+      await expect(page.locator('.locality-map-label').filter({hasText:/^קודייראת א-צאנע \(שבט\)$/})).toBeVisible();
     await page.locator('.locality-map-canvas').scrollIntoViewIfNeeded();
     await page.screenshot({path:`.backup-scratch/hebrew-corrected-${election}-${width}-${theme}.png`});
     await search.fill('לקיה');
