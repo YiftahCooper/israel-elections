@@ -327,7 +327,7 @@ export function comparisonRowText(c: Comparison | null, lang: Lang): string {
   if (c.kind === 'new') return en ? `, new: no ${py} list` : `, חדשה: אין רשימה ${hebrewPrefix('מ', py)}`;
   if (c.kind === 'verify') return '';
   const d = c.after.seats - c.before.seats;
-  const change = d === 0 ? (en ? 'unchanged' : 'ללא שינוי') : en ? `${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}` : `${Math.abs(d)} ${d > 0 ? 'יותר' : 'פחות'}`;
+  const change = d === 0 ? (en ? 'unchanged' : 'ללא שינוי') : en ? `${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}` : d > 0 ? `עוד ${d}` : `${-d} פחות`;
   return en ? `, ${py}: ${seatsText(c.before.seats, 'en')} (${change}), compared with ${comparedName(c, 'en')}${c.kind === 'partial' ? ', partly' : ''}`
     : `, ${py}: ${seatsText(c.before.seats, 'he')} (${change}), בהשוואה ${hebrewPrefix('ל', comparedName(c, 'he'))}${c.kind === 'partial' ? ', בחלקה' : ''}`;
 }
@@ -345,7 +345,7 @@ export function ComparisonLine({ c }: { c: Comparison | null }) {
   const d = c.after.seats - c.before.seats;
   const share = c.before.valid && c.after.valid ? { num: 100n * (BigInt(c.after.votes) * BigInt(c.before.valid) - BigInt(c.before.votes) * BigInt(c.after.valid)), den: BigInt(c.before.valid) * BigInt(c.after.valid) } : null;
   const name = comparedName(c, lang);
-  const change = d === 0 ? L('the same', 'אותו מספר') : L(`${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}`, `${Math.abs(d)} ${d > 0 ? 'יותר' : 'פחות'}`);
+  const change = d === 0 ? L('the same', 'אותו מספר') : L(`${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}`, d > 0 ? `עוד ${d}` : `${-d} פחות`);
   return <div className="ph-cmpline" data-kind={c.kind}>
     <span>{lang === 'he'
       ? <>{hebrewPrefix('ב', py)} {c.before.seats === 1 ? 'היה' : 'היו'} {hebrewPrefix('ל', name)} {seatsText(c.before.seats, 'he')}; עכשיו {c.after.seats} ({change}).</>

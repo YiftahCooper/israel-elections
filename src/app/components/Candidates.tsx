@@ -70,20 +70,20 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
       <h3>{!simple ? L('Candidates', 'מועמדים') : firstTen ? L(`Who gets in (first 10 of ${seats})`, `מי נכנס לכנסת (10 הראשונים מתוך ${seats})`) : L(`Who gets in (${seats})`, `מי נכנס לכנסת (${seats})`)}{marker}</h3>
       {secondary}
       {control}{advanced && s && <StartFrom s={s} part="candidates" listId={l.id} />}
-      {l.rosterUnavailable && <p className="small callout">{L('The official candidate list for this election is not available in the sources used here, so the names of those elected are not shown.', 'רשימת המועמדים הרשמית לבחירות אלה אינה זמינה במקורות שבשימוש כאן, ולכן שמות הנבחרים אינם מוצגים.')}</p>}
-      {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates of this list’s official roster are available here (everyone elected is included); later names were not transcribed.`, `כאן זמינים רק ${c.length} המועמדים הראשונים ברשימה הרשמית (כולל כל הנבחרים); השמות שאחריהם לא הוקלדו.`)}</p>}
+      {l.rosterUnavailable && <p className="small callout">{L('The names on this list are not known for this election.', 'השמות ברשימה זו אינם ידועים בבחירות אלה.')}</p>}
+      {l.rosterTruncated && !l.rosterUnavailable && <p className="small callout">{L(`Only the first ${c.length} candidates are known; everyone elected is among them.`, `ידועים רק ${c.length} המועמדים הראשונים; כל הנבחרים ביניהם.`)}</p>}
       {!simple && !l.rosterUnavailable && <div className="kv small" style={{ marginBottom: 8 }}>
-        <span>{l.rosterTruncated ? L('Candidates available', 'מועמדים זמינים') : L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
+        <span>{l.rosterTruncated ? L('Candidates known', 'מועמדים ידועים') : L('Registered candidates', 'מועמדים ברשימה')}</span><span>{c.length}</span>
         <span>{L('Last elected', 'המקום האחרון שנבחר')}</span><span>{lastIn ? <><MkName candidate={lastIn}><CandidateName candidate={lastIn} note={false} /></MkName> <span className="muted">(#{c.indexOf(lastIn) + 1})</span></> : '—'}</span>
         <span>{L('Next in line', 'המקום הבא בתור')}</span><span>{nextIn ? <><MkName candidate={nextIn}><CandidateName candidate={nextIn} note={false} /></MkName> <span className="muted">(#{c.indexOf(nextIn) + 1})</span></> : l.rosterTruncated ? L('not available', 'לא זמין') : L('none', 'אין')}</span>
       </div>}
       {baseCandidates && JSON.stringify(baseCandidates) !== JSON.stringify(c) && <button className="btn small" style={{ marginBottom: 6 }} onClick={() => dispatch({ type: 'resetCandidates', listId: l.id })}>{L('Restore the registered candidate list', 'שחזור רשימת המועמדים הרשומה')}</button>}
       {seats > seated.length && !l.rosterUnavailable && !l.rosterTruncated && <p className="bad small">{L(`The list has only ${seated.length === 1 ? '1 candidate' : `${seated.length} candidates`} for ${seats} seats.`, `ברשימה ${seated.length === 1 ? 'מועמד אחד בלבד' : `רק ${seated.length} מועמדים`} ל־${seats} מנדטים.`)}</p>}
       {c.length === 0 && !l.rosterUnavailable && <p className="muted small">{L('No candidates registered.', 'אין מועמדים רשומים.')}</p>}
-      {(c.some((x) => x.bio) || (lang === 'en' && c.length > 0)) && <p className="tiny muted bio-key">{L('Names and links', 'קישורים')} <Info title={L('Candidate names and links', 'קישורים למועמדים')}>
-        {lang === 'en' && <>{L('English names are the official names on the Knesset website (today’s names, which can differ from the ballot); the registered Hebrew name is shown beside them. Hebrew-only names have no official English spelling recorded; candidates who never served in the Knesset remain in Hebrew.', '')} </>}
-        {L('Links: Knesset member pages (official); party pages (partisan, archived from the campaign where possible); Hebrew Wikipedia (secondary). English Wikipedia is not linked: it is not reliable on Israel.',
-        'דפי חברי הכנסת (רשמי); דפי המפלגות (מפלגתי, מארכיון תקופת הבחירות כשאפשר); ויקיפדיה העברית (משני). ויקיפדיה האנגלית אינה מקושרת: אינה אמינה בענייני ישראל.')}</Info></p>}
+      {/* the links name themselves (Knesset, Party 2022, Hebrew Wikipedia (secondary)); only the English names need a word,
+          on why some differ from the Hebrew beside them (clarity pass, 26 Nov 2026) */}
+      {lang === 'en' && c.length > 0 && <p className="tiny muted bio-key">{L('English names', '')} <Info title={L('English names', '')}>
+        {L('English names are spelt as on the Knesset website today, so some differ from the Hebrew ballot name beside them. A name in Hebrew only has no official English spelling.', '')}</Info></p>}
       <ol className="cands" style={{ ['--c' as string]: l.color }} aria-label={L('Candidate list', 'רשימת המועמדים')}>
         {c.slice(0, limit).map((x, i) => {
           const party = l.parties?.find(p => p.id === x.partyId);
@@ -137,7 +137,7 @@ const safe = (u: string | undefined) => (u && /^https:\/\//.test(u) ? u : undefi
 
 /** Where to read about a candidate: the Knesset's member page (official), the party's own page (partisan,
  *  archived from the campaign where possible) and Hebrew Wikipedia (a secondary source). English Wikipedia
- *  is never linked. A "probable" match was made by name under stated rules, not by an official id. */
+ *  is never linked. How a link was matched to the person is not shown (clarity pass, 26 Nov 2026). */
 function BioLinks({ bio, name }: { bio: CandidateBio; name: string }) {
   const L = useL(), lang = useLang(), labelId = useId();
   const knesset = safe(bio.knesset), party = safe(bio.party?.url), wiki = safe(bio.hewiki?.url);
@@ -150,10 +150,6 @@ function BioLinks({ bio, name }: { bio: CandidateBio; name: string }) {
       {party && <a href={party} target="_blank" rel="noreferrer" title={L('The party’s own page (partisan)', 'הדף של המפלגה עצמה (מקור מפלגתי)') + (year ? L(`, archived ${year}`, `, ארכיון ${year}`) : '')}>
         {L('Party', 'מפלגה')}{year ? ` ${year}` : ''}</a>}
       {wiki && <a href={wiki} target="_blank" rel="noreferrer" hrefLang="he" title={L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני')}>{L(...HEWIKI_LABEL)}</a>}
-      {bio.probable && (bio.memberConfirmed
-        // the Knesset page is tied by the official member record; only the other links were matched by name
-        ? <span className="muted" title={L('The Knesset page: by the official member record. The other links: matched by name, not by an official identifier', 'דף הכנסת: לפי רישום חבר הכנסת הרשמי. שאר הקישורים: הותאמו לפי שם, לא לפי מזהה רשמי')}>{L('(other links probable)', '(שאר הקישורים: התאמה סבירה)')}</span>
-        : <span className="muted" title={L('Matched by name, not by an official identifier', 'הותאם לפי שם, לא לפי מזהה רשמי')}>{L('(probable match)', '(התאמה סבירה)')}</span>)}
     </span>
   );
 }

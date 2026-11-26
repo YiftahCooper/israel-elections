@@ -29,8 +29,8 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     const hebrewNames = panel.locator('.cands bdi[lang="he"][dir="rtl"]');
     await expect(hebrewNames.first()).toBeAttached();
     if (lang === 'en') {
-      await panel.getByRole('button', { name: 'Candidate names and links: explanation', exact: true }).click();
-      await expect(page.locator('.pop').filter({ hasText: 'Hebrew-only names have no official English spelling recorded' })).toBeVisible();
+      await panel.getByRole('button', { name: 'English names: explanation', exact: true }).click();
+      await expect(page.locator('.pop').filter({ hasText: 'A name in Hebrew only has no official English spelling' })).toBeVisible();
       await page.keyboard.press('Escape');
     }
     await panel.locator('.cands').scrollIntoViewIfNeeded();
@@ -64,7 +64,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.locator('.chamber [data-seat]').first().hover();
     const hoverName = page.locator('.tip bdi[lang="he"][dir="rtl"]');
     await expect(hoverName).toBeVisible();
-    if (lang === 'en') await expect(hoverName).toHaveAttribute('title', 'Hebrew name — no official English spelling recorded');
+    if (lang === 'en') await expect(hoverName).toHaveAttribute('title', 'No official English spelling');
     // Compare renders candidate names too, including candidates shifted by roster edits.
     await page.locator('.lb-row').first().click();
     await page.locator('.side-panel .cands').getByRole('button', { name: lang === 'en' ? 'Remove' : 'הסרה', exact: true }).first().click();
@@ -75,7 +75,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await page.locator('details.cmp-section > summary').click();
     const compared = page.locator('.cmp-section li bdi[lang="he"][dir="rtl"]');
     await expect(compared.first()).toBeVisible();
-    if (lang === 'en') await expect(compared.first()).toHaveAttribute('title', 'Hebrew name — no official English spelling recorded');
+    if (lang === 'en') await expect(compared.first()).toHaveAttribute('title', 'No official English spelling');
 
 
   });

@@ -21,7 +21,7 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
       case 'platform': return L('Platform', 'מצע');
       case 'ephemera': return L('Election material (National Library)', 'חומרי תעמולה (הספרייה הלאומית)');
       case 'party-newspaper': return year ? L(`Party newspaper, ${year}`, `עיתון המפלגה, ${year}`) : L('Party newspaper', 'עיתון המפלגה');
-      case 'repo-scan': return L('Scan (this project)', 'סריקה (בפרויקט זה)');
+      case 'repo-scan': return L('Original scan', 'סריקת המקור');
       case 'knesset': return L('Knesset', 'הכנסת');
       case 'hewiki': return L(...HEWIKI_LABEL);
       case 'cec': return L('Elections Committee', 'ועדת הבחירות');
@@ -30,8 +30,7 @@ export function PartyLinks({ links, name }: { links?: PartyLink[]; name: string 
     }
   };
   const title = (x: PartyLink) => [datesInText(L(x.titleEn ?? name, x.titleHe ?? name)), x.kind === 'partisan' ? L('the party’s own voice (partisan)', 'בקולה של המפלגה (מפלגתי)') : L('a neutral source', 'מקור ניטרלי'),
-    x.sourceType === 'hewiki' ? L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני') : '', x.archivedAt ? L(`archived ${formatDate(x.archivedAt, lang)}`, `ארכיון ${formatDate(x.archivedAt, lang)}`) : '',
-    x.confidence === 'medium' ? L('probable match', 'התאמה סבירה') : ''].filter(Boolean).join(' · ');
+    x.sourceType === 'hewiki' ? L('Hebrew Wikipedia: a secondary source', 'ויקיפדיה העברית: מקור משני') : '', x.archivedAt ? L(`archived ${formatDate(x.archivedAt, lang)}`, `ארכיון ${formatDate(x.archivedAt, lang)}`) : ''].filter(Boolean).join(' · ');
   const group = (kind: PartyLink['kind']) => ok.filter((x) => x.kind === kind);
   return (
     <span className="party-links tiny" role="group" {...nameProps(L(`About ${name}`, `על ${name}`), lang, labelId)}>

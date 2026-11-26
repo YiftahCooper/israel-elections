@@ -95,7 +95,7 @@ test('in Hebrew the chart is drawn left to right and every word is Hebrew', asyn
   await start(page, { lang: 'he' });
   await listRow(page, 'הדמוקרטים').click();
   const sec = page.locator('aside .ph-sec');
-  await expect(sec.locator('.ph-cmpline')).toContainText('ב־2022 היו לעבודה + מרצ 4 מנדטים; עכשיו 8 (4 יותר).');
+  await expect(sec.locator('.ph-cmpline')).toContainText('ב־2022 היו לעבודה + מרצ 4 מנדטים; עכשיו 8 (עוד 4).');
   await expect(sec.locator('.ph-cert')).toHaveText('סביר');
   await sec.getByRole('button', { name: 'היסטוריה מלאה', exact: true }).click();
   const bars = sheet(page).locator('.ph-bar');

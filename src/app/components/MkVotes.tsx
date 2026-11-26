@@ -54,15 +54,15 @@ export function MkVotes({ s, r, units, breaks, roleOf, onChange }: {
       <summary className="small">{L('MKs apart from their list', 'חברי כנסת בנפרד מרשימתם')}{live.length > 0 && <span className="muted"> · {live.length}</span>}</summary>
       <p className="small ink2 coal-apart-why">{L('Each MK here votes differently from their list in the confidence vote.', 'חברי הכנסת כאן מצביעים אחרת מרשימתם בהצבעת האמון.')}{' '}
         <Info title={L('MKs apart from their list', 'חברי כנסת בנפרד מרשימתם')}>{L(
-          'Every other MK votes with their list. Naming the MK is optional: “one MK” is enough for the count. Toward 61, an MK of the government who votes against leaves the count, one who abstains stays in it, and an MK of another list who votes for joins it. The smallest winning coalitions below count whole lists. “Recorded vote” marks a vote from the research, loaded with the recorded first government.',
-          'כל שאר חברי הכנסת מצביעים עם רשימתם. אין חובה לבחור חבר כנסת: "חבר כנסת אחד" מספיק לספירה. בספירה ל־61, חבר כנסת מהממשלה שמצביע נגד יוצא מהספירה, מי שנמנע נשאר בה, וחבר כנסת מרשימה אחרת שמצביע בעד מצטרף אליה. הקואליציות המנצחות הקטנות ביותר למטה סופרות רשימות שלמות. "הצבעה מתועדת" מסמנת הצבעה מהמחקר, שנטענה עם הממשלה הראשונה המתועדת.')}</Info></p>
+          'Toward 61, a government MK who votes against leaves the count, one who abstains stays in it, and an MK of another list who votes for joins it. Naming the MK is optional; “Recorded vote” is a vote that really happened.',
+          'בספירה ל־61, חבר כנסת מהממשלה שמצביע נגד יוצא מהספירה, מי שנמנע נשאר בה, וחבר כנסת מרשימה אחרת שמצביע בעד מצטרף אליה. אין חובה לבחור חבר כנסת; "הצבעה מתועדת" היא הצבעה שהתקיימה באמת.')}</Info></p>
       {live.length > 0 && <ul className="coal-apart-list">
         {live.map((b) => { const u = unitOf(b.unit)!; const i = breaks.indexOf(b); const same = roleVote(roleOf(u.id)) === b.vote;
           return <li key={i} data-recorded={b.recorded ? 'true' : undefined}>
             <Slip letters={u.letters} name={u.label} logo={u.logo} synthetic={u.synthetic} color={u.color} size="sm" />
             <span className="coal-apart-who">{u.label} · <b>{name(b)}</b></span>
             <span className={`small coal-apart-tag ${b.recorded ? 'rec' : 'edit-marker'}`}>{b.recorded ? L('Recorded vote', 'הצבעה מתועדת') : L('Edited', 'נערך')}</span>
-            {same && <span className="small muted">{L('votes as its list now', 'ההצבעה כעת כמו של הרשימה')}</span>}
+            {same && <span className="small muted">{L('now votes with the list', 'ההצבעה כעת כמו של הרשימה')}</span>}
             <Seg label={L(`${name(b)}’s vote`, `ההצבעה של ${name(b)}`)} value={b.vote} onChange={(x) => onChange(breaks.map((y, k) => (k === i ? { unit: y.unit, vote: x, ...(y.mk ? { mk: y.mk } : {}) } : y)))}
               options={(['for', 'abstain', 'against'] as const).map((k) => ({ v: k, label: words[k] }))} />
             <button type="button" className="btn small ghost icon-only" aria-label={L(`Remove ${name(b)} (${u.label})`, `הסרת ${name(b)} (${u.label})`)} onClick={() => onChange(breaks.filter((_, k) => k !== i))}><X className="icon sm" aria-hidden /></button>

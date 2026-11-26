@@ -29,9 +29,9 @@ test('English mode names Knesset members in English, with the registered Hebrew 
     const own = await elected.nth(i).locator(':scope > span:nth-child(2) > span').first().textContent();
     expect(own, `elected #${i + 1}`).not.toMatch(hebrew);
   }
-  // the links note is one short label; its detail (incl. the source policy) is behind (i)
-  await expect(panel.getByText('English Wikipedia is not linked', { exact: false })).toBeHidden();
-  await expect(panel.locator('.bio-key')).toHaveText(/^Names and links/);
+  // the links name themselves; only the English names have a short note, its detail behind (i) (clarity pass, 26 Nov 2026)
+  await expect(panel.getByText('English Wikipedia is not linked', { exact: false })).toHaveCount(0);
+  await expect(panel.locator('.bio-key')).toHaveText(/^English names/);
 });
 
 test('English link labels and sponsor lines carry no Hebrew-only or letter-by-letter text', async ({ page }) => {

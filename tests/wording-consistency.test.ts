@@ -31,7 +31,7 @@ describe('complexity, not "level", in Hebrew', () => {
 describe('words about a person follow the Knesset record, else neutral', () => {
   // A candidate, a named MK or a nominee may be a woman, and most candidates have no Knesset person record. Labels
   // that describe one person are nouns (כניסה, הימנעות), never a masculine verb or possessive.
-  const HE_LABELS = /L\('(?:moved|enters|leaves|Their vote|votes as its list now|Candidate name|Withdrawn before polling|Member|Abstain|Abstained|Absent)', '([^']*)'\)/g;
+  const HE_LABELS = /L\('(?:moved|enters|leaves|Their vote|now votes with the list|Candidate name|Withdrawn before polling|Member|Abstain|Abstained|Absent)', '([^']*)'\)/g;
   const MASCULINE = /^(הועבר|נכנס|יוצא|ההצבעה שלו|מצביע כעת כמו רשימתו|שם המועמד|פרש לפני ההצבעה|חבר בקואליציה|נמנע|נעדר)$/;
   it('labels about one person are not masculine', () => {
     const hits = files('src').flatMap((f) => [...readFileSync(f, 'utf8').matchAll(HE_LABELS)]
