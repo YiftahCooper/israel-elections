@@ -343,7 +343,7 @@ test('the coalition count explains what it counts', async ({ page }) => {
   const tl = await openTimeline(page);
   await stepTo(tl, '2021-06-13');
   await tl.locator('.tl-sides').getByRole('button', { name: 'Coalition' }).click();
-  await expect(page.getByText(/Seats on the government’s side after this date/)).toBeVisible();
+  await expect(page.getByText(/Seats on the government’s side on this date/)).toBeVisible();
 });
 
 for (const lang of ['en', 'he'] as const) test(`a new Speaker is a Standard step (${lang})`, async ({ page }) => {

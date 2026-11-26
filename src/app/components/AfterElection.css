@@ -1,5 +1,6 @@
 .after-election { max-width: 1120px; margin-inline: auto; }
 .after-election section, .after-election footer { border-top: 1px solid var(--rule); padding-block: 16px; }
+.after-election > :first-child { border-top: 0; padding-top: 0; }
 .after-election h3, .after-election h4 { margin-block: 0 10px; }
 .after-election h3 { font-size: 15px; }
 .after-election h4 { font-size: 13px; }

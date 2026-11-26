@@ -1,6 +1,6 @@
 import { Fragment, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { MarkedText, otherLang } from './LangLabel.tsx';
-import { recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, termWithEnd, sourceLabel, sourceRows, isFieldRecord, type Aftermath, type Cite, type Conflict, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-model.ts';
+import { recommendationPieces, visibleTermEvents, completePolls, chronological, termEndFact, termWithEnd, sourceLabel, sourceRows, isFieldRecord, type Aftermath, type Cite, type DatedFact, type HistorySource, type RecommendationRound } from '../../data/aftermath-model.ts';
 import { useReviewedAftermath } from '../aftermathData.ts';
 import aftermathNames from 'virtual:aftermath-names';
 import type { GovernmentSupport, GovernmentParticipant, GovernmentIndividual } from '../../data/aftermath.ts';
@@ -57,7 +57,7 @@ function RotationWhy({ a, name }: { a: RotationAgreement; name: (en: string) => 
   return <span className="after-rotation-why">
     {L('Under the coalition agreement: ', 'לפי הסכם הקואליציה: ')}{L('', 'קודם ')}{name(a.firstPrimeMinister)}{L(' first, then ', ', אחר כך ')}{name(a.secondPrimeMinister)}.
     {statutory(a) ? <>{L(' Until the handover, ', ' עד החילוף, ')}{name(a.secondPrimeMinister)}{L(': alternate prime minister, an office set by law in 2020.', ': ראש הממשלה החלופי, תפקיד שנקבע בחוק ב־2020.')}</> : L(' The handover formed a new government.', ' החילוף נעשה בהקמת ממשלה חדשה.')}
-    {a.plannedRotationDateCertainty === 'provisional' && L(' The planned date comes from reports at the time; the agreement itself is not yet checked.', ' המועד המתוכנן לקוח מדיווחים מאותה עת; ההסכם עצמו טרם נבדק.')}
+    {a.plannedRotationDateCertainty === 'provisional' && L(' The planned date is as reported at the time.', ' המועד המתוכנן כפי שדווח באותה עת.')}
   </span>;
 }
 
@@ -79,13 +79,13 @@ function HistoryText({ text, verbatim = false }: { text: string; verbatim?: bool
   })}</>;
 }
 
-function HelpText({ data, text, cites, notes, explanation }: { data: Aftermath; text: string; cites?: Cite[]; notes?: string[]; explanation?: string }) {
+function HelpText({ data, text, cites, explanation }: { data: Aftermath; text: string; cites?: Cite[]; explanation?: string }) {
   const tail = /^(.*\s)(\S+)$/s.exec(text);
-  return <span>{tail && <HistoryText text={tail[1]} />}<span className="after-help-anchor"><HistoryText text={tail?.[2] ?? text} /> <Evidence data={data} cites={cites} notes={notes} explanation={explanation && <HistoryText text={explanation} verbatim />} /></span></span>;
+  return <span>{tail && <HistoryText text={tail[1]} />}<span className="after-help-anchor"><HistoryText text={tail?.[2] ?? text} /> <Evidence data={data} cites={cites} explanation={explanation && <HistoryText text={explanation} verbatim />} /></span></span>;
 }
 function FactText({ data, event }: { data: Aftermath; event: DatedFact }) {
   const lang = useLang();
-  return <HelpText data={data} text={lang === 'he' ? event.textHe : event.textEn} cites={event.cites} notes={event.notes} />;
+  return <HelpText data={data} text={lang === 'he' ? event.textHe : event.textEn} cites={event.cites} />;
 }
 
 function useKindLabel() {
@@ -102,17 +102,22 @@ function LocatorText({ locator }: { locator: string }) {
   if (page && lang === 'he') return <>עמ׳ <bdi dir="ltr">{page[1]}</bdi></>;
   return <HistoryText text={locator} verbatim />;
 }
-/** Sources that disagree: each one's account with its source, then how the record settles it (research language). */
-function ConflictText({ data, conflict }: { data: Aftermath; conflict: Conflict }) {
-  const lang = useLang();
-  return <div className="after-conflict" dir="auto"><p><b><HistoryText text={conflict.about} verbatim /></b></p><ul>{conflict.values.map((v, i) => { const s = data.sources[v.source]; return <li key={i}><HistoryText text={v.value} verbatim />{s && <> · <a href={s.url} target="_blank" rel="noreferrer"><bdi lang={otherLang(sourceLabel(s, lang), lang)}><HistoryText text={sourceLabel(s, lang)} /></bdi></a></>}</li>; })}</ul><p><HistoryText text={conflict.resolution} verbatim /></p></div>;
+/** A cite's note is research commentary (how a record was read or matched), which visitors never see (clarity pass,
+ *  26 Nov 2026). Only an official record's fields (a minister's name and faction) are shown, as plain words. */
+function citeFields(c: Cite, lang: 'he' | 'en'): string | null {
+  const m = /:\s*(.+?);\s*(?:faction|סיעה):\s*(.+?)\.?$/.exec((lang === 'he' ? c.noteHe ?? c.note : c.note) ?? '');
+  if (m && /^(Fields of|שדות מתוך)/.test((lang === 'he' ? c.noteHe ?? c.note : c.note) ?? '')) return `${m[1]} · ${m[2]}`;
+  return null;
 }
-function Evidence({ data, cites = [], notes = [], explanation }: { data: Aftermath; cites?: Cite[]; notes?: (string | ReactNode)[]; explanation?: ReactNode }) {
+/** The sources of a fact: each one named, with its kind and the quoted words. The research notes and the dates sources were
+ *  read stay in the record and on the Sources tab (clarity pass, 26 Nov 2026). */
+function Evidence({ data, cites = [], explanation }: { data: Aftermath; cites?: Cite[]; explanation?: ReactNode }) {
   const L = useL(); const lang = useLang(); const kind = useKindLabel();
-  return <Info title={L('Sources & qualifications', 'מקורות וסייגים')}>
+  const shown = cites.filter((c) => data.sources[c.source]);
+  if (!shown.length && !explanation) return null;
+  return <Info title={shown.length ? L('Sources', 'מקורות') : L('Note', 'הערה')}>
     {explanation && <p>{explanation}</p>}
-    {cites.map((c, i) => { const s = data.sources[c.source]; return s && <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi lang={otherLang(sourceLabel(s, lang), lang)}><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)} · <DateRun date={s.accessed} />{c.quote && !isFieldRecord(c.quote) && <blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>}{c.locator && <p dir="auto"><LocatorText locator={c.locator} /></p>}{(lang === 'he' ? c.noteHe ?? c.note : c.note) && <p dir="auto"><HistoryText text={(lang === 'he' ? c.noteHe ?? c.note : c.note)!} verbatim /></p>}</div>; })}
-    {notes.length > 0 && <details><summary>{L('Research notes · original language', 'הערות מחקר · בשפת המקור')}</summary>{notes.map((n, i) => typeof n === 'string' ? <p key={i} dir="auto"><HistoryText text={n} verbatim /></p> : n)}</details>}
+    {shown.map((c, i) => { const s = data.sources[c.source]; const fields = citeFields(c, lang); return <div key={i} className="after-evidence"><a href={s.url} target="_blank" rel="noreferrer"><bdi lang={otherLang(sourceLabel(s, lang), lang)}><HistoryText text={sourceLabel(s, lang)} /></bdi></a> · {kind(s)}{c.quote && !isFieldRecord(c.quote) && <blockquote dir="auto"><HistoryText text={c.quote} verbatim /></blockquote>}{fields && <p dir="auto"><bdi>{fields}</bdi></p>}{c.locator && <p dir="auto"><LocatorText locator={c.locator} /></p>}</div>; })}
   </Info>;
 }
 function FactRows({ data, events }: { data: Aftermath; events: DatedFact[] }) {
@@ -169,7 +174,7 @@ function Recommendations({ data, ds, round }: { data: Aftermath; ds: ElectionDat
   const ordered = groups.flatMap(([key]) => pieces.filter(p => p.group === key));
   const crossing = majorityCrossing(ordered.map(p => p.seats));
   return <div className="after-round">
-    <h4><span className="after-help-anchor"><DateRun date={round.date} end={round.endDate} /> <Evidence data={data} cites={round.cites} notes={round.notes} /></span></h4>
+    <h4><span className="after-help-anchor"><DateRun date={round.date} end={round.endDate} /> <Evidence data={data} cites={round.cites} /></span></h4>
     <div className="after-bar-wrap"><div className="after-bar" dir="ltr" aria-hidden="true">{groups.map(([key, total]) => <div key={key} className="after-group" style={{ flex: total }}>{pieces.filter(p => p.group === key).map((p, i) => <span key={i} className={[key === 'unknown' ? 'after-unknown' : '', crossing?.index === ordered.indexOf(p) ? `after-crossed ${crossing.side}${crossing.room < 5 ? ' tight' : ''}` : ''].filter(Boolean).join(' ') || undefined} style={{ flex: p.seats, backgroundColor: key === 'unknown' ? undefined : list(p.letters).color }} title={`${p.letters} · ${listLabel(list(p.letters), lang)}${p.partEn ? ` (${lang === 'he' ? p.partHe : p.partEn})` : ''} · ${p.seats}`}>{p.seats >= 6 && <bdi className={p.seats < 10 ? 'after-small-slip' : undefined} lang="he">{p.letters}</bdi>}</span>)}</div>)}<i className="after-majority">61</i></div></div>
     <GroupKey groups={groups} label={groupLabel} />
     <details className="after-breakdown"><summary>{L('Lists & recommendations', 'רשימות והמלצות')}</summary><table><thead><tr><th>{L('List', 'רשימה')}</th><th>{L('Recommendation', 'המלצה')}</th><th>{L('Seats', 'מנדטים')}</th></tr></thead><tbody>{groups.flatMap(([key]) => pieces.filter(p => p.group === key).map((p, i) => <tr key={`${key}-${i}`}><td><span className="after-party" style={{ '--party': list(p.letters).color } as CSSProperties}><bdi lang="he">{p.letters}</bdi> <bdi>{listLabel(list(p.letters), lang)}</bdi>{p.partEn && <> <bdi>({lang === 'he' ? p.partHe : p.partEn})</bdi></>}</span></td><td><HelpText data={data} text={groupLabel(key)} cites={p.cites} explanation={lang === 'he' ? p.noteHe : p.noteEn} /></td><td><bdi dir="ltr">{p.seats}</bdi></td></tr>))}</tbody></table></details>
@@ -188,7 +193,7 @@ function Formation({ data }: { data: Aftermath }) {
   const lineEnd = open && data.reviewedAt > events.at(-1)!.date ? data.reviewedAt : events.at(-1)!.date;
   const first = Date.parse(data.results.electionDate); const last = Date.parse(lineEnd);
   const pos = (date: string) => (Date.parse(date) - first) / Math.max(last - first, 86400000) * 100;
-  return <section><h3><span className="after-help-anchor">{L('Government formation', 'הרכבת הממשלה')}{data.formation.conflicts?.length ? <> <Evidence data={data} cites={data.formation.conflicts.flatMap(c => c.cites ?? [])} notes={data.formation.conflicts.map((c, i) => <ConflictText key={i} data={data} conflict={c} />)} /></> : null}</span></h3><div className="after-formation" dir="ltr" aria-hidden="true"><div className="after-date-line"><span><DateRun date={data.results.electionDate} /></span><span>{lineEnd !== events.at(-1)!.date && <>{L('Checked', 'נבדק')} </>}<DateRun date={lineEnd} /></span>{events.map((e, i) => <i key={i} style={{ left: `${pos(e.date)}%` }} title={`${formatDate(e.date, lang)} · ${lang === 'he' ? e.textHe : e.textEn}`} />)}</div>{mandates.map(({ e, close }, i) => {
+  return <section><h3>{L('Government formation', 'הרכבת הממשלה')}</h3><div className="after-formation" dir="ltr" aria-hidden="true"><div className="after-date-line"><span><DateRun date={data.results.electionDate} /></span><span>{lineEnd !== events.at(-1)!.date && <>{L('As of', 'נכון ל־')} </>}<DateRun date={lineEnd} /></span>{events.map((e, i) => <i key={i} style={{ left: `${pos(e.date)}%` }} title={`${formatDate(e.date, lang)} · ${lang === 'he' ? e.textHe : e.textEn}`} />)}</div>{mandates.map(({ e, close }, i) => {
     const running = open && i === mandates.length - 1;
     const end = close?.date ?? lineEnd;
     const nominee = e.person ? nominees[e.person] : undefined;
@@ -218,37 +223,36 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
   const L = useL(); const lang = useLang();
   const vote = g.confidenceVote;
   const qualification = (entry: GovernmentParticipant | GovernmentIndividual) => entry.certainty === 'unknown'
-    ? L('The relationship has not been established. It is not counted as membership.', 'המעמד טרם הוברר. אין לראות בו חברות בקואליציה.')
-    : entry.certainty === 'provisional' ? L('Provisional classification; the original terms are not fully authenticated.', 'סיווג זמני; תנאי ההסדר המקוריים טרם אומתו במלואם.')
-    : entry.certainty === 'disputed' ? L('Sources disagree; both sides are cited below.', 'המקורות חלוקים; שני הצדדים מובאים להלן.') : undefined;
+    ? L('Its part in the coalition is not known, so it is not counted.', 'חלקה בקואליציה אינו ידוע, ולכן אינה נספרת.')
+    : entry.certainty === 'provisional' ? L('The exact terms of this arrangement are not known.', 'התנאים המדויקים של ההסדר אינם ידועים.')
+    : entry.certainty === 'disputed' ? L('Sources disagree on this.', 'המקורות חלוקים בעניין זה.') : undefined;
   const votes = { for: L('For', 'בעד'), against: L('Against', 'נגד'), abstain: L('Abstained', 'הימנעות'), absent: L('Absent', 'היעדרות'), unknown: L('Vote unknown', 'הצבעה לא ידועה') };
-  const reconciliation = g.reconciliation.status === 'unresolved' ? L('The difference has not been reconciled.', 'הפער טרם הוסבר.')
-    : g.reconciliation.status === 'explained' ? L('The recorded participation and individual votes explain the difference.', 'רישומי ההשתתפות וההצבעות האישיות מסבירים את הפער.')
-    : g.reconciliation.status === 'vote-unavailable' ? L('The investiture vote has not been recovered.', 'הצבעת האמון טרם אותרה.')
-    : L('The totals match; this does not establish each individual vote.', 'הסכומים שווים; אין בכך אישור להצבעתו של כל חבר כנסת.');
+  // said only where the numbers on screen do not add up and nothing else explains it
+  const reconciliation = g.reconciliation.status === 'unresolved' ? L('The vote differs from the coalition’s seats, and the record does not say how each member voted.', 'תוצאת ההצבעה שונה ממספר מושבי הקואליציה, והרישום אינו מראה איך הצביע כל חבר כנסת.') : undefined;
   const below = listsBelowTheirSeats(g.coalition, g.coalitionSeats, (letters) => { const l = ds.lists.find((x) => x.letters === letters); return l ? ds.officialSeats?.[l.id] : undefined; });
   return <div className="after-support" role="group" aria-label={L('Government participation', 'השתתפות בממשלה')}>
     <div className="after-support-totals">
       {/* faction sizes at the time not recorded (V2 fault A4): no column of "Unknown"s beside seats that are on the page;
           a partial count is a floor, and one sentence says why there is no total */}
-      <span className="after-help-anchor">{L('Members', 'חברי הקואליציה')} <strong className="after-members-total">{g.coalitionSeats != null ? <SupportCount value={g.coalitionSeats} /> : g.knownMemberSeats ? <>{L('at least ', 'לפחות ')}<SupportCount value={g.knownMemberSeats} /></> : '—'}</strong> <Evidence data={data} cites={g.cites} explanation={<>{below && <>{L('The coalition’s lists won ', 'רשימות הקואליציה זכו ב־')}<bdi dir="ltr">{below.won}</bdi>{L(' seats; ', ' מנדטים; ')}<bdi dir="ltr">{g.coalitionSeats}</bdi>{L(' of their members are counted, as some never joined: ', ' מחבריהן נספרים, כי חלקם לא הצטרפו: ')}{below.lists.map(({ row, won }, i) => <span key={i}>{i > 0 && ', '}<bdi>{participantName(row, ds.lists, lang).name}</bdi> <bdi dir="ltr">{row.seats}</bdi>{L(' of ', ' מתוך ')}<bdi dir="ltr">{won}</bdi></span>)}{'. '}</>}{L('Membership is separate from supporting or voting for the government.', 'חברות בקואליציה נפרדת מתמיכה בממשלה או מהצבעת אמון.')}</>} notes={[g.coalitionSeatsNote, g.roleGap].filter((s): s is string => !!s)} /></span>
-      {investiture && <span className="after-help-anchor">{L('Investiture vote', 'הצבעת האמון')} <strong className="after-confidence-vote">{vote ? <><SupportCount value={vote.for} /> {L('for', 'בעד')} · <SupportCount value={vote.against} /> {L('against', 'נגד')}{vote.abstain !== undefined && <> · <SupportCount value={vote.abstain} /> {vote.abstain === 1 ? L('abstaining', 'נמנע') : L('abstaining', 'נמנעים')}</>}</> : <SupportCount value={null} />}</strong> <Evidence data={data} cites={g.confidenceVoteCites} explanation={reconciliation} notes={[g.reconciliation.note]} /></span>}
-      {g.supportSeats != null && <span>{L('Outside support', 'תמיכה מבחוץ')} <strong className="after-support-total"><SupportCount value={g.supportSeats} /></strong></span>}
+      <span className="after-help-anchor">{L('Coalition seats', 'מושבי הקואליציה')} <strong className="after-members-total">{g.coalitionSeats != null ? <SupportCount value={g.coalitionSeats} /> : g.knownMemberSeats ? <>{L('at least ', 'לפחות ')}<SupportCount value={g.knownMemberSeats} /></> : '—'}</strong> <Evidence data={data} cites={g.cites} explanation={below && <>{L('The coalition’s lists won ', 'רשימות הקואליציה זכו ב־')}<bdi dir="ltr">{below.won}</bdi>{L(' seats; ', ' מנדטים; ')}<bdi dir="ltr">{g.coalitionSeats}</bdi>{L(' of their members joined: ', ' מחבריהן הצטרפו: ')}{below.lists.map(({ row, won }, i) => <span key={i}>{i > 0 && ', '}<bdi>{participantName(row, ds.lists, lang).name}</bdi> <bdi dir="ltr">{row.seats}</bdi>{L(' of ', ' מתוך ')}<bdi dir="ltr">{won}</bdi></span>)}.</>} /></span>
+      {investiture && <span className="after-help-anchor">{L('Investiture vote', 'הצבעת האמון')} <strong className="after-confidence-vote">{vote ? <><SupportCount value={vote.for} /> {L('for', 'בעד')} · <SupportCount value={vote.against} /> {L('against', 'נגד')}{!!vote.abstain && <> · <SupportCount value={vote.abstain} /> {vote.abstain === 1 ? L('abstaining', 'נמנע') : L('abstaining', 'נמנעים')}</>}</> : <SupportCount value={null} />}</strong> <Evidence data={data} cites={g.confidenceVoteCites} explanation={reconciliation} /></span>}
+      {!!g.supportSeats && <span>{L('Outside support', 'תמיכה מבחוץ')} <strong className="after-support-total"><SupportCount value={g.supportSeats} /></strong></span>}
     </div>
-    {/* why there is no total (20 Nov 2026): a faction size not recorded, a faction whose place is not recorded, or members not all known */}
+    {/* why there is no full total, once and plainly: a faction size not recorded, a faction whose role is not known, or
+        members not all known (20 Nov 2026; shorter words in the clarity pass, 26 Nov 2026) */}
     {g.coalitionSeats == null && <p className="small muted after-size-note">{g.coalition.some(r => r.seats == null)
-      ? L('The size of each faction at that time is not recorded, so the coalition’s seats are not added up; the seats won at the election are not used instead.', 'גודל הסיעות באותה עת לא תועד, ולכן מושבי הקואליציה אינם מסוכמים; המנדטים שבהם זכו בבחירות אינם משמשים במקומם.')
+      ? L('Faction sizes at that time are not known, so the coalition’s seats cannot all be added up.', 'גודל הסיעות באותה עת אינו ידוע, ולכן אי אפשר לסכם את כל מושבי הקואליציה.')
       : g.coalition.some(r => r.certainty === 'unknown')
-        ? L('A faction whose place in the coalition is not recorded is listed under “Unknown role” and not counted, so the total is a minimum.', 'סיעה שמעמדה בקואליציה לא תועד מופיעה תחת "מעמד לא ידוע" ואינה נספרת, ולכן הסכום הוא מינימום.')
-        : L('Not every member of the coalition is known, so the total is a minimum.', 'לא כל חברי הקואליציה ידועים, ולכן הסכום הוא מינימום.')}</p>}
+        ? L('A faction whose role is not known (under “Unknown role”) is not counted.', 'סיעה שמעמדה אינו ידוע (תחת "מעמד לא ידוע") אינה נספרת.')
+        : L('Not every coalition member is known.', 'לא כל חברי הקואליציה ידועים.')}</p>}
     {supportRoleGroups(g.coalition).map(group => <div className="after-role-group" data-support-role={group.role} key={group.role}>
       <h4>{L(...SUPPORT_LABELS[group.role])}</h4>
       <div className="after-coalition">{group.rows.map((entry, i) => {
         const { list, name, hebrew } = participantName(entry, ds.lists, lang);
         return <span key={i} className="after-party" style={{ '--party': list?.color ?? 'var(--axis)' } as CSSProperties}>
           {(entry.letters ?? list?.letters) && <bdi lang="he">{entry.letters ?? list?.letters}</bdi>}<bdi className="after-party-name" lang={hebrew ? 'he' : undefined}>{name}</bdi>{entry.seats != null && <> <b><SupportCount value={entry.seats} /></b></>}
-          {entry.certainty === 'provisional' && <span className="small muted">{L('Provisional', 'זמני')}</span>}
-          <Evidence data={data} cites={entry.cites} notes={entry.note ? [entry.note] : []} explanation={[qualification(entry), lang === 'he' ? entry.noteHe : entry.noteEn].filter(Boolean).join(' ') || undefined} />
+          {entry.certainty === 'provisional' && <span className="small muted">{L('Terms not known', 'התנאים לא ידועים')}</span>}
+          <Evidence data={data} cites={entry.cites} explanation={[qualification(entry), lang === 'he' ? entry.noteHe : entry.noteEn].filter(Boolean).join(' ') || undefined} />
         </span>;
       })}</div>
     </div>)}
@@ -261,7 +265,7 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
         {/* an MK elected on a coalition list whose part is "other" stood outside the coalition (Mapam's six in 1984,
             Chikli in 2021): said in those words, not "Other participation" (V2 fault A7) */}
         {!person.countedInFactionSeats && <span className="small">{role === 'member-with-ministries' ? L('Member', 'חברות בקואליציה') : role === 'other' ? L('Not in the coalition', 'מחוץ לקואליציה') : L(...SUPPORT_LABELS[role])}</span>}
-        <span className="after-help-anchor">{votes[person.vote]} <Evidence data={data} cites={person.cites} explanation={person.countedInFactionSeats ? L('Already included in the list seat count. The faction role does not establish a personal ministerial appointment or support.', 'כלול כבר במנדטים של הרשימה. מעמד הסיעה אינו מעיד על מינוי אישי לשר או על תמיכה אישית.'): qualification(person)} notes={person.note ? [person.note] : []} /></span>
+        <span className="after-help-anchor">{votes[person.vote]} <Evidence data={data} cites={person.cites} explanation={person.countedInFactionSeats ? L('Counted in their list’s seats.', 'כלול במושבי הרשימה.') : qualification(person)} /></span>
       </div>;
     })}</div>}
   </div>;
@@ -279,7 +283,7 @@ export function AfterElection({ ds }: { ds: ElectionDataset }) {
   const sourcesShown = useShown('sources');
   // this election's record and the next one's (for the Next election button) are fetched together
   const [data, nextRecord] = useReviewedAftermath(ds.id, nextElectionOf(ds.id));
-  if (!data) return <p>{L('History has not yet been reviewed.', 'ההיסטוריה טרם נבדקה.')}</p>;
+  if (!data) return <p>{L('No history for this election yet.', 'אין עדיין היסטוריה לבחירות אלה.')}</p>;
   const government = data.government; const termEvents = visibleTermEvents(data.term.events);
   const direct = data.formation.events.find(e => e.type === 'direct-election');
   const polls = completePolls(data); const next = data.term.endedBy;
@@ -292,11 +296,10 @@ export function AfterElection({ ds }: { ds: ElectionDataset }) {
   const nextData = nextId === nextElectionOf(ds.id) ? nextRecord : useReviewedAftermath(nextId)[0];
   const nextEntry = elections.find(e => e.id === nextId);
   return <article className="after-election" data-election={ds.id}>
-    <p className="muted small">{L('Recorded history · checked', 'היסטוריה מתועדת · נבדק')} <span className="after-help-anchor"><DateRun date={data.reviewedAt} /> <Info title={L('Recorded history', 'היסטוריה מתועדת')}>{L('These facts use the official election result. Editing votes does not change history. Unknown recommendations do not mean no recommendation.', 'העובדות מבוססות על תוצאות הבחירות הרשמיות. עריכת קולות אינה משנה את ההיסטוריה. המלצה שלא תועדה אינה זהה להיעדר המלצה.')}</Info></span></p>
     {direct ? <p><HelpText data={data} text={L('PM elected directly – no recommendations', 'ראש הממשלה נבחר ישירות – ללא המלצות')} cites={direct.cites} /></p> : data.recommendationRounds.length > 0 && <section><h3>{L('Recommendations to the President', 'המלצות לנשיא')}</h3>{data.recommendationRounds.map(round => <Recommendations key={round.id} data={data} ds={ds} round={round} />)}</section>}
     <Formation data={data} />
-    {government && <section><h3><bdi>{L('Government ', 'הממשלה ')}<bdi dir={lang === 'he' ? 'rtl' : 'ltr'}>{lang === 'he' ? hebrewPrefix('ה', government.number) : government.number}</bdi></bdi> · <span className="after-help-anchor"><DateRun date={government.startDate} end={government.endDate} /> <Evidence data={data} cites={[...government.cites, ...government.endDateCites ?? []]} notes={[...government.notes ?? [], ...government.coalitionSeatsNote ? [government.coalitionSeatsNote] : []]} /></span></h3>
-      <div className="after-pms">{government.primeMinisters.map((p, i) => <span key={i}>{i > 0 && <bdi className="after-forward" dir="ltr">{lang === 'he' ? '←' : '→'}</bdi>}<bdi>{lang === 'he' ? p.nameHe : p.nameEn}</bdi>{p.titleEn && <span className="after-pm-title"> (<bdi>{lang === 'he' ? p.titleHe : p.titleEn}</bdi>)</span>} · <DateRun date={p.from} /></span>)}</div>
+    {government && <section><h3><bdi>{L('Government ', 'הממשלה ')}<bdi dir={lang === 'he' ? 'rtl' : 'ltr'}>{lang === 'he' ? hebrewPrefix('ה', government.number) : government.number}</bdi></bdi> · <span className="after-help-anchor"><DateRun date={government.startDate} end={government.endDate} /> <Evidence data={data} cites={[...government.cites, ...government.endDateCites ?? []]} /></span></h3>
+      <div className="after-pms">{government.primeMinisters.map((p, i) => <span key={i}>{i > 0 && <bdi className="after-forward" dir="ltr">{lang === 'he' ? '←' : '→'}</bdi>}<bdi>{lang === 'he' ? p.nameHe : p.nameEn}</bdi>{p.titleEn && <span className="after-pm-title"> (<bdi>{lang === 'he' ? p.titleHe : p.titleEn}</bdi>)</span>}{(government.primeMinisters.length > 1 || p.from !== government.startDate) && <> · <DateRun date={p.from} /></>}</span>)}</div>
       <Rotation number={government.number} />
       <GovernmentComposition data={data} ds={ds} government={government} />
       {!!government.changes?.length && <details><summary>{L('Government changes', 'שינויים בממשלה')}</summary>{chronological(government.changes).map((change, i) => <div className="after-government-change" key={i}><FactRows data={data} events={[change]} />{change.coalition && <GovernmentComposition data={data} ds={ds} government={change as SupportSnapshot} investiture={change.number !== undefined} />}</div>)}</details>}
@@ -306,7 +309,7 @@ export function AfterElection({ ds }: { ds: ElectionDataset }) {
     {polls.map((p, i) => <section key={i}><h3>{p.timing === 'after-election' ? L('After-election polling', 'סקרים לאחר הבחירות') : L('Issue polling', 'סקרי סדר יום')} · <span className="after-help-anchor"><DateRun date={p.date ?? p.fieldDates!.to} /> <Evidence data={data} cites={[...p.cites ?? [], { source: p.sourceId, quote: lang === 'he' ? p.questionHe! : p.questionEn! }]} /></span></h3><p className="small muted"><HistoryText text={(lang === 'he' ? p.populationHe : p.populationEn)!} /> · <DateRun date={p.fieldDates!.from} end={p.fieldDates!.to} /></p>{p.answers.map((a, j) => <div className="after-poll" key={j}><span><HistoryText text={(lang === 'he' ? a.labelHe : a.labelEn)!} /></span><meter dir="ltr" min="0" max="100" value={a.pct} /><b><bdi dir="ltr">{a.pct}%</bdi></b></div>)}</section>)}
     {termRows.length > 0 && <section><h3>{L('During the term', 'במהלך הכהונה')}</h3><FactRows data={data} events={termRows} /></section>}
     {nextData && <footer><button className="btn" onClick={() => { void openElection(nextId).then(() => setState({ tool: 'after' })); window.scrollTo({ top: 0 }); }}><bdi dir="ltr" className="after-forward">{lang === 'he' ? '←' : '→'}</bdi> {L('Next election', 'הבחירות הבאות')} · {nextEntry ? <bdi>{electionLabel(nextEntry, elections, lang)}</bdi> : <DateRun date={nextData.results.electionDate} />}</button></footer>}
-    {sourcesShown && <button className="btn small after-sources-btn" onClick={() => setState({ tool: 'sources' })}>{L('Sources & research coverage', 'מקורות וכיסוי המחקר')} <span aria-hidden>{lang === 'he' ? '‹' : '›'}</span></button>}
+    {sourcesShown && <button className="btn small after-sources-btn" onClick={() => setState({ tool: 'sources' })}>{L('Sources', 'מקורות')} <span aria-hidden>{lang === 'he' ? '‹' : '›'}</span></button>}
   </article>;
 }
 
@@ -320,5 +323,5 @@ export function AfterElectionSources({ ds }: { ds: ElectionDataset }) {
       : <><bdi lang={otherLang(r.label, lang)}><HistoryText text={r.label} /></bdi> {r.sources.map((s, i) => <Fragment key={s.url}>{i > 0 && ' · '}<a href={s.url} target="_blank" rel="noreferrer" aria-label={`${r.label} ${i + 1}`} lang={otherLang(r.label, lang)}><bdi dir="ltr">{i + 1}</bdi></a></Fragment>)}</>}
       {' '}<span className="muted">· {kind(r.sources[0])} · {L('Retrieved', 'נשלף')} <DateRun date={r.accessed} /></span></li>)}</ul>{/* events still waiting for a second source are research records (data/meta/aftermath, term.candidatesPending):
      they never show to visitors, in any language (S2, 19 Nov 2026) */}
-    {excluded.length > 0 && <details><summary>{L('Pending corroboration · excluded from history', 'ממתינים לאימות נוסף · אינם מוצגים בהיסטוריה')}</summary>{excluded.map((e, i) => <div key={i}><DateRun date={e.date} /> · <FactText data={data} event={e} /></div>)}</details>}</section>;
+    {excluded.length > 0 && <details><summary>{L('Not shown: waiting for a second source', 'לא מוצגים: ממתינים למקור נוסף')}</summary>{excluded.map((e, i) => <div key={i}><DateRun date={e.date} /> · <FactText data={data} event={e} /></div>)}</details>}</section>;
 }

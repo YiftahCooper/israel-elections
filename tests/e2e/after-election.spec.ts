@@ -41,7 +41,7 @@ test('history, split recommendations, direct elections and next-election navigat
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k1');
   await expect(history).toContainText('Not documented');
   await expect(history).toContainText('Government 1');
-  await page.getByRole('button', { name: 'Sources & research coverage' }).click();
+  await page.locator('.after-sources-btn').click();
   // research notes on events still awaiting a second source never show to visitors (V2 fault S2, 19 Nov 2026)
   await expect(page.locator('.after-sources')).toBeVisible();
   await expect(page.locator('.after-sources')).not.toContainText(/Pending corroboration|Research notes/);
@@ -93,12 +93,9 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
   const dateBox = (await row.locator(':scope > .after-date-run').boundingBox())!;
   expect(Math.abs(lang === 'he' ? dateBox.x + dateBox.width - rowBox.x - rowBox.width : dateBox.x - rowBox.x)).toBeLessThan(2);
   await expect(formation.locator(':scope > .info')).toHaveCount(0);
-  await expect(formation.locator('h3 .info')).toHaveCount(1);
-  await formation.locator('h3 .info > button').click();
-  // a recorded disagreement names each source by its publisher, never by a record id (reader text, 17 Nov)
-  await expect(formation.locator('h3 .pop .after-conflict')).toContainText('The Jerusalem Post');
-  await expect(formation.locator('h3 .pop')).not.toContainText(/jpost-2021-06-03|"values"|"resolution"/);
-  await page.keyboard.press('Escape');
+  // how the research settled a disagreement is a research note, not shown; each dated fact keeps its own sources
+  // (clarity pass, 26 Nov 2026)
+  await expect(formation.locator('h3 .info')).toHaveCount(0);
   await expect(history).not.toContainText(/\d{4}-\d{2}/);
   await expect(history).not.toContainText(/[⚖▣◎◇●]/);
   await expect(history.getByRole('heading', { name: lang === 'he' ? 'חברי הקואליציה' : 'Members', exact: true }).first()).toBeVisible();
@@ -118,8 +115,10 @@ for (const lang of ['he', 'en'] as const) test(`localised history, isolated rang
   await expect(summary.locator('.after-confidence-vote')).toContainText(lang === 'he' ? '60 בעד · 59 נגד' : '60 for · 59 against');
   await expect(history.locator('[data-individual="amichai-chikli"]')).toContainText(lang === 'he' ? 'נגד' : 'Against');
   await expect(history.locator('[data-individual="saeed-alkharumi"]')).toContainText(lang === 'he' ? 'הימנעות' : 'Abstained');
-  await summary.locator('.after-help-anchor').nth(1).locator('.info > button').click();
-  await expect(summary.locator('.pop')).toContainText('Chikli');
+  // the coalition total says which list joined only in part (Chikli's Yamina: 6 of 7); the individual votes are listed
+  // on the page, so the investiture (i) adds no research note (clarity pass, 26 Nov 2026)
+  await summary.locator('.after-help-anchor').nth(0).locator('.info > button').click();
+  await expect(summary.locator('.pop')).toContainText('62');
   await page.keyboard.press('Escape');
   // The same rendering contract applies to every reviewed election, not just the reported example.
   for (let n = 1; n <= 26; n++) {
@@ -194,7 +193,7 @@ for (const lang of ['he', 'en'] as const) test(`support roles and honest unknown
   await expect(history.locator('.after-members-total').first()).toHaveText('64');
   await expect(history.locator('.after-confidence-vote').first()).toContainText(lang === 'he' ? '63 בעד · 54 נגד' : '63 for · 54 against');
   await history.locator('.after-support-totals').first().locator('.after-help-anchor').nth(1).locator('.info > button').click();
-  await expect(history.locator('.after-support-totals .pop')).toContainText(lang === 'he' ? 'הפער טרם הוסבר' : 'The difference has not been reconciled');
+  await expect(history.locator('.after-support-totals .pop')).toContainText(lang === 'he' ? 'תוצאת ההצבעה שונה ממספר מושבי הקואליציה' : 'The vote differs from the coalition’s seats');
 });
 
 test('switching language on mounted history updates endpoint direction and visual order', async ({ page }) => {
@@ -261,7 +260,7 @@ test('a mid-term change shows no investiture vote of its own; a formation bar na
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k10');
   await expect(history.locator('.after-mandate small')).toContainText(['Menachem Begin', 'Yitzhak Shamir']);
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k18');
-  await expect(history.locator('.after-confidence-vote').first()).toHaveText('69 for · 45 against · 0 abstaining');
+  await expect(history.locator('.after-confidence-vote').first()).toHaveText('69 for · 45 against');
 });
 
 test('records added in this pass: the Lavon affair, the 1988 recommendations, Government 37 changes, Hebrew wording', async ({ page }) => {
@@ -357,7 +356,7 @@ for (const lang of ['en', 'he'] as const) test(`an open mandate is drawn inside 
   // the name ends where the bar ends, inside the line
   expect(Math.abs(name.x + name.width - (bar.x + bar.width))).toBeLessThan(2);
   expect(name.x).toBeGreaterThanOrEqual(line.x);
-  await expect(formation.locator('.after-date-line > span').last()).toContainText(lang === 'he' ? 'נבדק' : 'Checked');
+  await expect(formation.locator('.after-date-line > span').last()).toContainText(lang === 'he' ? 'נכון ל־' : 'As of');
   // a closed mandate keeps its own end and no "ongoing"
   await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k25');
   await expect(history.locator('.after-mandate[data-open]')).toHaveCount(0);
@@ -459,10 +458,10 @@ for (const lang of ['en', 'he'] as const) test(`the coalition count names the li
   await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k23');
   await page.getByRole('tab', { name: lang === 'he' ? 'אחרי הבחירות' : 'After the election', exact: true }).click();
   const total = page.locator('.after-support-totals .after-help-anchor').first();
-  await expect(total).toContainText(lang === 'he' ? 'חברי הקואליציה 73' : 'Members 73');
+  await expect(total).toContainText(lang === 'he' ? 'מושבי הקואליציה 73' : 'Coalition seats 73');
   await total.getByRole('button').click();
-  const pop = page.locator('.pop').filter({ hasText: lang === 'he' ? 'מקורות וסייגים' : 'Sources & qualifications' });
-  await expect(pop).toContainText(lang === 'he' ? 'רשימות הקואליציה זכו ב־98 מנדטים; 73 מחבריהן נספרים' : 'The coalition’s lists won 98 seats; 73 of their members are counted');
+  const pop = page.locator('.pop').filter({ hasText: lang === 'he' ? 'רשימות הקואליציה זכו' : 'The coalition’s lists won' });
+  await expect(pop).toContainText(lang === 'he' ? 'רשימות הקואליציה זכו ב־98 מנדטים; 73 מחבריהן הצטרפו' : 'The coalition’s lists won 98 seats; 73 of their members joined');
   await expect(pop).toContainText(lang === 'he' ? 'כחול לבן 17 מתוך 33' : 'Blue and White 17 of 33');
 });
 

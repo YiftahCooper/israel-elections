@@ -12,13 +12,14 @@ const n = (x: number) => x.toLocaleString('en-US');
 export function k19ListNote(id: string, lang: 'he' | 'en'): string | undefined {
   const x = K19[id];
   if (!x) return undefined;
+  // plain words (clarity pass, 26 Nov 2026): which figure is shown and why, the other figure, and that it is unexplained
   return lang === 'he'
-    ? `מוצגת התוצאה המוכרזת (רשומות וחישוב המנדטים): ${n(x.declared)}. סכום התוצאות המפורטות: ${n(x.detailed)}; מפת 2013 ורשימת היישובים מסתכמות בו. אין שינוי במנדטים. הסיבה אינה מתועדת.`
-    : `Shown: the declared result (Reshumot notice and seat calculation), ${n(x.declared)}. The detailed results sum to ${n(x.detailed)}; the 2013 map and list of places add up to that. No seat changes. Cause not documented.`;
+    ? `אלה הקולות שהוכרזו, ולפיהם חולקו המנדטים. בספירה המפורטת לפי יישובים: ${n(x.detailed)}. הפער אינו מוסבר.`
+    : `These are the declared votes, which decided the seats. The detailed count by place gives ${n(x.detailed)}; the difference is unexplained.`;
 }
 
 /** Added to 2013's data-status note, which already explains the corrected national total. Each list's pair stays
  *  together, so the figures read in order in Hebrew too. */
 export const k19StatusNote = (lang: 'he' | 'en') => lang === 'he'
-  ? 'מוצגת התוצאה המוכרזת (רשומות וחישוב המנדטים), ובסוגריים התוצאות המפורטות, שמפת 2013 מסתכמת בהן: הליכוד ביתנו 885,054 (885,163), קדימה 79,081 (78,974), הישראלים 18,941 (18,939). הסיבה אינה מתועדת.'
-  : 'Shown: the declared result (Reshumot notice and seat calculation), with the detailed results, which the 2013 map adds up to, in brackets: Likud–Yisrael Beiteinu 885,054 (885,163), Kadima 79,081 (78,974), Hayisraelim 18,941 (18,939). Cause not documented.';
+  ? 'מוצגים הקולות שהוכרזו, ולפיהם חולקו המנדטים. בספירה המפורטת לפי יישובים (בסוגריים) יש הבדל קטן בשלוש רשימות: הליכוד ביתנו 885,054 (885,163), קדימה 79,081 (78,974), הישראלים 18,941 (18,939). הפער אינו מוסבר.'
+  : 'Shown: the declared votes, which decided the seats. The detailed count by place (in brackets) differs slightly for three lists: Likud–Yisrael Beiteinu 885,054 (885,163), Kadima 79,081 (78,974), Hayisraelim 18,941 (18,939). The difference is unexplained.';

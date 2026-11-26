@@ -61,10 +61,12 @@ describe('after-election popups', () => {
     expect(isFieldRecord('PersonToPositionID 17248; PersonID 965; PositionID 45')).toBe(true);
     expect(isFieldRecord('69 to 45 with five abstentions')).toBe(false);
   });
-  it('a recorded disagreement is shown as text, not as data', () => {
+  // a recorded disagreement and how the research settled it are research notes: the settled fact is shown, its
+  // sources stay behind each fact's (i), and the notes never reach a popup (clarity pass, 26 Nov 2026)
+  it('research notes and recorded disagreements are not shown in the popups, and never as data', () => {
     const src = readFileSync('src/app/components/AfterElection.tsx', 'utf8');
     expect(src).not.toMatch(/JSON\.stringify\(\s*(?:c|conflict|conflicts)\b/);
-    expect(src).toMatch(/function ConflictText/);
+    expect(src).not.toMatch(/'Research notes|formation\.conflicts|reconciliation\.note/);
   });
 });
 

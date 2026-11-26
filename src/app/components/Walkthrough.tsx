@@ -100,7 +100,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
     if (q.capped) {
       const counts = unitMembers(q.unitId).map((m) => { const l = listOf(m); return !l || l.rosterUnavailable || l.rosterTruncated ? undefined : l.candidates.filter((c) => !c.notSeated).length; });
       const capacity = counts.every((c) => c !== undefined) ? counts.reduce<number>((a, c) => a + c!, 0) : undefined;
-      if (s.rules.seatsCappedAtCandidates && capacity !== undefined && q.seats >= capacity) return <>{L('no more candidates', 'אין עוד מועמדים')} <Info title={L('Candidate cap (1977)', 'מגבלת המועמדים (1977)')}>{L('A list gets no more seats than it has candidates. The Knesset’s 1 November 1977 appeal determination documents this initial cap and the distribution of six remainder seats under section 81(d).', 'רשימה אינה מקבלת יותר מנדטים ממספר מועמדיה. הכרעת הכנסת בערעור מיום 1 בנובמבר 1977 מתעדת הגבלה זו בחלוקה הראשונה ואת חלוקת ששת המנדטים העודפים לפי סעיף 81(ד).')}</Info></>;
+      if (s.rules.seatsCappedAtCandidates && capacity !== undefined && q.seats >= capacity) return <>{L('no more candidates', 'אין עוד מועמדים')} <Info title={L('No more candidates', 'אין עוד מועמדים')}>{L('A list gets no more seats than it has candidates, so its next seat goes to another list.', 'רשימה אינה מקבלת יותר מנדטים ממספר מועמדיה, ולכן המנדט הבא עובר לרשימה אחרת.')}</Info></>;
       return <>{L('half-seats cap', 'מגבלת מחצית המנדטים')} <Info term="cap" /></>;
     }
     if (q.value.num < 0n) return s.rules.largestRemainderRepeat === false ? L('already won one', 'כבר זכתה באחד') : L('won one this round', 'זכתה באחד בסבב זה');
@@ -158,7 +158,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       <div className="row walk-controls">
         <button className="btn small" onClick={() => go(Math.max(0, i - 1))} disabled={i === 0}>{L('Previous', 'הקודם')}</button>
         <button className="btn small" onClick={() => go(Math.min(steps.length - 1, i + 1))} disabled={i >= steps.length - 1}>{L('Next', 'הבא')}</button>
-        <span className="muted small" aria-live="polite">{L(`Step ${i + 1} of ${steps.length}`, `צעד ${i + 1} מתוך ${steps.length}`)}</span>
+        <span className="sr-only" aria-live="polite">{L(`Step ${i + 1} of ${steps.length}`, `צעד ${i + 1} מתוך ${steps.length}`)}</span>
       </div>
       <ol className="walk-stages" aria-label={L('Allocation stages', 'שלבי החלוקה')}>
         {stages.map((g, k) => {
@@ -211,7 +211,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
           <div>
             {heading(quotaGate ? L('Which lists can win a seat?', 'אילו רשימות יכולות לזכות במנדט?') : L('Which lists pass the threshold?', 'אילו רשימות עוברות את אחוז החסימה?'), <Info term="threshold" />)}
             {Number(s.rules.thresholdPct) > 0
-              ? <p><span className="formula">{s.rules.thresholdPct}% × {fmtInt(r.totalValid)} = {fmtRat(r.thresholdExact, 3)} → <span style={{ whiteSpace: 'nowrap' }}>{fmtInt(r.thresholdVotes)} <Info title={L('What the threshold is a share of', 'בסיס אחוז החסימה')}>{L('All valid votes count, including votes for lists that fail. The result is rounded up to whole votes.', 'כל הקולות הכשרים נספרים, גם של רשימות שלא עברו. התוצאה מעוגלת כלפי מעלה לקולות שלמים.')}</Info></span></span></p>
+              ? <p><span className="formula">{L(`${s.rules.thresholdPct}% of ${fmtInt(r.totalValid)} valid votes`, `${s.rules.thresholdPct}% מתוך ${fmtInt(r.totalValid)} קולות כשרים`)} = {advanced && <>{fmtRat(r.thresholdExact, 3)} → </>}<span style={{ whiteSpace: 'nowrap' }}>{L(`${fmtInt(r.thresholdVotes)} votes`, `${fmtInt(r.thresholdVotes)} קולות`)} <Info title={L('What the threshold is a share of', 'בסיס אחוז החסימה')}>{L('All valid votes count, including votes for lists that fail. The result is rounded up to whole votes.', 'כל הקולות הכשרים נספרים, גם של רשימות שלא עברו. התוצאה מעוגלת כלפי מעלה לקולות שלמים.')}</Info></span></span></p>
               : <p>{quotaGate ? L(`No percentage threshold. A list needs one whole quota (${fmtInt(r.quota.num / r.quota.den)} votes, step 2) to win a seat.`, `אין אחוז חסימה. רשימה צריכה מודד שלם אחד (${fmtInt(r.quota.num / r.quota.den)} קולות, צעד 2) כדי לזכות במנדט.`) : L('No percentage threshold applies: every list takes part.', 'אין אחוז חסימה: כל הרשימות משתתפות.')}</p>}
             <div className="tablewrap walk-narrow" tabIndex={0} role="region" aria-label={L('Lists by votes', 'רשימות לפי קולות')}>
               <table className="tbl">
@@ -231,8 +231,8 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
       {step.kind === 'quota' && (
         <div>
           {heading(L('General quota: the votes for one seat', 'המודד הכללי: מחיר מנדט אחד בקולות'), <Info term="quota" />)}
-          {r.unrepresentedVotes > 0n && <p><span className="formula"><bdi>{L('qualifying votes', 'קולות משתתפים')}</bdi> = {fmtInt(r.totalValid)} − {fmtInt(r.unrepresentedVotes)} = {fmtInt(r.qualifyingVotes)}</span> <Info term="qualifying" /></p>}
-          <p><span className="formula"><bdi>{L('quota', 'מודד')}</bdi> = {quotaFormula(r.qualifyingVotes, s.rules.seats)} = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</span></p>
+          {r.unrepresentedVotes > 0n && <p>{L('Votes for the lists that passed', 'קולות הרשימות שעברו')}: <span className="formula">{fmtInt(r.totalValid)} − {fmtInt(r.unrepresentedVotes)} = {fmtInt(r.qualifyingVotes)}</span></p>}
+          <p><span className="formula">{quotaFormula(r.qualifyingVotes, s.rules.seats)} = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</span></p>
           {quotaSeats !== s.rules.seats && s.rules.remainderMethod !== 'droop' && <p className="small ink2">{L(`Divided by the seats plus one (${quotaSeats}), as the 1949 rules required.`, `מחולק במספר המנדטים ועוד אחד (${quotaSeats}), כפי שקבעו כללי 1949.`)}</p>}
           {r.quota.num > 0n && <p>{L(`Every ${num(r.quota, 1)} votes win a seat in the next step.`, `כל ${num(r.quota, 1)} קולות מזכים במנדט בצעד הבא.`)}</p>}
         </div>
@@ -241,7 +241,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
         <div>
           {heading(L('Seats by whole quota', 'מנדטים לפי מודד שלם'), <Info term="whole-quota-seats" />)}
           {tray(initialCells)}
-          <p>{L(`${r.initialSeatsTotal} seats allocated; ${s.rules.seats - r.initialSeatsTotal} remain.`, `חולקו ${r.initialSeatsTotal} מנדטים; נותרו ${s.rules.seats - r.initialSeatsTotal}.`)} <Info term="remainder-seats" /></p>
+          <p>{L(`${r.initialSeatsTotal} seats allocated; ${s.rules.seats - r.initialSeatsTotal} remain.`, `חולקו ${r.initialSeatsTotal} מנדטים; נותרו ${s.rules.seats - r.initialSeatsTotal}.`)}</p>
           {advanced && <CecJointSheet s={s} r={r} />}
           {r.quota.num > 0n && <WalkTable s={s} rows={r.lists.filter((l) => l.qualified).sort((a, b) => Number(b.votes - a.votes))}
             heads={[L('Votes', 'קולות'), L('Votes ÷ quota', 'קולות ÷ מודד'), L('Seats', 'מנדטים')]}
@@ -300,13 +300,13 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
             {tray([...initialCells, ...awarded(step.st.step)], { current: seatNo - 1 })}
             <p className="small ink2">{ruleSentence()}</p>
             <p className="walk-award">{L('Awarded to', 'הוענק ל')} <span className="walk-pair">{swatches(w)}<b>{name(w)}</b></span>
-              {margin && margin.num > 0n && runner ? <span className="muted"> {L(`· ahead of ${name(runner.unitId)} by ${num(margin, 1)}`, `· ביתרון של ${num(margin, 1)} על ${name(runner.unitId)}`)}</span> : null}
+              {margin && margin.num > 0n && runner ? <span className="muted"> {L(`· ahead of ${name(runner.unitId)} by ${num(margin, 1)} votes`, `· ביתרון של ${num(margin, 1)} קולות על ${name(runner.unitId)}`)}</span> : null}
               {r.units.find((u) => u.id === w)?.isAgreement ? <span className="muted"> {L(`· the pair divides it in step ${stageNo('internal')}`, `· הצמד מחלק אותו בצעד ${stageNo('internal')}`)}</span> : null}
               {changed ? <> <span className="chip walk-was">{L(`was ${wasName}`, `היה: ${wasName}`)}</span></> : null}
             </p>
             {step.st.tie && (
               <div className="callout small">
-                {L('Exact tie between ', 'שוויון מדויק בין ')}{step.st.tie.tiedUnitIds.map(name).join(', ')}. {s.rules.tiePolicy === 'unspecified' ? L('The sources checked state no tie rule for this era; the outcome shown is provisional.', 'במקורות שנבדקו לא אותר כלל הכרעה לתקופה זו; התוצאה המוצגת זמנית.') : L('The law requires a lottery by the Central Elections Committee.', 'החוק מחייב הגרלה של ועדת הבחירות.')} <Info term="tie-lottery" />
+                {L('Exact tie between ', 'שוויון מדויק בין ')}{step.st.tie.tiedUnitIds.map(name).join(', ')}. {s.rules.tiePolicy === 'unspecified' ? L('No tie rule is known for this era, so the outcome shown is not certain.', 'לא ידוע על כלל הכרעה לתקופה זו, ולכן התוצאה המוצגת אינה ודאית.') : L('The law requires a lottery by the Central Elections Committee.', 'החוק מחייב הגרלה של ועדת הבחירות.')} <Info term="tie-lottery" />
                 {!step.st.tie.forced && <div><b>{L('Not yet decided — showing the first list.', 'טרם הוכרע — מוצגת הרשימה הראשונה.')}</b></div>}
                 <div className="row" style={{ marginTop: 4 }}>
                   {s.rules.tiePolicy === 'unspecified' ? L('Outcome:', 'תוצאה:') : L('Lottery winner:', 'זוכה בהגרלה:')} {step.st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small names ${step.st.tie!.forced && step.st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: step.st.tie!.key, winner: u })}>{name(u)}</button>)}
@@ -315,7 +315,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
             )}
             <div className="tablewrap" tabIndex={0} role="region" aria-label={L(`Seat ${seatNo}: every competitor`, `מנדט ${seatNo}: כל המתמודדים`)}>
               <table className="tbl">
-                <thead><tr><th>{pair ? L('List / pair', 'רשימה / צמד') : L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Seats so far', 'מנדטים עד כה')}</th><th className="n">{lr ? L('Remainder', 'שארית') : L('Quotient', 'מודד רשימה')} <Info term={lr ? 'largest-remainder' : 'listquota'} /></th></tr></thead>
+                <thead><tr><th>{pair ? L('List / pair', 'רשימה / צמד') : L('List', 'רשימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Seats so far', 'מנדטים עד כה')}</th><th className="n">{lr ? L('Remainder', 'שארית') : L('Quotient', 'מודד רשימה')}</th></tr></thead>
                 <tbody>
                   {step.st.quotients.filter((q) => q.votes > 0n).map((q) => (
                     <tr key={q.unitId} className={`${q.unitId === w ? 'win' : ''} ${q.eligible ? '' : 'below'}`}>
@@ -337,7 +337,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
         const stage = `internal:${d.unitId}`;
         return (
           <div>
-            {heading(<>{L('Dividing the pair’s seats', 'חלוקת המנדטים בתוך הצמד')}: <span className="walk-pair">{swatches(d.unitId)}{name(d.unitId)}</span></>, <Info title={L('Dividing pair seats', 'חלוקת מנדטי הצמד')}>{L('Section 82(b): the pair’s seats are divided again from scratch by the method of section 81, as if the two lists were the whole Knesset.', 'סעיף 82(ב): מנדטי הצמד מחולקים מחדש מתחילה בשיטת סעיף 81, כאילו שתי הרשימות הן כל הכנסת.')}</Info>)}
+            {heading(<>{L('Dividing the pair’s seats', 'חלוקת המנדטים בתוך הצמד')}: <span className="walk-pair">{swatches(d.unitId)}{name(d.unitId)}</span></>)}
             {tray(finalCells, { focus: members })}
             <p>{divisor ? L(`The pair won ${seatsText(d.seats, 'en')}. ${d.seats === 1 ? 'It goes to one of the partners' : 'They are re-divided between the partners'} by the same method.`, `הצמד זכה ${hebrewPrefix('ב', seatsText(d.seats, 'he'))}. ${d.seats === 1 ? 'הוא ניתן לאחת השותפות' : 'הם מחולקים מחדש בין השותפות'} באותה שיטה.`)
               : L(`The pair won ${seatsText(d.seats, 'en')} (${wholeSeats} by whole quota, ${d.seats - wholeSeats} remainder). ${d.seats === 1 ? 'It goes to one of the partners' : 'They are re-divided between the partners'} by the same method.`, `הצמד זכה ${hebrewPrefix('ב', seatsText(d.seats, 'he'))} (${wholeSeats} במודד שלם, ${d.seats - wholeSeats} עודפים). ${d.seats === 1 ? 'הוא ניתן לאחת השותפות' : 'הם מחולקים מחדש בין השותפות'} באותה שיטה.`)}</p>
@@ -361,7 +361,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
                         <td><b>{name(st.winnerUnitId)}</b></td>
                       </tr>
                       {st.tie && <tr><td colSpan={members.length + 2}><div className="callout small">
-                        {s.rules.tiePolicy === 'unspecified' ? L('Exact tie inside the pair: the sources checked state no tie rule for this era; the outcome shown is provisional.', 'שוויון מדויק בתוך הצמד: במקורות שנבדקו לא אותר כלל הכרעה לתקופה זו; התוצאה המוצגת זמנית.') : L('Exact tie inside the pair: the law requires a lottery by the Central Elections Committee.', 'שוויון מדויק בתוך הצמד: החוק מחייב הגרלה של ועדת הבחירות.')}{' '}
+                        {s.rules.tiePolicy === 'unspecified' ? L('Exact tie inside the pair: no tie rule is known for this era, so the outcome shown is not certain.', 'שוויון מדויק בתוך הצמד: לא ידוע על כלל הכרעה לתקופה זו, ולכן התוצאה המוצגת אינה ודאית.') : L('Exact tie inside the pair: the law requires a lottery by the Central Elections Committee.', 'שוויון מדויק בתוך הצמד: החוק מחייב הגרלה של ועדת הבחירות.')}{' '}
                         {!st.tie.forced && <b>{L('Not yet decided — showing the first list.', 'טרם הוכרע — מוצגת הרשימה הראשונה.')}</b>}
                         <div className="row" style={{ marginTop: 4 }}>{s.rules.tiePolicy === 'unspecified' ? L('Outcome:', 'תוצאה:') : L('Lottery winner:', 'זוכה בהגרלה:')} {st.tie.tiedUnitIds.map((u) => <button key={u} className={`btn small names ${st.tie!.forced && st.tie!.chosen === u ? 'primary' : ''}`} onClick={() => dispatch({ type: 'setLottery', key: st.tie!.key, winner: u })}>{name(u)}</button>)}</div>
                       </div></td></tr>}
@@ -396,14 +396,9 @@ function CecJointSheet({ s, r }: { s: Scenario; r: AllocationResult }) {
   const sum = (a: number) => <bdi dir="ltr">{a} + {seats - a}</bdi>;
   return (
     <p className="small ink2 walk-cec-note">
-      {he ? <>בדף החישוב של ועדת הבחירות: {sum(x.sheet)}, כשכל צמד בהסכם עודפים נספר יחד.</> : <>Elections Committee sheet: {sum(x.sheet)}, counting each surplus-agreement pair together.</>}{' '}
-      <Info title={L('Why the Committee’s sheet differs', 'למה דף הוועדה שונה')} label={L(`Elections Committee sheet, ${x.year}`, `דף החישוב של ועדת הבחירות, ${x.year}`)}>
-        <span>{L(`The Elections Committee’s calculation sheet counted each surplus-agreement pair together in this stage: ${x.sheet} seats, ${seats - x.sheet} left. The law gives each list its own whole quotas first (§81(c)); a pair counts as one list only for the remainder seats (§82(a)).`,
-          `בדף החישוב של ועדת הבחירות המרכזית נספר כל צמד בהסכם עודפים יחד בשלב זה: ${x.sheet} מנדטים, ונותרו ${seats - x.sheet}. לפי החוק כל רשימה מקבלת תחילה את המודדים השלמים שלה (סעיף 81(ג)), וצמד נחשב לרשימה אחת רק בחלוקת העודפים (סעיף 82(א)).`)}{' '}
-          {x.laterPages
-            ? L(`The sheet’s own later pages also start from ${x.app} and hand out ${seats - x.app} seats, as here.`, `גם בעמודים הבאים של אותו דף החלוקה מתחילה מ־${x.app} ומחולקים ${seats - x.app} מנדטים, כמו כאן.`)
-            : he ? <>האפליקציה פועלת לפי החוק: {sum(x.app)}.</> : <>The app follows the law: {sum(x.app)}.</>}{' '}
-          {L('Final seats are identical.', 'התוצאה הסופית זהה.')}</span>
+      {he ? <>ועדת הבחירות ספרה בשלב זה כל צמד בהסכם עודפים יחד: {sum(x.sheet)}. התוצאה הסופית זהה.</> : <>The Elections Committee counted each surplus-agreement pair together at this stage: {sum(x.sheet)}. The final seats are the same.</>}{' '}
+      <Info title={L('Why the Committee’s count differs', 'למה ספירת הוועדה שונה')} label={L(`Elections Committee sheet, ${x.year}`, `דף החישוב של ועדת הבחירות, ${x.year}`)}>
+        <span>{L('The law gives each list its own whole quotas first; a pair counts as one list only for the remainder seats.', 'לפי החוק כל רשימה מקבלת תחילה את המודדים השלמים שלה, וצמד נחשב לרשימה אחת רק בחלוקת העודפים.')}</span>
         <span className="glossary-link"><a href={x.url} target="_blank" rel="noreferrer">{L(`Source: Elections Committee calculation sheet, ${x.year}, p. ${x.page}`, `מקור: דף החישוב של ועדת הבחירות, ${x.year}, עמ׳ ${x.page}`)}</a><span className="muted"> · gov.il</span></span>
       </Info>
     </p>

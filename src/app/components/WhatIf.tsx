@@ -10,7 +10,7 @@ import { applyAction } from '../../model/actions.ts';
 import { type Action, type Scenario } from '../../model/scenario.ts';
 import { useL, useLang, type Lang } from '../i18n.ts';
 import { fmtInt, signed } from '../format.ts';
-import { getState, motionReduced, setState, useOn, useShown } from '../store.ts';
+import { getState, motionReduced, setState, useOn } from '../store.ts';
 import { computeWhatIf, type WhatIfFact, type WhatIfResult } from '../whatIf.ts';
 
 // The cards depend only on the dataset and the language (never on the edited scenario), so their
@@ -52,7 +52,6 @@ export function Fact({ f, lang, full }: { f: WhatIfFact; lang: Lang; full?: bool
 
 export function WhatIf({ ds }: { ds: ElectionDataset }) {
   const L = useL();
-  const sourcesShown = useShown('sources');
   const simple = !useOn('whatIfAll');
   const [all, setAll] = useState(false);
   const lang = useLang();
@@ -82,11 +81,8 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
   const shown = useful.slice(0, limit);
   return (
     <div>
-      <p className="ink2 small" style={{ marginTop: 0 }}>{L('Start from the real result', 'מתחילים מהתוצאה האמיתית')} <Info title={L('About these questions', 'על השאלות האלה')}>
-        {L('Each question starts from the real result and changes one thing; seat changes are exact. Its (i) lists the assumptions. Data: this election’s votes, agreements and rules, see ', 'כל שאלה מתחילה מהתוצאה האמיתית ומשנה דבר אחד; שינויי המנדטים מדויקים. ה־(i) שלה מפרט את ההנחות. הנתונים: הקולות, ההסכמים והכללים של הבחירות האלה, ראו ')}
-        {sourcesShown ? <button type="button" className="table-action wi-src" onClick={() => setState({ tool: 'sources' })}>{L('Sources', 'מקורות')}</button> : L('Sources', 'מקורות')}.
-        {L(' “Open as a scenario” loads it so you can explore further (Undo returns you).', ' "פתיחה כתרחיש" טוענת אותה להמשך חקירה (ביטול מחזיר אתכם).')}
-      </Info></p>
+      {/* one plain line gives the seat numbers below their subject; the old (i) explained the page (clarity pass, 26 Nov 2026) */}
+      <p className="ink2 small" style={{ marginTop: 0 }}>{L('Each question changes one thing in the real result and shows which lists gain or lose seats.', 'כל שאלה משנה דבר אחד בתוצאה האמיתית ומראה אילו רשימות מרוויחות או מפסידות מנדטים.')}</p>
       <ol className="wi-rows">
         {shown.map(({ p, actions, title, body, votes, changes, facts }) => {
           const max = Math.max(1, ...changes.map((c) => Math.abs(c.after - c.before)));
