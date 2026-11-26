@@ -1,4 +1,4 @@
-import { FEATURES, featureLabel, FEATURE_PREVIEWS, TOOL_FEATURES, type FeatureId, type Preset } from './features.ts';
+import { FEATURES, featureLabel, TOOL_FEATURES, type FeatureId, type Preset } from './features.ts';
 
 /** Personal display settings (israel-elections-private docs/design/settings.md). One registry drives the popup, its search, the resets
  *  and the tests. Every level shows every setting, in tiers by `min`: Simple first, then Standard, then Expert (owner,
@@ -87,11 +87,11 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['Device follows your phone or computer, also when it changes at night.', 'לפי המכשיר: כמו בטלפון או במחשב, גם כשזה משתנה בלילה.'],
     options: [o('device', 'Device', 'לפי המכשיר'), o('light', 'Light', 'בהיר'), o('dark', 'Dark', 'כהה')], synonyms: 'dark night light mode colours theme כהה לילה בהיר מצב' },
   { id: 'level', group: 'top', control: 'level', min: 'simple', label: ['Complexity', 'רמת מורכבות'],
-    info: ['Decides which tools and details are shown. Simple, Standard and Expert are always as they come. Anything you add or take away below makes Custom, your own: the complexity you were on, with your choices. Hidden edits and settings keep working.', 'קובעת אילו כלים ופרטים מוצגים. "פשוט", "רגיל" ו"מומחה" תמיד נשארים כמו שהם. כל מה שתוסיפו או תורידו למטה יוצר את "מותאם אישית", משלכם: רמת המורכבות שהייתם בה, עם הבחירות שלכם. עריכות והגדרות מוסתרות ממשיכות לפעול.'],
+    info: ['Decides which tools and details are shown. Anything you add or take away below makes Custom: the complexity you were on, with your choices.', 'קובעת אילו כלים ופרטים מוצגים. כל מה שתוסיפו או תורידו למטה יוצר את "מותאם אישית": רמת המורכבות שהייתם בה, עם הבחירות שלכם.'],
     options: [o('simple', 'Simple', 'פשוט'), o('standard', 'Standard', 'רגיל'), o('expert', 'Expert', 'מומחה'), o('custom', 'Custom', 'מותאם אישית')], synonyms: 'mode level detail view complexity custom own מצב רמה פירוט תצוגה מורכבות מותאם אישית' },
 
   { id: 'density', group: 'general', control: 'seg', min: 'simple', label: ['Spacing', 'ריווח'],
-    info: ['Comfortable adds space between rows. Touch targets stay large in both.', 'מרווח מוסיף רווח בין השורות. יעדי המגע נשארים גדולים בשני המצבים.'],
+    info: ['Comfortable adds space between rows.', 'מרווח מוסיף רווח בין השורות.'],
     options: [o('compact', 'Compact', 'צפוף'), o('comfortable', 'Comfortable', 'מרווח')], synonyms: 'density dense padding compact צפיפות צפוף מרווח' },
   { id: 'starterTip', group: 'general', control: 'toggle', min: 'simple', only: 'simple', label: ['Starter tip', 'טיפ פתיחה'],
     info: ['The one-line tip under the Overview. Turn on to see it again.', 'שורת העצה בתחתית תמונת המצב. הפעילו כדי לראות אותה שוב.'], synonyms: 'hint tips help onboarding עצה רמז עזרה' },
@@ -100,16 +100,16 @@ export const SETTINGS: readonly SettingRow[] = [
     options: [o('overview', 'Overview', 'תמונת מצב'), o('last', 'Last tool', 'הכלי האחרון')], synonyms: 'start page startup home tab פתיחה דף בית לשונית' },
 
   { id: 'listSymbol', group: 'lists', control: 'seg', min: 'simple', label: ['List symbol', 'סמל הרשימה'],
-    info: ['Logo: the verified symbol from that election, else the letters. Ballot letters: always the letters.', 'סמל: הסמל המאומת מאותן בחירות, אחרת האותיות. אותיות הפתק: תמיד האותיות.'],
+    info: ['Logo: the list’s symbol in that election, or its letters when it had none.', 'סמל: סמל הרשימה באותן בחירות, ואם לא היה לה סמל, האותיות.'],
     options: [o('logo', 'Logo', 'סמל'), o('letters', 'Ballot letters', 'אותיות הפתק')], synonyms: 'logo icon ballot letters slip לוגו סמל אותיות פתק' },
   { id: 'jointByParty', group: 'lists', control: 'choice', min: 'simple', label: ['Joint lists by party', 'רשימות משותפות לפי מפלגה'],
     info: ['Each party on a joint list shows as its own faction. Votes and seats don’t change. Saved scenarios keep their choice.', 'כל מפלגה ברשימה משותפת מוצגת כסיעה נפרדת. הקולות והמנדטים אינם משתנים. תרחישים שמורים שומרים את הבחירה שלהם.'],
     synonyms: 'joint list split faction party seats default משותפת פיצול סיעה מפלגה ברירת מחדל' },
-  { id: 'jointListSeats', group: 'lists', control: 'seg', min: 'simple', label: ['Joint-list seats', 'מושבים ברשימה משותפת'],
+  { id: 'jointListSeats', group: 'lists', control: 'seg', min: 'expert', label: ['Joint-list seats', 'מושבים ברשימה משותפת'],
     info: ['For a joint list counted by party. Both: the party colour with a thin ring in the list colour. Party: the party colour only. List: the list colour only.', 'ברשימה משותפת שנספרת לפי מפלגה. שניהם: צבע המפלגה עם טבעת דקה בצבע הרשימה. מפלגה: צבע המפלגה בלבד. רשימה: צבע הרשימה בלבד.'],
     options: [o('both', 'Both', 'שניהם'), o('party', 'Party', 'מפלגה'), o('list', 'List', 'רשימה')], synonyms: 'party colour color in seats inner ring component split joint list צבע המפלגה במושבים פנימי טבעת משותפת' },
   { id: 'jointListParties', group: 'lists', control: 'seg', min: 'simple', label: ['Parties under joint lists', 'מפלגות ברשימה משותפת'],
-    info: ['The parties listed under a joint list counted by party. With seats: only parties that had someone elected, e.g. not Atid Ehad (2022). All: also those with no seats. A party you gave its own bloc always shows; every party stays on the list’s own page.', 'המפלגות שמוצגות מתחת לרשימה משותפת שנספרת לפי מפלגה. עם מנדטים: רק מפלגות שנבחר מטעמן מישהו, למשל לא עתיד אחד (2022). כולן: גם אלה ללא מנדטים. מפלגה ששייכתם לגוש משלה מוצגת תמיד; כל המפלגות מופיעות בעמוד הרשימה.'],
+    info: ['Which parties show under a joint list counted by party. With seats: only parties that won a seat. All: also those that won none.', 'אילו מפלגות מוצגות מתחת לרשימה משותפת שנספרת לפי מפלגה. עם מנדטים: רק מפלגות שזכו במנדט. כולן: גם אלה שלא זכו.'],
     options: [o('none', 'Lists only', 'רשימות בלבד'), o('seated', 'With seats', 'עם מנדטים'), o('all', 'All', 'כולן')],
     synonyms: 'parties constituent factions zero 0 seats empty hidden below threshold מפלגות מרכיבות סיעות אפס 0 מנדטים ריק חסימה' },
   { id: 'seatlessLists', group: 'lists', control: 'seg', min: 'simple', label: ['Lists with no seats', 'רשימות ללא מנדטים'],
@@ -126,8 +126,8 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['A line under each list: its seats at the previous election and the change (2022: 5 ▲6). Compare and the list panel always show the comparison.', 'שורה מתחת לכל רשימה: המנדטים בבחירות הקודמות והשינוי (2022: 5 ▲6). ההשוואה וחלונית הרשימה מציגות את ההשוואה תמיד.'], synonyms: 'previous last election history since change predecessor קודמות היסטוריה שינוי' },
   { id: 'compareBars', group: 'lists', control: 'toggle', min: 'simple', label: ['Bars for the compared result', 'עמודות לתוצאה המושווית'],
     info: ['While comparing, a thin striped bar under each list’s bar shows its seats in the result you compare with. Off: the line under the list only.', 'בזמן השוואה, עמודה דקה ומפוספסת מתחת לעמודת כל רשימה מראה את מנדטיה בתוצאה שאתם משווים אליה. כבוי: השורה שמתחת לרשימה בלבד.'], synonyms: 'compare comparison reference striped bar previous השוואה עמודה מפוספסת קודמת' },
-  { id: 'allCandidates', group: 'lists', control: 'toggle', min: 'standard', label: ['All candidates', 'כל המועמדים'],
-    info: ['Opens a list’s full roster. Off: the elected and the next few first.', 'פותח את רשימת המועמדים המלאה. כבוי: הנבחרים והבאים בתור תחילה.'], synonyms: 'candidates roster members names מועמדים חברים שמות' },
+  { id: 'allCandidates', group: 'lists', control: 'toggle', min: 'standard', label: ['Start with every candidate', 'כל המועמדים מההתחלה'],
+    info: ['A list’s candidates open in full. Off: the elected and the next few first.', 'המועמדים של רשימה נפתחים במלואם. כבוי: קודם הנבחרים והבאים בתור.'], synonyms: 'candidates roster members names מועמדים חברים שמות' },
 
   // Slot (16 Nov 2026): the on/off switch for the turnout line under the seat count goes here, first in the seat chart
   // group, min 'simple', once that line and its setting exist.
@@ -147,18 +147,18 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['When a list is chosen, the other seats and rows fade.', 'כשבוחרים רשימה, שאר המושבים והשורות מתעמעמים.'], synonyms: 'dim fade highlight selection עמעום הדגשה בחירה' },
 
   { id: 'decimals', group: 'numbers', control: 'decimals', min: 'simple', label: ['Max decimal places', 'מספר ספרות מרבי אחרי הנקודה'],
-    info: ['Percentages show at most this many, without trailing zeros. Tap, hover or focus one for its exact value. Next to the threshold a share gets one more digit, so it never looks like it is on the other side.', 'אחוזים מוצגים עם מספר הספרות שנבחר לכל היותר, בלי אפסים בסוף. נגיעה, ריחוף או מיקוד מציגים את הערך המדויק. ליד אחוז החסימה מוצגת ספרה נוספת, כדי שהאחוז לא ייראה בצד השני שלו.'],
+    info: ['Percentages show at most this many; tap or point at one for its exact value. Near the threshold one more shows, so a share never looks like it is on the wrong side.', 'אחוזים מוצגים עם מספר הספרות הזה לכל היותר; נגיעה או הצבעה מציגות את הערך המדויק. ליד אחוז החסימה מוצגת ספרה נוספת, כדי שאחוז לא ייראה בצד הלא נכון.'],
     synonyms: 'decimal precision percent % digits rounding דיוק אחוז עשרוניות עיגול' },
 
   { id: 'splitWarning', group: 'editing', control: 'toggle', min: 'standard', label: ['Joint-list split warning', 'אזהרה בפיצול רשימה משותפת'], info: ['When splitting a joint list, remind that the split is an assumption for the scenario. Turn on to see it again.', 'בפיצול רשימה משותפת, תזכורת שהפיצול הוא הנחה לתרחיש. הפעילו כדי לראות אותה שוב.'], synonyms: 'split warning remember assumption פיצול אזהרה הנחה' },
   { id: 'voteSource', group: 'editing', control: 'choice', min: 'simple', label: ['Votes come from', 'מקור הקולות'],
-    info: ['Other lists: from all, in proportion; turnout stays. People who stayed home: turnout changes. New citizens: eligible voters change too. None: no default. Ask each time: on, every edit asks, starting on the default; off, the default is used without asking.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה לא משתנה. מי שלא הצביעו: שיעור ההצבעה משתנה. אזרחים חדשים: גם מספר בעלי זכות הבחירה משתנה. ללא: אין ברירת מחדל. לשאול בכל פעם: כשמסומן, כל עריכה שואלת ומתחילה בברירת המחדל; כשלא, ברירת המחדל משמשת בלי לשאול.'],
+    info: ['Other lists: turnout stays the same. People who stayed home: turnout changes. New citizens: the number who can vote changes too. Ask each time: every edit asks, starting on your choice.', 'שאר הרשימות: שיעור ההצבעה לא משתנה. מי שלא הצביעו: שיעור ההצבעה משתנה. אזרחים חדשים: גם מספר בעלי זכות הבחירה משתנה. לשאול בכל פעם: כל עריכה שואלת ומתחילה בבחירה שלכם.'],
     synonyms: 'source donor ask default remember balance מקור תורם לשאול ברירת מחדל זכירה' },
   { id: 'markChanges', group: 'editing', control: 'choice', min: 'simple', label: ['Mark changes since', 'סימון שינויים מאז'],
-    info: ['Opened scenario: only your newer changes are marked. Official result: every difference is marked. None: no default. Ask each time: on, opening a saved scenario asks, starting on the default; off, the default is used without asking.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל. ללא: אין ברירת מחדל. לשאול בכל פעם: כשמסומן, פתיחת תרחיש שמור שואלת ומתחילה בברירת המחדל; כשלא, ברירת המחדל משמשת בלי לשאול.'],
+    info: ['Opened scenario: only your newer changes are marked. Official result: every difference is marked. Ask each time: opening a saved scenario asks, starting on your choice.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל. לשאול בכל פעם: פתיחת תרחיש שמור שואלת ומתחילה בבחירה שלכם.'],
     synonyms: 'differences markers reference ask default הבדלים סימונים ייחוס לשאול ברירת מחדל' },
   { id: 'copyMode', group: 'editing', control: 'choice', min: 'standard', label: ['Copy votes: default method', 'העתקת קולות: שיטת ברירת המחדל'],
-    info: ['Where the Copy votes box starts. Number of votes: the same count; with Adjust for the number of eligible voters, scaled by the change in the number of people eligible to vote. Share of valid votes: the same share of all valid votes. None: no default; the box starts on the adjusted number of votes. Simple offers the adjusted number only.', 'מאיפה מתחיל חלון העתקת הקולות. מספר קולות: אותו מספר; עם התאמה לגודל ציבור הבוחרים, הוא גדל או קטן לפי היחס בין מספר בעלי זכות הבחירה בשתי הבחירות. שיעור מהקולות הכשרים: אותו שיעור מכלל הקולות הכשרים. ללא: אין ברירת מחדל, והחלון מתחיל במספר הקולות בהתאמה. ב"פשוט" מוצג מספר הקולות בהתאמה בלבד.'],
+    info: ['Where the Copy votes box starts. None: it starts on votes adjusted for the number of eligible voters, the only choice at Simple.', 'במה חלון העתקת הקולות מתחיל. ללא: הוא מתחיל בקולות לפי גודל ציבור הבוחרים, האפשרות היחידה ב"פשוט".'],
     synonyms: 'copy compare share count number adjust eligible voters electorate registered elections ask default remember העתקה השוואה שיעור מספר התאמה גודל ציבור הבוחרים בעלי זכות בחירה בחירות לשאול ברירת מחדל זכירה' },
   { id: 'copyAskEachTime', group: 'editing', control: 'toggle', min: 'standard', feature: 'compare', label: ['Copy votes: ask each time', 'העתקת קולות: לשאול בכל פעם'],
     info: ['On: every copy opens the Copy votes box. Off: copying one list happens at once, with your default method and source; Undo takes it back. The box’s “Don’t ask again” turns this off.', 'פעיל: כל העתקה פותחת את חלון העתקת הקולות. כבוי: העתקה של רשימה אחת מתבצעת מיד, בשיטה ובמקור שקבעתם כברירת מחדל; ביטול מחזיר אותה. "לא לשאול שוב" בחלון מכבה את זה.'],
@@ -171,11 +171,11 @@ export const SETTINGS: readonly SettingRow[] = [
     info: ['Loads the community list on the Scenarios page. Off: your own saves and links only.', 'טעינת רשימת הקהילה בעמוד התרחישים. כבוי: רק השמירות והקישורים שלכם.'], synonyms: 'gallery community shared network גלריה קהילה רשת' },
 
   { id: 'compareWith', group: 'analysis', control: 'seg', min: 'standard', feature: 'compare', label: ['Compare with', 'השוואה עם'],
-    info: ['What Compare opens on. Official result once edited: the previous election until you change the result, then this election’s official result, so you see what your changes did. Previous election: always that. You can switch in Compare.', 'במה ההשוואה נפתחת. התוצאה הרשמית אחרי עריכה: הבחירות הקודמות עד שמשנים את התוצאה, ואז התוצאה הרשמית של הבחירות האלה, כדי לראות מה עשו השינויים. הבחירות הקודמות: תמיד הן. אפשר להחליף בתוך ההשוואה.'],
+    info: ['What Compare opens on. Official result once edited: the previous election until you change something, then this election’s official result, to show what your changes did.', 'במה ההשוואה נפתחת. התוצאה הרשמית אחרי עריכה: הבחירות הקודמות עד שמשנים משהו, ואז התוצאה הרשמית של הבחירות האלה, כדי להראות מה עשו השינויים.'],
     options: [o('official', 'Official result once edited', 'התוצאה הרשמית אחרי עריכה'), o('previous', 'Previous election', 'הבחירות הקודמות')], synonyms: 'compare comparison previous official השוואה קודמות רשמית' },
   { id: 'optionPreviews', group: 'analysis', control: 'toggle', min: 'standard', label: ['Option previews', 'תצוגה מקדימה באפשרויות'],
     info: ['Small seat charts beside choices such as groupings. Off: names only, faster on slow phones.', 'תרשימי מושבים קטנים ליד אפשרויות כמו חלוקות. כבוי: שמות בלבד, מהיר יותר בטלפונים איטיים.'], synonyms: 'thumbnails mini charts previews תמונות ממוזערות תרשימים' },
-  { id: 'turnoutHistoryLine', group: 'analysis', control: 'toggle', min: 'expert', feature: 'turnout', label: ['Turnout line on Turnout', 'קו שיעור ההצבעה בעמוד ההצבעה'],
+  { id: 'turnoutHistoryLine', group: 'analysis', control: 'toggle', min: 'expert', feature: 'turnout', label: ['Turnout over the years', 'שיעור ההצבעה לאורך השנים'],
     info: ['The Turnout (%) line under the eligible-voters chart in All elections. Off: the eligible-voters chart only.', 'קו שיעור ההצבעה (%) מתחת לתרשים בעלי זכות הבחירה ב"כל הבחירות". כבוי: תרשים בעלי זכות הבחירה בלבד.'],
     synonyms: 'turnout line chart history elections percent שיעור הצבעה קו תרשים היסטוריה אחוז' },
   // the same switch as "All lines and areas" in the map's key; single lines are ticked in the key only
@@ -186,14 +186,14 @@ export const SETTINGS: readonly SettingRow[] = [
   // the Knesset-term timeline (owner, 11 Nov 2026): Simple no seat changes, Standard the important ones, Expert all of
   // the kinds chosen here
   { id: 'timelineSeatChanges', group: 'history', control: 'seg', min: 'expert', feature: 'after', label: ['Seat changes on the timeline', 'חילופי מושבים בציר הזמן'],
-    info: ['Steps where one MK replaced another. Important: party heads and others the research rates important, as at Standard.', 'צעדים שבהם חבר כנסת החליף אחר. חשובים: ראשי מפלגות ואחרים שהמחקר מדרג כחשובים, כמו ב"רגיל".'],
+    info: ['Steps where one MK replaced another. Important: party heads and other prominent MKs, as at Standard.', 'צעדים שבהם חבר כנסת החליף אחר. חשובים: ראשי מפלגות וחברי כנסת בולטים אחרים, כמו ב"רגיל".'],
     options: [o('off', 'Off', 'כבוי'), o('important', 'Important', 'חשובים'), o('all', 'All', 'כולם')], synonyms: 'timeline seat changes replacement norwegian steps ציר זמן חילופים מחליף נורבגי צעדים' },
   { id: 'seatStepsNorwegian', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Norwegian law', 'החוק הנורבגי'],
     info: ['With All: ministers who give up their seat to the next on the list, and their return.', 'במצב "כולם": שרים שמפנים את מקומם לבא בתור ברשימה, וחזרתם.'], synonyms: 'norwegian law minister replacement timeline נורבגי שר מחליף ציר זמן' },
   { id: 'seatStepsLeft', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Resignations and deaths', 'התפטרות ופטירה'],
     info: ['With All: MKs who resigned or died, and who replaced them.', 'במצב "כולם": חברי כנסת שהתפטרו או נפטרו, ומי שבא במקומם.'], synonyms: 'resigned resignation died death replacement timeline התפטרות פטירה מחליף ציר זמן' },
-  { id: 'seatStepsUnrecorded', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Reason not recorded', 'סיבה שלא תועדה'],
-    info: ['With All: changes whose reason the research has not recorded yet. Today that is most of them.', 'במצב "כולם": חילופים שסיבתם טרם תועדה במחקר. כיום רובם.'], synonyms: 'unknown reason replacement timeline סיבה לא ידועה מחליף ציר זמן' },
+  { id: 'seatStepsUnrecorded', group: 'history', control: 'toggle', min: 'expert', feature: 'after', label: ['Reason not known', 'סיבה לא ידועה'],
+    info: ['With All: changes whose reason is not known yet. Today that is most of them.', 'במצב "כולם": חילופים שסיבתם עוד לא ידועה. כיום רובם.'], synonyms: 'unknown reason replacement timeline סיבה לא ידועה מחליף ציר זמן' },
 
   { id: 'textSize', group: 'access', control: 'seg', min: 'simple', label: ['Text size', 'גודל טקסט'],
     info: ['Large makes all text and controls about 15% bigger.', 'גדול מגדיל את כל הטקסט והבקרים בכ־15%.'],
@@ -277,7 +277,60 @@ export const FEATURE_GROUP: Record<Exclude<FeatureId, 'board'>, GroupId> = {
 };
 /** Every tool and section with a row in Settings, in registry order. */
 export const FEATURE_ROWS: readonly Exclude<FeatureId, 'board'>[] = FEATURES.map(f => f[0]).filter((id): id is Exclude<FeatureId, 'board'> => id !== 'board');
-export const featureMatches = (id: FeatureId, query: string) => textMatches([...featureLabel(id), ...FEATURE_PREVIEWS[id]], query);
+/** What each tool and detail does, one plain line for its (i) in Settings and for the settings search. */
+export const PART_INFO: Record<FeatureId, Bi> = {
+  board: ['Seats, lists and blocs.', 'מנדטים, רשימות וגושים.'],
+  families: ['Each family’s seats and votes across all elections.', 'המנדטים והקולות של כל משפחה לאורך כל הבחירות.'],
+  familyEdit: ['Choose which lists belong to a family and save your own version.', 'בחירת הרשימות ששייכות למשפחה ושמירת גרסה משלכם.'],
+  familyScale: ['Raise or lower a whole family’s votes in one election.', 'הגדלה או הקטנה של הקולות של משפחה שלמה במערכת בחירות אחת.'],
+  familyGrouping: ['Group the lists into the family, mixed lists and everyone else.', 'חלוקת הרשימות למשפחה, לרשימות מעורבות ולכל השאר.'],
+  after: ['Who recommended whom, the government that was formed and what happened next.', 'מי המליץ על מי, הממשלה שהוקמה ומה קרה אחר כך.'],
+  scenarios: ['Save your changes and come back to them.', 'שמירת השינויים שלכם וחזרה אליהם.'],
+  whatif: ['Try a change and see who gains.', 'נסו שינוי וראו מי מרוויח.'],
+  coal: ['Choose lists and see whether they have a majority.', 'בחירת רשימות ובדיקה אם יש להן רוב.'],
+  walk: ['Follow how each seat was given out.', 'מעקב אחר חלוקת כל מנדט.'],
+  structure: ['Join lists together or run them separately.', 'איחוד רשימות או התמודדות בנפרד.'],
+  compare: ['Two results side by side.', 'שתי תוצאות זו לצד זו.'],
+  security: ['How many votes each list needs to gain or lose a seat.', 'כמה קולות כל רשימה צריכה כדי לזכות במנדט נוסף או לאבד מנדט.'],
+  charts: ['Votes and seats in charts.', 'קולות ומנדטים בתרשימים.'],
+  turnout: ['Change turnout, eligible voters and invalid ballots.', 'שינוי שיעור ההצבעה, מספר בעלי זכות הבחירה והקולות הפסולים.'],
+  sens: ['How a list’s seats change as its votes go up or down.', 'איך מספר המנדטים של רשימה משתנה כשקולותיה עולים או יורדים.'],
+  loc: ['The votes in each town and village, on a map.', 'הקולות בכל יישוב, על מפה.'],
+  rules: ['The seat method, the threshold and the number of seats.', 'שיטת החלוקה, אחוז החסימה ומספר המושבים.'],
+  sources: ['Where every figure comes from.', 'מאיפה מגיע כל נתון.'],
+  splitIdentity: ['When you merge lists: the new list’s name, letters, colour and candidate order.', 'באיחוד רשימות: השם, האותיות, הצבע וסדר המועמדים של הרשימה החדשה.'],
+  voteStart: ['Put a list’s votes back or copy them from elsewhere.', 'החזרת הקולות של רשימה או העתקתם ממקום אחר.'],
+  chamberOptions: ['Seats as an arc or blocks, coloured by list or bloc.', 'המושבים כקשת או כמשבצות, בצבע הרשימה או הגוש.'],
+  chamberLegend: ['Download the seat chart as a picture.', 'הורדת תרשים המושבים כתמונה.'],
+  voteFigures: ['The totals under the lists: valid votes, votes for lists over the threshold, and votes that won no seat.', 'הסיכומים מתחת לרשימות: קולות כשרים, קולות לרשימות שעברו את אחוז החסימה וקולות שלא זכו במנדט.'],
+  expertFigures: ['The votes needed for one seat and other figures from the seat count.', 'מספר הקולות למנדט אחד ונתונים נוספים מחלוקת המנדטים.'],
+  jointEditing: ['Change the parties inside a joint list.', 'שינוי המפלגות בתוך רשימה משותפת.'],
+  mkVotes: ['In Coalitions: MKs who voted apart from their list in the confidence vote.', 'בקואליציות: חברי כנסת שהצביעו בהצבעת האמון בנפרד מרשימתם.'],
+  voteSource: ['Where added votes come from.', 'מהיכן מגיעים הקולות הנוספים.'],
+  agreements: ['Make or cancel surplus-vote agreements.', 'יצירה או ביטול של הסכמי עודפים.'],
+  standing: ['Take a list out of the race or bring it back.', 'הוצאת רשימה מההתמודדות או החזרתה.'],
+  identity: ['Change a list’s name, ballot letters and colour.', 'שינוי השם, אותיות הפתק והצבע של רשימה.'],
+  candidateEdit: ['Reorder, add or remove candidates.', 'סידור, הוספה והסרה של מועמדים.'],
+  allocation: ['How many seats each list won outright and how many from leftover votes.', 'כמה מנדטים כל רשימה קיבלה ישירות וכמה מעודפי הקולות.'],
+  agreementMarks: ['The surplus-vote partner (⇄) under each list.', 'שותף הסכם העודפים (⇄) מתחת לכל רשימה.'],
+  candidateDetail: ['Every candidate on each list. Off: only who gets in.', 'כל המועמדים בכל רשימה. כבוי: רק מי שנכנס לכנסת.'],
+  whatIfAll: ['Every question on What if. Off: the first four.', 'כל השאלות ב"מה אם". כבוי: ארבע הראשונות.'],
+  timelineEvents: ['Events beyond the main ones.', 'אירועים מעבר לעיקריים.'],
+  timelineAllEvents: ['Every recorded event.', 'כל אירוע מתועד.'],
+  historySources: ['The source of each change in a party’s history.', 'המקור של כל שינוי בהיסטוריה של מפלגה.'],
+  turnoutFacts: ['Votes cast, valid and invalid votes, and turnout over the years.', 'מצביעים, קולות כשרים ופסולים ושיעור ההצבעה לאורך השנים.'],
+  turnoutCounts: ['Results by polling station, and double-envelope votes.', 'תוצאות לפי קלפי, וקולות במעטפות כפולות.'],
+  jointVotes: ['Each party’s votes under its joint list.', 'הקולות של כל מפלגה מתחת לרשימה המשותפת שלה.'],
+  allocationFormulas: ['The sum behind each step of the seat count.', 'החישוב שמאחורי כל שלב בחלוקת המנדטים.'],
+  compareTools: ['In Side by side: search, tick rows to copy together, pair lists, and the change in vote share.', 'בזו לצד זו: חיפוש, סימון שורות להעתקה יחד, התאמת רשימות והשינוי בשיעור הקולות.'],
+  compareExpert: ['In Side by side: rows for the seat method and invalid ballots.', 'בזו לצד זו: שורות לשיטת החלוקה ולקולות הפסולים.'],
+  oneListSource: ['Take added votes from one list only.', 'לקחת קולות נוספים מרשימה אחת בלבד.'],
+  copyVotesButton: ['The Copy votes button above the lists while comparing.', 'כפתור העתקת הקולות מעל הרשימות בזמן השוואה.'],
+  copyMethods: ['In the Copy votes box: copy the number of votes or the share of valid votes.', 'בחלון העתקת הקולות: העתקת מספר הקולות או השיעור מהקולות הכשרים.'],
+  copyChangeMethods: ['In the Copy votes box: copy the change you made instead of the votes.', 'בחלון העתקת הקולות: העתקת השינוי שעשיתם במקום הקולות.'],
+  rulesCopy: ['On Rules while comparing: copy the threshold, rules or agreements.', 'בכללים בזמן השוואה: העתקת אחוז החסימה, הכללים או ההסכמים.'],
+};
+export const featureMatches = (id: FeatureId, query: string) => textMatches([...featureLabel(id), ...PART_INFO[id]], query);
 
 const fold = (t: string) => t.toLowerCase().normalize('NFKD').replace(/[֑-ׇ]/g, '').replace(/[‘’'"״׳]/g, '');
 /** Bilingual search: labels, options, (i) text and synonyms in both languages, whatever the interface language. */

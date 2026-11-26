@@ -2,8 +2,8 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode }
 import { useL, useLang } from '../i18n.ts';
 import { activeFeatures, getState, setCustom, setFeature, setMapLines, setPreference, setSetting, setState, settingChanged, toast, useStore } from '../store.ts';
 import { CHOICE, resetFeatures, resetRows, restore, snapshot } from '../settingsReset.ts';
-import { DECIMAL_CHOICES, FEATURE_GROUP, FEATURE_ROWS, GROUPS, SETTINGS, TIERS, featureMatches, textMatches, isExternal, rowMatches, rowTier, rowVisible, settingValue, type GroupId, type SettingId, type SettingRow } from '../settings.ts';
-import { CUSTOM_LABEL, FEATURE_PREVIEWS, LEVEL_LABELS, PRESETS, SHOW_OR_HIDE, TOOL_FEATURES, featureLabel, featureLevel, ownChoices, shownAs, type FeatureId, type Preset, type Visibility } from '../features.ts';
+import { DECIMAL_CHOICES, FEATURE_GROUP, FEATURE_ROWS, GROUPS, SETTINGS, TIERS, PART_INFO, featureMatches, textMatches, isExternal, rowMatches, rowTier, rowVisible, settingValue, type GroupId, type SettingId, type SettingRow } from '../settings.ts';
+import { CUSTOM_LABEL, LEVEL_LABELS, PRESETS, SHOW_OR_HIDE, TOOL_FEATURES, featureLabel, featureLevel, ownChoices, shownAs, type FeatureId, type Preset, type Visibility } from '../features.ts';
 import { PREFERENCES, asksEachTime, defaultAnswer, storedDefault } from '../preferences.ts';
 import { adjustOf, basisOf, isDefaultCopyMode, modeOf, type CopyBasis } from '../compare/copy.ts';
 import { COPY_INFO, COPY_WORDS } from '../compare/copyText.ts';
@@ -147,13 +147,12 @@ function PartRow({ id }: { id: FeatureId }) {
   const label = L(...featureLabel(id));
   const twoWay = SHOW_OR_HIDE.includes(id);
   const tool = TOOL_IDS.includes(id);
-  const from = featureLevel(id);
   const head = <>
     <span className="ps-dot" aria-hidden={!own} title={own ? L('Your choice in Custom', 'הבחירה שלכם ב"מותאם אישית"') : undefined}>{own ? '•' : ''}</span>
     {own && <span className="sr-only">{L('Your choice: ', 'הבחירה שלכם: ')}</span>}
     <span className="ps-label-text">{label}</span>
   </>;
-  const info = <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...FEATURE_PREVIEWS[id])}. {from === 'simple' ? L('Part of Simple, Standard and Expert.', 'חלק מ"פשוט", "רגיל" ו"מומחה".') : L(`Part of ${LEVEL_LABELS[from][0]}${from === 'expert' ? '' : ' and Expert'}.`, `חלק מ"${LEVEL_LABELS[from][1]}"${from === 'expert' ? '' : ' ומ"מומחה"'}.`)}</Info>;
+  const info = <Info title={label} label={L(`About ${label}`, `הסבר: ${label}`)}>{L(...PART_INFO[id])}</Info>;
   if (twoWay) return <div className="ps-row is-toggle" data-setting={`part:${id}`} data-part={id}>
     <label className="ps-label switch-row"><span className="ps-label-inner">{head}</span>
       <span className="switch"><input type="checkbox" aria-label={label} checked={shownAs(id, value) === 'show'} onChange={e => setFeature(id, e.target.checked ? 'show' : PRESETS[level][id] === 'show' ? 'hidden' : PRESETS[level][id])} /></span></label>
