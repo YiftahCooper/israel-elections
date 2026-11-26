@@ -80,7 +80,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
           </Fig>}
 
       {r.quota.num > 0n && (
-        <Fig k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)} d={L('the general quota', 'המודד הכללי')}>
+        <Fig k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)}>
           <div className="formula">{quota.text} = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</div>
           <p className="small" style={{ marginBottom: 0 }}><Info title={L('Quota calculation', 'חישוב המודד')}>{L(`${noThreshold ? 'All valid votes (there is no threshold)' : 'The votes of the lists that passed the threshold'}, divided by ${quota.divisor === s.rules.seats ? 'the seats' : `the seats plus one (${quota.divisor})`}. It is not a price per extra seat: a further seat depends on every list’s remainder.`, `${noThreshold ? 'כל הקולות הכשרים (אין אחוז חסימה)' : 'הקולות של הרשימות שעברו את החסימה'}, חלקי ${quota.divisor === s.rules.seats ? 'מספר המנדטים' : `מספר המנדטים ועוד אחד (${quota.divisor})`}. אין זה "מחיר" למנדט נוסף: מנדט נוסף תלוי בעודפים של כל הרשימות.`)}</Info></p>
         </Fig>

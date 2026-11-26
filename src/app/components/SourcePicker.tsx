@@ -27,7 +27,7 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
     <div>
       <div className="field">
         <span className="row" style={{ gap: 6 }}><span>{L('Votes come from', 'מקור הקולות')}</span>
-          <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. People who stayed home and now vote change the valid total, and so the threshold in votes; eligible voters stay the same, so turnout rises. New citizens are people added to the country, who all vote: eligible voters rise by the same number, marked as a change. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מי שלא הצביעו ומצביעים הפעם משנים את סך הכשרים ולכן את אחוז החסימה בקולות; מספר בעלי זכות הבחירה לא משתנה, ולכן שיעור ההצבעה עולה. אזרחים חדשים הם אנשים שנוספו למדינה, וכולם מצביעים: מספר בעלי זכות הבחירה גדל באותו מספר, ומסומן כשינוי. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
+          <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Other lists: taken from all of them, by size, so turnout stays the same. People who stayed home: they vote now, so turnout changes. New citizens: people added to the country, so eligible voters grow too. One list: only that list gives or takes the votes.', 'שאר הרשימות: נלקחים מכולן, לפי גודלן, ולכן שיעור ההצבעה לא משתנה. מי שלא הצביעו: הם מצביעים הפעם, ולכן שיעור ההצבעה משתנה. אזרחים חדשים: אנשים שנוספו למדינה, ולכן גדל גם מספר בעלי זכות הבחירה. רשימה אחת: רק היא נותנת או מקבלת את הקולות.')}</Info>
         </span>
         <ChoicePicker label={L('Votes come from', 'מקור הקולות')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(v) =>
           chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'citizens' ? { kind: 'citizens' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) })}
@@ -65,10 +65,9 @@ export function SourceDialog() {
   return <dialog ref={dialog} tabIndex={-1} className="source-ask" aria-label={label}
     onCancel={e => { e.preventDefault(); cancel(); }} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }}
     onClick={e => { if (e.target === e.currentTarget) cancel(); }}>
-    <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>{' '}
-      <Info title={label}>{id === 'voteSource'
-        ? L('Other lists: taken from all, in proportion; turnout unchanged. People who stayed home: turnout changes. New citizens: eligible voters change too. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מי שלא הצביעו: שיעור ההצבעה משתנה. אזרחים חדשים: גם מספר בעלי זכות הבחירה משתנה. רשימה אחת: רק היא נותנת או מקבלת. אם הרשימה ששמרתם אינה זמינה או שייכת לקבוצה הנערכת, השאלה תוצג שוב.')
-        : L('Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.')}</Info></p>
+    {/* the answers' consequences are listed in full below, so the vote-source question needs no (i) repeating them */}
+    <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>{id !== 'voteSource' && <>{' '}
+      <Info title={label}>{L('Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.')}</Info></>}</p>
     <form onSubmit={e => { e.preventDefault(); if (value) answerPreference(value, scope, dontAsk); }}>
       <label className="field">{label}
         <ChoicePicker label={label} placeholder={L('Choose…', 'בחירה…')} value={value} onChange={setValue}
