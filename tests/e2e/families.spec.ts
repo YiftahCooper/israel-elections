@@ -87,7 +87,7 @@ test('even axis ticks, scale down with a seat delta, distinct copies and delete'
  await start(page);const svg=page.locator('.family-plots svg').first();
  expect(await svg.locator('.family-axis text').allTextContents()).toEqual(['0%','5%','10%','15%','20%','1950','1960','1970','1980','1990','2000','2010','2020']);
  await page.getByRole('button',{name:'−10%',exact:true}).click();await expect(page.getByRole('textbox',{name:'Scale value',exact:true})).toHaveValue('-10');
- await expect(page.locator('.family-seat-count em')).toHaveText(/^(?:▼\s*)?[−±]/);await expect(page.locator('.family-consequence')).toContainText('623,349 → 561,014');
+ await expect(page.locator('.family-seat-count em')).toHaveText(/^(?:▼\d|±0)/);await expect(page.locator('.family-consequence')).toContainText('623,349 → 561,014');
  await page.getByRole('textbox',{name:'Scale value',exact:true}).fill('-101');await expect(page.locator('.family-unavailable')).toContainText('−100%');
  await edit(page);await editor(page).getByRole('button',{name:'Save as my version',exact:true}).click();await editor(page).getByRole('button',{name:'Close',exact:true}).click();
  await expect(page.getByRole('button',{name:'Haredi (mine)',exact:true})).toBeVisible();await expect(page.getByRole('button',{name:'Haredi',exact:true})).toBeVisible();
@@ -96,7 +96,7 @@ test('even axis ticks, scale down with a seat delta, distinct copies and delete'
 });
 test('Hebrew scaling keeps signs and arrows in reading order',async({page})=>{
  await start(page,'he');await expect(page.locator('.family-scale .quick-actions bdi').first()).toHaveText('−10%');
- await expect(page.locator('.family-seat-count em .seat-delta')).toHaveText('▲ +2');await expect(page.locator('.family-consequence p[role=status]')).toContainText('623,349 → 685,684');
+ await expect(page.locator('.family-seat-count em .seat-delta')).toHaveText('▲2');await expect(page.locator('.family-consequence p[role=status]')).toContainText('623,349 → 685,684');
 });
 test('head-party counting is explicit, remembered and one-list overrides keep the view policy',async({page})=>{
  await start(page);await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
@@ -124,7 +124,7 @@ test('family aggregates open details without navigating; hover never moves plots
  for(const i of [0,18,25]){await marks.nth(i).hover();await expect(page.getByRole('tooltip')).toBeVisible();await waitForStill(page,['.family-plots','[role=tooltip]']);expect(await page.locator('.family-plots').evaluate(e=>e.getBoundingClientRect().top)).toBe(top);}
  await marks.nth(18).focus();await page.keyboard.press('Enter');
  const detail=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(detail).toBeVisible();
- await expect(detail).toContainText('Likud');await expect(detail).toContainText('Yisrael Beiteinu');await expect(detail).toContainText('885,054');await expect(detail.locator('.family-point-delta')).toContainText('≈−158,051 votes · −6.56 pp · ▼ −7 seats');await expect(detail).not.toContainText('0 counted votes');await expect(detail.locator('.family-point-estimate')).toContainText('Estimate by seats: ≈571,003 · ≈15.06%');await expect(detail).toContainText('Since');
+ await expect(detail).toContainText('Likud');await expect(detail).toContainText('Yisrael Beiteinu');await expect(detail).toContainText('885,054');await expect(detail.locator('.family-point-delta')).toContainText('votes ≈▼158,051 · vote share ▼6.56 pts · seats ▼7');await expect(detail).not.toContainText('0 counted votes');await expect(detail.locator('.family-point-estimate')).toContainText('Estimate by seats: ≈571,003 · ≈15.06%');await expect(detail).toContainText('Since');
  await expect(page.getByRole('tab',{name:'Party families',exact:true})).toHaveAttribute('aria-selected','true');
  await detail.getByRole('button',{name:'Open this election',exact:true}).click();await expect(page.locator('.family-treatment')).toContainText('Likud lineage');
 });
@@ -150,7 +150,7 @@ test('1988 changes name constituents in English and retain the sourced split',as
 test('hover box names hatched lists’ parties, states the change, never grows or takes the pointer',async({page})=>{
  await start(page);const marks=page.locator('.family-plots section').first().locator('g[role=button]');
  await marks.nth(19).hover();const tip=page.getByRole('tooltip');
- await expect(tip).toContainText('Since 22 Jan 2013: −3.88 pp');await expect(tip).toContainText('Yachad: Yachad + Otzma Yehudit');await expect(tip.locator('b')).toHaveText('Yachad');
+ await expect(tip).toContainText('Since 22 Jan 2013: ▼3.88 pts');await expect(tip).toContainText('Yachad: Yachad + Otzma Yehudit');await expect(tip.locator('b')).toHaveText('Yachad');
  expect(await tip.evaluate(e=>getComputedStyle(e).pointerEvents)).toBe('none');
  const box=await tip.boundingBox();await page.waitForTimeout(800);expect(await tip.boundingBox()).toEqual(box);
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
@@ -166,7 +166,7 @@ for(const lang of ['en','he'] as const)test(`2026 Haredi breakdown names parties
 test('breakdown marks the family’s own parties in a mixed list and only they count as represented',async({page})=>{
  await start(page);await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).scrollIntoViewIfNeeded();const y=await page.evaluate(()=>scrollY);
  await page.locator('.family-plots section').first().locator('g[role=button]').nth(19).click();
- const d=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(d.locator('.family-point-delta')).toContainText('Since 22 Jan 2013: −102,251 votes · −3.88 pp · ▼ −5 seats');
+ const d=page.getByRole('dialog',{name:'Election breakdown',exact:true});await expect(d.locator('.family-point-delta')).toContainText('Since 22 Jan 2013: votes ▼102,251 · vote share ▼3.88 pts · seats ▼5');
  const mixed=d.locator('article[data-state=mixed]');await expect(mixed).toHaveCount(1);await expect(mixed.locator('[data-own] b')).toHaveText('Yachad');await expect(mixed).toContainText('Estimated by seats');
  await expect(d.locator('.family-point-changes')).toContainText("New on its lists: Yachad · U'Bizchutan");await expect(d.locator('.family-point-changes')).not.toContainText('Otzma');
  await expect(d.locator('article').first()).toHaveAttribute('data-state','counted');

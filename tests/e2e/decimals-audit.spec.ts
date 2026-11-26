@@ -28,7 +28,7 @@ const offenders = (page: Page, max: number) => page.evaluate(([max, law, THRESHO
     const el = n.parentElement!;
     if (el.closest('[data-exact], [data-fixed-digits], script, style, [hidden]') || !el.getClientRects().length) continue;
     const text = n.textContent!;
-    for (const m of text.matchAll(/(\d+)\.(\d+)\s?(%|pp\b|נק׳|points)/g)) {
+    for (const m of text.matchAll(/(\d+)\.(\d+)\s?(%|pts\b|pp\b|נק׳|points)/g)) {
       if (m[2].length <= max || (law as string[]).includes(`${m[1]}.${m[2]}`)) continue;
       // one digit more, only for a share next to a threshold (1, 1.5, 2, 3.25): shown so it stays on its true side
       const v = Number(`${m[1]}.${m[2]}`);

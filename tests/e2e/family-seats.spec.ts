@@ -79,7 +79,7 @@ test('election breakdown: the family’s seats and their change are the seats ch
    await bar(page,i).click({position:{x:2,y:2}});await expect(dialog.locator('.family-point')).toBeVisible();
    if(chart===null)await expect(dialog.locator('.family-point-seats')).toHaveCount(0);
    else await expect(dialog.locator('.family-point-seats b'),`${policy} bar ${i}`).toHaveText(chart===1?'1 seat':`${chart} seats`);
-   if(chart!==null&&before!==null)await expect(dialog.locator('.family-point-delta .seat-delta'),`${policy} bar ${i}`).toHaveText(new RegExp(`${chart-before>0?'\\+':chart-before<0?'−':''}${Math.abs(chart-before)}$`));
+   if(chart!==null&&before!==null)await expect(dialog.locator('.family-point-seatchange .seat-delta'),`${policy} bar ${i}`).toHaveText(`${chart-before>0?'▲':chart-before<0?'▼':'±'}${Math.abs(chart-before)}`); // votes, vote share and mixed lists have marks of their own
    await dialog.getByRole('button',{name:'Close',exact:true}).click();
    before=chart;
   }
@@ -88,7 +88,7 @@ test('election breakdown: the family’s seats and their change are the seats ch
  await group.getByRole('button',{name:'Count all',exact:true}).click();await bar(page,18).click({position:{x:2,y:2}});
  await expect(dialog.locator('.family-point-total')).toContainText('885,054 votes');
  await expect(dialog.locator('.family-point-seats')).toHaveText('20 seats +11 partners');
- await expect(dialog.locator('.family-point-delta')).toContainText('▼ −7 seats');
+ await expect(dialog.locator('.family-point-delta')).toContainText('seats ▼7');
  await expect(dialog.locator('.family-point-total')).not.toContainText('31');
  await expect(dialog.locator('article').first()).toContainText('31 seats');
 });

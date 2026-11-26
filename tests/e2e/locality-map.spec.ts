@@ -70,7 +70,7 @@ test('locality map explains a result, speaks English and fits the dark theme', a
   const results = page.getByRole('region', {name:'Selected locality results'});
   await expect(results.getByRole('heading')).toContainText('Haifa');
   expect(await results.getByRole('heading').innerText()).not.toMatch(/[\u0590-\u05ff]/);
-  await expect(results.locator('.locality-verdict')).toContainText(/ahead of .+ by \d+\.\d pp \([\d,]+ votes\)/);
+  await expect(results.locator('.locality-verdict')).toContainText(/ahead of .+ by \d+\.\d pts \([\d,]+ votes\)/);
   await expect(results.getByRole('columnheader', {name:'Bloc'})).toBeVisible();
   await expect(results.locator('tr.sel')).toHaveCount(1);
   // 2006 has no locality codes, but its rows still have CBS English names

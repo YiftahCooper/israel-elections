@@ -56,9 +56,9 @@ for (const separate of [false, true]) test(`B2 saved custom grouping draws paire
   await page.getByRole('button', { name: 'Likud', exact: true }).click();
   const votes = page.getByRole('region', { name: 'List details' }).getByLabel('Votes', { exact: true });
   await votes.fill('1300000'); await votes.press('Enter'); await page.keyboard.press('Escape');
-  await expect(page.locator('.session')).toContainText(separate ? '(▲ +2)' : '(▲ +5)');
+  await expect(page.locator('.session')).toContainText(separate ? '(▲2)' : '(▲5)');
   // a saved grouping is a saved scenario: it becomes the reference, and its blocs are compared with the vote edit
-  if(!separate){await expect(page.locator('.session')).toContainText('1 change from Review A');await expect(page.locator('.session')).toContainText('Review coalition 72 (▲ +4)');}
+  if(!separate){await expect(page.locator('.session')).toContainText('1 change from Review A');await expect(page.locator('.session')).toContainText('Review coalition 72 (▲4)');}
   await openSideBySide(page);
   // comparing starts on the previous election: compare with the saved grouping instead
   await choose(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ }), { label: 'Review A' });

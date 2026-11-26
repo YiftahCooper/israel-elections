@@ -132,8 +132,9 @@ for (const lang of ['en', 'he'] as const) {
     await expect(details(page).getByRole('heading', { name: H ? 'הערות על הרשימה' : 'Notes on this list (in Hebrew)', exact: true })).toHaveCount(0);
     await expect(details(page).locator('.disclosure-toggle')).not.toContainText([H ? 'הערות רשמיות לרשימה' : 'Official list notes']);
     const dayan = details(page).locator('.cands li').filter({ hasText: 'דיין משה' });
-    await expect(dayan).toContainText(H ? 'ללא כהונה' : 'not seated');
-    await dayan.getByRole('button', { name: H ? 'למה אין כהונה' : 'Why not seated', exact: true }).click();
+    // worded in the gender of Moshe Dayan's own Knesset record (male), never from his name (26 Nov 2026)
+    await expect(dayan).toContainText(H ? 'לא כיהן' : 'not seated');
+    await dayan.getByRole('button', { name: H ? 'למה לא כיהן' : 'Why not seated', exact: true }).click();
     await expect(page.locator('.pop').filter({ hasText: 'השם לא פורסם בין הנבחרים' })).toBeVisible();
   });
 
