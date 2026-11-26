@@ -27,7 +27,7 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
     <div>
       <div className="field">
         <span className="row" style={{ gap: 6 }}><span>{L('Votes come from', 'מקור הקולות')}</span>
-          <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Other lists: taken from all of them, by size, so turnout stays the same. People who stayed home: they vote now, so turnout changes. New citizens: people added to the country, so eligible voters grow too. One list: only that list gives or takes the votes.', 'שאר הרשימות: נלקחים מכולן, לפי גודלן, ולכן שיעור ההצבעה לא משתנה. מי שלא הצביעו: הם מצביעים הפעם, ולכן שיעור ההצבעה משתנה. אזרחים חדשים: אנשים שנוספו למדינה, ולכן גדל גם מספר בעלי זכות הבחירה. רשימה אחת: רק היא נותנת או מקבלת את הקולות.')}</Info>
+          <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Other lists: taken from all of them, by size, so turnout stays the same. People who stayed home: they vote now, so turnout changes. New citizens: new voters, so eligible voters grow too. One list: only that list gives or takes the votes.', 'שאר הרשימות: נלקחים מכולן, לפי גודלן, ולכן שיעור ההצבעה לא משתנה. מי שלא הצביעו: הם מצביעים הפעם, ולכן שיעור ההצבעה משתנה. אזרחים חדשים: בוחרים חדשים, ולכן גדל גם מספר בעלי זכות הבחירה. רשימה אחת: רק היא נותנת או מקבלת את הקולות.')}</Info>
         </span>
         <ChoicePicker label={L('Votes come from', 'מקור הקולות')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(v) =>
           chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'citizens' ? { kind: 'citizens' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) })}
@@ -78,7 +78,7 @@ export function SourceDialog() {
       {id === 'voteSource' && <ul className="tiny source-consequences">
         <li data-chosen={value === 'proportional' || undefined}><b>{L('Other lists', 'שאר הרשימות')}:</b> {L('taken from all of them, by size. Turnout stays the same.', 'נלקחים מכולן, לפי גודלן. שיעור ההצבעה לא משתנה.')}</li>
         <li data-chosen={value === 'new' || undefined}><b>{L('People who stayed home', 'מי שלא הצביעו')}:</b> {L('they vote now (or more stay home). Eligible voters stay the same, so turnout changes; other lists keep their votes.', 'הם מצביעים הפעם (או שיותר נשארים בבית). מספר בעלי זכות הבחירה לא משתנה, ולכן שיעור ההצבעה משתנה; לשאר הרשימות אותם קולות.')}</li>
-        {!simple && <li data-chosen={value === 'citizens' || undefined}><b>{L('New citizens', 'אזרחים חדשים')}:</b> {L('people added to the country, who all vote. Eligible voters rise by the same number, marked as a change.', 'אנשים שנוספו למדינה, וכולם מצביעים. מספר בעלי זכות הבחירה גדל באותו מספר, ומסומן כשינוי.')}</li>}
+        {!simple && <li data-chosen={value === 'citizens' || undefined}><b>{L('New citizens', 'אזרחים חדשים')}:</b> {L('new voters, who all vote for this list. Eligible voters rise by the same number.', 'בוחרים חדשים, שכולם מצביעים לרשימה הזו. מספר בעלי זכות הבחירה גדל באותו מספר.')}</li>}
         {!simple && <li data-chosen={value.startsWith('t:') || undefined}><b>{L('One list', 'רשימה אחת')}:</b> {L('only that list gives or takes the votes.', 'רק היא נותנת או מקבלת את הקולות.')}</li>}
       </ul>}
       <ScopeChoice name="preference-scope" scope={scope} onScope={setScope} dontAsk={dontAsk} onDontAsk={setDontAsk}

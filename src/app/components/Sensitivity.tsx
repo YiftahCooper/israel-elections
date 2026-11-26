@@ -416,7 +416,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
       </div>
       <div className="sens-result">
         {progress && <p className="small muted row" role="status">{progress.settling
-          ? L(`Checking for a smaller transfer… ${progress.done} of ${progress.total}`, `בודק אם יש מעבר קטן יותר… ${progress.done} מתוך ${progress.total}`)
+          ? L(`Checking whether fewer votes would do it… ${progress.done} of ${progress.total}`, `בודק אם פחות קולות יספיקו… ${progress.done} מתוך ${progress.total}`)
           : L(`Working it out… ${progress.done} of ${progress.total} checked`, `מחשב… ${progress.done} מתוך ${progress.total} נבדקו`)}
           <button className="btn small" onClick={cancel}>{L('Cancel', 'ביטול')}</button></p>}
         {!progress && cancelled && !current && <p className="small muted row">{L('Cancelled.', 'בוטל.')} <button className="btn small" onClick={() => setAgain((n) => n + 1)}>{L('Search', 'חיפוש')}</button></p>}

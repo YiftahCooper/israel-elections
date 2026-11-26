@@ -396,7 +396,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       <section className="wide">
         <Candidates l={l} seats={lr.seats} baseSeats={baseList ? histSeats : -1} baseCandidates={baseList?.candidates} notSeatedWhy={notSeatedWhy}
           marker={<EditMarker s={s} path={['lists', l.id, 'candidates']} />}
-          secondary={ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small ink2">{L('Secondary source', 'מקור משני')} <Info title={L('Candidate source', 'מקור המועמדים')}>{L('Candidate list from a secondary source (the official page could not be retrieved).', 'רשימת המועמדים ממקור משני (העמוד הרשמי לא נטען).')}</Info></p>} />
+          secondary={ds.lists.find((x) => x.id === l.id)?.candidatesSecondary && <p className="small ink2">{L('Candidate list from a secondary source', 'רשימת המועמדים ממקור משני')}</p>} />
       </section>
     </div>
   );

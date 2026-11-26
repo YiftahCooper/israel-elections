@@ -170,7 +170,7 @@ test('the chart numbers its events as in the list below, explains where they sit
   await listRow(page, 'The Democrats').click();
   await sec.getByRole('button', { name: 'Full history', exact: true }).click();
   await expect(sheet(page).locator('.ph-ev.weak .ph-evnum text')).toHaveText('5,6,7');
-  await expect(sheet(page).locator('.ph-legend')).toContainText('Dashed: not yet established');
+  await expect(sheet(page).locator('.ph-legend')).toContainText('Dashed: link not established');
 });
 
 test('in Hebrew the event key is Hebrew and the numbers match the list', async ({ page }) => {

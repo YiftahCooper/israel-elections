@@ -8,7 +8,7 @@ test('default analysis survives reload without starting workers; edits calculate
   await expect(page.locator('.sens .callout')).toBeVisible({ timeout: 120_000 });
   await expect(page.locator('.sens .sweep-tbl tbody tr')).not.toHaveCount(0);
   // a bloc-flip answer first shown as "at most" is settled by a second search; only finished analysis is kept
-  await expect(page.getByText(/Searching exactly|Checking for a smaller transfer/)).toHaveCount(0, { timeout: 180_000 });
+  await expect(page.getByText(/Searching exactly|Checking whether fewer votes/)).toHaveCount(0, { timeout: 180_000 });
   const before = await page.locator('.sens .sweep-tbl').textContent();
   await page.reload();
   let workers = 0;

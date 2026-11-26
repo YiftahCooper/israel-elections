@@ -11,6 +11,8 @@ import { resultChanges } from './derive.ts';
 import { X } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import { allocationOf, baselineOf, ruleChanges, scenarioIssues, tieAffectsSeats, warningText } from './derive.ts';
+import type { EngineWarning } from '../engine/types.ts';
+import type { Scenario } from '../model/scenario.ts';
 import { LangContext, useL } from './i18n.ts';
 import { activeFeatures, dispatch, getState, loadElectionIndex, openElection, openSharedFromHash, redo, restoreWorkspace, setAlsoNeeded, setSetting, setState, storageLossText, undo, useSetting, useStore } from './store.ts';
 import { Figures as FiguresView } from './components/Figures.tsx';
@@ -120,6 +122,11 @@ function imagesNowLoading(): Promise<void> {
 
 type Tab = typeof TOOL_FEATURES[number][0];
 const TOOLS = TOOL_FEATURES.map(([id,,,, level]) => ({ id, level: level as Preset }));
+
+/** A warning worth a banner: not a pair's internal re-division (the list panel says it), and not a tie that changes
+ *  no seat (round 2 of the clarity pass, 26 Nov 2026: the 1949 result showed one on every screen; the allocation steps
+ *  explain it at its step). */
+const shownWarning = (s: Scenario) => (w: EngineWarning) => w.code !== 'internal-loss' && (w.code !== 'lottery-required' || tieAffectsSeats(s, w));
 
 export function App() {
   const lang = useStore((st) => st.lang);
@@ -282,7 +289,7 @@ function Shell() {
               <section className="panel chamber-panel" aria-label={L('The Knesset', 'הכנסת')}>
                 <div className="body"><ErrorBoundary label={L('Chamber', 'המליאה')} resetKey={s}><ComparedChamber s={s} r={r} /></ErrorBoundary></div>
               </section>
-              {r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
+              {r.warnings.filter(shownWarning(s)).map((w, i) => tieAffectsSeats(s, w)
                 ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
                 : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}
               <ErrorBoundary label={L('Blocs', 'גושים')} resetKey={s}><BlocBar s={s} r={r} /></ErrorBoundary>
@@ -333,7 +340,7 @@ function Shell() {
 
         {notice && <div className="banner note" role="status"><span className="banner-text">{notice}</span> <button className="btn small ghost icon-only" onClick={() => setState({ notice: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
         {storageLoss && <div className="banner note" role="status"><span className="banner-text">{storageLossText(storageLoss, lang)}</span> <button className="btn small ghost icon-only" onClick={() => setState({ storageLoss: null })} aria-label={L('Dismiss', 'סגירה')}><X className="icon sm" aria-hidden /></button></div>}
-        {tool !== 'board' && r.warnings.filter((w) => w.code !== 'internal-loss').map((w, i) => tieAffectsSeats(s, w)
+        {tool !== 'board' && r.warnings.filter(shownWarning(s)).map((w, i) => tieAffectsSeats(s, w)
           ? <div key={`w${i}`} className="banner warn" role="alert">{warningText(w, s, lang)}</div>
           : <div key={`w${i}`} className="banner note" role="status">{warningText(w, s, lang)}</div>)}
         {issues.map((x, i) => <div key={i} className={`banner ${x.level === 'error' ? 'err' : 'warn'}`} role="alert">{lang === 'he' ? x.he : x.en}</div>)}

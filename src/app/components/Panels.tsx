@@ -62,17 +62,17 @@ export function Rules({ s }: { s: Scenario; base: Scenario }) {
           <h3>{L('Electoral rules', 'כללי הבחירות')}</h3>
         </div>
         <div className="row" style={{ marginBottom: 6 }}>
-          <span className="seg" role="group" aria-label={L('Simulation mode', 'מצב סימולציה')}>
-            <button aria-pressed={!exp} onClick={() => setMode('historical')}>{L('Historically valid', 'תקף היסטורית')}</button>
+          <span className="seg" role="group" aria-label={L('Which rules', 'אילו כללים')}>
+            <button aria-pressed={!exp} onClick={() => setMode('historical')}>{L('Law of the time', 'החוק באותה עת')}</button>
             <button aria-pressed={exp} onClick={() => setMode('experimental')}>{L('Experimental', 'ניסיוני')}</button>
           </span>
           <EditMarker s={s} path={['mode']} />
           {!exp && <span className="small ink2">{L('Choose Experimental to change the rules', 'לשינוי הכללים בחרו "ניסיוני"')}</span>}
         </div>
         {/* the law of this election, named by era, in both modes: what the experiment departs from */}
-        <p className="small ink2 rules-law">{L('Law', 'החוק')}: <b>{ruleEraLabel(law, lang)}</b> <Info title={exp ? L('Experimental rules', 'כללים ניסיוניים') : L('Historically valid', 'תקף היסטורית')}>{exp
+        <p className="small ink2 rules-law">{L('Law', 'החוק')}: <b>{ruleEraLabel(law, lang)}</b> <Info title={exp ? L('Experimental rules', 'כללים ניסיוניים') : L('Law of the time', 'החוק באותה עת')}>{exp
           ? L('You may change the electoral system itself. Results are an alternative system, not Israeli law; each rule that differs is marked Edited.', 'ניתן לשנות את שיטת הבחירות עצמה. התוצאות הן שיטה חלופית ולא החוק הישראלי; כל כלל ששונה מסומן "נערך".')
-          : L('The law of this election is enforced. Votes, lists, candidates and agreements can still change; choose Experimental to change the rules themselves.', 'החוק של בחירות אלה נאכף. עדיין ניתן לשנות קולות, רשימות, מועמדים והסכמים; לשינוי הכללים עצמם בחרו "ניסיוני".')}</Info></p>
+          : L('Seats follow this election’s law. Votes, lists, candidates and agreements can still change.', 'המנדטים מחולקים לפי החוק של בחירות אלה. עדיין אפשר לשנות קולות, רשימות, מועמדים והסכמים.')}</Info></p>
         <RulesCopy s={s} />
         {Object.keys(s.lotteryWinners).length > 0 && <p className="small">{L('You have recorded lottery outcomes for tied seats.', 'רשמתם תוצאות הגרלה למנדטים בשוויון.')} <button className="btn small" onClick={() => dispatch({ type: 'restore', what: 'lottery' })}>{L('Clear them', 'ניקוי')}</button></p>}
         <fieldset className="rules-fields">
@@ -276,7 +276,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
       <div>
         <h3>{L('Data status', 'מצב הנתונים')}</h3>
-        <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{ds.status.stage === 'official-final' ? L('Official final results', 'תוצאות סופיות רשמיות') : L('Not yet checked against the official gazette', 'טרם הושווה לפרסום ברשומות')} <Info title={L('Data status details', 'פירוט מצב הנתונים')}>{datesInText(lang === 'he' ? ds.status.noteHe.replaceAll('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת') : ds.status.noteEn.replaceAll('Gazette publication unverified', 'Gazette publication not yet verified'))}{ds.id === 'k19' && <><br />{k19StatusNote(lang)}</>}</Info></p>
+        <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{ds.status.stage === 'official-final' ? L('Official final results', 'תוצאות סופיות רשמיות') : L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת')} <Info title={L('Data status details', 'פירוט מצב הנתונים')}>{datesInText(lang === 'he' ? ds.status.noteHe.replaceAll('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת') : ds.status.noteEn.replaceAll('Gazette publication unverified', 'Gazette publication not yet verified'))}{ds.id === 'k19' && <><br />{k19StatusNote(lang)}</>}</Info></p>
         <div className="kv small" style={{ maxWidth: 440 }}>
           <span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(ds.totals.registered)}</span>
           <span>{L('Votes cast', 'מצביעים')}</span><span>{fmtInt(ds.totals.votesCast)}</span>

@@ -614,8 +614,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'historical-rules', nameHe: 'כללים היסטוריים', nameEn: 'Historical rules', level: 'standard', provenance: 'app',
-    defHe: 'מצב שבו האפליקציה אוכפת את חוק הבחירות שחל באותן בחירות (מספר המנדטים, אחוז החסימה, שיטת העודפים, הסכמי העודפים ומגבלת המחצית). אפשר לשנות קולות ורשימות, אבל לא את השיטה עצמה.',
-    defEn: 'The mode in which the app enforces the election law in force for that election: number of seats, threshold, remainder method, surplus agreements and the half-seats cap. You can change votes and lists, but not the system itself.',
+    defHe: 'המנדטים מחולקים לפי חוק הבחירות שחל באותן בחירות: מספר המנדטים, אחוז החסימה, חלוקת העודפים, הסכמי העודפים ומגבלת המחצית. אפשר לשנות קולות ורשימות, אבל לא את השיטה עצמה.',
+    defEn: 'Seats follow the election law of that election: the number of seats, the threshold, how remainder seats are shared, surplus agreements and the half-seats cap. You can change votes and lists, but not the system itself.',
     linkHe: L.s81, linkEn: E.seats,
     sources: [
       src(L.s81, 'he', 'law', 'background: the current allocation rules (ss.81–82); earlier eras in docs/ELECTORAL-LAW.md'),
@@ -623,8 +623,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'experimental-rules', nameHe: 'כללים ניסיוניים', nameEn: 'Experimental rules', level: 'simple', provenance: 'app',
-    defHe: 'מצב שבו אפשר לשנות את שיטת הבחירות עצמה, למשל אחוז החסימה, שיטת חלוקת המנדטים או מספר הרשימות בהסכם. התוצאה היא שיטה חלופית ולא תוצאה אפשרית לפי החוק בישראל.',
-    defEn: 'The mode in which you may change the electoral system itself, such as the threshold, the seat-allocation method or how many lists an agreement may join. Results describe an alternative system, not a legally possible Israeli result.',
+    defHe: 'אפשר לשנות את שיטת הבחירות עצמה, למשל אחוז החסימה, שיטת חלוקת המנדטים או מספר הרשימות בהסכם. התוצאה היא שיטה חלופית ולא תוצאה אפשרית לפי החוק בישראל.',
+    defEn: 'You may change the electoral system itself, such as the threshold, how seats are shared or how many lists an agreement may join. The result is an alternative system, not one possible under Israeli law.',
     linkHe: H.methods, linkEn: E.methods,
     sources: [
       src(H.methods, 'he', 'institute', 'background: how other formulas change results'),
@@ -632,8 +632,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   },
   {
     id: 'seat-security', nameHe: 'ביטחון המנדטים', nameEn: 'Seat safety', level: 'standard', provenance: 'app',
-    defHe: 'לכל רשימה: כמה קולות היא צריכה לאבד כדי לאבד מנדט, וכמה קולות נוספים דרושים למנדט הבא. המספרים מחושבים בחישוב מחדש של כל הבחירות, והם תלויים בשאלה לאן עוברים הקולות. זה איננו המודד הכללי.',
-    defEn: 'For each list, how many votes it would have to lose to lose a seat, and how many more it needs for the next one. The figures come from recomputing the whole election, and they depend on where the votes move. They are not the general quota.',
+    defHe: 'לכל רשימה: כמה קולות היא צריכה לאבד כדי לאבד מנדט, וכמה קולות נוספים דרושים למנדט הבא. המספרים תלויים בשאלה לאן עוברים הקולות.',
+    defEn: 'For each list, how many votes it would have to lose to lose a seat, and how many more it needs for the next one. The figures depend on where the votes move.',
     linkHe: H.seats, linkEn: E.seats,
     sources: [
       src(E.seats, 'en', 'institute', 'background: why the marginal seat depends on all lists’ remainders'),

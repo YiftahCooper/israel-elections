@@ -520,7 +520,7 @@ function Legend({ compact, metric = 'seats', events = [], inside = false, eras =
       ? <span className="ph-evkey"><i className="ph-sw evline" />{L('Merger, split or new name', 'איחוד, פילוג או שם חדש')}</span>
       : <span className="ph-evkey"><i className="ph-sw evnum" aria-hidden>#</i>{L('Merger, split or new name: its number in Events below', 'איחוד, פילוג או שם חדש: מספרו ברשימת האירועים למטה')}
         <Info title={L('Where events are drawn', 'היכן מסומנים אירועים')}>{L('The elections are evenly spaced, so this is not a time scale. Each event sits between the two elections it fell between.', 'הבחירות במרווחים שווים, ולכן זה אינו ציר זמן. כל אירוע מסומן בין שתי הבחירות שביניהן אירע.')}</Info></span>)}
-    {weak && <span><i className="ph-sw evline weak" />{L('Dashed: not yet established', 'מקווקו: טרם בוסס')}</span>}
+    {weak && <span><i className="ph-sw evline weak" />{L('Dashed: link not established', 'מקווקו: הקשר לא בוסס')}</span>}
     {/* the key above names every mark; the (i) adds only what it cannot show (clarity pass, 26 Nov 2026) */}
     {!compact && <Info title={L('Party history', 'היסטוריית מפלגה')} label={L('How to read this chart', 'איך לקרוא את התרשים')}>{L(
       'Each bar is the whole list the party ran in, in that list’s colour, so the colour changes when the list did. Click a bar, or use the arrow keys, to read that election below the chart.',
@@ -601,12 +601,12 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
       </ul>
     </>}
     <details className="ph-exact" open={expert || preferTables}>
-      <summary>{ran.length === 1 ? L('Exact figures (1 election)', 'נתונים מדויקים (מערכת בחירות אחת)') : L(`Exact figures (${ran.length} elections)`, `נתונים מדויקים (${ran.length} בחירות)`)}</summary>
+      <summary>{ran.length === 1 ? L('Results table (1 election)', 'טבלת תוצאות (מערכת בחירות אחת)') : L(`Results table (${ran.length} elections)`, `טבלת תוצאות (${ran.length} בחירות)`)}</summary>
       <div className="tablewrap"><table className="ph-table">
         <thead><tr><th>{L('Election', 'בחירות')}</th><th>{L('List', 'רשימה')}</th><th className="n">{L('Seats', 'מנדטים')}</th><th className="n">{L('Own elected', 'נבחרי המפלגה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Share', 'שיעור')}</th></tr></thead>
         <tbody>{ran.map((p) => <tr key={p.i} className={p.i === sel ? 'sel' : ''}>
           <td><button type="button" className="table-action" onClick={() => setSel(p.i)}>{yearLabel(p.i, lang)}</button></td>
-          <td><bdi>{listShort(p.list!, lang)}</bdi>{p.role !== 'alone' && <span className="tiny muted"> · {p.role === 'led' ? L('joint, led', 'משותפת, בראשה') : L('joint, inside', 'משותפת, בתוכה')}</span>}</td>
+          <td><bdi>{listShort(p.list!, lang)}</bdi>{p.role !== 'alone' && <span className="tiny muted"> · {p.role === 'led' ? L('led a joint list', 'בראש רשימה משותפת') : L('in a joint list', 'בתוך רשימה משותפת')}</span>}</td>
           <td className="n">{p.seats}</td><td className="n">{p.role === 'alone' ? '—' : p.own ?? TBD(L)}</td>
           <td className="n"><bdi dir="ltr">{fmtInt(p.votes)}</bdi></td><td className="n"><bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi></td>
         </tr>)}</tbody>
