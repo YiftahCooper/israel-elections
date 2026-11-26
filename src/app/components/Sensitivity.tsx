@@ -55,7 +55,9 @@ function revealRow(row: HTMLElement | null) {
     const z = textZoom();
     const head = (box.querySelector('thead')?.getBoundingClientRect().height ?? 0) / z;
     const top = (row.getBoundingClientRect().top - box.getBoundingClientRect().top) / z - box.clientTop;
-    if (top < head || top + row.offsetHeight > box.clientHeight) {
+    // once the table is scrolled, the row stays pinned under the header: when rows above it change height (a wider
+    // change mark wraps), a visible but no longer aligned row would leave the row above it cut in half
+    if (top < head || top + row.offsetHeight > box.clientHeight || (box.scrollTop > 0 && Math.abs(top - head) > 1)) {
       const desired = Math.max(0, box.scrollTop + top - head);
       // Let the final row reach the header too; clamping to the table end cuts an earlier row in half.
       const extra = Math.max(0, desired - (box.scrollHeight - box.clientHeight));
