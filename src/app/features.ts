@@ -68,8 +68,12 @@ export const CUSTOM_LABEL: readonly [string, string] = ['Custom', 'מותאם א
 /** What the three (four) are called as a whole (owner, 19 Nov 2026: "complexity"). */
 export const COMPLEXITY_LABEL: readonly [string, string] = ['Complexity', 'רמת מורכבות'];
 export const RANK: Record<Preset, number> = { simple: 0, standard: 1, expert: 2 };
+const TOOL_IDS: readonly string[] = TOOL_FEATURES.map(f => f[0]);
+/** What each complexity shows. A section above the complexity is hidden, not folded (owner, 26 Nov 2026: folds that
+ *  open to a higher complexity's controls only confused). A tool tab above it stays listed, greyed out, and asks to
+ *  switch or add it (owner, 16 Nov 2026). The Custom complexity can still fold or show any section. */
 export const PRESETS = Object.fromEntries((['simple', 'standard', 'expert'] as const).map(level =>
-  [level, Object.fromEntries(FEATURES.map(([id,,,, min]) => [id, RANK[level] >= RANK[min] ? 'show' : 'collapsed']))])) as Record<Preset, Record<FeatureId, Visibility>>;
+  [level, Object.fromEntries(FEATURES.map(([id,,,, min]) => [id, RANK[level] >= RANK[min] ? 'show' : TOOL_IDS.includes(id) ? 'collapsed' : 'hidden']))])) as Record<Preset, Record<FeatureId, Visibility>>;
 /** Always shown, never a feature: a list's notes on the sources are among the data qualifications (audit 12 Nov 2026). */
 export const TRUTH_LABELS = ['editMarkers', 'scenarioChip', 'searchQualifiers', 'publicationWarnings', 'dataQualifications'] as const;
 /** Features with no folded form: the Custom page offers Show or Hidden only (Side by side is a button or nothing). */
