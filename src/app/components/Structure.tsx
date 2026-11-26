@@ -2,7 +2,7 @@ import { percent, percentNum } from './Percentage.tsx';
 import { SplitPartNote, SplitWarning } from './SplitWarning.tsx';
 import {ColourPicker} from './ColourPicker.tsx';
 import { hebrewPrefixName } from '../hebrewPrefix.ts';
-import { SeatDelta } from './SeatDelta.tsx';
+import { SeatDelta, SeatMoves } from './SeatDelta.tsx';
 import { seatChangeSentence } from '../analysisWords.ts';
 import { Slip } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
@@ -236,7 +236,8 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
                 {/* the seats the agreement moves, as the lists' own colours and signed counts; an agreement with no effect says so once, in its chip */}
                 {!inactive && <div className="small muted st-effect">{eff.length === 0
                   ? (ag.enabled ? L('Moves no seat.', 'אינו מזיז מנדט.') : L('Switching it on would move no seat.', 'הפעלתו לא הייתה מזיזה מנדט.'))
-                  : (ag.enabled ? L('Thanks to it, ', 'בזכותו, ') : L('If switched on, ', 'אם יופעל, ')) + seatChangeSentence(eff.map(e => ({ id: e.id, d: ag.enabled ? e.d : -e.d })), name, lang === 'he')}</div>}
+                  : (() => { const moves = eff.map(e => ({ id: e.id, d: ag.enabled ? e.d : -e.d }));
+                    return <>{ag.enabled ? L('Thanks to it:', 'בזכותו:') : L('If switched on:', 'אם יופעל:')} <SeatMoves moves={moves} name={name} title={(ag.enabled ? L('Thanks to it, ', 'בזכותו, ') : L('If switched on, ', 'אם יופעל, ')) + seatChangeSentence(moves, name, lang === 'he')} /></>; })()}</div>}
               </span>
               <span className="tools">
                 <label className="switch small"><input type="checkbox" checked={ag.enabled} onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...ag, enabled: e.target.checked } })}

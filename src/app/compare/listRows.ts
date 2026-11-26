@@ -1,5 +1,5 @@
 // While comparing (compare/mode.ts), what each list of your work stood at in the reference: the Lists panel's striped
-// bar and its line ("2022: 32 ▼ −5 · Likud"). Lists are paired by the same rule as Side by side and the Copy votes box
+// bar and its line ("2022: Seats 32 → 27 ▼5"). Lists are paired by the same rule as Side by side and the Copy votes box
 // (match.ts: sourced party records across elections, origins within one), so a line never promises a copy that the
 // box would not make. Its own chunk: the pairing needs the party registry, which the start-up bundle does not load.
 import type { Lang } from '../i18n.ts';

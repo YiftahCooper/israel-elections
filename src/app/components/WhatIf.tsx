@@ -92,8 +92,8 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
           const expandable = !!actions && (changes.length > 0 || more.length > 0);
           const isOpen = expandable && open.has(p.id);
           const Chevron = isOpen ? ChevronUp : ChevronDown;
-          // the answer as one sentence, not "Shas ▲ +1 Likud ▼ −1" (round 2 of the clarity pass, 26 Nov 2026): a list that
-          // enters is the subject ("passes the threshold and wins 4 seats, taken from …")
+          // the answer at a glance, each list that moves with its mark ("Shas ▲1 · Likud ▼1"; owner, 26 Nov 2026), and the
+          // same answer as a sentence behind it (tooltip and screen readers): a list that enters is its subject
           const entering = changes.find((c) => c.before === 0 && c.after > 0);
           const answer = changes.length ? seatChangeSentence(changes.map((c) => ({ id: c.label, d: c.after - c.before })), (x: string) => x, lang === 'he', entering ? { subject: { ids: [entering.label], name: entering.label }, crossing: true } : {}) : L('No seat changes', 'אין שינוי במנדטים');
           return (
@@ -106,7 +106,9 @@ export function WhatIf({ ds }: { ds: ElectionDataset }) {
                 {(p.experimental || votes) && <span className="wi-sub small ink2">{p.experimental && <span>{L('Experimental', 'ניסיוני')}{votes && ' · '}</span>}{votes && <b>{votes}</b>}</span>}
               </div>
               {/* the answer at a glance: each list that moves, in its colour, with its seat change; otherwise what does change */}
-              <div className="wi-a small">{changes.length ? <span className="wi-sentence">{answer}</span> : <><span className="muted">{L('No seat changes', 'אין שינוי במנדטים')}</span>{facts[0] && <Fact f={facts[0]} lang={lang} />}</>}</div>
+              <div className="wi-a small" role={changes.length ? 'group' : undefined} aria-label={changes.length ? answer : undefined} title={changes.length ? answer : undefined}>{changes.length ? changes.map((c) => (
+                <span key={c.label} className="wi-chip"><span className="swatch" style={{ background: c.color }} />{c.label} <b><SeatDelta value={c.after - c.before} /></b></span>
+              )) : <><span className="muted">{L('No seat changes', 'אין שינוי במנדטים')}</span>{facts[0] && <Fact f={facts[0]} lang={lang} />}</>}</div>
               <button className="btn small" disabled={!actions} onClick={() => actions && tryIt(title, body, actions)}>{L('Open as a scenario', 'פתיחה כתרחיש')}</button>
               {isOpen && changes.length > 0 && (
                 <div className="wi-preview">

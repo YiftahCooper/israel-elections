@@ -55,6 +55,18 @@ export function usePersonOf(candidate: { id: string; nameHe: string } | null | u
   const same = official.lists.some((l) => l.candidates.some((c) => c.id === candidate.id && c.nameHe === candidate.nameHe));
   return same ? id : null;
 }
+/** The gender the Knesset's own record gives a candidate's person, null when the candidacy has no Knesset record (a
+ *  candidate who never sat): wording about them is then neutral. Never from a name (owner, 19 Nov 2026). */
+export function useCandidateGender(candidate: { id: string; nameHe: string } | null | undefined): Gender {
+  const id = usePersonOf(candidate);
+  const rt = useMkRuntime();
+  return id !== null && rt ? rt.people[id]?.gender ?? null : null;
+}
+/** One Hebrew word or phrase about a candidate in their recorded gender (masculine, feminine, neutral); English as is. */
+export function CandidateWords({ candidate, en, he }: { candidate: { id: string; nameHe: string }; en: string; he: readonly [string, string, string] }) {
+  const L = useL(), gender = useCandidateGender(candidate);
+  return <>{L(en, g(gender, ...he))}</>;
+}
 /** A candidate's name that opens their history when they have one; otherwise the name as it was. */
 export function MkName({ candidate, children }: { candidate: { id: string; nameHe: string }; children: ReactNode }) {
   const L = useL();

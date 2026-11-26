@@ -75,7 +75,7 @@ test('fine vote/share nudges and a paired 1pp transfer are single undo steps', a
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   expect(value(await votes.inputValue())).toBe(value(before) + 1000);
   await page.getByRole('button', { name: /^Undo:/ }).click(); await expect(votes).toHaveValue(before);
-  await page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '0.1 pp', exact: true }).click();
+  await page.getByRole('group', { name: 'Votes step size', exact: true }).getByRole('button', { name: '0.1 pts', exact: true }).click();
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   expect(value(await votes.inputValue())).toBeGreaterThan(value(before));
   await page.getByRole('button', { name: /^Undo:/ }).click(); await expect(votes).toHaveValue(before);

@@ -8,10 +8,11 @@
 // in a toast whose "Ask next time" (like Settings → Copy votes: ask each time) brings the box back. Every figure is the
 // engine's, computed on a scratch copy.
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
-import { percent, rationalPoints } from '../components/Percentage.tsx';
+import { percent } from '../components/Percentage.tsx';
+import { PointsDelta } from '../components/SeatDelta.tsx';
 import { listLabel } from '../derive.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, PP } from '../format.ts';
+import { fmtInt } from '../format.ts';
 import { hebrewPrefix } from '../hebrewPrefix.ts';
 import { getSetting, setSetting, setState, toast, useDigits, useOn, useStore } from '../store.ts';
 import { PREFERENCES } from '../preferences.ts';
@@ -98,7 +99,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
     if (m === 'share') return percent(s, valid(from.sc), digits);
     if (m === 'count') return <bdi dir="ltr">{fmtInt(s)}</bdi>;
     if (m === 'change') { const S = BigInt(valid(from.sc)), S0 = BigInt(valid(from.start)); if (!S || !S0) return null;
-      return <>{rationalPoints({ num: 100n * (BigInt(s) * S0 - BigInt(s0) * S), den: S * S0 }, digits)} {T(PP)}</>; }
+      return <PointsDelta value={{ num: 100n * (BigInt(s) * S0 - BigInt(s0) * S), den: S * S0 }} digits={digits} />; }
     return s0 ? <bdi dir="ltr">{ratioText(s, s0)}</bdi> : null;
   };
   const inWhere = (he: string) => hebrewPrefix('ב', he);

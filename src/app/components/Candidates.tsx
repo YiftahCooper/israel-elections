@@ -1,7 +1,7 @@
 import { datesInText } from '../dateFormat.ts';
 import { partyDisplayColor } from '../partyDisplayColor.ts';
 import { CandidateName } from './CandidateName.tsx';
-import { MkName } from './MkHistory.tsx';
+import { CandidateWords, MkName, useCandidateGender } from './MkHistory.tsx';
 import {englishLabel} from '../../data/names.ts';
 import { StartFrom } from './StartFrom.tsx';
 import { useDisclosure } from './Feature.tsx';
@@ -25,6 +25,14 @@ export function notSeatedReasons(ds: Pick<ElectionDataset, 'lists'>): Record<str
     const n = x.notesHe?.find((t) => t.includes(c.nameHe) || t.includes(`(מקום ${c.rank})`));
     return n ? [[c.id, n] as const] : [];
   })));
+}
+
+/** "not seated", in Hebrew in the candidate's recorded gender ("לא כיהן" / "לא כיהנה"; "ללא כהונה" with no record), with
+ *  the source note behind an (i) when there is one. */
+function NotSeated({ candidate, why }: { candidate: SimCandidate; why?: string }) {
+  const L = useL(), gender = useCandidateGender(candidate);
+  const he = (m: string, f: string, n: string) => gender === 'm' ? m : gender === 'f' ? f : n;
+  return <>{L('not seated', he('לא כיהן', 'לא כיהנה', 'ללא כהונה'))}{why && <> <Info label={L('Why not seated', he('למה לא כיהן', 'למה לא כיהנה', 'למה אין כהונה'))} title={L('Not seated', he('לא כיהן', 'לא כיהנה', 'ללא כהונה'))}><span lang="he" dir="rtl">{why}</span></Info></>}</>;
 }
 
 /** A list's candidates under their heading (Simple: "Who gets in"). `notSeatedWhy`: the source note behind a
@@ -109,7 +117,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
                   return p ? <span className="muted tiny"> · {lang === 'he' ? p.nameHe : englishLabel(p.nameEn, p.nameHe)}</span>
                     : x.partyHe && l.sponsorsHe.includes(';') ? <span className="muted tiny"> · {lang === 'he' ? x.partyHe : englishLabel(null, x.partyHe)}</span> : null; })()}
                 {x.originListId && x.originListId !== l.id && !l.originIds.includes(x.originListId) && <span className="muted tiny"> · {L('moved', 'מרשימה אחרת')}</span>}
-                {changed && <span className={`tiny ${elected ? 'up' : 'down'}`}> · {elected ? L('enters', 'כניסה') : L('leaves', 'יציאה')}</span>}
+                {changed && <span className={`tiny ${elected ? 'up' : 'down'}`}> · {elected ? <CandidateWords candidate={x} en="enters" he={['נכנס', 'נכנסת', 'כניסה']} /> : <CandidateWords candidate={x} en="leaves" he={['יוצא', 'יוצאת', 'יציאה']} />}</span>}
                 {x.bio && <BioLinks bio={x.bio} name={candidateName(x, lang)} />}
               </span>
               {advanced ? (
@@ -120,7 +128,7 @@ export function Candidates({ l, seats, baseSeats, baseCandidates, notSeatedWhy =
                   <button className="btn small ghost icon-only" aria-label={L('Insert candidate below', 'הוספת מועמד מתחת')} onClick={() => { const next = [...c]; next.splice(i + 1, 0, { id: `new-${Date.now().toString(36)}`, nameHe: L('New candidate', 'מועמד חדש') }); commit(next, 'insert'); }}><Plus className="icon sm" aria-hidden /></button>
                   <button className="btn small ghost danger icon-only" aria-label={L('Remove', 'הסרה')} onClick={() => commit(c.filter((y) => y.id !== x.id), `remove ${x.nameHe}`)}><X className="icon sm" aria-hidden /></button>
                 </span>
-              ) : <span className="tiny muted">{x.notSeated ? <>{L('not seated', 'ללא כהונה')}{notSeatedWhy[x.id] && <> <Info label={L('Why not seated', 'למה אין כהונה')} title={L('Not seated', 'ללא כהונה')}><span lang="he" dir="rtl">{notSeatedWhy[x.id]}</span></Info></>}</> : elected ? <span className="sr-only">{L('elected', 'בין הנבחרים')}</span> : x === nextIn ? L('next in line', 'המקום הבא בתור') : ''}</span>}
+              ) : <span className="tiny muted">{x.notSeated ? <NotSeated candidate={x} why={notSeatedWhy[x.id]} /> : elected ? <span className="sr-only"><CandidateWords candidate={x} en="elected" he={['נבחר', 'נבחרה', 'בין הנבחרים']} /></span> : x === nextIn ? L('next in line', 'המקום הבא בתור') : ''}</span>}
             </li>
           );
         })}

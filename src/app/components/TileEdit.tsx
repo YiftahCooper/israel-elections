@@ -94,10 +94,10 @@ export function TileEditor({ s, field, close, title = true }: { s: Scenario; fie
     : field === 'turnout' ? `${official.toFixed(TURNOUT_FIELD_DIGITS)}%` : `${trimDecimal(String(official))}%`;
   const control = field === 'turnout'
     ? <NumericStepper label={label} value={s.registered ? 100 * cast / s.registered : 0} digits={TURNOUT_FIELD_DIGITS} min={0.01} max={100} onCommit={pct => dispatch({ type: 'setTurnout', pct })}
-        steps={[{ id: '0.1', label: L('0.1 pp', '0.1 נק׳ אחוז'), amount: 0.1 }, { id: '1', label: L('1 pp', '1 נק׳ אחוז'), amount: 1 }]} />
+        steps={[{ id: '0.1', label: L('0.1 pts', '0.1 נק׳ אחוז'), amount: 0.1 }, { id: '1', label: L('1 pt', '1 נק׳ אחוז'), amount: 1 }]} />
     : field === 'threshold'
       ? <NumericStepper label={label} value={Number(s.rules.thresholdPct)} digits={2} min={0} max={100} onCommit={n => { if (n !== Number(s.rules.thresholdPct)) dispatch({ type: 'setRules', patch: { thresholdPct: trimDecimal(String(Math.round(n * 100) / 100)) } }); }}
-          steps={[{ id: '0.25', label: L('0.25 pp', '0.25 נק׳ אחוז'), amount: 0.25 }, { id: '1', label: L('1 pp', '1 נק׳ אחוז'), amount: 1 }]} />
+          steps={[{ id: '0.25', label: L('0.25 pts', '0.25 נק׳ אחוז'), amount: 0.25 }, { id: '1', label: L('1 pt', '1 נק׳ אחוז'), amount: 1 }]} />
       : <NumericStepper label={label} value={field === 'registered' ? s.registered : s.invalid}
           onCommit={n => { if (n !== (field === 'registered' ? s.registered : s.invalid)) dispatch({ type: 'setTotals', [field]: n }); }}
           steps={[{ id: '1k', label: '1k', amount: 1000 }, { id: '10k', label: '10k', amount: 10000 }]} />;

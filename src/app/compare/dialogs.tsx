@@ -11,6 +11,7 @@ import { useDigits, useStore } from '../store.ts';
 import { deltaAction, type SourceChoice } from '../voteEdit.ts';
 import { sourceChoice, sourceValue } from '../preferences.ts';
 import { Info, Slip } from '../components/ui.tsx';
+import { SeatDelta } from '../components/SeatDelta.tsx';
 import { ChoicePicker } from '../components/ChoicePicker.tsx';
 import { ListMark, listChoice } from '../components/ListMark.tsx';
 import { adjustOf, basisOf, COPY_MODE_DEFAULT, duplicatePeople, isDefaultCopyMode, modeOf, planRoster, planWholeList, type CopyBasis, type CopyMode, type Plan, type Removal } from './copy.ts';
@@ -69,7 +70,7 @@ export function SourceSelect({ dest, exclude, value, onChange, label, info }: { 
   </div>;
 }
 
-/** What a plan does to the destination, in seats: "Likud 27 → 30 ▲ +3 · Yashar! 21 → 19 ▼ −2". */
+/** What a plan does to the destination, in seats: "Likud 27 → 30 ▲3 · Yashar! 21 → 19 ▼2". */
 /** info: an (i) beside the seat preview (the Copy votes box: why the share of seats differs from the share of votes) */
 export function Outcome({ plan, to, focus, info }: { plan: Plan; to: SideModel; focus?: string[]; info?: ReactNode }) {
   const L = useL(), lang = useLang();
@@ -77,14 +78,16 @@ export function Outcome({ plan, to, focus, info }: { plan: Plan; to: SideModel; 
   const after = allocationOf(plan.result);
   const changed = plan.result.lists.map((l) => ({ l, a: to.r.lists.find((x) => x.id === l.id)?.seats ?? 0, b: after.lists.find((x) => x.id === l.id)?.seats ?? 0 }))
     .filter((x) => x.a !== x.b || focus?.includes(x.l.id)).sort((x, y) => Number(focus?.includes(y.l.id)) - Number(focus?.includes(x.l.id)) || Math.abs(y.b - y.a) - Math.abs(x.b - x.a));
-  // each change as a sentence with its subject (owner, 26 Nov 2026): "Likud would have 28 seats (1 more). Ra'am would have 7 seats (1 fewer)."
+  // each change as a compact mark, "Likud 27 → 28 ▲1" (owner, 26 Nov 2026: the morning's sentences cluttered); the
+  // sentence ("Likud would have 28 seats (1 more).") stays behind it, as its tooltip
   const sentence = (name: string, a: number, b: number) => {
     const d = b - a;
     if (!d) return lang === 'he' ? `${name}: ${seatsText(a, 'he')}, ללא שינוי.` : `${name} stays at ${seatsText(a, 'en')}.`;
     return lang === 'he' ? `${hebrewPrefixName('ל', name)} יהיו ${seatsText(b, 'he')} (${d > 0 ? 'יותר' : 'פחות'} ב־${Math.abs(d)}).`
       : `${name} would have ${seatsText(b, 'en')} (${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}).`;
   };
-  return <span className="cmp-outcome">{changed.length ? changed.slice(0, 4).map(({ l, a, b }) => <span key={l.id} data-change={Math.sign(b - a)}><bdi>{sentence(listLabel(l, lang), a, b)}</bdi></span>) : L('Seats unchanged', 'המנדטים ללא שינוי')}
+  return <span className="cmp-outcome">{changed.length ? changed.slice(0, 4).map(({ l, a, b }) => { const name = listLabel(l, lang), said = sentence(name, a, b);
+    return <span key={l.id} data-change={Math.sign(b - a)} title={said}><bdi>{name}</bdi> <bdi dir="ltr">{b !== a && <>{a} → </>}{b} <SeatDelta value={b - a} /></bdi></span>; }) : L('Seats unchanged', 'המנדטים ללא שינוי')}
     {plan.capped !== undefined && <span className="cmp-capped">{L(`Capped at ${fmtInt(plan.capped)} voters staying home`, `מוגבל ל־${fmtInt(plan.capped)} שלא הצביעו`)}</span>}{info}</span>;
 }
 

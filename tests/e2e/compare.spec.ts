@@ -43,7 +43,7 @@ test('opens from the strip on the previous election, your work on the left; clos
   await expect(refSeats(page, 'Likud')).toHaveText('32');
   await expect(row(page, 'Likud').locator('.cmp-tag')).toHaveText('Same');
   // the change is your work against the compared result, as on the Lists panel (27 against 32)
-  await expect(row(page, 'Likud').locator('.cmp-delta bdi').first()).toHaveText(/^▼\s*−5$/);
+  await expect(row(page, 'Likud').locator('.cmp-delta bdi').first()).toHaveText(/^▼5$/);
   // the compared result's seats open no list of your work
   await card(page, 'other').locator('[data-seat]').first().click();
   await expect(page.locator('aside .sp-head')).toHaveCount(0);
@@ -249,7 +249,7 @@ test('Hebrew: your work on the right, graphics still left to right, signs unmirr
   await expect(card(page, 'other')).toContainText('2022');
   const likud = row(page, 'הליכוד');
   expect((await likud.locator('.cmp-ls').boundingBox())!.x).toBeLessThan((await likud.locator('.cmp-rs').boundingBox())!.x);
-  await expect(likud.locator('.cmp-delta bdi').first()).toHaveText(/^▼\s*−5$/);
+  await expect(likud.locator('.cmp-delta bdi').first()).toHaveText(/^▼5$/);
   await likud.hover();
   await likud.getByRole('button', { name: 'העתקת הקולות של הליכוד ל־2026' }).click();
   await expect(box(page)).toContainText('העתקה לפי');
@@ -298,9 +298,9 @@ test('your work stays on the left in English even when the compared election is 
 test('the share change carries its unit', async ({ page }) => {
   await start(page);
   await openSideBySide(page);
-  await expect(row(page, 'Likud').locator('.cmp-pp')).toHaveText(/^[−+]2\.89 pp$/);
+  await expect(row(page, 'Likud').locator('.cmp-pp')).toHaveText(/^▼2\.89 pts$/);
   await page.locator('.cmp-table th.cmp-mid').getByRole('button').click();
-  await expect(page.getByText(/pp: percentage points/)).toBeVisible();
+  await expect(page.getByText(/pts: percentage points/)).toBeVisible();
 });
 
 test('an import that puts someone on two lists warns, names both, and removes only on request', async ({ page }) => {

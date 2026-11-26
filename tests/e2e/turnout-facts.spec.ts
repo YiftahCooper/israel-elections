@@ -23,10 +23,10 @@ const fact = (facts: ReturnType<Page['locator']>, id: string) => facts.locator(`
 test('Standard: eligible voters, turnout and votes cast with their change since the previous election', async ({ page }) => {
   const facts = await open(page);
   await expect(fact(facts, 'registered').locator('.tn-v')).toHaveText('7,331,981');
-  await expect(fact(facts, 'registered').locator('.tn-since')).toHaveText('▲ +543,177 · +8% since 2022');
+  await expect(fact(facts, 'registered').locator('.tn-since')).toHaveText('▲543,177 · 8% since 2022');
   await expect(fact(facts, 'turnout').locator('.tn-v')).toHaveText('77.98%');
-  await expect(fact(facts, 'turnout').locator('.tn-since')).toHaveText('▲ +7.35 pp since 2022');
-  await expect(fact(facts, 'cast').locator('.tn-since')).toHaveText('▲ +922,804 · +19.25% since 2022');
+  await expect(fact(facts, 'turnout').locator('.tn-since')).toHaveText('▲7.35 pts since 2022');
+  await expect(fact(facts, 'cast').locator('.tn-since')).toHaveText('▲922,804 · 19.25% since 2022');
   await expect(fact(facts, 'valid').locator('.tn-v')).toHaveText('5,691,426');
   await expect(fact(facts, 'invalid').locator('.tn-d')).toHaveText('0.45% of votes cast');
   await expect(fact(facts, 'threshold').locator('.tn-v')).toHaveText('184,972 votes');
@@ -43,7 +43,7 @@ test('Simple shows the few key numbers and no chart', async ({ page }) => {
   const facts = await open(page, { level: 'simple', election: 'k25' });
   await expect(facts.locator('.tn-fact')).toHaveCount(2);
   await expect(fact(facts, 'turnout').locator('.tn-d')).toHaveText('4,794,593 votes cast');
-  await expect(fact(facts, 'turnout').locator('.tn-since')).toHaveText('▲ +3.18 pp since 2021');
+  await expect(fact(facts, 'turnout').locator('.tn-since')).toHaveText('▲3.18 pts since 2021');
   await expect(facts.locator('.tn-history')).toHaveCount(0);
 });
 
@@ -62,7 +62,7 @@ test('Expert: polling-station results and double envelopes where the source has 
   await expect(fact(facts, 'boxes').locator('dt')).toHaveText(/^Polling-station results/);
   await expect(fact(facts, 'boxes').locator('dt').getByRole('button', { name: 'Polling station: explanation', exact: true })).toBeVisible();
   await expect(fact(facts, 'boxes').locator('.tn-v')).toHaveText('12,545');
-  await expect(fact(facts, 'boxes').locator('.tn-since')).toHaveText('▼ −381 · −2.95% since 2021');
+  await expect(fact(facts, 'boxes').locator('.tn-since')).toHaveText('▼381 · 2.95% since 2021');
   await expect(fact(facts, 'envelopes').locator('.tn-v')).toHaveText('462,807');
 });
 
@@ -99,7 +99,7 @@ test('in Hebrew the charts run left to right and every word is Hebrew', async ({
   const bars = facts.locator('.tn-bar');
   const first = (await bars.first().boundingBox())!, last = (await bars.last().boundingBox())!;
   expect(first.x).toBeLessThan(last.x);
-  await expect(fact(facts, 'registered').locator('.tn-since')).toHaveText('▲ +543,177 · +8% לעומת 2022');
+  await expect(fact(facts, 'registered').locator('.tn-since')).toHaveText('▲543,177 · 8% לעומת 2022');
   await expect(facts.locator('.tn-grid')).not.toContainText(/[A-Za-z]{2,}/);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
 });

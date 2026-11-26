@@ -105,7 +105,7 @@ test('E10 Compare rows carry list identity tiles and signed seat changes', async
   await choose(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ }), 'official');
   const likud=page.locator('tr.cmp-row').filter({has:page.locator('.cmp-lname',{hasText:'Likud'})});
   await expect(likud.locator('.cmp-lname .slip')).toBeVisible();
-  await expect(likud.locator('.cmp-delta bdi').first()).toHaveText(/^▲\s*\+\d+$/);
+  await expect(likud.locator('.cmp-delta bdi').first()).toHaveText(/^▲\d+$/);
 });
 
 test('E9 bloc Escape cancels a pending move before closing', async ({page}) => {

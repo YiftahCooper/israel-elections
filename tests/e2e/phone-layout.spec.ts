@@ -27,10 +27,10 @@ test('What if on a phone: no seat change runs under its row\'s "Open as a scenar
   for (const c of [{ lang: 'en', width: 360, height: 740 }, { lang: 'he', width: 360, height: 740 }, { lang: 'en', width: 390, height: 844, text: 'large' }] as Opts[]) {
     await start(page, c);
     await page.locator('#tab-whatif').click();
-    await expect(page.locator('.wi-sentence').first()).toBeVisible();
+    await expect(page.locator('.wi-chip').first()).toBeVisible();
     const hits = await page.locator('.wi-row').evaluateAll(rows => rows.flatMap(row => {
       const b = row.querySelector(':scope > .btn')?.getBoundingClientRect(); if (!b) return [];
-      return [...row.querySelectorAll('.wi-chip, .wi-sentence')].filter(ch => { const r = ch.getBoundingClientRect(); return r.right > b.left && r.left < b.right && r.bottom > b.top && r.top < b.bottom; }).map(ch => ch.textContent);
+      return [...row.querySelectorAll('.wi-chip')].filter(ch => { const r = ch.getBoundingClientRect(); return r.right > b.left && r.left < b.right && r.bottom > b.top && r.top < b.bottom; }).map(ch => ch.textContent);
     }));
     expect(hits, JSON.stringify(c)).toEqual([]);
   }

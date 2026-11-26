@@ -124,7 +124,7 @@ test('withdrawing a list: the line says so and counts the seats in no bloc (2022
   const line = page.locator('.session .session-changes');
   await expect(line).toContainText('list withdrawn');
   await expect(line).not.toContainText('votes changed');
-  await expect(line).toContainText('No bloc 4 (▲ +4)');
+  await expect(line).toContainText('No bloc 4 (▲4)');
 });
 
 test('Copy votes box: counts lists as the message does, names where a row\'s votes come from, no dangling dot, unchanged said so', async ({ page }) => {
@@ -143,7 +143,7 @@ test('Copy votes box: counts lists as the message does, names where a row\'s vot
   await page.locator("xpath=//button[normalize-space()='Copy votes…'][preceding::*[contains(@class,'lb-row')][1][contains(., 'Shas')]]").first().click();
   await box.getByRole('checkbox', { name: 'Adjust for the number of eligible voters' }).uncheck();
   const count = box.locator('.cmp-mode[data-mode="count"]');
-  await expect(count).toContainText('Shas stays at 9 seats.');
+  await expect(count).toContainText('Shas 9 ±0'); // a compact mark, the sentence as its tooltip (26 Nov 2026)
   await expect(count).not.toContainText('9 → 9');
 });
 
@@ -227,13 +227,13 @@ test('a failed load in Hebrew: the browser\'s own English words are named as a t
   expect((await detail.innerText()).startsWith('פרט טכני: ')).toBe(true);
 });
 
-test('compared with 2022, a list from a split shows the split\'s figure as the group\'s: "together now 13"', async ({ page }) => {
+test('compared with 2022, a list from a split shows the split\'s figure as the group\'s: "Seats together 14 → 13"', async ({ page }) => {
   await start(page, 'k26', { level: 'simple' });
   await page.locator('.compare-on').first().click();
   const line = page.locator('.cmpm-line', { hasText: 'Religious Zionism (split into 3)' });
-  await expect(line.first()).toContainText('2022: Religious Zionism (split into 3), 14 seats · together now 13');
+  await expect(line.first()).toContainText('2022: Religious Zionism (split into 3) · Seats together 14 → 13 ▼1');
   // never this list's own 7 against the group's 14 without saying so
-  for (const t of await line.allInnerTexts()) expect(t).toMatch(/together now 13/);
+  for (const t of await line.allInnerTexts()) expect(t).toMatch(/Seats together 14 → 13/);
 });
 
 test('Sensitivity says where the votes come from, on screen', async ({ page }) => {

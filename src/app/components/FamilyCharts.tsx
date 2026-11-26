@@ -1,5 +1,6 @@
-import { fmtPct, fmtPctNum, PP } from '../format.ts';
-import { percent, percentNum, points } from './Percentage.tsx';
+import { fmtPct, fmtPctNum } from '../format.ts';
+import { CountDelta, PointsDelta } from './SeatDelta.tsx';
+import { percent, percentNum } from './Percentage.tsx';
 import { Floating } from '../floating.tsx';
 import {Fragment,useEffect,useRef,useState,type ReactNode} from 'react';
 import {Info} from './ui.tsx';
@@ -143,10 +144,9 @@ function PointFacts({f,at,metric,text}:{f:Family;at:number;metric:'share'|'votes
  const name=(id:string)=>historyListName(e.id,id,lang);
  const now=familyEstimate(f,e.id),before=prev?familyEstimate(f,prev.id):null;
  const delta=now&&before?(metric==='share'?now.estimate*100/e.totals.valid-before.estimate*100/prev!.totals.valid:Math.round(now.estimate-before.estimate)):null;
- const sign=(n:number)=>n>0?'+':n<0?'−':'±';
  return <>
   <span>{text}</span>
-  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: <bdi dir="ltr">{metric==='share'?points(delta,digits):<>{sign(delta)}{Math.abs(delta).toLocaleString('en-US')}</>}</bdi>{metric==='share'&&<> {L(...PP)}</>}</span>}
+  {delta!==null&&<span className="ft-delta">{L('Since','מאז')} {familyDate(prev!,lang)}: {metric==='share'?<PointsDelta value={delta} digits={digits} />:<CountDelta value={delta} />}</span>}
   {m.selected.size>0&&<span className="ft-row"><i className="family-key-line" aria-hidden/>{byVotes(m.selected).map(name).join(' · ')}</span>}
   {byVotes(m.mixed).map(id=>{const parts=mixedComposition(f,e.id,id,lang);return <span key={id} className="ft-row"><i className="family-key-mixed" aria-hidden/><span>{name(id)}{parts.length>1&&<>: {parts.map((p,i)=><Fragment key={i}>{i>0&&' + '}{p.own?<b>{p.name}</b>:p.name}</Fragment>)}</>}</span></span>;})}
   {m.excluded.size>0&&<span className="ft-row muted">{L('Left out','לא נספרו')}: {byVotes(m.excluded).map(name).join(' · ')}</span>}

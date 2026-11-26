@@ -3,6 +3,7 @@
 import { MarkedText } from './LangLabel.tsx';
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Scenario } from '../../model/scenario.ts';
+import type { Rational } from '../../engine/rational.ts';
 import type { AllocationResult } from '../../engine/types.ts';
 import type { Certainty } from '../../data/evidence.ts';
 import { comparablePredecessor, leadOf, officialFacts, partiesOf, scenarioFacts, type Comparison } from '../../history/compare.ts';
@@ -14,7 +15,7 @@ import { fmtInt, fmtPct, seatsText } from '../format.ts';
 import { hebrewPrefix as attach, hebrewPrefixName } from '../hebrewPrefix.ts';
 import { useDigits, useOn, useSetting } from '../store.ts';
 import { Info, Slip } from './ui.tsx';
-import { SeatDelta } from './SeatDelta.tsx';
+import { PointsDelta, SeatDelta } from './SeatDelta.tsx';
 import { percent, rationalPoints } from './Percentage.tsx';
 import './party-history.css';
 import { PageAndQuote } from './BookQuote.tsx';
@@ -342,9 +343,10 @@ export function comparisonRowText(c: Comparison | null, lang: Lang): string {
     : `, ${py}: ${seatsText(c.before.seats, 'he')} (${change}), בהשוואה ${hebrewPrefix('ל', comparedName(c, 'he'))}${c.kind === 'partial' ? ', בחלקה' : ''}`;
 }
 
-/** Panel line, as a sentence (clarity pass, 26 Nov 2026): "In 2022, Labor + Meretz won 4 seats; now 8 (4 more). Vote
- *  share 0.42 points lower than in 2022. (i)", and anything the earlier figure leaves out or includes. A link that is not
- *  on official record is said in words inside the (i), not as a chip (round 2). */
+/** Panel line, compact (owner, 26 Nov 2026: brief visual information, the sentence behind an (i)):
+ *  "Since 2022 Labor + Meretz · Seats 4 → 8 ▲4 · Vote share ▼0.42 pts (i)". The (i) opens with the same change as a
+ *  sentence ("In 2022, Labor + Meretz won 4 seats; now 8 (4 more)…"), then the lists compared and the facts that link
+ *  them; anything the earlier figure leaves out or includes is said below the line. */
 export function ComparisonLine({ c }: { c: Comparison | null }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   if (!c || c.kind === 'first') return null;
@@ -355,27 +357,39 @@ export function ComparisonLine({ c }: { c: Comparison | null }) {
   if (c.kind === 'verify') return <div className="ph-cmpline" data-kind="verify"><span>{L(`No comparison with ${py}: which earlier list this one continues is not established.`, `אין השוואה ${hebrewPrefix('ל', py)}: לא בוסס איזו רשימה קודמת היא ממשיכה.`)}</span></div>;
   const d = c.after.seats - c.before.seats;
   const share = c.before.valid && c.after.valid ? { num: 100n * (BigInt(c.after.votes) * BigInt(c.before.valid) - BigInt(c.before.votes) * BigInt(c.after.valid)), den: BigInt(c.before.valid) * BigInt(c.after.valid) } : null;
-  const name = comparedName(c, lang);
-  const change = d === 0 ? L('the same', 'אותו מספר') : L(`${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}`, d > 0 ? `עוד ${d}` : `${-d} פחות`);
-  // a list divided since: the earlier list's seats, then what its successors have together (not "Religious Zionism → 3
-  // lists won 14 seats; now 13", which read as this list's 13; round 2 of the clarity pass, 26 Nov 2026)
-  const earlierName = c.kind === 'group' ? c.counted.map((l) => { const h = prevList(c, l.id); return h ? listShort(h, lang) : l.id; }).join(' + ') : name;
+  const group = c.kind === 'group';
   return <div className="ph-cmpline" data-kind={c.kind}>
+    <span className="ph-cmp-head"><span className="muted">{L(`Since ${py}`, `לעומת ${py}`)}</span> <b><bdi>{comparedName(c, lang)}</bdi></b></span>
+    {/* a list divided since: the successors' seats together, said so, never read as this list's own 13 against 14 */}
+    <span className="ph-cmp-figs"><span className="ph-num">{group ? L('Seats together', 'מנדטים יחד') : L('Seats', 'מנדטים')} <bdi dir="ltr">{c.before.seats} → {c.after.seats} <SeatDelta value={d} /></bdi></span>
+    {share && share.num !== 0n && <span className="ph-num">· {group ? L('Vote share together', 'שיעור הקולות יחד') : L('Vote share', 'שיעור הקולות')} <PointsDelta value={share} digits={digits} /></span>}
+    <Info title={L(`Compared with ${py}`, `השוואה ${hebrewPrefix('ל', py)}`)}><ComparisonSentence c={c} share={share} digits={digits} /><ComparisonWhy c={c} divisionSaid /></Info></span>
+    {(c.notCounted.length > 0 || c.left.length > 0) && <div className="tiny muted ph-notcounted">
+      {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={`${n.partyId}${n.listId}`}>{L(`${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}, so it is not in the ${py} figure.`, `${partyShort(n.partyId, 'he')} רצה ${hebrewPrefix('ב', py)} בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'}, ולכן אינה במספר של ${py}.`)} </span>; })}
+      {c.left.map((n) => <span key={`l${n.partyId}`}>{L(`The ${py} figure includes ${partyShort(n.partyId, 'en')}, which has since left.`, `המספר של ${py} כולל את ${partyShort(n.partyId, 'he')}, שעזבה מאז.`)} </span>)}
+    </div>}
+  </div>;
+}
+
+/** The panel line's change as a sentence, at the top of its (i): "In 2022, Labor + Meretz won 4 seats; now 8 (4 more).
+ *  Vote share 0.42 points lower than in 2022." (the morning's wording, 26 Nov 2026, now behind the compact line). */
+function ComparisonSentence({ c, share, digits }: { c: Comparison; share: Rational | null; digits: number }) {
+  const L = useL(), lang = useLang();
+  const py = prevYear(c, lang), d = c.after.seats - c.before.seats;
+  const change = d === 0 ? L('the same', 'אותו מספר') : L(`${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}`, d > 0 ? `עוד ${d}` : `${-d} פחות`);
+  const name = comparedName(c, lang);
+  const earlierName = c.kind === 'group' ? c.counted.map((l) => { const h = prevList(c, l.id); return h ? listShort(h, lang) : l.id; }).join(' + ') : name;
+  return <span className="ph-why-sentence">
     <span>{c.kind === 'group' ? (lang === 'he'
       ? <>{hebrewPrefix('ב', py)} {c.before.seats === 1 ? 'היה' : 'היו'} {hebrewPrefix('ל', earlierName)} {seatsText(c.before.seats, 'he')}. מאז היא התחלקה בין {c.group.length} רשימות, ולהן יחד יש עכשיו {c.after.seats} ({change}).</>
       : <>In {py}, <bdi>{earlierName}</bdi> won {seatsText(c.before.seats, 'en')}. It has since divided into {c.group.length} lists, which together now have {c.after.seats} ({change}).</>)
       : lang === 'he'
       ? <>{hebrewPrefix('ב', py)} {c.before.seats === 1 ? 'היה' : 'היו'} {hebrewPrefix('ל', name)} {seatsText(c.before.seats, 'he')}; עכשיו {c.after.seats} ({change}).</>
       : <>In {py}, <bdi>{name}</bdi> won {seatsText(c.before.seats, 'en')}; now {c.after.seats} ({change}).</>}</span>
-    {share && share.num !== 0n && <span className="ph-num">{lang === 'he'
+    {share && share.num !== 0n && <span> {lang === 'he'
       ? <>{c.kind === 'group' ? 'שיעור הקולות שלהן יחד' : 'שיעור הקולות'} {share.num > 0n ? 'גבוה' : 'נמוך'} ב־<bdi dir="ltr">{rationalPoints(share, digits, true)}</bdi> נקודות אחוז לעומת {py}.</>
       : <>{c.kind === 'group' ? 'Their vote share together is' : 'Vote share'} <bdi dir="ltr">{rationalPoints(share, digits, true)}</bdi> points {share.num > 0n ? 'higher' : 'lower'} than in {py}.</>}</span>}
-    <Info title={L(`Compared with ${py}`, `השוואה ${hebrewPrefix('ל', py)}`)}><ComparisonWhy c={c} /></Info>
-    {(c.notCounted.length > 0 || c.left.length > 0) && <div className="tiny muted ph-notcounted">
-      {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={`${n.partyId}${n.listId}`}>{L(`${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}, so it is not in the ${py} figure.`, `${partyShort(n.partyId, 'he')} רצה ${hebrewPrefix('ב', py)} בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'}, ולכן אינה במספר של ${py}.`)} </span>; })}
-      {c.left.map((n) => <span key={`l${n.partyId}`}>{L(`The ${py} figure includes ${partyShort(n.partyId, 'en')}, which has since left.`, `המספר של ${py} כולל את ${partyShort(n.partyId, 'he')}, שעזבה מאז.`)} </span>)}
-    </div>}
-  </div>;
+  </span>;
 }
 
 /** Compare between two elections: each list of the later side against the earlier side's whole lists. */
@@ -420,14 +434,15 @@ export function CompareNote({ c, currentName }: { c: Comparison | null; currentN
 }
 
 /** The evidence behind a comparison: the earlier lists, why, how sure. Used in the panel and in Compare. */
-export function ComparisonWhy({ c }: { c: Comparison }) {
+/** `divisionSaid`: the sentence above it already says the earlier list divided (the panel's (i)), so it is not repeated. */
+export function ComparisonWhy({ c, divisionSaid = false }: { c: Comparison; divisionSaid?: boolean }) {
   const L = useL(), lang = useLang();
   const expert = useOn('historySources');
   const py = prevYear(c, lang);
   // the lists compared and the facts that link them; how the comparison is built is not the reader's question
   // (clarity pass, 26 Nov 2026). A divided list still says why several lists are taken together.
   return <span className="ph-why">
-    {c.kind === 'group' && <span>{L(`The ${py} list was divided among several lists, so they are compared together.`, `הרשימה ${hebrewPrefix('מ', py)} התחלקה בין כמה רשימות, ולכן הן מושוות יחד.`)}</span>}
+    {c.kind === 'group' && !divisionSaid && <span>{L(`The ${py} list was divided among several lists, so they are compared together.`, `הרשימה ${hebrewPrefix('מ', py)} התחלקה בין כמה רשימות, ולכן הן מושוות יחד.`)}</span>}
     <span className="ph-why-lists">{c.counted.map((l) => { const h = prevList(c, l.id); return <span key={l.id}><bdi>{h ? listShort(h, lang) : l.id}</bdi> {py}: {L(seatsText(l.seats, 'en'), seatsText(l.seats, 'he'))} · <bdi dir="ltr">{fmtInt(l.votes)}</bdi> {L('votes', 'קולות')}</span>; })}</span>
     {c.relations.map((r) => <span key={r.id}>{eventText(r, lang)} ({year(r.date)}{certWords(r.certainty, L)}){expert && r.sources.length > 0 && <span className="tiny muted"> · {r.sources.map((s) => (lang === 'he' && s.publisherHe) || s.publisher || L('Source', 'מקור')).join('; ')}</span>}</span>)}
     {c.newParties.length > 0 && c.kind !== 'group' && <span className="muted">{L(`No earlier list: ${names(c.newParties, 'en')}.`, `ללא רשימה קודמת: ${names(c.newParties, 'he')}.`)}</span>}

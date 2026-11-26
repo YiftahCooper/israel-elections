@@ -52,7 +52,8 @@
 .ph-sw.evnum { inline-size: 16px; block-size: 16px; border-radius: 50%; background: var(--ink); color: var(--surface); display: inline-grid; place-items: center; font-size: 10px; font-weight: 700; font-style: normal; }
 .ph-gapkey { color: var(--muted); }
 .ph-cmpline { font-size: 13px; display: flex; flex-wrap: wrap; gap: 2px 6px; align-items: center; }
-.ph-cmpline > div { flex-basis: 100%; }
+.ph-cmpline > div, .ph-cmpline > .ph-cmp-head { flex-basis: 100%; }
+.ph-cmp-figs { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 2px 6px; }
 .ph-num { white-space: nowrap; }
 .ph-cmp { font-size: 12px; color: var(--ink-2); }
 .ph-cert { font-size: 11px; padding: 0 6px; border-radius: 9px; border: 1px solid var(--rule-2); color: var(--ink-2); white-space: nowrap; line-height: 17px; }
@@ -62,6 +63,7 @@
 .ph-card { border: 1px solid var(--rule-2); border-radius: 6px; padding: 6px 10px; display: grid; gap: 2px; font-size: 13px; background: var(--surface-2); }
 .ph-why { display: grid; gap: 4px; }
 .ph-why-lists { display: grid; gap: 2px; padding-inline-start: 10px; border-inline-start: 2px solid var(--rule-2); }
+.ph-why-sentence { display: block; margin-block-end: 6px; }
 .ph-src { display: grid; gap: 2px; font-size: 12px; }
 .ph-sheet[open] { display: grid; grid-auto-rows: max-content; align-content: start; gap: 10px; padding: 14px 16px; border: 1px solid var(--rule-2); border-radius: 8px; background: var(--surface); color: var(--ink); inline-size: 960px; max-inline-size: min(calc(96vw / var(--text-zoom, 1)), 960px); max-block-size: calc(90dvh / var(--text-zoom, 1)); overflow: auto; box-shadow: var(--shadow-pop); }
 /* the chart and the note take the width they are given: a grid column never grows to the chart's first drawn width */
