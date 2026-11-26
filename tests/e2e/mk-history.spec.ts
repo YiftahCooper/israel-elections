@@ -48,8 +48,10 @@ test('opens from the seat: Idit Silman, six elections, three not elected', async
   // the place and the seats won are said once, under the list's name (clarity pass, 26 Nov 2026): no "places short"
   await expect(rows.nth(1)).toContainText('No. 8 · the list won 7');
   await expect(rows.nth(1)).not.toContainText('short');
-  // a Knesset she did not sit in draws no empty bar
+  // a Knesset she did not sit in draws no empty bar, and the result keeps its own column
   await expect(rows.nth(1).locator('.mk-bar')).toHaveCount(0);
+  const [res, served] = [await rows.nth(1).locator('.mk-res').boundingBox(), await rows.nth(0).locator('.mk-res').boundingBox()];
+  expect(Math.abs(res!.x - served!.x)).toBeLessThan(2);
   await expect(rows.nth(3)).toContainText('Sat from the first sitting');
   await expect(rows.nth(3)).toContainText('Membership ended'); // with the recorded reason where there is one (16 Nov 2026)
   await expect(rows.nth(5)).toContainText('No. 46 · the list won 27');
