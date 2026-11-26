@@ -357,17 +357,22 @@ test.describe('every setting takes effect', () => {
   test('hover previews: pointing at a step says what it would do, unless turned off', async ({ page }) => {
     await open(page);
     await page.locator('.lb-row').first().click();
-    const say = page.locator('.quick-consequence');
+    // the line under the goals says what the next seat takes, and what a pointed-at step would do instead
+    const say = page.locator('.side-panel .seat-search-status');
+    await expect(say).toContainText('more seat', { timeout: 30_000 });
+    const resting = await say.textContent();
     await page.getByRole('button', { name: 'Increase Votes', exact: true }).hover();
-    await expect(say).not.toHaveText('');
+    await expect(say).not.toHaveText(resting!);
     await page.reload();
     await gear(page).click();
     await row(page, 'hoverPreviews').getByRole('checkbox').uncheck();
     await page.keyboard.press('Escape');
     await page.locator('.lb-row').first().click();
+    await expect(say).toContainText('more seat', { timeout: 30_000 });
+    const restingAgain = await say.textContent();
     await page.getByRole('button', { name: 'Increase Votes', exact: true }).hover();
     await page.waitForTimeout(300);
-    await expect(say).toHaveText('');
+    await expect(say).toHaveText(restingAgain!);
   });
 
   test('option previews: the grouping picker draws each result, unless turned off', async ({ page }) => {

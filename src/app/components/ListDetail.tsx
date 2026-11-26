@@ -40,6 +40,9 @@ import { SourcePicker } from './SourcePicker.tsx';
 import { datesInText } from '../dateFormat.ts';
 import { IsolatedText } from '../bidiRuns.tsx';
 
+/** Notes on how the record was transcribed or where it was printed (the Sources tab's matter), by their opening words. */
+const TRANSCRIPTION_NOTE = /^(תומללו רק מקומות|רשימת המועמדים פורסמה בילקוט הפרסומים .* אך טרם תומללה|רשימת המועמדים: רשומות)/;
+
 const niceCeil = (n: number) => { const p = 10 ** Math.max(0, Math.floor(Math.log10(Math.max(1, n))) - 1); return Math.ceil(n / p) * p; };
 
 /** A vote slider that previews the whole board live while dragged and commits one undoable edit on release. */
@@ -259,8 +262,12 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     if (!id) { if (agr) dispatch({ type: 'removeAgreement', id: agr.id }); return; }
     dispatch({ type: 'setAgreement', agreement: { id: agr?.id ?? `sim-agr-${Date.now().toString(36)}`, members: [l.id, id], enabled: agr?.enabled ?? true } });
   };
-  const notes = ds.lists.find((x) => x.id === l.id)?.notesHe ?? [];
   const notSeatedWhy = notSeatedReasons(ds);
+  // a list's notes on the record, said once: one about a candidate is shown at that candidate, and notes about how the
+  // app transcribed or cited the record are not facts about the list (owner, 26 Nov 2026: data coverage belongs on
+  // the Sources tab, not in the middle of a list)
+  const seatedNotes = new Set(Object.values(notSeatedWhy));
+  const notes = (ds.lists.find((x) => x.id === l.id)?.notesHe ?? []).filter(n => !seatedNotes.has(n) && !TRANSCRIPTION_NOTE.test(n));
 
   return (
     <div className="ld" role="region" aria-label={L('List details', 'פרטי רשימה')}>
@@ -380,7 +387,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       {/* qualifications of the published record: shown at every level, never folded (a truth label, audit 12 Nov 2026) */}
       {notes.length > 0 && <section>
         {/* written by this project's data build about the official publications (not text of the Elections Committee); Hebrew only so far */}
-        <h3>{L('Notes on the sources (in Hebrew)', 'הערות על המקורות')}</h3>
+        <h3>{L('Notes on this list (in Hebrew)', 'הערות על הרשימה')}</h3>
         {notes.map((n, i) => <p key={i} className="small" lang="he" dir="rtl" style={{ margin: '0 0 4px' }}><IsolatedText text={datesInText(n)} /></p>)}
       </section>}
 

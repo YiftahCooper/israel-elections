@@ -410,7 +410,7 @@ export function History({ s, r, ds, reference = null }: { s: Scenario; r: Alloca
             <li key={i} style={{ marginBottom: 3 }}>
               <span className="muted tiny">{new Date(e.at).toLocaleTimeString(lang === 'he' ? 'he-IL' : 'en-GB')}</span> {describe(e.action, s, lang)}{' '}
               {/* the newest change is where you already are: nothing to go back to */}
-              {i < s.log.findLastIndex((e) => isFactAction(e.action)) && <button className="btn small ghost" onClick={() => revertTo(i + 1)}>{L('revert to here', 'חזרה לכאן')}</button>}
+              {i < s.log.findLastIndex((e) => isFactAction(e.action)) && <button className="btn small ghost" onClick={() => revertTo(i + 1)}>{L('Go back to here', 'חזרה לכאן')}</button>}
             </li>
           ))}
         </ol>

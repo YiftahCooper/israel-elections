@@ -27,7 +27,7 @@ test('one election timeline, official seat previews and an in-place Open', async
   await page.screenshot({ path: '.backup-scratch/controls/election-pm-only-en-light-desktop.png' });
   await page.keyboard.press('Escape');
 });
-test('one vote stepper, three goals, overflow for rarer operations', async ({ page }) => {
+test('one vote stepper, three goals, the rarer operations in place (no menu)', async ({ page }) => {
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k25');
   await page.getByRole('region', { name: 'Lists', exact: true }).getByRole('button', { name: 'Likud', exact: true }).click();
   const panel = page.locator('.side-panel');
@@ -35,9 +35,10 @@ test('one vote stepper, three goals, overflow for rarer operations', async ({ pa
   await expect(panel.locator('.numeric-stepper')).toHaveCount(2);
   await expect(panel.getByRole('group', { name: 'Votes controls', exact: true })).toHaveCount(1);
   await expect(panel.locator('.vote-goals > button')).toHaveCount(3);
-  await expect(panel.getByRole('button', { name: 'Transfer 1 pp', exact: true })).not.toBeVisible();
-  await panel.getByRole('button', { name: 'Scale, share & transfer', exact: true }).click();
-  await expect(panel.getByRole('button', { name: 'Transfer 1 pp', exact: true })).toBeVisible();
+  // clarity pass (26 Nov 2026): no 'Scale, share & transfer' menu; share, ×2/÷2 and the one-list transfer sit in place
+  await expect(panel.getByRole('button', { name: 'Scale, share & transfer', exact: true })).toHaveCount(0);
+  await expect(panel.getByLabel('Share of valid votes (%)')).toBeVisible();
+  await expect(panel.getByRole('button', { name: 'Take 1 pp from', exact: true })).toBeVisible();
 });
 test('saved official snapshots stay neutral; edited scenarios get distinct identities', async ({ page }) => {
   const picker = page.getByRole('button', { name: /^Switch scenario(: |$)/ });

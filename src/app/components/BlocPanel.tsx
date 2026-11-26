@@ -204,7 +204,7 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
                       <li key={u.key}>
                         <span className={`bp-chip ${chosen ? 'picked' : ''} ${u.kind === 'member' ? 'fixed' : ''} ${u.kind === 'list' && u.parties.length > 1 ? 'joint' : ''}`}>
                           <button type="button" className="bp-chip-main" aria-pressed={chosen} disabled={u.kind === 'member'}
-                            title={u.kind === 'member' ? L('Placed member by member by the sourced grouping; moves with the list', 'שובצו חבר אחר חבר לפי החלוקה המתועדת; זזים עם הרשימה') : undefined}
+                            title={u.kind === 'member' ? L('Its members sit in different blocs; they move with the list', 'חבריה בגושים שונים; הם זזים עם הרשימה') : undefined}
                             onClick={() => setPicked(chosen ? null : u)} {...(u.kind === 'member' ? {} : dragProps(u))}>
                             <Slip size="sm" letters={p ? '' : l.letters} name={p ? name(p) : listLabel(l,lang)} color={p ? partyDisplayColor(l, p.id) : l.color} logo={p ? p.logo : l.logo} synthetic={p ? undefined : l.synthetic} />
                             <span className="bp-chip-name">{chipLabel(u)}<EditMarker s={s} path={u.kind === 'party' ? ['partyBlocs', u.partyId] : ['lists', u.listId, 'bloc']} /></span>
@@ -241,8 +241,8 @@ export function BlocPanel({ s, r, focus }: { s: Scenario; r: AllocationResult; f
         </ol>
         <button className="btn bp-add" onClick={addBloc}><Plus className="icon sm" aria-hidden />{L('New bloc', 'גוש חדש')}</button>
         <p className="tiny muted" style={{ marginTop: 10 }}>{s.blocSchemeId === null && schemes.length
-          ? L('Custom blocs. The sourced groupings stay available under “Copy blocs from…”; Undo reverses any change.', 'גושים מותאמים. החלוקות המתועדות נשארות זמינות תחת "העתקת גושים מ…"; ביטול מחזיר כל שינוי.')
-          : L('Editing never alters a sourced grouping: your changes become “Custom blocs”. Undo reverses any change.', 'עריכה לעולם אינה משנה חלוקה מתועדת: השינויים הופכים ל"גושים מותאמים". ביטול מחזיר כל שינוי.')}</p>
+          ? L('These are your own blocs. The original groupings are still under “Copy blocs from…”.', 'אלה הגושים שלכם. החלוקות המקוריות עדיין תחת "העתקת גושים מ…".')
+          : L('Your changes make your own copy, “Custom blocs”; this grouping stays as it is.', 'השינויים שלכם יוצרים עותק משלכם, "גושים מותאמים"; החלוקה הזו נשארת כמו שהיא.')}</p>
       </div>
     </aside>
   );

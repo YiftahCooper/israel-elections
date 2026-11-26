@@ -128,7 +128,8 @@ for (const lang of ['en', 'he'] as const) {
     const H = await he(page);
     await choose(page.getByRole('button', { name: pickerName(H ? 'בחירות' : 'Election') }), 'k1');
     await listButton(page, H ? 'מפא״י' : 'Mapai').click();
-    await expect(details(page).getByRole('heading', { name: H ? 'הערות על המקורות' : 'Notes on the sources (in Hebrew)', exact: true })).toBeVisible();
+    // every 1949 Mapai note is about a candidate, so it is said once, at that candidate (clarity pass, 26 Nov 2026)
+    await expect(details(page).getByRole('heading', { name: H ? 'הערות על הרשימה' : 'Notes on this list (in Hebrew)', exact: true })).toHaveCount(0);
     await expect(details(page).locator('.disclosure-toggle')).not.toContainText([H ? 'הערות רשמיות לרשימה' : 'Official list notes']);
     const dayan = details(page).locator('.cands li').filter({ hasText: 'דיין משה' });
     await expect(dayan).toContainText(H ? 'ללא כהונה' : 'not seated');

@@ -56,7 +56,7 @@ test('History: no Undo and Redo of its own, no "revert to here" on the newest ch
   await line.getByRole('button', { name: 'History', exact: true }).click();
   const history = page.locator('.history');
   await expect(history.locator('li')).toHaveCount(1);
-  await expect(history.getByRole('button', { name: 'revert to here' })).toHaveCount(0);
+  await expect(history.getByRole('button', { name: 'Go back to here' })).toHaveCount(0);
   await expect(history.getByRole('button', { name: /^Undo/ })).toHaveCount(0);
   await page.keyboard.press('Escape');
   await line.getByRole('button', { name: /^Undo: Likud/ }).click();
