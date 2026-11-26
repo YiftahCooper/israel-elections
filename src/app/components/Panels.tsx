@@ -331,7 +331,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
       <div>
         <details><summary>{L('English list names', 'שמות הרשימות באנגלית')}</summary>
           <p className="small">{L('A list with a common English name shows it. The lists below have no official English name, so a short transliteration is shown. Names you type stay in Hebrew.', 'רשימה שיש לה שם מקובל באנגלית מוצגת בו. לרשימות שלהלן אין שם רשמי באנגלית, ולכן מוצג תעתיק קצר. שמות שאתם מקלידים נשארים בעברית.')}</p>
-          <ul className="small">{ds.lists.filter(l => l.englishName).map(l => <li key={l.id}>{listLabel(l, lang)} · {L('Unofficial transliteration', 'תעתיק לא רשמי')}{byId.get(l.englishName!.sourceId) && <> · {L('Hebrew name from ', 'השם העברי מתוך ')}<bdi dir="auto">{datesInText(lang === 'en' ? byId.get(l.englishName!.sourceId)!.publisherEn ?? byId.get(l.englishName!.sourceId)!.publisher : byId.get(l.englishName!.sourceId)!.publisher)}</bdi></>}</li>)}</ul>
+          <ul className="small">{ds.lists.filter(l => l.englishName).map(l => <li key={l.id}>{lang === 'he' ? <>{listLabel(l, 'he')}: <bdi dir="ltr">{listLabel(l, 'en')}</bdi></> : listLabel(l, lang)} · {L('Unofficial transliteration', 'תעתיק לא רשמי')}{byId.get(l.englishName!.sourceId) && <> · {L('Hebrew name from ', 'השם העברי מתוך ')}<bdi dir="auto">{datesInText(lang === 'en' ? byId.get(l.englishName!.sourceId)!.publisherEn ?? byId.get(l.englishName!.sourceId)!.publisher : byId.get(l.englishName!.sourceId)!.publisher)}</bdi></>}</li>)}</ul>
         </details>
         {(() => {
           // Logos keep their licence or fair-use notice and attribution with the images. One entry per image

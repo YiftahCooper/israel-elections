@@ -401,7 +401,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
     id: 'cap', nameHe: 'מגבלת מחצית המנדטים', nameEn: 'Half-seats cap', level: 'simple', provenance: 'sourced',
     defHe: 'רשימה שלא קיבלה יותר ממחצית הקולות המשתתפים, אך כבר זכתה במחצית המנדטים, אינה ממשיכה להשתתף בחלוקת העודפים (סעיף 81(ד)(4), מאז 1973). כך שיטת העודפים לא יכולה לתת רוב לרשימה שאין לה רוב קולות.',
-    defEn: 'A list with no more than half the qualifying votes that already holds half the seats takes no further part in the remainder stage (section 81(d)(4), since 1973). The remainder method thus cannot hand a majority to a list without a majority of the votes.',
+    defEn: 'A list with no more than half the votes of the lists that passed the threshold, which already holds half the seats, takes no further part in the remainder stage (section 81(d)(4), since 1973). The remainder method thus cannot hand a majority to a list without a majority of the votes.',
     linkHe: L.s81, linkEn: E.seats,
     sources: [
       src(L.s81, 'he', 'law', 's.81(d)(4)'),

@@ -98,8 +98,14 @@ function LocatorText({ locator }: { locator: string }) {
   const lang = useLang();
   const para = /^paragraph beginning «?(.+?)»?$/.exec(locator);
   if (para) return <>{lang === 'he' ? 'הפסקה שמתחילה ' : 'paragraph beginning '}<span style={{ display: 'inline-block' }}>«<bdi dir="auto">{para[1]}</bdi>»</span></>;
-  const page = /^p\. (\S+)$/.exec(locator);
-  if (page && lang === 'he') return <>עמ׳ <bdi dir="ltr">{page[1]}</bdi></>;
+  const page = /^p\. ?(\S+?)(?:, (note to [Tt]able|note|preamble|Figure) ?(\S*))?$/.exec(locator);
+  if (page && lang === 'he') {
+    const part = page[2] ? { 'note to table': 'הערה לטבלה', 'note to Table': 'הערה לטבלה', note: 'הערה', preamble: 'מבוא', Figure: 'תרשים' }[page[2]] : '';
+    return <>עמ׳ <bdi dir="ltr">{page[1]}</bdi>{part && <>, {part}{page[3] && <> <bdi dir="ltr">{page[3]}</bdi></>}</>}</>;
+  }
+  // the record's own labels for a statement's text
+  if (lang === 'he' && /^statement$/i.test(locator)) return <>הודעה</>;
+  if (lang === 'he' && /^opening paragraph$/i.test(locator)) return <>הפסקה הראשונה</>;
   return <HistoryText text={locator} verbatim />;
 }
 /** A cite's note is research commentary (how a record was read or matched), which visitors never see (clarity pass,
