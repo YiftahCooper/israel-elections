@@ -35,7 +35,7 @@ test('E3 separated lists compare once as a group', async ({page}) => {
     const row=page.getByRole('region', {name:'Lists'}).getByRole('button', {name,exact:true});
     await expect(row.locator('.lb-seats small, .was')).toHaveCount(0);
   }
-  await expect(page.locator('.lb-group-comparison')).toContainText('together 4, officially 7');
+  await expect(page.locator('.lb-group-comparison')).toContainText('Running separately, they have 4 seats together; officially, as United Torah Judaism, they had 7 seats.');
   await expect(page.locator('.session')).not.toContainText('−7');
   await openSideBySide(page);
   await choose(page.locator('.cmpm-strip').getByRole('button', { name: /^Compare with(: |$)/ }), 'official');

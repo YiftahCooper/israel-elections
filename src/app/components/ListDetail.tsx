@@ -15,7 +15,7 @@ import { PartEdits } from './PartEdits.tsx';
 // A list opened in place, inside its own row of the lists table: its votes (number, share, a live slider),
 // how far the next seat and the loss of one are (computed on opening), its surplus-vote agreement, its parties,
 // its standing, identity and candidates. Controls appear only where they apply to this list.
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { ElectionDataset } from '../../data/schema.ts';
 import type { SearchResult } from '../../engine/analysis.ts';
 import { allocate } from '../../engine/allocate.ts';
@@ -250,6 +250,17 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     const tie = gain.exact && gain.lotteryFrom !== undefined ? ` ${tieNote(Number(gain.lotteryFrom), s.rules.tiePolicy, he, 'more')}` : '';
     return said + unsure + tie;
   })();
+  // The line under the goals swaps between "what the next seat takes" and what the pointed-at goal would do; both are
+  // full sentences of varying length. It may grow but never shrinks while the same list is open: a shorter sentence
+  // would pull the panel down (when scrolled to its end) and slide the pressed button out from under the pointer.
+  const statusLine = useRef<HTMLParagraphElement>(null);
+  const statusHeight = useRef({ id: '', px: 0 });
+  useLayoutEffect(() => {
+    const el = statusLine.current; if (!el) return;
+    if (statusHeight.current.id !== l.id) { statusHeight.current = { id: l.id, px: 0 }; el.style.minBlockSize = ''; }
+    statusHeight.current.px = Math.max(statusHeight.current.px, el.getBoundingClientRect().height);
+    el.style.minBlockSize = `${statusHeight.current.px}px`;
+  }, [l.id, consequence, gainLine]);
 
 
 
@@ -299,7 +310,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
             {baseList && <div style={{ visibility: baseList.votes === l.votes ? 'hidden' : undefined }}>{quick(L('Restore votes', 'שחזור הקולות'), baseList.votes)}</div>}
           </div>
           {/* one line: what the change pointed at (a goal, a step, the slider) would do, else what the next seat takes */}
-          <p className="tiny seat-search-status" role="status">{consequence || gainLine}</p></>}
+          <p ref={statusLine} className="tiny seat-search-status" role="status">{consequence || gainLine}</p></>}
           {/* where the votes come from, said once: the picker below says it where it is shown */}
           {shortSource && <p className="tiny ink2" style={{ margin: 0 }}>{voteSourceSentence(src, s, lang)}</p>}
           {src.kind === 'new' && <p className="tiny ink2" style={{ margin: 0 }}>{L(`Still staying home: ${fmtInt(stayingHome(s))}`, `עדיין לא הצביעו: ${fmtInt(stayingHome(s))}`)}</p>}

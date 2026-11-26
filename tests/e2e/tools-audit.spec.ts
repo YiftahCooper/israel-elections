@@ -36,7 +36,9 @@ test('the 1949 walkthrough states the quota and threshold as that law computed t
   // 1949: no percentage, but a list needed one whole quota to win any seat
   await expect(panel(page)).toContainText('No percentage threshold. A list needs one whole quota (3,592 votes');
   await panel(page).locator('.walk-stages button').nth(1).click();
-  await expect(panel(page).locator('.formula')).toHaveText('quota = ⌊ 434,684 ÷ 121 ⌋ = 3,592');
+  // the heading names the quota, so the formula no longer repeats the word (clarity pass, 26 Nov 2026)
+  await expect(panel(page).getByRole('heading', { name: /General quota/ })).toBeVisible();
+  await expect(panel(page).locator('.formula')).toHaveText('⌊ 434,684 ÷ 121 ⌋ = 3,592');
 });
 
 test('a divisor method in 1949 still allocates every seat', async ({ page }) => {

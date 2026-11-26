@@ -137,10 +137,16 @@ test('an edited list carries the mark at its votes in the lists column with the 
   expect(cellBox.height).toBeLessThan(40);
 });
 
-// the levels no longer fold a section (round 1 of the clarity pass, 26 Nov 2026); Custom still can
-test('Folded in Custom: the export chip opens its buttons beside it', async ({ page }) => {
-  await start(page, { level: 'standard', customFeatures: { chamberLegend: 'collapsed' } });
+// Simple no longer shows a higher complexity's tools as folded chips (clarity pass, 26 Nov 2026): the export is hidden there,
+// and a user who folds it on their own Custom complexity still gets its buttons beside the chip.
+test('Simple hides the chamber export; a folded export chip opens its buttons beside it', async ({ page }) => {
+  await start(page, { level: 'simple' });
   const chip = page.getByRole('button', { name: /Export the chamber/ });
+  await expect(page.locator('.chamber [data-seat]').first()).toBeVisible();
+  await expect(chip).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Export SVG', exact: true })).toHaveCount(0);
+  await page.evaluate(() => { const k = 'israel-elections:v1'; const o = JSON.parse(localStorage.getItem(k) || '{}'); localStorage.setItem(k, JSON.stringify({ ...o, customFeatures: { chamberLegend: 'collapsed' } })); });
+  await page.reload();
   await chip.click();
   const svgButton = page.getByRole('button', { name: 'Export SVG', exact: true });
   await expect(svgButton).toBeVisible();
