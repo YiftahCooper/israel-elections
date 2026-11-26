@@ -27,18 +27,18 @@ test('the panel shows the party history and the comparison; the full sheet moves
   await expect(sec.getByRole('button', { name: 'Meretz', exact: true })).toBeVisible();
   await expect(sec.locator('.ph-chain')).toHaveText('Mapai → Labor → The Democrats');
   const line = sec.locator('.ph-cmpline');
-  await expect(line).toContainText('Since 2022');
-  await expect(line).toContainText('Labor + Meretz');
-  await expect(line.locator('.ph-num').first()).toHaveText(/^4 → 8 ▲ \+4$/);
+  // a sentence, not "Since 2022 Labor + Meretz 4 → 8 ▲ +4" (clarity pass, 26 Nov 2026)
+  await expect(line).toContainText('In 2022, Labor + Meretz won 4 seats; now 8 (4 more).');
+  await expect(line.locator('.ph-num')).toHaveText('Vote share −0.42 pp.');
   await expect(line.locator('.ph-cert')).toHaveText('Probable');
 
   await sec.getByRole('button', { name: 'Full history', exact: true }).click();
-  await expect(sheet(page)).toContainText('Ran in 26 of 26 elections');
+  await expect(sheet(page)).toContainText('Ran in all 26 elections');
   await expect(sheet(page).locator('.ph-card')).toContainText('2026 · The Democrats');
   await expect(sheet(page).locator('.ph-card')).toContainText('Elected: The Democrats 7 · Meretz 1');
   await expect(sheet(page).locator('.ph-events')).toContainText('Labor renamed The Democrats');
-  // the register was read (16 Nov 2026): the row says what it found, with its disputed chip, not "to verify"
-  await expect(sheet(page).locator('.ph-events')).toContainText('Party register checked: The registered name and the date of the legal change are not yet known');
+  // the state of our own research is not an event (clarity pass, 26 Nov 2026)
+  await expect(sheet(page).locator('.ph-events')).not.toContainText('register');
   await sheet(page).locator('.ph-bar[aria-pressed="true"]').focus();
   await page.keyboard.press('ArrowLeft');
   await expect(sheet(page).locator('.ph-card')).toContainText('2022 · Labor');
@@ -57,7 +57,7 @@ test('the panel shows the party history and the comparison; the full sheet moves
 test('Expert opens the exact figures; a joint list without a recorded link is compared as a group or as new', async ({ page }) => {
   await start(page, { level: 'expert' });
   await listRow(page, 'Yashar!').click();
-  await expect(page.locator('aside .ph-cmpline[data-kind="new"]')).toContainText('no 2022 list');
+  await expect(page.locator('aside .ph-cmpline[data-kind="new"]')).toContainText('A new list: nothing to compare with in 2022.');
   await listRow(page, 'Joint List').click();
   const sec = page.locator('aside .ph-sec');
   await expect(sec.locator('.ph-chips button').first()).toHaveText('Hadash');
@@ -69,11 +69,11 @@ test('Expert opens the exact figures; a joint list without a recorded link is co
 
 test('the row line shows from Standard once its Settings switch is on', async ({ page }) => {
   await start(page, { values: { lastTimeRows: true } });
-  await expect(listRow(page, 'Joint List').locator('.ph-rowline')).toHaveText(/^2022: 5 ▲ \+6 · Hadash–Ta'al \+ Balad$/);
-  await expect(listRow(page, 'Yashar!').locator('.ph-rowline')).toHaveText('New · no 2022 list');
+  await expect(listRow(page, 'Joint List').locator('.ph-rowline')).toHaveText(/^2022: 5 seats ▲ \+6 · Hadash–Ta'al \+ Balad$/);
+  await expect(listRow(page, 'Yashar!').locator('.ph-rowline')).toHaveText('New list');
   await expect(listRow(page, 'Otzma Yehudit').locator('.ph-rowline')).toContainText('Religious Zionism → 3 lists');
   // unchanged name: the name is left out
-  await expect(listRow(page, 'Yisrael Beiteinu').locator('.ph-rowline')).toHaveText(/^2022: 6 ▲ \+1$/);
+  await expect(listRow(page, 'Yisrael Beiteinu').locator('.ph-rowline')).toHaveText(/^2022: 6 seats ▲ \+1$/);
   const described = await listRow(page, 'Joint List').getAttribute('aria-describedby');
   await expect(page.locator(`[id="${described}"]`)).toContainText('2022: 5 seats (6 more)');
 });
@@ -88,14 +88,14 @@ for (const [what, level, values] of [['by default', 'standard', {}], ['by defaul
 test('row lines at Simple when the reader switched them on', async ({ page }) => {
   await start(page, { level: 'simple', values: { lastTimeRows: true } });
   await expect(listRow(page, 'Joint List')).toBeVisible();
-  await expect(listRow(page, 'Yisrael Beiteinu').locator('.ph-rowline')).toHaveText(/^2022: 6 ▲ \+1$/);
+  await expect(listRow(page, 'Yisrael Beiteinu').locator('.ph-rowline')).toHaveText(/^2022: 6 seats ▲ \+1$/);
 });
 
 test('in Hebrew the chart is drawn left to right and every word is Hebrew', async ({ page }) => {
   await start(page, { lang: 'he' });
   await listRow(page, 'הדמוקרטים').click();
   const sec = page.locator('aside .ph-sec');
-  await expect(sec.locator('.ph-cmpline')).toContainText('לעומת 2022');
+  await expect(sec.locator('.ph-cmpline')).toContainText('ב־2022 היו לעבודה + מרצ 4 מנדטים; עכשיו 8 (4 יותר).');
   await expect(sec.locator('.ph-cert')).toHaveText('סביר');
   await sec.getByRole('button', { name: 'היסטוריה מלאה', exact: true }).click();
   const bars = sheet(page).locator('.ph-bar');
@@ -110,8 +110,8 @@ test('Compare tags the Democrats as ran jointly, notes the comparison under the 
   await openSideBySide(page);
   const row = (name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname, .cmp-rname', { hasText: name }) }).first();
   await expect(row('The Democrats').locator('.cmp-tag')).toHaveText('Ran jointly');
-  await expect(row('The Democrats').locator('.ph-cmpnote')).toHaveText(/^= Labor, renamed \+ Meretz 2022\s*Probable$/);
-  await expect(row('Likud').locator('.ph-cmpnote')).toHaveText(/^not counted: New Hope.* ran inside National Unity in 2022$/);
+  await expect(row('The Democrats').locator('.ph-cmpnote')).toHaveText(/^Compared with Labor, renamed \+ Meretz \(2022\)\s*Probable$/);
+  await expect(row('Likud').locator('.ph-cmpnote')).toHaveText(/^New Hope.* ran inside National Unity in 2022, so it is not counted$/);
   await expect(row('Shas').locator('.ph-cmpnote')).toHaveCount(0);
   await page.getByRole('button', { name: 'Matching', exact: true }).click();
   const panel = page.locator('dialog[open].cmp-matching');
@@ -162,7 +162,7 @@ test('the chart numbers its events as in the list below, explains where they sit
   // the list below numbers the same events; no "?" or letter glyphs
   await expect(sheet(page).locator('.ph-events .ph-evdot')).toHaveText(['1', '2', '3', '4', '5', '6']);
   await sheet(page).getByRole('button', { name: 'Where events are drawn' }).click();
-  await expect(page.locator('.pop').filter({ hasText: 'Where events are drawn' })).toContainText('89% of the way from the 2003 election to the 2006 one');
+  await expect(page.locator('.pop').filter({ hasText: 'Where events are drawn' })).toContainText('this is not a time scale');
   // a weak link is dashed and says so in words
   await page.keyboard.press('Escape'); await page.keyboard.press('Escape');
   await listRow(page, 'The Democrats').click();
@@ -190,7 +190,7 @@ test('the full chart’s key names every mark it draws', async ({ page }) => {
   for (const t of ['Own members', 'Partners’ members', 'Did not run', 'Election you are looking at', 'Name at the time', 'Merger, split or new name: its number in Events below'])
     await expect(key).toContainText(t);
   await key.getByRole('button', { name: 'How to read this chart' }).click();
-  await expect(page.locator('.pop').filter({ hasText: 'in that list’s own colour at that election' })).toBeVisible();
+  await expect(page.locator('.pop').filter({ hasText: 'in that list’s colour' })).toBeVisible();
   // the party chips show each party's colour
   await expect(sheet(page).locator('.ph-chip .swatch')).toHaveCount(2);
 });

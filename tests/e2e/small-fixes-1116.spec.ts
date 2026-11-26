@@ -57,12 +57,14 @@ for (const lang of ['he', 'en'] as const) test(`timeline, 13 Jun 2021 at Standar
 
 // 1977 Hadash rank 5 in the chamber key: tests/e2e/overview-fixes.spec.ts (counted by party)
 
-test('the Democrats: the party register check says what was found, never "not yet checked"', async ({ page }) => {
+// clarity pass, 26 Nov 2026: the state of our own research (register checks) is not an event of the party's: not shown
+test('the Democrats: no party register check among the events, never "not yet checked"', async ({ page }) => {
   await start(page, { level: 'simple' });
   await listRow(page, 'The Democrats').click();
   await page.locator('aside .ph-sec').getByRole('button', { name: 'Full history', exact: true }).click();
   const events = page.locator('dialog[open].ph-sheet .ph-events');
-  await expect(events).toContainText('Party register checked: The registered name and the date of the legal change are not yet known');
+  await expect(events).toContainText('Labor renamed The Democrats');
+  await expect(events).not.toContainText('register');
   await expect(events).not.toContainText('not yet checked');
 });
 

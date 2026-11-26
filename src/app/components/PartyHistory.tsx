@@ -7,7 +7,7 @@ import type { AllocationResult } from '../../engine/types.ts';
 import type { Certainty } from '../../data/evidence.ts';
 import { comparablePredecessor, leadOf, officialFacts, partiesOf, scenarioFacts, type Comparison } from '../../history/compare.ts';
 import { erasOf, eventsOf, identityOf, ownSeatRecord, partySeries, type Identity, type SeriesPoint } from '../../history/identity.ts';
-import { OPEN_CHECKS, type Relation } from '../../history/relations.ts';
+import type { Relation } from '../../history/relations.ts';
 import { HISTORY, electionIndex, electionPosition, historyList, listShort, partyNameAt, partyShort, yearLabel, type HList } from '../../history/runtime.ts';
 import { useL, useLang } from '../i18n.ts';
 import { fmtInt, fmtPct, seatsText, PP } from '../format.ts';
@@ -72,14 +72,15 @@ const kindWord = (r: Relation, L: (en: string, he: string) => string) => r.kind 
 const year = (d: string) => d.slice(0, 4);
 const dateText = (r: Relation) => r.dateTo ? `${year(r.date)}–${year(r.dateTo).slice(2)}` : year(r.date);
 
+/** An event's sources behind (i), titled "Sources"; an event with none has no (i) (clarity pass, 26 Nov 2026: "Recorded in
+ *  this project's data files" told a reader nothing). */
 function Evidence({ r }: { r: Relation }) {
   const L = useL(), lang = useLang();
-  return <Info title={L('Evidence', 'ראיות')} label={L(`Evidence: ${eventText(r, 'en')}`, `ראיות: ${eventText(r, 'he')}`)}>
+  if (!r.sources.length) return null;
+  return <Info title={L('Sources', 'מקורות')} label={L(`Sources: ${eventText(r, 'en')}`, `מקורות: ${eventText(r, 'he')}`)}>
     <span className="ph-why">
-      <span>{eventText(r, lang)} · <CertChip c={r.certainty} /></span>
-      {r.sources.length > 0 && <span className="ph-src">{r.sources.map((s) => <span key={s.id}>{sourceName(s, lang)}
-        <PageAndQuote locator={s.locator} quote={s.quote} /></span>)}</span>}
-      {!r.sources.length && <span className="tiny muted">{L('Recorded in this project’s data files.', 'רשום בקובצי הנתונים של הפרויקט.')}</span>}
+      <span className="ph-src">{r.sources.map((s) => <span key={s.id}>{sourceName(s, lang)}
+        <PageAndQuote locator={s.locator} quote={s.quote} /></span>)}</span>
     </span>
   </Info>;
 }
@@ -87,7 +88,7 @@ function Evidence({ r }: { r: Relation }) {
 /** A relation's sources as links (the same evidence as its (i)), for places that are already inside a popover. */
 export function EvidenceLinks({ r }: { r: Relation }) {
   const L = useL(), lang = useLang();
-  if (!r.sources.length) return <span className="tiny muted">{L('Recorded in this project’s data files.', 'רשום בקובצי הנתונים של הפרויקט.')}</span>;
+  if (!r.sources.length) return null;
   return <span className="tiny ph-srcline">{L('Sources: ', 'מקורות: ')}{r.sources.map((s, k) => <span key={s.id}>{k ? '; ' : ''}{sourceName(s, lang)}<PageAndQuote locator={s.locator} /></span>)}</span>;
 }
 /** A relation's source as a reader sees it: who published it, linked when it has a link. The research note kept with a
@@ -305,17 +306,17 @@ const prevYear = (c: Comparison, lang: Lang) => c.earlier ? yearLabel(electionIn
 
 /** A list that withdrew before the vote: no comparison, only this (the words MK history uses for such a run). */
 const WITHDREW: [string, string] = ['The list withdrew before the election', 'הרשימה פרשה לפני הבחירות'];
-/** Results row: "2022: 5 ▲6 · Hadash–Ta'al + Balad" (Standard and up; the name only when it differs). */
+/** Results row: "2022: 5 seats ▲6 · Hadash–Ta'al + Balad" (Standard and up; the name only when it differs). */
 export function ComparisonRowLine({ c, currentName }: { c: Comparison | null; currentName: string }) {
   const L = useL(), lang = useLang();
   if (!c || c.kind === 'first') return null;
   if (c.kind === 'withdrawn') return <span className="ph-rowline">{L(...WITHDREW)}</span>;
   const py = prevYear(c, lang);
-  if (c.kind === 'new') return <span className="ph-rowline">{L(`New · no ${py} list`, `חדשה · אין רשימה ${hebrewPrefix('מ', py)}`)}</span>;
-  if (c.kind === 'verify') return <span className="ph-rowline">{py}: <span className="ph-cert ph-cert-unknown">{L('To verify', 'לבדיקה')}</span></span>;
+  if (c.kind === 'new') return <span className="ph-rowline">{L('New list', 'רשימה חדשה')}</span>;
+  if (c.kind === 'verify') return null;
   const name = comparedName(c, lang);
   const same = c.kind === 'same' && name === currentName;
-  return <span className="ph-rowline">{py}: {c.before.seats} <SeatDelta value={c.after.seats - c.before.seats} />{!same && <span className="muted"> · <bdi>{name}</bdi>{c.kind === 'partial' ? L(' (partly)', ' (בחלקה)') : ''}</span>}</span>;
+  return <span className="ph-rowline">{py}: {L(seatsText(c.before.seats, 'en'), seatsText(c.before.seats, 'he'))} <SeatDelta value={c.after.seats - c.before.seats} />{!same && <span className="muted"> · <bdi>{name}</bdi>{c.kind === 'partial' ? L(' (partly)', ' (בחלקה)') : ''}</span>}</span>;
 }
 
 /** The row line for screen readers: ", 2022: 5 seats, 6 more, compared with Hadash–Ta'al and Balad". */
@@ -324,34 +325,37 @@ export function comparisonRowText(c: Comparison | null, lang: Lang): string {
   if (c.kind === 'withdrawn') return `, ${WITHDREW[lang === 'en' ? 0 : 1]}`;
   const py = prevYear(c, lang), en = lang === 'en';
   if (c.kind === 'new') return en ? `, new: no ${py} list` : `, חדשה: אין רשימה ${hebrewPrefix('מ', py)}`;
-  if (c.kind === 'verify') return en ? `, ${py}: to verify` : `, ${py}: לבדיקה`;
+  if (c.kind === 'verify') return '';
   const d = c.after.seats - c.before.seats;
   const change = d === 0 ? (en ? 'unchanged' : 'ללא שינוי') : en ? `${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}` : `${Math.abs(d)} ${d > 0 ? 'יותר' : 'פחות'}`;
   return en ? `, ${py}: ${seatsText(c.before.seats, 'en')} (${change}), compared with ${comparedName(c, 'en')}${c.kind === 'partial' ? ', partly' : ''}`
     : `, ${py}: ${seatsText(c.before.seats, 'he')} (${change}), בהשוואה ${hebrewPrefix('ל', comparedName(c, 'he'))}${c.kind === 'partial' ? ', בחלקה' : ''}`;
 }
 
-/** Panel line: "Since 2022 Labor + Meretz 4 → 8 ▲4 · −0.4 pp  Probable (i)", and anything not counted. */
+/** Panel line, as a sentence (clarity pass, 26 Nov 2026): "In 2022, Labor + Meretz won 4 seats; now 8 (4 more). Vote
+ *  share −0.42 pp. Probable (i)", and anything the earlier figure leaves out or includes. */
 export function ComparisonLine({ c }: { c: Comparison | null }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   if (!c || c.kind === 'first') return null;
   if (c.kind === 'withdrawn') return <div className="ph-cmpline" data-kind="withdrawn"><span className="muted">{L(...WITHDREW)}</span></div>;
   const py = prevYear(c, lang);
-  if (c.kind === 'new') return <div className="ph-cmpline" data-kind="new"><span className="muted">{L(`Since ${py}`, `לעומת ${py}`)}</span> <b>{L('New', 'חדשה')}</b> <span className="small muted">{L(`no ${py} list`, `אין רשימה ${hebrewPrefix('מ', py)}`)}</span>
-    <Info title={L('Compared with last time', 'השוואה לבחירות הקודמות')}>{L('A list is compared only with whole earlier lists linked by recorded party facts (the same party, a rename, a merger, a joint list). None qualifies here. Founders who came from another party do not make a predecessor.', 'רשימה מושווית רק לרשימות קודמות שלמות הקשורות בעובדות מתועדות על המפלגות (אותה מפלגה, שינוי שם, איחוד, רשימה משותפת). כאן אין כזו. מייסדים שבאו ממפלגה אחרת אינם יוצרים רשימה קודמת.')}</Info></div>;
-  if (c.kind === 'verify') return <div className="ph-cmpline" data-kind="verify"><span className="muted">{L(`Since ${py}`, `לעומת ${py}`)}</span> <CertChip c="unknown" />
-    <Info title={L('To verify', 'לבדיקה')}><span className="ph-why"><span>{L('The link that decides this comparison is not yet established, so no figure is shown:', 'הקשר שמכריע את ההשוואה טרם בוסס, ולכן לא מוצג מספר:')}</span>{c.toVerify.map((r) => <span key={r.id}>{eventText(r, lang)} · <CertChip c={r.certainty} /></span>)}</span></Info></div>;
+  if (c.kind === 'new') return <div className="ph-cmpline" data-kind="new"><span>{L(`A new list: nothing to compare with in ${py}.`, `רשימה חדשה: אין למה להשוות ${hebrewPrefix('ב', py)}.`)}</span>
+    <Info title={L('A new list', 'רשימה חדשה')}>{L('A list is compared with an earlier one only when it is the same party, renamed, merged or in a joint list. A leader’s earlier party does not count.', 'רשימה מושווית לרשימה קודמת רק כשזו אותה מפלגה, בשם חדש, באיחוד או ברשימה משותפת. מפלגה קודמת של העומד בראש אינה נחשבת.')}</Info></div>;
+  if (c.kind === 'verify') return <div className="ph-cmpline" data-kind="verify"><span>{L(`No comparison with ${py}: which earlier list this one continues is not established.`, `אין השוואה ${hebrewPrefix('ל', py)}: לא בוסס איזו רשימה קודמת היא ממשיכה.`)}</span></div>;
   const d = c.after.seats - c.before.seats;
   const share = c.before.valid && c.after.valid ? { num: 100n * (BigInt(c.after.votes) * BigInt(c.before.valid) - BigInt(c.before.votes) * BigInt(c.after.valid)), den: BigInt(c.before.valid) * BigInt(c.after.valid) } : null;
+  const name = comparedName(c, lang);
+  const change = d === 0 ? L('the same', 'אותו מספר') : L(`${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}`, `${Math.abs(d)} ${d > 0 ? 'יותר' : 'פחות'}`);
   return <div className="ph-cmpline" data-kind={c.kind}>
-    <span className="muted">{L(`Since ${py}`, `לעומת ${py}`)}</span> <b><bdi>{comparedName(c, lang)}</bdi></b>
-    <span dir="ltr" className="ph-num">{c.before.seats} → {c.after.seats} <SeatDelta value={d} /></span>
-    {share && share.num !== 0n && <span className="ph-num">· <bdi dir="ltr">{rationalPoints(share, digits)}</bdi> {L(...PP)}</span>}
+    <span>{lang === 'he'
+      ? <>{hebrewPrefix('ב', py)} {c.before.seats === 1 ? 'היה' : 'היו'} {hebrewPrefix('ל', name)} {seatsText(c.before.seats, 'he')}; עכשיו {c.after.seats} ({change}).</>
+      : <>In {py}, <bdi>{name}</bdi> won {seatsText(c.before.seats, 'en')}; now {c.after.seats} ({change}).</>}</span>
+    {share && share.num !== 0n && <span className="ph-num">{L('Vote share', 'שיעור הקולות')} <bdi dir="ltr">{rationalPoints(share, digits)}</bdi> {L(...PP)}.</span>}
     {c.certainty !== 'confirmed' && <CertChip c={c.certainty} />}
-    <Info title={L('Compared with', 'בהשוואה ל־')}><ComparisonWhy c={c} /></Info>
+    <Info title={L(`Compared with ${py}`, `השוואה ${hebrewPrefix('ל', py)}`)}><ComparisonWhy c={c} /></Info>
     {(c.notCounted.length > 0 || c.left.length > 0) && <div className="tiny muted ph-notcounted">
-      {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={`${n.partyId}${n.listId}`}>{L(`${partyShort(n.partyId, 'en')} not counted: it ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}.`, `${partyShort(n.partyId, 'he')} לא נספרה: ${hebrewPrefix('ב', py)} רצה בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'}.`)} </span>; })}
-      {c.left.map((n) => <span key={`l${n.partyId}`}>{L(`${partyShort(n.partyId, 'en')} has since left.`, `${partyShort(n.partyId, 'he')} עזבה מאז.`)} </span>)}
+      {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={`${n.partyId}${n.listId}`}>{L(`${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}, so it is not in the ${py} figure.`, `${partyShort(n.partyId, 'he')} רצה ${hebrewPrefix('ב', py)} בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'}, ולכן אינה במספר של ${py}.`)} </span>; })}
+      {c.left.map((n) => <span key={`l${n.partyId}`}>{L(`The ${py} figure includes ${partyShort(n.partyId, 'en')}, which has since left.`, `המספר של ${py} כולל את ${partyShort(n.partyId, 'he')}, שעזבה מאז.`)} </span>)}
     </div>}
   </div>;
 }
@@ -388,11 +392,13 @@ export function CompareNote({ c, currentName }: { c: Comparison | null; currentN
   // the same list under the same name: only what was left out is worth a line
   const plain = c.kind !== 'group' && !c.relations.length && c.counted.length === 1 && countedWithHow(c, lang) === currentName;
   if (plain && !c.notCounted.length) return null;
-  if (c.kind === 'verify') return <span className="tiny muted cmp-note ph-cmpnote">{py}: <CertChip c="unknown" /></span>;
+  if (c.kind === 'verify') return <span className="tiny muted cmp-note ph-cmpnote">{L(`No comparison with ${py}`, `אין השוואה ${hebrewPrefix('ל', py)}`)}</span>;
+  // words, not an "=" sign (clarity pass, 26 Nov 2026)
+  const counted = c.kind === 'group' ? comparedName(c, lang) : countedWithHow(c, lang);
   return <span className="tiny muted cmp-note ph-cmpnote">
-    {c.kind === 'group' ? <>= <bdi>{comparedName(c, lang)}</bdi> ({py})</> : !plain && <>= <bdi>{countedWithHow(c, lang)}</bdi> {py}</>}
+    {!plain && L(`Compared with ${counted} (${py})`, `בהשוואה ${hebrewPrefix('ל', counted)} (${py})`)}
     {!plain && c.certainty !== 'confirmed' && <> <CertChip c={c.certainty} /></>}
-    {c.notCounted.map((n, k) => { const h = prevList(c, n.listId); return <span key={n.partyId + n.listId} className="ph-cmpnote-nc">{plain && k === 0 ? '' : ' · '}{L(`not counted: ${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}`, `לא נספרה: ${partyShort(n.partyId, 'he')} רצה בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'} ${hebrewPrefix('ב', py)}`)}</span>; })}
+    {c.notCounted.map((n, k) => { const h = prevList(c, n.listId); return <span key={n.partyId + n.listId} className="ph-cmpnote-nc">{plain && k === 0 ? '' : ' · '}{L(`${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}, so it is not counted`, `${partyShort(n.partyId, 'he')} רצה בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'} ${hebrewPrefix('ב', py)}, ולכן אינה נספרת`)}</span>; })}
   </span>;
 }
 
@@ -401,12 +407,12 @@ export function ComparisonWhy({ c }: { c: Comparison }) {
   const L = useL(), lang = useLang();
   const expert = useOn('historySources');
   const py = prevYear(c, lang);
+  // the lists compared and the facts that link them; how the comparison is built is not the reader's question
+  // (clarity pass, 26 Nov 2026). A divided list still says why several lists are taken together.
   return <span className="ph-why">
-    <span>{c.kind === 'group'
-      ? L(`The ${py} list was divided among several lists, so they are compared together. Votes are never split between parties.`, `הרשימה ${hebrewPrefix('מ', py)} התחלקה בין כמה רשימות, ולכן הן מושוות יחד. הקולות אינם מפוצלים בין מפלגות.`)
-      : L(`Compared with whole ${py} lists whose parties all ran on this list. Votes are never split between parties.`, `מושווה לרשימות ${hebrewPrefix('מ', py)} במלואן, שכל מפלגותיהן רצו ברשימה זו. הקולות אינם מפוצלים בין מפלגות.`)}</span>
+    {c.kind === 'group' && <span>{L(`The ${py} list was divided among several lists, so they are compared together.`, `הרשימה ${hebrewPrefix('מ', py)} התחלקה בין כמה רשימות, ולכן הן מושוות יחד.`)}</span>}
     <span className="ph-why-lists">{c.counted.map((l) => { const h = prevList(c, l.id); return <span key={l.id}><bdi>{h ? listShort(h, lang) : l.id}</bdi> {py}: {L(seatsText(l.seats, 'en'), seatsText(l.seats, 'he'))} · <bdi dir="ltr">{fmtInt(l.votes)}</bdi> {L('votes', 'קולות')}</span>; })}</span>
-    {c.relations.map((r) => <span key={r.id}>{eventText(r, lang)} ({year(r.date)}) · <CertChip c={r.certainty} />{expert && r.sources.length > 0 && <span className="tiny muted"> · {r.sources.map((s) => (lang === 'he' && s.publisherHe) || s.publisher || L('Source', 'מקור')).join('; ')}</span>}</span>)}
+    {c.relations.map((r) => <span key={r.id}>{eventText(r, lang)} ({year(r.date)}){r.certainty !== 'confirmed' && <> · <CertChip c={r.certainty} /></>}{expert && r.sources.length > 0 && <span className="tiny muted"> · {r.sources.map((s) => (lang === 'he' && s.publisherHe) || s.publisher || L('Source', 'מקור')).join('; ')}</span>}</span>)}
     {c.newParties.length > 0 && c.kind !== 'group' && <span className="muted">{L(`No earlier list: ${names(c.newParties, 'en')}.`, `ללא רשימה קודמת: ${names(c.newParties, 'he')}.`)}</span>}
   </span>;
 }
@@ -502,11 +508,12 @@ function Legend({ compact, metric = 'seats', events = [], inside = false, eras =
     {events.length > 0 && (compact
       ? <span className="ph-evkey"><i className="ph-sw evline" />{L('Merger, split or new name', 'איחוד, פילוג או שם חדש')}</span>
       : <span className="ph-evkey"><i className="ph-sw evnum" aria-hidden>#</i>{L('Merger, split or new name: its number in Events below', 'איחוד, פילוג או שם חדש: מספרו ברשימת האירועים למטה')}
-        <Info title={L('Where events are drawn', 'היכן מסומנים אירועים')}>{L('Bars are elections, evenly spaced. This is not a time scale: Knessets last different lengths. Each line sits between the two elections the event fell between, at the same point of that gap as in time. Example: Kadima split from Likud on 23 Nov 2005, 89% of the way from the 2003 election to the 2006 one. A date known only by its year is placed in mid-year. Events too close to tell apart share one mark (“5,6,7”).', 'העמודות הן מערכות בחירות, במרווחים שווים. זה אינו ציר זמן: משך כל כנסת שונה. כל קו נמצא בין שתי הבחירות שביניהן אירע האירוע, באותה נקודה בפער כמו בזמן. לדוגמה: קדימה התפצלה מהליכוד ב־23 בנובמבר 2005, 89% מהדרך בין בחירות 2003 לבחירות 2006. תאריך שידועה בו רק השנה מסומן באמצע השנה. אירועים קרובים מדי זה לזה חולקים סימן אחד ("5,6,7").')}</Info></span>)}
+        <Info title={L('Where events are drawn', 'היכן מסומנים אירועים')}>{L('The elections are evenly spaced, so this is not a time scale. Each event sits between the two elections it fell between.', 'הבחירות במרווחים שווים, ולכן זה אינו ציר זמן. כל אירוע מסומן בין שתי הבחירות שביניהן אירע.')}</Info></span>)}
     {weak && <span><i className="ph-sw evline weak" />{L('Dashed: not yet established', 'מקווקו: טרם בוסס')}</span>}
+    {/* the key above names every mark; the (i) adds only what it cannot show (clarity pass, 26 Nov 2026) */}
     {!compact && <Info title={L('Party history', 'היסטוריית מפלגה')} label={L('How to read this chart', 'איך לקרוא את התרשים')}>{L(
-      'Each bar is one election: the whole list the party ran in, in that list’s own colour at that election, so the colour changes when the list changed. The number above a bar is its seats (or its share of the valid votes). Seats: the solid part is the party’s own elected members, the striped part its partners’ on a joint list (official candidate lists and Knesset records). A dashed outline: the party ran inside another party’s list. Vote share: a joint list’s votes belong to the whole list and are never divided, so its bar is a light tint of the list’s colour. A dot: the party did not run that year. The strip under the years gives the name the party had in each period. The shaded column is the election you are looking at; click any bar, or use the arrow keys, to read that election in the box below.',
-      'כל עמודה היא מערכת בחירות אחת: הרשימה כולה שבה רצה המפלגה, בצבע של אותה רשימה באותן בחירות, ולכן הצבע משתנה כשהרשימה השתנתה. המספר מעל העמודה הוא מספר המנדטים (או שיעור הקולות הכשרים). מנדטים: החלק המלא הוא חברי המפלגה שנבחרו, החלק המפוספס – חברי השותפות ברשימה משותפת (רשימות המועמדים ורשומות הכנסת). מסגרת מקווקוות: המפלגה רצה בתוך רשימה של מפלגה אחרת. שיעור קולות: קולות רשימה משותפת שייכים לרשימה כולה ואינם מחולקים, ולכן העמודה שלה בגוון בהיר של צבע הרשימה. נקודה: המפלגה לא התמודדה באותה שנה. הפס שמתחת לשנים מציג את שם המפלגה בכל תקופה. העמודה המוצללת היא הבחירות שבהן אתם צופים; לחיצה על עמודה, או מקשי החצים, מציגה את אותן בחירות בתיבה שמתחת.')}</Info>}
+      'Each bar is the whole list the party ran in, in that list’s colour, so the colour changes when the list did. Click a bar, or use the arrow keys, to read that election below the chart.',
+      'כל עמודה היא הרשימה כולה שבה רצה המפלגה, בצבע של אותה רשימה, ולכן הצבע משתנה כשהרשימה השתנתה. לחיצה על עמודה, או מקשי החצים, מציגה את אותן בחירות מתחת לתרשים.')}</Info>}
   </div>;
 }
 
@@ -519,10 +526,9 @@ function PointCard({ p, identity }: { p: SeriesPoint; identity: Identity }) {
   const known = p.era ? HISTORY[p.i]?.known[p.era] : undefined;
   return <div className="ph-card" aria-live="polite">
     <div><b>{yearLabel(p.i, lang)} · <bdi>{listShort(p.list, lang)}</bdi></b></div>
-    <div>{L(seatsText(p.seats, 'en'), seatsText(p.seats, 'he'))} · <bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi> · <bdi dir="ltr">{fmtInt(p.votes)}</bdi> {L('votes', 'קולות')}</div>
+    <div>{L(seatsText(p.seats, 'en'), seatsText(p.seats, 'he'))} · <bdi dir="ltr">{percent(p.votes, p.valid, digits)}</bdi> · <bdi dir="ltr">{fmtInt(p.votes)}</bdi> {L('votes', 'קולות')}{joint ? L(' (the whole list)', ' (לרשימה כולה)') : ''}</div>
     {joint && <div className="small">{p.role === 'led' ? L(`Led a joint list with ${partners}`, `הובילה רשימה משותפת עם ${partners}`) : L(`Ran inside a list led by ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'en')}`, `רצה ברשימה בראשות ${partyNameAt(p.list.lead ?? p.partners[0], p.i, 'he')}`)}</div>}
     {joint && <div className="small">{L('Elected: ', 'נבחרו: ')}{[...p.members, ...p.partners].map((q) => { const n = p.list!.elected[q]; return `${partyNameAt(q, p.i, lang)} ${n ?? TBD(L)}`; }).join(' · ')}{p.list.unknownElected > 0 ? L(` · unknown ${p.list.unknownElected}`, ` · לא ידוע ${p.list.unknownElected}`) : ''}</div>}
-    {joint && <div className="tiny muted">{L('Votes are for the whole list', 'הקולות ניתנו לרשימה כולה')}</div>}
     {p.era && (partyNameAt(p.era, p.i, lang) !== listShort(p.list, lang) || known?.registered) && <div className="tiny muted">{L(`As ${partyNameAt(p.era, p.i, 'en')}`, `בשם ${partyNameAt(p.era, p.i, 'he')}`)}{known?.registered && <> <Info title={L('Registered name', 'השם הרשום')}>{L(`Registered as ${known.registered[1]}; it ran as ${partyNameAt(p.era, p.i, 'en')}.`, `רשומה בשם ${known.registered[0]}; התמודדה בשם ${partyNameAt(p.era, p.i, 'he')}.`)}{known.source && <> <a href={known.source} target="_blank" rel="noreferrer">{L('Source', 'מקור')}</a></>}</Info></>}</div>}
     {known?.note && <div className="tiny muted ph-pointnote">{L(known.note[1], known.note[0])}</div>}
   </div>;
@@ -545,7 +551,6 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
   const cur = h.points[sel ?? electionIdx] ?? h.points[electionIdx];
   const head = h.points[electionIdx].list ?? ran[ran.length - 1]?.list;
   const since = ran.length < h.points.length - h.firstRun || h.firstRun > 0 ? L(` since ${yearLabel(h.firstRun, 'en')}`, ` מאז ${yearLabel(h.firstRun, 'he')}`) : '';
-  const open = OPEN_CHECKS.filter((o) => o.partyIds.some((p) => h.identity.ids.includes(p)));
   // the name it was known by at the election you are looking at, where that differs from its registered name (16 Nov 2026)
   const titleIn = (l: 'he' | 'en') => HISTORY[electionIdx]?.known[pid]?.registered ? partyNameAt(pid, electionIdx, l) : partyShort(pid, l);
   const title = titleIn(lang);
@@ -555,7 +560,7 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
       <div className="ph-head-text">
         <h2>{lang === 'he' ? <>היסטוריה · {title}</> : <>{title} <span className="small muted">history</span></>}</h2>
         {h.eras.length > 1 && <div className="small ink2">{h.eras.map((e) => e.name).filter((n, i, a) => a.indexOf(n) === i).join(lang === 'he' ? ' ← ' : ' → ')}</div>}
-        <div className="small muted">{!ran.length ? NEVER(L) : h.points.length - h.firstRun === 1 ? L(`Ran in 1 election${since} · ${unknown ? 'seats unknown' : won ? 'won seats' : 'no seats'}`, `התמודדה במערכת בחירות אחת${since} · ${unknown ? 'המנדטים לא ידועים' : won ? 'זכתה במנדטים' : 'ללא מנדטים'}`) : L(`Ran in ${ran.length} of ${h.points.length - h.firstRun} elections${since} · won seats in ${won}${unknown ? ` (unknown in ${unknown})` : ''}`, `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות${since} · זכתה במנדטים ב־${won}${unknown ? ` (לא ידוע ב־${unknown})` : ''}`)}{best ? L(` · most: ${best.own} (${yearLabel(best.i, 'en')})`, ` · שיא: ${best.own} (${yearLabel(best.i, 'he')})`) : ''}</div>
+        <div className="small muted">{!ran.length ? NEVER(L) : h.points.length - h.firstRun === 1 ? L(`Ran in 1 election${since} · ${unknown ? 'seats unknown' : won ? 'won seats' : 'no seats'}`, `התמודדה במערכת בחירות אחת${since} · ${unknown ? 'המנדטים לא ידועים' : won ? 'זכתה במנדטים' : 'ללא מנדטים'}`) : L(`${ran.length === h.points.length - h.firstRun ? `Ran in all ${ran.length} elections` : `Ran in ${ran.length} of ${h.points.length - h.firstRun} elections`}${since} · ${won === ran.length ? 'won seats in each' : `won seats in ${won}`}${unknown ? ` (unknown in ${unknown})` : ''}`, `${ran.length === h.points.length - h.firstRun ? `התמודדה בכל ${ran.length} מערכות הבחירות` : `התמודדה ב־${ran.length} מתוך ${h.points.length - h.firstRun} בחירות`}${since} · ${won === ran.length ? 'זכתה במנדטים בכולן' : `זכתה במנדטים ב־${won}`}${unknown ? ` (לא ידוע ב־${unknown})` : ''}`)}{best ? L(` · most seats: ${best.own} (${yearLabel(best.i, 'en')})`, ` · שיא מנדטים: ${best.own} (${yearLabel(best.i, 'he')})`) : ''}</div>
       </div>
       <button type="button" className="btn ghost" onClick={onClose} aria-label={L('Close', 'סגירה')}>×</button>
     </div>
@@ -571,21 +576,16 @@ export function HistorySheet({ parties, colours = {}, initial, electionIdx, onCl
     </div>
     <Legend metric={metric} events={h.chartEvents} inside={h.bars.some((b) => b.inside)} eras={h.eras.length > 0} colour={keyColour(h.bars, sel)} />
     {cur && <PointCard p={cur} identity={h.identity} />}
-    {(h.events.length > 0 || open.length > 0) && <>
+    {/* events only: the state of our own research (register checks, numbers, what is still open) is not an event of the
+        party's and is not shown here (clarity pass, 26 Nov 2026). A confirmed event carries no label; any other says so. */}
+    {h.events.length > 0 && <>
       <h3>{L('Events', 'אירועים')}</h3>
       <ul className="ph-events">
         {h.events.map((r, k) => <li key={r.id}>
           <span className={`ph-evdot ${certRank[r.certainty] < certRank.probable ? 'weak' : ''}`} aria-hidden>{r.date ? k + 1 : ''}</span>
           <span className="ph-evyear"><bdi dir="ltr">{dateText(r)}</bdi></span>
           <span>{eventText(r, lang)}</span>
-          <span className="ph-evmeta"><CertChip c={r.certainty} /><Evidence r={r} /></span>
-        </li>)}
-        {open.map((o) => <li key={o.id}>
-          <span className="ph-evdot weak" aria-hidden /><span className="ph-evyear">—</span>
-          {/* a register already read says what it found and what is still open; only an unread one is "not yet checked" */}
-          <span>{o.summaryEn && o.summaryHe ? L(`Party register checked: ${o.summaryEn}`, `מאגר המפלגות נבדק: ${o.summaryHe}`)
-            : L(`Registration record not yet checked: ${names(o.partyIds.filter((p) => !p.startsWith('vehicle-')), 'en')}`, `רישום המפלגות טרם נבדק: ${names(o.partyIds.filter((p) => !p.startsWith('vehicle-')), 'he')}`)}</span>
-          <span className="ph-evmeta"><CertChip c={o.certainty} /></span>
+          <span className="ph-evmeta">{r.certainty !== 'confirmed' && <CertChip c={r.certainty} />}<Evidence r={r} /></span>
         </li>)}
       </ul>
     </>}
