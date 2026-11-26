@@ -247,7 +247,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
     const said = seatChangeSentence(gain.after ? movesBetween(gain.before, gain.after) : [], nameOf, he, { subject, votes: Number(gain.votes), crossing: !up });
     // uncertainty only where there is some, in plain words (owner, 26 Nov 2026: no "proven minimum")
     const unsure = gain.exact ? '' : ` ${L('Slightly fewer votes may be enough.', 'ייתכן שמעט פחות קולות יספיקו.')}`;
-    const tie = gain.exact && gain.lotteryFrom !== undefined ? ` ${tieNote(Number(gain.lotteryFrom), s.rules.tiePolicy, he, true)}` : '';
+    const tie = gain.exact && gain.lotteryFrom !== undefined ? ` ${tieNote(Number(gain.lotteryFrom), s.rules.tiePolicy, he, 'more')}` : '';
     return said + unsure + tie;
   })();
 

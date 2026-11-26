@@ -58,7 +58,7 @@ test('c-levels-03: a hidden tool has no way in (About, Save & share, a saved com
 
 for (const lang of ['en', 'he'] as const) {
   test(`c-levels-04: own choices are Custom; choosing a named complexity keeps them and says nothing (${lang})`, async ({ page }) => {
-    const custom = { security: 'show', agreements: 'hidden' };
+    const custom = { security: 'show', agreements: 'show' };
     await start(page, { lang, level: 'simple', customFeatures: custom });
     const H = await he(page);
     // stored choices open as Custom (19 Nov 2026): Simple itself is never changed

@@ -123,7 +123,7 @@ for (const lang of ['en', 'he'] as const) test(`c-results-engine-02: Seat safety
   await expect(row.locator('.sec-r')).toContainText('5,826');
   await expect(row.locator('.sec-r .sec-tie')).toHaveAttribute('title', lang === 'en' ? 'From 5,825 more votes it already ties with another list for the seat, decided by lot.' : 'כבר עם 5,825 קולות נוספים יש שוויון עם רשימה אחרת על המנדט, שמוכרע בהגרלה.');
   // the * line in full, with the rule of the time (2026: the Central Elections Committee draws lots)
-  await expect(page.locator('.sec')).toContainText(lang === 'en' ? /\* (One vote fewer|Fewer votes) than the figure .*tie.* with another list for this seat.*; the Central Elections Committee then decides by lot\./ : /\* (בקול אחד פחות|כבר בפחות קולות) מהמספר יש שוויון עם רשימה אחרת על המנדט הזה.*; ועדת הבחירות המרכזית מכריעה אז בהגרלה\./);
+  await expect(page.locator('.sec')).toContainText(lang === 'en' ? /\* With (one vote fewer|fewer votes),? it( already)? ties with another list for this seat.*; the Central Elections Committee then decides by lot\./ : /\* (בקול אחד פחות|כבר בפחות קולות) יש שוויון עם רשימה אחרת על המנדט הזה.*; ועדת הבחירות המרכזית מכריעה אז בהגרלה\./);
   await page.waitForFunction(() => !document.querySelector('.sec [role="status"]'));
   if (OUT) await page.locator('.sec').screenshot({ path: `${OUT}/chk-seat-safety-tie-${lang}.png` });
   // the list's own details say it in words

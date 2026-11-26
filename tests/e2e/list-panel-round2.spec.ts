@@ -138,16 +138,14 @@ test('the vote slider is visible in dark mode', async ({ page }) => {
   expect(shell).toBeTruthy();
 });
 
-test('the vote-source question keeps its (i) apart from its title', async ({ page }) => {
+// clarity pass (26 Nov 2026): the question lists every answer and what it does, so its title carries no (i)
+test('the vote-source question has no (i) beside its title', async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('israel-elections:preferences', '{}'));
   await start(page); await open(page, 'Likud');
   await page.locator('.side-panel').getByRole('button', { name: 'Increase Votes', exact: true }).click();
   const ask = page.locator('dialog.source-ask');
   await expect(ask).toBeVisible();
-  const gap = await ask.evaluate(d => {
-    const b = d.querySelector('p > b')!.getBoundingClientRect(), i = d.querySelector('p > .info > button')!.getBoundingClientRect();
-    return (i.left + 4) - b.right; // the drawn circle is inset 4px in its button
-  });
-  expect(gap).toBeGreaterThanOrEqual(3);
+  await expect(ask.locator('p > b')).toBeVisible();
+  await expect(ask.locator('p > .info')).toHaveCount(0);
   await ask.getByRole('button', { name: 'Cancel', exact: true }).click();
 });

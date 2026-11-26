@@ -7,8 +7,8 @@ import { hebrewPrefixName } from './hebrewPrefix.ts';
 /** Every "votes to gain / lose a seat" figure is the first count at which the change is certain (audit 12 Nov 2026,
  *  c-results-engine-02). Where fewer votes already reach an exact tie for that seat, this says so; from 1951 to 1969
  *  the law set no rule for such a tie, so it is not called a lottery there. */
-export const tieNote = (from: number, policy: RuleSet['tiePolicy'], he: boolean, more = false) => {
-  const n = he ? `${fmtInt(from)} קולות${more ? ' נוספים' : ''}` : `${fmtInt(from)}${more ? ' more' : ''} votes`;
+export const tieNote = (from: number, policy: RuleSet['tiePolicy'], he: boolean, dir: '' | 'more' | 'fewer' = '') => {
+  const n = he ? `${fmtInt(from)} קולות${dir === 'more' ? ' נוספים' : dir === 'fewer' ? ' פחות' : ''}` : `${fmtInt(from)}${dir ? ` ${dir}` : ''} votes`;
   return policy === 'unspecified'
     ? he ? `כבר עם ${n} יש שוויון עם רשימה אחרת על המנדט, והחוק של אז לא קבע מה עושים בשוויון.` : `From ${n} it already ties with another list for the seat, and the law of the time set no rule for a tie.`
     : he ? `כבר עם ${n} יש שוויון עם רשימה אחרת על המנדט, שמוכרע בהגרלה.` : `From ${n} it already ties with another list for the seat, decided by lot.`;

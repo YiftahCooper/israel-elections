@@ -97,14 +97,14 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
 
   const policy = input.rules.tiePolicy;
   /** a proven figure where fewer votes already reach an exact tie for the seat (c-results-engine-02) */
-  const tie = (f: SecurityFigure) => f.exact && f.lotteryFrom !== undefined
-    ? <sup className="sec-tie" title={tieNote(f.lotteryFrom, policy, lang === 'he')} aria-label={tieNote(f.lotteryFrom, policy, lang === 'he')}>*</sup> : null;
-  const text = (f: SecurityFigure | undefined) => {
+  const tie = (f: SecurityFigure, dir: '' | 'more' | 'fewer') => f.exact && f.lotteryFrom !== undefined
+    ? <sup className="sec-tie" title={tieNote(f.lotteryFrom, policy, lang === 'he', dir)} aria-label={tieNote(f.lotteryFrom, policy, lang === 'he', dir)}>*</sup> : null;
+  const text = (f: SecurityFigure | undefined, dir: '' | 'more' | 'fewer' = '') => {
     if (!f) return <span className="sec-pending" aria-label={L('Calculating', 'מחשב')}>…</span>;
-    if (f.value !== null) return f.exact ? <>{fmtInt(f.value)}{tie(f)}</> : <span title={L('Fewer votes may be enough', 'ייתכן שפחות קולות יספיקו')}>≤ {fmtInt(f.value)}</span>;
+    if (f.value !== null) return f.exact ? <>{fmtInt(f.value)}{tie(f, dir)}</> : <span title={L('Fewer votes may be enough', 'ייתכן שפחות קולות יספיקו')}>≤ {fmtInt(f.value)}</span>;
     if (f.reason === 'already') return '0';
     if (f.reason === 'infeasible') return <span title={f.cappedAtCandidates ? cappedText(lang === 'he') : L('Not possible', 'לא אפשרי')}>—</span>;
-    if (f.exact) return <><span title={L(`More than ${fmtInt(f.limit)} votes`, `יותר מ־${fmtInt(f.limit)} קולות`)}>&gt; {fmtInt(f.limit)}</span>{tie(f)}</>;
+    if (f.exact) return <><span title={L(`More than ${fmtInt(f.limit)} votes`, `יותר מ־${fmtInt(f.limit)} קולות`)}>&gt; {fmtInt(f.limit)}</span>{tie(f, dir)}</>;
     return <span title={L('Not worked out', 'לא חושב')}>?</span>;
   };
   const shown = [...above.flatMap((x) => partsOf(x.item).map((p) => fig(x.l.id, p))), ...below.map((x) => fig(x.l.id, 'qualify'))].filter((f): f is SecurityFigure => !!f);
@@ -161,9 +161,9 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
             return (
               <div key={l.id} className="sec-row" role="row">
                 <span role="cell" style={{ minWidth: 0 }}>{name(l)}</span>
-                <span role="cell" className="sec-l">{item.seats > 0 && <><span className="tabnum small">{text(lose)}</span><span className="sec-track">{lose?.value != null && <span className="sec-bar" style={{ width: `${scale(lose.value)}%`, background: `color-mix(in srgb, ${l.color} 30%, transparent)`, boxShadow: `inset 0 0 0 1px ${l.color}` }} />}</span></>}</span>
+                <span role="cell" className="sec-l">{item.seats > 0 && <><span className="tabnum small">{text(lose, 'fewer')}</span><span className="sec-track">{lose?.value != null && <span className="sec-bar" style={{ width: `${scale(lose.value)}%`, background: `color-mix(in srgb, ${l.color} 30%, transparent)`, boxShadow: `inset 0 0 0 1px ${l.color}` }} />}</span></>}</span>
                 <span role="cell" className="sec-seats tabnum">{item.seats}</span>
-                <span role="cell" className="sec-r"><span className="sec-track">{gain?.value != null && <span className="sec-bar" style={{ width: `${scale(gain.value)}%`, background: l.color }} />}</span><span className="tabnum small">{text(gain)}</span></span>
+                <span role="cell" className="sec-r"><span className="sec-track">{gain?.value != null && <span className="sec-bar" style={{ width: `${scale(gain.value)}%`, background: l.color }} />}</span><span className="tabnum small">{text(gain, 'more')}</span></span>
               </div>
             );
           })}
@@ -180,7 +180,7 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
                 <li key={l.id}>
                   {name(l)}
                   <span className="sec-gauge" role="img" aria-label={L(`${fmtInt(l.votes)} of ${fmtInt(thr)} votes`, `${fmtInt(l.votes)} מתוך ${fmtInt(thr)} קולות`)}><i style={{ width: `${Math.min(100, (l.votes / Math.max(1, thr)) * 100)}%`, background: l.color }} /></span>
-                  <span className="small sec-short">{q && q.value !== null && q.exact ? L(`${fmtInt(q.value)} short`, `חסרים ${fmtInt(q.value)}`) : <>{L('Short', 'חסרים')} <span className="tabnum">{text(q)}</span></>}</span>
+                  <span className="small sec-short">{q && q.value !== null && q.exact ? L(`${fmtInt(q.value)} short`, `חסרים ${fmtInt(q.value)}`) : <>{L('Short', 'חסרים')} <span className="tabnum">{text(q, 'more')}</span></>}</span>
                 </li>
               );
             })}
