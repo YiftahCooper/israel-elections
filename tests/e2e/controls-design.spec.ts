@@ -71,7 +71,7 @@ test('threshold goal stays under the pointer when its consequence appears', asyn
   const panel = page.locator('.side-panel');
   const cross = panel.getByRole('button', { name: 'מעבר אחוז החסימה', exact: true });
   await cross.click();
-  await panel.getByRole('button', { name: 'מעט מתחת לחסימה', exact: true }).click();
+  await panel.getByRole('button', { name: 'ירידה מתחת לחסימה', exact: true }).click();
   await expect(cross).toBeEnabled({ timeout: 30000 });
   await cross.scrollIntoViewIfNeeded();
   const before = await cross.boundingBox();

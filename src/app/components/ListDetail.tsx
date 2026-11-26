@@ -41,7 +41,9 @@ import { datesInText } from '../dateFormat.ts';
 import { IsolatedText } from '../bidiRuns.tsx';
 
 /** Notes on how the record was transcribed or where it was printed (the Sources tab's matter), by their opening words. */
-const TRANSCRIPTION_NOTE = /^(תומללו רק מקומות|רשימת המועמדים פורסמה בילקוט הפרסומים .* אך טרם תומללה|רשימת המועמדים: רשומות)/;
+// a bare citation of where the candidate list was published says nothing about the list; the Sources tab names it.
+// Notes that the candidate list is only partly typed in stay: they explain a short or empty list below.
+const CITATION_NOTE = /^רשימת המועמדים: רשומות/;
 
 const niceCeil = (n: number) => { const p = 10 ** Math.max(0, Math.floor(Math.log10(Math.max(1, n))) - 1); return Math.ceil(n / p) * p; };
 
@@ -267,7 +269,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   // app transcribed or cited the record are not facts about the list (owner, 26 Nov 2026: data coverage belongs on
   // the Sources tab, not in the middle of a list)
   const seatedNotes = new Set(Object.values(notSeatedWhy));
-  const notes = (ds.lists.find((x) => x.id === l.id)?.notesHe ?? []).filter(n => !seatedNotes.has(n) && !TRANSCRIPTION_NOTE.test(n));
+  const notes = (ds.lists.find((x) => x.id === l.id)?.notesHe ?? []).filter(n => !seatedNotes.has(n) && !CITATION_NOTE.test(n));
 
   return (
     <div className="ld" role="region" aria-label={L('List details', 'פרטי רשימה')}>

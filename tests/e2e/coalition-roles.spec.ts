@@ -168,12 +168,12 @@ for (const lang of ['en', 'he'] as const) test(`the confidence-vote tests wrap i
 
 // c-aftermath-03: the button and the comparison line under the partners share one definition of the recorded first
 // government; the audit saw 'Different from the recorded first-government partners' right after the button in these.
-for (const id of ['k20', 'k9', 'k12', 'k14']) test(`after Recorded first government the comparison says it matches: ${id}`, async ({ page }) => {
+for (const id of ['k20', 'k9', 'k12', 'k14']) test(`after The first government the comparison says it matches: ${id}`, async ({ page }) => {
   await start(page);
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), id);
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
   await page.getByRole('button', { name: 'The first government', exact: true }).click();
   const now = page.locator('.coal-now');
-  await expect(now).toContainText('Matches the recorded first');
+  await expect(now).toContainText('Same partners');
   await expect(now).not.toContainText('Different partners from the first government');
 });

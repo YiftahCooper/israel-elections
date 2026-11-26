@@ -298,7 +298,7 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
       <ListPicker s={s} picked={ids} onToggle={(id) => setIds(ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id])} />
       {ids.length >= 2 && (
         <div className="st-options">
-          <label className="field">{L(`Voters who stay with the merged list: ${retention}%`, `מצביעים שנשארים עם הרשימה המאוחדת: ${retention}%`)}
+          <label className="field">{L(`Voters who stay: ${retention}%`, `מצביעים שנשארים: ${retention}%`)}
             <input type="range" min={50} max={100} value={retention} onChange={(e) => setRetention(Number(e.target.value))} />
             <span className="tiny muted tabnum">{L(`${fmtInt(kept)} of ${fmtInt(total)} votes`, `${fmtInt(kept)} מתוך ${fmtInt(total)} קולות`)}{kept < total && L(` · ${fmtInt(total - kept)} stay home`, ` · ${fmtInt(total - kept)} לא מצביעים`)}</span></label>
           {control}

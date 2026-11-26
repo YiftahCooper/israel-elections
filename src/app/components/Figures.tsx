@@ -107,7 +107,7 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         <div className="kv small"><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span><span><b>{L('Valid votes', 'קולות כשרים')}</b></span><span><b>{fmtInt(r.totalValid)}</b></span></div>
       </Fig>}
       {expert && (
-        <Fig k={L('Seats: full quotas + remainders', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ${hebrewPrefix('ב', method.he)}`)}>
+        <Fig k={L('Seats: full quotas + leftover votes', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ${hebrewPrefix('ב', method.he)}`)}>
           <p className="small" style={{ margin: '0 0 6px' }}>{L(`${r.initialSeatsTotal} seats were won with full quotas; the other ${r.remainderSeatsTotal} by ${method.en}.`, `${r.initialSeatsTotal} מנדטים חולקו במודדים שלמים; ${r.remainderSeatsTotal} הנותרים ${hebrewPrefix('ב', method.he)}.`)}</p>
           {walkShown && <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L(...featureLabel('walk'))}</button>}
         </Fig>
