@@ -300,7 +300,7 @@ test('the share change carries its unit', async ({ page }) => {
   await openSideBySide(page);
   await expect(row(page, 'Likud').locator('.cmp-pp')).toHaveText(/^[−+]2\.89 pp$/);
   await page.locator('.cmp-table th.cmp-mid').getByRole('button').click();
-  await expect(page.getByText(/share of valid votes in percentage points/)).toBeVisible();
+  await expect(page.getByText(/pp: percentage points/)).toBeVisible();
 });
 
 test('an import that puts someone on two lists warns, names both, and removes only on request', async ({ page }) => {

@@ -15,7 +15,7 @@ for (const lang of ['en', 'he']) test(`tools keep concise labels and reveal assu
   await page.keyboard.press('Escape');
   await page.locator('#tab-turnout').click();
   await panel.getByRole('button', { name: lang === 'en' ? 'Voter group: explanation' : 'הסבר: קבוצת מצביעים', exact: true }).click();
-  await expect(page.getByRole('tooltip')).toContainText(lang === 'en' ? 'national result' : 'התוצאה הארצית');
+  await expect(page.getByRole('tooltip')).toContainText(lang === 'en' ? 'national result' : 'לתוצאה הארצית');
 });
 
 for (const lang of ['en', 'he']) test(`what-if separates explanation from the expandable result: ${lang}`, async ({ page }) => {
