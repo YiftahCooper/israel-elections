@@ -293,7 +293,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
           {!l.withdrawn && <><div className="vote-goals">
             {lr.qualified && quick(L('Reach next seat', 'הגעה למנדט הבא'), gainTarget, true, (from) => seatsFrom(lr.seats + 1, from))}
             {lr.seats > 0 && quick(L(`Fewest votes to keep ${seatsText(lr.seats, 'en')}`, `הכי מעט קולות לשמירת ${seatsText(lr.seats, 'he')}`), margins?.lose?.exact && margins.lose.found && margins.lose.votes !== null ? l.votes - Number(margins.lose.lotteryFrom ?? margins.lose.votes) + 1 : null, true, (from) => goalFrom('lose', from))}
-            {Number(s.rules.thresholdPct) > 0 && quick(lr.qualified ? L('Just below threshold', 'מעט מתחת לחסימה') : L('Cross the threshold', 'מעבר אחוז החסימה'), boundary === null ? null : boundary - (lr.qualified ? 1 : 0), true, (from) => goalFrom(lr.qualified ? 'disqualify' : 'qualify', from))}
+            {Number(s.rules.thresholdPct) > 0 && quick(lr.qualified ? L('Fall below the threshold', 'ירידה מתחת לחסימה') : L('Cross the threshold', 'מעבר אחוז החסימה'), boundary === null ? null : boundary - (lr.qualified ? 1 : 0), true, (from) => goalFrom(lr.qualified ? 'disqualify' : 'qualify', from))}
             {baseList && <div style={{ visibility: baseList.votes === l.votes ? 'hidden' : undefined }}>{quick(L('Restore votes', 'שחזור הקולות'), baseList.votes)}</div>}
           </div>
           {/* one line: what the change pointed at (a goal, a step, the slider) would do, else what the next seat takes */}
@@ -334,7 +334,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
 
       <Feature id="standing">
         <section>
-          <h3>{L('Standing', 'מעמד')}</h3>
+          <h3>{L('Bloc and withdrawal', 'גוש ופרישה')}</h3>
           <div className="row">
             {s.blocs.length > 0 && <label className="row small" style={{ gap: 6 }}>{L('Bloc', 'גוש')}
               <EditMarker s={s} path={['lists', l.id, 'bloc']} /><select value={l.bloc ?? ''} onChange={(e) => dispatch({ type: 'setListMeta', listId: l.id, patch: { bloc: e.target.value || null } })}>
@@ -354,14 +354,14 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
 
       <Feature id="allocation">
         <section>
-          <h3>{L('Allocation detail', 'פירוט החלוקה')}</h3>
+          <h3>{L('How the list won its seats', 'איך הרשימה זכתה במנדטים')}</h3>
           <div className="kv small">
             {lr.qualified && <><span>{L('Share of qualifying votes', 'מהקולות המשתתפים')}</span><span>{percent(l.votes, r.qualifyingVotes, digits)}</span></>}
             <span>{L('Share of ballots cast', 'מכלל המצביעים')}</span><span>{percent(l.votes, votesCast(s), digits)}</span>
             <span>{L('Share of registered voters', 'מבעלי זכות הבחירה')}</span><span>{percent(l.votes, s.registered, digits)}</span>
             {lr.qualified && <>
-              <span>{L('Whole-quota seats', 'מנדטים במודד')}</span><span><bdi dir="ltr"><span className="muted">⌊{fmtInt(l.votes)} ÷ {fmtRat(r.quota, 0)}⌋ =</span> {lr.initialSeats}</bdi></span>
-              <span>{L('Remainder-stage seats', 'מנדטים מעודפים')}</span><span>{lr.seats - lr.initialSeats}</span>
+              <span>{L('Seats from full quotas', 'מנדטים במודד')}</span><span><bdi dir="ltr"><span className="muted">⌊{fmtInt(l.votes)} ÷ {fmtRat(r.quota, 0)}⌋ =</span> {lr.initialSeats}</bdi></span>
+              <span>{L('Seats from leftover votes', 'מנדטים מעודפים')}</span><span>{lr.seats - lr.initialSeats}</span>
               <span>{L('Votes per seat won', 'ממוצע קולות למנדט')}</span><span>{lr.seats ? fmtInt(Math.round(l.votes / lr.seats)) : '—'}</span>
               {nextQ && <><span>{unit?.isAgreement ? L('Pair’s next-seat quotient', 'מודד הצמד למנדט הבא') : L('Next-seat quotient', 'מודד רשימה למנדט הבא')} <Info term="listquota" /></span><span title={fmtFrac(nextQ)}>{fmtRat(nextQ, 1)}</span></>}
               {lastWin && <><span>{L('Lowest winning quotient', 'המודד הזוכה הנמוך ביותר')}</span><span>{fmtRat(lastWin, 1)}</span></>}

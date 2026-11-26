@@ -115,8 +115,8 @@ export function SeatSecurity({ s, r }: { s: Scenario; r: AllocationResult }) {
   // the * line in full (owner, 19 Nov 2026), by the law of the election: from 1973 (and in 1949) the Central Elections
   // Committee draws lots; 1951–1969 had no rule. "One vote fewer" only when that is so for every starred figure here.
   const oneBefore = shown.filter((f) => f.exact && f.lotteryFrom !== undefined).every((f) => f.value !== null && f.lotteryFrom === f.value - 1);
-  const tieLine = (oneBefore ? L('* One vote fewer than the figure ties with another list for this seat', '* בקול אחד פחות מהמספר יש שוויון עם רשימה אחרת על המנדט הזה')
-    : L('* Fewer votes than the figure already tie with another list for this seat (point at it for the count)', '* כבר בפחות קולות מהמספר יש שוויון עם רשימה אחרת על המנדט הזה (הצביעו עליו לראות ממתי)'))
+  const tieLine = (oneBefore ? L('* With one vote fewer, it ties with another list for this seat', '* בקול אחד פחות יש שוויון עם רשימה אחרת על המנדט הזה')
+    : L('* With fewer votes it already ties with another list for this seat (point at the figure to see from how many)', '* כבר בפחות קולות יש שוויון עם רשימה אחרת על המנדט הזה (הצביעו על המספר לראות ממתי)'))
     + (policy === 'unspecified' ? L('; the law of the time set no rule for a tie.', '; החוק של אז לא קבע כלל לשוויון.') : L('; the Central Elections Committee then decides by lot.', '; ועדת הבחירות המרכזית מכריעה אז בהגרלה.'));
 
   const tightest = busy ? [] : above
@@ -337,10 +337,10 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       {(split.length > 1 || everyNeeded) && <div className="row small coal-blocs">{split.length > 1 && split.map(({ b, n }) => <span key={b.id ?? 'none'} title={'appDefined' in b && b.appDefined ? appGroupingExplanation(lang) : undefined}>{blocName(b)} <b>{n}</b></span>)}
         {everyNeeded && <span className="muted">{L('Each is needed for the majority', 'כל אחת נחוצה לרוב')}</span>}</div>}
       {record && <p className="small muted" style={{ margin: 0 }}>{({
-        unavailable: L('First-government comparison unavailable', 'אין נתונים להשוואה לממשלה הראשונה'),
-        'matches-with-support': L('Matches the recorded first government and its outside support', 'תואמת לממשלה הראשונה המתועדת ולתמיכה מבחוץ בה'),
-        matches: L('Matches the recorded first-government partners', 'תואמת לשותפות הממשלה הראשונה המתועדת'),
-        different: L('Different from the recorded first-government partners', 'שונה משותפות הממשלה הראשונה המתועדת'),
+        unavailable: L('No first government to compare with', 'אין ממשלה ראשונה להשוואה'),
+        'matches-with-support': L('Same partners and outside support as the first government', 'אותן שותפות ותמיכה מבחוץ כמו בממשלה הראשונה'),
+        matches: L('Same partners as the first government', 'אותן שותפות כמו בממשלה הראשונה'),
+        different: L('Different partners from the first government', 'שותפות שונות מאלה של הממשלה הראשונה'),
       })[firstGovernmentComparison(ids, supportIds, recordedChoices)]}{' '}
         <Info title={L('Historical comparison', 'השוואה היסטורית')}>{L('Compares members with the recorded first government only, not every government during this Knesset, and not its outside support. Scenario seats can differ from the official result.', 'השוואת החברות בקואליציה לממשלה הראשונה המתועדת בלבד, ולא לכל ממשלה במהלך הכנסת או לתמיכה מבחוץ בה. המנדטים בתרחיש עשויים להיות שונים מהתוצאה הרשמית.')} {`${lang === 'he' ? record.nameHe : record.nameEn} · ${formatDate(record.startDate, lang)}`}</Info></p>}
     </>;
@@ -351,7 +351,7 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
     if (!gap) return null;
     const why: Record<VoteGapReason['kind'], string> = {
       individual: L('some MKs acted apart from their list', 'חברי כנסת פעלו בנפרד מרשימתם'),
-      unknown: L('roles are unknown', 'תפקידים אינם ידועים'),
+      unknown: L('some lists’ roles are unknown', 'התפקיד של חלק מהרשימות אינו ידוע'),
       'vote-only': L('some lists voted for without an arrangement', 'רשימות הצביעו בעד בלי הסדר'),
       partial: L('only part of a list took part', 'רק חלק מרשימה השתתף'),
       'not-voting': L('some MKs voted neither for nor against', 'חברי כנסת לא הצביעו בעד או נגד'),
@@ -372,11 +372,11 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
       {L('Recorded vote', 'ההצבעה המתועדת')}: <span className="coal-for">{L(`${gap.recorded.for} for`, `${gap.recorded.for} בעד`)}</span> · <span className="coal-against">{L(`${gap.recorded.against} against`, `${gap.recorded.against} נגד`)}</span>.{' '}
       {joined ? L(`Differs here because ${joined}`, `כאן התוצאה שונה, כי ${joined}`) : L('Differs here', 'כאן התוצאה שונה')}{' '}
       <Info title={L('Why the recorded vote differs', 'למה ההצבעה המתועדת שונה')}>
-        {people.length > 0 && <>{L('MKs recorded apart from their list (not modelled yet): ', 'חברי כנסת שתועדו בנפרד מרשימתם (עדיין לא ממודלים): ')}{groups.map(([key, inds], i) => <span key={key}>{i > 0 && '; '}{listOf(inds[0].fromLetters)}, {voteWord[inds[0].vote]}{cert(inds[0].certainty)}: {inds.map((x) => (lang === 'he' ? x.nameHe : x.nameEn)).join(', ')}</span>)}. </>}
+        {people.length > 0 && <>{L('MKs who voted apart from their list (not counted here): ', 'חברי כנסת שהצביעו בנפרד מרשימתם (לא נספרים כאן): ')}{groups.map(([key, inds], i) => <span key={key}>{i > 0 && '; '}{listOf(inds[0].fromLetters)}, {voteWord[inds[0].vote]}{cert(inds[0].certainty)}: {inds.map((x) => (lang === 'he' ? x.nameHe : x.nameEn)).join(', ')}</span>)}. </>}
         {anyRows.length > 0 && <>{L('Left as Any: ', 'נשארות ב"כל אפשרות": ')}{anyRows.map(({ kind, row }, i) => <span key={i}>{i > 0 && ', '}{rowName(row)} ({kind === 'vote-only' ? L('voted for at investiture only', 'הצביעה בעד באמון בלבד') : L('role unknown', 'התפקיד לא ידוע')})</span>)}. </>}
-        {partial.length > 0 && <>{partial.map(({ row, whole }, i) => <span key={i}>{i > 0 && '; '}{rowName(row)}: {row.seats === 1 ? L(`1 of its ${whole} seats took part, counted whole here`, `מנדט אחד מתוך ${whole} מנדטיה השתתף, נספרת כאן במלואה`) : L(`${row.seats} of its ${whole} seats took part, counted whole here`, `${row.seats} מתוך ${whole} מנדטיה השתתפו, נספרת כאן במלואה`)}</span>)}. </>}
+        {partial.length > 0 && <>{partial.map(({ row, whole }, i) => <span key={i}>{i > 0 && '; '}{rowName(row)}: {row.seats === 1 ? L(`1 of its ${whole} MKs took part; here the whole list votes`, `חבר כנסת אחד מתוך ${whole} השתתף; כאן הרשימה כולה מצביעה`) : L(`${row.seats} of its ${whole} MKs took part; here the whole list votes`, `${row.seats} מתוך ${whole} חברי הכנסת שלה השתתפו; כאן הרשימה כולה מצביעה`)}</span>)}. </>}
         {absent && <>{absent.n === 1 ? L('One MK voted neither for nor against (absent or abstaining); here every seat votes.', 'הצבעה אחת לא הייתה בעד או נגד (היעדרות או הימנעות); כאן כל מנדט מצביע.') : L(`${absent.n} MKs voted neither for nor against (absent or abstaining); here every seat votes.`, `${absent.n} חברי כנסת לא הצביעו בעד או נגד (נעדרו או נמנעו); כאן כל מנדט מצביע.`)} </>}
-        {({ exact: L('The research reconciles the recorded vote exactly.', 'המחקר מיישב את ההצבעה המתועדת במדויק.'), explained: L('The research explains the full difference.', 'המחקר מסביר את מלוא ההפרש.'), unresolved: L('The research has not fully reconciled it.', 'המחקר עדיין לא יישב את ההפרש במלואו.'), 'vote-unavailable': '' })[gap.status]}
+        {gap.status === 'unresolved' && L('Part of the difference is not yet explained.', 'חלק מההפרש עדיין לא מוסבר.')}
       </Info>.
     </p>;
   };
@@ -384,19 +384,18 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
   return (
     <div className="coal">
       {/* one line that is always there: its reset/copy buttons appear beside the text, never above the cards */}
-      <div className="row coal-head"><span className="small ink2">{L('Choose each list’s role', 'בחרו את תפקיד כל רשימה')} <Info title={L('Coalition assumptions', 'הנחות הקואליציה')}>{L('In: a member of every coalition below. Support: outside support, voting for the government without joining it. Abstain: abstains by arrangement, so it is not counted among those voting. Out: in no coalition; it votes against. Any: either. Arithmetic only — it says nothing about political feasibility.', 'בפנים: חברה בכל קואליציה למטה. תומכת: תמיכה מבחוץ, הצבעה בעד הממשלה בלי להצטרף אליה. נמנעת: נמנעת בהסדר, ולכן אינה נמנית עם המצביעים. בחוץ: מחוץ לכל קואליציה; מצביעה נגד. כל אפשרות: כל אחת מהן. חשבון בלבד — לא הערכה פוליטית.')}</Info></span>
+      <div className="row coal-head"><span className="small ink2">{L('Choose each list’s role', 'בחרו את תפקיד כל רשימה')} <Info title={L('Coalition assumptions', 'הנחות הקואליציה')}>{L('In: a member of every coalition below. Support: outside support, voting for the government without joining it. Abstain: abstains by arrangement, so it is not counted among those voting. Out: in no coalition; it votes against. Any: either. It counts seats only; it doesn’t say whether such a coalition is likely.', 'בפנים: חברה בכל קואליציה למטה. תומכת: תמיכה מבחוץ, הצבעה בעד הממשלה בלי להצטרף אליה. נמנעת: נמנעת בהסדר, ולכן אינה נמנית עם המצביעים. בחוץ: מחוץ לכל קואליציה; מצביעה נגד. כל אפשרות: כל אחת מהן. זו ספירת מנדטים בלבד, ולא הערכה אם קואליציה כזו סבירה.')}</Info></span>
         <span className="spacer" /><StartFrom s={s} part="coalitions" /><AnalysisEdits s={s} part="coalitions" outlet="coalition-panel" /></div>
       {record && (
         <div className="row coal-record" style={{ marginBottom: 8 }}>
-          <button type="button" className={`btn small ${recordOn ? 'primary' : ''}`} aria-pressed={recordOn} disabled={!recordedChoices} title={recordedChoices ? undefined : L('A recorded partner is not in this scenario', 'שותפה מתועדת אינה בתרחיש זה')}
-            onClick={() => { if (recordOn || !recordedChoices) return; setInspected(null); dispatch({ type: 'setCoalition', coalition: apartShown ? withBreaks(recordedChoices, recordedBreaks) : recordedChoices }); }}>{L('Recorded first government', 'הממשלה הראשונה המתועדת')}</button>
+          <button type="button" className={`btn small ${recordOn ? 'primary' : ''}`} aria-pressed={recordOn} disabled={!recordedChoices} title={recordedChoices ? undefined : L('A partner in the first government is not in this scenario', 'שותפה בממשלה הראשונה אינה בתרחיש זה')}
+            onClick={() => { if (recordOn || !recordedChoices) return; setInspected(null); dispatch({ type: 'setCoalition', coalition: apartShown ? withBreaks(recordedChoices, recordedBreaks) : recordedChoices }); }}>{L('The first government', 'הממשלה הראשונה')}</button>
           <Info title={lang === 'he' ? record.nameHe : record.nameEn}>
             {formatDate(record.startDate, lang)}.{' '}
             {([['in', L('In', 'בפנים')], ['support', L('Outside support', 'תמיכה מבחוץ')], ['abstain', L('Abstains by arrangement', 'נמנעת בהסדר')], [null, L('Left as Any', 'נשארות ב"כל אפשרות"')]] as const).map(([role, label]) => {
               const rows = recorded.filter((x) => x.role === role);
-              return rows.length > 0 && <span key={role ?? 'any'}>{label}: {rows.map((x, i) => <span key={i}>{i > 0 && ', '}{x.name}{x.r.certainty !== 'confirmed' && ` (${certaintyName(x.r.certainty)})`}{role === null && ` · ${x.r.certainty === 'unknown' ? L('relationship unknown', 'המעמד לא ידוע') : x.r.role === 'confidence-vote-only' ? L('voted for at investiture only', 'הצביעה בעד באמון בלבד') : L('other relationship', 'מעמד אחר')}`}{x.r.seats !== null && x.list && x.r.seats < sumOf(x.units) && ` · ${x.r.seats === 1 ? L('1 of its seats took part, counted whole here', 'מנדט אחד ממנדטיה השתתף, נספרת כאן במלואה') : L(`${x.r.seats} of its seats took part, counted whole here`, `${x.r.seats} ממנדטיה השתתפו, נספרת כאן במלואה`)}`}</span>)}. </span>;
+              return rows.length > 0 && <span key={role ?? 'any'}>{label}: {rows.map((x, i) => <span key={i}>{i > 0 && ', '}{x.name}{x.r.certainty !== 'confirmed' && ` (${certaintyName(x.r.certainty)})`}{role === null && ` · ${x.r.certainty === 'unknown' ? L('relationship unknown', 'המעמד לא ידוע') : x.r.role === 'confidence-vote-only' ? L('voted for at investiture only', 'הצביעה בעד באמון בלבד') : L('other relationship', 'מעמד אחר')}`}{x.r.seats !== null && x.list && x.r.seats < sumOf(x.units) && ` · ${x.r.seats === 1 ? L('1 of its MKs took part; here the whole list votes', 'חבר כנסת אחד שלה השתתף; כאן הרשימה כולה מצביעה') : L(`${x.r.seats} of its MKs took part; here the whole list votes`, `${x.r.seats} מחברי הכנסת שלה השתתפו; כאן הרשימה כולה מצביעה`)}`}</span>)}. </span>;
             })}
-            {L('Certainty follows the project’s source policy; a role is never shown as surer than its sources.', 'הוודאות לפי מדיניות המקורות של הפרויקט; תפקיד אינו מוצג ודאי יותר ממקורותיו.')}
           </Info>
         </div>
       )}
@@ -429,10 +428,10 @@ export function Coalitions({ s, r }: { s: Scenario; r: AllocationResult }) {
         <span className="muted" style={{ fontWeight: 400 }}> · {minimal.length.toLocaleString('en-US')}{truncated ? '+' : ''} {L('in all', 'בסך הכול')}</span></h3>
       <p className="small muted" style={{ marginTop: 0 }}>{L('Select one to see its partners', 'בחרו אחת כדי לראות את השותפות')} <Info title={L('Winning coalitions', 'קואליציות מנצחות')}>{L('Each wins the confidence vote, with any outside support, and needs every member: remove one and it loses. Without abstentions that means 61 seats. Selecting one shows its partners beneath it; your choices stay as they are.', 'כל אחת זוכה בהצבעה על האמון, יחד עם התמיכה מבחוץ אם יש, וזקוקה לכל חברותיה: הוצאת אחת מפילה אותה. בלי נמנעות פירוש הדבר 61 מנדטים. בחירה באחת מציגה את שותפותיה מתחתיה; הבחירות שלכם נשארות כפי שהן.')}</Info></p>
       {!minimal.length && <p className="small muted">{already.passes
-        ? already.stable ? L('Your In lists already have a majority, with lists to spare.', 'לרשימות שבפנים כבר יש רוב, עם רשימות עודפות.')
-          : L('Your choices already win the confidence vote, with lists to spare.', 'הבחירות שלכם כבר זוכות בהצבעה על האמון, עם רשימות עודפות.')
+        ? already.stable ? L('Your In lists already have a majority, even without some of them.', 'לרשימות שבפנים כבר יש רוב, גם בלי חלק מהן.')
+          : L('Your choices already win the confidence vote, even without some lists.', 'הבחירות שלכם כבר זוכות בהצבעה על האמון, גם בלי חלק מהרשימות.')
         : L('No winning coalition fits these choices. Set some lists to Any.', 'אין קואליציה מנצחת שמתאימה לבחירות אלה. העבירו רשימות ל"כל אפשרות".')}</p>}
-      {truncated && <p className="small">{L('There are more than 100,000: include or rule out lists to narrow the search.', 'יש יותר מ־100,000: הכלילו או פסלו רשימות כדי לצמצם את החיפוש.')}</p>}
+      {truncated && <p className="small">{L('More than 100,000 coalitions fit. Set more lists to In or Out to narrow them.', 'יותר מ־100,000 קואליציות מתאימות. קבעו עוד רשימות כ"בפנים" או "בחוץ" כדי לצמצם.')}</p>}
       {/* the chosen coalition opens in place, on the full row beneath it; dense packing keeps its row-mates beside it */}
       <ul className="coal-list">
         {shown.flatMap((c) => {

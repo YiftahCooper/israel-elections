@@ -37,7 +37,7 @@ export function StartFrom({ s: shown, part, listId, copyOnly = false }: { s: Sce
   const clearLabel: Partial<Record<Part, string>> = {
     agreements: L('Remove all agreements', 'ביטול כל ההסכמים'),
     coalitions: L('Clear the coalition', 'ניקוי הקואליציה'),
-    candidates: L('Empty this roster', 'ריקון רשימת המועמדים'),
+    candidates: L('Remove all candidates', 'הסרת כל המועמדים'),
   };
   const { official, others } = useMemo(() => {
     const base = baseContext(ds).base;
@@ -48,7 +48,7 @@ export function StartFrom({ s: shown, part, listId, copyOnly = false }: { s: Sce
       return effect === 'change' ? o : { ...o, disabled: true, detail: L('Not compatible with this scenario', 'לא מתאים לתרחיש זה') };
     };
     const presets: Option[] = part === 'blocs'
-      ? (s.blocSchemes ?? []).map(g => ({ value: `preset:${g.id}`, label: groupingName(g, lang), title: g.appDefined ? appGroupingExplanation(lang) : undefined, group: g.appDefined ? L('App groupings', 'חלוקות האפליקציה') : L('Sourced groupings', 'חלוקות ממקור מתועד'), preview: <ResultPreview s={applyAction(s, { type: 'applyBlocScheme', schemeId: g.id })} />, action: { type: 'startPart', part, source: 'preset', presetId: g.id } }))
+      ? (s.blocSchemes ?? []).map(g => ({ value: `preset:${g.id}`, label: groupingName(g, lang), title: g.appDefined ? appGroupingExplanation(lang) : undefined, group: g.appDefined ? L('App groupings', 'חלוקות האפליקציה') : L('Groupings of the time', 'חלוקות מאותה תקופה'), preview: <ResultPreview s={applyAction(s, { type: 'applyBlocScheme', schemeId: g.id })} />, action: { type: 'startPart', part, source: 'preset', presetId: g.id } }))
       : part === 'rules' ? Object.values(RULESETS).map(r => ({ value: `preset:${r.id}`, label: ruleEraLabel(r, lang), group: L('Rules of an era', 'כללי תקופה'), action: { type: 'startPart', part, source: 'preset', presetId: r.id } })) : [];
     const fromSaved: Option[] = ds ? saved.filter(x => x.electionId === s.electionId).map(x => {
       const sc = replay(ds, x.name, x.log, x.factionSplitBaseline ?? false).scenario;

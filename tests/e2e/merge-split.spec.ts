@@ -70,7 +70,7 @@ test('the task tabs stay in place when switching to agreements, and each era sta
   const y0 = (await tabs.boundingBox())!.y;
   await task(page, 3);
   expect((await tabs.boundingBox())!.y).toBe(y0);
-  await expect(panel(page).locator('.st-rule')).toHaveText('Rule: Pairs of lists · each must win a whole-quota seat');
+  await expect(panel(page).locator('.st-rule')).toHaveText('Rule: Pairs of lists · each must win a full seat of its own');
   // an agreement with no effect says so once (its chip), not again in a second line
   const dead = panel(page).locator('.st-agreements li').filter({ has: page.locator('.chip.no') }).first();
   await expect(dead.locator('.st-effect')).toHaveCount(0);
@@ -131,5 +131,5 @@ test('the joint list page splits only the parties given votes, and says so', asy
   // giving Atid Ehad a share runs it too, marked as having no recorded candidates
   await page.getByLabel('Vote share of Atid Ehad (%)').fill('5');
   await expect(page.getByRole('button', { name: 'Run as 4 separate lists', exact: true })).toBeVisible();
-  await expect(page.locator('.joint-split')).toContainText('No recorded candidates');
+  await expect(page.locator('.joint-split')).toContainText('No candidates of its own');
 });

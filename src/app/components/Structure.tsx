@@ -184,7 +184,7 @@ function agreementRule(rules: SimRules, L: (en: string, he: string) => string): 
   if (pct) out.push(rules.agreementRequiresAllQualify
     ? (pair ? L(`both must pass the ${pct}% threshold`, `שתיהן חייבות לעבור את אחוז החסימה (${pct}%)`) : L(`all must pass the ${pct}% threshold`, `כולן חייבות לעבור את אחוז החסימה (${pct}%)`))
     : L(`a partner below ${pct}% drops out`, `שותפה מתחת ל־${pct}% נשמטת`));
-  if (rules.agreementRequiresInitialSeat) out.push(pair ? L('each must win a whole-quota seat', 'כל אחת חייבת לזכות במנדט במודד שלם') : L('every partner must win a whole-quota seat', 'כל שותפה חייבת לזכות במנדט במודד שלם'));
+  if (rules.agreementRequiresInitialSeat) out.push(pair ? L('each must win a full seat of its own', 'כל אחת חייבת לזכות במנדט במודד שלם') : L('every partner must win a full seat of its own', 'כל שותפה חייבת לזכות במנדט במודד שלם'));
   return out.join(' · ');
 }
 
@@ -298,7 +298,7 @@ function Merge({ s, r }: { s: Scenario; r: AllocationResult }) {
       <ListPicker s={s} picked={ids} onToggle={(id) => setIds(ids.includes(id) ? ids.filter((x) => x !== id) : [...ids, id])} />
       {ids.length >= 2 && (
         <div className="st-options">
-          <label className="field">{L(`Voters who stay: ${retention}%`, `מצביעים שנשארים: ${retention}%`)}
+          <label className="field">{L(`Voters who stay with the merged list: ${retention}%`, `מצביעים שנשארים עם הרשימה המאוחדת: ${retention}%`)}
             <input type="range" min={50} max={100} value={retention} onChange={(e) => setRetention(Number(e.target.value))} />
             <span className="tiny muted tabnum">{L(`${fmtInt(kept)} of ${fmtInt(total)} votes`, `${fmtInt(kept)} מתוך ${fmtInt(total)} קולות`)}{kept < total && L(` · ${fmtInt(total - kept)} stay home`, ` · ${fmtInt(total - kept)} לא מצביעים`)}</span></label>
           {control}
@@ -404,7 +404,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
                 <input type="number" min={0} max={100} step={0.1} value={pct[i]} style={{ width: 76 }} aria-label={L(`Vote share of ${p.nameEn} (%)`, `חלק הקולות של ${p.nameHe} (%)`)}
                   onChange={(e) => { const next = [...pct]; next[i] = Math.max(0, Number(e.target.value) || 0); setShares(next); }} />%</span>
               <span className="small muted tabnum">{(partyVotes[i] ?? 0) === 0 && sumPct > 0 ? <SplitPartNote own={hasOwnCandidates(l, p.id)} home={home && home !== p ? name(home) : null} />
-                : <>{L(`${fmtInt(partyVotes[i] ?? 0)} votes`, `${fmtInt(partyVotes[i] ?? 0)} קולות`)}{!hasOwnCandidates(l, p.id) && p !== home && <> · {L('No recorded candidates', 'אין מועמדים מתועדים')}</>}</>}</span>
+                : <>{L(`${fmtInt(partyVotes[i] ?? 0)} votes`, `${fmtInt(partyVotes[i] ?? 0)} קולות`)}{!hasOwnCandidates(l, p.id) && p !== home && <> · {L('No candidates of its own', 'אין לה מועמדים משלה')}</>}</>}</span>
             </div>
           ))}
           {plan && plan.parts.length < 2 || sumPct === 0 ? <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L('Give at least two parties a share.', 'תנו חלק לשתי מפלגות לפחות.')}</p>
@@ -419,8 +419,8 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
         <div className="st-options">
           <label className="field">{L('Candidates', 'מועמדים')}
             <select value={mode} onChange={(e) => setMode(e.target.value as 'alternate' | 'top')}>
-              <option value="top">{L('Cut at a rank', 'חיתוך במקום ברשימה')}</option>
-              <option value="alternate">{L('Alternating ranks', 'מקומות לסירוגין')}</option>
+              <option value="top">{L('Split at a place on the list', 'פיצול במקום ברשימה')}</option>
+              <option value="alternate">{L('Alternate places', 'מקומות לסירוגין')}</option>
             </select></label>
           {mode === 'top' && <label className="field">{L(`Candidates on ${plainNames[0][lang === 'he' ? 0 : 1]}`, `מועמדים ${hebrewPrefixName('ב', plainNames[0][0])}`)}<NumberInput value={n} onCommit={(v) => setTopN(Math.min(v, l.candidates.length))} label={L('Candidates on the first list', 'מועמדים ברשימה הראשונה')} width={90} /></label>}
           <label className="field st-full">{L('Vote share', 'חלוקת הקולות')}

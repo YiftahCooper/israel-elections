@@ -81,7 +81,7 @@ export function JointEdit({ s, r, l, base }: { s: Scenario; r: AllocationResult;
             options={[{ value: OWN, label: L('Its own list', 'רשימה משלה') }, ...others.map((x) => listChoice(x, lang, { group: L('Into another list', 'לתוך רשימה אחרת') }))]} onChange={setDest} />}
         </div>
         {party && <>
-          <label className="row small joint-move-share">{L('Votes it takes', 'הקולות שהיא לוקחת')}
+          <label className="row small joint-move-share">{L('Votes that go with it', 'הקולות שעוברים איתה')}
             <input type="number" min={0} max={100} step={0.1} value={share} style={{ width: 72 }} aria-label={L(`Share of ${listLabel(l, 'en')}’s votes that go with ${party.nameEn} (%)`, `חלק מקולות ${listLabel(l, 'he')} שעוברים עם ${party.nameHe} (%)`)}
               onChange={(e) => setPct(Math.min(100, Math.max(0, Number(e.target.value) || 0)))} />%
             <span className="muted tabnum">{L(`${fmtInt(votes)} votes`, `${fmtInt(votes)} קולות`)}</span></label>

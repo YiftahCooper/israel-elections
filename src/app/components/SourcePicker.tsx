@@ -32,7 +32,7 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
         <ChoicePicker label={L('Votes come from', 'מקור הקולות')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(v) =>
           chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'citizens' ? { kind: 'citizens' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) })}
           options={[{ value: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { value: 'new', label: L('People who stayed home', 'מי שלא הצביעו') }, { value: 'citizens', label: L('New citizens', 'אזרחים חדשים') },
-            ...[...others].sort((a, b) => b.votes - a.votes).map((x) => listChoice(x, lang, { value: `t:${x.id}`, detail: fmtInt(x.votes), group: L('One specific list (transfer)', 'רשימה אחת מסוימת (מעבר)') }))]} />
+            ...[...others].sort((a, b) => b.votes - a.votes).map((x) => listChoice(x, lang, { value: `t:${x.id}`, detail: fmtInt(x.votes), group: L('One list', 'רשימה אחת') }))]} />
       </div>
     </div>
   );
@@ -84,8 +84,8 @@ export function SourceDialog() {
       <ScopeChoice name="preference-scope" scope={scope} onScope={setScope} dontAsk={dontAsk} onDontAsk={setDontAsk}
         item={id === 'comparison' ? L('For this scenario', 'לתרחיש זה') : ask?.key.startsWith('bloc:') ? L('For this bloc', 'לגוש זה') : L('For this list', 'לרשימה זו')}
         dontAskInfo={id === 'comparison'
-          ? L('Opening a saved scenario then uses this answer at once. To be asked again: “Ask next time” in the message that says so, or Settings → Editing → Mark changes since: Ask each time.', 'פתיחת תרחיש שמור תשתמש אז בתשובה הזו מיד. כדי שתישאלו שוב: "לשאול בפעם הבאה" בהודעה שאומרת זאת, או הגדרות ← עריכה ← סימון שינויים מאז: לשאול בכל פעם.')
-          : L('Each vote edit then takes its votes this way at once; Undo takes an edit back. To be asked again: “Ask next time” in the message that says so, or Settings → Editing → Votes come from: Ask each time.', 'כל עריכת קולות תיקח אז את הקולות כך, מיד; ביטול מחזיר עריכה. כדי שתישאלו שוב: "לשאול בפעם הבאה" בהודעה שאומרת זאת, או הגדרות ← עריכה ← מקור הקולות: לשאול בכל פעם.')} />
+          ? L('Opening a saved scenario then marks changes this way without asking. To be asked again, choose “Ask next time” in the note that appears, or use Settings.', 'פתיחת תרחיש שמור תסמן אז שינויים כך בלי לשאול. כדי שתישאלו שוב, בחרו "לשאול בפעם הבאה" בהודעה שתופיע, או בהגדרות.')
+          : L('Every vote edit then takes votes this way without asking; Undo takes one back. To be asked again, choose “Ask next time” in the note that appears, or use Settings.', 'כל עריכת קולות תיקח אז את הקולות כך בלי לשאול; ביטול מחזיר אותה. כדי שתישאלו שוב, בחרו "לשאול בפעם הבאה" בהודעה שתופיע, או בהגדרות.')} />
       <p className="tiny muted"><button type="button" className="link-btn" onClick={() => { cancel(); setState({ settingsOpen: true, settingsFocus: id === 'comparison' ? 'markChanges' : 'voteSource' }); }}>{L('Change in Settings', 'שינוי בהגדרות')}</button></p>
       <div className="row">
         <button type="submit" className="btn small primary" disabled={!value}>{L('Apply', 'החלה')}</button>

@@ -14,7 +14,7 @@ test('every goal shows the change it makes; Restore votes appears beside them on
   const goals = page.locator('.side-panel .vote-goals');
   await expect(goals.getByRole('button', { name: 'Reach next seat', exact: true })).toContainText('(+29,777)', { timeout: 30000 });
   await expect(goals.getByRole('button', { name: 'Fewest votes to keep 32 seats', exact: true })).toContainText(/\(−[\d,]+\)/);
-  await expect(goals.getByRole('button', { name: 'Just below threshold', exact: true })).toContainText(/\(−[\d,]+\)/);
+  await expect(goals.getByRole('button', { name: 'Fall below the threshold', exact: true })).toContainText(/\(−[\d,]+\)/);
   await expect(goals.getByRole('button', { name: 'Restore votes' })).toHaveCount(0);
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   const restore = goals.getByRole('button', { name: 'Restore votes', exact: true });

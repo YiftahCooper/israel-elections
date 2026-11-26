@@ -27,9 +27,9 @@ test('1992 recreated: 62 members + 5 outside support = 67, the recorded 67–53'
   await expect(now.locator('.coal-bar i.coal-abstain')).toHaveCount(0);
   await expect(now.locator('.coal-partners[data-role="support"]')).toContainText('Hadash 3');
   // compared with the recorded first government, outside support included; one bloc repeats no total
-  await expect(now).toContainText('Matches the recorded first government and its outside support');
+  await expect(now).toContainText('Same partners and outside support as the first government');
   await expect(now.locator('.coal-blocs')).toHaveCount(0);
-  await expect(page.getByRole('button', { name: 'Recorded first government', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('button', { name: 'The first government', exact: true })).toHaveAttribute('aria-pressed', 'true');
   // each role change is a counted change, marked and named in Undo; votes and seats stay as they were
   await expect(page.locator('.coal-head .analysis-edits')).toHaveCount(1);
   await expect(page.locator('.session')).toContainText('5 changes from the official result');
@@ -85,7 +85,7 @@ for (const lang of ['en', 'he'] as const) test(`the recorded first government fi
   await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
   // the sourced grouping's outside-support group is not offered as a member fill
   await expect(page.locator('.coal').getByRole('button', { name: lang === 'he' ? 'תמיכה מבחוץ' : 'Outside support', exact: true })).toHaveCount(0);
-  const fill = page.getByRole('button', { name: lang === 'he' ? 'הממשלה הראשונה המתועדת' : 'Recorded first government', exact: true });
+  const fill = page.getByRole('button', { name: lang === 'he' ? 'הממשלה הראשונה' : 'The first government', exact: true });
   await fill.click();
   await expect(fill).toHaveAttribute('aria-pressed', 'true');
   const now = page.locator('.coal-now');
@@ -112,7 +112,7 @@ for (const lang of ['en', 'he'] as const) test(`the recorded first government di
   // 2015, used here before, adds up exactly since United Torah Judaism's membership was recorded on 13 Nov 2026)
   await choose(page.getByRole('button', { name: pickerName(lang === 'he' ? 'בחירות' : 'Election') }), 'k16');
   await page.getByRole('tab', { name: lang === 'he' ? 'קואליציות' : 'Coalitions', exact: true }).click();
-  await page.getByRole('button', { name: lang === 'he' ? 'הממשלה הראשונה המתועדת' : 'Recorded first government', exact: true }).click();
+  await page.getByRole('button', { name: lang === 'he' ? 'הממשלה הראשונה' : 'The first government', exact: true }).click();
   const line = page.locator('.coal-now .coal-recorded');
   await expect(line).toHaveText(lang === 'he' ? 'ההצבעה המתועדת: 66 בעד · 48 נגד. כאן התוצאה שונה, כי חברי כנסת לא הצביעו בעד או נגד i.' : 'Recorded vote: 66 for · 48 against. Differs here because some MKs voted neither for nor against i.');
   await line.locator('.info > button').click();
@@ -126,7 +126,7 @@ test('a loaded record that adds up shows no gap line', async ({ page }) => {
   await start(page);
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k13');
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
-  await page.getByRole('button', { name: 'Recorded first government', exact: true }).click();
+  await page.getByRole('button', { name: 'The first government', exact: true }).click();
   await expect(page.locator('.coal-now .coal-sum')).toHaveText('62 members + 5 outside support = 67');
   await expect(page.locator('.coal-recorded')).toHaveCount(0);
 });
@@ -172,8 +172,8 @@ for (const id of ['k20', 'k9', 'k12', 'k14']) test(`after Recorded first governm
   await start(page);
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), id);
   await page.getByRole('tab', { name: 'Coalitions', exact: true }).click();
-  await page.getByRole('button', { name: 'Recorded first government', exact: true }).click();
+  await page.getByRole('button', { name: 'The first government', exact: true }).click();
   const now = page.locator('.coal-now');
   await expect(now).toContainText('Matches the recorded first');
-  await expect(now).not.toContainText('Different from the recorded first-government partners');
+  await expect(now).not.toContainText('Different partners from the first government');
 });

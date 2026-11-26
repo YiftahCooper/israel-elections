@@ -39,7 +39,7 @@ for(const lang of ['he','en'] as const) test.describe(lang,()=>{
     const before=await input.inputValue();
     await input.fill('99999999999');
     await input.press('Enter');
-    await expect(page.locator('.bloc-panel .bp-card').first().locator('.bloc-vote-stepper [aria-live]')).toContainText(lang==='he'?'לכל היותר':'At most');
+    await expect(page.locator('.bloc-panel .bp-card').first().locator('.bloc-vote-stepper [aria-live]')).toContainText(lang==='he'?'בלבד:':'Stops at');
     await expect(page.getByText(/selected lists hold only/)).toHaveCount(0);
     await expect(input).toHaveValue(before);
   });

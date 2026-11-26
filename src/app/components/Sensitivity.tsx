@@ -157,7 +157,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
       <p className="small muted row sens-status" role="status">
         {!valid ? <span role="alert">{L('The second number must be above the first.', 'המספר השני חייב להיות גדול מהראשון.')}</span>
           : state === 'busy' ? <>{L('Working it out…', 'מחשב…')} <button className="btn small" onClick={cancel}>{L('Cancel', 'ביטול')}</button></>
-          : state === 'cancelled' && !current ? <>{L('Cancelled.', 'בוטל.')} <button className="btn small" onClick={() => setAgain((n) => n + 1)}>{L('Run', 'הרצה')}</button></>
+          : state === 'cancelled' && !current ? <>{L('Cancelled.', 'בוטל.')} <button className="btn small" onClick={() => setAgain((n) => n + 1)}>{L('Run again', 'הרצה מחדש')}</button></>
           : shown && !shown.exact ? <>{L(`Checked every ${fmtInt(shown.step)} votes`, `נבדק כל ${fmtInt(shown.step)} קולות`)} <Info title={L('Wide range', 'טווח רחב')}>{L(`A change that reverses within ${fmtInt(shown.step)} votes could be missed. A range of 50,000 votes or less checks every vote.`, `שינוי שמתהפך בתוך ${fmtInt(shown.step)} קולות עלול להיעלם. טווח של 50,000 קולות או פחות נבדק בכל קול.`)}</Info></>
           : null}
       </p>
@@ -249,7 +249,7 @@ function ThresholdSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   }, [out, curRow]);
   return (
     <div>
-      <h3>{L('Threshold → seats', 'אחוז חסימה ← מנדטים')} <Info title={L('Threshold → seats', 'אחוז חסימה ← מנדטים')}>{L('The result at every threshold in the range, with the exact percentages where it changes. Experimental: the other rules stay as they are.', 'התוצאה בכל אחוז חסימה בטווח, עם האחוזים המדויקים שבהם היא משתנה. ניסיוני: שאר הכללים נשארים כפי שהם.')}</Info></h3>
+      <h3>{L('Threshold → seats', 'אחוז חסימה ← מנדטים')} <Info title={L('Threshold → seats', 'אחוז חסימה ← מנדטים')}>{L('The result at every threshold in the range. Only the threshold changes; the other rules stay as they are.', 'התוצאה בכל אחוז חסימה בטווח. רק אחוז החסימה משתנה; שאר הכללים נשארים כפי שהם.')}</Info></h3>
       <div className="row">
         <span className="row" role="group" aria-label={L('Threshold range', 'טווח אחוזים')} style={{ gap: 6 }}>
           <span className="small">{L('Threshold range', 'טווח אחוזים')}</span>
@@ -427,7 +427,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
           <div className="callout small">
             {found.unsure && <>{L('At most', 'לכל היותר')} </>}<b>{fmtInt(found.votes)}</b>{found.unsure && <> <Info title={L('At most', 'לכל היותר')}>{L('A smaller transfer may also work.', 'ייתכן שגם מעבר קטן יותר יספיק.')}</Info></>} {one ? L('vote moving from ', 'קול שעובר מ') : L('votes moving from ', 'קולות שעוברים מ')}<PartyName s={s} id={found.from} /> {L('to ', 'ל')}<PartyName s={s} id={found.to} /> {after === null || (has ? after < majority : after >= majority)
               ? (has ? (one ? L('ends the majority.', 'מבטל את הרוב.') : L('end the majority.', 'מבטלים את הרוב.')) : (one ? L('gives the bloc a majority.', 'נותן לגוש רוב.') : L('give the bloc a majority.', 'נותנים לגוש רוב.')))
-              : <>{one ? L('does not flip it in the chamber', 'אינו הופך אותו במליאה') : L('do not flip it in the chamber', 'אינם הופכים אותו במליאה')} <Info title={L('Members counted apart', 'חברים שנספרים בנפרד')}>{L('Some parties or members of these lists count for another bloc, and the search moves whole lists.', 'חלק מהמפלגות או החברים ברשימות אלה נספרים בגוש אחר, והחיפוש מזיז רשימות שלמות.')}</Info></>}
+              : <>{one ? L('does not flip it in the chamber', 'אינו הופך אותו במליאה') : L('do not flip it in the chamber', 'אינם הופכים אותו במליאה')} <Info title={L('Members counted apart', 'חברים שנספרים בנפרד')}>{L('Some parties or MKs on these lists sit in another bloc, and the votes move with the whole list.', 'חלק מהמפלגות או מחברי הכנסת ברשימות אלה יושבים בגוש אחר, והקולות עוברים עם הרשימה כולה.')}</Info></>}
             {!found.unsure && found.lotteryFrom !== undefined && <div className="ink2">{tieNote(Number(found.lotteryFrom), s.rules.tiePolicy, lang === 'he')}</div>}
             {after !== null && <div className="row" style={{ marginTop: 6 }}>{meter(after)}<bdi dir="ltr">{seats} → {after} / {majority}</bdi></div>}
             <div><button className="btn small" style={{ marginTop: 6 }} onClick={() => dispatch({ type: 'transfer', from: found.from, to: found.to, votes: Number(found.votes) })}>{L('Apply', 'החלה')}</button></div>
