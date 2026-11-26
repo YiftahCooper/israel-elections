@@ -358,7 +358,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
         <section>
           <h3>{L('How the list won its seats', 'איך הרשימה זכתה במנדטים')}</h3>
           <div className="kv small">
-            {lr.qualified && <><span>{L('Share of qualifying votes', 'מהקולות המשתתפים')}</span><span>{percent(l.votes, r.qualifyingVotes, digits)}</span></>}
+            {lr.qualified && <><span>{L('Share of votes for lists that passed', 'מהקולות המשתתפים')}</span><span>{percent(l.votes, r.qualifyingVotes, digits)}</span></>}
             <span>{L('Share of ballots cast', 'מכלל המצביעים')}</span><span>{percent(l.votes, votesCast(s), digits)}</span>
             <span>{L('Share of registered voters', 'מבעלי זכות הבחירה')}</span><span>{percent(l.votes, s.registered, digits)}</span>
             {lr.qualified && <>

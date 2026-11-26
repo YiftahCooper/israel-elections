@@ -92,8 +92,8 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
             <tr><td><b>{L('Total', 'סה״כ')}</b></td><td className="n"><b>{fmtInt(seatlessVotes)}</b></td><td className="n"><b>{percent(seatlessVotes, r.totalValid, digits, undefined, { pad: digits })}</b></td></tr></tbody></table></div>
           : <p className="small muted" style={{ margin: 0 }}>{L('Every list that ran won a seat.', 'כל הרשימות זכו במנדט.')}</p>}
         {/* the qualifying votes are the rest of the valid votes (owner, 16 Nov 2026: one tile, not two that add up to 100%) */}
-        {expert && <div className="fig-qualifying"><div className="kv small"><span>{L('Qualifying votes', 'קולות משתתפים')}</span><span>{fmtInt(r.qualifyingVotes)} · {percent(r.qualifyingVotes, r.totalValid, digits)} {L('of valid', 'מהכשרים')}</span></div>
-        <p className="small" style={{ margin: '4px 0 0' }}>{noThreshold ? <QualifyingNoThreshold s={s} r={r} seatlessVotes={seatlessVotes} /> : <>{L(`${r.lists.filter(x => x.qualified).length} qualifying lists`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></>}</p></div>}
+        {expert && <div className="fig-qualifying"><div className="kv small"><span>{L('Votes for lists that passed', 'קולות משתתפים')}</span><span>{fmtInt(r.qualifyingVotes)} · {percent(r.qualifyingVotes, r.totalValid, digits)} {L('of valid', 'מהכשרים')}</span></div>
+        <p className="small" style={{ margin: '4px 0 0' }}>{noThreshold ? <QualifyingNoThreshold s={s} r={r} seatlessVotes={seatlessVotes} /> : <>{L(`${r.lists.filter(x => x.qualified).length} lists passed the threshold`, `${r.lists.filter(x => x.qualified).length} רשימות משתתפות`)} <Info title={L('Votes for lists that passed', 'קולות משתתפים')}>{L(`The votes of the ${r.lists.filter((x) => x.qualified).length} lists that passed the threshold; only these share the seats. ${fmtInt(r.unrepresentedVotes)} valid votes went to lists that did not.`, `הקולות של ${r.lists.filter((x) => x.qualified).length} הרשימות שעברו את החסימה; רק הן מתחלקות במנדטים. ${fmtInt(r.unrepresentedVotes)} קולות כשרים ניתנו לרשימות שלא עברו.`)}</Info></>}</p></div>}
       </Fig>
 
       {/* turnout reads with its field's two decimals at every complexity, open or closed (owner, 18-19 Nov 2026) */}
@@ -126,7 +126,7 @@ function QualifyingNoThreshold({ s, r, seatlessVotes }: { s: Scenario; r: Alloca
   const taking = r.lists.filter(x => x.qualified).length;
   const won = r.lists.filter(x => x.seats > 0).length;
   const quotaOnly = !!s.rules.remainderRequiresInitialSeat;
-  return <>{L(`No threshold: all ${taking} lists take part; ${won} won a seat`, `אין אחוז חסימה: כל ${taking} הרשימות משתתפות; ${won === 1 ? 'אחת זכתה' : `${won} זכו`} במנדט`)} <Info title={L('Qualifying votes', 'קולות משתתפים')}>{L(
+  return <>{L(`No threshold: all ${taking} lists take part; ${won} won a seat`, `אין אחוז חסימה: כל ${taking} הרשימות משתתפות; ${won === 1 ? 'אחת זכתה' : `${won} זכו`} במנדט`)} <Info title={L('Votes for lists that passed', 'קולות משתתפים')}>{L(
     `There is no threshold, so the votes of every list count.${quotaOnly ? ' Only lists that won a whole quota share the remaining seats.' : ''} ${fmtInt(seatlessVotes)} valid votes went to lists that won no seat.`,
     `אין אחוז חסימה, ולכן הקולות של כל הרשימות נספרים.${quotaOnly ? ' רק רשימות שזכו במודד שלם מתחלקות במנדטים הנותרים.' : ''} ${fmtInt(seatlessVotes)} קולות כשרים ניתנו לרשימות שלא זכו במנדט.`)}</Info></>;
 }

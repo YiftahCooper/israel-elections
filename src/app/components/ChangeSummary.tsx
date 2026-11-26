@@ -114,8 +114,9 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     // the label and the changed seats are read out when they change, not the buttons beside them (review V4 A12)
     <div ref={line} className={`session ${edited ? '' : 'idle'}`}>
       <FittingLabel full={label} short={reference ? String(count) : compact} reference={namedReference} locale={appLocale(lang)} />
-      {/* the (i) right after the label it explains, on the same line at every width */}
-      <Info title={L('Your changes', 'השינויים שלכם')}>{L('Each edit counts once: votes, rules, lists, blocs or coalition roles. Colours don’t count. History lists every change and lets you go back to one.', 'כל עריכה נספרת פעם אחת: קולות, כללים, רשימות, גושים או תפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מופיע כל שינוי, ואפשר לחזור אליו.')}</Info>
+      {/* the (i) right after the label it explains, on the same line at every width; with no changes there is nothing to
+          explain (round 2 of the clarity pass, 26 Nov 2026) */}
+      {count > 0 && <Info title={L('Your changes', 'השינויים שלכם')}>{L('Each edit counts once: votes, rules, lists, blocs or coalition roles. Colours don’t count. History lists every change and lets you go back to one.', 'כל עריכה נספרת פעם אחת: קולות, כללים, רשימות, גושים או תפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מופיע כל שינוי, ואפשר לחזור אליו.')}</Info>}
       <span ref={changes} className="session-changes" role="status">
         {edited && <>
           {moves.length === 0

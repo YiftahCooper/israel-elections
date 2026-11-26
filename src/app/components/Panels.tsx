@@ -157,7 +157,7 @@ export function Localities({ s }: { s: Scenario }) {
   const [open, setOpen] = useState<string | null>(null);
   const ds = useStore(st => st.datasets[s.electionId]);
   const histLists = useMemo(() => (data && ds ? data.listIds.map(id => baselineOf(ds).lists.find(l => l.id === id) ?? null) : []), [data, ds]);
-  if (!hasLocalities) return <p className="ink2">{L('National results only', 'תוצאות ארציות בלבד')} <Info title={L('Locality coverage', 'כיסוי לפי יישובים')}>{L('Locality-level results are not available for this election in the sources used here; only national results are. Locality results start with the 2003 election (16th Knesset).', 'תוצאות לפי יישובים אינן זמינות לבחירות אלה במקורות שבשימוש כאן; זמינות רק תוצאות ארציות. תוצאות לפי יישובים זמינות החל מבחירות 2003 (הכנסת ה־16).')}</Info></p>;
+  if (!hasLocalities) return <p className="ink2">{L('National results only', 'תוצאות ארציות בלבד')} <Info title={L('Locality coverage', 'כיסוי לפי יישובים')}>{L('Results by locality start with the 2003 election.', 'תוצאות לפי יישוב קיימות החל מבחירות 2003.')}</Info></p>;
   if (failed) return <LocalitiesFailed retry={retry} />;
   if (!data || data.id !== s.electionId) return <p className="muted">{L('Loading official locality results…', 'טוען תוצאות לפי יישובים…')}</p>;
   // rows are keyed by position in the file: older elections have no locality codes
@@ -177,9 +177,8 @@ export function Localities({ s }: { s: Scenario }) {
         <button aria-pressed={view === 'table'} onClick={() => setView('table')}>{L('Table', 'טבלה')}</button>
       </span>
       {view === 'map' ? <LocalityMap key={s.electionId} s={s} data={data} historicalLists={histLists} locations={locations} names={names} locationError={locationError} retryLocations={retryLocations} /> : <>
-      <p className="small ink2">{L('Historical locality results', 'תוצאות היסטוריות לפי יישוב')} <Info title={L('Locality results', 'תוצאות לפי יישוב')}>{LOCALITIES_SUMMED_FROM_STATIONS.has(data.id)
-        ? L(`Official Central Elections Committee polling-station results, summed by locality (${fmtInt(localityCount)} localities), plus double-envelope votes. No official locality table exists for this election. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות הקלפיות הרשמיות של ועדת הבחירות, מסוכמות לפי יישוב (${fmtInt(localityCount)} יישובים), ולמעטפות החיצוניות. לבחירות אלה אין טבלת יישובים רשמית. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)
-        : L(`Official Central Elections Committee results for ${fmtInt(localityCount)} localities plus double-envelope votes. These are the historical figures; your scenario changes are national and are not distributed to localities.`, `תוצאות רשמיות של ועדת הבחירות ל־${fmtInt(localityCount)} יישובים ולמעטפות החיצוניות. אלה הנתונים ההיסטוריים; שינויי התרחיש הם ארציים ואינם מחולקים ליישובים.`)}</Info></p>
+      {/* one plain line (round 2 of the clarity pass, 26 Nov 2026): how the table was put together belongs on the Sources tab */}
+      <p className="small ink2">{L(`Official results in ${fmtInt(localityCount)} localities. Your changes are not shown here.`, `התוצאות הרשמיות ב־${fmtInt(localityCount)} יישובים. השינויים שלכם אינם מוצגים כאן.`)}</p>
       {data.id === 'k17' ? <Locality2006Note /> : (data.noteEn || data.noteHe) && <p className="small callout">{datesInText((lang === 'he' ? data.noteHe ?? data.noteEn : data.noteEn ?? data.noteHe) ?? '')}</p>}
       <div className="row" style={{ marginBottom: 8 }}>
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} placeholder={L('Locality name or code', 'שם יישוב או סמל')} aria-label={L('Search localities', 'חיפוש יישוב')} />
@@ -277,7 +276,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
     <div className="grid2 stack-sm" style={{ alignItems: 'start', gap: 18 }}>
       <div>
         <h3>{L('Data status', 'מצב הנתונים')}</h3>
-        <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{ds.status.stage === 'official-final' ? L('Official final results', 'תוצאות סופיות רשמיות') : L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת')} <Info title={L('Data status details', 'פירוט מצב הנתונים')}>{datesInText(lang === 'he' ? ds.status.noteHe.replaceAll('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת') : ds.status.noteEn.replaceAll('Gazette publication unverified', 'Gazette publication not yet verified'))}{ds.id === 'k19' && <><br />{k19StatusNote(lang)}</>}</Info></p>
+        <p className="small" style={ds.status.stage === 'official-final' ? undefined : { color: 'var(--warn-ink)' }}>{ds.status.stage === 'official-final' ? L('Official final results', 'תוצאות סופיות רשמיות') : L('Not yet checked against the official gazette', 'טרם הושווה לפרסום ברשומות')} <Info title={L('Data status details', 'פירוט מצב הנתונים')}>{datesInText(lang === 'he' ? ds.status.noteHe.replaceAll('הפרסום ברשומות לא אומת', 'הפרסום ברשומות טרם אומת') : ds.status.noteEn.replaceAll('Gazette publication unverified', 'Gazette publication not yet verified'))}{ds.id === 'k19' && <><br />{k19StatusNote(lang)}</>}</Info></p>
         <div className="kv small" style={{ maxWidth: 440 }}>
           <span>{L('Registered voters', 'בעלי זכות בחירה')}</span><span>{fmtInt(ds.totals.registered)}</span>
           <span>{L('Votes cast', 'מצביעים')}</span><span>{fmtInt(ds.totals.votesCast)}</span>
@@ -309,28 +308,29 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
               <b dir="auto">{datesInText(lang === 'en' ? x.publisherEn ?? x.publisher : x.publisherHe ?? x.publisher)}</b> {x.official ? <span className="chip ok">{L('official', 'רשמי')}</span> : <span className="chip secondary">{L('secondary', 'משני')}</span>}<br />
               <span dir="auto" style={{ display: 'block' }}>{datesInText(lang === 'en' ? x.shownEn ?? englishSourceText(x.descriptionEn ?? x.description) : x.shownHe ?? x.description)}</span>
               <SourceAddress x={x} />
-              <div className="muted tiny">{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{formatDate(x.retrievedAt, lang)}</bdi></>}{x.sha256 && <>{x.retrievedAt ? ' · ' : ''}<bdi dir="ltr">SHA-256 {x.sha256.slice(0, 16)}…</bdi></>}</div>
+              <div className="muted tiny">{/* the file's fingerprint stays in the downloadable source list, not on screen */}{x.retrievedAt && <>{L('Retrieved', 'נשלף')} <bdi dir="ltr">{formatDate(x.retrievedAt, lang)}</bdi></>}</div>
             </li>
           ))}
         </ul>}
         {!failed && own.length > 0 && <div className="sources-own small">
-          <h4>{L('Typed in by this project', 'הוקלד בפרויקט')}</h4>
+          <h4>{L('Copied by hand from the originals', 'הועתק ידנית מהמקורות')}</h4>
           <ul className="credits" style={{ paddingInlineStart: 18 }}>{own.map((x) => <li key={x.id} style={{ marginBottom: 6 }}>{lang === 'en' ? x.descriptionEn ?? x.description : x.description}{/^https?:\/\//.test(x.url) && <> · <a href={x.url.split(' ')[0]} target="_blank" rel="noreferrer">{L('official original', 'המקור הרשמי')}</a></>}</li>)}</ul>
         </div>}
-        <p className="small muted">{L('Names, colours and blocs', 'שמות, צבעים וגושים')} <Info title={L('App annotations', 'נתונים של האפליקציה')}>{L('Short and English list names are assigned by this application. Colours are the colours associated with each party where a source supports it, otherwise an app colour; blocs follow the sources given for each grouping. None of these is official election data.', 'השמות המקוצרים והאנגליים של הרשימות נקבעו באפליקציה זו. הצבעים הם הצבעים המזוהים עם כל מפלגה כשיש לכך מקור, ואחרת צבע של האפליקציה; הגושים לפי המקורות של כל חלוקה. אף אחד מאלה אינו נתון בחירות רשמי.')}</Info></p>
+        <p className="small muted">{L('Names, colours and blocs', 'שמות, צבעים וגושים')} <Info title={L('Not official data', 'אינם נתונים רשמיים')}>{L('Short and English list names are the app’s. Colours are each party’s own where a source shows them, otherwise the app’s. Blocs follow the sources named for each grouping.', 'השמות המקוצרים והאנגליים של הרשימות הם של האפליקציה. הצבעים הם של כל מפלגה כשמקור מראה אותם, ואחרת של האפליקציה. הגושים לפי המקורות של כל חלוקה.')}</Info></p>
         <h3 style={{ marginTop: 14 }}>{L('Method and limits', 'שיטה ומגבלות')}</h3>
         <ul className="small" style={{ paddingInlineStart: 18 }}>
-          <li>{L('Seats are computed by deterministic code implementing sections 81–82 of the Knesset Elections Law with exact integer arithmetic. Automated tests check that it reproduces the officially published seats of every list in every election offered here.', 'המנדטים מחושבים בקוד דטרמיניסטי המממש את סעיפים 81–82 לחוק הבחירות בחשבון שלמים מדויק. בדיקות אוטומטיות מוודאות שהוא משחזר את המנדטים שפורסמו רשמית לכל רשימה בכל מערכת בחירות המוצגת כאן.')}</li>
-          <li>{L('Exact ties: today’s law, like the 1949 law, decides them by lottery; for 1951–1969 the sources checked state no rule. The app flags a tie and lets you choose the outcome.', 'שוויון מדויק: לפי החוק כיום, וכך גם ב־1949, מכריעה הגרלה; לשנים 1951–1969 לא אותר כלל במקורות שנבדקו. האפליקציה מסמנת שוויון ומאפשרת לבחור את התוצאה.')}</li>
-          <li>{L('Elected candidates are those elected on election night; later replacements and the Norwegian Law are not modelled.', 'הנבחרים הם מי שנבחרו בליל הבחירות; מחליפים מאוחרים והחוק הנורבגי אינם ממודלים.')}</li>
-          <li>{L('Demographic turnout tools are hypothetical and labelled as such.', 'כלי ההצבעה הדמוגרפיים היפותטיים ומסומנים ככאלה.')}</li>
+          <li>{L('Seats are worked out by the rules of sections 81–82 of the Knesset Elections Law, with exact numbers. Tests check that the app gives the official seats of every list in every election here.', 'המנדטים מחושבים לפי סעיפים 81–82 לחוק הבחירות לכנסת, במספרים מדויקים. בדיקות מוודאות שהאפליקציה נותנת את המנדטים הרשמיים של כל רשימה בכל מערכת בחירות כאן.')}</li>
+          <li>{L('Exact ties: today’s law, like the 1949 law, decides them by lottery; the rule for 1951–1969 is not known. The app marks a tie and lets you choose the outcome.', 'שוויון מדויק: לפי החוק כיום, וכך גם ב־1949, מכריעה הגרלה; הכלל לשנים 1951–1969 אינו ידוע. האפליקציה מסמנת שוויון ומאפשרת לבחור את התוצאה.')}</li>
+          <li>{L('Elected candidates are those elected on election night, before any later replacement (including under the Norwegian Law).', 'הנבחרים הם מי שנבחרו בליל הבחירות, לפני כל החלפה מאוחרת (גם לפי החוק הנורבגי).')}</li>
+          {LOCALITIES_SUMMED_FROM_STATIONS.has(ds.id) && <li>{L('No official table by locality exists for this election: the Localities figures are the official polling-station results added up by locality.', 'לבחירות אלה אין טבלה רשמית לפי יישוב: הנתונים בלשונית יישובים הם תוצאות הקלפיות הרשמיות, מסוכמות לפי יישוב.')}</li>}
+          <li>{L('Changing turnout by voter group is a what-if, and is marked as one.', 'שינוי ההצבעה לפי קבוצת מצביעים הוא תרחיש "מה אם", ומסומן ככזה.')}</li>
         </ul>
         {/* secondary history sources follow the election's own data status and sources (c-design-principles-17) */}
         <AfterElectionSources ds={ds} />
       </div>
       <div>
         <details><summary>{L('English list names', 'שמות הרשימות באנגלית')}</summary>
-          <p className="small">{L('Existing common-use English labels are app annotations. The entries below are unofficial shortened transliterations, not verified official English names. Other names, including names you type, are shown in Hebrew.', 'השמות האנגליים המקובלים הם נתוני תצוגה של האפליקציה. הרשומות להלן הן תעתיקים מקוצרים לא רשמיים, לא שמות רשמיים באנגלית שאומתו. שמות אחרים, גם שמות שאתם מקלידים, מוצגים בעברית.')}</p>
+          <p className="small">{L('A list with a common English name shows it. The lists below have no official English name, so a short transliteration is shown. Names you type stay in Hebrew.', 'רשימה שיש לה שם מקובל באנגלית מוצגת בו. לרשימות שלהלן אין שם רשמי באנגלית, ולכן מוצג תעתיק קצר. שמות שאתם מקלידים נשארים בעברית.')}</p>
           <ul className="small">{ds.lists.filter(l => l.englishName).map(l => <li key={l.id}>{listLabel(l, lang)} · {L('Unofficial transliteration', 'תעתיק לא רשמי')}{byId.get(l.englishName!.sourceId) && <> · {L('Hebrew name from ', 'השם העברי מתוך ')}<bdi dir="auto">{datesInText(lang === 'en' ? byId.get(l.englishName!.sourceId)!.publisherEn ?? byId.get(l.englishName!.sourceId)!.publisher : byId.get(l.englishName!.sourceId)!.publisher)}</bdi></>}</li>)}</ul>
         </details>
         {(() => {
@@ -356,7 +356,7 @@ export function Sources({ ds }: { ds: ElectionDataset }) {
             { id: 'commons', title: L('Wikimedia Commons', 'ויקישיתוף'), secondary: true, rows: logos.filter((x) => isCommons(x.logo)) }].filter((g) => g.rows.length);
           return logos.length ? <>
             <h3>{L('Party logos', 'סמלי המפלגות')}</h3>
-            <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Verified party marks from official sources or Wikimedia Commons (secondary). Logos are shown only with evidence for this election. Rights and credits are separate from the app licence.', 'סמלים ממקורות רשמיים או מוויקישיתוף (משני). סמלים מוצגים רק עם ראיות לשימוש בבחירות האלה. הזכויות והייחוס נפרדים מרישיון האפליקציה.')}</Info></p>
+            <p className="small ink2">{L('Separate licences', 'רישיונות נפרדים')} <Info title={L('Logo licences', 'רישיונות הסמלים')}>{L('Party logos from the parties’ own material or Wikimedia Commons (secondary), each shown only for an election it was used in. Each has its own rights, separate from the app’s licence.', 'סמלי המפלגות מחומרי המפלגות עצמן או מוויקישיתוף (משני), וכל סמל מוצג רק בבחירות שבהן השתמשו בו. לכל סמל זכויות משלו, נפרדות מרישיון האפליקציה.')}</Info></p>
             {groups.map((g) => <Fragment key={g.id}>
               <p className="small" style={{ margin: '8px 0 2px', fontWeight: 600 }}><bdi>{g.title}</bdi>{g.secondary && <> <span className="chip secondary">{L('secondary', 'משני')}</span></>}</p>
               <ul className="small credits" style={{ paddingInlineStart: 18, marginTop: 2 }}>{g.rows.map((x) => item(x, g.secondary))}</ul>

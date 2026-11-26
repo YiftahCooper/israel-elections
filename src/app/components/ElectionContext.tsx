@@ -14,8 +14,10 @@ import { datesInText, formatDate } from '../dateFormat.ts';
 
 export function EvidenceLink({ source }: { source: ContextSource }) {
   const L = useL(); const lang = useLang();
-  const label = source.evidence === 'official' ? L('Official', 'רשמי') : source.evidence === 'secondary' ? L('Secondary', 'מקור משני') : L('Not confirmed', 'לא אושר');
-  return <a href={source.url} target="_blank" rel="noreferrer" className="context-source">{lang === 'he' ? source.publisherHe : source.publisher} · {label}</a>;
+  // an official source is the expected case and says nothing; only a secondary one is labelled (round 2 of the clarity
+  // pass, 26 Nov 2026: "· Official" after every link). An unconfirmed event already says so before its text.
+  const label = source.evidence === 'secondary' ? L('Secondary', 'מקור משני') : source.evidence === 'unresolved' ? L('Not confirmed', 'לא אושר') : null;
+  return <a href={source.url} target="_blank" rel="noreferrer" className="context-source">{lang === 'he' ? source.publisherHe : source.publisher}{label && <> · {label}</>}</a>;
 }
 
 /** Immutable history, deliberately independent of the scenario/action log. */

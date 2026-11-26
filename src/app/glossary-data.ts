@@ -230,7 +230,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
   },
   {
-    id: 'qualifying', nameHe: 'קולות משתתפים', nameEn: 'Qualifying votes', level: 'standard', provenance: 'sourced',
+    id: 'qualifying', nameHe: 'קולות משתתפים', nameEn: 'Votes for lists that passed', level: 'standard', provenance: 'sourced',
     defHe: 'סך הקולות הכשרים של כל הרשימות שעברו את אחוז החסימה. רק הם מחולקים בין המנדטים, ולכן חלקה של רשימה מהם גדול מחלקה מכלל הקולות הכשרים.',
     defEn: 'The valid votes of all lists that passed the threshold. Only these are divided among the seats, so a list’s share of them is larger than its share of all valid votes.',
     linkHe: L.s81, linkEn: E.seats,
@@ -253,7 +253,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
     id: 'quota', nameHe: 'המודד הכללי', nameEn: 'General quota', level: 'simple', provenance: 'sourced',
     defHe: 'סך הקולות המשתתפים חלקי 120, והמספר השלם היוצא (סעיף 81(ב)). זהו בקירוב "מחיר" של מנדט: כל רשימה מקבלת תחילה מנדט לכל מודד שלם בקולותיה. ב־1949 חילקו את כל הקולות הכשרים ב־121.',
-    defEn: 'Qualifying votes divided by 120, keeping the whole number (section 81(b)). It is roughly the “price” of a seat: each list first gets one seat per whole quota in its votes. In 1949 all valid votes were divided by 121.',
+    defEn: 'The votes of the lists that passed the threshold, divided by 120, keeping the whole number (section 81(b)). It is roughly the “price” of a seat: each list first gets one seat per whole quota in its votes. In 1949 all valid votes were divided by 121.',
     linkHe: H.seats, linkEn: E.seats,
     sources: [
       src(L.s81, 'he', 'law', 's.81(b)–(c): integer quotient is "המודד"; one seat per whole quota'),
