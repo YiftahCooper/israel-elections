@@ -357,13 +357,19 @@ export function ComparisonLine({ c }: { c: Comparison | null }) {
   const share = c.before.valid && c.after.valid ? { num: 100n * (BigInt(c.after.votes) * BigInt(c.before.valid) - BigInt(c.before.votes) * BigInt(c.after.valid)), den: BigInt(c.before.valid) * BigInt(c.after.valid) } : null;
   const name = comparedName(c, lang);
   const change = d === 0 ? L('the same', 'אותו מספר') : L(`${Math.abs(d)} ${d > 0 ? 'more' : 'fewer'}`, d > 0 ? `עוד ${d}` : `${-d} פחות`);
+  // a list divided since: the earlier list's seats, then what its successors have together (not "Religious Zionism → 3
+  // lists won 14 seats; now 13", which read as this list's 13; round 2 of the clarity pass, 26 Nov 2026)
+  const earlierName = c.kind === 'group' ? c.counted.map((l) => { const h = prevList(c, l.id); return h ? listShort(h, lang) : l.id; }).join(' + ') : name;
   return <div className="ph-cmpline" data-kind={c.kind}>
-    <span>{lang === 'he'
+    <span>{c.kind === 'group' ? (lang === 'he'
+      ? <>{hebrewPrefix('ב', py)} {c.before.seats === 1 ? 'היה' : 'היו'} {hebrewPrefix('ל', earlierName)} {seatsText(c.before.seats, 'he')}. מאז היא התחלקה בין {c.group.length} רשימות, ולהן יחד יש עכשיו {c.after.seats} ({change}).</>
+      : <>In {py}, <bdi>{earlierName}</bdi> won {seatsText(c.before.seats, 'en')}. It has since divided into {c.group.length} lists, which together now have {c.after.seats} ({change}).</>)
+      : lang === 'he'
       ? <>{hebrewPrefix('ב', py)} {c.before.seats === 1 ? 'היה' : 'היו'} {hebrewPrefix('ל', name)} {seatsText(c.before.seats, 'he')}; עכשיו {c.after.seats} ({change}).</>
       : <>In {py}, <bdi>{name}</bdi> won {seatsText(c.before.seats, 'en')}; now {c.after.seats} ({change}).</>}</span>
     {share && share.num !== 0n && <span className="ph-num">{lang === 'he'
-      ? <>שיעור הקולות {share.num > 0n ? 'גבוה' : 'נמוך'} ב־<bdi dir="ltr">{rationalPoints(share, digits, true)}</bdi> נקודות אחוז לעומת {py}.</>
-      : <>Vote share <bdi dir="ltr">{rationalPoints(share, digits, true)}</bdi> points {share.num > 0n ? 'higher' : 'lower'} than in {py}.</>}</span>}
+      ? <>{c.kind === 'group' ? 'שיעור הקולות שלהן יחד' : 'שיעור הקולות'} {share.num > 0n ? 'גבוה' : 'נמוך'} ב־<bdi dir="ltr">{rationalPoints(share, digits, true)}</bdi> נקודות אחוז לעומת {py}.</>
+      : <>{c.kind === 'group' ? 'Their vote share together is' : 'Vote share'} <bdi dir="ltr">{rationalPoints(share, digits, true)}</bdi> points {share.num > 0n ? 'higher' : 'lower'} than in {py}.</>}</span>}
     <Info title={L(`Compared with ${py}`, `השוואה ${hebrewPrefix('ל', py)}`)}><ComparisonWhy c={c} /></Info>
     {(c.notCounted.length > 0 || c.left.length > 0) && <div className="tiny muted ph-notcounted">
       {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={`${n.partyId}${n.listId}`}>{L(`${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}, so it is not in the ${py} figure.`, `${partyShort(n.partyId, 'he')} רצה ${hebrewPrefix('ב', py)} בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'}, ולכן אינה במספר של ${py}.`)} </span>; })}
