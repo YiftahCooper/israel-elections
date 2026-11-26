@@ -182,7 +182,7 @@ test('each mixed-list choice is named by its effect and shows its chart mark',as
 test('loading another membership election never moves the sections below',async({page})=>{
  await start(page);await edit(page);const picker=editor(page).locator('.family-picker'),bottom=()=>picker.evaluate(e=>e.getBoundingClientRect().bottom);
  await page.route('**/data/k25.json',async r=>{await new Promise(f=>setTimeout(f,600));await r.continue();});
- await editor(page).getByRole('button',{name:'Earlier membership election',exact:true}).click();await expect(picker).toHaveAttribute('aria-busy','true');const loading=await bottom();
+ await editor(page).getByRole('button',{name:'Previous election',exact:true}).click();await expect(picker).toHaveAttribute('aria-busy','true');const loading=await bottom();
  await expect(picker).toHaveAttribute('aria-busy','false');await expect(picker.locator('label').first()).toBeVisible();expect(await bottom()).toBe(loading);
  await expect(editor(page).getByRole('textbox',{name:'Name',exact:true})).toHaveAttribute('type','text');
 });

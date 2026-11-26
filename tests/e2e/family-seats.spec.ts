@@ -58,7 +58,7 @@ test('touch: the first tap shows the facts, the second opens the details; Hebrew
 
 test('years without seats: no list is a dash, a list with no seats is 0, Morasha 1984 on both charts',async({page})=>{
  await start(page);await only(page,'Radical right');
- await expect(bar(page,0)).toHaveAttribute('aria-label',/No list placed in this family/);await expect(bar(page,18)).toHaveAttribute('aria-label',/Radical right · 0 seats · Some lists not yet classified$/);
+ await expect(bar(page,0)).toHaveAttribute('aria-label',/No list placed in this family/);await expect(bar(page,18)).toHaveAttribute('aria-label',/Radical right · 0 seats · Other lists may also belong$/);
  await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Radical right',exact:true}).click();
  await expect(seg(page,10,1)).toHaveAttribute('aria-label','Matzad: 1 seat · Morasha · 1984');
  await page.getByRole('button',{name:'Religious Zionist',exact:true}).click();await page.getByRole('button',{name:'Haredi',exact:true}).click();

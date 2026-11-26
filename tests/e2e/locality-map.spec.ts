@@ -242,7 +242,7 @@ test('Hebrew map references remain isolated LTR and the phone legend is collapse
  await page.getByRole('button',{name:'הסבר: קווי שביתת הנשק · יהודה ושומרון',exact:true}).click();
  const pop=page.locator('.pop').last();
  await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'V(1)(b)'})).toBeVisible();
- await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:'±60'})).toBeVisible();
+ await expect(pop.locator('bdi[dir="ltr"]').filter({hasText:/^60$/})).toBeVisible();
  expect(await pop.locator('bdi').evaluateAll(xs=>xs.every(x=>!/[.,:;]$/.test(x.textContent?.trimEnd()??'')))).toBe(true);
  await expect(pop).not.toContainText('OSM');
  await page.keyboard.press('Escape');

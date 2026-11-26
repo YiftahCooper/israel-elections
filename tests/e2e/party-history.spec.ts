@@ -121,7 +121,7 @@ test('Compare tags the Democrats as ran jointly, notes the comparison under the 
   const dem = panel.locator('li').filter({ hasText: 'Labor + Meretz' });
   await expect(dem).toContainText('The Democrats (2026) is compared with Labor (4 seats) and Meretz (0 seats) in 2022, taken together.');
   await expect(dem).not.toContainText('How sure');
-  await expect(dem).toContainText('Labor renamed The Democrats (2024)');
+  await expect(dem).toContainText('Labor renamed The Democrats (2024; not on official record)');
   await expect(dem).not.toContainText('labor-democrats-rename');
 });
 
@@ -141,7 +141,7 @@ test('each pairing in Compare says what is compared with what and why, behind th
   await page.keyboard.press('Escape');
   await row('The Democrats').getByRole('button', { name: /^Why this pairing/ }).click();
   const dem = page.locator('.pop').filter({ hasText: 'This pairing' });
-  await expect(dem).toContainText('Labor renamed The Democrats (2024)');
+  await expect(dem).toContainText('Labor renamed The Democrats (2024; not on official record)');
   await expect(dem.getByRole('link', { name: /^Israel Democracy Institute/ })).toBeVisible();
 });
 

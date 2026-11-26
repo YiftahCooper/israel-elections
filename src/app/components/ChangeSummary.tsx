@@ -116,7 +116,10 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
       <FittingLabel full={label} short={reference ? String(count) : compact} reference={namedReference} locale={appLocale(lang)} />
       {/* the (i) right after the label it explains, on the same line at every width; with no changes there is nothing to
           explain (round 2 of the clarity pass, 26 Nov 2026) */}
-      {count > 0 && <Info title={L('Your changes', 'השינויים שלכם')}>{L('Each edit counts once: votes, rules, lists, blocs or coalition roles. Colours don’t count. History lists every change and lets you go back to one.', 'כל עריכה נספרת פעם אחת: קולות, כללים, רשימות, גושים או תפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מופיע כל שינוי, ואפשר לחזור אליו.')}</Info>}
+      {count > 0 && <Info title={L('Your changes', 'השינויים שלכם')}>{reference
+        // the full reference name, which the label may cut short on a narrow screen
+        ? <>{L('Changes are counted from ', 'השינויים נספרים מ')}{lang === 'he' && !/^[\u05d0-\u05ea]/.test(referenceName) ? '־' : ''}<bdi>{referenceName}</bdi>. </>
+        : L('Changes are counted from the official result. ', 'השינויים נספרים מהתוצאה הרשמית. ')}{L('Each edit counts once: votes, rules, lists, blocs or coalition roles. Colours don’t count. History lists every change and lets you go back to one.', 'כל עריכה נספרת פעם אחת: קולות, כללים, רשימות, גושים או תפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מופיע כל שינוי, ואפשר לחזור אליו.')}</Info>}
       <span ref={changes} className="session-changes" role="status">
         {edited && <>
           {moves.length === 0
