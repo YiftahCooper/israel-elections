@@ -1,5 +1,12 @@
 # Changelog
 
+## 26 November 2026
+
+- Plainer Compare (26 Nov): while comparing, each list's line says what its numbers are ("2022: 32 seats · now ▼ −5") and names the old list only when it was called something else; the Copy votes box says what would happen in a sentence ("Likud would have 28 seats (1 more)"); Side by side has one Swap (on the strip), "Pair lists" instead of "Matching", "New or ended" instead of "Unmatched", and no certainty or "party registry" notes; the vote-source choice reads "Other lists" and "People who stayed home".
+- Scenarios (26 Nov): "Duplicate scenario" is gone, since Save as… already saves a copy under a new name; the Scenarios page drops two (i)s that repeated its first line; the Switch scenario list says "Not saved yet" and "Votes from the other lists", and a scenario with no changes no longer has an empty fold.
+- Charts, Turnout and Localities (26 Nov): the threshold chart says its numbers are votes above or short of the threshold; shorter (i)s on Turnout; the Localities map drops the name-source line in every hover, the line-precision and geometry notes and the long "current grouping" note, says how many places are missing only when some are, and the 2006 note is one plain line.
+- Settings (26 Nov): every tool and detail's (i) says in one plain line what it does; "All candidates" is now "Start with every candidate", "Reason not recorded" is "Reason not known" and "Turnout line on Turnout" is "Turnout over the years"; long (i)s are shorter; joint-list seat colours move to the Expert part.
+
 ## 24 November 2026
 
 - New address (24 Nov): the site is now at haknesset.co.il, which opens in Hebrew. haknesset.com and hakneset.com open it in English, and hakneset.co.il and the old github.io address forward to it. Gallery share links use the new address.
