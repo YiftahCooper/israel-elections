@@ -301,7 +301,7 @@ function GovernmentComposition({ data, ds, government: g, investiture = true, ow
         {/* an MK elected on a coalition list whose part is "other" stood outside the coalition (Mapam's six in 1984,
             Chikli in 2021): said in those words, not "Other participation" (V2 fault A7) */}
         {!person.countedInFactionSeats && <span className="small">{role === 'member-with-ministries' ? L('Member', 'חברות בקואליציה') : role === 'other' ? L('Not in the coalition', 'מחוץ לקואליציה') : L(...SUPPORT_LABELS[role])}</span>}
-        <span className="after-help-anchor">{votes[person.vote]} <Evidence data={data} explanation={person.countedInFactionSeats ? L('Counted in their list’s seats.', 'כלול במושבי הרשימה.') : qualification(person)} /></span>
+        <span className="after-help-anchor">{votes[person.vote]} <Evidence data={data} explanation={person.countedInFactionSeats ? L('This seat is counted in the list’s seats.', 'המושב נכלל במושבי הרשימה.') : qualification(person)} /></span>
       </div>;
     })}</div>}
   </div>;

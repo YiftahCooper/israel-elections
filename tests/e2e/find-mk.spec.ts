@@ -74,7 +74,9 @@ for (const lang of ['en', 'he'] as const) test(`someone who entered later is fou
   await expect(page.locator('.chamber [data-seat]').first()).toBeVisible();
   await box(page).fill(lang === 'en' ? 'Starkmann' : 'שטרקמן');
   const later = page.locator('.chamber .find-mk-later');
-  await expect(later).toContainText(lang === 'en' ? 'in the Knesset from 13 Sept 2022, after the first sitting' : 'בכנסת מ־13 בספט׳ 2022, אחרי הישיבה הראשונה');
+  // worded in the gender of the Knesset's own record (KNS_Person: female), never from the name (26 Nov 2026)
+  await expect(later).toContainText(lang === 'en' ? 'entered the Knesset on 13 Sept 2022, after the first sitting' : 'נכנסה לכנסת ב־13 בספט׳ 2022, אחרי הישיבה הראשונה');
+  await expect(later.getByRole('button')).toHaveText(lang === 'en' ? 'Her history' : 'המסלול שלה בכנסת');
   await expect(page.locator('.chamber .find-mk-result')).not.toContainText(lang === 'en' ? 'No MK by that name' : 'אין ח״כ');
   await expect(page.locator('.chamber .found-mark')).toHaveCount(0);
   await later.getByRole('button').click();

@@ -71,6 +71,7 @@ export function FindMk({ entries: seatEntries, query, onQuery, pick, onPick, kne
   const matches = findMks(entries, query), found = foundEntry(entries, query, pick);
   const later = found !== null ? entries.find((e) => e.seat === found)?.later : undefined;
   const laterName = later ? entries.find((e) => e.seat === found)!.label.split(' · ')[0] : '';
+  const laterGender = later && rt ? rt.people[later.personId]?.gender ?? null : null;
   // until the records are in, a miss is not yet a miss
   const waiting = !!knesset && !!seatedCandidateIds && !rt;
   const shown = matches.slice(0, 8);
@@ -86,9 +87,10 @@ export function FindMk({ entries: seatEntries, query, onQuery, pick, onPick, kne
       {query.trim() && !matches.length && !waiting && <span className="muted">{L('No MK by that name in this Knesset', 'אין ח״כ בשם הזה בכנסת הזאת')}</span>}
       {found !== null && found >= 0 && <span className="sr-only">{entries.find((e) => e.seat === found)?.label}</span>}
       {later && <span className="find-mk-later">
-        {L(`${laterName}: in the Knesset from ${formatDate(later.from, 'en')}, after the first sitting. The chart shows the seats as filled at the first sitting.`,
-          `${laterName}: בכנסת מ־${formatDate(later.from, 'he')}, אחרי הישיבה הראשונה. התרשים מראה את המושבים כפי שאוישו בישיבה הראשונה.`)}
-        {' '}<button type="button" className="btn small ghost" onClick={() => openMkHistory(later.personId)}>{L('MK history', 'המסלול בכנסת')}</button>
+        {/* worded in the gender the Knesset's record gives the person (every member has one; never from a name) */}
+        {L(`${laterName}: entered the Knesset on ${formatDate(later.from, 'en')}, after the first sitting. The chart shows the seats as filled at the first sitting.`,
+          `${laterName}: ${laterGender === 'f' ? 'נכנסה' : laterGender === 'm' ? 'נכנס' : 'כניסה'} לכנסת ב־${formatDate(later.from, 'he')}, אחרי הישיבה הראשונה. התרשים מראה את המושבים כפי שאוישו בישיבה הראשונה.`)}
+        {' '}<button type="button" className="btn small ghost" onClick={() => openMkHistory(later.personId)}>{L(laterGender === 'f' ? 'Her history' : laterGender === 'm' ? 'His history' : 'MK history', laterGender === 'f' ? 'המסלול שלה בכנסת' : laterGender === 'm' ? 'המסלול שלו בכנסת' : 'המסלול בכנסת')}</button>
       </span>}
     </span>
     {matches.length > 1 && <span className="find-mk-choices">
