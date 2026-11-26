@@ -226,7 +226,8 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
   /** A one-press vote edit. Goals show the signed change they make, so every goal reads the same way. */
   const quick = (label: string, target: number | null, showDelta = true, go?: (from: SourceChoice) => void) => {
     const t = target === null ? null : clampTarget(s, l, target, src);
-    const delta = showDelta && t !== null && t !== l.votes ? `(${fmtSigned(t - l.votes)})` : null;
+    // a goal the list is already at says so, instead of greying out with no reason
+    const delta = !showDelta || t === null ? null : t === l.votes ? L('(now)', '(כעת)') : `(${fmtSigned(t - l.votes)})`;
     return <button key={label} className="btn small" disabled={t === null || t === l.votes} aria-description={delta ? `${delta} · ${sourceName}` : sourceName} onMouseEnter={() => { if (t !== null && hoverPreviews) explainTarget(t); }} onFocus={() => { if (t !== null) explainTarget(t); }} onClick={() => { if (t !== null) commit(go ?? ((from) => editTo(target!, from))); }}><span dir={/^[×÷]/.test(label) ? 'ltr' : undefined}>{label}</span>{delta && <bdi dir="ltr" aria-hidden>{delta}</bdi>}</button>;
   };
   const walkShown = useShown('walk');
@@ -329,7 +330,7 @@ export function ListDetail({ s, r, ds, base, baseR, l }: { s: Scenario; r: Alloc
       {shortAgreement && agr && <p className="small">{L(`Surplus-vote agreement with ${nameOf(partnerId)}`, `הסכם עודפים עם ${nameOf(partnerId)}`)}{agrStatus?.active ? '' : !agr.enabled ? L(' (switched off)', ' (כבוי)') : L(' (no effect)', ' (ללא השפעה)')} <Info term="surplus" /></p>}
       <Feature id="agreements">
         <section>
-          <StartFrom s={s} part="agreements" />
+          {/* this list's agreement only: resetting or removing every agreement is in Merge & split → Surplus agreements */}
           <h3><EditMarker s={s} path={['agreements']} />{L('Surplus-vote agreement', 'הסכם עודפים')} <Info term="surplus" /></h3>
           <div className="row">
             <ChoicePicker className="agreement-partner" label={L('Agreement partner', 'שותפה להסכם')} value={partnerId}
