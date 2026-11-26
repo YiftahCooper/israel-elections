@@ -136,7 +136,7 @@ export const percent = (part: number | bigint, whole: number | bigint, digits = 
 /** A percentage that is already a number (an entered share, a computed float). */
 export const percentNum = (value: number, digits = 2, opts: Props = {}) => Number.isFinite(value) ? percent(value, 100, digits, undefined, opts) : '—%';
 
-const ppNote = (exact: string, lang: 'he' | 'en') => lang === 'he' ? `${exact} נק׳ אחוז: השינוי המדויק` : `${exact} pp: the exact change`;
+const ppNote = (exact: string, lang: 'he' | 'en') => lang === 'he' ? `בדיוק ${exact} נקודות אחוז` : `Exactly ${exact} percentage points`;
 /** A change in percentage points held as a float: signed, at most `digits` decimals, never a non-zero change as 0. */
 export function PointValue({ value, digits = 2, unsigned = false }: { value: number; digits?: number; unsigned?: boolean }) {
   const lang = useLang();
@@ -149,12 +149,14 @@ export function PointValue({ value, digits = 2, unsigned = false }: { value: num
 /** `unsigned` for a size that is never negative, such as a lead ("ahead by 25.6 pp"). */
 export const points = (value: number, digits = 2, unsigned = false) => <PointValue value={value} digits={digits} unsigned={unsigned} />;
 
-/** A change in percentage points held exactly (fmtPp). */
-export function RationalPoints({ value, digits }: { value: Rational; digits: number }) {
+/** A change in percentage points held exactly (fmtPp). `unsigned`: its size only, for a sentence that says
+ *  "higher" or "lower" in words. */
+export function RationalPoints({ value, digits, unsigned = false }: { value: Rational; digits: number; unsigned?: boolean }) {
   const lang = useLang();
-  const text = fmtPp(value, digits);
-  const sign = value.num > 0n ? '+' : value.num < 0n ? '−' : '';
+  const signed = fmtPp(value, digits);
+  const text = unsigned ? signed.replace(/^[+−]/, '') : signed;
+  const sign = unsigned ? '' : value.num > 0n ? '+' : value.num < 0n ? '−' : '';
   const exact = sign + exactDecimal(value.num < 0n ? -value.num : value.num, value.den);
   return <ExactValue text={text} note={exact === text ? undefined : ppNote(exact, lang)} />;
 }
-export const rationalPoints = (value: Rational, digits = 2) => <RationalPoints value={value} digits={digits} />;
+export const rationalPoints = (value: Rational, digits = 2, unsigned = false) => <RationalPoints value={value} digits={digits} unsigned={unsigned} />;

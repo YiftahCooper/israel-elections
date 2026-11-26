@@ -29,8 +29,9 @@ test('the panel shows the party history and the comparison; the full sheet moves
   const line = sec.locator('.ph-cmpline');
   // a sentence, not "Since 2022 Labor + Meretz 4 → 8 ▲ +4" (clarity pass, 26 Nov 2026)
   await expect(line).toContainText('In 2022, Labor + Meretz won 4 seats; now 8 (4 more).');
-  await expect(line.locator('.ph-num')).toHaveText('Vote share −0.42 pp.');
-  await expect(line.locator('.ph-cert')).toHaveText('Probable');
+  await expect(line.locator('.ph-num')).toHaveText('Vote share 0.42 points lower than in 2022.');
+  // how sure the link is is said in words inside the (i), never as a chip (clarity pass round 2, 26 Nov 2026)
+  await expect(line.locator('.ph-cert')).toHaveCount(0);
 
   await sec.getByRole('button', { name: 'Full history', exact: true }).click();
   await expect(sheet(page)).toContainText('Ran in all 26 elections');
@@ -96,7 +97,8 @@ test('in Hebrew the chart is drawn left to right and every word is Hebrew', asyn
   await listRow(page, 'הדמוקרטים').click();
   const sec = page.locator('aside .ph-sec');
   await expect(sec.locator('.ph-cmpline')).toContainText('ב־2022 היו לעבודה + מרצ 4 מנדטים; עכשיו 8 (עוד 4).');
-  await expect(sec.locator('.ph-cert')).toHaveText('סביר');
+  await expect(sec.locator('.ph-num')).toHaveText('שיעור הקולות נמוך ב־0.42 נקודות אחוז לעומת 2022.');
+  await expect(sec.locator('.ph-cmpline .ph-cert')).toHaveCount(0);
   await sec.getByRole('button', { name: 'היסטוריה מלאה', exact: true }).click();
   const bars = sheet(page).locator('.ph-bar');
   const first = (await bars.first().boundingBox())!, last = (await bars.last().boundingBox())!;
@@ -110,7 +112,7 @@ test('Compare tags the Democrats as ran jointly, notes the comparison under the 
   await openSideBySide(page);
   const row = (name: string) => page.locator('tr.cmp-row').filter({ has: page.locator('.cmp-lname, .cmp-rname', { hasText: name }) }).first();
   await expect(row('The Democrats').locator('.cmp-tag')).toHaveText('Ran jointly');
-  await expect(row('The Democrats').locator('.ph-cmpnote')).toHaveText(/^Compared with Labor, renamed \+ Meretz \(2022\)\s*Probable$/);
+  await expect(row('The Democrats').locator('.ph-cmpnote')).toHaveText(/^Compared with Labor, renamed \+ Meretz \(2022\)$/);
   await expect(row('Likud').locator('.ph-cmpnote')).toHaveText(/^New Hope.* ran inside National Unity in 2022, so it is not counted$/);
   await expect(row('Shas').locator('.ph-cmpnote')).toHaveCount(0);
   await page.getByRole('button', { name: 'Pair lists', exact: true }).click();

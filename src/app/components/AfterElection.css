@@ -39,6 +39,8 @@
 .after-mandate span { display: block; height: 10px; background: var(--axis); }
 .after-evidence { padding-block: 6px; }
 .after-evidence blockquote { margin: 4px 0; font-size: 12px; }
+.after-source-group + .after-source-group { border-top: 1px solid var(--rule-2); margin-top: 6px; padding-top: 6px; }
+.after-source-group h5 { margin: 0; font-size: 12px; font-weight: 600; }
 .after-poll { display: grid; grid-template-columns: 1fr 1fr 55px; gap: 10px; padding-block: 5px; }
 .after-sources { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 16px; }
 @media (max-width: 760px) {

@@ -10,7 +10,7 @@ import { erasOf, eventsOf, identityOf, ownSeatRecord, partySeries, type Identity
 import type { Relation } from '../../history/relations.ts';
 import { HISTORY, electionIndex, electionPosition, historyList, listShort, partyNameAt, partyShort, yearLabel, type HList } from '../../history/runtime.ts';
 import { useL, useLang } from '../i18n.ts';
-import { fmtInt, fmtPct, seatsText, PP } from '../format.ts';
+import { fmtInt, fmtPct, seatsText } from '../format.ts';
 import { hebrewPrefix as attach, hebrewPrefixName } from '../hebrewPrefix.ts';
 import { useDigits, useOn, useSetting } from '../store.ts';
 import { Info, Slip } from './ui.tsx';
@@ -27,7 +27,7 @@ type Lang = 'he' | 'en';
 const hebrewPrefix = (p: Parameters<typeof attach>[0], name: string | number) =>
   p === 'ל' || p === 'ב' || p === 'כ' ? hebrewPrefixName(p, String(name)) : attach(p, name);
 const CERT: Record<Certainty, [string, string]> = {
-  confirmed: ['Confirmed', 'מאושר'], probable: ['Probable', 'סביר'], provisional: ['Provisional', 'זמני'], disputed: ['Disputed', 'שנוי במחלוקת'], unknown: ['To verify', 'לבדיקה'],
+  confirmed: ['Confirmed', 'מאושר'], probable: ['Probable', 'סביר'], provisional: ['Provisional', 'זמני'], disputed: ['Disputed', 'שנוי במחלוקת'], unknown: ['Unconfirmed', 'לא מאושר'],
 };
 const CERT_INFO: Record<Certainty, [string, string]> = {
   confirmed: ['An official record, or independent reports with scholarship.', 'רשומה רשמית, או דיווחים בלתי תלויים לצד מחקר.'],
@@ -36,6 +36,16 @@ const CERT_INFO: Record<Certainty, [string, string]> = {
   disputed: ['Reliable sources disagree. Shown, never used to compare.', 'מקורות מהימנים חלוקים. מוצג, ואינו משמש להשוואה.'],
   unknown: ['Not yet established. Shown, never used to compare.', 'טרם בוסס. מוצג, ואינו משמש להשוואה.'],
 };
+/** How sure a link is, in words for a sentence (round 2 of the clarity pass, 26 Nov 2026): no chip where a reader is
+ *  reading a comparison. Confirmed says nothing. */
+const CERT_WORDS: Record<Exclude<Certainty, 'confirmed'>, [string, string]> = {
+  probable: ['not on official record', 'אין לכך רשומה רשמית'],
+  provisional: ['reported once', 'דווח פעם אחת'], disputed: ['sources disagree', 'המקורות חלוקים'], unknown: ['not established', 'לא בוסס'],
+};
+/** "; not on official record" after a relation's year, or nothing when it is confirmed. */
+export function certWords(c: Certainty, L: (en: string, he: string) => string): string {
+  return c === 'confirmed' ? '' : `; ${L(...CERT_WORDS[c])}`;
+}
 export function CertChip({ c }: { c: Certainty }) {
   const L = useL();
   return <span className={`ph-cert ph-cert-${c}`} title={L(...CERT_INFO[c])}>{L(...CERT[c])}</span>;
@@ -333,7 +343,8 @@ export function comparisonRowText(c: Comparison | null, lang: Lang): string {
 }
 
 /** Panel line, as a sentence (clarity pass, 26 Nov 2026): "In 2022, Labor + Meretz won 4 seats; now 8 (4 more). Vote
- *  share −0.42 pp. Probable (i)", and anything the earlier figure leaves out or includes. */
+ *  share 0.42 points lower than in 2022. (i)", and anything the earlier figure leaves out or includes. A link that is not
+ *  on official record is said in words inside the (i), not as a chip (round 2). */
 export function ComparisonLine({ c }: { c: Comparison | null }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   if (!c || c.kind === 'first') return null;
@@ -350,8 +361,9 @@ export function ComparisonLine({ c }: { c: Comparison | null }) {
     <span>{lang === 'he'
       ? <>{hebrewPrefix('ב', py)} {c.before.seats === 1 ? 'היה' : 'היו'} {hebrewPrefix('ל', name)} {seatsText(c.before.seats, 'he')}; עכשיו {c.after.seats} ({change}).</>
       : <>In {py}, <bdi>{name}</bdi> won {seatsText(c.before.seats, 'en')}; now {c.after.seats} ({change}).</>}</span>
-    {share && share.num !== 0n && <span className="ph-num">{L('Vote share', 'שיעור הקולות')} <bdi dir="ltr">{rationalPoints(share, digits)}</bdi> {L(...PP)}.</span>}
-    {c.certainty !== 'confirmed' && <CertChip c={c.certainty} />}
+    {share && share.num !== 0n && <span className="ph-num">{lang === 'he'
+      ? <>שיעור הקולות {share.num > 0n ? 'גבוה' : 'נמוך'} ב־<bdi dir="ltr">{rationalPoints(share, digits, true)}</bdi> נקודות אחוז לעומת {py}.</>
+      : <>Vote share <bdi dir="ltr">{rationalPoints(share, digits, true)}</bdi> points {share.num > 0n ? 'higher' : 'lower'} than in {py}.</>}</span>}
     <Info title={L(`Compared with ${py}`, `השוואה ${hebrewPrefix('ל', py)}`)}><ComparisonWhy c={c} /></Info>
     {(c.notCounted.length > 0 || c.left.length > 0) && <div className="tiny muted ph-notcounted">
       {c.notCounted.map((n) => { const h = prevList(c, n.listId); return <span key={`${n.partyId}${n.listId}`}>{L(`${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}, so it is not in the ${py} figure.`, `${partyShort(n.partyId, 'he')} רצה ${hebrewPrefix('ב', py)} בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'}, ולכן אינה במספר של ${py}.`)} </span>; })}
@@ -397,7 +409,6 @@ export function CompareNote({ c, currentName }: { c: Comparison | null; currentN
   const counted = c.kind === 'group' ? comparedName(c, lang) : countedWithHow(c, lang);
   return <span className="tiny muted cmp-note ph-cmpnote">
     {!plain && L(`Compared with ${counted} (${py})`, `בהשוואה ${hebrewPrefix('ל', counted)} (${py})`)}
-    {!plain && c.certainty !== 'confirmed' && <> <CertChip c={c.certainty} /></>}
     {c.notCounted.map((n, k) => { const h = prevList(c, n.listId); return <span key={n.partyId + n.listId} className="ph-cmpnote-nc">{plain && k === 0 ? '' : ' · '}{L(`${partyShort(n.partyId, 'en')} ran inside ${h ? listShort(h, 'en') : 'another list'} in ${py}, so it is not counted`, `${partyShort(n.partyId, 'he')} רצה בתוך ${h ? listShort(h, 'he') : 'רשימה אחרת'} ${hebrewPrefix('ב', py)}, ולכן אינה נספרת`)}</span>; })}
   </span>;
 }
@@ -412,7 +423,7 @@ export function ComparisonWhy({ c }: { c: Comparison }) {
   return <span className="ph-why">
     {c.kind === 'group' && <span>{L(`The ${py} list was divided among several lists, so they are compared together.`, `הרשימה ${hebrewPrefix('מ', py)} התחלקה בין כמה רשימות, ולכן הן מושוות יחד.`)}</span>}
     <span className="ph-why-lists">{c.counted.map((l) => { const h = prevList(c, l.id); return <span key={l.id}><bdi>{h ? listShort(h, lang) : l.id}</bdi> {py}: {L(seatsText(l.seats, 'en'), seatsText(l.seats, 'he'))} · <bdi dir="ltr">{fmtInt(l.votes)}</bdi> {L('votes', 'קולות')}</span>; })}</span>
-    {c.relations.map((r) => <span key={r.id}>{eventText(r, lang)} ({year(r.date)}){r.certainty !== 'confirmed' && <> · <CertChip c={r.certainty} /></>}{expert && r.sources.length > 0 && <span className="tiny muted"> · {r.sources.map((s) => (lang === 'he' && s.publisherHe) || s.publisher || L('Source', 'מקור')).join('; ')}</span>}</span>)}
+    {c.relations.map((r) => <span key={r.id}>{eventText(r, lang)} ({year(r.date)}{certWords(r.certainty, L)}){expert && r.sources.length > 0 && <span className="tiny muted"> · {r.sources.map((s) => (lang === 'he' && s.publisherHe) || s.publisher || L('Source', 'מקור')).join('; ')}</span>}</span>)}
     {c.newParties.length > 0 && c.kind !== 'group' && <span className="muted">{L(`No earlier list: ${names(c.newParties, 'en')}.`, `ללא רשימה קודמת: ${names(c.newParties, 'he')}.`)}</span>}
   </span>;
 }
