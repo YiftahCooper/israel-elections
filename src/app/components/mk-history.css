@@ -78,3 +78,5 @@
 .mk-enum { display: inline-flex; align-items: center; gap: 4px; min-inline-size: 22px; font-weight: 700; color: var(--ink); }
 .mk-enum > i { block-size: 12px; }
 .mk-key-seg.mk-unrec { background: radial-gradient(circle, var(--ink-2) 0 1px, transparent 1.4px) 0 0 / 4px 4px; }
+/* a Knesset they never sat in draws no bar (26 Nov 2026): its empty cell takes no room */
+.mk-term:empty { display: none; }

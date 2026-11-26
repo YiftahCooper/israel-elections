@@ -45,12 +45,16 @@ test('opens from the seat: Idit Silman, six elections, three not elected', async
   await expect(rows).toHaveCount(6);
   await expect(rows.nth(0)).toContainText('21st Knesset');
   await expect(rows.nth(1)).toContainText('Not elected');
-  await expect(rows.nth(1)).toContainText('1 place short');
+  // the place and the seats won are said once, under the list's name (clarity pass, 26 Nov 2026): no "places short"
+  await expect(rows.nth(1)).toContainText('No. 8 · the list won 7');
+  await expect(rows.nth(1)).not.toContainText('short');
+  // a Knesset she did not sit in draws no empty bar
+  await expect(rows.nth(1).locator('.mk-bar')).toHaveCount(0);
   await expect(rows.nth(3)).toContainText('Sat from the first sitting');
   await expect(rows.nth(3)).toContainText('Membership ended'); // with the recorded reason where there is one (16 Nov 2026)
   await expect(rows.nth(5)).toContainText('No. 46 · the list won 27');
-  await expect(rows.nth(5)).toContainText('19 places short');
-  await expect(card(page)).toContainText('shown from 2009 on');
+  // her elections are all from 2019 on: no note about older elections
+  await expect(card(page).locator('.mk-note')).toHaveCount(0);
   await page.keyboard.press('Escape');
   await expect(card(page)).toHaveCount(0);
   // looking is not an edit
@@ -65,9 +69,9 @@ test('opens from a name in a list’s candidates: Ayelet Shaked’s lists below 
   await expect(rows).toHaveCount(7);
   await expect(rows.nth(2)).toContainText('The list got 3.22%, below the 3.25% threshold');
   await expect(rows.nth(1)).toContainText('Faction: New Right (until then Jewish Home)');
-  // a name matched by its listed spelling says how
-  await rows.nth(2).getByRole('button', { name: 'How this list is linked' }).click();
-  await expect(page.getByText('No other member of the Knesset has this name.')).toBeVisible();
+  // how a run was matched to her is never shown (owner, 26 Nov 2026: it read as doubt)
+  await expect(card(page).getByRole('button', { name: 'How this list is linked' })).toHaveCount(0);
+  await expect(card(page)).not.toContainText('letter for letter');
   await card(page).getByRole('button', { name: 'Close' }).click();
   await expect(card(page)).toHaveCount(0);
 });
@@ -90,7 +94,7 @@ test('Hebrew, dark: text mirrors, the bars still run left to right', async ({ pa
   await page.locator('.tip').getByRole('button', { name: 'המסלול שלה בכנסת' }).click();
   const rows = card(page).locator('.mk-rows > li');
   await expect(rows.nth(1)).toContainText('לא נבחרה');
-  await expect(rows.nth(5)).toContainText('חסרו 19 מקומות');
+  await expect(rows.nth(5)).toContainText('מקום 46 · הרשימה זכתה ב־27');
   await expect(card(page).locator('.mk-bar').first()).toHaveAttribute('dir', 'ltr');
   await expect(card(page).locator('.mk-places').first()).toHaveAttribute('direction', 'ltr');
 });
@@ -113,14 +117,16 @@ test('Silman: a key explains the rows; the 26th Knesset has opened; her 2022 res
   await page.locator('.tip').getByRole('button', { name: 'Her history' }).click();
   const key = card(page).locator('.mk-key');
   await expect(key).toBeVisible();
-  await key.getByRole('button', { name: 'How to read the rows' }).click();
-  await expect(page.getByText(/whole Knesset/).first()).toBeVisible();
-  await key.getByRole('button', { name: 'How to read the rows' }).click();
+  await expect(key).toContainText('Bar: the whole Knesset');
+  await key.getByRole('button', { name: 'The bars' }).click();
+  await expect(page.getByText(/one time scale/).first()).toBeVisible();
+  await key.getByRole('button', { name: 'The bars' }).click();
   const rows = card(page).locator('.mk-rows > li');
   await expect(rows.filter({ hasText: '24th Knesset' })).toContainText('Membership ended · Resigned');
   // she was not elected in 2026: not in the 26th Knesset, which opened in November
   const k26 = rows.filter({ hasText: '26th Knesset' });
-  await expect(k26).toContainText('Not in this Knesset (from Nov 2026)');
+  await expect(k26).toContainText('Not elected');
+  await expect(k26.locator('.mk-bar')).toHaveCount(0);
   await expect(k26).not.toContainText('not yet opened');
 });
 

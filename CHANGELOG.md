@@ -1,5 +1,9 @@
 # Changelog
 
+## 26 November 2026
+
+- MK history, plainer (26 Nov): a row no longer says how the list was matched to the member (the (i) "How this list is linked… letter for letter", once on every row he or she did not win a seat); a list tied by research keeps its sources behind "Source". A Knesset the member never sat in shows no empty bar and none of that Knesset's dates, and "Not elected" no longer adds "34 places short" beside "No. 39 · the list won 5". The key keeps only the bar ("Bar: the whole Knesset; coloured: his time in it") with a two-line (i). The note on older elections shows only on a card with elections before 2009, in one line ("Before 2009, elections where he did not win a seat may be missing"), and its methods (i) is gone, as is the line about a membership record with unsettled dates (Erez Malul, 2025).
+
 ## 24 November 2026
 
 - New address (24 Nov): the site is now at haknesset.co.il, which opens in Hebrew. haknesset.com and hakneset.com open it in English, and hakneset.co.il and the old github.io address forward to it. Gallery share links use the new address.

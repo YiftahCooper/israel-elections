@@ -43,18 +43,41 @@ describe('MK history card', () => {
     }
   });
 
-  it('an official note and how the list is linked share one (i)', () => {
+  it('an official note and the sources that tie a run share one (i)', () => {
     let both = 0;
     for (const [id, p] of Object.entries(rt.people)) {
       for (const run of p.runs) {
         const v = mkView(rt, Number(id))!, r = v.rows.find((x) => x.k === run[0])!;
-        if (!r.run?.notes.length || !(r.run.basis === 'name' && r.run.via || r.run.research?.length)) continue;
+        if (!r.run?.notes.length || !r.run.research?.length) continue;
         both++;
         const html = renderToStaticMarkup(createElement(Result, { r, v }));
         expect(infoButtons(html), `${p.he} ${run[1]}#${run[2]}`).toBe(1);
       }
     }
-    expect(both).toBeGreaterThanOrEqual(2); // 2026 Shas Nos. 7 and 15 (Abutbul, Moshiashvili) at least
+    // no run in the data has both today: one with a note is given a source, so the rule is still checked
+    const v = mkView(rt, byName('משה אבוטבול'))!, r = v.rows.find((x) => x.k === 26)!;
+    const withSource = { ...r, run: { ...r.run!, research: [['Knesset', 'https://main.knesset.gov.il/']] as const } };
+    expect(r.run!.notes.length).toBeGreaterThan(0);
+    expect(infoButtons(renderToStaticMarkup(createElement(Result, { r: withSource, v })))).toBe(1);
+    expect(both).toBeGreaterThanOrEqual(0);
+  });
+
+  // owner, 26 Nov 2026 (Wasserlauf): how a run was matched to the person is never shown; it read as doubt, once per row
+  it('no row says how its run was matched to the person', () => {
+    let rows = 0;
+    for (const [id, p] of Object.entries(rt.people)) {
+      const v = mkView(rt, Number(id))!;
+      for (const r of v.rows) {
+        if (r.run?.basis !== 'name') continue;
+        rows++;
+        for (const lang of ['en', 'he'] as const) {
+          const html = renderToStaticMarkup(createElement(LangContext.Provider, { value: lang }, createElement(Result, { r, v })));
+          expect(html, `${p.he} k${r.k}`).not.toMatch(/letter for letter|אות באות|How this list is linked|איך הרשימה מקושרת/);
+          if (!r.run.notes.length && !r.run.research?.length) expect(infoButtons(html), `${p.he} k${r.k}`).toBe(0);
+        }
+      }
+    }
+    expect(rows).toBeGreaterThan(100);
   });
 
   // anyone the Knesset has no gender record for gets neutral words, in both languages, never from a name (Round 8 card
