@@ -18,6 +18,8 @@ for(const lang of ['he','en'] as const) test.describe(lang,()=>{
   });
 
   test(`collapsed features use one named toggle ${lang}`,async({page})=>{
+    // a named level folds nothing (clarity pass, 26 Nov 2026): Custom folds the detailed figures here
+    await page.addInitScript(()=>{const k='israel-elections:v1';const o=JSON.parse(localStorage.getItem(k)||'{}');localStorage.setItem(k,JSON.stringify({...o,customFeatures:{...(o.customFeatures||{}),expertFigures:'collapsed'}}));});
     await page.goto('/');
     await expect(page.locator('.chamber [data-seat]')).toHaveCount(120);
     const toggles=page.locator('.disclosure-toggle');
@@ -39,7 +41,7 @@ for(const lang of ['he','en'] as const) test.describe(lang,()=>{
     const before=await input.inputValue();
     await input.fill('99999999999');
     await input.press('Enter');
-    await expect(page.locator('.bloc-panel .bp-card').first().locator('.bloc-vote-stepper [aria-live]')).toContainText(lang==='he'?'לכל היותר':'At most');
+    await expect(page.locator('.bloc-panel .bp-card').first().locator('.bloc-vote-stepper [aria-live]')).toContainText(lang==='he'?'בלבד:':'Stops at');
     await expect(page.getByText(/selected lists hold only/)).toHaveCount(0);
     await expect(input).toHaveValue(before);
   });

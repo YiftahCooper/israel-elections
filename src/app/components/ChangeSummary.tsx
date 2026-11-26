@@ -115,12 +115,13 @@ export function ChangeSummary({ s, r, base, baseR, ds }: { s: Scenario; r: Alloc
     <div ref={line} className={`session ${edited ? '' : 'idle'}`}>
       <FittingLabel full={label} short={reference ? String(count) : compact} reference={namedReference} locale={appLocale(lang)} />
       {/* the (i) right after the label it explains, on the same line at every width */}
-      <Info title={L('Your changes', 'השינויים שלכם')}>{L('Reference: ', 'נקודת ההשוואה: ')}<bdi>{referenceLabel(reference, lang).name}</bdi>. {L('Counts your actions since the named reference, not individual fields: votes, rules, lists, blocs and coalition roles. Colours do not count. History lists all changes from the official result; you can return to an earlier change there.', 'סופר את הפעולות שלכם מאז נקודת ההשוואה הנקובה, ולא שדות בודדים: קולות, כללים, רשימות, גושים ותפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מוצגים כל השינויים מהתוצאה הרשמית; אפשר לחזור בה לשינוי קודם.')}</Info>
+      <Info title={L('Your changes', 'השינויים שלכם')}>{L('Each edit counts once: votes, rules, lists, blocs or coalition roles. Colours don’t count. History lists every change and lets you go back to one.', 'כל עריכה נספרת פעם אחת: קולות, כללים, רשימות, גושים או תפקידים בקואליציה. צבעים אינם נספרים. בהיסטוריה מופיע כל שינוי, ואפשר לחזור אליו.')}</Info>
       <span ref={changes} className="session-changes" role="status">
         {edited && <>
           {moves.length === 0
             ? <span className="muted">{resultUnchanged ? unchangedResultNote(lang) : L('No seats changed', 'המנדטים לא השתנו')}</span>
             : <span className="moves">
+                <span className="muted">{L('Seats:', 'מנדטים:')}</span>
                 {shown.map((m) => <span key={m.id}><bdi>{m.label(lang)}</bdi> {m.n} <span dir="ltr">(<SeatDelta value={m.d} />)</span></span>)}
                 {moves.length > MAX_MOVES && <span className="muted">{L(`+${moves.length - MAX_MOVES} more`, `ועוד ${moves.length - MAX_MOVES}`)}</span>}
               </span>}

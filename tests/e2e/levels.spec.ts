@@ -122,7 +122,7 @@ test('Simple still shows a list’s surplus agreement and its state', async ({ p
   await listCard(page, 'Likud').click();
   await details(page).getByRole('checkbox', { name: 'In force' }).uncheck();
   await levelButton(page, 'Simple').click();
-  await expect(details(page).getByText(/With Religious Zionism–Zehut · switched off/)).toBeVisible();
+  await expect(details(page).getByText(/Surplus-vote agreement with Religious Zionism–Zehut \(switched off\)/)).toBeVisible();
 });
 
 test('rules changed by an experimental preset are named at every level, and no zero seat price is shown', async ({ page }) => {

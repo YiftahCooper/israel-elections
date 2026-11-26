@@ -14,7 +14,7 @@ test('every goal shows the change it makes; Restore votes appears beside them on
   const goals = page.locator('.side-panel .vote-goals');
   await expect(goals.getByRole('button', { name: 'Reach next seat', exact: true })).toContainText('(+29,777)', { timeout: 30000 });
   await expect(goals.getByRole('button', { name: 'Fewest votes to keep 32 seats', exact: true })).toContainText(/\(−[\d,]+\)/);
-  await expect(goals.getByRole('button', { name: 'Just below threshold', exact: true })).toContainText(/\(−[\d,]+\)/);
+  await expect(goals.getByRole('button', { name: 'Fall below the threshold', exact: true })).toContainText(/\(−[\d,]+\)/);
   await expect(goals.getByRole('button', { name: 'Restore votes' })).toHaveCount(0);
   await page.getByRole('button', { name: 'Increase Votes', exact: true }).click();
   const restore = goals.getByRole('button', { name: 'Restore votes', exact: true });
@@ -59,18 +59,17 @@ test('withdrawing a list with its transfer step open keeps the panel open and lo
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
   await start(page); await open(page, 'Likud');
   const panel = page.locator('.side-panel');
-  await panel.getByRole('button', { name: /Scale, share & transfer/ }).click();
-  await expect(panel.getByRole('button', { name: 'Transfer 1 pp', exact: true })).toBeVisible();
+  await expect(panel.getByRole('button', { name: 'Take 1 pp from', exact: true })).toBeVisible();
   await panel.getByText('Withdrawn from the race').click();
   await expect(panel.getByText(/This list has withdrawn/)).toBeVisible();
-  await expect(panel.getByRole('button', { name: 'Transfer 1 pp', exact: true })).toHaveCount(0);
+  await expect(panel.getByRole('button', { name: 'Take 1 pp from', exact: true })).toHaveCount(0);
   expect(errors).toEqual([]);
 });
 
 test('a withdrawn list shows no threshold goals, no stale search and no threshold-crossing note; its row is marked once', async ({ page }) => {
   await start(page); await open(page, 'Likud');
   const panel = page.locator('.side-panel');
-  await expect(panel.locator('.seat-search-status')).toContainText('+1 seat', { timeout: 30000 });
+  await expect(panel.locator('.seat-search-status')).toContainText('wins 1 more seat', { timeout: 30000 });
   await panel.getByText('Withdrawn from the race').click();
   await expect(panel.getByText(/This list has withdrawn/)).toBeVisible();
   await expect(panel.locator('.vote-goals, .seat-search-status')).toHaveCount(0);
@@ -116,10 +115,9 @@ test('a tall logo stays inside its slip', async ({ page }) => {
   expect(img!.y).toBeGreaterThanOrEqual(box!.y);
 });
 
-test('Hebrew: a paired transfer reads from the donor to the list with a right-to-left arrow', async ({ page }) => {
+test('Hebrew: a paired transfer says in words which list gives the votes to which', async ({ page }) => {
   await start(page, { lang: 'he' }); await open(page, 'הליכוד');
-  await page.locator('.side-panel').getByRole('button', { name: 'הכפלה, אחוזים והעברה', exact: true }).click();
-  await expect(page.locator('.transfer-step p')).toContainText('יש עתיד ← הליכוד');
+  await expect(page.locator('.transfer-step p')).toContainText('מיש עתיד לליכוד');
 });
 
 test('phone: the lists come straight after the chamber, before blocs and figures', async ({ page }) => {
@@ -159,7 +157,7 @@ test('a list\'s seat count can be typed: the fewest votes that give it are moved
   // below the threshold, 1 seat cannot exist: the list lands on the nearest count and says so
   await open(page, 'Meretz');
   await seats.fill('1'); await seats.press('Enter');
-  await expect(page.getByText(/1 seat is not possible from this source; nearest: \d/)).toBeVisible({ timeout: 30000 });
+  await expect(page.getByText(/Exactly 1 seat can't be reached this way; the nearest is \d/)).toBeVisible({ timeout: 30000 });
   await expect(seats).toHaveValue('4');
   await panel.screenshot({ path: '.backup-scratch/seat-target.png' });
   // the remembered answer is the setting in Rules → Display, and can go back to asking

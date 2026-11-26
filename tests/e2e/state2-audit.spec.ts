@@ -121,15 +121,15 @@ for (const lang of ['en', 'he'] as const) test(`c-results-engine-02: Seat safety
   await expect(tie).toBeVisible({ timeout: 60_000 });
   const row = page.locator('.sec-row', { has: page.locator('.sec-r .sec-tie[title*="5,825"]') });
   await expect(row.locator('.sec-r')).toContainText('5,826');
-  await expect(row.locator('.sec-r .sec-tie')).toHaveAttribute('title', lang === 'en' ? 'A tie decided by lot is possible from 5,825 votes' : 'שוויון שמוכרע בהגרלה אפשרי החל מ־5,825 קולות');
+  await expect(row.locator('.sec-r .sec-tie')).toHaveAttribute('title', lang === 'en' ? 'From 5,825 more votes it already ties with another list for the seat, decided by lot.' : 'כבר עם 5,825 קולות נוספים יש שוויון עם רשימה אחרת על המנדט, שמוכרע בהגרלה.');
   // the * line in full, with the rule of the time (2026: the Central Elections Committee draws lots)
-  await expect(page.locator('.sec')).toContainText(lang === 'en' ? /\* (One vote fewer|Fewer votes) than the figure .*tie.* with another list for this seat.*; the Central Elections Committee then decides by lot\./ : /\* (בקול אחד פחות|כבר בפחות קולות) מהמספר יש שוויון עם רשימה אחרת על המנדט הזה.*; ועדת הבחירות המרכזית מכריעה אז בהגרלה\./);
+  await expect(page.locator('.sec')).toContainText(lang === 'en' ? /\* With (one vote fewer|fewer votes),? it( already)? ties with another list for this seat.*; the Central Elections Committee then decides by lot\./ : /\* (בקול אחד פחות|כבר בפחות קולות) יש שוויון עם רשימה אחרת על המנדט הזה.*; ועדת הבחירות המרכזית מכריעה אז בהגרלה\./);
   await page.waitForFunction(() => !document.querySelector('.sec [role="status"]'));
   if (OUT) await page.locator('.sec').screenshot({ path: `${OUT}/chk-seat-safety-tie-${lang}.png` });
   // the list's own details say it in words
   await row.locator('.table-action').click();
   const status = page.locator('.side-panel .seat-search-status');
-  await expect(status).toContainText(lang === 'en' ? 'A tie decided by lot is possible from 5,825 votes' : 'שוויון שמוכרע בהגרלה אפשרי החל מ־5,825 קולות', { timeout: 60_000 });
+  await expect(status).toContainText(lang === 'en' ? 'From 5,825 more votes it already ties with another list for the seat, decided by lot.' : 'כבר עם 5,825 קולות נוספים יש שוויון עם רשימה אחרת על המנדט, שמוכרע בהגרלה.', { timeout: 60_000 });
   if (OUT) await page.locator('.side-panel .seat-target').locator('..').screenshot({ path: `${OUT}/chk-list-tie-${lang}.png` });
 });
 
@@ -158,7 +158,7 @@ for (const lang of ['en', 'he'] as const) test(`c-analysis-code-06: a typed seat
   const seats = page.locator('.side-panel .seat-target').getByRole('textbox', { name: lang === 'en' ? 'Seats' : 'מנדטים', exact: true });
   await seats.fill('40'); await seats.press('Enter');
   const t = page.locator('.toast');
-  await expect(t).toContainText(lang === 'en' ? '≤ Found by sampling: fewer votes may also give 40 seats.' : '≤ נמצא בדגימה: ייתכן שגם פחות קולות יביאו 40 מנדטים.', { timeout: 30_000 });
+  await expect(t).toContainText(lang === 'en' ? 'This gives 40 seats; slightly fewer votes may also be enough.' : 'כך מתקבלים 40 מנדטים; ייתכן שמעט פחות קולות יספיקו.', { timeout: 30_000 });
   if (OUT) await t.screenshot({ path: `${OUT}/chk-seat-count-sampled-${lang}.png` });
 });
 
@@ -185,9 +185,9 @@ for (const lang of ['en', 'he'] as const) test(`c-analysis-code-03: under the 19
   await page.locator('#tab-security').click();
   const row = page.locator('.sec-row', { hasText: lang === 'en' ? 'Flatto-Sharon' : 'פלאטו־שרון' }).first();
   await expect(row.locator('.sec-r')).toContainText('—', { timeout: 30_000 });
-  await expect(row.locator('.sec-r span[title]').last()).toHaveAttribute('title', lang === 'en' ? 'Not possible: every candidate on the list already has a seat' : 'לא אפשרי: כל המועמדים ברשימה כבר קיבלו מנדט');
+  await expect(row.locator('.sec-r span[title]').last()).toHaveAttribute('title', lang === 'en' ? 'No more seats to win: every candidate on the list already has one.' : 'אין עוד מנדט לזכות בו: כל המועמדים ברשימה כבר נבחרו.');
   await row.locator('.table-action').click();
   const status = page.locator('.side-panel .seat-search-status');
-  await expect(status).toHaveText(lang === 'en' ? 'Not possible: every candidate on the list already has a seat' : 'לא אפשרי: כל המועמדים ברשימה כבר קיבלו מנדט', { timeout: 30_000 });
+  await expect(status).toHaveText(lang === 'en' ? 'No more seats to win: every candidate on the list already has one.' : 'אין עוד מנדט לזכות בו: כל המועמדים ברשימה כבר נבחרו.', { timeout: 30_000 });
   if (OUT) await status.locator('..').screenshot({ path: `${OUT}/chk-list-capped-${lang}.png` });
 });

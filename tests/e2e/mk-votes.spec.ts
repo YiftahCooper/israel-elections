@@ -16,7 +16,7 @@ test('June 2021 at Expert: the recorded first government counts Chikli against a
   await start(page, 'expert');
   const section = page.locator('details.coal-apart');
   await expect(section).not.toHaveAttribute('open');
-  await page.getByRole('button', { name: 'Recorded first government', exact: true }).click();
+  await page.getByRole('button', { name: 'The first government', exact: true }).click();
   const now = page.locator('.coal-now');
   await expect(now.locator('.coal-test').first()).toContainText('60 for · 59 against');
   await expect(now.locator('.majority-readout bdi[dir="ltr"]')).toHaveText('61 / 120');
@@ -37,15 +37,11 @@ test('June 2021 at Expert: the recorded first government counts Chikli against a
   await expect(now.locator('.coal-test').first()).toContainText('60 for · 59 against');
 });
 
-// Below Expert it waits behind its folded chip, like every feature of a higher level (owner, 16 Nov 2026, lvl-registry:
-// features of other levels can be blended into one's own level; lane U2): nothing of it shows until the chip is pressed.
-test('below Expert the section waits behind its folded chip', async ({ page }) => {
+// Below Expert it is hidden, like every section of a higher level (clarity pass, 26 Nov 2026: hidden, not folded);
+// Custom can still show or fold it (owner, 16 Nov 2026: Expert only, and folded even there).
+test('below Expert the section is hidden', async ({ page }) => {
   await start(page, 'standard');
   await expect(page.locator('.coal')).toBeVisible();
   await expect(page.locator('details.coal-apart')).toHaveCount(0);
-  const chip = page.getByRole('button', { name: 'More options: MKs apart from their list', exact: true });
-  await expect(chip).toHaveAttribute('aria-expanded', 'false');
-  await chip.click();
-  await expect(page.locator('details.coal-apart')).toHaveCount(1);
-  await expect(page.locator('details.coal-apart')).not.toHaveAttribute('open');
+  await expect(page.getByRole('button', { name: 'More options: MKs apart from their list', exact: true })).toHaveCount(0);
 });

@@ -63,7 +63,7 @@ test('each era shows its own law: names, era rules and threshold timeline', asyn
   await expect(threshold).toBeDisabled();
   expect(Number(await threshold.evaluate(e => getComputedStyle(e).opacity))).toBeLessThan(1);
   await threshold.click({ force: true }); await page.keyboard.type('5'); await expect(threshold).toHaveValue('3.25');
-  await expect(page.getByText('Locked to the law: choose Experimental to change', { exact: true })).toBeVisible();
+  await expect(page.getByText('Choose Experimental to change the rules', { exact: true })).toBeVisible();
   // sibling steppers on the page share one width (turnout, registered, invalid)
   const widths = await page.locator('.rules-page .numeric-stepper').evaluateAll(els => els.map(e => Math.round(e.getBoundingClientRect().width)));
   expect(new Set(widths).size).toBe(1);

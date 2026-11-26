@@ -61,7 +61,7 @@ test('a threshold jump is named as multiple seats and applied as votes', async (
   await start(page);
   const row = page.locator('.lb-row').filter({ has: page.locator('.lb-name', { hasText: 'Meretz' }) });
   await row.click();
-  await expect(page.locator('.seat-search-status')).toContainText('+4 seats', { timeout: 30000 });
+  await expect(page.locator('.seat-search-status')).toContainText('passes the threshold and wins 4 seats', { timeout: 30000 });
   await page.getByRole('button', { name: 'Cross the threshold', exact: true }).click();
   await expect(row.locator('.lb-seats b')).toHaveText('4');
   await page.getByRole('button', { name: /^Undo:/ }).click();
@@ -82,8 +82,7 @@ test('fine vote/share nudges and a paired 1pp transfer are single undo steps', a
   const donorRow = page.locator('.lb-row').filter({ has: page.locator('.lb-name', { hasText: 'Yesh Atid' }) });
   const donorVotes = async () => value((await donorRow.locator('.lb-sub').innerText()).split(' · ')[0]);
   const donorBefore = await donorVotes();
-  await page.locator('.side-panel').getByRole('button', { name: 'Scale, share & transfer', exact: true }).click();
-  await page.getByRole('button', { name: 'Transfer 1 pp', exact: true }).click();
+  await page.getByRole('button', { name: 'Take 1 pp from', exact: true }).click();
   const gain = value(await votes.inputValue()) - value(before);
   expect(gain).toBe(47647);
   expect(donorBefore - await donorVotes()).toBe(gain);

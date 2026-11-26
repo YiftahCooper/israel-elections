@@ -27,12 +27,12 @@ export function SourcePicker({ s, l }: { s: Scenario; l: SimList }) {
     <div>
       <div className="field">
         <span className="row" style={{ gap: 6 }}><span>{L('Votes come from', 'מקור הקולות')}</span>
-          <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Taking votes from all other lists keeps turnout and the valid total fixed. People who stayed home and now vote change the valid total, and so the threshold in votes; eligible voters stay the same, so turnout rises. New citizens are people added to the country, who all vote: eligible voters rise by the same number, marked as a change. A transfer moves votes from or to one list — if that list is below the threshold, those votes stop being wasted. These give different seat results.', 'לקיחה מכל שאר הרשימות שומרת על ההצבעה ועל סך הכשרים. מי שלא הצביעו ומצביעים הפעם משנים את סך הכשרים ולכן את אחוז החסימה בקולות; מספר בעלי זכות הבחירה לא משתנה, ולכן שיעור ההצבעה עולה. אזרחים חדשים הם אנשים שנוספו למדינה, וכולם מצביעים: מספר בעלי זכות הבחירה גדל באותו מספר, ומסומן כשינוי. מעבר מזיז קולות מול רשימה אחת — אם היא מתחת לחסימה, הקולות מפסיקים להתבזבז. התוצאות שונות.')}</Info>
+          <Info title={L('Where the votes come from', 'מאיפה באים הקולות')}>{L('Other lists: taken from all of them, by size, so turnout stays the same. People who stayed home: they vote now, so turnout changes. New citizens: people added to the country, so eligible voters grow too. One list: only that list gives or takes the votes.', 'שאר הרשימות: נלקחים מכולן, לפי גודלן, ולכן שיעור ההצבעה לא משתנה. מי שלא הצביעו: הם מצביעים הפעם, ולכן שיעור ההצבעה משתנה. אזרחים חדשים: אנשים שנוספו למדינה, ולכן גדל גם מספר בעלי זכות הבחירה. רשימה אחת: רק היא נותנת או מקבלת את הקולות.')}</Info>
         </span>
         <ChoicePicker label={L('Votes come from', 'מקור הקולות')} value={src.kind === 'transfer' ? `t:${src.listId}` : src.kind} onChange={(v) =>
           chooseSource(`list:${l.id}`, v === 'new' ? { kind: 'new' } : v === 'citizens' ? { kind: 'citizens' } : v === 'proportional' ? { kind: 'proportional' } : { kind: 'transfer', listId: v.slice(2) })}
           options={[{ value: 'proportional', label: L('Other lists', 'שאר הרשימות') }, { value: 'new', label: L('People who stayed home', 'מי שלא הצביעו') }, { value: 'citizens', label: L('New citizens', 'אזרחים חדשים') },
-            ...[...others].sort((a, b) => b.votes - a.votes).map((x) => listChoice(x, lang, { value: `t:${x.id}`, detail: fmtInt(x.votes), group: L('One specific list (transfer)', 'רשימה אחת מסוימת (מעבר)') }))]} />
+            ...[...others].sort((a, b) => b.votes - a.votes).map((x) => listChoice(x, lang, { value: `t:${x.id}`, detail: fmtInt(x.votes), group: L('One list', 'רשימה אחת') }))]} />
       </div>
     </div>
   );
@@ -65,10 +65,9 @@ export function SourceDialog() {
   return <dialog ref={dialog} tabIndex={-1} className="source-ask" aria-label={label}
     onCancel={e => { e.preventDefault(); cancel(); }} onKeyDown={e => { if (e.key === 'Escape') e.stopPropagation(); }}
     onClick={e => { if (e.target === e.currentTarget) cancel(); }}>
-    <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>{' '}
-      <Info title={label}>{id === 'voteSource'
-        ? L('Other lists: taken from all, in proportion; turnout unchanged. People who stayed home: turnout changes. New citizens: eligible voters change too. One list: only that list gives or takes. A remembered donor is asked again if unavailable or part of the edited group.', 'שאר הרשימות: מכולן, באופן יחסי; ההצבעה ללא שינוי. מי שלא הצביעו: שיעור ההצבעה משתנה. אזרחים חדשים: גם מספר בעלי זכות הבחירה משתנה. רשימה אחת: רק היא נותנת או מקבלת. אם הרשימה ששמרתם אינה זמינה או שייכת לקבוצה הנערכת, השאלה תוצג שוב.')
-        : L('Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.')}</Info></p>
+    {/* the answers' consequences are listed in full below, so the vote-source question needs no (i) repeating them */}
+    <p className="small" style={{ margin: 0 }}><b>{ask?.title}</b>{id !== 'voteSource' && <>{' '}
+      <Info title={label}>{L('Opened scenario: only your newer changes are marked. Official result: every difference is marked.', 'התרחיש שנפתח: מסומנים רק השינויים החדשים. התוצאה הרשמית: מסומן כל הבדל.')}</Info></>}</p>
     <form onSubmit={e => { e.preventDefault(); if (value) answerPreference(value, scope, dontAsk); }}>
       <label className="field">{label}
         <ChoicePicker label={label} placeholder={L('Choose…', 'בחירה…')} value={value} onChange={setValue}
@@ -85,8 +84,8 @@ export function SourceDialog() {
       <ScopeChoice name="preference-scope" scope={scope} onScope={setScope} dontAsk={dontAsk} onDontAsk={setDontAsk}
         item={id === 'comparison' ? L('For this scenario', 'לתרחיש זה') : ask?.key.startsWith('bloc:') ? L('For this bloc', 'לגוש זה') : L('For this list', 'לרשימה זו')}
         dontAskInfo={id === 'comparison'
-          ? L('Opening a saved scenario then uses this answer at once. To be asked again: “Ask next time” in the message that says so, or Settings → Editing → Mark changes since: Ask each time.', 'פתיחת תרחיש שמור תשתמש אז בתשובה הזו מיד. כדי שתישאלו שוב: "לשאול בפעם הבאה" בהודעה שאומרת זאת, או הגדרות ← עריכה ← סימון שינויים מאז: לשאול בכל פעם.')
-          : L('Each vote edit then takes its votes this way at once; Undo takes an edit back. To be asked again: “Ask next time” in the message that says so, or Settings → Editing → Votes come from: Ask each time.', 'כל עריכת קולות תיקח אז את הקולות כך, מיד; ביטול מחזיר עריכה. כדי שתישאלו שוב: "לשאול בפעם הבאה" בהודעה שאומרת זאת, או הגדרות ← עריכה ← מקור הקולות: לשאול בכל פעם.')} />
+          ? L('Opening a saved scenario then marks changes this way without asking. To be asked again, choose “Ask next time” in the note that appears, or use Settings.', 'פתיחת תרחיש שמור תסמן אז שינויים כך בלי לשאול. כדי שתישאלו שוב, בחרו "לשאול בפעם הבאה" בהודעה שתופיע, או בהגדרות.')
+          : L('Every vote edit then takes votes this way without asking; Undo takes one back. To be asked again, choose “Ask next time” in the note that appears, or use Settings.', 'כל עריכת קולות תיקח אז את הקולות כך בלי לשאול; ביטול מחזיר אותה. כדי שתישאלו שוב, בחרו "לשאול בפעם הבאה" בהודעה שתופיע, או בהגדרות.')} />
       <p className="tiny muted"><button type="button" className="link-btn" onClick={() => { cancel(); setState({ settingsOpen: true, settingsFocus: id === 'comparison' ? 'markChanges' : 'voteSource' }); }}>{L('Change in Settings', 'שינוי בהגדרות')}</button></p>
       <div className="row">
         <button type="submit" className="btn small primary" disabled={!value}>{L('Apply', 'החלה')}</button>

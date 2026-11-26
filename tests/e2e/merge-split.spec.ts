@@ -70,7 +70,7 @@ test('the task tabs stay in place when switching to agreements, and each era sta
   const y0 = (await tabs.boundingBox())!.y;
   await task(page, 3);
   expect((await tabs.boundingBox())!.y).toBe(y0);
-  await expect(panel(page).locator('.st-rule')).toHaveText('Rule: Pairs of lists · each must win a whole-quota seat');
+  await expect(panel(page).locator('.st-rule')).toHaveText('Rule: Pairs of lists · each must win a full seat of its own');
   // an agreement with no effect says so once (its chip), not again in a second line
   const dead = panel(page).locator('.st-agreements li').filter({ has: page.locator('.chip.no') }).first();
   await expect(dead.locator('.st-effect')).toHaveCount(0);

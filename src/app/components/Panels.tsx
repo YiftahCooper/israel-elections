@@ -67,7 +67,7 @@ export function Rules({ s }: { s: Scenario; base: Scenario }) {
             <button aria-pressed={exp} onClick={() => setMode('experimental')}>{L('Experimental', 'ניסיוני')}</button>
           </span>
           <EditMarker s={s} path={['mode']} />
-          {!exp && <span className="small ink2">{L('Locked to the law: choose Experimental to change', 'נעול לפי החוק: לשינוי בחרו "ניסיוני"')}</span>}
+          {!exp && <span className="small ink2">{L('Choose Experimental to change the rules', 'לשינוי הכללים בחרו "ניסיוני"')}</span>}
         </div>
         {/* the law of this election, named by era, in both modes: what the experiment departs from */}
         <p className="small ink2 rules-law">{L('Law', 'החוק')}: <b>{ruleEraLabel(law, lang)}</b> <Info title={exp ? L('Experimental rules', 'כללים ניסיוניים') : L('Historically valid', 'תקף היסטורית')}>{exp
@@ -107,7 +107,7 @@ export function Rules({ s }: { s: Scenario; base: Scenario }) {
               {(law.remainderRequiresInitialSeat || s.rules.remainderRequiresInitialSeat) && rule('remainderRequiresInitialSeat', !!s.rules.remainderRequiresInitialSeat, (on) => set({ remainderRequiresInitialSeat: on, agreementRequiresInitialSeat: on }), L('Remainder seats only for lists with a whole quota', 'עודפים רק לרשימות עם מודד שלם'), <Info term="rules-1949" />, divisor)}
               {(law.quotaSeatOffset || s.rules.quotaSeatOffset) ? rule('quotaSeatOffset', !!s.rules.quotaSeatOffset, (on) => set({ quotaSeatOffset: on ? 1 : 0 }), L('Quota divides the votes by the seats plus one', 'המודד: הקולות חלקי מספר המנדטים ועוד אחד'), <Info term="rules-1949" />) : null}
               {(law.largestRemainderRepeat === false || s.rules.largestRemainderRepeat === false) && rule('largestRemainderRepeat', s.rules.largestRemainderRepeat === false, (on) => set({ largestRemainderRepeat: !on }), L('At most one remainder seat per list', 'לכל היותר מנדט עודף אחד לרשימה'),
-                <Info title={L('1951–1969 law', 'החוק ב־1951–1969')}>{L('The largest-remainder law of 1951–1969 gives each list at most one remainder seat. Off: once every list has had one, the round starts again.', 'חוק השארית הגדולה של 1951–1969 נותן לכל רשימה לכל היותר מנדט עודף אחד. כבוי: אחרי שכל רשימה קיבלה אחד, הסבב מתחיל מחדש.')}</Info>,
+                <Info title={L('1951–1969 law', 'החוק ב־1951–1969')}>{L('The largest-remainder law of 1951–1969 gives each list at most one remainder seat. When off, once every list has had one, the round starts again.', 'חוק השארית הגדולה של 1951–1969 נותן לכל רשימה לכל היותר מנדט עודף אחד. כשהוא כבוי, אחרי שכל רשימה קיבלה אחד, הסבב מתחיל מחדש.')}</Info>,
                 !['largest-remainder', 'droop'].includes(s.rules.remainderMethod))}
               {(law.seatsCappedAtCandidates || s.rules.seatsCappedAtCandidates) && rule('seatsCappedAtCandidates', !!s.rules.seatsCappedAtCandidates, (on) => set({ seatsCappedAtCandidates: on }), L('No more seats than candidates', 'לא יותר מנדטים ממועמדים'), <Info term="candidate-cap-1977" />)}
             </div>
@@ -123,12 +123,12 @@ export function Rules({ s }: { s: Scenario; base: Scenario }) {
         {/* turnout, eligible voters and invalid ballots are changed on their own tiles, on the Turnout tab and the
             Overview (TileEdit.tsx): this says where, instead of a second set of fields */}
         <div className="row electorate-heading">
-          <h3>{L('Electorate', 'ציבור הבוחרים')}</h3>
+          <h3>{L('Eligible voters', 'בעלי זכות הבחירה')}</h3>
           <button className="table-action" onClick={() => { setState({ tool: 'turnout' }); window.scrollTo({ top: 0 }); }}>{L('Change on the Turnout tab →', 'שינוי בלשונית שיעור הצבעה ←')}</button>
         </div>
         <hr />
         <div className="row" style={{ justifyContent: 'space-between' }}>
-          <h3 style={{ margin: 0 }}>{L('Blocs', 'גושים')} <Info title={L('Editing blocs', 'עריכת גושים')}>{L('Choose a grouping, move lists and constituent parties between blocs, and rename or recolour blocs in the bloc editor beside the chamber.', 'בחירת חלוקה, העברת רשימות ומפלגות בין גושים ושינוי שמות וצבעים — בעורך הגושים שליד המליאה.')}</Info></h3>
+          <h3 style={{ margin: 0 }}>{L('Blocs', 'גושים')}</h3>
           <button className="btn small" onClick={() => { setState({ tool: 'board', blocPanel: s.blocs[0]?.id ?? '__none', selectedListId: null }); window.scrollTo({ top: 0 }); }}>{L('Edit blocs', 'עריכת גושים')}</button>
         </div>
       </div>
@@ -410,7 +410,7 @@ export function History({ s, r, ds, reference = null }: { s: Scenario; r: Alloca
             <li key={i} style={{ marginBottom: 3 }}>
               <span className="muted tiny">{new Date(e.at).toLocaleTimeString(lang === 'he' ? 'he-IL' : 'en-GB')}</span> {describe(e.action, s, lang)}{' '}
               {/* the newest change is where you already are: nothing to go back to */}
-              {i < s.log.findLastIndex((e) => isFactAction(e.action)) && <button className="btn small ghost" onClick={() => revertTo(i + 1)}>{L('revert to here', 'חזרה לכאן')}</button>}
+              {i < s.log.findLastIndex((e) => isFactAction(e.action)) && <button className="btn small ghost" onClick={() => revertTo(i + 1)}>{L('Go back to here', 'חזרה לכאן')}</button>}
             </li>
           ))}
         </ol>

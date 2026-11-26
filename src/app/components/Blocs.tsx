@@ -58,9 +58,10 @@ export function BlocBar({ s, r }: { s: Scenario; r: AllocationResult }) {
   const consequence = (n: number) => majorityText(n, total, lang).split(' · ')[1];
   const custom = s.blocSchemeId === null;
   const openPanel = (key: string) => setState({ blocPanel: key, selectedListId: null });
-  const kindNote = scheme?.appDefined ? appGroupingExplanation(lang) : scheme?.kind === 'government' ? L('who formed the first government after this election, as recorded', 'מי הרכיבו את הממשלה הראשונה אחרי הבחירות, כפי שתועד')
-    : scheme ? L('a recognised grouping of this election, from cited sources', 'חלוקה מוכרת של בחירות אלה, ממקורות מצוטטים')
-    : custom ? L('custom blocs: your own grouping', 'גושים מותאמים: החלוקה שלכם') : '';
+  // what the grouping in use is, in a sentence (how it was sourced is on the Sources tab, not here)
+  const kindNote = scheme?.appDefined ? appGroupingExplanation(lang) : scheme?.kind === 'government' ? L('This grouping shows who formed the first government after this election.', 'החלוקה הזו מראה מי הרכיבו את הממשלה הראשונה אחרי הבחירות.')
+    : scheme ? L('This is how the lists were grouped at this election.', 'כך חולקו הרשימות לגושים בבחירות אלה.')
+    : custom ? L('These are your own blocs.', 'אלה הגושים שלכם.') : '';
   return (
     <section className="panel blocs" aria-label={L('Seats by bloc', 'מנדטים לפי גוש')}>
       <div className="blocs-head">

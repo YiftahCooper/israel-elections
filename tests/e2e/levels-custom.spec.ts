@@ -58,7 +58,7 @@ test('c-levels-03: a hidden tool has no way in (About, Save & share, a saved com
 
 for (const lang of ['en', 'he'] as const) {
   test(`c-levels-04: own choices are Custom; choosing a named complexity keeps them and says nothing (${lang})`, async ({ page }) => {
-    const custom = { security: 'show', agreements: 'hidden' };
+    const custom = { security: 'show', agreements: 'show' };
     await start(page, { lang, level: 'simple', customFeatures: custom });
     const H = await he(page);
     // stored choices open as Custom (19 Nov 2026): Simple itself is never changed
@@ -128,7 +128,8 @@ for (const lang of ['en', 'he'] as const) {
     const H = await he(page);
     await choose(page.getByRole('button', { name: pickerName(H ? 'בחירות' : 'Election') }), 'k1');
     await listButton(page, H ? 'מפא״י' : 'Mapai').click();
-    await expect(details(page).getByRole('heading', { name: H ? 'הערות על המקורות' : 'Notes on the sources (in Hebrew)', exact: true })).toBeVisible();
+    // every 1949 Mapai note is about a candidate, so it is said once, at that candidate (clarity pass, 26 Nov 2026)
+    await expect(details(page).getByRole('heading', { name: H ? 'הערות על הרשימה' : 'Notes on this list (in Hebrew)', exact: true })).toHaveCount(0);
     await expect(details(page).locator('.disclosure-toggle')).not.toContainText([H ? 'הערות רשמיות לרשימה' : 'Official list notes']);
     const dayan = details(page).locator('.cands li').filter({ hasText: 'דיין משה' });
     await expect(dayan).toContainText(H ? 'ללא כהונה' : 'not seated');

@@ -3,6 +3,7 @@ import { SplitPartNote, SplitWarning } from './SplitWarning.tsx';
 import {ColourPicker} from './ColourPicker.tsx';
 import { hebrewPrefixName } from '../hebrewPrefix.ts';
 import { SeatDelta } from './SeatDelta.tsx';
+import { seatChangeSentence } from '../analysisWords.ts';
 import { Slip } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ListMark, listChoice } from './ListMark.tsx';
@@ -183,7 +184,7 @@ function agreementRule(rules: SimRules, L: (en: string, he: string) => string): 
   if (pct) out.push(rules.agreementRequiresAllQualify
     ? (pair ? L(`both must pass the ${pct}% threshold`, `שתיהן חייבות לעבור את אחוז החסימה (${pct}%)`) : L(`all must pass the ${pct}% threshold`, `כולן חייבות לעבור את אחוז החסימה (${pct}%)`))
     : L(`a partner below ${pct}% drops out`, `שותפה מתחת ל־${pct}% נשמטת`));
-  if (rules.agreementRequiresInitialSeat) out.push(pair ? L('each must win a whole-quota seat', 'כל אחת חייבת לזכות במנדט במודד שלם') : L('every partner must win a whole-quota seat', 'כל שותפה חייבת לזכות במנדט במודד שלם'));
+  if (rules.agreementRequiresInitialSeat) out.push(pair ? L('each must win a full seat of its own', 'כל אחת חייבת לזכות במנדט במודד שלם') : L('every partner must win a full seat of its own', 'כל שותפה חייבת לזכות במנדט במודד שלם'));
   return out.join(' · ');
 }
 
@@ -225,18 +226,17 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
                     options={s.lists.filter((x) => x.id === ag.members[1] || (x.id !== ag.members[0] && !x.withdrawn && (exp || !s.agreements.some((o) => o.id !== ag.id && o.enabled && o.members.includes(x.id)))))
                       .sort((x, y) => y.votes - x.votes).map((x) => listChoice(x, lang))} />
                 </> : <b>{ag.members.map(name).join(' ⇄ ')}</b>}{' '}
-                {inactive && <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} below threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} מתחת לחסימה`)
-                  : st?.reason === 'member-no-initial-seat' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} won no whole-quota seat`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} לא זכתה במנדט במודד שלם`)
-                  : st?.reason === 'member-withdrawn' ? L('no effect: a partner withdrew', 'ללא השפעה: שותפה פרשה')
-                  : st?.reason === 'duplicate-membership' ? L('no effect: a list is already in another agreement', 'ללא השפעה: רשימה כבר בהסכם אחר')
-                  : st?.reason === 'too-many-members' ? L('not allowed under these rules', 'לא מותר לפי הכללים')
-                  : st?.reason === 'unknown-list' ? L('refers to a list that no longer exists', 'מתייחס לרשימה שאינה קיימת') : L('no effect', 'ללא השפעה')}</span>}
-                {ag.members.length > 2 && <span className="chip exp">{L('not legal in Israel', 'לא חוקי בישראל')}</span>}
+                {inactive && <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`No effect: ${st.failedMembers.map(name).join(' and ')} ${st.failedMembers.length > 1 ? 'are' : 'is'} below the threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(' ו')} מתחת לאחוז החסימה`)
+                  : st?.reason === 'member-no-initial-seat' ? L(`No effect: ${st.failedMembers.map(name).join(' and ')} won no full seat of ${st.failedMembers.length > 1 ? 'their' : 'its'} own`, `ללא השפעה: ${st.failedMembers.map(name).join(' ו')} לא ${st.failedMembers.length > 1 ? 'זכו' : 'זכתה'} במנדט שלם משלה`)
+                  : st?.reason === 'member-withdrawn' ? L('No effect: a partner withdrew', 'ללא השפעה: שותפה פרשה')
+                  : st?.reason === 'duplicate-membership' ? L('No effect: a list is already in another agreement', 'ללא השפעה: רשימה כבר בהסכם אחר')
+                  : st?.reason === 'too-many-members' ? L('Not allowed under these rules', 'לא מותר לפי הכללים')
+                  : st?.reason === 'unknown-list' ? L('Refers to a list that no longer exists', 'מתייחס לרשימה שאינה קיימת') : L('No effect', 'ללא השפעה')}</span>}
+                {ag.members.length > 2 && <span className="chip exp">{L('Not legal in Israel', 'לא חוקי בישראל')}</span>}
                 {/* the seats the agreement moves, as the lists' own colours and signed counts; an agreement with no effect says so once, in its chip */}
                 {!inactive && <div className="small muted st-effect">{eff.length === 0
                   ? (ag.enabled ? L('Moves no seat.', 'אינו מזיז מנדט.') : L('Switching it on would move no seat.', 'הפעלתו לא הייתה מזיזה מנדט.'))
-                  : <>{ag.enabled ? L('Effect:', 'השפעה:') : L('If switched on:', 'אם יופעל:')}{' '}{eff.map((e) => (
-                    <span key={e.id} className="st-eff">{list(e.id) && <ListMark list={list(e.id)!} lang={lang} />}<bdi>{name(e.id)}</bdi> <b className="tabnum"><SeatDelta value={ag.enabled ? e.d : -e.d} /></b></span>))}</>}</div>}
+                  : (ag.enabled ? L('Thanks to it, ', 'בזכותו, ') : L('If switched on, ', 'אם יופעל, ')) + seatChangeSentence(eff.map(e => ({ id: e.id, d: ag.enabled ? e.d : -e.d })), name, lang === 'he')}</div>}
               </span>
               <span className="tools">
                 <label className="switch small"><input type="checkbox" checked={ag.enabled} onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...ag, enabled: e.target.checked } })}
@@ -404,7 +404,7 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
                 <input type="number" min={0} max={100} step={0.1} value={pct[i]} style={{ width: 76 }} aria-label={L(`Vote share of ${p.nameEn} (%)`, `חלק הקולות של ${p.nameHe} (%)`)}
                   onChange={(e) => { const next = [...pct]; next[i] = Math.max(0, Number(e.target.value) || 0); setShares(next); }} />%</span>
               <span className="small muted tabnum">{(partyVotes[i] ?? 0) === 0 && sumPct > 0 ? <SplitPartNote own={hasOwnCandidates(l, p.id)} home={home && home !== p ? name(home) : null} />
-                : <>{L(`${fmtInt(partyVotes[i] ?? 0)} votes`, `${fmtInt(partyVotes[i] ?? 0)} קולות`)}{!hasOwnCandidates(l, p.id) && p !== home && <> · {L('No recorded candidates', 'אין מועמדים מתועדים')}</>}</>}</span>
+                : <>{L(`${fmtInt(partyVotes[i] ?? 0)} votes`, `${fmtInt(partyVotes[i] ?? 0)} קולות`)}{!hasOwnCandidates(l, p.id) && p !== home && <> · {L('No candidates of its own', 'אין לה מועמדים משלה')}</>}</>}</span>
             </div>
           ))}
           {plan && plan.parts.length < 2 || sumPct === 0 ? <p className="small st-full" style={{ margin: 0, color: 'var(--warn-ink)' }}>{L('Give at least two parties a share.', 'תנו חלק לשתי מפלגות לפחות.')}</p>
@@ -419,8 +419,8 @@ function Split({ s, r }: { s: Scenario; r: AllocationResult }) {
         <div className="st-options">
           <label className="field">{L('Candidates', 'מועמדים')}
             <select value={mode} onChange={(e) => setMode(e.target.value as 'alternate' | 'top')}>
-              <option value="top">{L('Cut at a rank', 'חיתוך במקום ברשימה')}</option>
-              <option value="alternate">{L('Alternating ranks', 'מקומות לסירוגין')}</option>
+              <option value="top">{L('Split at a place on the list', 'פיצול במקום ברשימה')}</option>
+              <option value="alternate">{L('Alternate places', 'מקומות לסירוגין')}</option>
             </select></label>
           {mode === 'top' && <label className="field">{L(`Candidates on ${plainNames[0][lang === 'he' ? 0 : 1]}`, `מועמדים ${hebrewPrefixName('ב', plainNames[0][0])}`)}<NumberInput value={n} onCommit={(v) => setTopN(Math.min(v, l.candidates.length))} label={L('Candidates on the first list', 'מועמדים ברשימה הראשונה')} width={90} /></label>}
           <label className="field st-full">{L('Vote share', 'חלוקת הקולות')}

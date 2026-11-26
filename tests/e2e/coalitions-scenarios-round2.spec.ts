@@ -53,7 +53,7 @@ test('coalitions: In lists that already win are said to win, not "no coalition f
   for (const i of [0, 1, 2, 3, 4]) await page.locator('.coal-choice').nth(i).getByRole('button', { name: 'In', exact: true }).click();
   await expect(page.locator('.coal-now .majority-readout')).toHaveText('79 / 120 · 18 above 61');
   await expect(page.locator('.coal-list > li')).toHaveCount(0);
-  await expect(page.locator('.coal')).toContainText('Your In lists already have a majority, with lists to spare.');
+  await expect(page.locator('.coal')).toContainText('Your In lists already have a majority, even without some of them.');
   await expect(page.locator('.coal')).not.toContainText('No winning coalition fits');
 });
 

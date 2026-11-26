@@ -1,4 +1,5 @@
 import {englishLabel} from '../data/names.ts';
+import { hebrewPrefixName } from './hebrewPrefix.ts';
 // One rule for every vote edit on a list: where the difference comes from or goes to.
 // Shared by the number field, slider, percentage fields, quick buttons and boundary tools so that
 // the same counterfactual is always applied (and matches analysis.perturb exactly).
@@ -74,10 +75,21 @@ export function clampTarget(s: Scenario, l: SimList, target: number, src: Source
   return t;
 }
 
+/** Where added votes come from, as a short standalone label ("People who stayed home"). */
 export function voteSourceLabel(src: SourceChoice, s: Scenario, lang: 'he' | 'en'): string {
-  if (src.kind === 'new') return lang === 'he' ? 'מצביעים חדשים (מי שלא הצביעו)' : 'new voters (people who stayed home)';
-  if (src.kind === 'citizens') return lang === 'he' ? 'אזרחים חדשים' : 'new citizens';
-  if (src.kind === 'proportional') return lang === 'he' ? 'שאר הרשימות באופן יחסי' : 'other lists proportionally';
+  if (src.kind === 'new') return lang === 'he' ? 'מי שלא הצביעו' : 'People who stayed home';
+  if (src.kind === 'citizens') return lang === 'he' ? 'אזרחים חדשים' : 'New citizens';
+  if (src.kind === 'proportional') return lang === 'he' ? 'שאר הרשימות, לפי גודלן' : 'Other lists, in proportion to their size';
   const l = s.lists.find(l => l.id === src.listId);
-  return l ? (lang === 'he' ? l.shortHe : englishLabel(l.shortEn,l.shortHe)) : lang === 'he' ? 'רשימה אחרת' : 'another list';
+  return l ? (lang === 'he' ? l.shortHe : englishLabel(l.shortEn,l.shortHe)) : lang === 'he' ? 'רשימה אחרת' : 'Another list';
+}
+
+/** The same as a sentence that says where a vote change takes its votes from and where removed votes go. */
+export function voteSourceSentence(src: SourceChoice, s: Scenario, lang: 'he' | 'en'): string {
+  const he = lang === 'he';
+  if (src.kind === 'new') return he ? 'הקולות באים ממי שלא הצביעו, או חוזרים אליהם.' : 'Votes come from people who stayed home, or go back to them.';
+  if (src.kind === 'citizens') return he ? 'הקולות באים מאזרחים חדשים, שנוספים לבעלי זכות הבחירה.' : 'Votes come from new citizens, who are added to the eligible voters.';
+  if (src.kind === 'proportional') return he ? 'הקולות עוברים מכל שאר הרשימות או אליהן, לפי גודלן.' : 'Votes move to or from all the other lists, in proportion to their size.';
+  const name = voteSourceLabel(src, s, lang);
+  return he ? `הקולות עוברים רק ${hebrewPrefixName('מ', name)} או אליה.` : `Votes move to or from ${name} only.`;
 }

@@ -158,7 +158,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   const hasChanges = !paired && (evidenceChanges.gained.size > 0 || evidenceChanges.lost.size > 0);
   const baselineSeats = useMemo(() => seatOrder(base, br, colorBy, jointLook), [base, br, colorBy, jointLook]);
   const baselineBands = useMemo(() => baselineSeats.map(st => blocDisplayOrder(base).indexOf(st.bloc)), [baselineSeats, base]);
-  const componentDescription = L('Constituent display colours distinguish every party, including the lead. Missing or similar colours are adjusted for display, without changing researched colours.', 'צבעי התצוגה מבחינים בין כל המפלגות, כולל המפלגה המובילה. צבעים חסרים או דומים מותאמים לתצוגה בלי לשנות את הצבעים שנחקרו.');
+  const componentDescription = L('Each party has its own colour, the lead party too. Where a colour is missing or too like another, the chart picks a clearer one.', 'לכל מפלגה צבע משלה, גם למפלגה המובילה. כשצבע חסר או דומה מדי לאחר, התרשים בוחר צבע ברור יותר.');
   const total = s.rules.seats;
   // Geometry is physically left-to-right in both languages, like the 61 marker.
   const { seats: pos, r: rad } = useMemo(() => arcLayout(total), [total]);
@@ -302,7 +302,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
       return [{ l, dots: [], mark: listMark(l), label: clipWords(listLabel(l, lang), 40), n, delta: deltaOf(l), head: true, group: gi },
         ...rows.map(row => { const own = ownPartyLogo(l, row.p);
           return { l, dots: dotsOf(row), mark: own && row.p ? { letters: '', color: partyDisplayColor(l, row.p.id), logo: own } : undefined, indent: true, group: gi, n: row.n, delta: 0,
-            label: clipWords(row.p ? partyName(row.p) : L('Party not recorded', 'מפלגה לא מתועדת'), own ? 34 : 40) }; })];
+            label: clipWords(row.p ? partyName(row.p) : L('Party unknown', 'מפלגה לא ידועה'), own ? 34 : 40) }; })];
     });
     // two columns, a group never split between them; the first column takes the first half of the lines
     const totalLines = lines.reduce((t, g) => t + g.length, 0);
@@ -510,7 +510,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
   // a party row names its party and its list; seats whose member has no recorded party keep the list's name
   const keyName = (l: SimList, p: ChamberKeyRow['p'], byParty: boolean) => {
     if (!byParty) return listLabel(l, lang);
-    const name = p ? (lang === 'he' ? p.nameHe : p.nameEn) : L('Party not recorded', 'מפלגה לא מתועדת');
+    const name = p ? (lang === 'he' ? p.nameHe : p.nameEn) : L('Party unknown', 'מפלגה לא ידועה');
     return name === listLabel(l, lang) ? name : `${name} · ${listLabel(l, lang)}`;
   };
   const head = !compactProp && (expertControl || standardControl || expert || standard);
@@ -544,7 +544,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
             : hv.rosterUnavailable || hv.rosterTruncated ? <div className="muted">{L(`Seat ${hover.seat.idx + 1} of the list; candidate names are not available for this election`, `מושב ${hover.seat.idx + 1} של הרשימה; שמות המועמדים אינם זמינים לבחירות אלה`)}</div>
             : <div className="bad">{L('Vacant — the list has too few candidates', 'מושב ריק — אין די מועמדים ברשימה')}</div>}
           {(hover.seat.partyId || cand?.partyHe) && <div className="muted small row">{hover.seat.partyColor && <PartyKey hover partyId={hover.seat.partyId} color={hover.seat.partyColor} ring={hover.seat.innerColor ? hv.color : undefined}/>}{seatLabel(hover.seat)}</div>}
-          <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won by whole quota', 'מנדט שהושג במודד שלם')}</div>
+          <div className="muted small">{hover.seat.remainder ? remainderHow : L('Seat won with a full quota', 'מנדט שהושג במודד שלם')}</div>
           <MkSeatLink candidate={cand} />
           {!factLog(s).length && <SeatHolders electionId={s.electionId} candidate={cand} />}
           {hover.touch && <button type="button" className="btn small" onClick={() => { setHover(null); setState({ selectedListId: hover.seat.listId }); }}>{L('List details', 'פרטי הרשימה')}</button>}
@@ -564,7 +564,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
         </svg>
       </div>}
       {/* the key is needed only when there is something to compare; the reference is named once, under the small chamber */}
-      {hasChanges && <p className="small muted graphic-key">{L('Seat changes', 'שינויי מנדטים')} · {referenceLabel(labelReference,lang).name} <Info title={L('About these outlines','על המתארים')}>{L(`Outlined: seats gained compared with ${referenceLabel(labelReference,lang).name}. Dashed, in the small chamber: seats lost. Outlines compare list seat counts, not individual seats or voters moving between lists. Dashed bars show the reference; neutral ink shows the difference.`, `בקו מתאר: מנדטים שנוספו לעומת ${referenceLabel(labelReference,lang).name}. מקווקו, בכנסת הקטנה: מנדטים שאבדו. המתארים משווים את מספר המנדטים של הרשימות; אין משמעות של מנדט או בוחר שעבר בין רשימות. מתארי העמודות המקווקווים מציינים את הבסיס; דיו ניטרלי מציין שינוי.`)}</Info></p>}
+      {hasChanges && <p className="small muted graphic-key">{L('Seat changes', 'שינויי מנדטים')} · {referenceLabel(labelReference,lang).name} <Info title={L('About these outlines','על המתארים')}>{L(`Outlined seats are seats a list gained compared with ${referenceLabel(labelReference,lang).name}. Dashed seats, in the small chamber, are seats it lost.`, `מושבים בקו מתאר הם מנדטים שרשימה הוסיפה לעומת ${referenceLabel(labelReference,lang).name}. מושבים מקווקווים, בכנסת הקטנה, הם מנדטים שאיבדה.`)}</Info></p>}
       {!compactProp && (
         <div className="legend" data-key-off={chamberKey ? undefined : ''} role="group" aria-label={L('Lists in the Knesset', 'הרשימות בכנסת')} style={{ marginTop: 6 }}>
           {seats.some(st=>st.bloc===null) && <span className="row no-bloc-legend"><span className="swatch bloc-swatch unassigned" style={{['--bc' as string]:'var(--muted)'}} />{L('No bloc','ללא גוש')}</span>}
@@ -578,7 +578,7 @@ export function Hemicycle({ s, r, compact: compactProp = false, title, reference
             if (rows.length === 1) return <button key={l.id} aria-pressed={selected === l.id} onClick={pick}>{dot(rows[0].p)}{listMark}{keyName(l, rows[0].p, true)} <b className="tabnum"><bdi dir="ltr">{total}</bdi></b></button>;
             return <span key={l.id} className="key-group" role="group" aria-label={listLabel(l, lang)} style={{ ['--lc' as string]: l.color }}>
               <button className="key-group-head" aria-pressed={selected === l.id} onClick={pick}>{listMark}<strong>{listLabel(l, lang)}</strong> <b className="tabnum key-total"><bdi dir="ltr">{total}</bdi></b></button>
-              {rows.map(({ key, p, n }) => <button key={key} aria-pressed={selected === l.id} onClick={pick}>{dot(p)}{logo(p)}{p ? partyName(p) : L('Party not recorded', 'מפלגה לא מתועדת')} <b className="tabnum"><bdi dir="ltr">{n}</bdi></b></button>)}
+              {rows.map(({ key, p, n }) => <button key={key} aria-pressed={selected === l.id} onClick={pick}>{dot(p)}{logo(p)}{p ? partyName(p) : L('Party unknown', 'מפלגה לא ידועה')} <b className="tabnum"><bdi dir="ltr">{n}</bdi></b></button>)}
             </span>;
           })}
         </div>

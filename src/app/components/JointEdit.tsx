@@ -65,8 +65,8 @@ export function JointEdit({ s, r, l, base }: { s: Scenario; r: AllocationResult;
     <section className="joint-edit">
       <h3>{L('Who runs on this list', 'מי רצה ברשימה')}
         <Info title={L('Joining and leaving lists', 'הצטרפות ויציאה מרשימות')}>{L(
-          'A list that joins brings all its votes and candidates; its candidates share the places with this list’s in proportion to the two lists’ votes, and its seats keep its bloc. A party that leaves takes its candidates and the share of votes you set: by default its share of the list’s elected members (else of its candidates), as when a list splits. Each change is marked and can be undone.',
-          'רשימה שמצטרפת מביאה את כל קולותיה ומועמדיה; מועמדיה חולקים את המקומות עם מועמדי הרשימה ביחס לקולות של שתי הרשימות, ומושביה נשארים בגוש שלה. מפלגה שיוצאת לוקחת את מועמדיה ואת חלק הקולות שתקבעו: כברירת מחדל חלקה בנבחרי הרשימה (או במועמדיה), כמו בפיצול רשימה. כל שינוי מסומן וניתן לביטול.')}</Info></h3>
+          'A list that joins brings all its votes and candidates. A party that leaves takes its candidates and the share of the votes you set, by default its share of the list’s elected members.',
+          'רשימה שמצטרפת מביאה את כל קולותיה ומועמדיה. מפלגה שיוצאת לוקחת את מועמדיה ואת חלק הקולות שתקבעו, כברירת מחדל חלקה בנבחרי הרשימה.')}</Info></h3>
       <div className="row joint-edit-row">
         <ChoicePicker className="joint-add" label={L('Add a list to this one', 'צירוף רשימה לרשימה הזו')} value="" placeholder={L('Add a list…', 'צירוף רשימה…')}
           options={others.map((x) => listChoice(x, lang, { detail: L(`${fmtInt(x.votes)} votes`, `${fmtInt(x.votes)} קולות`) }))} onChange={(id) => join(id, l.id)} />
@@ -81,7 +81,7 @@ export function JointEdit({ s, r, l, base }: { s: Scenario; r: AllocationResult;
             options={[{ value: OWN, label: L('Its own list', 'רשימה משלה') }, ...others.map((x) => listChoice(x, lang, { group: L('Into another list', 'לתוך רשימה אחרת') }))]} onChange={setDest} />}
         </div>
         {party && <>
-          <label className="row small joint-move-share">{L('Votes it takes', 'הקולות שהיא לוקחת')}
+          <label className="row small joint-move-share">{L('Votes that go with it', 'הקולות שעוברים איתה')}
             <input type="number" min={0} max={100} step={0.1} value={share} style={{ width: 72 }} aria-label={L(`Share of ${listLabel(l, 'en')}’s votes that go with ${party.nameEn} (%)`, `חלק מקולות ${listLabel(l, 'he')} שעוברים עם ${party.nameHe} (%)`)}
               onChange={(e) => setPct(Math.min(100, Math.max(0, Number(e.target.value) || 0)))} />%
             <span className="muted tabnum">{L(`${fmtInt(votes)} votes`, `${fmtInt(votes)} קולות`)}</span></label>

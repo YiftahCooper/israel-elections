@@ -32,8 +32,8 @@ export function SplitWarning() {
 export function SplitPartNote({ own, home }: { own: boolean; home: string | null }) {
   const L = useL();
   return <span className="tiny muted split-part-note">{L('No list of its own', 'ללא רשימה משלה')} <Info title={L('No list of its own', 'ללא רשימה משלה')}>
-    {own ? (home ? L(`No vote share, so it runs no list of its own; its candidates stay with ${home}. Give it a share to run it.`, `אין לה חלק בקולות, ולכן אינה רצה ברשימה משלה; מועמדיה נשארים עם ${home}. תנו לה חלק כדי להריץ אותה.`)
-      : L('No vote share, so it runs no list of its own. Give it a share to run it.', 'אין לה חלק בקולות, ולכן אינה רצה ברשימה משלה. תנו לה חלק כדי להריץ אותה.'))
-      : L('No vote share and no recorded candidates, so it runs no list of its own. Give it a share to run it anyway.', 'אין לה חלק בקולות ואין לה מועמדים מתועדים, ולכן אינה רצה ברשימה משלה. תנו לה חלק כדי להריץ אותה בכל זאת.')}
+    {own ? (home ? L(`It has no votes of its own, so its candidates stay with ${home}. Give it some votes to run it alone.`, `אין לה קולות משלה, ולכן מועמדיה נשארים עם ${home}. תנו לה קולות כדי להריץ אותה לבדה.`)
+      : L('It has no votes of its own, so it doesn’t run alone. Give it some votes to run it.', 'אין לה קולות משלה, ולכן אינה רצה לבדה. תנו לה קולות כדי להריץ אותה.'))
+      : L('It has no votes and no candidates of its own, so it doesn’t run alone. Give it some votes to run it anyway.', 'אין לה קולות ואין לה מועמדים משלה, ולכן אינה רצה לבדה. תנו לה קולות כדי להריץ אותה בכל זאת.')}
   </Info></span>;
 }

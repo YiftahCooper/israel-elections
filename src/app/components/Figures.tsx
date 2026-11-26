@@ -74,13 +74,13 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         ? <Fig k={L('Threshold', 'אחוז החסימה')} v={<>{L('None', 'אין')}<EditMarker s={s} path={['rules', 'thresholdPct']} outlet="figures" /></>} edit={{ s, field: 'threshold' }}><p className="small">{L('No percentage threshold in this election.', 'בבחירות אלה לא נקבע אחוז חסימה.')}</p></Fig>
         : <Fig k={L('Threshold', 'אחוז החסימה')} term="threshold" v={<>{fmtInt(r.thresholdVotes)}<EditMarker s={s} path={['rules', 'thresholdPct']} outlet="figures" /></>} d={`${thrPct}% ${L('of valid votes', 'מהכשרים')}`} edit={{ s, field: 'threshold' }}>
             {expert && <div className="formula" style={{ marginBottom: 8 }}>⌈{thrPct}% × {fmtInt(r.totalValid)}⌉ = {fmtInt(r.thresholdVotes)}</div>}
-            {near.length ? <table className="tbl"><thead><tr><th>{L('Lists near the threshold', 'רשימות סביב החסימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('Distance', 'מרחק')}</th></tr></thead>
+            {near.length ? <table className="tbl"><thead><tr><th>{L('Lists near the threshold', 'רשימות סביב החסימה')}</th><th className="n">{L('Votes', 'קולות')}</th><th className="n">{L('From the threshold', 'מרחק מהחסימה')}</th></tr></thead>
               <tbody>{near.map(({ l }) => <tr key={l.id} ><td><button className="table-action" onClick={() => select(l.id)}>{listLabel(l, lang)}</button></td><td className="n">{fmtInt(l.votes)}</td><td className="n">{signed(l.votes - thr)}</td></tr>)}</tbody></table>
               : <p className="small muted" style={{ margin: 0 }}>{L('No lists nearby', 'אין רשימות קרובות')}</p>}
           </Fig>}
 
       {r.quota.num > 0n && (
-        <Fig k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)} d={L('the general quota', 'המודד הכללי')}>
+        <Fig k={L('Votes per seat', 'קולות למנדט')} term="quota" v={fmtRat(r.quota, 0)}>
           <div className="formula">{quota.text} = {r.quota.den === 1n ? fmtInt(r.quota.num) : fmtFrac(r.quota)}</div>
           <p className="small" style={{ marginBottom: 0 }}><Info title={L('Quota calculation', 'חישוב המודד')}>{L(`${noThreshold ? 'All valid votes (there is no threshold)' : 'The votes of the lists that passed the threshold'}, divided by ${quota.divisor === s.rules.seats ? 'the seats' : `the seats plus one (${quota.divisor})`}. It is not a price per extra seat: a further seat depends on every list’s remainder.`, `${noThreshold ? 'כל הקולות הכשרים (אין אחוז חסימה)' : 'הקולות של הרשימות שעברו את החסימה'}, חלקי ${quota.divisor === s.rules.seats ? 'מספר המנדטים' : `מספר המנדטים ועוד אחד (${quota.divisor})`}. אין זה "מחיר" למנדט נוסף: מנדט נוסף תלוי בעודפים של כל הרשימות.`)}</Info></p>
         </Fig>
@@ -107,8 +107,8 @@ export function Figures({ s, r, ds }: { s: Scenario; r: AllocationResult; ds: El
         <div className="kv small"><span>{L('Ballots cast', 'מצביעים')}</span><span>{fmtInt(cast)}</span><span>{L('Invalid ballots', 'קולות פסולים')}</span><span>{fmtInt(s.invalid)}</span><span><b>{L('Valid votes', 'קולות כשרים')}</b></span><span><b>{fmtInt(r.totalValid)}</b></span></div>
       </Fig>}
       {expert && (
-        <Fig k={L('Seats: quota + remainder', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ${hebrewPrefix('ב', method.he)}`)}>
-          <p className="small" style={{ margin: '0 0 6px' }}>{L(`${r.initialSeatsTotal} seats went by whole quotas; the remaining ${r.remainderSeatsTotal} by ${method.en}.`, `${r.initialSeatsTotal} מנדטים חולקו במודדים שלמים; ${r.remainderSeatsTotal} הנותרים ${hebrewPrefix('ב', method.he)}.`)}</p>
+        <Fig k={L('Seats: full quotas + leftover votes', 'מנדטים: מודד + עודפים')} term={method.term} v={`${r.initialSeatsTotal} + ${r.remainderSeatsTotal}`} d={L(`${r.remainderSeatsTotal} by ${method.en}`, `${r.remainderSeatsTotal} ${hebrewPrefix('ב', method.he)}`)}>
+          <p className="small" style={{ margin: '0 0 6px' }}>{L(`${r.initialSeatsTotal} seats were won with full quotas; the other ${r.remainderSeatsTotal} by ${method.en}.`, `${r.initialSeatsTotal} מנדטים חולקו במודדים שלמים; ${r.remainderSeatsTotal} הנותרים ${hebrewPrefix('ב', method.he)}.`)}</p>
           {walkShown && <button className="btn small" onClick={() => setState({ tool: 'walk' })}>{L(...featureLabel('walk'))}</button>}
         </Fig>
       )}

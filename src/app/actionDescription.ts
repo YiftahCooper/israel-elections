@@ -31,7 +31,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
         .concat(c.breaks?.length ? [he ? `${c.breaks.length} בנפרד מרשימתם` : `${c.breaks.length} apart from their list`] : []);
       return parts.length ? `${he ? 'קואליציה' : 'Coalition'}: ${parts.join(' · ')}` : (he ? 'בחירת הקואליציה נוקתה' : 'Coalition choices cleared');
     }
-    case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'ריק' : 'blank') : (a.source === 'preset' ? (a.part === 'rules' ? (a.presetId && RULESETS[a.presetId] ? ruleEraLabel(RULESETS[a.presetId], lang) : (he ? 'כללים ממקור מתועד' : 'Sourced rules')) : ((g) => g ? groupingName(g, lang) : undefined)(s.blocSchemes?.find(g => g.id === a.presetId)) ?? (he ? 'חלוקה ממקור מתועד' : 'Sourced grouping')) : (he ? 'תרחיש שמור' : 'saved scenario')))}`;
+    case 'startPart': return `${PARTS[a.part][lang]}: ${a.name ?? (a.source === 'official' ? (he ? 'התוצאה הרשמית' : 'official result') : a.source === 'blank' ? (he ? 'נוקה' : 'cleared') : (a.source === 'preset' ? (a.part === 'rules' ? (a.presetId && RULESETS[a.presetId] ? ruleEraLabel(RULESETS[a.presetId], lang) : (he ? 'כללים ממקור מתועד' : 'Sourced rules')) : ((g) => g ? groupingName(g, lang) : undefined)(s.blocSchemes?.find(g => g.id === a.presetId)) ?? (he ? 'חלוקה ממקור מתועד' : 'Sourced grouping')) : (he ? 'תרחיש שמור' : 'saved scenario')))}`;
     case 'setVotes': return (he ? `${n(a.listId)}: ${fmtInt(a.votes)} קולות` : `${n(a.listId)}: set to ${fmtInt(a.votes)} votes`) + (a.citizens ? (he ? ' (אזרחים חדשים)' : ' (new citizens)') : '');
     case 'transfer': return he ? `העברת ${fmtInt(a.votes)} קולות ${hebrewPrefix('מ', n(a.from))} ${hebrewPrefixName('ל', n(a.to))}` : `Moved ${fmtInt(a.votes)} votes from ${n(a.from)} to ${n(a.to)}`;
     case 'addVoters': { const n = a.allocations.reduce((t, x) => t + x.votes, 0) + a.invalid, k = fmtInt(Math.abs(n)), why = a.label && !a.label.startsWith('[') ? ` (${a.label})` : '';
@@ -44,7 +44,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
       return he ? `חלוקה מחדש של ${fmtInt(a.votes)} קולות` : `Redistributed ${fmtInt(a.votes)} votes`;
     }
     case 'scaleAll': return he ? `שינוי כל הקולות ל־${fmtPctNum(a.factorPct, getSetting('decimals'))}` : `Scaled all votes to ${fmtPctNum(a.factorPct, getSetting('decimals'))}`;
-    case 'merge': return he ? `איחוד: ${a.nameHe} (${a.ids.length} רשימות, שימור ${fmtPctNum(a.retentionPct, getSetting('decimals'))})` : `Merged ${a.ids.length} lists into ${n(a.newId) === 'Removed list' ? englishLabel(null,a.nameHe) : n(a.newId)} (${fmtPctNum(a.retentionPct, getSetting('decimals'))} retained)`;
+    case 'merge': return he ? `איחוד: ${a.nameHe} (${a.ids.length} רשימות, ${fmtPctNum(a.retentionPct, getSetting('decimals'))} מהמצביעים נשארים)` : `Merged ${a.ids.length} lists into ${n(a.newId) === 'Removed list' ? englishLabel(null,a.nameHe) : n(a.newId)} (${fmtPctNum(a.retentionPct, getSetting('decimals'))} of voters stay)`;
     case 'split': return he ? `פיצול ${hebrewPrefixName('ל', a.parts.map((p) => p.nameHe).join(' / '))}` : `Split into ${a.parts.map((p) => s.lists.some(l => l.id === p.newId) ? n(p.newId) : englishLabel(null,p.nameHe)).join(' / ')}`;
     // the joining list is gone from the scenario; it lives on as a party of the list it joined
     case 'joinList': { const own = s.lists.flatMap((l) => l.parties ?? []).find((p) => p.id === ownPartyId(a.listId));
@@ -68,7 +68,7 @@ export function describe(a: Action, s: Scenario, lang: Lang): string {
       return Object.keys(a.patch).map(k => editPathLabel(next, ['rules',k], lang) + ': ' + changeText(next,['rules',k],lang)).join(' · ');
     }
     case 'setMode': return a.mode === 'historical' ? (he ? 'מצב תקף היסטורית' : 'Historically valid mode') : (he ? 'מצב ניסיוני' : 'Experimental mode');
-    case 'setTotals': return he ? 'עדכון בעלי זכות / פסולים' : 'Electorate / invalid ballots changed';
+    case 'setTotals': return he ? 'שינוי בעלי זכות הבחירה או הפסולים' : 'Changed eligible voters or invalid ballots';
     case 'setBlocs': return he ? 'עריכת גושים' : 'Edited blocs';
     case 'applyBlocScheme': { const sc = s.blocSchemes?.find((x) => x.id === a.schemeId); return he ? `חלוקה לגושים: ${sc ? groupingName(sc, lang) : 'חלוקה שהוסרה'}` : `Bloc grouping: ${sc ? groupingName(sc, lang) : 'Removed grouping'}`; }
     case 'setFactionSplit': return a.split

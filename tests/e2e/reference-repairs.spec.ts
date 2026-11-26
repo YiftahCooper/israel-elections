@@ -23,9 +23,9 @@ async function save(page: Page, he = false) {
 }
 test('B1 saved separate-run reference is named everywhere; B6 identity is not repeated', async ({ page }) => {
   await start(page); await split(page);
-  await expect(page.locator('.lb-group-comparison')).toContainText('together 4, officially 7');
+  await expect(page.locator('.lb-group-comparison')).toContainText('they have 4 seats together; officially, as United Torah Judaism, they had 7 seats.');
   await save(page);
-  await expect(page.locator('.lb-group-comparison')).toContainText('together 4, in Review A 4');
+  await expect(page.locator('.lb-group-comparison')).toContainText('they have 4 seats together; in Review A, as');
   await expect(page.locator('.lb-group-comparison')).not.toContainText('official');
   await expect(page.locator('.session')).toContainText('No changes from Review A');
   await expect(page.locator('.session .scn-name')).toHaveCount(0);
@@ -100,7 +100,7 @@ for (const lang of ['en', 'he']) for (const theme of ['light', 'dark']) for (con
     await start(page, lang, theme);
     const he = lang === 'he';
     await split(page, he); await save(page, he);
-    await expect(page.locator('.lb-group-comparison')).toContainText(he ? 'בתרחיש Review A 4' : 'in Review A 4');
+    await expect(page.locator('.lb-group-comparison')).toContainText(he ? 'בתרחיש Review A, בתור' : 'in Review A, as');
     await expect(page.locator('.session .scn-name')).toHaveCount(0);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     const shot = `.backup-scratch/reference-repairs/${lang}-${theme}-${phone ? 'phone' : 'desktop'}`;

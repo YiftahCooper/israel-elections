@@ -135,7 +135,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         <button type="button" data-list-id={l.id} data-family={familyRows.find(x => x.id === l.id)?.family} ref={open ? selRef : undefined} className={`lb-row ${out ? 'out' : ''} ${dimOthers && selected && !open ? 'dim' : ''}`} aria-pressed={open}
           aria-label={listLabel(l, lang)} aria-describedby={`lbd-${l.id}`}
           onClick={() => setState({ selectedListId: open ? null : l.id })}
-          title={l.logo || l.synthetic ? listLabel(l, lang) : `${listLabel(l, lang)} — ${L('Ballot letters (no verified election logo)', 'אותיות הפתק (טרם נמצא סמל ממקור לבחירות אלה)')}`}>
+          title={listLabel(l, lang)}>
           {splitIds.has(l.id) && jointLook !== 'list' && componentSeats.some((st) => st.listId === l.id && st.partyColor)
             ? <span className="slip-joint" style={{ ['--lc' as string]: l.color }} title={L('Joint list: its own colour is the frame; the bar shows its parties', 'רשימה משותפת: צבעה במסגרת; הפס מראה את מפלגותיה')}><Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} /></span>
             : <Slip name={listLabel(l, lang)} letters={l.letters} color={l.color} logo={l.logo} synthetic={l.synthetic} />}
@@ -192,7 +192,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
             {(() => { const rest = lr.seats - electedOf(l, lr.seats).filter(c => l.parties!.some(p => p.id === c.partyId)).length; return rest > 0 && (
               <li key="rest" data-party-rest="">
                 <Slip letters="" name={listLabel(l, lang)} color={l.color} />
-                <span className="lb-pname">{L('Party not recorded', 'מפלגה לא מתועדת')}</span>
+                <span className="lb-pname">{L('Party unknown', 'מפלגה לא ידועה')}</span>
                 <span className="lb-bar" aria-hidden><i style={{ width: `${(rest / scale) * 100}%`, background: l.color }} /></span>
                 <b>{rest}</b>
               </li>); })()}
@@ -213,7 +213,7 @@ export function ListBars({ s, r, base, baseR }: { s: Scenario; r: AllocationResu
         {refBars && <RefLegend work={cmp.ref.same ? L('Your work', 'העבודה שלכם') : yearOf(elections, s.electionId, lang)} label={cmp.label} />}
         {copyButton && <button type="button" className="btn small cmpm-copy-all" onClick={() => askCopy({ lists: null })}>{L('Copy votes…', 'העתקת קולות…')}</button>}
       </div>}
-      {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Ran separately: together ${g.seatsB}, ${baseLabel.at} ${g.seatsA} as `, `רצו בנפרד: יחד ${g.seatsB}, ${baseLabel.at} ${g.seatsA} בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}</p>)}
+      {groups.map(g => <p key={g.key} className="lb-group-comparison small ink2">{L(`Running separately, they have ${seatsText(g.seatsB, 'en')} together; ${baseLabel.at}, as `, `בריצה נפרדת יש להן יחד ${seatsText(g.seatsB, 'he')}; ${baseLabel.at}, בתור `)}{g.aIds.map(id => listLabel(base.lists.find(l => l.id === id)!, lang)).join(' + ')}{L(`, they had ${seatsText(g.seatsA, 'en')}.`, `, היו להן ${seatsText(g.seatsA, 'he')}.`)}</p>)}
       <ol className="lb">
         {inKnesset.map(row)}
         {outside.length > 0 && (

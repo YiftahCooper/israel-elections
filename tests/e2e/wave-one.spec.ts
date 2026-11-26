@@ -63,8 +63,10 @@ for (const lang of ['en','he']) for (const theme of ['light','dark']) for (const
     }
     await page.screenshot({path:`.backup-scratch/wave-one/${lang}-${theme}-${phone ? 'phone' : 'desktop'}.png`,fullPage:false});
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
-    await sheet.getByRole('button',{name:lang === 'he' ? 'מעט מתחת לחסימה' : 'Just below threshold',exact:true}).click();
-    await expect(sheet.locator('.crossing')).toContainText(lang === 'he' ? 'מתחת לאחוז החסימה' : 'Below the threshold');
+    await sheet.getByRole('button',{name:lang === 'he' ? 'ירידה מתחת לחסימה' : 'Fall below the threshold',exact:true}).click();
+    // falling below is said once, on the panel's own "Below the threshold" line (clarity pass, 26 Nov 2026)
+    await expect(sheet.locator('.crossing')).toHaveCount(0);
+    await expect(sheet.getByText(lang === 'he' ? 'מתחת לאחוז החסימה' : 'Below the threshold').first()).toBeVisible();
     await sheet.getByRole('button',{name:lang === 'he' ? 'מעבר אחוז החסימה' : 'Cross the threshold',exact:true}).click();
     await expect(sheet.locator('.crossing')).toContainText(lang === 'he' ? 'עברה את' : 'Passed the');
   });

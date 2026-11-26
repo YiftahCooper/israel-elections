@@ -71,7 +71,7 @@ test('list panel gaps are tight and asynchronous results leave the slider fixed'
   const slider = panel.getByRole('slider', { name: 'Votes slider' });
   const y = (await slider.boundingBox())!.y;
   const status = panel.locator('.seat-search-status');
-  await expect(status).toContainText('proven minimum');
+  await expect(status).toContainText('more seat');
   const box = (await status.boundingBox())!;
   expect((await slider.boundingBox())!.y - box.y - box.height).toBeLessThanOrEqual(40);
   expect((await slider.boundingBox())!.y).toBe(y);
