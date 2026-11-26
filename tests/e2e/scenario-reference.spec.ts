@@ -1,4 +1,5 @@
 import { choose, pickerName } from './choices.ts';
+import { openSettings } from './barMenu';
 import { expect, test, type Page } from './fixtures';
 async function start(page: Page, lang = 'en', theme = 'light') {
   await page.addInitScript(v => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', ((o: { theme?: string; hintDismissed?: boolean; [k: string]: unknown }) => { if (!sessionStorage.getItem('seeded-settings')) sessionStorage.setItem('seeded-settings', '1'), localStorage.setItem('israel-elections:settings', JSON.stringify({ v: 2, values: { ...(o.theme ? { theme: o.theme } : {}), ...(o.hintDismissed ? { starterTip: false } : {}), decimals: 2 } })); return JSON.stringify(o); })(v)); }, { lang, theme, level: 'expert', hintDismissed: true });
@@ -46,8 +47,7 @@ test('save moves the reference, official setting restores markers, colour surviv
   await votes.fill('1150100'); await votes.press('Enter');
   await expect(panel.locator('.edit-marker')).not.toHaveCount(0);
   await page.getByRole('tab', { name: 'Scenarios', exact: true }).click();
-  if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
-    await page.locator('.scn-options').getByRole('button', { name: 'Settings…', exact: true }).click();
+  await openSettings(page);
   await page.getByRole('group', { name: 'Mark changes since', exact: true }).getByRole('button', { name: 'Official result', exact: true }).click();
     await page.keyboard.press('Escape');
   await page.getByRole('tab', { name: 'Overview', exact: true }).click();

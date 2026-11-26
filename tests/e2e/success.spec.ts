@@ -39,7 +39,7 @@ test('2022: merge, add voters, drop agreement, push Balad over, find Ra’am’s
 
   // 3. 200,000 additional voters for Arab lists (custom split)
   await page.getByRole('tab', { name: 'Turnout', exact: true }).click();
-  await choose(page.getByRole('button', { name: /^Voter group(: |$)/ }), 'manual');
+  await choose(page.getByRole('button', { name: /^Voter group(?:$|: (?!explanation$))/ }), 'manual');
   const enter = async (label: string, value: string) => { const f = page.getByLabel(label, { exact: true }); await f.fill(value); await f.press('Enter'); };
   await enter('Group size', '400000');
   await enter('Current turnout %', '50');

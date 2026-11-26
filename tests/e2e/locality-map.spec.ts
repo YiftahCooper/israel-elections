@@ -111,7 +111,7 @@ test('2006 Hebrew map says in one line why a few places are missing and lists on
   await expect(page.getByText('ל־4 מתוך 1,149 מקומות אין נקודה במפה; הם מפורטים למטה.')).toBeVisible();
   await expect(page.locator('.locality-map-label').first()).toBeVisible();
   await expect(page.getByText('בתוצאות הרשמיות של 2006 אין סמלי יישובים', {exact:false}).first()).toBeVisible();
-  const missing = page.locator('.locality-map-tool details').filter({has:page.getByText('שורות ללא מיקום במפה',{exact:true})});
+  const missing = page.locator('.locality-map-tool details').filter({has:page.getByText('מקומות שאינם במפה',{exact:true})});
   await missing.locator('summary').click();
   await expect(missing.locator('li')).toHaveCount(4);
   for(const name of ['דלתון','נווה אילן','סנסנה','שושנת העמקים']) await expect(missing).toContainText(name);

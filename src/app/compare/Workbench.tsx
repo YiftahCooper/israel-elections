@@ -7,7 +7,7 @@ import { ordinalEn } from '../electionLabel.ts';
 import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { usePopupTabOrder } from '../focusReturn.ts';
 import { createPortal } from 'react-dom';
-import { ArrowLeftRight, MoreHorizontal, Redo2, Undo2 } from 'lucide-react';
+import { MoreHorizontal, Redo2, Undo2 } from 'lucide-react';
 import { inputPart } from '../../model/editScopes.ts';
 import { PARTS, partSnapshot } from '../../model/parts.ts';
 import { allocationOf, changeCount, editPathLabel, electedOf, listLabel, markerReference, METHODS, resultChanges } from '../derive.ts';
@@ -41,7 +41,7 @@ type Dir = 'toRight' | 'toLeft';
 type Filter = 'all' | 'different' | 'edited' | 'unmatched';
 const narrow = () => narrowerThan(760);
 
-export function Workbench({ main, other, picker, onSwap }: { main: SideModel; other: SideModel; picker: ReactNode; onSwap: () => void }) {
+export function Workbench({ main, other, picker }: { main: SideModel; other: SideModel; picker: ReactNode }) {
   const L = useL(), lang = useLang(), digits = useDigits();
   const simple = !useOn('compareTools'), expert = useOn('compareExpert');
   const pair = pairKey(main.sc.electionId, other.sc.electionId);
@@ -257,7 +257,7 @@ export function Workbench({ main, other, picker, onSwap }: { main: SideModel; ot
     <div className="cmp-sides" dir="ltr">
       {[left, right].map((x, i) => <SideCard key={x.role} x={x} picker={x.role === 'other' ? picker : null} focused={focusSide === x.role} onFocus={() => setFocusSide(x.role)} align={i === 0 ? 'left' : 'right'} />)}
       <div className="cmp-centre">
-        <button type="button" className="btn small cmp-swap" onClick={() => { setCopyReq(null); setWholeReq(null); setMenu(null); onSwap(); }} aria-label={L('Swap: make the other result your work', 'החלפה: התוצאה השנייה הופכת לעבודה שלכם')} title={L('Swap: make the other result your work', 'החלפה: התוצאה השנייה הופכת לעבודה שלכם')}><ArrowLeftRight size={16} /><span>{L('Swap', 'החלפה')}</span></button>
+        {/* Swap is on the comparison strip above; one Swap on screen (clarity pass, 26 Nov 2026) */}
         <span className="tiny muted cmp-centre-key" dir={lang === 'he' ? 'rtl' : 'ltr'}>{L('Change:', 'שינוי:')} <bdi dir="ltr">{nameOf(mainLeft ? left : right)} − {nameOf(mainLeft ? right : left)}</bdi></span>
       </div>
     </div>
@@ -367,7 +367,7 @@ function SideCard({ x, picker, focused, onFocus, align }: { x: SideModel; picker
   const title = `${x.year} · ${x.name}`;
   return <section className={`cmp-card ${focused ? 'focused' : ''}`} data-side={align} data-role={x.role} style={{ borderColor: x.frame }} dir={lang === 'he' ? 'rtl' : 'ltr'} onPointerDown={onFocus} onFocus={onFocus} aria-label={title}>
     <div className="cmp-card-head">
-      <span className="cmp-card-role">{x.role === 'main' ? L('Your work', 'העבודה שלכם') : L('Compared with', 'בהשוואה ל־')}</span>
+      <span className="cmp-card-role">{x.role === 'main' ? L('Your work', 'העבודה שלכם') : L('Compared with', 'להשוואה')}</span>
       <span className="cmp-card-election"><b>{e ? x.year : x.sc.electionId}</b> <span className="muted small">{e ? (lang === 'he' ? `הכנסת ה־${e.knesset}` : `${ordinalEn(e.knesset)} Knesset`) : ''}</span></span>
       {picker}
     </div>

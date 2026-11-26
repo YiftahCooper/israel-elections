@@ -179,11 +179,11 @@ test('Swap makes 2022 your work; a saved comparison and its link reopen both sid
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await start(page);
   await openSideBySide(page);
-  await page.locator('.cmp-swap').click();
+  await page.locator('.cmpm-strip .cmpm-swap').click();
   await expect(card(page, 'main')).toContainText('2022');
   await expect(card(page, 'other')).toContainText('2026');
   await expect(page.getByRole('button', { name: /^Election(: |$)/ })).toContainText('2022');
-  await page.locator('.cmp-swap').click();
+  await page.locator('.cmpm-strip .cmpm-swap').click();
   await expect(card(page, 'main')).toContainText('2026');
   // a copy into the compared 2022, then share: the link carries both sides
   await row(page, 'Likud').getByRole('button', { name: 'More for Likud' }).click();
@@ -404,7 +404,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
   test(`no copy control in Side by side is an arrow: ${lang}, ${width}px`, async ({ page }) => {
     await start(page, lang, 'k26', width);
     await openSideBySide(page);
-    const arrowControls = async () => page.locator('.side-by-side, .cmp-menu, dialog[open]').evaluateAll((roots) => roots.flatMap((root) =>
+    const arrowControls = async () => page.locator('.cmpm-strip, .side-by-side, .cmp-menu, dialog[open]').evaluateAll((roots) => roots.flatMap((root) =>
       [...root.querySelectorAll('button, [role="button"], a')].filter((b) => b.querySelector('svg[class*="arrow"]') || /[←→⇐⇒⟵⟶➜⬅➡]/.test(b.textContent ?? ''))
         .map((b) => b.getAttribute('aria-label') || b.textContent?.trim() || '')));
     const notCopy = /^(Swap|החלפה|Compare|השוואה)(?=$|[\s:])/;
@@ -412,7 +412,7 @@ for (const lang of ['en', 'he'] as const) for (const width of [1500, 390]) {
     const band = page.locator('.cmp-band-row[data-key="turnout"]');
     await expect(band.locator('.cmp-band-copy')).toHaveText(lang === 'he' ? 'העתקה' : 'Copy');
     const found = await arrowControls();
-    expect(found.some((name) => /^(Swap|החלפה)/.test(name))).toBe(true); // the check sees arrow icons (Swap has one)
+    expect(found.some((name) => /^(Swap|החלפה)/.test(name))).toBe(true); // the check sees arrow icons (the strip's Swap has one)
     for (const name of found) expect(name).toMatch(notCopy);
     await expect(page.locator('.cmp-arrow')).toHaveCount(0);
     await band.locator('.cmp-band-more').click();

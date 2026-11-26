@@ -164,7 +164,7 @@ export function CopyVotesBox({ req, onClose, onDone }: { req: CopyRequest; onClo
               {n !== null && <>{arrow}<b><bdi dir="ltr">{fmtInt(n)}</bdi> {L('votes', 'קולות')}</b></>}
               {/* the figure now, which the line above this level leaves out */}
               {<span className="muted"> {L('(now ', '(עכשיו ')}<bdi dir="ltr">{fmtInt(votes(to.sc, dst))}</bdi>{L(')', ')')}</span>}</p>
-            {p && <p className="cmpm-copy-seats"><Outcome plan={p} to={to} focus={dst} info={p.ok ? seatsWhy : undefined} /></p>}</>; })()}</div>
+            {p && <p className="cmpm-copy-seats"><Outcome plan={p} to={to} focus={dst} /></p>}</>; })()}</div>
         : <fieldset className="cmp-modes"><legend>{L('Copy as', 'העתקה לפי')}</legend>
           {choice(votesMode, { value: 'votes', checked: byCount, pick: () => setMode(votesMode), seatsInfo: !cross,
             under: cross && <span className="cmp-mode-adjust"><label><input type="checkbox" checked={adjust} disabled={!canAdjust || !byCount}

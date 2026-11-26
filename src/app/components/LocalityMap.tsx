@@ -543,7 +543,7 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
         <span>{L('Valid ', 'כשרים ')}<b className="tabnum">{fmtInt(selected.valid)}</b></span>
         <span>{L('Registered ', 'בעלי זכות ')}<b className="tabnum">{selected.registered ? fmtInt(selected.registered) : '—'}</b></span>
         <span>{L('Invalid ', 'פסולים ')}<b className="tabnum">{fmtInt(selected.invalid)}</b></span>
-        <Info title={L('Turnout', 'הצבעה')}>{(() => { const a = placed.find(p => p.index === selectedIndex)?.approx; return a && <p>{lang === 'he' ? a.he : a.en}</p>; })()}{L('Turnout here leaves out double-envelope votes, which are counted for the whole country.', 'שיעור ההצבעה כאן אינו כולל את המעטפות הכפולות, שנספרות לכל הארץ.')}</Info>
+        {(() => { const a = placed.find(p => p.index === selectedIndex)?.approx; return <Info title={a ? L('Location and turnout', 'מיקום והצבעה') : L('Turnout', 'שיעור הצבעה')}>{a && <p>{lang === 'he' ? a.he : a.en}</p>}{L('Turnout here leaves out double-envelope votes, which are counted for the whole country.', 'שיעור ההצבעה כאן אינו כולל את המעטפות הכפולות, שנספרות לכל הארץ.')}</Info>; })()}
       </p>
       {/* each list's share drawn as a bar in its colour, scaled to the leader */}
       <div className="tablewrap"><table className="tbl"><thead><tr><th>{L('List','רשימה')}</th><th className="n">{L('Votes','קולות')}</th><th>{L('Share','שיעור')}</th></tr></thead><tbody>{(()=>{const rows=selected.votes.map((v,k)=>({v,k})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v);const top=rows[0]?.v||1;return rows.map(({v,k})=>{
@@ -552,6 +552,6 @@ export function LocalityMap({ s, data, historicalLists, locations, names, locati
     </section>}
     {locationError && <p className="bad" role="alert">{L('Coordinates could not be loaded. The table is still available.', 'לא ניתן לטעון מיקומים. הטבלה עדיין זמינה.')} <button className="btn small" onClick={retryLocations}>{L('Try again', 'נסו שוב')}</button></p>}
     {placed.length < localities && <p className="small ink2">{L(`${fmtInt(localities - placed.length)} of ${fmtInt(localities)} places have no point on the map; they are listed below.`,`ל־${fmtInt(localities - placed.length)} מתוך ${fmtInt(localities)} מקומות אין נקודה במפה; הם מפורטים למטה.`)}</p>}
-    <details><summary>{L('Rows without a mapped location','שורות ללא מיקום במפה')}</summary><ul>{unplaced.map(i=><li key={i}><button className="btn small" onClick={()=>choose(i)}><LocalityName names={names} row={data.rows[i]} index={i} /> ({data.rows[i].code ?? '—'})</button></li>)}</ul></details>
+    <details><summary>{L('Places not on the map','מקומות שאינם במפה')}</summary><ul>{unplaced.map(i=><li key={i}><button className="btn small" onClick={()=>choose(i)}><LocalityName names={names} row={data.rows[i]} index={i} /> ({data.rows[i].code ?? '—'})</button></li>)}</ul></details>
   </div>;
 }

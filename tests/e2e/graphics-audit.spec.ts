@@ -4,6 +4,7 @@ import {expect,test} from './fixtures';
 import {readFileSync} from 'node:fs';
 import {deflateRawSync} from 'node:zlib';
 import {graphicsCases,dataset} from '../graphics-cases.ts';
+import { openSettings } from './barMenu';
 test.describe.configure({mode:'parallel'});
 for(const lang of ['he','en']) for(const theme of ['light','dark']) for(const phone of [false,true]) {
   test(`graphics invariants and captures ${lang} ${theme} ${phone?'phone':'desktop'}`,async({page})=>{
@@ -109,8 +110,7 @@ test('summary, graphics and Compare default follow the same reference setting',a
   await page.goto('/#s='+deflateRawSync(JSON.stringify({e:'k25',n:'Graphics audit',b:dataset(25).buildInfo.builtAt,l:c.actions})).toString('base64url'));
   for(const [setting,name,changed] of [['official','Official result',true],['reference','Graphics audit',false],['official','Official result',true]] as const) {
     await page.getByRole('tab',{name:'Scenarios',exact:true}).click();
-    if (!await page.locator('.scn-options').evaluate(el => el.hasAttribute('open'))) await page.locator('.scn-options summary').click();
-    await page.locator('.scn-options').getByRole('button', { name: 'Settings…', exact: true }).click();
+    await openSettings(page);
     await page.getByRole('group',{name:'Mark changes since',exact:true}).getByRole('button',{name:setting==='official'?'Official result':'Opened scenario',exact:true}).click();
     await page.keyboard.press('Escape');
     await page.getByRole('tab',{name:'Overview',exact:true}).click();

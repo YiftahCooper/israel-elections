@@ -12,7 +12,7 @@ export function ColourAdvice({value,others,onChange,rules={},id}:{value:string;o
  return <span id={id} className="colour-advice" role="status">
   <span>{clashes.length?L(`Hard to tell apart from ${clashes[0].name}`,`קשה להבחין בינו לבין ${clashes[0].name}`):L('Low contrast','ניגודיות נמוכה')}</span>
   {improves&&<button type="button" className="btn small" onClick={()=>onChange(alternative)}><i aria-hidden style={{background:alternative}}/>{L('Use alternative','בחירת חלופה')}</button>}
-  <Info title={L('Colour checks','בדיקת צבעים')}>{L('Compares colours shown together using CIEDE2000 and checks contrast against their backgrounds. Your choice is kept until you choose an alternative. Labels and outlines still identify items.','השוואת צבעים שמוצגים יחד באמצעות CIEDE2000 ובדיקת ניגודיות מול הרקע. הבחירה נשמרת עד לבחירה בחלופה. שמות ומתארים ממשיכים לזהות את הפריטים.')}</Info>
+  <Info title={L('Colour checks','בדיקת צבעים')}>{L('Warns when a colour is hard to tell apart from the colours beside it or from its background. Your choice stays until you pick the alternative.','מזהירה כשקשה להבחין בין צבע לצבעים שלידו או לרקע שלו. הבחירה שלכם נשמרת עד שתבחרו בחלופה.')}</Info>
  </span>;
 }
 /** `onReset`: shown as a Reset button beside a colour the user changed (owner, 16 Nov 2026), back to the official one. */
