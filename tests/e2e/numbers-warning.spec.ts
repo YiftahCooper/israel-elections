@@ -98,5 +98,5 @@ test('2013: declared and detailed results behind (i), seats unchanged', async ({
   await page.locator('.lb-row').first().click();
   const info = page.locator('.ld h3').filter({ hasText: 'Votes' }).locator('.info button');
   await info.click();
-  await expect(page.getByText(/Shown: the declared result \(Reshumot notice and seat calculation\), 885,054\. The detailed results sum to 885,163; the 2013 map and list of places add up to that\. No seat changes\. Cause not documented\./)).toBeVisible();
+  await expect(page.getByText(/These are the declared votes, which decided the seats\. The detailed count by place gives 885,163; the difference is unexplained\./)).toBeVisible();
 });

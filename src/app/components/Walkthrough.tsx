@@ -300,7 +300,7 @@ export function Walkthrough({ s, r }: { s: Scenario; r: AllocationResult }) {
             {tray([...initialCells, ...awarded(step.st.step)], { current: seatNo - 1 })}
             <p className="small ink2">{ruleSentence()}</p>
             <p className="walk-award">{L('Awarded to', 'הוענק ל')} <span className="walk-pair">{swatches(w)}<b>{name(w)}</b></span>
-              {margin && margin.num > 0n && runner ? <span className="muted"> {L(`· ahead of ${name(runner.unitId)} by ${num(margin, 1)}`, `· ביתרון של ${num(margin, 1)} על ${name(runner.unitId)}`)}</span> : null}
+              {margin && margin.num > 0n && runner ? <span className="muted"> {L(`· ahead of ${name(runner.unitId)} by ${num(margin, 1)} votes`, `· ביתרון של ${num(margin, 1)} קולות על ${name(runner.unitId)}`)}</span> : null}
               {r.units.find((u) => u.id === w)?.isAgreement ? <span className="muted"> {L(`· the pair divides it in step ${stageNo('internal')}`, `· הצמד מחלק אותו בצעד ${stageNo('internal')}`)}</span> : null}
               {changed ? <> <span className="chip walk-was">{L(`was ${wasName}`, `היה: ${wasName}`)}</span></> : null}
             </p>

@@ -27,11 +27,11 @@ test('the unhelpful uniform-turnout question is absent', async ({ page }) => {
   await expect(row(page, 'Turnout of 80%')).toHaveCount(0);
 });
 
-test('the questions’ data sources are one click away', async ({ page }) => {
+// one plain line says what the rows show; the (i) that explained the page is gone (clarity pass, 26 Nov 2026)
+test('one plain line introduces the questions, with no (i) of its own', async ({ page }) => {
   await start(page);
-  await page.getByRole('button', { name: 'About these questions' }).click();
-  await page.getByRole('tooltip').getByRole('button', { name: 'Sources' }).click();
-  await expect(page.locator('#tab-sources')).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByText('Each question changes one thing in the real result and shows which lists gain or lose seats.', { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'About these questions' })).toHaveCount(0);
 });
 
 test('Hebrew sums read left to right', async ({ page }) => {

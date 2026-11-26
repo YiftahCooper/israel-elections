@@ -1,5 +1,9 @@
 # Changelog
 
+## 26 November 2026
+
+- Clearer history, families and seat steps (26 Nov): on After the election every (i) is now "Sources" and shows each source and its words, without the dates it was read or research notes; the "Recorded history · checked" line is gone; the coalition total reads "Coalition seats" (no second "Members"), and zero outside support or zero abstentions are not shown. On the Knesset on a date, confirmed events no longer carry "Confirmed from official records"; only "Sources disagree" or "Reported in the press at the time" is said where it matters. In How seats were allocated, numbers say what they count ("3.25% of 5,691,426 valid votes = 184,972 votes", "ahead by 79.3 votes"), "qualifying votes" reads "votes for the lists that passed", and four (i)s that repeated the text beside them are gone. Party families lose "Sourced draft interpretation" and their long chart explanations; What if… opens with one plain line. The 2013 vote-count note and the About box say what they mean in everyday words.
+
 ## 24 November 2026
 
 - New address (24 Nov): the site is now at haknesset.co.il, which opens in Hebrew. haknesset.com and hakneset.com open it in English, and hakneset.co.il and the old github.io address forward to it. Gallery share links use the new address.

@@ -238,9 +238,13 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
       {investiture && <span className="after-help-anchor">{L('Investiture vote', 'הצבעת האמון')} <strong className="after-confidence-vote">{vote ? <><SupportCount value={vote.for} /> {L('for', 'בעד')} · <SupportCount value={vote.against} /> {L('against', 'נגד')}{!!vote.abstain && <> · <SupportCount value={vote.abstain} /> {vote.abstain === 1 ? L('abstaining', 'נמנע') : L('abstaining', 'נמנעים')}</>}</> : <SupportCount value={null} />}</strong> <Evidence data={data} cites={g.confidenceVoteCites} explanation={reconciliation} /></span>}
       {!!g.supportSeats && <span>{L('Outside support', 'תמיכה מבחוץ')} <strong className="after-support-total"><SupportCount value={g.supportSeats} /></strong></span>}
     </div>
-    {/* why there is no total (20 Nov 2026): a faction size not recorded, a faction whose place is not recorded, or members not all known */}
-    {/* the "at least" beside a partial total says the rest; only a missing total needs a sentence (clarity pass, 26 Nov 2026) */}
-    {g.coalitionSeats == null && !g.knownMemberSeats && g.coalition.some(r => r.seats == null) && <p className="small muted after-size-note">{L('Faction sizes at that time are not known, so there is no total.', 'גודל הסיעות באותה עת אינו ידוע, ולכן אין סכום.')}</p>}
+    {/* why there is no full total, once and plainly: a faction size not recorded, a faction whose role is not known, or
+        members not all known (20 Nov 2026; shorter words in the clarity pass, 26 Nov 2026) */}
+    {g.coalitionSeats == null && <p className="small muted after-size-note">{g.coalition.some(r => r.seats == null)
+      ? L('Faction sizes at that time are not known, so the coalition’s seats cannot all be added up.', 'גודל הסיעות באותה עת אינו ידוע, ולכן אי אפשר לסכם את כל מושבי הקואליציה.')
+      : g.coalition.some(r => r.certainty === 'unknown')
+        ? L('A faction whose role is not known (under “Unknown role”) is not counted.', 'סיעה שמעמדה אינו ידוע (תחת "מעמד לא ידוע") אינה נספרת.')
+        : L('Not every coalition member is known.', 'לא כל חברי הקואליציה ידועים.')}</p>}
     {supportRoleGroups(g.coalition).map(group => <div className="after-role-group" data-support-role={group.role} key={group.role}>
       <h4>{L(...SUPPORT_LABELS[group.role])}</h4>
       <div className="after-coalition">{group.rows.map((entry, i) => {
@@ -261,7 +265,7 @@ function GovernmentComposition({ data, ds, government: g, investiture = true }: 
         {/* an MK elected on a coalition list whose part is "other" stood outside the coalition (Mapam's six in 1984,
             Chikli in 2021): said in those words, not "Other participation" (V2 fault A7) */}
         {!person.countedInFactionSeats && <span className="small">{role === 'member-with-ministries' ? L('Member', 'חברות בקואליציה') : role === 'other' ? L('Not in the coalition', 'מחוץ לקואליציה') : L(...SUPPORT_LABELS[role])}</span>}
-        <span className="after-help-anchor">{votes[person.vote]} <Evidence data={data} cites={person.cites} explanation={person.countedInFactionSeats ? L('Counted in their list’s seats.', 'נספר במושבי הרשימה שלו.') : qualification(person)} /></span>
+        <span className="after-help-anchor">{votes[person.vote]} <Evidence data={data} cites={person.cites} explanation={person.countedInFactionSeats ? L('Counted in their list’s seats.', 'כלול במושבי הרשימה.') : qualification(person)} /></span>
       </div>;
     })}</div>}
   </div>;

@@ -138,21 +138,18 @@ test('1973 and 1977: Expert notes the Committee sheet’s joint first-stage coun
   await stage(page, 'Whole quotas');
   await expect(panel(page)).toContainText('113 seats allocated; 7 remain.');
   const note = panel(page).locator('.walk-cec-note');
-  await expect(note).toContainText('Elections Committee sheet: 114 + 6, counting each surplus-agreement pair together.');
+  // one plain sentence; the law behind (i) with the source (clarity pass, 26 Nov 2026)
+  await expect(note).toContainText('The Elections Committee counted each surplus-agreement pair together at this stage: 114 + 6. The final seats are the same.');
   await note.getByRole('button', { name: 'Elections Committee sheet, 1977', exact: true }).click();
   const pop = page.locator('.info .pop');
-  await expect(pop).toContainText('§81(c)');
-  await expect(pop).toContainText('§82(a)');
-  await expect(pop).toContainText('later pages also start from 113 and hand out 7 seats');
-  await expect(pop).toContainText('Final seats are identical.');
+  await expect(pop).toContainText('a pair counts as one list only for the remainder seats');
   await expect(pop.getByRole('link')).toHaveAttribute('href', /memorandum-knesset9\/he\/archive_knesset9_memorandum-apdx9\.pdf#page=6$/);
 
   await choose(page.getByRole('button', { name: /^Election(: |$)/ }), 'k8');
   await walk(page);
   await stage(page, 'Whole quotas');
-  await expect(panel(page).locator('.walk-cec-note')).toContainText('Elections Committee sheet: 117 + 3, counting each surplus-agreement pair together.');
+  await expect(panel(page).locator('.walk-cec-note')).toContainText('The Elections Committee counted each surplus-agreement pair together at this stage: 117 + 3.');
   await panel(page).locator('.walk-cec-note').getByRole('button').click();
-  await expect(page.locator('.info .pop')).toContainText('The app follows the law: 114 + 6.');
   await expect(page.locator('.info .pop').getByRole('link')).toHaveAttribute('href', /memorandum-knesset8\/he\/archive_knesset8_memorandum-apdx\.pdf#page=5$/);
 
   // no other election has the note

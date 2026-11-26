@@ -15,7 +15,7 @@ test('hero charts, collapsed table, policy view, k26 tooltip is official',async(
  await expect(page.locator('.family-plots [role=button]').filter({hasText:'Gazette not yet verified'})).toHaveCount(0);await page.locator('.family-plots section').first().locator('g[role=button]').last().focus();await expect(page.getByRole('tooltip')).toBeVisible();await expect(page.getByRole('tooltip')).not.toContainText('Gazette not yet verified');
  await page.getByText('Exact figures (26 elections)',{exact:true}).click();await expect(page.locator('.family-table tbody tr')).toHaveCount(26);await expect(page.locator('.family-table')).toContainText('52,982');
  await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Count all',exact:true}).click();
- await expect(page.locator('.family-table')).toContainText('55,817');await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');await expect(page.locator('.family-chip')).toHaveCount(9);
+ await expect(page.locator('.family-table')).toContainText('55,817');await expect(page.locator('.family-profile')).not.toContainText('interpretation');await expect(page.locator('.family-chip')).toHaveCount(9);
  await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Leave out',exact:true}).click();await expect(page.locator('.family-table tbody tr').first()).toContainText('2,835');await expect(page.locator('.family-table tbody tr').first()).toContainText('Mixed lists left out: 52,982');
 });
 test('fork, save, hide, restore and cross-election membership persists',async({page})=>{
@@ -32,7 +32,7 @@ test('1988 grouping shows Overview bracket; 2022 +10% previews seats and undoes'
  await page.getByRole('button',{name:'Apply grouping & open Overview',exact:true}).click();await expect(page.locator('.bloc-panel')).toContainText('Haredi');await expect(page.locator('.bp-card')).toHaveCount(2);await expect(page.locator('.session')).toContainText('1 change from the official result');await expect(page.locator('.session')).toContainText('Votes and seats unchanged');await expect(page.locator('.bloc-panel .bp-seats b')).toHaveText(['13','107']);await expect(page.locator('.session')).not.toContainText('majority');await expect(page.getByRole('button',{name:'Degel HaTorah',exact:true}).locator('.family-row-label')).toHaveText('Haredi');await expect(page.getByRole('button',{name:'Degel HaTorah',exact:true})).toHaveAccessibleDescription(/Haredi/);await expect(page.locator('.family-row-label').first()).toContainText('Haredi');
  await page.screenshot({path:'.backup-scratch/families/overview-grouping-en-light-desktop.png',fullPage:true});await page.getByRole('button',{name:'Degel HaTorah',exact:true}).scrollIntoViewIfNeeded();await page.screenshot({path:'.backup-scratch/families/overview-degel-1988-en-light-desktop.png'});
  await choose(page.getByRole('button', { name: /^Election(: |$)/ }),'k25');await page.getByRole('tab',{name:'Party families',exact:true}).click();await expect(page.locator('.family-consequence')).toContainText('740,474');
- await expect(page.locator('.family-consequence .family-seat-strip')).toHaveCount(2);await page.getByRole('button',{name:'Apply vote scaling',exact:true}).click();await expect(page.locator('.family-consequence')).toContainText('814,521');
+ await expect(page.locator('.family-consequence .family-seat-strip')).toHaveCount(2);await page.getByRole('button',{name:'Apply this change',exact:true}).click();await expect(page.locator('.family-consequence')).toContainText('814,521');
  await page.getByRole('group',{name:'Scale mode',exact:true}).getByRole('button',{name:'Target share (%)',exact:true}).click();await expect(page.getByRole('textbox',{name:'Scale value',exact:true})).toHaveValue('15.54');await page.getByRole('group',{name:'Scale mode',exact:true}).getByRole('button',{name:'Change votes (%)',exact:true}).click();
  await page.getByRole('button',{name:/^Undo:/}).click();await expect(page.locator('.family-consequence')).toContainText('740,474');
 });
@@ -45,7 +45,7 @@ test('profile loads compact runtime without evidence or registry, suggestions on
  await page.getByRole('button',{name:'Definition, sources and limitations',exact:true}).click();await expect(page.getByRole('heading',{name:'Limitations',exact:true})).toBeVisible();await page.getByRole('dialog').getByRole('button',{name:'Close',exact:true}).click();
  await edit(page);await editor(page).getByText('Link historic partners',{exact:true}).click();
  const picker=editor(page).getByRole('button', { name: /^Sourced suggestions(: |$)/ });await picker.click();const choices=page.getByRole('dialog').last();await choices.locator('.choice-option').first().click();
- await expect(editor(page).getByRole('button',{name:'Apply suggested link',exact:true})).toBeVisible();await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');
+ await expect(editor(page).getByRole('button',{name:'Apply suggested link',exact:true})).toBeVisible();await expect(page.locator('.family-profile')).not.toContainText('interpretation');
  await editor(page).getByRole('button',{name:'Apply suggested link',exact:true}).click();await expect(page.locator('.family-profile')).toContainText('Personal copy');
 });
 for(const lang of ['he','en'])for(const theme of ['light','dark'])for(const phone of [false,true])test(`families screenshot ${lang} ${theme} ${phone?'phone':'desktop'}`,async({page})=>{
@@ -71,7 +71,7 @@ test('mixed-only elections are not plotted as zero; mixed policy is a persistent
  await expect(page.locator('.family-scale')).toContainText('only mixed lists in this election');
  await page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Leave out',exact:true}).click();
  await share.locator('[role=button]').nth(18).focus();await expect(page.getByRole('tooltip')).toContainText('Only in mixed lists (left out)');
- await expect(page.locator('.family-chip')).toHaveCount(9);await expect(page.locator('.family-profile')).toContainText('Sourced draft interpretation');
+ await expect(page.locator('.family-chip')).toHaveCount(9);await expect(page.locator('.family-profile')).not.toContainText('interpretation');
  await page.reload();await page.getByRole('tab',{name:'Party families',exact:true}).click();await page.getByRole('button',{name:'Haredi',exact:true}).click();await page.getByRole('button',{name:'Likud lineage',exact:true}).click();
  await expect(page.getByRole('group',{name:'Mixed-list policy',exact:true}).getByRole('button',{name:'Leave out',exact:true})).toHaveAttribute('aria-pressed','true');
  // Centre 2026: Yesh Atid's 5 seats inside Together, with Bennett's 7 as partners; Yashar!'s list; the Reservists' list is mixed; the withdrawn Blue and White still under review.
@@ -216,10 +216,10 @@ test('the selected election is a shaded column with its value and year in bold; 
  await expect(page.locator('.family-plots .family-sel-value')).toHaveText(['10.95%','623,349']);
  expect(await page.locator('.family-plots .family-sel-value').first().evaluate(e=>getComputedStyle(e).fontWeight)).toBe('700');
  await page.locator('.family-seat-section h3').getByRole('button').click();
- await expect(page.locator('.info .pop')).toContainText('Bars are elections, evenly spaced: this is not a time scale');
+ await expect(page.locator('.info .pop')).toContainText('Striped above it: other parties elected on the same joint list.');
  await page.keyboard.press('Escape');
- await page.locator('.family-plots h3').first().getByRole('button',{name:'Time axis: explanation',exact:true}).click();
- await expect(page.locator('.info .pop')).toContainText('A true time scale: each point sits on its election day');
+ // the vote charts' time axis needs no (i) (clarity pass, 26 Nov 2026)
+ await expect(page.locator('.family-plots h3').first().getByRole('button',{name:'Time axis: explanation',exact:true})).toHaveCount(0);
 });
 test('the family’s Scale action sits under its charts, above the exact figures (U4 pass, 16 Nov)',async({page})=>{
  await start(page);const scale=await page.getByRole('heading',{name:'Scale this family’s votes',exact:true}).boundingBox();
@@ -241,7 +241,7 @@ test('family sources are named by who published them; the project never cites it
 });
 test('family scale: people who stayed home leave eligible voters alone; new citizens raise them',async({page})=>{
  await start(page);const scale=page.locator('.family-scale'),pick=scale.getByRole('button', { name: /^Votes come from(: |$)/ });
- await expect(scale.getByRole('status')).toContainText('Valid total conserved exactly');
+ await expect(scale.getByRole('status')).toContainText('Taken from the other lists; total votes unchanged');
  await choose(pick,'new');await expect(pick).toHaveAttribute('data-value','new');await expect(scale.getByRole('status')).toContainText('Turnout rises; eligible voters unchanged');
  await choose(pick,'citizens');await expect(pick).toHaveAttribute('data-value','citizens');await expect(scale.getByRole('status')).toContainText('Family votes: 623,349 → 685,684 · Eligible voters +62,335');
 });
