@@ -89,11 +89,7 @@ export function TermTimeline({ ds }: { ds: ElectionDataset }) {
   const go = (i: number) => setDate(steps[Math.max(0, Math.min(steps.length - 1, i))].step.date);
   return <section className="tl" data-term={term.k} aria-labelledby="tl-title">
     <h3 id="tl-title"><span className="after-help-anchor">{L('The Knesset on ', 'הכנסת ב־')}<bdi>{formatDate(view.step.date, lang)}</bdi> <Info title={L('The Knesset on a date', 'הכנסת בתאריך')}>
-      {term.timeline.noGovernment
-        ? L('Step through the term: the chart shows every seat as it stood after that date. No government was formed in this Knesset, so the chart has no coalition side. Graphics run left to right in Hebrew too. The (i) beside each event gives its sources.',
-          'צעד אחר צעד לאורך הכהונה: התרשים מציג כל מושב כפי שהיה אחרי התאריך. בכנסת הזאת לא הוקמה ממשלה, ולכן אין בתרשים צד של קואליציה. גם בעברית התרשימים משמאל לימין. ה־(i) ליד כל אירוע מציג את מקורותיו.')
-        : L('Step through the term: the chart shows every seat as it stood after that date. Coalition seats are on the left. Graphics run left to right in Hebrew too. A newcomer counts with their faction. The (i) beside each event gives its sources and how sure it is.',
-          'צעד אחר צעד לאורך הכהונה: התרשים מציג כל מושב כפי שהיה אחרי התאריך. מושבי הקואליציה משמאל. גם בעברית התרשימים משמאל לימין. מי שנכנס לכנסת נספר עם סיעתו. ה־(i) ליד כל אירוע מציג את מקורותיו ואת מידת הוודאות.')}</Info></span></h3>
+      {L('Each step is a day when something changed in the Knesset. Select a seat to see who held it.', 'כל צעד הוא יום שבו השתנה משהו בכנסת. בחרו מושב כדי לראות מי ישב בו.')}</Info></span></h3>
     <TimelineBar term={term} steps={steps} index={index} go={go} />
     {/* the day's lines sit under the chart, between the counts and the list key (owner decision, 16 Nov 2026) */}
     <Chamber key={term.k} term={term} view={view} ds={ds} mk={mk} lines={<StepLines term={term} view={view} index={index} total={steps.length} ds={ds} mk={mk} />} />
@@ -163,12 +159,13 @@ function TextWithInfo({ text, info }: { text: string; info: ReactNode }) {
   return <bdi className="tl-line-text">{cut > 0 ? text.slice(0, cut + 1) : ''}<span className="tl-line-tail">{cut > 0 ? text.slice(cut + 1) : text} {info}</span></bdi>;
 }
 
+/** An event's sources. How sure a fact is shows only where it changes how it reads: sources that disagree, or a fact
+ *  known only from the press of the time; a confirmed fact is simply stated (clarity pass, 26 Nov 2026). */
 function Sources({ it }: { it: TimelineItem }) {
   const L = useL(); const lang = useLang();
-  const sure = it.certainty === 'confirmed' ? L('Confirmed from official records', 'מאומת ברשומות רשמיות') : it.certainty === 'probable' ? L('Probable: still to be checked against official records', 'סביר: טרם נבדק מול רשומות רשמיות')
-    : it.certainty === 'disputed' ? L('Sources disagree', 'המקורות חלוקים') : it.certainty ? L('Provisional: from press reports, still to be checked', 'זמני: מדיווחים בעיתונות, טרם נבדק') : null;
-  return <Info title={L('Sources & how sure', 'מקורות ומידת ודאות')}>
-    {it.type === 'seat' && !it.sources.length ? <p>{L('From the Knesset’s membership records: who left and who entered on this date. Which seat a newcomer took is our pairing within the list.', 'מרשומות החברות של הכנסת: מי עזב ומי נכנס בתאריך זה. איזה מושב תפס מי שנכנס: השיוך שלנו, בתוך הרשימה.')}</p> : null}
+  const sure = it.certainty === 'disputed' ? L('Sources disagree on this.', 'המקורות חלוקים בעניין זה.') : it.certainty === 'provisional' ? L('Reported in the press at the time.', 'דווח בעיתונות באותה עת.') : null;
+  if (!sure && !it.sources.length) return null;
+  return <Info title={L('Sources', 'מקורות')}>
     {sure && <p>{sure}</p>}
     {it.sources.map(([publisher, url, he], i) => <div key={i}><a href={url} target="_blank" rel="noreferrer"><bdi><MarkedText text={sourceLinkText(url, publisherIn(lang, publisher, he), lang)} /></bdi></a></div>)}
   </Info>;
@@ -255,8 +252,8 @@ function Chamber({ term, view, ds, mk, lines }: { term: TermRuntime; view: StepV
     </svg>
     <div className="tl-sides">{sides ? <>
       <span className="after-help-anchor"><i className="swatch bloc-swatch" style={{ ['--bc' as string]: COAL } as CSSProperties} />{L('Coalition', 'קואליציה')} <b><bdi dir="ltr">{coal}</bdi></b> <Info title={L('Coalition', 'קואליציה')}>{L(
-        'Seats on the government’s side after this date. A member who voted against the government or left it counts on the other side, so this can differ from the coalition lists’ seats on the government card.',
-        'המושבים בצד הממשלה אחרי התאריך הזה. חבר כנסת שהצביע נגד הממשלה או עזב אותה נספר בצד השני, ולכן המספר יכול להיות שונה ממספר המושבים של רשימות הקואליציה בכרטיס הממשלה.')}</Info></span>
+        'Seats on the government’s side on this date. A member who voted against the government or left it counts on the other side.',
+        'המושבים בצד הממשלה בתאריך הזה. חבר כנסת שהצביע נגד הממשלה או עזב אותה נספר בצד השני.')}</Info></span>
       <span><i className="swatch bloc-swatch" style={{ ['--bc' as string]: REST } as CSSProperties} />{L('Not in the coalition', 'לא בקואליציה')} <b><bdi dir="ltr">{filled - coal}</bdi></b></span>
     </> : <span className="muted">{term.timeline!.noGovernment ? L('No government was formed in this Knesset', 'בכנסת הזאת לא הוקמה ממשלה') : L('Before the government is sworn in', 'לפני השבעת הממשלה')}</span>}</div>
     {lines}
@@ -288,7 +285,6 @@ export function SeatCard({ term, seat, date, list, mk, onClose }: { term: TermRu
 
 function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders: readonly PackedHolder[]; now: PackedHolder | null; mk: MkRuntime | null }) {
   const L = useL(); const lang = useLang();
-  const ours = holders.some((h) => h[4] && h[4] !== 'record');
   const factionName = (f: number) => mk ? factionLabel(mk, f, lang) : '';
   const line = (h: PackedHolder): ReactNode => {
     const gen = genderOf(mk, h[0]);
@@ -306,7 +302,7 @@ function SeatHolderList({ term, holders, now, mk }: { term: TermRuntime; holders
     return t ? unrecordedFaction(t[3], h[1], h[2] && h[2] < term.end ? h[2] : term.end) : [];
   };
   return <>
-    <div className="tl-holders-head row"><span>{L('Who sat here', 'מי ישב כאן')}</span>{ours && <Info title={L('Who sat here', 'מי ישב כאן')}>{L('The Knesset records who left and who entered, not which seat. A newcomer is shown in the seat of the member they replaced, within the same list.', 'הכנסת רושמת מי עזב ומי נכנס, לא באיזה מושב. מי שנכנס מוצג במושבו של מי שהחליף, באותה רשימה.')}</Info>}</div>
+    <div className="tl-holders-head row"><span>{L('Who sat here', 'מי ישב כאן')}</span></div>
     <ol className="tl-holders">{holders.map((h, i) => <li key={i} aria-current={now === h ? 'true' : undefined}>
       <div>{mk?.people[h[0]] ? <button type="button" className="link-btn" onClick={() => openMkHistory(h[0])}><b><bdi>{personName(mk, h[0], lang)}</bdi></b></button> : <b><bdi>{personName(mk, h[0], lang)}</bdi></b>}
         {' '}<span className="muted small"><bdi dir={lang === 'he' ? 'rtl' : 'ltr'}><bdi>{formatDate(h[1], lang)}</bdi> – <bdi>{formatDate(h[2] && h[2] < term.end ? h[2] : term.end, lang)}</bdi></bdi></span></div>
