@@ -3,6 +3,7 @@ import { SplitPartNote, SplitWarning } from './SplitWarning.tsx';
 import {ColourPicker} from './ColourPicker.tsx';
 import { hebrewPrefixName } from '../hebrewPrefix.ts';
 import { SeatDelta } from './SeatDelta.tsx';
+import { seatChangeSentence } from '../analysisWords.ts';
 import { Slip } from './ui.tsx';
 import { ChoicePicker } from './ChoicePicker.tsx';
 import { ListMark, listChoice } from './ListMark.tsx';
@@ -225,18 +226,17 @@ function Agreements({ s, r, base }: { s: Scenario; r: AllocationResult; base: Sc
                     options={s.lists.filter((x) => x.id === ag.members[1] || (x.id !== ag.members[0] && !x.withdrawn && (exp || !s.agreements.some((o) => o.id !== ag.id && o.enabled && o.members.includes(x.id)))))
                       .sort((x, y) => y.votes - x.votes).map((x) => listChoice(x, lang))} />
                 </> : <b>{ag.members.map(name).join(' ⇄ ')}</b>}{' '}
-                {inactive && <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} below threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} מתחת לחסימה`)
-                  : st?.reason === 'member-no-initial-seat' ? L(`no effect: ${st.failedMembers.map(name).join(', ')} won no whole-quota seat`, `ללא השפעה: ${st.failedMembers.map(name).join(', ')} לא זכתה במנדט במודד שלם`)
-                  : st?.reason === 'member-withdrawn' ? L('no effect: a partner withdrew', 'ללא השפעה: שותפה פרשה')
-                  : st?.reason === 'duplicate-membership' ? L('no effect: a list is already in another agreement', 'ללא השפעה: רשימה כבר בהסכם אחר')
-                  : st?.reason === 'too-many-members' ? L('not allowed under these rules', 'לא מותר לפי הכללים')
-                  : st?.reason === 'unknown-list' ? L('refers to a list that no longer exists', 'מתייחס לרשימה שאינה קיימת') : L('no effect', 'ללא השפעה')}</span>}
-                {ag.members.length > 2 && <span className="chip exp">{L('not legal in Israel', 'לא חוקי בישראל')}</span>}
+                {inactive && <span className="chip no">{st?.reason === 'member-failed-threshold' ? L(`No effect: ${st.failedMembers.map(name).join(' and ')} ${st.failedMembers.length > 1 ? 'are' : 'is'} below the threshold`, `ללא השפעה: ${st.failedMembers.map(name).join(' ו')} מתחת לאחוז החסימה`)
+                  : st?.reason === 'member-no-initial-seat' ? L(`No effect: ${st.failedMembers.map(name).join(' and ')} won no full seat of ${st.failedMembers.length > 1 ? 'their' : 'its'} own`, `ללא השפעה: ${st.failedMembers.map(name).join(' ו')} לא ${st.failedMembers.length > 1 ? 'זכו' : 'זכתה'} במנדט שלם משלה`)
+                  : st?.reason === 'member-withdrawn' ? L('No effect: a partner withdrew', 'ללא השפעה: שותפה פרשה')
+                  : st?.reason === 'duplicate-membership' ? L('No effect: a list is already in another agreement', 'ללא השפעה: רשימה כבר בהסכם אחר')
+                  : st?.reason === 'too-many-members' ? L('Not allowed under these rules', 'לא מותר לפי הכללים')
+                  : st?.reason === 'unknown-list' ? L('Refers to a list that no longer exists', 'מתייחס לרשימה שאינה קיימת') : L('No effect', 'ללא השפעה')}</span>}
+                {ag.members.length > 2 && <span className="chip exp">{L('Not legal in Israel', 'לא חוקי בישראל')}</span>}
                 {/* the seats the agreement moves, as the lists' own colours and signed counts; an agreement with no effect says so once, in its chip */}
                 {!inactive && <div className="small muted st-effect">{eff.length === 0
                   ? (ag.enabled ? L('Moves no seat.', 'אינו מזיז מנדט.') : L('Switching it on would move no seat.', 'הפעלתו לא הייתה מזיזה מנדט.'))
-                  : <>{ag.enabled ? L('Effect:', 'השפעה:') : L('If switched on:', 'אם יופעל:')}{' '}{eff.map((e) => (
-                    <span key={e.id} className="st-eff">{list(e.id) && <ListMark list={list(e.id)!} lang={lang} />}<bdi>{name(e.id)}</bdi> <b className="tabnum"><SeatDelta value={ag.enabled ? e.d : -e.d} /></b></span>))}</>}</div>}
+                  : (ag.enabled ? L('Thanks to it, ', 'בזכותו, ') : L('If switched on, ', 'אם יופעל, ')) + seatChangeSentence(eff.map(e => ({ id: e.id, d: ag.enabled ? e.d : -e.d })), name, lang === 'he')}</div>}
               </span>
               <span className="tools">
                 <label className="switch small"><input type="checkbox" checked={ag.enabled} onChange={(e) => dispatch({ type: 'setAgreement', agreement: { ...ag, enabled: e.target.checked } })}

@@ -138,7 +138,7 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
   };
   return (
     <div>
-      <h3>{L('Votes → seats', 'קולות ← מנדטים')} <Info title={L('Votes → seats', 'קולות ← מנדטים')}>{L('The seats one list wins at every vote count in the range. All other lists keep their votes, so the valid total changes with this list. Boundaries are exact whole vote counts.', 'המנדטים שרשימה אחת מקבלת בכל מספר קולות בטווח. שאר הרשימות שומרות על קולותיהן, ולכן סך הקולות הכשרים משתנה עם הרשימה. הגבולות הם מספרי קולות מדויקים.')}</Info></h3>
+      <h3>{L('Votes → seats', 'קולות ← מנדטים')} <Info title={L('Votes → seats', 'קולות ← מנדטים')}>{L('The seats one list wins at every vote count in the range. All other lists keep their votes, so the valid total changes with this list.', 'המנדטים שרשימה אחת מקבלת בכל מספר קולות בטווח. שאר הרשימות שומרות על קולותיהן, ולכן סך הקולות הכשרים משתנה עם הרשימה.')}</Info></h3>
       <div className="row">
         <ChoicePicker label={L('List', 'רשימה')} value={id} onChange={setPicked} options={main.slice(0, 30).map(x => listChoice(x, lang))} />
         {/* one label in the page's direction, then the range low to high, left to right as on the chart's axis */}
@@ -156,9 +156,9 @@ function VoteSweep({ s, r }: { s: Scenario; r: AllocationResult }) {
       {/* one status line of fixed height: computing, cancelled or an invalid range never moves the chart */}
       <p className="small muted row sens-status" role="status">
         {!valid ? <span role="alert">{L('The second number must be above the first.', 'המספר השני חייב להיות גדול מהראשון.')}</span>
-          : state === 'busy' ? <>{L('Calculating exactly…', 'מחשב במדויק…')} <button className="btn small" onClick={cancel}>{L('Cancel', 'ביטול')}</button></>
+          : state === 'busy' ? <>{L('Working it out…', 'מחשב…')} <button className="btn small" onClick={cancel}>{L('Cancel', 'ביטול')}</button></>
           : state === 'cancelled' && !current ? <>{L('Cancelled.', 'בוטל.')} <button className="btn small" onClick={() => setAgain((n) => n + 1)}>{L('Run', 'הרצה')}</button></>
-          : shown && !shown.exact ? <>{L(`Checked every ${fmtInt(shown.step)} votes`, `נבדק כל ${fmtInt(shown.step)} קולות`)} <Info title={L('Sampled range', 'טווח מדוגם')}>{L(`The range is wide, so the result was calculated every ${fmtInt(shown.step)} votes and each change was then located to the exact vote. A change that reverses within ${fmtInt(shown.step)} votes could be missed; narrow the range to 50,000 votes or less for a complete result.`, `הטווח רחב, ולכן חושב כל ${fmtInt(shown.step)} קולות וכל שינוי אותר עד הקול המדויק. שינוי שמתהפך בתוך ${fmtInt(shown.step)} קולות עלול להיעלם; צמצמו את הטווח ל־50,000 קולות או פחות לתוצאה מלאה.`)}</Info></>
+          : shown && !shown.exact ? <>{L(`Checked every ${fmtInt(shown.step)} votes`, `נבדק כל ${fmtInt(shown.step)} קולות`)} <Info title={L('Wide range', 'טווח רחב')}>{L(`A change that reverses within ${fmtInt(shown.step)} votes could be missed. A range of 50,000 votes or less checks every vote.`, `שינוי שמתהפך בתוך ${fmtInt(shown.step)} קולות עלול להיעלם. טווח של 50,000 קולות או פחות נבדק בכל קול.`)}</Info></>
           : null}
       </p>
       <div ref={box}>
@@ -408,7 +408,7 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
   const meter = (n: number) => <div className="bp-meter sens-meter" aria-hidden style={{ '--bc': bloc.color } as CSSProperties}><i style={{ width: `${Math.min(100, (n / s.rules.seats) * 100)}%` }} /><span style={{ insetInlineStart: `${((majority - 0.5) / s.rules.seats) * 100}%` }} /></div>;
   return (
     <div>
-      <h3>{L('Votes to flip a majority', 'קולות להיפוך הרוב')} <Info title={L('Votes to flip a majority', 'קולות להיפוך הרוב')}>{L(`The fewest votes moving from one list to another that give the bloc a majority (${majority} of ${s.rules.seats}), or end it. Every pair of a list inside and a list outside the bloc is searched, among lists with at least 0.5% of the votes, by the bloc assignment shown; each list's seats count for the list's own bloc.`, `מספר הקולות הקטן ביותר שעוברים מרשימה אחת לאחרת ונותנים לגוש רוב (${majority} מתוך ${s.rules.seats}), או מבטלים אותו. נבדק כל זוג של רשימה בגוש ורשימה מחוצה לו, מבין הרשימות עם 0.5% מהקולות לפחות, לפי השיוך לגושים המוצג; המנדטים של כל רשימה נספרים לגוש של הרשימה.`)}</Info></h3>
+      <h3>{L('Votes to flip a majority', 'קולות להיפוך הרוב')} <Info title={L('Votes to flip a majority', 'קולות להיפוך הרוב')}>{L(`The fewest votes moving from one list to another that give the bloc a majority (${majority} of ${s.rules.seats}), or end it. Only lists with at least 0.5% of the votes are tried.`, `מספר הקולות הקטן ביותר שעוברים מרשימה אחת לאחרת ונותנים לגוש רוב (${majority} מתוך ${s.rules.seats}), או מבטלים אותו. נבדקות רק רשימות עם 0.5% מהקולות לפחות.`)}</Info></h3>
       <div className="row">
         <ChoicePicker label={L('Bloc', 'גוש')} value={bid} onChange={setPicked} options={s.blocs.map(b => ({ value: b.id, label: groupingName(b, lang), title: b.appDefined ? appGroupingExplanation(lang) : undefined, preview: <span className="swatch" style={{ background: b.color }} /> }))} />
         {meter(seats)}
@@ -417,15 +417,15 @@ function BlocFlip({ s, r }: { s: Scenario; r: AllocationResult }) {
       <div className="sens-result">
         {progress && <p className="small muted row" role="status">{progress.settling
           ? L(`Checking for a smaller transfer… ${progress.done} of ${progress.total}`, `בודק אם יש מעבר קטן יותר… ${progress.done} מתוך ${progress.total}`)
-          : L(`Searching exactly… ${progress.done} of ${progress.total} transfers`, `מחפש במדויק… ${progress.done} מתוך ${progress.total} מעברים`)}
+          : L(`Working it out… ${progress.done} of ${progress.total} checked`, `מחשב… ${progress.done} מתוך ${progress.total} נבדקו`)}
           <button className="btn small" onClick={cancel}>{L('Cancel', 'ביטול')}</button></p>}
         {!progress && cancelled && !current && <p className="small muted row">{L('Cancelled.', 'בוטל.')} <button className="btn small" onClick={() => setAgain((n) => n + 1)}>{L('Search', 'חיפוש')}</button></p>}
         {current && 'none' in res.found && <p className="small">{res.found.unsure
-          ? <>{L('No transfer found among the vote counts tested.', 'לא נמצא מעבר בין מספרי הקולות שנבדקו.')} <Info title={L('Not every count tested', 'לא כל מספר נבדק')}>{L('Some searches could not test every count, so one may still exist.', 'חלק מהחיפושים לא בדקו כל מספר, ולכן ייתכן שקיים.')}</Info></>
+          ? <>{L('No transfer was found.', 'לא נמצא מעבר.')} <Info title={L('Not certain', 'לא ודאי')}>{L('A transfer that does this may still exist.', 'ייתכן שבכל זאת קיים מעבר כזה.')}</Info></>
           : L('No single transfer between two lists achieves it.', 'אין מעבר יחיד בין שתי רשימות שמשיג זאת.')}</p>}
         {found && (
           <div className="callout small">
-            {found.unsure && <>{L('At most', 'לכל היותר')} </>}<b>{fmtInt(found.votes)}</b>{found.unsure && <> <Info title={L('Smallest found', 'הקטן ביותר שנמצא')}>{L('Some searches could not test every count, so a smaller transfer may exist.', 'חלק מהחיפושים לא בדקו כל מספר, ולכן ייתכן מעבר קטן יותר.')}</Info></>} {one ? L('vote moving from ', 'קול שעובר מ') : L('votes moving from ', 'קולות שעוברים מ')}<PartyName s={s} id={found.from} /> {L('to ', 'ל')}<PartyName s={s} id={found.to} /> {after === null || (has ? after < majority : after >= majority)
+            {found.unsure && <>{L('At most', 'לכל היותר')} </>}<b>{fmtInt(found.votes)}</b>{found.unsure && <> <Info title={L('At most', 'לכל היותר')}>{L('A smaller transfer may also work.', 'ייתכן שגם מעבר קטן יותר יספיק.')}</Info></>} {one ? L('vote moving from ', 'קול שעובר מ') : L('votes moving from ', 'קולות שעוברים מ')}<PartyName s={s} id={found.from} /> {L('to ', 'ל')}<PartyName s={s} id={found.to} /> {after === null || (has ? after < majority : after >= majority)
               ? (has ? (one ? L('ends the majority.', 'מבטל את הרוב.') : L('end the majority.', 'מבטלים את הרוב.')) : (one ? L('gives the bloc a majority.', 'נותן לגוש רוב.') : L('give the bloc a majority.', 'נותנים לגוש רוב.')))
               : <>{one ? L('does not flip it in the chamber', 'אינו הופך אותו במליאה') : L('do not flip it in the chamber', 'אינם הופכים אותו במליאה')} <Info title={L('Members counted apart', 'חברים שנספרים בנפרד')}>{L('Some parties or members of these lists count for another bloc, and the search moves whole lists.', 'חלק מהמפלגות או החברים ברשימות אלה נספרים בגוש אחר, והחיפוש מזיז רשימות שלמות.')}</Info></>}
             {!found.unsure && found.lotteryFrom !== undefined && <div className="ink2">{tieNote(Number(found.lotteryFrom), s.rules.tiePolicy, lang === 'he')}</div>}
