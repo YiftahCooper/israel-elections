@@ -17,22 +17,22 @@ test('a new visitor at a .com address gets English, at .co.il Hebrew; ?lang= win
   await page.goto('http://elections.example.com/');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.locator('html')).toHaveAttribute('dir', 'ltr');
-  await expect(page).toHaveTitle('Israeli Elections Explorer');
+  await expect(page).toHaveTitle('haknesset');
   expect(await storedLang(page)).toBeNull(); // only a default: not stored by itself
 
   await page.goto('http://elections.example.co.il/');
-  await expect(page).toHaveTitle('סייר הבחירות לכנסת');
+  await expect(page).toHaveTitle('הכנסת');
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
 
   await page.goto('http://elections.example.co.il/?lang=en&map-order=biggest');
-  await expect(page).toHaveTitle('Israeli Elections Explorer');
+  await expect(page).toHaveTitle('haknesset');
   expect(page.url()).toBe('http://elections.example.co.il/?map-order=biggest');
 });
 
 test('a stored language wins over ?lang=', async ({ page }) => {
   await page.addInitScript(() => { if (!localStorage.getItem('israel-elections:v1')) localStorage.setItem('israel-elections:v1', JSON.stringify({ lang: 'he' })); });
   await page.goto('/?lang=en');
-  await expect(page).toHaveTitle('סייר הבחירות לכנסת');
+  await expect(page).toHaveTitle('הכנסת');
   await expect(page.locator('html')).toHaveAttribute('lang', 'he');
   expect(new URL(page.url()).search).toBe('');
 });

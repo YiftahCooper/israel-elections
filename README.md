@@ -1,4 +1,6 @@
-# Israeli Elections Explorer & Simulator · סייר הבחירות לכנסת
+# haknesset · הכנסת
+
+An explorer and seat simulator for every Knesset election since 1949. Not the official Knesset website.
 
 Explore Israeli Knesset election results and see how changing votes changes the 120 seats.
 This bilingual Hebrew/English app is for curious voters, students and anyone who wants to

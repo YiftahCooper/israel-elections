@@ -52,7 +52,7 @@ official sources, in Hebrew and English, at three levels of depth.
 
 ## Brand Commitments
 
-- Name: "Israeli Elections Explorer" / "סייר הבחירות לכנסת".
+- Name: "haknesset" / "הכנסת" (renamed 27 Nov 2026; before: "Israeli Elections Explorer" / "סייר הבחירות לכנסת").
 - Neutral and non-partisan: not affiliated with the Central Elections Committee or any party; party colours and
   logos represent parties as they presented themselves; no party is visually favoured.
 

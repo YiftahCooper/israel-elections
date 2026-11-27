@@ -1,5 +1,9 @@
 # Changelog
 
+## 27 November 2026
+
+- New name: the app is "haknesset" in English and "הכנסת" in Hebrew, in the browser tab, the top bar, the menu, README and llms.txt (before: "Israeli Elections Explorer" / "סייר הבחירות לכנסת").
+
 ## 26 November 2026
 
 - Brief change marks back (26 Nov, afternoon): a change you can place at a glance is again one compact coloured mark, a green ▲ and the number for up, a red ▼ and the number for down, with no plus or minus beside the arrow ("▲4", "▼1"); percentage points read "pts" ("▼0.42 pts"). The list panel's party history reads "Since 2022 Labor + Meretz", then "Seats 4 → 8 ▲4 · Vote share ▼0.42 pts", with the sentence ("In 2022, Labor + Meretz won 4 seats; now 8 (4 more)…") at the top of its (i). While comparing, each list reads "2022: Seats 32 → 27 ▼5"; the Copy votes box shows "Likud 27 → 28 ▲1"; What if answers and surplus agreements show "Shas ▲1 · Likud ▼1" (each with its sentence when you point at it); turnout, party families, Side by side and the vote step buttons use the same marks. Seat safety's closest calls are shorter ("Ra'am is 3,656 votes from losing a seat"). A list panel's seat-change sentences ("With 24,629 more votes…") are unchanged.
