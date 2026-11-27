@@ -2,8 +2,9 @@
 
 ## 27 November 2026
 
-- New logo: a white ballot slip with ה on navy, in the browser tab and bookmarks (before: black, with white dots in a half circle).
-- New name: the app is "HaKnesset" in English and "הכנסת" in Hebrew, in the browser tab, the top bar, the menu, README and llms.txt (before: "Israeli Elections Explorer" / "סייר הבחירות לכנסת").
+- New logo: a white ballot slip with ה, with no background behind it and a thin navy edge so it shows on light and dark browser tabs (before: black, with white dots in a half circle).
+- The top bar no longer shows the app's name: it starts with the election. Screen readers still hear the name as the page heading.
+- New name: the app is "HaKnesset" in English and "הכנסת" in Hebrew, in the browser tab, the menu, README and llms.txt (before: "Israeli Elections Explorer" / "סייר הבחירות לכנסת").
 
 ## 26 November 2026
 

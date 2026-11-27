@@ -93,7 +93,6 @@ input, textarea { caret-color: var(--focus); }
 /* ---------- shell band */
 .app { display: flex; flex-direction: column; min-height: 100%; }
 .band { position: sticky; top: 0; z-index: 30; background: var(--shell); color: var(--shell-ink); display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; padding: 8px 16px; min-height: 52px; }
-.band .brand { margin-block: 0; color: inherit; line-height: inherit; font-weight: 700; font-size: 16px; letter-spacing: -.005em; margin-inline-end: 4px; white-space: nowrap; }
 /* the focus ring on the band takes the band's ink (white on navy, or the ink chosen for a scenario colour): the page's
    blue ring is under 3:1 there; popups that sit on the page's surface keep the blue ring */
 .band :focus-visible { outline-color: var(--shell-ink); }
@@ -191,7 +190,6 @@ html { scroll-padding-block-start: calc(var(--band-h, 52px) + var(--toolbar-h) +
 }
 @media (max-width: 760px) {
   .band { padding: 6px 10px; gap: 6px 8px; }
-  .band .brand { font-size: 15px; flex-basis: 100%; }
   .band .tool .label { display: none; }
   .band select.election { width: 100%; flex: 0 0 100%; min-width: 0; }
   .work { padding: 8px 8px 24px; gap: 8px; }
@@ -991,7 +989,6 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 @media (max-width: 700px) { .custom-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (min-width: 1200px) and (max-width: 1550px) {
   .band { gap: 8px; }
-  .band .brand { font-size: 15px; margin-inline-end: 0; }
   .band select.election { width: 12.5rem; font-size: 14px; }
   .band .tool { gap: 4px; padding-inline: 6px; }
   .band .scenario-status .chip { max-inline-size: 150px; white-space: nowrap; }
@@ -1073,7 +1070,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 .pref-items-title { margin: 6px 0 0; }
 .pref-items { list-style: none; padding: 0; margin: 2px 0 0; display: grid; gap: 2px; max-width: 300px; }
 .pref-items li { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-@media (min-width: 1200px) { .band { gap: 6px; } .band .tool .label { display: none; } .band .brand { font-size: 15px; } }
+@media (min-width: 1200px) { .band { gap: 6px; } .band .tool .label { display: none; } }
 @media (max-width: 600px) {
   .choice-dialog { position: fixed; margin: 0; inset-block-start: auto; inset-block-end: 0; inset-inline: 0; inline-size: 100%; max-inline-size: none; max-block-size: calc(85dvh / var(--text-zoom, 1)); border-radius: 12px 12px 0 0; padding: 14px; }
   .choice-option { min-block-size: 52px; }
@@ -1207,11 +1204,7 @@ input[type="color"] { width: 36px; height: 30px; padding: 0 2px; border: 1px sol
 
 /* Keep the list's computed status compact without resizing when results arrive. */
 .seat-search-status { margin: 0; min-block-size: calc(2 * 1.45em); line-height: 1.45; }
-.brand-short { display: none; }
 @media (max-width: 760px) {
-  .band .brand { flex: 0 0 60px; font-size: 13px; }
-  .brand-full { display: none; }
-  .brand-short { display: inline; }
   .band .election { flex: 1 1 270px; max-inline-size: calc(100% - 68px); }
   .band { gap: 5px 8px; }
   .band .election-about { flex: none; inline-size: auto; block-size: auto; }
@@ -1279,9 +1272,6 @@ td.n:has(.edit-marker) { white-space: nowrap; }
 /* Reserve readable slots and keep desktop controls on one row. */
 @media (min-width: 1400px) {
   .band { flex-wrap: nowrap; }
-  .band .brand { flex: none; }
-  .band .brand-full { display: none; }
-  .band .brand-short { display: inline; }
   .band .spacer { min-inline-size: 0; }
 }
 @media (max-width: 760px) {

@@ -186,7 +186,8 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
       {/* short or narrow screens: the tools in a side panel, since the tab rows scroll away or are cut there */}
       <button type="button" className="tool band-tools-btn" aria-label={L('Tools', 'כלים')} title={L('Tools', 'כלים')} aria-expanded={toolsPanel} aria-controls="app-menu" onClick={() => setToolsPanel(o => !o)}><Menu className="icon" aria-hidden /></button>
       {toolsPanel && <AppMenu onClose={() => setToolsPanel(false)} />}
-      <h1 className="brand" aria-label={L('HaKnesset', 'הכנסת')}><span className="brand-full">{L('HaKnesset', 'הכנסת')}</span><span className="brand-short">{L('HaKnesset', 'הכנסת')}</span></h1>
+      {/* the app's name for screen readers only: on screen it said nothing the tab title does not (owner, 27 Nov 2026) */}
+      <h1 className="sr-only">{L('HaKnesset', 'הכנסת')}</h1>
       {pickElection(true)}
       {ds && !pmContestId && <ElectionAbout electionId={ds.id} />}
       {/* the bar's two groups: what is on screen (election, scenario) and how it is shown (complexity, settings); on
@@ -215,8 +216,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
 
 /** The bar takes one row when everything fits and two when it does not (owner, 19 Nov 2026): measured, not guessed from
  *  the screen width, so browser zoom, Large text, both languages and Custom all decide it the same way. Each item keeps
- *  the width it has on one row (a shrinkable item counts its basis), so the choice never flips back and forth. The
- *  brand is written out in full where there is room for it. */
+ *  the width it has on one row (a shrinkable item counts its basis), so the choice never flips back and forth. */
 function useBandLayout(active: boolean) {
   const ref = useRef<HTMLElement | null>(null);
   useLayoutEffect(() => {
@@ -225,16 +225,9 @@ function useBandLayout(active: boolean) {
       const cs = getComputedStyle(band), gap = parseFloat(cs.columnGap) || 0;
       const room = band.clientWidth - (parseFloat(cs.paddingInlineStart) || 0) - (parseFloat(cs.paddingInlineEnd) || 0);
       const width = (el: Element) => { const e = el as HTMLElement, b = parseFloat(getComputedStyle(e).flexBasis); return Math.max(Number.isFinite(b) ? b : 0, e.offsetWidth); };
-      const items = [...band.children].filter(el => !el.matches('.band-break, .spacer, input, dialog') && getComputedStyle(el).display !== 'none' && getComputedStyle(el).position !== 'fixed');
+      const items = [...band.children].filter(el => !el.matches('.band-break, .spacer, .sr-only, input, dialog') && getComputedStyle(el).display !== 'none' && getComputedStyle(el).position !== 'fixed');
       const sum = (els: Element[]) => els.reduce((n, el) => n + width(el) + gap, -gap) + (parseFloat(getComputedStyle(band).getPropertyValue('--band-group-gap')) || 0);
-      const brand = band.querySelector('.brand'), full = band.querySelector<HTMLElement>('.brand-full'), short = band.querySelector<HTMLElement>('.brand-short');
-      const withBrand = (fullBrand: boolean) => (brand ? (fullBrand ? full!.offsetWidth : short!.offsetWidth) - brand.clientWidth : 0);
-      const one = sum(items);
-      const rows = one + withBrand(false) <= room ? 1 : 2;
-      const firstRow = items.filter(el => el.matches('.band-tools-btn, .brand, .election, .election-about, .band-settings'));
-      const fullFits = rows === 1 ? one + withBrand(true) <= room : sum(firstRow) + withBrand(true) <= room;
-      band.dataset.rows = String(rows);
-      band.dataset.brand = fullFits ? 'full' : 'short';
+      band.dataset.rows = String(sum(items) <= room ? 1 : 2);
     };
     measure();
     const o = new ResizeObserver(measure);

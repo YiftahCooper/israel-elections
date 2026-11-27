@@ -1,12 +1,11 @@
 /* The top bar on tablets and computers (owner, 19 Nov 2026). Two groups: what is on screen (the election, its About,
    the scenario and Save & share) and how it is shown (complexity, Settings). One row when everything fits; otherwise
    two, the election and Settings on the first and the scenario and complexity on the second, each row with a group at
-   either end. TopBar measures which (useBandLayout) and sets data-rows and data-brand; the phone bar is
+   either end. TopBar measures which (useBandLayout) and sets data-rows; the phone bar is
    topbar-phone.css. Selectors start with .band.band-desk, so they outrank the older .band rules in styles.css. */
 .band.band-desk { --band-group-gap: 17px; display: flex; flex-wrap: wrap; align-items: center; column-gap: 8px; row-gap: 8px; padding: 9px 16px; min-block-size: 52px; box-sizing: border-box; }
 .band.band-desk > * { flex-shrink: 0; }
 .band.band-desk > .band-tools-btn { order: 0; }
-.band.band-desk > .brand { order: 1; position: relative; margin: 0; font-size: 15px; }
 .band.band-desk > .election { order: 2; }
 .band.band-desk > .election-about { order: 3; }
 .band.band-desk > .band-break { order: 5; }
@@ -15,10 +14,6 @@
 .band.band-desk > .spacer { order: 8; flex: 1 1 0; min-inline-size: 0; }
 .band.band-desk > .complexity { order: 9; }
 .band.band-desk > .band-settings { order: 10; }
-
-/* the brand: both names stay laid out, so the bar can measure either; the one not shown takes no room */
-.band.band-desk .brand-full, .band.band-desk .brand-short { display: inline; }
-.band.band-desk:not([data-brand="full"]) .brand-full, .band.band-desk[data-brand="full"] .brand-short { position: absolute; inset-inline-start: 0; visibility: hidden; pointer-events: none; white-space: nowrap; }
 
 /* one row: a quiet rule between the election and the scenario */
 .band.band-desk:not([data-rows="2"]) > .band-break { inline-size: 1px; block-size: 24px; margin-inline: 4px; background: color-mix(in srgb, var(--shell-ink) 28%, transparent); }
