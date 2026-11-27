@@ -112,7 +112,7 @@ describe('runs that did not win a seat', () => {
       expect(normName(candidate(`${r[1]}#${r[2]}`).nameHe)).toBe(normName(candidate(`${via[1]}#${via[2]}`).nameHe));
     }
     expect(n).toBeGreaterThan(500);
-  });
+  }, 30_000); // looks up 500+ candidates; over 5 s on a busy CI runner (deploy failed 27 Nov)
   it('anything uncertain is left out, with its reason', () => {
     expect(review.leftOut.find((x) => x.candidateId === '18-שס#77')?.reason).toMatch(/two-word name on a list of another party/);
     expect(review.leftOut.some((x) => /more than one person/.test(x.reason))).toBe(true);
