@@ -136,7 +136,7 @@ export function App() {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
     document.documentElement.dataset.theme = theme;
-    document.title = lang === 'he' ? 'הכנסת' : 'haknesset';
+    document.title = lang === 'he' ? 'הכנסת' : 'HaKnesset';
   }, [lang, theme]);
   // personal display settings act on the whole page through root attributes (styles.css)
   useEffect(() => {

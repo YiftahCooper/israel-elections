@@ -45,7 +45,7 @@ export function AppMenu({ onClose, children }: { onClose: () => void; children?:
   return createPortal(<>
     <div className="app-menu-scrim" aria-hidden />
     <div ref={ref} id="app-menu" className="app-menu" role="dialog" aria-label={L('Menu', 'תפריט')}>
-      <div className="app-menu-head"><p className="app-menu-brand">{L('haknesset', 'הכנסת')}</p>
+      <div className="app-menu-head"><p className="app-menu-brand">{L('HaKnesset', 'הכנסת')}</p>
         <button type="button" className="btn ghost icon-only app-menu-close" aria-label={L('Close', 'סגירה')} onClick={() => { close.current(); document.querySelector<HTMLElement>('.band-menu-btn, .band-tools-btn')?.focus({ preventScroll: true }); }}><X className="icon" aria-hidden /></button></div>
       <nav className="app-menu-tools" aria-label={L('Tools', 'כלים')}>
         {groups.map(g => <section key={g.id} aria-labelledby={`am-${g.id}`}>

@@ -2,7 +2,7 @@
 
 ## 27 November 2026
 
-- New name: the app is "haknesset" in English and "הכנסת" in Hebrew, in the browser tab, the top bar, the menu, README and llms.txt (before: "Israeli Elections Explorer" / "סייר הבחירות לכנסת").
+- New name: the app is "HaKnesset" in English and "הכנסת" in Hebrew, in the browser tab, the top bar, the menu, README and llms.txt (before: "Israeli Elections Explorer" / "סייר הבחירות לכנסת").
 
 ## 26 November 2026
 

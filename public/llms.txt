@@ -1,4 +1,4 @@
-# haknesset (הכנסת)
+# HaKnesset (הכנסת)
 
 > An exact, source-faithful explorer and seat simulator for every Knesset election from 1949 to 2026, in Hebrew and English. Seats are computed with exact arithmetic under each election's own law, from official Central Elections Committee, Reshumot and Knesset sources.
 

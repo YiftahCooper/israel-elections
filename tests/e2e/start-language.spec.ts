@@ -17,7 +17,7 @@ test('a new visitor at a .com address gets English, at .co.il Hebrew; ?lang= win
   await page.goto('http://elections.example.com/');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page.locator('html')).toHaveAttribute('dir', 'ltr');
-  await expect(page).toHaveTitle('haknesset');
+  await expect(page).toHaveTitle('HaKnesset');
   expect(await storedLang(page)).toBeNull(); // only a default: not stored by itself
 
   await page.goto('http://elections.example.co.il/');
@@ -25,7 +25,7 @@ test('a new visitor at a .com address gets English, at .co.il Hebrew; ?lang= win
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
 
   await page.goto('http://elections.example.co.il/?lang=en&map-order=biggest');
-  await expect(page).toHaveTitle('haknesset');
+  await expect(page).toHaveTitle('HaKnesset');
   expect(page.url()).toBe('http://elections.example.co.il/?map-order=biggest');
 });
 

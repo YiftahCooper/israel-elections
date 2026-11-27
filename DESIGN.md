@@ -1,5 +1,5 @@
 ---
-name: haknesset
+name: HaKnesset
 description: An exact Knesset seat simulator laid out as a market board, with the official result as the opening price and the user's edits as the session.
 colors:
   shell-navy: "#0e2f56"
@@ -159,7 +159,7 @@ components:
     height: "32px"
 ---
 
-# Design System: haknesset
+# Design System: HaKnesset
 
 ## Overview
 

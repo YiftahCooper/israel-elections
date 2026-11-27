@@ -1,4 +1,4 @@
-// Bombadil specification for haknesset (the Israeli elections explorer).
+// Bombadil specification for HaKnesset (the Israeli elections explorer).
 // Run instructions: tests/bombadil/README.md. The @antithesishq/bombadil modules are bundled in the bombadil binary.
 import { always } from "@antithesishq/bombadil";
 import { isAction } from "@antithesishq/bombadil/actions";

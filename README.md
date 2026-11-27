@@ -1,4 +1,4 @@
-# haknesset · הכנסת
+# HaKnesset · הכנסת
 
 An explorer and seat simulator for every Knesset election since 1949. Not the official Knesset website.
 

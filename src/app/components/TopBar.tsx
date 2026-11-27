@@ -152,7 +152,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
   if (phone) return (
     <header className="band band-phone" ref={trackBandHeight}>
       {/* the page's top heading: the bar has no room for the name on a phone */}
-      <h1 className="sr-only">{L('haknesset', 'הכנסת')}</h1>
+      <h1 className="sr-only">{L('HaKnesset', 'הכנסת')}</h1>
       <button className="tool band-menu-btn" aria-label={L('Menu', 'תפריט') + (publicationPending(ds) ? ' · ' + L('Gazette not yet verified', 'הפרסום ברשומות טרם אומת') : '')} title={L('Menu', 'תפריט')} aria-expanded={phoneMenu} aria-controls="app-menu"
         onClick={() => { setScenarioPanel(false); setPhoneMenu(m => !m); }}>{phoneMenu ? <X className="icon" aria-hidden /> : <Menu className="icon" aria-hidden />}{publicationPending(ds) && !phoneMenu && <span className="band-menu-flag" aria-hidden>!</span>}</button>
       {pickElection(false)}
@@ -186,7 +186,7 @@ export function TopBar({ s, r, ds, baseR, pmContestId = null, onContestChange }:
       {/* short or narrow screens: the tools in a side panel, since the tab rows scroll away or are cut there */}
       <button type="button" className="tool band-tools-btn" aria-label={L('Tools', 'כלים')} title={L('Tools', 'כלים')} aria-expanded={toolsPanel} aria-controls="app-menu" onClick={() => setToolsPanel(o => !o)}><Menu className="icon" aria-hidden /></button>
       {toolsPanel && <AppMenu onClose={() => setToolsPanel(false)} />}
-      <h1 className="brand" aria-label={L('haknesset', 'הכנסת')}><span className="brand-full">{L('haknesset', 'הכנסת')}</span><span className="brand-short">{L('haknesset', 'הכנסת')}</span></h1>
+      <h1 className="brand" aria-label={L('HaKnesset', 'הכנסת')}><span className="brand-full">{L('HaKnesset', 'הכנסת')}</span><span className="brand-short">{L('HaKnesset', 'הכנסת')}</span></h1>
       {pickElection(true)}
       {ds && !pmContestId && <ElectionAbout electionId={ds.id} />}
       {/* the bar's two groups: what is on screen (election, scenario) and how it is shown (complexity, settings); on
